@@ -1,0 +1,2 @@
+import {buildBrushPacket,precomputeBrushPacket} from './spruce-brush-packet.js';
+self.onmessage=({data})=>{try{let packet=buildBrushPacket(data.records);if(data.packing)packet=precomputeBrushPacket(packet);self.postMessage({id:data.id,packet},[packet.frames.buffer,packet.variations.buffer,packet.wood.buffer,...(packet.sharedVariations?[packet.sharedVariations.buffer,packet.variationKeys.buffer]:[])]);}catch(error){self.postMessage({id:data.id,error:error.stack||String(error)});}};

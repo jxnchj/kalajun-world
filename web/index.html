@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>喀拉峻 · 旷野</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+
+    <div id="loading">
+      <div class="title">喀拉峻 · 琼库什台</div>
+      <div id="loading-msg">正在加载地形…</div>
+    </div>
+
+    <div id="hud-tl" class="hud">
+      <div class="title">喀拉峻 · 琼库什台</div>
+      <div id="readout"></div>
+    </div>
+
+    <div id="hud-tr" class="hud">
+      <label>时间 <span id="time-label"></span></label>
+      <input id="time" type="range" min="300" max="1439" step="1" />
+    </div>
+
+    <div id="vp-frame" hidden>
+      <img id="vp-photo" alt="" />
+      <div id="vp-divider" hidden></div>
+    </div>
+
+    <div id="vp-panel" class="hud" hidden>
+      <div id="vp-caption"></div>
+      <div class="row">
+        <button data-mode="wipe">卷帘</button>
+        <button data-mode="blend">叠加</button>
+        <input id="vp-amount" type="range" min="0" max="1" step="0.01" value="0.5" />
+        <button id="vp-exit">退出 (Esc)</button>
+      </div>
+      <div class="hint">卷帘：左侧是渲染，右侧是照片 · 拖动画面或按 WASD 即退出对比</div>
+    </div>
+
+    <div id="hud-bottom" class="hud">
+      <div id="vp-strip"></div>
+      <div id="walk-bar" hidden>
+        <div class="grp">
+          <span class="seg" title="/ 切换；按住 Shift 临时换成另一种"><button data-run="0">走</button><button data-run="1">跑</button></span>
+          <button data-do="auto" title="鼠标中键 / Num Lock；按 W 或 S 停下">自动前进</button>
+          <button data-do="jump">跳 <kbd>空格</kbd></button>
+          <button data-do="skip" title="按住 Q 也行">蹦跳 <kbd>Q</kbd></button>
+        </div>
+        <div class="grp">
+          <button data-key="KeyG">挥手 <kbd>G</kbd></button>
+          <button data-key="KeyC" data-mode="sit" data-on="起身">坐下 <kbd>C</kbd></button>
+          <button data-key="KeyX" data-mode="lie" data-on="起来">躺下 <kbd>X</kbd></button>
+          <button data-key="KeyZ" data-mode="ledge" data-on="站起来">坐台阶 <kbd>Z</kbd></button>
+          <button data-key="KeyJ" data-mode="talk">说话 <kbd>J</kbd></button>
+          <button data-do="more">更多动作</button>
+        </div>
+        <div class="grp">
+          <button data-do="behind" title="镜头转回孩子身后">镜头回正</button>
+          <button data-do="switch">换孩子 <kbd>Tab</kbd></button>
+          <button data-do="fly">回到飞行 <kbd>T</kbd></button>
+        </div>
+        <div id="walk-more" class="grp" hidden>
+          <button data-key="KeyF">蹲下看花 <kbd>F</kbd></button>
+          <button data-key="KeyE">开门/捡东西 <kbd>E</kbd></button>
+          <button data-key="KeyR">转圈 <kbd>R</kbd></button>
+          <button data-key="KeyV">伸懒腰 <kbd>V</kbd></button>
+          <button data-key="KeyB">扔东西 <kbd>B</kbd></button>
+          <button data-key="KeyN">指远处 <kbd>N</kbd></button>
+        </div>
+      </div>
+      <div class="help-row">
+        <button id="walk-start" class="pill">下地步行 <kbd>T</kbd></button>
+        <div class="help">拖动鼠标环视 · WASD 移动 · E/Q 升降 · Shift 加速 · 滚轮调速 · 数字键 1–8 跳到照片机位 · [ ] 花量</div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

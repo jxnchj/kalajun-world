@@ -1,0 +1,132 @@
+{
+  "revision": "v2-habitat-exact-v1",
+  "derivation": "Original V2 decodeHabitatMap; all four channels byte-identical, same raster grid",
+  "maps": {
+    "vegmap": {
+      "meta": {
+        "origin": [
+          -2997.446,
+          2395.8120000000004
+        ],
+        "size": 2048,
+        "res": 2,
+        "tiles": [
+          3,
+          2
+        ],
+        "layers": [
+          [
+            "cosmos",
+            "daisy",
+            "poppy",
+            "globeflower"
+          ],
+          [
+            "forgetmenot",
+            "geranium",
+            "delphinium",
+            "campanula"
+          ],
+          [
+            "yarrow",
+            "dandelion",
+            "clover",
+            "mantle"
+          ],
+          [
+            "sedge",
+            "stipa",
+            "turf",
+            "fern"
+          ],
+          [
+            "buttercup",
+            "fireweed",
+            "dragonhead",
+            "gentian"
+          ],
+          [
+            "edelweiss",
+            "chive",
+            "shrub",
+            "juniper"
+          ]
+        ]
+      },
+      "n": 1024,
+      "url": "data/v2/vegmap.habitat.bin.gz",
+      "rawBytes": 4194304,
+      "gzipBytes": 1724252,
+      "sha256": "48b9b8ffcec2ca836f02aa09d1a4c649d44e623b336356b1dd6044a0e9d7b7f6",
+      "source": {
+        "metadataSha256": "4f346e1ce9581476df108aa59356d444bd80bda758fd225b31bca97b05045cc5",
+        "gzipBytes": 6986056,
+        "rawBytes": 25165824,
+        "sha256": "bb2015c9d3d3b7aa75c41590456da6ee9eef10c601d9f7ee4b47b5ffe09d3609"
+      }
+    },
+    "vegcore": {
+      "meta": {
+        "origin": [
+          -10240,
+          -10240
+        ],
+        "size": 20480,
+        "res": 16,
+        "tiles": [
+          3,
+          2
+        ],
+        "layers": [
+          [
+            "cosmos",
+            "daisy",
+            "poppy",
+            "globeflower"
+          ],
+          [
+            "forgetmenot",
+            "geranium",
+            "delphinium",
+            "campanula"
+          ],
+          [
+            "yarrow",
+            "dandelion",
+            "clover",
+            "mantle"
+          ],
+          [
+            "sedge",
+            "stipa",
+            "turf",
+            "fern"
+          ],
+          [
+            "buttercup",
+            "fireweed",
+            "dragonhead",
+            "gentian"
+          ],
+          [
+            "edelweiss",
+            "chive",
+            "shrub",
+            "juniper"
+          ]
+        ]
+      },
+      "n": 1280,
+      "url": "data/v2/vegcore.habitat.bin.gz",
+      "rawBytes": 6553600,
+      "gzipBytes": 3551493,
+      "sha256": "468d85f4bb07cf944191e0638710355bf881d09fbabaecb2e61a84aeccdc2c77",
+      "source": {
+        "metadataSha256": "d095d45f95c1eed560e89e3ebfd9c95fd78d0859f17d972446cdcc13a928fdb4",
+        "gzipBytes": 14380850,
+        "rawBytes": 39321600,
+        "sha256": "19b726723d601c3b6cf09a729573c878d9d80746046d1456b4be428a7c31d0f8"
+      }
+    }
+  }
+}

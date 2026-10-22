@@ -1,0 +1,49 @@
+{
+  "round": 23,
+  "version": "route-continuity-23",
+  "stage": 3,
+  "stageComplete": false,
+  "tests": {
+    "passed": 585,
+    "failed": 0,
+    "log": "tests.log",
+    "build": "build.log",
+    "warning": "existing large chunk warning"
+  },
+  "browser": {
+    "port": 5174,
+    "routes": "final-routes.json",
+    "routeCount": 11,
+    "allTerrainQueuesEmpty": true,
+    "runtimeErrors": [],
+    "consoleWarningsAndErrors": [],
+    "roomControls": "room-controls.json",
+    "shadowEquivalence": "shadow-equivalence.json",
+    "delivery": {
+      "url": "http://127.0.0.1:5174/v2.html?view=river-forest&time=870",
+      "snapshot": "delivery.json",
+      "image": "delivery.png",
+      "ready": true,
+      "terrainQueued": 0,
+      "version": "route-continuity-23",
+      "errors": [],
+      "actualDragVerified": true
+    }
+  },
+  "performance": {
+    "comparison": "performance-summary.json",
+    "finalBankRegression": "final-bank-regression.json",
+    "wholeFrameTargetMet": false,
+    "coldStartupTargetMet": false,
+    "noDetailReduction": true,
+    "trees": 80927,
+    "grassTufts": 19395
+  },
+  "intermediate": [
+    "Near wet-bank grey band remains; Lanchuan creek centreline still straight",
+    "Distant fine patch repetition and near-far transitions remain",
+    "Room illumination is finite static transport, not complete GI; fixture distribution/highlights and final materials pending",
+    "Fine needles and upper photo cards deferred",
+    "Full lighting and color stage remains later"
+  ]
+}

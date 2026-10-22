@@ -1,0 +1,171 @@
+{
+  "asset": "house_a",
+  "version": "pastoral-soft-goods-27",
+  "objects": [
+    {
+      "name": "pastoral_house_chest_folded0",
+      "kind": "folded blanket",
+      "bounds": [
+        [
+          -0.41999998688697815,
+          -0.27000001072883606,
+          -0.04749999940395355
+        ],
+        [
+          0.41999998688697815,
+          0.27000001072883606,
+          0.04749999940395355
+        ]
+      ],
+      "verticesBefore": 56,
+      "verticesAfter": 2940,
+      "trianglesBefore": 108,
+      "trianglesAfter": 5872,
+      "transformUnchanged": true,
+      "boundsUnchanged": true,
+      "materialsUnchanged": true
+    },
+    {
+      "name": "pastoral_house_chest_folded1",
+      "kind": "folded blanket",
+      "bounds": [
+        [
+          -0.41999998688697815,
+          -0.27000001072883606,
+          -0.04749999940395355
+        ],
+        [
+          0.41999998688697815,
+          0.27000001072883606,
+          0.04749999940395355
+        ]
+      ],
+      "verticesBefore": 56,
+      "verticesAfter": 2940,
+      "trianglesBefore": 108,
+      "trianglesAfter": 5872,
+      "transformUnchanged": true,
+      "boundsUnchanged": true,
+      "materialsUnchanged": true
+    },
+    {
+      "name": "pastoral_house_chest_folded2",
+      "kind": "folded blanket",
+      "bounds": [
+        [
+          -0.41999998688697815,
+          -0.27000001072883606,
+          -0.04749999940395355
+        ],
+        [
+          0.41999998688697815,
+          0.27000001072883606,
+          0.04749999940395355
+        ]
+      ],
+      "verticesBefore": 56,
+      "verticesAfter": 2940,
+      "trianglesBefore": 108,
+      "trianglesAfter": 5872,
+      "transformUnchanged": true,
+      "boundsUnchanged": true,
+      "materialsUnchanged": true
+    },
+    {
+      "name": "pastoral_house_chest_folded3",
+      "kind": "folded blanket",
+      "bounds": [
+        [
+          -0.41999998688697815,
+          -0.27000001072883606,
+          -0.04749999940395355
+        ],
+        [
+          0.41999998688697815,
+          0.27000001072883606,
+          0.04749999940395355
+        ]
+      ],
+      "verticesBefore": 56,
+      "verticesAfter": 2940,
+      "trianglesBefore": 108,
+      "trianglesAfter": 5872,
+      "transformUnchanged": true,
+      "boundsUnchanged": true,
+      "materialsUnchanged": true
+    },
+    {
+      "name": "pastoral_house_floor_cushion",
+      "kind": "seat cushion",
+      "bounds": [
+        [
+          -0.26499998569488525,
+          -0.25999999046325684,
+          -0.07999999821186066
+        ],
+        [
+          0.26499998569488525,
+          0.25999999046325684,
+          0.07999999821186066
+        ]
+      ],
+      "verticesBefore": 56,
+      "verticesAfter": 1634,
+      "trianglesBefore": 108,
+      "trianglesAfter": 3264,
+      "transformUnchanged": true,
+      "boundsUnchanged": true,
+      "materialsUnchanged": true
+    },
+    {
+      "name": "pastoral_house_floor_cushion.001",
+      "kind": "seat cushion",
+      "bounds": [
+        [
+          -0.26499998569488525,
+          -0.25999999046325684,
+          -0.07999999821186066
+        ],
+        [
+          0.26499998569488525,
+          0.25999999046325684,
+          0.07999999821186066
+        ]
+      ],
+      "verticesBefore": 56,
+      "verticesAfter": 1634,
+      "trianglesBefore": 108,
+      "trianglesAfter": 3264,
+      "transformUnchanged": true,
+      "boundsUnchanged": true,
+      "materialsUnchanged": true
+    },
+    {
+      "name": "pastoral_house_floor_cushion.002",
+      "kind": "seat cushion",
+      "bounds": [
+        [
+          -0.26499998569488525,
+          -0.25999999046325684,
+          -0.07999999821186066
+        ],
+        [
+          0.26499998569488525,
+          0.25999999046325684,
+          0.07999999821186066
+        ]
+      ],
+      "verticesBefore": 56,
+      "verticesAfter": 1634,
+      "trianglesBefore": 108,
+      "trianglesAfter": 3264,
+      "transformUnchanged": true,
+      "boundsUnchanged": true,
+      "materialsUnchanged": true
+    }
+  ],
+  "changedMeshes": 7,
+  "protectedMeshesUnchanged": 252,
+  "contactAORebaked": 7,
+  "source": "assets/src/v2/pastoral/house_a-lived.blend"
+}

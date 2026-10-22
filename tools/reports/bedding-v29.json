@@ -1,0 +1,68 @@
+{
+  "version": "pastoral-bedding-29",
+  "scope": "2 filled quilts, 2 compressed felt mattresses and 1 fitted bed runner across two reusable interiors; 5 existing mesh parts refined",
+  "aholoUsed": false,
+  "globalLightingChanged": false,
+  "newTextures": 0,
+  "assets": [
+    {
+      "asset": "house_a",
+      "meshCount": 259,
+      "changedMeshParts": 3,
+      "unchangedMeshPayloadsByteExact": 256,
+      "nodeTransformsExact": true,
+      "originalMaterialsExact": true,
+      "originalPackedImagesExact": true,
+      "trianglesBefore": 88868,
+      "trianglesAfter": 110824,
+      "triangleDelta": 21956,
+      "glbBytesBefore": 8277708,
+      "glbBytesAfter": 8826888,
+      "glbByteDelta": 549180,
+      "gzipBytesBefore": 4910932,
+      "gzipBytesAfter": 5208147,
+      "gzipByteDelta": 297215,
+      "glbSHA256": "54d15b3416f8f9beba8eb5dd14685cdc07a87a2a4c899e09101e458ef7da9a43",
+      "blendSource": "assets/src/v2/pastoral/house_a-lived.blend",
+      "sourceSHA256": "06214aac81b6583ef3158eda37b8f4ff0c7b6556904599b2f57fea6bca31b452"
+    },
+    {
+      "asset": "yurt",
+      "meshCount": 92,
+      "changedMeshParts": 2,
+      "unchangedMeshPayloadsByteExact": 90,
+      "nodeTransformsExact": true,
+      "originalMaterialsExact": true,
+      "originalPackedImagesExact": true,
+      "trianglesBefore": 72392,
+      "trianglesAfter": 85492,
+      "triangleDelta": 13100,
+      "glbBytesBefore": 7168900,
+      "glbBytesAfter": 7496000,
+      "glbByteDelta": 327100,
+      "gzipBytesBefore": 5046184,
+      "gzipBytesAfter": 5228099,
+      "gzipByteDelta": 181915,
+      "glbSHA256": "e1171aa6050901512e19e3236c8b9f57dfd860a41694b6f6c8e1e28451caf2ee",
+      "blendSource": "assets/src/v2/pastoral/yurt-lived.blend",
+      "sourceSHA256": "aac2176dda6d16000240e0ed99ae68d08c877f247006585d72b07562aabacba3"
+    }
+  ],
+  "verification": {
+    "assetTests": "13 passed: tools/reports/bedding-v29-tests.log",
+    "giAndTransportTests": "66 passed: tools/reports/bedding-v29-gi-tests.log",
+    "transportCheck": "20 source assets, exact gzip reconstruction: tools/reports/bedding-v29-transport-check.log",
+    "giRebake": "Open/closed two-bounce sky + solar, floor contact and aperture visibility; elapsed time in tools/reports/bedding-v29-gi-rebake.log",
+    "studioImages": [
+      "assets/src/v2/pastoral/house_a-bedding-29.studio.png",
+      "assets/src/v2/pastoral/yurt-bedding-29.studio.png"
+    ],
+    "browserAcceptance": "parent task performs actual route acceptance after combined build"
+  },
+  "remainingIntermediate": [
+    "This is a designed household interpretation, not an exact historic surveyed bed furnishing.",
+    "Other simple fixtures, furniture and architecture retain existing intermediate geometry.",
+    "GI remains the established finite static two-diffuse-bounce model, not complete dynamic global illumination.",
+    "Added fine triangles and transfer bytes are real cost; no additional objects/material groups/textures, existing interior detail role and visibility range preserved."
+  ]
+}

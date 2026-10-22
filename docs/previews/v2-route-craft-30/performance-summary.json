@@ -1,0 +1,384 @@
+{
+  "version": "route-continuity-30",
+  "conditions": "Chrome same restored tab; 1453x839 DPR1; time870; exact absolute pose; 180 settling RAF then final80 frame intervals/GPU60 samples; A1/B1/A2/B2. no-store and canopyCache=0; GPU/driver caches NOT reset.",
+  "runs": [
+    {
+      "run": "A1",
+      "version": "route-continuity-29",
+      "frameMeanMs": 36.04125000000003,
+      "fps": 27.745985502722547,
+      "gpuMeanMs": 28.23836826666667,
+      "moduleToFirstFrameMs": 7397.600000023842,
+      "navigationToFirstFrameMs": 7580.199999988079,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "context": null,
+      "habitat": null,
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.15500000417232512,
+          "maxMs": 0.5
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 1.1108333309491476,
+          "maxMs": 1.5
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 0.9258333320418993,
+          "maxMs": 2
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.029999999701976775,
+          "maxMs": 0.19999998807907104
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 0.2716666673620542,
+          "maxMs": 0.40000003576278687
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.01833333323399226,
+          "maxMs": 0.10000002384185791
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 3.015833334624767,
+          "maxMs": 5
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 3.2008333335320156,
+          "maxMs": 12.600000023841858
+        }
+      }
+    },
+    {
+      "run": "B1",
+      "version": "route-continuity-30",
+      "frameMeanMs": 45.00374999999995,
+      "fps": 22.220370524678525,
+      "gpuMeanMs": 29.45180571666667,
+      "moduleToFirstFrameMs": 6658.199999988079,
+      "navigationToFirstFrameMs": 6845.399999976158,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "context": {
+        "screenAntialias": false,
+        "requestedScreenAntialias": false,
+        "worldTargetSamples": 4,
+        "probeEligible": true,
+        "fallback": false
+      },
+      "habitat": {
+        "local": {
+          "mode": "derived",
+          "revision": "v2-habitat-exact-v1",
+          "responseBytes": 4194304,
+          "decodedBytes": 4194304,
+          "dataBytes": 4194304,
+          "elapsedMs": 2175.7000000476837
+        },
+        "core": {
+          "mode": "derived",
+          "revision": "v2-habitat-exact-v1",
+          "responseBytes": 6553600,
+          "decodedBytes": 6553600,
+          "dataBytes": 6553600,
+          "elapsedMs": 2265.7000000476837
+        }
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.2491666669646899,
+          "maxMs": 1.300000011920929
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 1.7516666665673255,
+          "maxMs": 6.199999988079071
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 1.3491666694482167,
+          "maxMs": 11.800000011920929
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.046666664878527324,
+          "maxMs": 0.19999998807907104
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 0.5216666703422864,
+          "maxMs": 5.300000011920929
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.021666666368643443,
+          "maxMs": 0.10000002384185791
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 4.883333330353101,
+          "maxMs": 19.5
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 10.633333333333333,
+          "maxMs": 56.10000002384186
+        }
+      }
+    },
+    {
+      "run": "A2",
+      "version": "route-continuity-29",
+      "frameMeanMs": 60.72874999999999,
+      "fps": 16.46666529444456,
+      "gpuMeanMs": 29.096116216666662,
+      "moduleToFirstFrameMs": 9281.600000023842,
+      "navigationToFirstFrameMs": 9464.100000023842,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "context": null,
+      "habitat": null,
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.5008333325386047,
+          "maxMs": 6.300000011920929
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 3.546666667362054,
+          "maxMs": 16.600000023841858
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 3.032499998807907,
+          "maxMs": 15.300000011920929
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.06416666656732559,
+          "maxMs": 0.20000004768371582
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 1.111666665971279,
+          "maxMs": 5
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.11416666557391485,
+          "maxMs": 8.600000023841858
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 10.004166666169962,
+          "maxMs": 52.60000002384186
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 15.484166664878527,
+          "maxMs": 70.90000003576279
+        }
+      }
+    },
+    {
+      "run": "B2",
+      "version": "route-continuity-30",
+      "frameMeanMs": 57.5,
+      "fps": 17.391304347826086,
+      "gpuMeanMs": 28.975299566666656,
+      "moduleToFirstFrameMs": 8943.600000023842,
+      "navigationToFirstFrameMs": 9111.600000023842,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "context": {
+        "screenAntialias": false,
+        "requestedScreenAntialias": false,
+        "worldTargetSamples": 4,
+        "probeEligible": true,
+        "fallback": false
+      },
+      "habitat": {
+        "local": {
+          "mode": "derived",
+          "revision": "v2-habitat-exact-v1",
+          "responseBytes": 4194304,
+          "decodedBytes": 4194304,
+          "dataBytes": 4194304,
+          "elapsedMs": 2106
+        },
+        "core": {
+          "mode": "derived",
+          "revision": "v2-habitat-exact-v1",
+          "responseBytes": 6553600,
+          "decodedBytes": 6553600,
+          "dataBytes": 6553600,
+          "elapsedMs": 2264.699999988079
+        }
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.3908333331346512,
+          "maxMs": 1.899999976158142
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 3.3724999984105426,
+          "maxMs": 8.5
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 2.7083333333333335,
+          "maxMs": 9.199999988079071
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.0608333354194959,
+          "maxMs": 0.20000004768371582
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 1.4583333293596903,
+          "maxMs": 7.5
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.04500000278155009,
+          "maxMs": 0.800000011920929
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 9.091666666169962,
+          "maxMs": 27.599999964237213
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 15.296666663388411,
+          "maxMs": 61.5
+        }
+      }
+    }
+  ],
+  "screenMSAA": [
+    {
+      "run": "off1",
+      "gpuMeanMs": 28.566101650000004,
+      "frameMeanMs": 37.08374999999997,
+      "viewport": {
+        "width": 1453,
+        "height": 814,
+        "pixelRatio": 1
+      },
+      "context": {
+        "screenAntialias": false,
+        "requestedScreenAntialias": false,
+        "worldTargetSamples": 4,
+        "probeEligible": true,
+        "fallback": false
+      },
+      "worldSamples": 4
+    },
+    {
+      "run": "on1",
+      "gpuMeanMs": 30.135151599999997,
+      "frameMeanMs": 63.85374999999999,
+      "viewport": {
+        "width": 1453,
+        "height": 814,
+        "pixelRatio": 1
+      },
+      "context": {
+        "screenAntialias": true,
+        "requestedScreenAntialias": true,
+        "worldTargetSamples": 4,
+        "probeEligible": false,
+        "fallback": false
+      },
+      "worldSamples": 4
+    },
+    {
+      "run": "off2",
+      "gpuMeanMs": 28.37211055,
+      "frameMeanMs": 53.751249999999985,
+      "viewport": {
+        "width": 1453,
+        "height": 814,
+        "pixelRatio": 1
+      },
+      "context": {
+        "screenAntialias": false,
+        "requestedScreenAntialias": false,
+        "worldTargetSamples": 4,
+        "probeEligible": true,
+        "fallback": false
+      },
+      "worldSamples": 4
+    },
+    {
+      "run": "on2",
+      "gpuMeanMs": 26.381150833333336,
+      "frameMeanMs": 33.125,
+      "viewport": {
+        "width": 1453,
+        "height": 814,
+        "pixelRatio": 1
+      },
+      "context": {
+        "screenAntialias": true,
+        "requestedScreenAntialias": true,
+        "worldTargetSamples": 4,
+        "probeEligible": false,
+        "fallback": false
+      },
+      "worldSamples": 4
+    }
+  ],
+  "outputProof": {
+    "width": 1453,
+    "height": 814,
+    "worldSamples": 4,
+    "outputSamples": [
+      0,
+      4
+    ],
+    "differingChannels": 0,
+    "maxChannelDelta": 0,
+    "meanChannelDelta": 0
+  },
+  "conclusion": "No stable overall FPS/GPU improvement. Both observed startup pairs shorter, but 6.66-8.94s long tail persists. Exact habitat transport reduction adopted. Redundant default-framebuffer MSAA removed while WorldFrame retains4 samples; same HDR output pixels identical, whole GPU gain not established.",
+  "phaseProbe": "An earlier source-page diagnostic separated GPU commands, but timing queries split draws and the page reloaded; not used as final acceptance evidence."
+}

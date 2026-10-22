@@ -1,0 +1,600 @@
+[
+  {
+    "label": "acceptance-b2",
+    "version": "route-continuity-31",
+    "view": "river-forest",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1186,
+      "residentTiles": 1560,
+      "queuedTiles": 0,
+      "triangles": 2732544,
+      "morphingGroups": 0,
+      "minSpacing": 0.3125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 1560,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 31851,
+        "heightMisses": 2449109,
+        "vertexHits": 31566,
+        "vertexMisses": 1234930,
+        "parentVertexHits": 432344
+      },
+      "tileCache": {
+        "bytes": 0,
+        "maxBytes": 67108864,
+        "tiles": 0,
+        "hits": 0,
+        "misses": 1560,
+        "evictions": 0
+      },
+      "restoredTiles": 0,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-meadow",
+    "version": "route-continuity-31",
+    "view": "meadow",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1189,
+      "residentTiles": 1564,
+      "queuedTiles": 0,
+      "triangles": 2739456,
+      "morphingGroups": 0,
+      "minSpacing": 0.078125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 2676,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 53964,
+        "heightMisses": 4176884,
+        "vertexHits": 53533,
+        "vertexMisses": 2105763,
+        "parentVertexHits": 754868
+      },
+      "tileCache": {
+        "bytes": 67078404,
+        "maxBytes": 67108864,
+        "tiles": 405,
+        "hits": 0,
+        "misses": 2676,
+        "evictions": 623
+      },
+      "restoredTiles": 0,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-farforest",
+    "version": "route-continuity-31",
+    "view": "forest",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1075,
+      "residentTiles": 1412,
+      "queuedTiles": 0,
+      "triangles": 2476800,
+      "morphingGroups": 0,
+      "minSpacing": 0.3125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 3264,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 65577,
+        "heightMisses": 5087255,
+        "vertexHits": 65136,
+        "vertexMisses": 2564560,
+        "parentVertexHits": 924800
+      },
+      "tileCache": {
+        "bytes": 67026068,
+        "maxBytes": 67108864,
+        "tiles": 409,
+        "hits": 0,
+        "misses": 3264,
+        "evictions": 1315
+      },
+      "restoredTiles": 0,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-brook",
+    "version": "route-continuity-31",
+    "view": "brook-lanchuan",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1441,
+      "residentTiles": 1900,
+      "queuedTiles": 0,
+      "triangles": 3320064,
+      "morphingGroups": 0,
+      "minSpacing": 0.3125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 4364,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 86395,
+        "heightMisses": 6791237,
+        "vertexHits": 85840,
+        "vertexMisses": 3423856,
+        "parentVertexHits": 1242700
+      },
+      "tileCache": {
+        "bytes": 66973732,
+        "maxBytes": 67108864,
+        "tiles": 413,
+        "hits": 16,
+        "misses": 4364,
+        "evictions": 1895
+      },
+      "restoredTiles": 16,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-river",
+    "version": "route-continuity-31",
+    "view": "river-valley",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1519,
+      "residentTiles": 2004,
+      "queuedTiles": 0,
+      "triangles": 3499776,
+      "morphingGroups": 0,
+      "minSpacing": 0.3125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 5780,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 112869,
+        "heightMisses": 8985051,
+        "vertexHits": 112195,
+        "vertexMisses": 4530301,
+        "parentVertexHits": 1651924
+      },
+      "tileCache": {
+        "bytes": 67026068,
+        "maxBytes": 67108864,
+        "tiles": 409,
+        "hits": 16,
+        "misses": 5780,
+        "evictions": 3127
+      },
+      "restoredTiles": 16,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-west",
+    "version": "route-continuity-31",
+    "view": "west-slope",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 715,
+      "residentTiles": 932,
+      "queuedTiles": 0,
+      "triangles": 1647360,
+      "morphingGroups": 0,
+      "minSpacing": 0.3125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 6540,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 128327,
+        "heightMisses": 10161273,
+        "vertexHits": 127469,
+        "vertexMisses": 5123027,
+        "parentVertexHits": 1871564
+      },
+      "tileCache": {
+        "bytes": 67078404,
+        "maxBytes": 67108864,
+        "tiles": 405,
+        "hits": 16,
+        "misses": 6540,
+        "evictions": 4719
+      },
+      "restoredTiles": 16,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-pasture",
+    "version": "route-continuity-31",
+    "view": "pasture-sheep",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1180,
+      "residentTiles": 1552,
+      "queuedTiles": 0,
+      "triangles": 2718720,
+      "morphingGroups": 0,
+      "minSpacing": 0.15625,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 7904,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 154720,
+        "heightMisses": 12273632,
+        "vertexHits": 153667,
+        "vertexMisses": 6188029,
+        "parentVertexHits": 2265760
+      },
+      "tileCache": {
+        "bytes": 67020912,
+        "maxBytes": 67108864,
+        "tiles": 396,
+        "hits": 16,
+        "misses": 7904,
+        "evictions": 5320
+      },
+      "restoredTiles": 16,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-room1",
+    "version": "route-continuity-31",
+    "view": "lanchuan-freedom-1",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1306,
+      "residentTiles": 1720,
+      "queuedTiles": 0,
+      "triangles": 3009024,
+      "morphingGroups": 0,
+      "minSpacing": 0.078125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 8760,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 172050,
+        "heightMisses": 13598510,
+        "vertexHits": 170923,
+        "vertexMisses": 6855573,
+        "parentVertexHits": 2513144
+      },
+      "tileCache": {
+        "bytes": 67026068,
+        "maxBytes": 67108864,
+        "tiles": 409,
+        "hits": 16,
+        "misses": 8760,
+        "evictions": 5991
+      },
+      "restoredTiles": 16,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-room2",
+    "version": "route-continuity-31",
+    "view": "lanchuan-freedom-2",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1312,
+      "residentTiles": 1728,
+      "queuedTiles": 0,
+      "triangles": 3022848,
+      "morphingGroups": 0,
+      "minSpacing": 0.078125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 8768,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 172204,
+        "heightMisses": 13610900,
+        "vertexHits": 171077,
+        "vertexMisses": 6861819,
+        "parentVertexHits": 2515456
+      },
+      "tileCache": {
+        "bytes": 67026068,
+        "maxBytes": 67108864,
+        "tiles": 409,
+        "hits": 16,
+        "misses": 8768,
+        "evictions": 5991
+      },
+      "restoredTiles": 16,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-room3",
+    "version": "route-continuity-31",
+    "view": "lanchuan-freedom-3",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1306,
+      "residentTiles": 1720,
+      "queuedTiles": 0,
+      "triangles": 3009024,
+      "morphingGroups": 0,
+      "minSpacing": 0.078125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 8780,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 172420,
+        "heightMisses": 13629500,
+        "vertexHits": 171293,
+        "vertexMisses": 6871203,
+        "parentVertexHits": 2518924
+      },
+      "tileCache": {
+        "bytes": 67026068,
+        "maxBytes": 67108864,
+        "tiles": 409,
+        "hits": 16,
+        "misses": 8780,
+        "evictions": 6011
+      },
+      "restoredTiles": 16,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-house",
+    "version": "route-continuity-31",
+    "view": "pastoral-house_a-entry",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1153,
+      "residentTiles": 1516,
+      "queuedTiles": 0,
+      "triangles": 2656512,
+      "morphingGroups": 0,
+      "minSpacing": 0.3125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 9392,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 185000,
+        "heightMisses": 14576536,
+        "vertexHits": 183813,
+        "vertexMisses": 7348283,
+        "parentVertexHits": 2695792
+      },
+      "tileCache": {
+        "bytes": 67026068,
+        "maxBytes": 67108864,
+        "tiles": 409,
+        "hits": 16,
+        "misses": 9392,
+        "evictions": 6775
+      },
+      "restoredTiles": 16,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "route-yurt",
+    "version": "route-continuity-31",
+    "view": "pastoral-yurt-entry",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1258,
+      "residentTiles": 1656,
+      "queuedTiles": 0,
+      "triangles": 2898432,
+      "morphingGroups": 0,
+      "minSpacing": 0.15625,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 9836,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 193750,
+        "heightMisses": 15263978,
+        "vertexHits": 192422,
+        "vertexMisses": 7694874,
+        "parentVertexHits": 2824108
+      },
+      "tileCache": {
+        "bytes": 66999900,
+        "maxBytes": 67108864,
+        "tiles": 411,
+        "hits": 20,
+        "misses": 9836,
+        "evictions": 7069
+      },
+      "restoredTiles": 20,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  },
+  {
+    "label": "porch-exterior",
+    "version": "route-continuity-31",
+    "view": "walk-house_a",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "terrain": {
+      "visibleTiles": 1180,
+      "residentTiles": 1552,
+      "queuedTiles": 0,
+      "triangles": 2718720,
+      "morphingGroups": 0,
+      "minSpacing": 0.3125,
+      "maxSpacing": 320,
+      "buildMs": 0,
+      "initialBuildMs": 303.4000000357628,
+      "generatedTiles": 9991,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 196832,
+        "heightMisses": 15503936,
+        "vertexHits": 195450,
+        "vertexMisses": 7815846,
+        "parentVertexHits": 2868903
+      },
+      "tileCache": {
+        "bytes": 62971968,
+        "maxBytes": 67108864,
+        "tiles": 384,
+        "hits": 157,
+        "misses": 9991,
+        "evictions": 7351
+      },
+      "restoredTiles": 157,
+      "nearQueuedTiles": 0
+    },
+    "errors": []
+  }
+]

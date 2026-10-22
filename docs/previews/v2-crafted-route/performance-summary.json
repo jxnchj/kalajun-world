@@ -1,0 +1,490 @@
+{
+  "conditions": {
+    "canvas": [
+      1453,
+      839
+    ],
+    "DPR": 1,
+    "time": 870,
+    "canopyCache": false,
+    "gpuDriverCacheReset": false,
+    "order": "A1 B1 A2 B2",
+    "pose": [
+      -3611.9813305250705,
+      2329.161214161885,
+      4805.371282289286,
+      -30.90412352938094,
+      -10
+    ],
+    "warmupFrames": 180,
+    "reportedFrameSamples": 80,
+    "densityReduced": false,
+    "treeViewCull": false
+  },
+  "runs": [
+    {
+      "run": "A1",
+      "version": "route-continuity-26",
+      "frameMs": 135.94000000000005,
+      "gpuMs": 41.446966849999995,
+      "moduleFirstFrameMs": 10560,
+      "navigationFirstFrameMs": 10738.5,
+      "trees": 80927,
+      "grass": 19395,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "needleTimings": {
+        "fetchMs": 119.5,
+        "decodeMs": 2.600000023841858,
+        "validateMs": 3.5,
+        "canopyMode": "runtime",
+        "preparationMode": "overlap-worker-shell",
+        "formPreparationMs": 884.8999999761581,
+        "templateBuildMs": 410.5,
+        "geometrySetupMs": 474.39999997615814,
+        "parameterPackingMs": 0
+      },
+      "far": {
+        "representation": "same-source 5×8×3 upright normal-lit impostor",
+        "manifestMs": 2191.900000035763,
+        "fetchMs": 562.5,
+        "decodeMs": 0,
+        "textureSetupMs": 0.09999996423721313,
+        "encodedBytes": 20834110,
+        "responseBodyBytes": 47185920,
+        "decodedBytes": 47185920,
+        "gpuTextureBytes": 62914560,
+        "applicationGzipDecodes": 0,
+        "byteScope": "two texture payloads; manifest excluded",
+        "resourceTiming": {
+          "entries": [
+            {
+              "kind": "albedo",
+              "startTime": 3461.599999964237,
+              "duration": 423.5,
+              "transferSize": 9623291,
+              "encodedBodySize": 9622991,
+              "decodedBodySize": 23592960,
+              "deliveryType": ""
+            },
+            {
+              "kind": "normal",
+              "startTime": 3461.699999988079,
+              "duration": 425.69999998807907,
+              "transferSize": 11211419,
+              "encodedBodySize": 11211119,
+              "decodedBodySize": 23592960,
+              "deliveryType": ""
+            }
+          ],
+          "complete": true,
+          "transferSize": 20834710,
+          "encodedBodySize": 20834110,
+          "decodedBodySize": 47185920
+        },
+        "loadMs": 2754.800000011921,
+        "templateTriangles": 8,
+        "forms": 5,
+        "azimuths": 8,
+        "elevations": 3
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.9966666683554649,
+          "maxMs": 8
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 5.602500002582868,
+          "maxMs": 17.100000023841858
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 5.2591666658719385,
+          "maxMs": 13.100000023841858
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.14499999831120172,
+          "maxMs": 2
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 1.0275000005960464,
+          "maxMs": 9.800000011920929
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.0725000003973643,
+          "maxMs": 0.20000004768371582
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 14.914166666567326,
+          "maxMs": 75.69999998807907
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 37.37583333005508,
+          "maxMs": 141.69999998807907
+        }
+      },
+      "errors": []
+    },
+    {
+      "run": "B1",
+      "version": "route-continuity-27",
+      "frameMs": 131.67125000000001,
+      "gpuMs": 40.44309809999999,
+      "moduleFirstFrameMs": 11811.699999988079,
+      "navigationFirstFrameMs": 11970,
+      "trees": 80927,
+      "grass": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "needleTimings": {
+        "fetchMs": 86.30000001192093,
+        "decodeMs": 2.5,
+        "validateMs": 3.399999976158142,
+        "canopyMode": "runtime",
+        "formQueue": 2,
+        "maxInFlightParameterBytes": 25165824,
+        "peakQueuedForms": 2,
+        "peakInFlightParameterBytes": 20296048,
+        "preparationMode": "overlap-worker-shell",
+        "formPreparationMs": 820.5,
+        "templateBuildMs": 370.70000010728836,
+        "geometrySetupMs": 449.79999989271164,
+        "parameterPackingMs": 0
+      },
+      "far": {
+        "representation": "same-source 5×8×3 upright normal-lit impostor",
+        "manifestMs": 2142.199999988079,
+        "transportMode": "v27",
+        "rgbaRestoreMs": 11.100000023841858,
+        "fetchMs": 531.5,
+        "decodeMs": 11.100000023841858,
+        "textureSetupMs": 0.10000002384185791,
+        "encodedBytes": 18449996,
+        "responseBodyBytes": 41287680,
+        "decodedBytes": 47185920,
+        "gpuTextureBytes": 62914560,
+        "applicationGzipDecodes": 0,
+        "byteScope": "two texture payloads; manifest excluded",
+        "resourceTiming": {
+          "entries": [
+            {
+              "kind": "albedo",
+              "startTime": 3401.699999988079,
+              "duration": 404.4000000357628,
+              "transferSize": 9623291,
+              "encodedBodySize": 9622991,
+              "decodedBodySize": 23592960,
+              "deliveryType": ""
+            },
+            {
+              "kind": "normal",
+              "startTime": 3401.699999988079,
+              "duration": 388,
+              "transferSize": 8827305,
+              "encodedBodySize": 8827005,
+              "decodedBodySize": 17694720,
+              "deliveryType": ""
+            }
+          ],
+          "complete": true,
+          "transferSize": 18450596,
+          "encodedBodySize": 18449996,
+          "decodedBodySize": 41287680
+        },
+        "loadMs": 2685,
+        "templateTriangles": 8,
+        "forms": 5,
+        "azimuths": 8,
+        "elevations": 3
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.9558333347241084,
+          "maxMs": 7.399999976158142
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 5.802500000099341,
+          "maxMs": 15.299999952316284
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 5.431666665772597,
+          "maxMs": 18.19999998807907
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.10250000059604644,
+          "maxMs": 0.30000001192092896
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 0.6758333350221316,
+          "maxMs": 9.5
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.06750000268220901,
+          "maxMs": 0.30000001192092896
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 15.019999997814496,
+          "maxMs": 40.5
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 34.11916666875283,
+          "maxMs": 141.19999998807907
+        }
+      },
+      "errors": []
+    },
+    {
+      "run": "A2",
+      "version": "route-continuity-26",
+      "frameMs": 116.76999999999998,
+      "gpuMs": 38.14216961666667,
+      "moduleFirstFrameMs": 12239.800000011921,
+      "navigationFirstFrameMs": 12385,
+      "trees": 80927,
+      "grass": 19395,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "needleTimings": {
+        "fetchMs": 95,
+        "decodeMs": 2.699999988079071,
+        "validateMs": 3.400000035762787,
+        "canopyMode": "runtime",
+        "preparationMode": "overlap-worker-shell",
+        "formPreparationMs": 978.8999999761581,
+        "templateBuildMs": 513.9000000357628,
+        "geometrySetupMs": 464.99999994039536,
+        "parameterPackingMs": 0
+      },
+      "far": {
+        "representation": "same-source 5×8×3 upright normal-lit impostor",
+        "manifestMs": 2191.400000035763,
+        "fetchMs": 583.1999999880791,
+        "decodeMs": 0,
+        "textureSetupMs": 0.09999996423721313,
+        "encodedBytes": 20834110,
+        "responseBodyBytes": 47185920,
+        "decodedBytes": 47185920,
+        "gpuTextureBytes": 62914560,
+        "applicationGzipDecodes": 0,
+        "byteScope": "two texture payloads; manifest excluded",
+        "resourceTiming": {
+          "entries": [
+            {
+              "kind": "albedo",
+              "startTime": 3424.400000035763,
+              "duration": 443.0999999642372,
+              "transferSize": 9623291,
+              "encodedBodySize": 9622991,
+              "decodedBodySize": 23592960,
+              "deliveryType": ""
+            },
+            {
+              "kind": "normal",
+              "startTime": 3424.400000035763,
+              "duration": 441.89999997615814,
+              "transferSize": 11211419,
+              "encodedBodySize": 11211119,
+              "decodedBodySize": 23592960,
+              "deliveryType": ""
+            }
+          ],
+          "complete": true,
+          "transferSize": 20834710,
+          "encodedBodySize": 20834110,
+          "decodedBodySize": 47185920
+        },
+        "loadMs": 2774.699999988079,
+        "templateTriangles": 8,
+        "forms": 5,
+        "azimuths": 8,
+        "elevations": 3
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.7308333327372869,
+          "maxMs": 12.800000011920929
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 5.127499999105931,
+          "maxMs": 39.09999996423721
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 4.7758333345254265,
+          "maxMs": 18.30000001192093
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.10750000129143397,
+          "maxMs": 1.399999976158142
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 0.9066666652758916,
+          "maxMs": 25.600000023841858
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.07833333164453507,
+          "maxMs": 1.399999976158142
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 16.10833333134651,
+          "maxMs": 77.30000001192093
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 29.226666663090388,
+          "maxMs": 143.79999995231628
+        }
+      },
+      "errors": []
+    },
+    {
+      "run": "B2",
+      "version": "route-continuity-27",
+      "frameMs": 101.68125,
+      "gpuMs": 37.77882313333335,
+      "moduleFirstFrameMs": 11858.800000011921,
+      "navigationFirstFrameMs": 12025.399999976158,
+      "trees": 80927,
+      "grass": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "needleTimings": {
+        "fetchMs": 94,
+        "decodeMs": 2.599999964237213,
+        "validateMs": 3.5,
+        "canopyMode": "runtime",
+        "formQueue": 2,
+        "maxInFlightParameterBytes": 25165824,
+        "peakQueuedForms": 2,
+        "peakInFlightParameterBytes": 20296048,
+        "preparationMode": "overlap-worker-shell",
+        "formPreparationMs": 959,
+        "templateBuildMs": 493.4999998807907,
+        "geometrySetupMs": 465.5000001192093,
+        "parameterPackingMs": 0
+      },
+      "far": {
+        "representation": "same-source 5×8×3 upright normal-lit impostor",
+        "manifestMs": 2190.300000011921,
+        "transportMode": "v27",
+        "rgbaRestoreMs": 11.899999976158142,
+        "fetchMs": 594,
+        "decodeMs": 11.899999976158142,
+        "textureSetupMs": 0,
+        "encodedBytes": 18449996,
+        "responseBodyBytes": 41287680,
+        "decodedBytes": 47185920,
+        "gpuTextureBytes": 62914560,
+        "applicationGzipDecodes": 0,
+        "byteScope": "two texture payloads; manifest excluded",
+        "resourceTiming": {
+          "entries": [
+            {
+              "kind": "albedo",
+              "startTime": 3424.300000011921,
+              "duration": 415.7999999523163,
+              "transferSize": 9623291,
+              "encodedBodySize": 9622991,
+              "decodedBodySize": 23592960,
+              "deliveryType": ""
+            },
+            {
+              "kind": "normal",
+              "startTime": 3424.300000011921,
+              "duration": 404.89999997615814,
+              "transferSize": 8827305,
+              "encodedBodySize": 8827005,
+              "decodedBodySize": 17694720,
+              "deliveryType": ""
+            }
+          ],
+          "complete": true,
+          "transferSize": 18450596,
+          "encodedBodySize": 18449996,
+          "decodedBodySize": 41287680
+        },
+        "loadMs": 2796.199999988079,
+        "templateTriangles": 8,
+        "forms": 5,
+        "azimuths": 8,
+        "elevations": 3
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.6675000001986822,
+          "maxMs": 6.800000011920929
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 4.322499997417132,
+          "maxMs": 17.399999976158142
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 4.608333338797093,
+          "maxMs": 22
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.09916666249434153,
+          "maxMs": 1.5
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 0.6708333343267441,
+          "maxMs": 12.800000011920929
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.08250000278155009,
+          "maxMs": 0.2999999523162842
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 13.32833333859841,
+          "maxMs": 24.19999998807907
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 25.20916666686535,
+          "maxMs": 124.40000003576279
+        }
+      },
+      "errors": []
+    }
+  ]
+}

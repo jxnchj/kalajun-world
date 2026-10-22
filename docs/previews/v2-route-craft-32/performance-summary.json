@@ -1,0 +1,363 @@
+{
+  "conditions": "Chrome,1453x839,DPR1,time870,same absolute pose,no-store,canopyCache=0; GPU/driver cache not reset",
+  "runs": [
+    {
+      "run": "a1",
+      "version": "route-continuity-31",
+      "frameMs": 62.39625000000005,
+      "fps": 16.026604162910417,
+      "gpuMs": 34.69417443333335,
+      "moduleToFirstFrameMs": 22544.100000023842,
+      "loadPhases": {
+        "worldData": {
+          "startMs": 1645,
+          "elapsedMs": 412.10000002384186,
+          "status": "complete"
+        },
+        "terrainCoarse": {
+          "startMs": 2393,
+          "elapsedMs": 646.4000000357628,
+          "status": "complete"
+        },
+        "terrainPrefetch": {
+          "startMs": 3044.5,
+          "elapsedMs": 2355.900000035763,
+          "status": "complete"
+        },
+        "structures": {
+          "startMs": 3062.300000011921,
+          "elapsedMs": 4561.699999988079,
+          "status": "complete"
+        },
+        "ecologyAssets": {
+          "startMs": 3063.100000023842,
+          "elapsedMs": 4544.599999964237,
+          "status": "complete"
+        },
+        "waterAssets": {
+          "startMs": 3063.400000035763,
+          "elapsedMs": 2654.899999976158,
+          "status": "complete"
+        },
+        "pastureAssets": {
+          "startMs": 3064.100000023842,
+          "elapsedMs": 2370.199999988079,
+          "status": "complete"
+        },
+        "terrainSurfaces": {
+          "startMs": 3064.5,
+          "elapsedMs": 2933.5,
+          "status": "complete"
+        },
+        "initialScene": {
+          "startMs": 8314.800000011921,
+          "elapsedMs": 2737.399999976158,
+          "status": "complete"
+        },
+        "initialShaders": {
+          "startMs": 11056.699999988079,
+          "elapsedMs": 5422.600000023842,
+          "status": "complete"
+        },
+        "firstFrame": {
+          "startMs": 16479.5,
+          "elapsedMs": 6064.5,
+          "status": "complete"
+        }
+      },
+      "render": {
+        "frame": 521,
+        "calls": 1814,
+        "triangles": 35161799,
+        "points": 0,
+        "lines": 0
+      },
+      "trees": 80927,
+      "grass": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "position": [
+        -3611.9813305250705,
+        2329.161214161885,
+        4805.371282289286
+      ],
+      "time": 870,
+      "errors": []
+    },
+    {
+      "run": "b1",
+      "version": "route-continuity-32",
+      "frameMs": 63.85500000000002,
+      "fps": 15.660480776759842,
+      "gpuMs": 35.957793266666656,
+      "moduleToFirstFrameMs": 22189.5,
+      "loadPhases": {
+        "worldData": {
+          "startMs": 1572,
+          "elapsedMs": 399.10000002384186,
+          "status": "complete"
+        },
+        "terrainCoarse": {
+          "startMs": 2255.300000011921,
+          "elapsedMs": 454.10000002384186,
+          "status": "complete"
+        },
+        "terrainPrefetch": {
+          "startMs": 2713.900000035763,
+          "elapsedMs": 2142.699999988079,
+          "status": "complete"
+        },
+        "structures": {
+          "startMs": 2729.400000035763,
+          "elapsedMs": 4640.899999976158,
+          "status": "complete"
+        },
+        "ecologyAssets": {
+          "startMs": 2730.100000023842,
+          "elapsedMs": 4624.199999988079,
+          "status": "complete"
+        },
+        "waterAssets": {
+          "startMs": 2730.5,
+          "elapsedMs": 2459.600000023842,
+          "status": "complete"
+        },
+        "pastureAssets": {
+          "startMs": 2730.699999988079,
+          "elapsedMs": 2156.900000035763,
+          "status": "complete"
+        },
+        "terrainSurfaces": {
+          "startMs": 2731,
+          "elapsedMs": 2504.800000011921,
+          "status": "complete"
+        },
+        "householdLiving": {
+          "startMs": 7370.300000011921,
+          "elapsedMs": 62.60000002384186,
+          "status": "complete"
+        },
+        "initialScene": {
+          "startMs": 8154,
+          "elapsedMs": 2579.900000035763,
+          "status": "complete"
+        },
+        "initialShaders": {
+          "startMs": 10740.199999988079,
+          "elapsedMs": 5421.200000047684,
+          "status": "complete"
+        },
+        "firstFrame": {
+          "startMs": 16161.800000011921,
+          "elapsedMs": 6027.600000023842,
+          "status": "complete"
+        }
+      },
+      "render": {
+        "frame": 517,
+        "calls": 1851,
+        "triangles": 35173454,
+        "points": 0,
+        "lines": 0
+      },
+      "trees": 80927,
+      "grass": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "position": [
+        -3611.9813305250705,
+        2329.161214161885,
+        4805.371282289286
+      ],
+      "time": 870,
+      "errors": []
+    },
+    {
+      "run": "a2",
+      "version": "route-continuity-31",
+      "frameMs": 63.64624999999997,
+      "fps": 15.71184476697371,
+      "gpuMs": 35.763950883333344,
+      "moduleToFirstFrameMs": 22029.899999976158,
+      "loadPhases": {
+        "worldData": {
+          "startMs": 1560.5999999642372,
+          "elapsedMs": 318,
+          "status": "complete"
+        },
+        "terrainCoarse": {
+          "startMs": 2155.199999988079,
+          "elapsedMs": 541.3999999761581,
+          "status": "complete"
+        },
+        "terrainPrefetch": {
+          "startMs": 2700.699999988079,
+          "elapsedMs": 2248.199999988079,
+          "status": "complete"
+        },
+        "structures": {
+          "startMs": 2714.5,
+          "elapsedMs": 4271.199999988079,
+          "status": "complete"
+        },
+        "ecologyAssets": {
+          "startMs": 2714.7999999523163,
+          "elapsedMs": 4086.2000000476837,
+          "status": "complete"
+        },
+        "waterAssets": {
+          "startMs": 2714.7999999523163,
+          "elapsedMs": 2652.2000000476837,
+          "status": "complete"
+        },
+        "pastureAssets": {
+          "startMs": 2715,
+          "elapsedMs": 2259.099999964237,
+          "status": "complete"
+        },
+        "terrainSurfaces": {
+          "startMs": 2715.099999964237,
+          "elapsedMs": 2705.400000035763,
+          "status": "complete"
+        },
+        "initialScene": {
+          "startMs": 7653.5,
+          "elapsedMs": 2988.5,
+          "status": "complete"
+        },
+        "initialShaders": {
+          "startMs": 10648.599999964237,
+          "elapsedMs": 5403.5,
+          "status": "complete"
+        },
+        "firstFrame": {
+          "startMs": 16052.5,
+          "elapsedMs": 5977.399999976158,
+          "status": "complete"
+        }
+      },
+      "render": {
+        "frame": 524,
+        "calls": 2631,
+        "triangles": 44862401,
+        "points": 0,
+        "lines": 0
+      },
+      "trees": 80927,
+      "grass": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "position": [
+        -3611.9813305250705,
+        2329.161214161885,
+        4805.371282289286
+      ],
+      "time": 870,
+      "errors": []
+    },
+    {
+      "run": "b2",
+      "version": "route-continuity-32",
+      "frameMs": 64.37624999999998,
+      "fps": 15.533678957690146,
+      "gpuMs": 35.66883280000001,
+      "moduleToFirstFrameMs": 22687.80000001192,
+      "loadPhases": {
+        "worldData": {
+          "startMs": 1600.2000000476837,
+          "elapsedMs": 332.89999997615814,
+          "status": "complete"
+        },
+        "terrainCoarse": {
+          "startMs": 2211.100000023842,
+          "elapsedMs": 448.69999998807907,
+          "status": "complete"
+        },
+        "terrainPrefetch": {
+          "startMs": 2664.100000023842,
+          "elapsedMs": 2133.100000023842,
+          "status": "complete"
+        },
+        "structures": {
+          "startMs": 2677.900000035763,
+          "elapsedMs": 5262.800000011921,
+          "status": "complete"
+        },
+        "ecologyAssets": {
+          "startMs": 2678.400000035763,
+          "elapsedMs": 4886.899999976158,
+          "status": "complete"
+        },
+        "waterAssets": {
+          "startMs": 2678.400000035763,
+          "elapsedMs": 2321,
+          "status": "complete"
+        },
+        "pastureAssets": {
+          "startMs": 2678.5,
+          "elapsedMs": 2145.5,
+          "status": "complete"
+        },
+        "terrainSurfaces": {
+          "startMs": 2678.7000000476837,
+          "elapsedMs": 2401.899999976158,
+          "status": "complete"
+        },
+        "householdLiving": {
+          "startMs": 7940.700000047684,
+          "elapsedMs": 44.39999997615814,
+          "status": "complete"
+        },
+        "initialScene": {
+          "startMs": 8647.900000035763,
+          "elapsedMs": 2433.099999964237,
+          "status": "complete"
+        },
+        "initialShaders": {
+          "startMs": 11090.100000023842,
+          "elapsedMs": 5419.600000023842,
+          "status": "complete"
+        },
+        "firstFrame": {
+          "startMs": 16510.100000023842,
+          "elapsedMs": 6177.699999988079,
+          "status": "complete"
+        }
+      },
+      "render": {
+        "frame": 519,
+        "calls": 1221,
+        "triangles": 23037613,
+        "points": 0,
+        "lines": 0
+      },
+      "trees": 80927,
+      "grass": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "position": [
+        -3611.9813305250705,
+        2329.161214161885,
+        4805.371282289286
+      ],
+      "time": 870,
+      "errors": []
+    }
+  ],
+  "caveat": "A1 startup overlapped final Node checks for part of its duration; A2/B1/B2 had no bake/build/test process. No stable whole-frame/GPU/startup improvement demonstrated.",
+  "localCpuEvidence": "92,160 cells and 62,781 complete tree records identical; isolated source-generation CPU 332.32->248.61ms; not whole-page gain.",
+  "qualityCost": "Near map 2048->4096 on this 16-sampler device; other two remain 2048. Depth-only extra memory lower bound 48MiB, not measured VRAM. No density/detail/DPR/reflection reductions.",
+  "candidates": "PCF rotation and prepared-root GPU rejection not adopted after bidirectional tests showed no stable gain."
+}

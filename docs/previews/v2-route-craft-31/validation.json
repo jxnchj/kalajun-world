@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-22",
+  "version": "route-continuity-31",
+  "status": "round implementation verified; overall performance and art goals incomplete",
+  "nativePlanStage": 3,
+  "aholoUsed": false,
+  "port": 5174,
+  "tests": {
+    "fullNode": 741,
+    "laterDefaultGPUChecks": 28,
+    "lastNavigationChecks": 13,
+    "assetTerrainCollision": 40,
+    "GI": 77,
+    "gzipReadback": 20,
+    "build": "passed; large chunk warning remains"
+  },
+  "adopted": [
+    "complete woodhouse porch/outdoor living group and affected GI",
+    "byte-identical tree-crown construction reuse",
+    "shared shallow shore root horizon",
+    "normal porch navigation entry"
+  ],
+  "notAdoptedByDefault": [
+    "shadowVertexReuse: equivalent pixels but no stable GPU gain",
+    "sun-facing shadow branch experiment",
+    "finer main depth ordering experiment"
+  ],
+  "qualityPreserved": {
+    "trees": 80927,
+    "grass": 19403,
+    "originalHouseMeshesUnchanged": 260,
+    "geometryAddedTriangles": 24304,
+    "densityReduced": false,
+    "resolutionShadowReflectionReduced": false
+  },
+  "routes": {
+    "count": 13,
+    "allReady": true,
+    "allNoErrors": true,
+    "allTerrainQueuesEmpty": true,
+    "evidence": "final-routes.json",
+    "time": 870
+  },
+  "walking": {
+    "actualKeysUsed": true,
+    "closedDoorBlocksRepeatedForward": true,
+    "backAwayThenFOpenAndEnter": true,
+    "newBenchBlocks": true,
+    "newFrontColumnBlocks": true,
+    "closedDoorInteriorInspected": true,
+    "doorRestoredOpen": true,
+    "yurtWalkingRepeatedThisRound": false,
+    "evidence": [
+      "walk-closed-blocked.json",
+      "walk-entered.json",
+      "walk-bench-blocked.json",
+      "walk-column-blocked.json",
+      "house-door-closed.json",
+      "door-reopened.json"
+    ]
+  },
+  "performance": {
+    "evidence": "performance-summary.json",
+    "stableWholeFrameGainProven": false,
+    "stableWholeFirstFrameGainProven": false,
+    "trueDeviceColdStart": false,
+    "newFPS": 16.2,
+    "newFirstFrameSeconds": [
+      8.8503,
+      10.3484
+    ],
+    "localCrownConstructionImproved": true
+  },
+  "finalEntry": {
+    "url": "http://127.0.0.1:5174/v2.html?view=porch-house_a&time=870&profile=1",
+    "viewport": [
+      1453,
+      814,
+      1
+    ],
+    "ready": true,
+    "version": "route-continuity-31",
+    "view": "porch-house_a",
+    "errors": [],
+    "consoleErrors": [],
+    "evidence": "delivery.png"
+  },
+  "sequence": "Performance/13-route samples precede last navigation-only addition; last addition passed 13 targeted checks, rebuild and normal-entry browser check.",
+  "remaining": [
+    "main GPU draw cost and whole startup long tail",
+    "shore continuous bright-grey edge and straight form",
+    "far hillside composition and near/far transition",
+    "complete dynamic indoor GI",
+    "wood/textile artistry and per-house life variation"
+  ],
+  "deferred": [
+    "fine needles/upper crown photo cards by user request",
+    "full lighting and color art in original later phase"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "round": 21,
+  "date": "2026-10-21",
+  "status": "iteration implemented and actual browser checked; overall performance, first load and final art remain incomplete",
+  "nativePlan": "six whole-project stages; stage3 in progress, not six steps of this iteration",
+  "conditions": {
+    "viewport": [
+      1453,
+      783
+    ],
+    "DPR": 1,
+    "position": [
+      -3611.9813305250705,
+      2329.161214161885,
+      4805.371282289286
+    ],
+    "yaw": -30.90412352938094,
+    "pitch": -10,
+    "time": 870,
+    "terrain": "all prepared",
+    "canopyCache": 0,
+    "http": "no-store; baseline retains round20 native gzip",
+    "order": [
+      "baseline-A1",
+      "new-B1",
+      "baseline-A2",
+      "new-B2"
+    ],
+    "frames": "180 RAF then last80 frame intervals and last60 GPU queries",
+    "limitations": "local browser; GPU/driver caches not reset; rendering query can include submission idle; not pure GPU busy time"
+  },
+  "performance": {
+    "baseline": {
+      "frameMs": 36.250000000000014,
+      "gpuRenderIntervalMs": 28.320779716666664,
+      "firstFrameMs": 7964.3499999940395
+    },
+    "candidate": {
+      "frameMs": 36.66687499999999,
+      "gpuRenderIntervalMs": 28.524592208333335,
+      "firstFrameMs": 8134.0999999940395
+    },
+    "conclusion": "No stable whole-frame or full-first-load gain. Preserve all four samples, including new B1 shader compilation tail.",
+    "samples": "performance-summary.json"
+  },
+  "adopted": {
+    "shadow": "fixed-layout attribute signature; all existing per-frame mutation checks retained",
+    "structures": "per-source material preparation within synchronous template build; per-entity distance reused within frame; unchanged geometry/material/LOD/shadows",
+    "meadow": "coherent larger moisture/maturity patches, preserved micro-canopy/blend channels and all standing vegetation",
+    "banks": "asymmetric nonperiodic outer-bank contraction within original envelope, existing waterline and ecology masks retained",
+    "surface": "resolved canopy organizes mixed near-bank edge; pure classes and original mask unchanged"
+  },
+  "checks": {
+    "nodePassed": 554,
+    "nodeFailed": 0,
+    "extraTransportPassed": 2,
+    "build": "build.log; passed with existing large-chunk warning",
+    "pixelEquivalence": "pixel-equivalence.json; PNG byte equal at870 with frozen dynamics",
+    "geometryEquivalence": "tools/reports/structure-reuse-v21.json; 305 attribute digests,210 camera selections",
+    "routes": 11,
+    "routeErrors": 0,
+    "allRouteTerrainQueuesEmpty": true,
+    "consoleErrors": [],
+    "drag": "actual canvas drag changed yaw and pitch, errors empty; fixed camera restored"
+  },
+  "drawingDiagnostic": {
+    "source": "draw-baseline.json",
+    "method": "100 actual RAF frames, renderer submission wrapper restored after capture; triangle estimate from geometry range/group and active instance count",
+    "sunPerFrameEstimatedTriangles": 16703610.26,
+    "mainPerFrameEstimatedTriangles": 11280741,
+    "otherPerFrameEstimatedTriangles": 1843630.1,
+    "ecologyShareOfSubmittedTriangles": 0.8896796628546639,
+    "caveat": "submission count, not measured fraction of GPU busy time"
+  },
+  "unchanged": {
+    "trees": 80927,
+    "grassTufts": 19392,
+    "density": "unchanged",
+    "resolutionShadowReflectionQuality": "unchanged",
+    "fullLightingColor": "later per original plan",
+    "fineNeedlesUpperCards": "deferred per user"
+  },
+  "intermediate": [
+    "far-slope fine mottling/repetition and grass-distance transition still visible",
+    "waterline itself still straight, outer-bank adjustment has limited effect on ribbon appearance",
+    "room complete indirect lighting and final materials still incomplete; this round checked existing lighting but did not add new GI",
+    "near forest FPS and device first-load tail remain unresolved"
+  ],
+  "evidence": [
+    "performance-summary.json",
+    "final-routes.json",
+    "pixel-equivalence.json",
+    "restored-default.json",
+    "draw-baseline.json"
+  ],
+  "regressionFixed": "initial 553/554 failed near-bank mixed-coverage variation after new meadow field; implementation corrected, original assertion retained; final554 passed"
+}

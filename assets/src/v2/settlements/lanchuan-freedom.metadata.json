@@ -1,0 +1,71 @@
+{
+  "asset": "web/public/assets/v2/gh_lanchuan_rooms.glb",
+  "source": "assets/src/v2/settlements/lanchuan-freedom.blend",
+  "reference": {
+    "url": "https://m.ctrip.com/webapp/hotel/album?hotelid=109634932&tab=0",
+    "observedAt": "2026-10-19",
+    "roomFamily": "自由者景观大床房｜落地窗正对雪山+户外露台+星级床品",
+    "observed": [
+      "warm pale plaster",
+      "wood slat headboard",
+      "white duvet and pillows",
+      "taupe bed runner",
+      "grey taupe full-height curtains",
+      "black bedside wall lamp",
+      "wood/rattan chairs",
+      "rounded vanity entrance with round mirror and wood drawer basin cabinet"
+    ],
+    "adaptation": [
+      "three right-hand bays use the same family template in the existing shell",
+      "exact assignment of online room photos to those bays is unverified",
+      "concealed shower, WC, wardrobe, dimensions and sockets are original functional design"
+    ],
+    "notEvidence": "docs/guesthouses/lanchuan_room.jpg is an old render, not a reference photograph",
+    "lighting": "geometry AO/sky visibility only; no sun or lamp light baked into albedo"
+  },
+  "rooms": [
+    {
+      "id": "lanchuan-freedom-1",
+      "bounds": [
+        -1.75,
+        4.2,
+        -3.25,
+        3.85
+      ],
+      "floor": 0.035,
+      "windowX": 0.6,
+      "doorX": 2.7,
+      "provenance": "same-family adaptation; numbered bay assignment unverified"
+    },
+    {
+      "id": "lanchuan-freedom-2",
+      "bounds": [
+        4.3999999999999995,
+        9.8,
+        -3.25,
+        3.85
+      ],
+      "floor": 0.035,
+      "windowX": 5.9,
+      "doorX": 8.0,
+      "provenance": "same-family adaptation; numbered bay assignment unverified"
+    },
+    {
+      "id": "lanchuan-freedom-3",
+      "bounds": [
+        10.0,
+        14.75,
+        -3.25,
+        3.85
+      ],
+      "floor": 0.035,
+      "windowX": 12,
+      "doorX": 14.0,
+      "provenance": "same-family adaptation; numbered bay assignment unverified"
+    }
+  ],
+  "coordinates": "Blender x,y,z; Three x,z,-y",
+  "sourceAsset": "gh_lanchuan",
+  "doorState": "fixed open",
+  "collision": "room floors exposed by settlements.js; wall/furniture collision not implemented"
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "file": "route-forest.json",
+    "view": "river-forest",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-meadow.json",
+    "view": "meadow",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-farforest.json",
+    "view": "forest",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-brook.json",
+    "view": "brook-lanchuan",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-river.json",
+    "view": "river-valley",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-west.json",
+    "view": "west-slope",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-pasture.json",
+    "view": "pasture-sheep",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-room1.json",
+    "view": "lanchuan-freedom-1",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-room2.json",
+    "view": "lanchuan-freedom-2",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-room3.json",
+    "view": "lanchuan-freedom-3",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-house.json",
+    "view": "pastoral-house_a-entry",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  },
+  {
+    "file": "route-yurt.json",
+    "view": "pastoral-yurt-entry",
+    "ready": true,
+    "preparing": false,
+    "queuedTiles": 0,
+    "errors": []
+  }
+]

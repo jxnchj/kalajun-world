@@ -1,0 +1,55 @@
+{
+  "round": 32,
+  "status": "implementation-and-browser-checks-complete; target-performance-and-final-art-incomplete",
+  "tests": {
+    "fullNode": 773,
+    "failed": 0,
+    "build": "passed"
+  },
+  "routes": 16,
+  "routeErrors": [],
+  "grassIssue": {
+    "recorded": true,
+    "projection": "improved-and-dynamically-inspected",
+    "remaining": "wind readability and fine shadow temporal stability",
+    "schedule": "round33 first, stage3; acceptance before stage4; not deferred to stage5"
+  },
+  "households": {
+    "styles": [
+      40,
+      28,
+      45
+    ],
+    "GIStylesVerified": [
+      0,
+      1,
+      2
+    ],
+    "browserInteractions": [
+      "tea table forward blocking",
+      "central path walk into household0",
+      "F closes and reopens household2 door"
+    ],
+    "otherStylesCollision": "Rapier automated; not new browser walking for each"
+  },
+  "performance": "no stable whole-GPU/frame/startup improvement; see performance-summary.json",
+  "qualityPreserved": {
+    "trees": 80927,
+    "grass": 19403,
+    "reflection": "unchanged",
+    "densityAndGeometry": "not reduced",
+    "nearShadow": "increased resolution with documented memory cost"
+  },
+  "normalEntry": {
+    "port": 5174,
+    "version": "route-continuity-32",
+    "viewport": [
+      1453,
+      814
+    ],
+    "DPR": 1,
+    "errors": []
+  },
+  "AholoUsed": false,
+  "fullColorLighting": "stage5 order unchanged"
+}

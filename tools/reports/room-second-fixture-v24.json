@@ -1,0 +1,141 @@
+{
+  "model": "Second Lambert material reflection only; not complete GI",
+  "ab": "roomFixtureBounces=1",
+  "runtimeToggle": "settlements.indirect.field.uniforms.uRoomFixtureSecondBounce.value=0/1",
+  "rooms": [
+    {
+      "key": "lanchuan-freedom-1",
+      "sourceGLB": "assets/v2/gh_lanchuan_rooms.glb",
+      "sourceSHA256": "b89c00c4c27dd181e8a1bc0f8be3845e74eae471a00ee59b78f4ed816604cd6a",
+      "sourceBlend": "assets/src/v2/settlements/lanchuan-freedom.blend",
+      "blendSHA256": "31b42bf4c641fb55da6535ace265633ef696005aa628695c32ebd14e977119a6",
+      "sourceBytes": 36678,
+      "gzipBytes": 25966,
+      "decodedBytes": 58320,
+      "samples": 96,
+      "surfaceSamples": 48,
+      "summary": [
+        {
+          "maxCoefficient": 0.021270751953125,
+          "meanConstant": [
+            0.002811431884765625,
+            0.0019197463989257812,
+            0.0009899139404296875
+          ]
+        },
+        {
+          "maxCoefficient": 0.033599853515625,
+          "meanConstant": [
+            0.002368927001953125,
+            0.0016937255859375,
+            0.0009174346923828125
+          ]
+        },
+        {
+          "maxCoefficient": 0.004306793212890625,
+          "meanConstant": [
+            0.0003094673156738281,
+            0.00025391578674316406,
+            0.00015437602996826172
+          ]
+        }
+      ]
+    },
+    {
+      "key": "lanchuan-freedom-2",
+      "sourceGLB": "assets/v2/gh_lanchuan_rooms.glb",
+      "sourceSHA256": "b89c00c4c27dd181e8a1bc0f8be3845e74eae471a00ee59b78f4ed816604cd6a",
+      "sourceBlend": "assets/src/v2/settlements/lanchuan-freedom.blend",
+      "blendSHA256": "31b42bf4c641fb55da6535ace265633ef696005aa628695c32ebd14e977119a6",
+      "sourceBytes": 36530,
+      "gzipBytes": 25848,
+      "decodedBytes": 58320,
+      "samples": 96,
+      "surfaceSamples": 48,
+      "summary": [
+        {
+          "maxCoefficient": 0.07037353515625,
+          "meanConstant": [
+            0.002902984619140625,
+            0.0020923614501953125,
+            0.0011444091796875
+          ]
+        },
+        {
+          "maxCoefficient": 0.03753662109375,
+          "meanConstant": [
+            0.002773284912109375,
+            0.0019311904907226562,
+            0.0010166168212890625
+          ]
+        },
+        {
+          "maxCoefficient": 0.004138946533203125,
+          "meanConstant": [
+            0.0003230571746826172,
+            0.00026488304138183594,
+            0.0001608133316040039
+          ]
+        }
+      ]
+    },
+    {
+      "key": "lanchuan-freedom-3",
+      "sourceGLB": "assets/v2/gh_lanchuan_rooms.glb",
+      "sourceSHA256": "b89c00c4c27dd181e8a1bc0f8be3845e74eae471a00ee59b78f4ed816604cd6a",
+      "sourceBlend": "assets/src/v2/settlements/lanchuan-freedom.blend",
+      "blendSHA256": "31b42bf4c641fb55da6535ace265633ef696005aa628695c32ebd14e977119a6",
+      "sourceBytes": 34513,
+      "gzipBytes": 23761,
+      "decodedBytes": 58320,
+      "samples": 96,
+      "surfaceSamples": 48,
+      "summary": [
+        {
+          "maxCoefficient": 0.03863525390625,
+          "meanConstant": [
+            0.003261566162109375,
+            0.00228118896484375,
+            0.001209259033203125
+          ]
+        },
+        {
+          "maxCoefficient": 0.0091705322265625,
+          "meanConstant": [
+            0.00042176246643066406,
+            0.00033736228942871094,
+            0.00020122528076171875
+          ]
+        },
+        {
+          "maxCoefficient": 0.0036525726318359375,
+          "meanConstant": [
+            0.00034117698669433594,
+            0.0002791881561279297,
+            0.0001697540283203125
+          ]
+        }
+      ]
+    }
+  ],
+  "totalSourceBytes": 107721,
+  "totalGzipBytes": 75575,
+  "totalDecodedBytes": 174960,
+  "extraGPUTextureBytes": 0,
+  "extraLights": 0,
+  "extraRenderPasses": 0,
+  "samplers": 1,
+  "textureSamples": 4,
+  "jsTargetedTests": 38,
+  "pythonFixtureTests": 4,
+  "browserAcceptance": "pending parent-agent actual browser comparison",
+  "limitations": [
+    "Two static diffuse bounces only, low-frequency first-band SH",
+    "No glossy multibounce caustics or moving-occluder rebake",
+    "Existing real lamp intensity is preserved; broad changes should be subtle"
+  ],
+  "commands": [
+    "tools/.bpy/bin/python tools/blender/v2_room_second_fixture.py",
+    "node --test web/src/v2/room-second-fixture.test.js"
+  ]
+}

@@ -1,0 +1,7 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Verified deterministic spruce canopy content digest, not a credential"
+regexTarget = "secret"
+regexes = ["^12c39c431de7ff7aa53e104e04bf6068703b2518164b89dfab0690f2402c2a40$"]

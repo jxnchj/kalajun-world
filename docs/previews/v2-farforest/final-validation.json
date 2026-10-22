@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-20",
+  "version": "world-farforest-14",
+  "context": "Actual Chrome on this Mac, same 2179x1218 canvas / DPR1.5 / 14:30. Queues zero for performance samples. GPU trailing60; frame trailing90. Single-session observations, not cross-hardware or cold-network guarantees.",
+  "performance": [
+    {
+      "view": "forest",
+      "baselineGPUms": 12.79910291666666,
+      "candidateGPUms": 10.599361266666666,
+      "baselineFrameMs": 16.666666666666668,
+      "candidateFrameMs": 16.667777777777843,
+      "residentRoots": 44877
+    },
+    {
+      "view": "river-forest",
+      "baselineGPUms": 44.12471481666666,
+      "candidateGPUms": 42.46008773333333,
+      "baselineFrameMs": 53.147777777777975,
+      "candidateFrameMs": 51.112222222222286,
+      "residentRoots": 85004
+    }
+  ],
+  "load": {
+    "localFirstFrameMs": 5982.5,
+    "ecologyAssetPhaseMs": 3388.599999964237,
+    "note": "One local loading run, not a cold-network benchmark; initial distant terrain still prepares after first frame."
+  },
+  "switches": [
+    {
+      "view": "pastoral-house_a-entry",
+      "preparationMs": 1651.9000000357628,
+      "nearReady": true,
+      "distantTilesPendingAtReveal": 145
+    },
+    {
+      "view": "pastoral-yurt-entry",
+      "preparationMs": 1233.800000011921,
+      "nearReady": true,
+      "distantTilesPendingAtReveal": 93
+    }
+  ],
+  "browserChecks": {
+    "shaderAndPageErrors": [],
+    "routes": [
+      "forest",
+      "river-forest",
+      "valley",
+      "pastoral-house_a-entry",
+      "pastoral-yurt-entry"
+    ],
+    "sameTreeDistancesMetres": [
+      260,
+      200,
+      160
+    ],
+    "obliqueCameraAboveGroundMetres": 150,
+    "timesMinutes": [
+      870,
+      1260
+    ],
+    "roomContactAndSingleBounceActive": true
+  },
+  "validation": {
+    "fullSuiteBeforeStatisticsOnlyPatch": {
+      "passed": 334,
+      "failed": 0
+    },
+    "finalFarTreeTargetedSuite": {
+      "passed": 19,
+      "failed": 0
+    },
+    "productionBuild": "passed; existing chunk-size warning"
+  },
+  "remaining": [
+    "fine needles and upper photographic branch cards explicitly deferred",
+    "far forest ecological distribution still too uniform",
+    "planar impostor depth and >45 degree elevation remain approximations; azimuth blending can soften or double branch tips",
+    "far meadow rectangular texture variation remains",
+    "river near-view about20fps; performance goal not met",
+    "room single-bounce indirect light and current water remain intermediate; no new room/water art in this iteration"
+  ],
+  "assetCosts": {
+    "encodedTextureFilesBytes": 20834110,
+    "decodedTextureArraysBytes": 47185920,
+    "estimatedGPUTextureBytesWithMips": 62914560,
+    "forms": 5,
+    "azimuths": 8,
+    "elevations": 3
+  },
+  "screenshots": "Original page canvas PNGs in this directory; no retouching.",
+  "normalEntryCheck": {
+    "url": "http://127.0.0.1:5174/v2.html?view=forest&time=870",
+    "version": "world-farforest-14",
+    "ready": true,
+    "errors": [],
+    "viewport": [
+      1453,
+      783
+    ],
+    "pixelRatio": 1,
+    "textureResourceTiming": {
+      "complete": true,
+      "transferSize": 20834710,
+      "encodedBodySize": 20834110,
+      "decodedBodySize": 47185920
+    }
+  }
+}

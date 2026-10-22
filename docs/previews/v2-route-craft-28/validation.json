@@ -1,0 +1,49 @@
+{
+  "version": "route-continuity-28",
+  "nodeTests": {
+    "passed": 693,
+    "failed": 0,
+    "log": "tests-final.log"
+  },
+  "build": {
+    "passed": true,
+    "log": "build-final.log",
+    "warning": "existing large chunk warning"
+  },
+  "browser": {
+    "routeCount": 12,
+    "allReady": true,
+    "allTerrainQueuesEmpty": true,
+    "allRuntimeErrorsEmpty": true,
+    "normalEntry": "http://127.0.0.1:5174/v2.html?view=pastoral-house_a-entry&time=870&profile=1",
+    "normalSnapshot": "delivery-house.json",
+    "teaCloseup": "tea-closeup.png"
+  },
+  "assets": {
+    "kettles": 4,
+    "bowls": 17,
+    "trays": 2,
+    "source": "tools/blender/v2_tea_service.py",
+    "report": "tools/reports/tea-service-v28.json",
+    "GI": "Affected sky/solar first and second bounce, contact/aperture and closed-door endpoints rebaked"
+  },
+  "adopted": [
+    "96m full-geometry tree batches",
+    "static ecology preparation with final full sync",
+    "cooperative structure template preparation",
+    "low-waterline rooted shore cover",
+    "Blender tea service and matching GI"
+  ],
+  "notAdopted": [
+    "bounds cache: exact frozen image but no total-frame improvement, default off, opt-in boundsCache=1"
+  ],
+  "intermediate": [
+    "Forest creek frame rate and startup long tail",
+    "continuous gray bank and long straight creek shape",
+    "far-slope composition and near/far continuity",
+    "complete dynamic interior GI and furniture material quality",
+    "fine needles and upper-crown photo cards remain deferred"
+  ],
+  "fullLightColor": "later in original sequence",
+  "aholoUsed": false
+}

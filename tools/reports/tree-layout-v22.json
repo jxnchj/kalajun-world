@@ -1,0 +1,36 @@
+{
+  "round": 22,
+  "candidate": "treeVertexLayout=interleaved",
+  "default": "off pending same-condition browser acceptance",
+  "geometry": {
+    "parts": 15,
+    "vertices": 315283,
+    "triangles": 248334,
+    "attributeBytes": 16754320,
+    "buffersBefore": 80,
+    "buffersAfter": 15,
+    "indexOrder": "unchanged",
+    "attributes": "Uint32 bit-identical",
+    "sourceCache": "captured original separate arrays; no cache revision change"
+  },
+  "validation": {
+    "tests": 49,
+    "passed": 49,
+    "log": "tools/reports/tree-layout-v22-tests.log"
+  },
+  "rejectedIndexReorder": {
+    "implementation": "bundled meshoptimizer 1.1 MeshoptClusterizer, 64 vertices / 64 triangles",
+    "lru16Original": 315283,
+    "lru16Candidate": 315283,
+    "lru32Original": 315283,
+    "lru32Candidate": 315283,
+    "reason": "Existing branch-local index sequence already transforms every unique vertex once; no reuse improvement. Runtime not added.",
+    "details": "tools/reports/tree-index-order-v22.json"
+  },
+  "limitations": [
+    "Interleaving is a GPU memory-fetch experiment, not a demonstrated frame-time gain.",
+    "Same attribute bytes and vertex workload; no triangle/instance/density/shadow/reflective quality reduction.",
+    "Only static foliage shells. Station procedural gl_VertexID geometry untouched.",
+    "Allocated layout copies need CPU packing; original authoring/cache arrays may coexist until deferred cache capture completes."
+  ]
+}

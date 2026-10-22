@@ -1,0 +1,77 @@
+{
+  "house_a": {
+    "doorPoses": [
+      {
+        "name": "house_a_door0",
+        "openEuler": [
+          0.0,
+          0.0,
+          -1.7802358865737915
+        ],
+        "closedEuler": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+    "blendSHA256": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+    "firstSkyValid": 239,
+    "firstSkyMean": [
+      0.007821843169984364,
+      0.004876462050846644,
+      0.0027272377695356097
+    ],
+    "secondSkyMean": [
+      0.002249273471534252,
+      0.0008541196002624929,
+      0.0002657405857462436
+    ],
+    "secondSolarSeconds": 6.97
+  },
+  "yurt": {
+    "doorPoses": [
+      {
+        "name": "yurt_door0_out",
+        "openEuler": [
+          0.0,
+          0.0,
+          -1.7802358865737915
+        ],
+        "closedEuler": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "yurt_door1_out",
+        "openEuler": [
+          0.0,
+          0.0,
+          1.7802358865737915
+        ],
+        "closedEuler": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "sourceSHA256": "3f1d7f403d14f95123dd11c8821d9d707ea09190bf04d9fc33da34f7818a5d41",
+    "blendSHA256": "d6bf408d024cf9794ec091422185e200096d7a36b4d27501c8f9e3792b7f7924",
+    "firstSkyValid": 185,
+    "firstSkyMean": [
+      0.0020017741638937115,
+      0.0015882071153617199,
+      0.0012350884484656063
+    ],
+    "secondSkyMean": [
+      0.002077851677313447,
+      0.0011793752200901508,
+      0.0006614765734411776
+    ],
+    "secondSolarSeconds": 5.266
+  }
+}

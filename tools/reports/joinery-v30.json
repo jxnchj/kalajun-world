@@ -1,0 +1,70 @@
+{
+  "version": "pastoral-joinery-30",
+  "scope": "2 structural bed frames, 2 frame-panel chests, 2 breadboard lids and a under-eave entrance cross beam and curved knee supports",
+  "aholoUsed": false,
+  "globalLightingChanged": false,
+  "newTextures": 0,
+  "assets": [
+    {
+      "asset": "house_a",
+      "meshCount": 260,
+      "changedMeshParts": 4,
+      "unchangedMeshPayloadsByteExact": 256,
+      "nodeTransformsExact": true,
+      "originalMaterialsExact": true,
+      "originalPackedImagesExact": true,
+      "trianglesBefore": 110824,
+      "trianglesAfter": 115740,
+      "triangleDelta": 4916,
+      "glbBytesBefore": 8826888,
+      "glbBytesAfter": 9253036,
+      "glbByteDelta": 426148,
+      "gzipBytesBefore": 5208147,
+      "gzipBytesAfter": 5272094,
+      "gzipByteDelta": 63947,
+      "glbSHA256": "aebf3aed0c9c51b42bb8bdf252c3b12612f80734bf68d1e2e4c0f630a27a27ae",
+      "blendSource": "assets/src/v2/pastoral/house_a-lived.blend",
+      "sourceSHA256": "e8a7f62ea48f539187dcc09d075a03d744c993d315aa9d23d9df1aeb3c28f9a8"
+    },
+    {
+      "asset": "yurt",
+      "meshCount": 92,
+      "changedMeshParts": 3,
+      "unchangedMeshPayloadsByteExact": 89,
+      "nodeTransformsExact": true,
+      "originalMaterialsExact": true,
+      "originalPackedImagesExact": true,
+      "trianglesBefore": 85492,
+      "trianglesAfter": 90568,
+      "triangleDelta": 5076,
+      "glbBytesBefore": 7496000,
+      "glbBytesAfter": 7935268,
+      "glbByteDelta": 439268,
+      "gzipBytesBefore": 5228099,
+      "gzipBytesAfter": 5293905,
+      "gzipByteDelta": 65806,
+      "glbSHA256": "3f1d7f403d14f95123dd11c8821d9d707ea09190bf04d9fc33da34f7818a5d41",
+      "blendSource": "assets/src/v2/pastoral/yurt-lived.blend",
+      "sourceSHA256": "d6bf408d024cf9794ec091422185e200096d7a36b4d27501c8f9e3792b7f7924"
+    }
+  ],
+  "verification": {
+    "assetTests": "14 passed: tools/reports/joinery-v30-tests.log",
+    "giAndTransportTests": "69 passed: tools/reports/joinery-v30-gi-tests.log",
+    "transportCheck": "20 source assets, exact gzip reconstruction: tools/reports/joinery-v30-transport-check.log",
+    "giRebake": "Open/closed two-bounce sky + solar, floor contact and aperture visibility; elapsed time in tools/reports/joinery-v30-gi-rebake.log",
+    "studioImages": [
+      "assets/src/v2/pastoral/house_a-joinery-30.studio.png",
+      "assets/src/v2/pastoral/yurt-joinery-30.studio.png",
+      "assets/src/v2/pastoral/house_a-chest-30.studio.png",
+      "assets/src/v2/pastoral/house_a-entrance-30.studio.png"
+    ],
+    "browserAcceptance": "parent task performs actual route acceptance after combined build"
+  },
+  "remainingIntermediate": [
+    "This is a designed household interpretation, not exact surveyed historical furniture.",
+    "Entrance woodwork is a small supported under-eave component, partly concealed by the existing deep eave, not a full porch. Other fixtures and architectural groups remain intermediate.",
+    "GI remains the established finite static two-diffuse-bounce model, not complete dynamic global illumination.",
+    "Furniture retains existing roles and transforms; entrance cap adds one body mesh, no new materials or images. Added triangles and bytes are reported."
+  ]
+}

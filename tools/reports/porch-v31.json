@@ -1,0 +1,72 @@
+{
+  "version": "pastoral-porch-31",
+  "asset": "house_a",
+  "trianglesBefore": 115740,
+  "trianglesAfter": 140044,
+  "meshCountBefore": 260,
+  "meshCountAfter": 267,
+  "protectedMeshesUnchanged": 260,
+  "newTextures": 0,
+  "porchBoundsThree": {
+    "x0": -3.45,
+    "x1": 3.45,
+    "z0": 2.78,
+    "z1": 4.76
+  },
+  "deckTop": -0.115,
+  "frontBeamBottom": 1.945,
+  "frontClearance": 2.06,
+  "doorPath": {
+    "x0": 0.45,
+    "x1": 1.55,
+    "z0": 2.5,
+    "z1": 4.76
+  },
+  "limitations": [
+    "Designed porch, not a surveyed historic household.",
+    "Shared woodhouse prototype, not yet household-specific weathering and possessions.",
+    "Existing deep eave retained; new lean-to meets its front edge."
+  ],
+  "date": "2026-10-22",
+  "scope": "wooden-house prototype only; yurt asset unchanged, regression only",
+  "glbBytesBefore": 9253036,
+  "glbBytesAfter": 11122824,
+  "gzipBytesBefore": 5272094,
+  "gzipBytesAfter": 5593482,
+  "gzipByteDelta": 321388,
+  "source": "assets/src/v2/pastoral/house_a-lived.blend",
+  "newRecipe": "tools/blender/v2_porch.py",
+  "views": [
+    "assets/src/v2/pastoral/house_a-porch-31-overall.png",
+    "assets/src/v2/pastoral/house_a-porch-31-detail.png"
+  ],
+  "terrain": {
+    "existingBuildingPosesPreserved": true,
+    "additionalCutOnlyPads": 113,
+    "testedFootings": 678,
+    "minimumPostBottom": -1.6,
+    "representativeGroundAtFootings": -0.35,
+    "reason": "Two downhill houses required longer posts; before correction their ground was -1.254/-1.276 and old new-porch post ended -1.15."
+  },
+  "vegetation": {
+    "originalRepresentativeRoots": 733,
+    "retainedRoots": 733,
+    "movedRoots": 47,
+    "maxMoveMetres": 3.2,
+    "remainingIntersection": 0,
+    "unresolved": 0
+  },
+  "validation": {
+    "assetCollisionGrassTerrain": "40 passed; tools/reports/porch-v31-tests.log",
+    "GI": "77 passed; tools/reports/porch-v31-gi-tests.log",
+    "rebake": "Sky/solar first+second bounce, contact, aperture, closed-door endpoints; 64.65 seconds; tools/reports/porch-v31-gi-rebake.log",
+    "transport": "20 assets exact gzip round-trip; tools/reports/porch-v31-transport-check.log",
+    "browser": "Parent agent accepts the actual route; standalone Blender preview is not browser acceptance."
+  },
+  "notes": [
+    "Original 260 mesh geometry/material/transform digests preserved. This is not a statement about an unchanged complete GLB.",
+    "Existing materials reused; seven additive meshes include real wool cushion copied into its own porch family.",
+    "Central full standing route passes, bench and front columns block actual capsule; original door closed/open behavior remains.",
+    "Full dynamic multi-bounce indoor GI, distinct possessions for every house, global lighting/color remain later work."
+  ]
+}

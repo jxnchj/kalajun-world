@@ -1,0 +1,141 @@
+{
+  "conditions": {
+    "viewport": "1453x839 DPR1",
+    "time": 870,
+    "camera": [
+      -3611.9813305250705,
+      2329.161214161885,
+      4805.371282289286
+    ],
+    "yaw": -30.90412352938094,
+    "pitch": -10,
+    "terrain": "all ready",
+    "warmupFrames": 180,
+    "frameSamples": 80,
+    "renderQuerySamples": 60,
+    "canopyCache": false,
+    "httpCache": "no-store",
+    "gpuDriverCache": "not reset",
+    "order": [
+      "old-A1",
+      "new-B1",
+      "old-A2",
+      "new-B2"
+    ]
+  },
+  "samples": [
+    {
+      "label": "old-A1",
+      "firstFrameMs": 29569.600000023842,
+      "frameMs": 92.09124999999995,
+      "renderQueryMs": 35.86173915,
+      "pastureCPU": null,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "pasture": null,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "errors": []
+    },
+    {
+      "label": "new-B1",
+      "firstFrameMs": 29337.30000001192,
+      "frameMs": 95.83250000000007,
+      "renderQueryMs": 37.15725573333336,
+      "pastureCPU": {
+        "samples": 120,
+        "meanMs": 0.5158333326379458,
+        "maxMs": 3.600000023841858
+      },
+      "trees": 80927,
+      "grassTufts": 19395,
+      "pasture": {
+        "ready": true,
+        "count": 12,
+        "planned": 12,
+        "triangles": 48000,
+        "source": "assets/sheep.glb",
+        "quality": "original lod0 with original normal/basecolor maps",
+        "anchorId": "yurts:-1551,3489:3337d4a3e634caaf",
+        "center": {
+          "x": -1543.1573191233526,
+          "z": 3424.4748703475375
+        },
+        "elapsed": 9.80880000001193,
+        "states": {
+          "graze": 7,
+          "lie": 1,
+          "lie_down": 1,
+          "look": 1,
+          "walk": 2
+        }
+      },
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "errors": []
+    },
+    {
+      "label": "old-A2",
+      "firstFrameMs": 31793.899999976158,
+      "frameMs": 93.95749999999998,
+      "renderQueryMs": 36.72651065,
+      "pastureCPU": null,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "pasture": null,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "errors": []
+    },
+    {
+      "label": "new-B2",
+      "firstFrameMs": 30017.299999952316,
+      "frameMs": 89.16749999999993,
+      "renderQueryMs": 38.98260786666666,
+      "pastureCPU": {
+        "samples": 120,
+        "meanMs": 0.4275000000993411,
+        "maxMs": 4
+      },
+      "trees": 80927,
+      "grassTufts": 19395,
+      "pasture": {
+        "ready": true,
+        "count": 12,
+        "planned": 12,
+        "triangles": 48000,
+        "source": "assets/sheep.glb",
+        "quality": "original lod0 with original normal/basecolor maps",
+        "anchorId": "yurts:-1551,3489:3337d4a3e634caaf",
+        "center": {
+          "x": -1543.1573191233526,
+          "z": 3424.4748703475375
+        },
+        "elapsed": 9.883600000000007,
+        "states": {
+          "graze": 7,
+          "lie": 1,
+          "lie_down": 1,
+          "look": 1,
+          "walk": 2
+        }
+      },
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "errors": []
+    }
+  ],
+  "conclusion": "No stable overall performance improvement established; complete forest remains below smooth target. This round adds pasture and appearance changes without reducing existing detail."
+}

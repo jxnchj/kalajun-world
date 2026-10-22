@@ -1,0 +1,170 @@
+{
+  "round": 17,
+  "status": "round-17-implementation-and-browser-checks-complete; overall-quality-and-performance-in-progress",
+  "date": "2026-10-20",
+  "viewport": {
+    "width": 2179,
+    "height": 1221,
+    "dpr": 1.5
+  },
+  "timeMinutes": 870,
+  "preserved": [
+    "80927 tree roots in the paired direct-entry creek comparison; route-return residence differs",
+    "density",
+    "geometry detail",
+    "LOD distances",
+    "DPR",
+    "global light and color"
+  ],
+  "checks": {
+    "tests": 386,
+    "failed": 0,
+    "build": "passed; main chunk warning remains",
+    "bundle": "v2-CUXaC9t0.js",
+    "browserErrors": [],
+    "consoleErrors": []
+  },
+  "performance": {
+    "scope": "same running production scene, terrain queue zero; 60 GPU samples and last 90 frame intervals; one complete paired comparison before Chrome connection replacement",
+    "old96": {
+      "gpuMs": 47.79743076666668,
+      "frameMs": 60.09333333333343
+    },
+    "new64": {
+      "gpuMs": 44.84614266666667,
+      "frameMs": 56.203333333333205
+    },
+    "limitation": "Small gain, about 18 fps; not smooth or a device-wide guarantee.",
+    "finalRouteReturn": {
+      "gpuMs": 40.23637731666667,
+      "frameMs": 50.37111111111137,
+      "gpuSamples": 60,
+      "frameSamples": 90,
+      "trees": 84135,
+      "terrainQueuedTiles": 0,
+      "treeBatchSize": 64,
+      "note": "About 19.85 fps; separate route/caches/residency, not a matched before-after comparison."
+    }
+  },
+  "loading": {
+    "initialSamplesMs": {
+      "v16Creek": 9200.900000035765,
+      "v17DevCreek96": [
+        8418.800000011921,
+        8363.300000011921
+      ],
+      "v17DevCreek64": 8596,
+      "v17ProductionCreek64": 8971.800000011921
+    },
+    "limitation": "Not cold-cache controlled; cannot claim cold-start acceptance.",
+    "discoveredTail": {
+      "path": "forest -> meadow -> brook-lanchuan",
+      "totalMs": 106599.40000003576,
+      "terrainMs": 1563,
+      "ecologyMs": 427.199999988079,
+      "pendingProgram": "river-stone-mineral-shore-v6 with instancing color; sRGB/toneMapping variant"
+    },
+    "compileTargetFix": "Precompile now binds actual linear HDR target synchronously and restores immediately.",
+    "remainingTail": "Actual linear HDR procedural stone variant also observed pending; target fix alone does not resolve the long tail.",
+    "productionForestInitialAfterReconnectMs": 53610.80000001192,
+    "beforeReadinessGuard": {
+      "initialCreekMs": 51675.3,
+      "guestroomMs": 36516.7,
+      "woodMs": 70629.1,
+      "yurtMs": 25700.1,
+      "forestMs": 158332,
+      "meadowMs": 1476.6,
+      "bankMs": 1854,
+      "riverValleyMs": 3240.6,
+      "note": "Same route session, uncontrolled shader/HTTP caches; near terrain ready on entry, remaining far terrain queue not zero."
+    },
+    "readinessDiagnosis": {
+      "programs": [
+        "world-path-soil-v1-world-aerial-physical-v3",
+        "onBeforeCompile-world-aerial-physical-v3"
+      ],
+      "KHRReportedReady": false,
+      "explicitLinkQueryMs": 385.8,
+      "bothLinked": true,
+      "KHRReadyAfterQuery": true,
+      "note": "One observed stalled completion poll recovered on authoritative LINK_STATUS read. Driver cause remains inference; a query can block."
+    },
+    "finalBuildWarmRouteMs": {
+      "initialCreek": 18547.30000001192,
+      "initialShaders": 175.80000001192093,
+      "guestroom": 1596.5999999642372,
+      "wood": 1103.4000000357628,
+      "yurt": 972.399999976158,
+      "meadow": 1276,
+      "bank": 1701.899999976158,
+      "riverValley": 3425.800000011921,
+      "creekReturn": 3078.099999964237
+    },
+    "finalBuildLimitations": "Uncontrolled HTTP/shader caches. Initial/route entry only waits for near terrain; far terrain may still refine. Normal final samples did not trigger the stalled completion guard. Cold start and all-device long-tail acceptance remain pending.",
+    "readinessGuard": {
+      "implemented": true,
+      "requiresTrueLinkStatus": true,
+      "noProgressMs": 5000,
+      "oneStalledProgramPerTask": true,
+      "injectedBrowserCheck": {
+        "kind": "explicit fault injection on real WebGL, not a natural cold start",
+        "simulated": "selected Sky program isReady always false; actual linking unchanged",
+        "compileMs": 5022.400000035763,
+        "routeTotalMs": 5035.5,
+        "verifiedPrograms": 57,
+        "programCount": 57,
+        "stalledProbes": 1,
+        "success": true,
+        "injectionRestored": true
+      },
+      "limitation": "Synchronous LINK_STATUS queries can block; no hard latency guarantee."
+    }
+  },
+  "visual": {
+    "surface": "subtle surface transition, continuous bank strip remains; far slope repetition remains",
+    "interior": "Final build visually checked guestroom, wood house and yurt. Receiver-height contact filtering retained; full indirect lighting, material quality and life details remain intermediate.",
+    "deferred": [
+      "fine needle fuzziness",
+      "upper photo cards",
+      "complete lighting and color pass",
+      "complete interior GI"
+    ],
+    "checkedBeforeReadinessGuard": [
+      "river-forest",
+      "lanchuan-freedom-1",
+      "pastoral-house_a-entry",
+      "pastoral-yurt-entry",
+      "forest",
+      "meadow",
+      "brook-lanchuan",
+      "river-valley"
+    ],
+    "checkedFinalBuild": [
+      "river-forest",
+      "lanchuan-freedom-1",
+      "pastoral-house_a-entry",
+      "pastoral-yurt-entry",
+      "forest",
+      "meadow",
+      "brook-lanchuan",
+      "river-valley"
+    ],
+    "completeLightingColorPass": "Still scheduled later, no global light/color change this round.",
+    "savedScreenshot": {
+      "file": "v17-river-valley.jpg",
+      "stage": "actual browser screenshot before the final readiness guard; the guard changes preparation, not scene visuals",
+      "pixelSize": [
+        1453,
+        814
+      ],
+      "unedited": true
+    }
+  },
+  "version": "route-continuity-17",
+  "evidence": {
+    "browserSamples": "browser-samples.json",
+    "sampleFormat": "selected measured fields, not full raw snapshots",
+    "tests": "386/386; source tests and v2 production build passed",
+    "captureLimitation": "Final creek and wood screenshots inspected in browser tools, but final file export failed when the Chrome connection detached. Only the existing river screenshot is archived; no substitute or reconstructed image."
+  }
+}

@@ -1,0 +1,673 @@
+{
+  "conditions": {
+    "width": 1453,
+    "height": 839,
+    "DPR": 1,
+    "time": 870,
+    "position": [
+      -3611.9813305250705,
+      2329.161214161885,
+      4805.371282289286
+    ],
+    "yaw": -30.90412352938094,
+    "pitch": -10,
+    "warmupRAF": 180,
+    "frameSamples": 80,
+    "gpuSamples": 60,
+    "httpCache": "no-store",
+    "canopyCache": false,
+    "gpuDriverCachesReset": false
+  },
+  "runs": [
+    {
+      "run": "a1",
+      "version": "route-continuity-30",
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "frameMs": 58.33375000000001,
+      "fps": 17.14273469475218,
+      "gpuMs": 31.096434266666666,
+      "moduleToFirstFrameMs": 9696.900000035763,
+      "navigationToFirstFrameMs": 9881.600000023842,
+      "trees": 80927,
+      "grass": 19403,
+      "assetLoads": {
+        "mode": "dependency-parallel",
+        "phases": {
+          "hi": {
+            "queuedMs": 0,
+            "startMs": 1.0999999642372131,
+            "elapsedMs": 2243.600000023842,
+            "status": "complete"
+          },
+          "mid": {
+            "queuedMs": 0,
+            "startMs": 1.0999999642372131,
+            "elapsedMs": 2138.800000011921,
+            "status": "complete"
+          },
+          "local": {
+            "queuedMs": 0,
+            "startMs": 1.199999988079071,
+            "elapsedMs": 2108.800000011921,
+            "status": "complete"
+          },
+          "core": {
+            "queuedMs": 0,
+            "startMs": 1.2999999523162842,
+            "elapsedMs": 2175.900000035763,
+            "status": "complete"
+          },
+          "flowerModule": {
+            "queuedMs": 0,
+            "startMs": 1.2999999523162842,
+            "elapsedMs": 2109,
+            "status": "complete"
+          },
+          "far": {
+            "queuedMs": 0,
+            "startMs": 1.5,
+            "elapsedMs": 2602.599999964237,
+            "status": "complete"
+          },
+          "needle": {
+            "queuedMs": 0,
+            "startMs": 2244.699999988079,
+            "elapsedMs": 1029.5,
+            "status": "complete"
+          },
+          "flowerLOD": {
+            "queuedMs": 0,
+            "startMs": 2110.2999999523163,
+            "elapsedMs": 296.80000001192093,
+            "status": "complete"
+          },
+          "flowerNear": {
+            "queuedMs": 0,
+            "startMs": 2110.5,
+            "elapsedMs": 297.2999999523163,
+            "status": "complete"
+          }
+        },
+        "postSourceMs": 876.5999999642372
+      },
+      "needleTimings": {
+        "fetchMs": 162.79999995231628,
+        "decodeMs": 2.5,
+        "validateMs": 4.100000023841858,
+        "canopyMode": "runtime",
+        "formQueue": 2,
+        "maxInFlightParameterBytes": 25165824,
+        "peakQueuedForms": 2,
+        "peakInFlightParameterBytes": 20296048,
+        "preparationMode": "overlap-worker-shell",
+        "formPreparationMs": 859.3000000119209,
+        "templateBuildMs": 401.5,
+        "geometrySetupMs": 457.80000001192093,
+        "parameterPackingMs": 0
+      },
+      "errors": []
+    },
+    {
+      "run": "b1",
+      "version": "route-continuity-31",
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "frameMs": 61.672500000000035,
+      "fps": 16.214682394908582,
+      "gpuMs": 32.19623356666667,
+      "moduleToFirstFrameMs": 8850.299999952316,
+      "navigationToFirstFrameMs": 9014.199999988079,
+      "trees": 80927,
+      "grass": 19403,
+      "assetLoads": {
+        "mode": "dependency-parallel",
+        "phases": {
+          "hi": {
+            "queuedMs": 0,
+            "startMs": 0.7000000476837158,
+            "elapsedMs": 2172.2999999523163,
+            "status": "complete"
+          },
+          "mid": {
+            "queuedMs": 0.10000002384185791,
+            "startMs": 0.7000000476837158,
+            "elapsedMs": 2155.199999988079,
+            "status": "complete"
+          },
+          "local": {
+            "queuedMs": 0.10000002384185791,
+            "startMs": 0.7000000476837158,
+            "elapsedMs": 2061.2999999523163,
+            "status": "complete"
+          },
+          "core": {
+            "queuedMs": 0.10000002384185791,
+            "startMs": 0.800000011920929,
+            "elapsedMs": 2125.600000023842,
+            "status": "complete"
+          },
+          "flowerModule": {
+            "queuedMs": 0.10000002384185791,
+            "startMs": 0.800000011920929,
+            "elapsedMs": 2124.600000023842,
+            "status": "complete"
+          },
+          "far": {
+            "queuedMs": 0.10000002384185791,
+            "startMs": 1,
+            "elapsedMs": 2510.100000023842,
+            "status": "complete"
+          },
+          "needle": {
+            "queuedMs": 0.10000002384185791,
+            "startMs": 2173,
+            "elapsedMs": 861.6000000238419,
+            "status": "complete"
+          },
+          "flowerLOD": {
+            "queuedMs": 0.10000002384185791,
+            "startMs": 2125.400000035763,
+            "elapsedMs": 360.69999998807907,
+            "status": "complete"
+          },
+          "flowerNear": {
+            "queuedMs": 0.10000002384185791,
+            "startMs": 2125.600000023842,
+            "elapsedMs": 360.19999998807907,
+            "status": "complete"
+          }
+        },
+        "postSourceMs": 502.30000001192093
+      },
+      "needleTimings": {
+        "fetchMs": 50,
+        "decodeMs": 2.5,
+        "validateMs": 3.299999952316284,
+        "canopyMode": "runtime",
+        "formQueue": 2,
+        "maxInFlightParameterBytes": 25165824,
+        "peakQueuedForms": 2,
+        "peakInFlightParameterBytes": 20296048,
+        "preparationMode": "overlap-worker-shell",
+        "formPreparationMs": 805.1999999880791,
+        "templateBuildMs": 521.6999999880791,
+        "geometrySetupMs": 283.5,
+        "parameterPackingMs": 0
+      },
+      "errors": []
+    },
+    {
+      "run": "a2",
+      "version": "route-continuity-30",
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "frameMs": 66.56374999999998,
+      "fps": 15.023192052731408,
+      "gpuMs": 32.64796548333332,
+      "moduleToFirstFrameMs": 9527.300000011921,
+      "navigationToFirstFrameMs": 9697.300000011921,
+      "trees": 80927,
+      "grass": 19403,
+      "assetLoads": {
+        "mode": "dependency-parallel",
+        "phases": {
+          "hi": {
+            "queuedMs": 0,
+            "startMs": 0.2999999523162842,
+            "elapsedMs": 2231.600000023842,
+            "status": "complete"
+          },
+          "mid": {
+            "queuedMs": 0,
+            "startMs": 0.2999999523162842,
+            "elapsedMs": 2207,
+            "status": "complete"
+          },
+          "local": {
+            "queuedMs": 0,
+            "startMs": 0.2999999523162842,
+            "elapsedMs": 2110.900000035763,
+            "status": "complete"
+          },
+          "core": {
+            "queuedMs": 0,
+            "startMs": 0.2999999523162842,
+            "elapsedMs": 2173.2000000476837,
+            "status": "complete"
+          },
+          "flowerModule": {
+            "queuedMs": 0,
+            "startMs": 0.2999999523162842,
+            "elapsedMs": 2172.7000000476837,
+            "status": "complete"
+          },
+          "far": {
+            "queuedMs": 0,
+            "startMs": 0.3999999761581421,
+            "elapsedMs": 2601.800000011921,
+            "status": "complete"
+          },
+          "needle": {
+            "queuedMs": 0,
+            "startMs": 2231.899999976158,
+            "elapsedMs": 970.6000000238419,
+            "status": "complete"
+          },
+          "flowerLOD": {
+            "queuedMs": 0,
+            "startMs": 2173,
+            "elapsedMs": 87.19999998807907,
+            "status": "complete"
+          },
+          "flowerNear": {
+            "queuedMs": 0,
+            "startMs": 2173.099999964237,
+            "elapsedMs": 87.69999998807907,
+            "status": "complete"
+          }
+        },
+        "postSourceMs": 815.1999999880791
+      },
+      "needleTimings": {
+        "fetchMs": 53.39999997615814,
+        "decodeMs": 2.699999988079071,
+        "validateMs": 3,
+        "canopyMode": "runtime",
+        "formQueue": 2,
+        "maxInFlightParameterBytes": 25165824,
+        "peakQueuedForms": 2,
+        "peakInFlightParameterBytes": 20296048,
+        "preparationMode": "overlap-worker-shell",
+        "formPreparationMs": 911.3000000119209,
+        "templateBuildMs": 460.60000002384186,
+        "geometrySetupMs": 450.69999998807907,
+        "parameterPackingMs": 0
+      },
+      "errors": []
+    },
+    {
+      "run": "b2",
+      "version": "route-continuity-31",
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "frameMs": 61.66875,
+      "fps": 16.21566838958143,
+      "gpuMs": 31.947033600000005,
+      "moduleToFirstFrameMs": 10348.399999976158,
+      "navigationToFirstFrameMs": 10511,
+      "trees": 80927,
+      "grass": 19403,
+      "assetLoads": {
+        "mode": "dependency-parallel",
+        "phases": {
+          "hi": {
+            "queuedMs": 0,
+            "startMs": 0.30000001192092896,
+            "elapsedMs": 2207.699999988079,
+            "status": "complete"
+          },
+          "mid": {
+            "queuedMs": 0,
+            "startMs": 0.30000001192092896,
+            "elapsedMs": 2106,
+            "status": "complete"
+          },
+          "local": {
+            "queuedMs": 0,
+            "startMs": 0.30000001192092896,
+            "elapsedMs": 2122.199999988079,
+            "status": "complete"
+          },
+          "core": {
+            "queuedMs": 0,
+            "startMs": 0.30000001192092896,
+            "elapsedMs": 2169,
+            "status": "complete"
+          },
+          "flowerModule": {
+            "queuedMs": 0,
+            "startMs": 0.30000001192092896,
+            "elapsedMs": 2085.399999976158,
+            "status": "complete"
+          },
+          "far": {
+            "queuedMs": 0,
+            "startMs": 0.5,
+            "elapsedMs": 2568.899999976158,
+            "status": "complete"
+          },
+          "needle": {
+            "queuedMs": 0,
+            "startMs": 2208,
+            "elapsedMs": 970.6000000238419,
+            "status": "complete"
+          },
+          "flowerLOD": {
+            "queuedMs": 0,
+            "startMs": 2085.699999988079,
+            "elapsedMs": 191.60000002384186,
+            "status": "complete"
+          },
+          "flowerNear": {
+            "queuedMs": 0,
+            "startMs": 2085.899999976158,
+            "elapsedMs": 156.20000004768372,
+            "status": "complete"
+          }
+        },
+        "postSourceMs": 1451.0999999642372
+      },
+      "needleTimings": {
+        "fetchMs": 69.5,
+        "decodeMs": 2.599999964237213,
+        "validateMs": 3,
+        "canopyMode": "runtime",
+        "formQueue": 2,
+        "maxInFlightParameterBytes": 25165824,
+        "peakQueuedForms": 2,
+        "peakInFlightParameterBytes": 20296048,
+        "preparationMode": "overlap-worker-shell",
+        "formPreparationMs": 895.0999999642372,
+        "templateBuildMs": 610.4999999403954,
+        "geometrySetupMs": 284.60000002384186,
+        "parameterPackingMs": 0
+      },
+      "errors": []
+    }
+  ],
+  "shadowIndexExperiment": {
+    "defaultEnabled": false,
+    "pixelProof": {
+      "width": 1453,
+      "height": 839,
+      "maxChannelDelta": 0,
+      "changedPixels": 0,
+      "over2": 0
+    },
+    "samples": [
+      {
+        "enabled": false,
+        "gpu": 30.38607648333333,
+        "frame": 60.1,
+        "cpu": {
+          "terrain": {
+            "samples": 120,
+            "meanMs": 0.4308333292603493,
+            "maxMs": 9.400000035762787
+          },
+          "structures": {
+            "samples": 120,
+            "meanMs": 2.511666671435038,
+            "maxMs": 17.799999952316284
+          },
+          "ecology": {
+            "samples": 120,
+            "meanMs": 3.158333331346512,
+            "maxMs": 34.19999998807907
+          },
+          "water": {
+            "samples": 120,
+            "meanMs": 0.08499999642372132,
+            "maxMs": 2.5
+          },
+          "pasture": {
+            "samples": 120,
+            "meanMs": 0.9450000032782555,
+            "maxMs": 6.199999988079071
+          },
+          "settlements": {
+            "samples": 120,
+            "meanMs": 0.04583333134651184,
+            "maxMs": 0.20000004768371582
+          },
+          "environment": {
+            "samples": 120,
+            "meanMs": 9.45333333114783,
+            "maxMs": 20.80000001192093
+          },
+          "render": {
+            "samples": 120,
+            "meanMs": 11.593333335717519,
+            "maxMs": 173.19999998807907
+          }
+        },
+        "render": {
+          "frame": 1833,
+          "calls": 1814,
+          "triangles": 35161799,
+          "points": 0,
+          "lines": 0
+        },
+        "reuse": {
+          "enabled": false,
+          "parts": 5,
+          "beforeVertices": 124373,
+          "afterVertices": 105170,
+          "remappedVertices": 19203,
+          "triangles": 95122,
+          "bytes": 570732,
+          "buildMs": 43.80000001192093,
+          "uploads": 5,
+          "liveBuffers": 5,
+          "draws": 12660
+        }
+      },
+      {
+        "enabled": true,
+        "gpu": 31.840432900000003,
+        "frame": 60.61499999999997,
+        "cpu": {
+          "terrain": {
+            "samples": 120,
+            "meanMs": 0.47750000009934107,
+            "maxMs": 5.299999952316284
+          },
+          "structures": {
+            "samples": 120,
+            "meanMs": 2.450833332538605,
+            "maxMs": 3.599999964237213
+          },
+          "ecology": {
+            "samples": 120,
+            "meanMs": 3.3974999979138376,
+            "maxMs": 17
+          },
+          "water": {
+            "samples": 120,
+            "meanMs": 0.05750000178813934,
+            "maxMs": 0.20000004768371582
+          },
+          "pasture": {
+            "samples": 120,
+            "meanMs": 1.0150000005960464,
+            "maxMs": 1.800000011920929
+          },
+          "settlements": {
+            "samples": 120,
+            "meanMs": 0.043333332737286887,
+            "maxMs": 0.20000004768371582
+          },
+          "environment": {
+            "samples": 120,
+            "meanMs": 9.49666666785876,
+            "maxMs": 28.899999976158142
+          },
+          "render": {
+            "samples": 120,
+            "meanMs": 16.96083333392938,
+            "maxMs": 59.5
+          }
+        },
+        "render": {
+          "frame": 2255,
+          "calls": 2631,
+          "triangles": 44862401,
+          "points": 0,
+          "lines": 0
+        },
+        "reuse": {
+          "enabled": true,
+          "parts": 5,
+          "beforeVertices": 124373,
+          "afterVertices": 105170,
+          "remappedVertices": 19203,
+          "triangles": 95122,
+          "bytes": 570732,
+          "buildMs": 43.80000001192093,
+          "uploads": 5,
+          "liveBuffers": 5,
+          "draws": 16665
+        }
+      },
+      {
+        "enabled": true,
+        "gpu": 31.68911346666668,
+        "frame": 61.45999999999985,
+        "cpu": {
+          "terrain": {
+            "samples": 120,
+            "meanMs": 0.39999999552965165,
+            "maxMs": 1.9000000357627869
+          },
+          "structures": {
+            "samples": 120,
+            "meanMs": 2.5075000017881393,
+            "maxMs": 19
+          },
+          "ecology": {
+            "samples": 120,
+            "meanMs": 3.1650000005960464,
+            "maxMs": 13.300000011920929
+          },
+          "water": {
+            "samples": 120,
+            "meanMs": 0.05500000019868215,
+            "maxMs": 0.20000004768371582
+          },
+          "pasture": {
+            "samples": 120,
+            "meanMs": 1.5658333336313566,
+            "maxMs": 6
+          },
+          "settlements": {
+            "samples": 120,
+            "meanMs": 0.04916666795810064,
+            "maxMs": 0.2999999523162842
+          },
+          "environment": {
+            "samples": 120,
+            "meanMs": 9.505000000198683,
+            "maxMs": 17.5
+          },
+          "render": {
+            "samples": 120,
+            "meanMs": 16.19499999980132,
+            "maxMs": 58.80000001192093
+          }
+        },
+        "render": {
+          "frame": 3788,
+          "calls": 1814,
+          "triangles": 35161799,
+          "points": 0,
+          "lines": 0
+        },
+        "reuse": {
+          "enabled": true,
+          "parts": 5,
+          "beforeVertices": 124373,
+          "afterVertices": 105170,
+          "remappedVertices": 19203,
+          "triangles": 95122,
+          "bytes": 570732,
+          "buildMs": 43.80000001192093,
+          "uploads": 5,
+          "liveBuffers": 5,
+          "draws": 30770
+        }
+      },
+      {
+        "enabled": false,
+        "gpu": 32.55864951666668,
+        "frame": 61.66875,
+        "cpu": {
+          "terrain": {
+            "samples": 120,
+            "meanMs": 0.36750000168879826,
+            "maxMs": 1.300000011920929
+          },
+          "structures": {
+            "samples": 120,
+            "meanMs": 2.36749999721845,
+            "maxMs": 4.299999952316284
+          },
+          "ecology": {
+            "samples": 120,
+            "meanMs": 3.345000003774961,
+            "maxMs": 17.19999998807907
+          },
+          "water": {
+            "samples": 120,
+            "meanMs": 0.050000000993410745,
+            "maxMs": 0.20000004768371582
+          },
+          "pasture": {
+            "samples": 120,
+            "meanMs": 1.5516666611035665,
+            "maxMs": 14.400000035762787
+          },
+          "settlements": {
+            "samples": 120,
+            "meanMs": 0.04583333333333333,
+            "maxMs": 0.19999998807907104
+          },
+          "environment": {
+            "samples": 120,
+            "meanMs": 9.937499996523062,
+            "maxMs": 17.299999952316284
+          },
+          "render": {
+            "samples": 120,
+            "meanMs": 16.144166666766008,
+            "maxMs": 55.80000001192093
+          }
+        },
+        "render": {
+          "frame": 4215,
+          "calls": 1814,
+          "triangles": 35161799,
+          "points": 0,
+          "lines": 0
+        },
+        "reuse": {
+          "enabled": false,
+          "parts": 5,
+          "beforeVertices": 124373,
+          "afterVertices": 105170,
+          "remappedVertices": 19203,
+          "triangles": 95122,
+          "bytes": 570732,
+          "buildMs": 43.80000001192093,
+          "uploads": 5,
+          "liveBuffers": 5,
+          "draws": 30770
+        }
+      }
+    ],
+    "conclusion": "No stable whole-frame GPU benefit; opt-in only, default allocates no index or hooks."
+  },
+  "conclusion": "No stable GPU or complete first-frame gain. Local crown CPU construction improves; long tail remains."
+}

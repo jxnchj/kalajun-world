@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 1,
+  "worldId": "kalajun-v2",
+  "stage": "foundation-candidate",
+  "coordinateFrame": {
+    "crs": "EPSG:32644",
+    "units": "metres",
+    "axes": {
+      "x": "east",
+      "y": "up",
+      "z": "south"
+    },
+    "originUTM": [
+      597060,
+      4756230
+    ],
+    "rasterRows": "north-to-south",
+    "rasterSamples": "pixel-centres"
+  },
+  "sources": [
+    {
+      "path": "./data/scene.json",
+      "role": "legacy extent, coordinate origin, photograph viewpoints and attribution",
+      "status": "imported; geographic accuracy not independently revalidated"
+    },
+    {
+      "path": "./data/core_height.bin.gz",
+      "role": "10 m resampling of source DEM; not claimed to be surveyed 10 m detail",
+      "sourceScript": "tools/export_web.py",
+      "status": "legacy source retained"
+    },
+    {
+      "path": "./data/far_height.bin.gz",
+      "role": "80 m resampled/smoothed source DEM",
+      "sourceScript": "tools/export_web.py",
+      "status": "legacy source retained"
+    },
+    {
+      "path": "./data/detail.bin.gz",
+      "role": "authored 1 m relief, paths and site adjustments, distinct from measured DEM",
+      "sourceScript": "tools/detail_terrain.py",
+      "status": "migrated with two-texel continuous edge fade"
+    },
+    {
+      "path": "./data/objects.json",
+      "role": "photo-derived sites, 2013 historical layout and selected current guesthouses",
+      "sourceScript": "tools/place_objects.py",
+      "status": "source records immutable; derived placement may be separated for overlaps"
+    },
+    {
+      "paths": [
+        "./data/core_landcover.png",
+        "./data/far_landcover.png"
+      ],
+      "role": "legacy forest/bare/snow weights derived from ESA WorldCover 2021",
+      "status": "imported; habitat field validation pending"
+    }
+  ],
+  "migration": {
+    "identity": "group + source coordinates + explicit id/content fingerprint; input sorting does not change IDs; indistinguishable duplicates require source ids",
+    "placement": "model choice, human-height-preserving scale, downhill yurt doors, 55% slope floors, front-step limits, guesthouse back-wall floors and step markers migrated from web/src/slice.js",
+    "separation": "legacy footprint separation applied to derived records in stable-id order; raw source coordinates are preserved",
+    "pads": "cut-only analytical pads shared by renderer and physics; continuous six-metre bank release replaces R8 quantisation and atlas resolution/cap limits",
+    "presentation": "no mountain exaggeration or earth-curvature displacement in the authority surface",
+    "streams": "legacy additional stream-mask carving and hydrographic validation not yet migrated; detail raster retains its pre-existing authored drainage relief"
+  },
+  "acceptance": {
+    "dataContract": {
+      "status": "passed",
+      "command": "node --test web/src/v2/world-data.test.js",
+      "tests": 10,
+      "date": "2026-10-19",
+      "scope": "Node data/geometry contract tests, including the checked-in source data; not browser or full-world acceptance"
+    },
+    "demAccuracy": "not independently validated",
+    "allStreams": "not validated",
+    "continuousExploration": "pending integration",
+    "interiors": "pending integration and visual acceptance",
+    "performance": "not benchmarked"
+  },
+  "assetMetadata": {
+    "cabin_small": {
+      "source": "./assets/cabin_small.glb",
+      "sha256": "949072066eaa4afc88f4689be2e2f394a8c4e444c1045bc87e7c6b1d6df096c4",
+      "pad": {
+        "cx": 0,
+        "cz": 1,
+        "hx": 4.449999809265137,
+        "hz": 4.25,
+        "circle": false
+      },
+      "steps": [],
+      "bounds": {
+        "min": [
+          -4.949999809265137,
+          -2.424999952316284,
+          -3.8683011531829834
+        ],
+        "max": [
+          4.949999809265137,
+          5.63489294052124,
+          6.650000095367432
+        ]
+      }
+    },
+    "lodge": {
+      "source": "./assets/lodge.glb",
+      "sha256": "9e797bfdbb5d5b5710a885fd7e74fc3a583c88d60df873acdab9bace187804e8",
+      "pad": {
+        "cx": 0,
+        "cz": 1.2000000476837158,
+        "hx": 20.25,
+        "hz": 4.849999904632568,
+        "circle": false
+      },
+      "steps": [],
+      "bounds": {
+        "min": [
+          -20.75,
+          -2.424999952316284,
+          -4.25255012512207
+        ],
+        "max": [
+          20.75,
+          5.747045993804932,
+          7.450000286102295
+        ]
+      }
+    },
+    "lodge24": {
+      "source": "./assets/lodge24.glb",
+      "sha256": "0edd1c91236ba18f2b3d38484eab014986d08f49bdeb0dc784daaec46688181f",
+      "pad": {
+        "cx": 0,
+        "cz": 1.100000023841858,
+        "hx": 12.25,
+        "hz": 5.25,
+        "circle": false
+      },
+      "steps": [],
+      "bounds": {
+        "min": [
+          -12.75,
+          -2.424999952316284,
+          -4.748287677764893
+        ],
+        "max": [
+          12.75,
+          5.767940521240234,
+          7.75
+        ]
+      }
+    },
+    "house_a": {
+      "source": "./assets/house_a.glb",
+      "sha256": "3b3c358d86f01109b4e9fc93954f2c6d9409f7f6239fa5ca9d0a6ca6d3a9b6b3",
+      "pad": {
+        "cx": 0,
+        "cz": 0,
+        "hx": 3.75,
+        "hz": 2.6500000953674316,
+        "circle": false
+      },
+      "steps": [],
+      "bounds": {
+        "min": [
+          -4.349999904632568,
+          -2.3499999046325684,
+          -3.256687641143799
+        ],
+        "max": [
+          4.349999904632568,
+          4.796535968780518,
+          3.930000066757202
+        ]
+      }
+    },
+    "house_b": {
+      "source": "./assets/house_b.glb",
+      "sha256": "216820e6067af93483656404f2ae4c4b4ac318aeef4db72abd7815f9b72d240b",
+      "pad": {
+        "cx": 0,
+        "cz": 0.800000011920929,
+        "hx": 5.050000190734863,
+        "hz": 3.75,
+        "circle": false
+      },
+      "steps": [],
+      "bounds": {
+        "min": [
+          -5.550000190734863,
+          -2.424999952316284,
+          -3.564568042755127
+        ],
+        "max": [
+          5.550000190734863,
+          5.184393405914307,
+          5.950000286102295
+        ]
+      }
+    },
+    "yurt": {
+      "source": "./assets/yurt.glb",
+      "sha256": "a06d8b5532787b203d4c50438d7756ed6f4df8cc03b6f6d37da200486efab250",
+      "pad": {
+        "cx": 0,
+        "cz": 0,
+        "hx": 3.1679999828338623,
+        "hz": 3.1679999828338623,
+        "circle": true
+      },
+      "steps": [],
+      "bounds": {
+        "min": [
+          -3.5840001106262207,
+          -2,
+          -3.5840001106262207
+        ],
+        "max": [
+          3.5840001106262207,
+          4.449999809265137,
+          5.380000114440918
+        ]
+      }
+    },
+    "yurt_deck": {
+      "source": "./assets/yurt_deck.glb",
+      "sha256": "4b61d3f54a4aab520c2486a58105b314c7f64baa9689111ed99a93587e021370",
+      "pad": {
+        "cx": 0,
+        "cz": 0,
+        "hx": 3.563999891281128,
+        "hz": 3.563999891281128,
+        "circle": true
+      },
+      "steps": [],
+      "bounds": {
+        "min": [
+          -4.699999809265137,
+          -1.8600000143051147,
+          -4.699999809265137
+        ],
+        "max": [
+          4.699999809265137,
+          4.449999809265137,
+          6.339999675750732
+        ]
+      }
+    },
+    "barn": {
+      "source": "./assets/barn.glb",
+      "sha256": "4b2b556f5194a886d73df8b4352f835344031f0280c250e54b61ddbbab117d2f",
+      "pad": null,
+      "steps": [],
+      "bounds": {
+        "min": [
+          -8.475000381469727,
+          -2.3499999046325684,
+          -3.4800000190734863
+        ],
+        "max": [
+          8.475000381469727,
+          2.754999876022339,
+          3.7300000190734863
+        ]
+      },
+      "sodBounds": {
+        "min": [
+          -8.199999809265137,
+          -2.3499999046325684,
+          -3.200000047683716
+        ],
+        "max": [
+          8.199999809265137,
+          -0.1499999761581421,
+          3.200000047683716
+        ]
+      }
+    },
+    "haystack": {
+      "source": "./assets/haystack.glb",
+      "sha256": "feefbe8de9b1a2b967b698fbf325bdb8881dbe1f1127644dddba107298c1137a",
+      "pad": null,
+      "steps": [],
+      "bounds": {
+        "min": [
+          -3.37082839012146,
+          -0.3499877154827118,
+          -1.7659803628921509
+        ],
+        "max": [
+          3.6769285202026367,
+          4.103593826293945,
+          1.7816139459609985
+        ]
+      }
+    },
+    "swing": {
+      "source": "./assets/swing.glb",
+      "sha256": "7e8b656e4e679c075a2bd085908251b767226332e8482abacc5594bad90d2203",
+      "pad": null,
+      "steps": [],
+      "bounds": {
+        "min": [
+          -2.1112000942230225,
+          -0.41039788722991943,
+          -0.9672395586967468
+        ],
+        "max": [
+          2.1112000942230225,
+          3.614590644836426,
+          0.9670578241348267
+        ]
+      }
+    },
+    "gh_lanchuan_lodge": {
+      "source": "./assets/gh_lanchuan_lodge.glb",
+      "sha256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+      "pad": {
+        "cx": 0,
+        "cz": -0.15000000596046448,
+        "hx": 13.300000190734863,
+        "hz": 3.950000047683716,
+        "circle": false
+      },
+      "steps": [
+        {
+          "x": -2.299999952316284,
+          "y": -2.4000000953674316,
+          "z": 9.270000457763672
+        }
+      ],
+      "bounds": {
+        "min": [
+          -13.274999618530273,
+          -3.6100001335144043,
+          -4.322545528411865
+        ],
+        "max": [
+          13.274999618530273,
+          5.289034366607666,
+          9.729999542236328
+        ]
+      },
+      "sodBounds": {
+        "min": [
+          -4.150000095367432,
+          2.883793354034424,
+          -4.023941516876221
+        ],
+        "max": [
+          13.149999618530273,
+          4.44993782043457,
+          4.023941516876221
+        ]
+      }
+    },
+    "gh_lanchuan": {
+      "source": "./assets/gh_lanchuan.glb",
+      "sha256": "de3fd6792e98182c8865294168283d90412faf3f53d730927dbc85d0a19dc935",
+      "pad": {
+        "cx": 0.05000000074505806,
+        "cz": 0.8500000238418579,
+        "hx": 15.550000190734863,
+        "hz": 5.150000095367432,
+        "circle": false
+      },
+      "steps": [
+        {
+          "x": -9.399999618530273,
+          "y": -1.399999976158142,
+          "z": 8.069999694824219
+        },
+        {
+          "x": 7.5,
+          "y": -1.399999976158142,
+          "z": 8.069999694824219
+        }
+      ],
+      "bounds": {
+        "min": [
+          -15.389999389648438,
+          -2.6100001335144043,
+          -4.489499568939209
+        ],
+        "max": [
+          15.511195182800293,
+          4.6513848304748535,
+          8.529999732971191
+        ]
+      },
+      "sodBounds": {
+        "min": [
+          -15.300000190734863,
+          2.4319040775299072,
+          -4.446221351623535
+        ],
+        "max": [
+          15.449999809265137,
+          3.8425815105438232,
+          6.260950565338135
+        ]
+      }
+    },
+    "gh_fj_shed": {
+      "source": "./assets/gh_fj_shed.glb",
+      "sha256": "cca18f409503afe80bb41ac61699886dad22bdf3b697eac14518e07b824e9fb8",
+      "pad": {
+        "cx": 0,
+        "cz": 0.44999998807907104,
+        "hx": 20.5,
+        "hz": 4.550000190734863,
+        "circle": false
+      },
+      "steps": [
+        {
+          "x": -18,
+          "y": -1.399999976158142,
+          "z": 7.070000171661377
+        },
+        {
+          "x": 18,
+          "y": -1.399999976158142,
+          "z": 7.070000171661377
+        }
+      ],
+      "bounds": {
+        "min": [
+          -20.34000015258789,
+          -2.6100001335144043,
+          -4.039170742034912
+        ],
+        "max": [
+          20.34000015258789,
+          3.744901657104492,
+          7.529999732971191
+        ]
+      },
+      "sodBounds": {
+        "min": [
+          -20.25,
+          2.632754325866699,
+          -3.9962055683135986
+        ],
+        "max": [
+          20.25,
+          3.346001625061035,
+          4.003794193267822
+        ]
+      }
+    },
+    "gh_fj_lodge": {
+      "source": "./assets/gh_fj_lodge.glb",
+      "sha256": "99c5dc227e32591cb28cb2af5982ee84bb2970defaa59a95bd1fe3f0948b45a2",
+      "pad": {
+        "cx": 1.0499999523162842,
+        "cz": 1,
+        "hx": 12.550000190734863,
+        "hz": 5.099999904632568,
+        "circle": false
+      },
+      "steps": [
+        {
+          "x": 12.199999809265137,
+          "y": -1.399999976158142,
+          "z": 8.170000076293945
+        }
+      ],
+      "bounds": {
+        "min": [
+          -11.574999809265137,
+          -2.6100001335144043,
+          -4.185786247253418
+        ],
+        "max": [
+          13.444999694824219,
+          4.3296098709106445,
+          8.630000114440918
+        ]
+      }
+    },
+    "gh_fj_hut": {
+      "source": "./assets/gh_fj_hut.glb",
+      "sha256": "b75cd50c78dc4a92f9c902d19dad3a7367d38a37aa1114fb9ad12cbb2d6163a7",
+      "pad": {
+        "cx": 0,
+        "cz": 0.6499999761581421,
+        "hx": 3.299999952316284,
+        "hz": 3.9000000953674316,
+        "circle": false
+      },
+      "steps": [
+        {
+          "x": -0.05000000074505806,
+          "y": -1.399999976158142,
+          "z": 6.619999885559082
+        }
+      ],
+      "bounds": {
+        "min": [
+          -3.549999952316284,
+          -2.6100001335144043,
+          -3.3394174575805664
+        ],
+        "max": [
+          3.549999952316284,
+          3.939409017562866,
+          7.079999923706055
+        ]
+      }
+    },
+    "gh_qk_long": {
+      "source": "./assets/gh_qk_long.glb",
+      "sha256": "4041f01789b146fe53ae088f8c28d7b977b963975e9e754800eff1abfcd4cb3d",
+      "pad": {
+        "cx": -0.8500000238418579,
+        "cz": 0.8999999761581421,
+        "hx": 11.350000381469727,
+        "hz": 4.75,
+        "circle": false
+      },
+      "steps": [
+        {
+          "x": 0,
+          "y": -1.399999976158142,
+          "z": 7.71999979019165
+        },
+        {
+          "x": 9.100000381469727,
+          "y": -1.399999976158142,
+          "z": 7.71999979019165
+        }
+      ],
+      "bounds": {
+        "min": [
+          -12.045000076293945,
+          -2.6100001335144043,
+          -3.9320502281188965
+        ],
+        "max": [
+          10.550000190734863,
+          4.148744106292725,
+          8.180000305175781
+        ]
+      }
+    },
+    "gh_qk_cabin": {
+      "source": "./assets/gh_qk_cabin.glb",
+      "sha256": "5e1bddc80900a9654a1811b370e4d1be1ebb84ddb62f55ef5497df4894b2bd75",
+      "pad": {
+        "cx": 0,
+        "cz": 0.5,
+        "hx": 6.650000095367432,
+        "hz": 4.099999904632568,
+        "circle": false
+      },
+      "steps": [
+        {
+          "x": -2.299999952316284,
+          "y": -1.399999976158142,
+          "z": 6.670000076293945
+        },
+        {
+          "x": 2.299999952316284,
+          "y": -1.399999976158142,
+          "z": 6.670000076293945
+        }
+      ],
+      "bounds": {
+        "min": [
+          -6.824999809265137,
+          -2.6100001335144043,
+          -3.6394176483154297
+        ],
+        "max": [
+          6.824999809265137,
+          4.150716304779053,
+          7.12999963760376
+        ]
+      }
+    },
+    "gh_tl_main": {
+      "source": "./assets/gh_tl_main.glb",
+      "sha256": "cccf1ae8272120fb830da23bce95a07782bfc33bf2ca76442a19be22d46bdd91",
+      "pad": {
+        "cx": 0,
+        "cz": 1.4500000476837158,
+        "hx": 6.800000190734863,
+        "hz": 6.050000190734863,
+        "circle": false
+      },
+      "steps": [
+        {
+          "x": -5.599999904632568,
+          "y": -1.399999976158142,
+          "z": 9.470000267028809
+        }
+      ],
+      "bounds": {
+        "min": [
+          -7.050000190734863,
+          -3.3000001907348633,
+          -4.592939853668213
+        ],
+        "max": [
+          7.050000190734863,
+          4.96530818939209,
+          9.930000305175781
+        ]
+      }
+    },
+    "gh_tl_wing": {
+      "source": "./assets/gh_tl_wing.glb",
+      "sha256": "989e0d3d76a3895d9b9da19a6b2a6b0e4ffdd56dbb48505e6d0393bf0476d867",
+      "pad": {
+        "cx": 0,
+        "cz": 0.800000011920929,
+        "hx": 9.300000190734863,
+        "hz": 4.650000095367432,
+        "circle": false
+      },
+      "steps": [
+        {
+          "x": 0,
+          "y": -1.399999976158142,
+          "z": 7.519999980926514
+        }
+      ],
+      "bounds": {
+        "min": [
+          -9.550000190734863,
+          -2.6100001335144043,
+          -3.8894176483154297
+        ],
+        "max": [
+          9.550000190734863,
+          4.36202335357666,
+          7.980000019073486
+        ]
+      }
+    }
+  }
+}

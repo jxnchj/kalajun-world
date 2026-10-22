@@ -1,0 +1,59 @@
+{
+  "version": "route-continuity-26",
+  "status": "implemented-and-browser-verified; overall visual/GI/performance goals incomplete",
+  "tests": {
+    "fullSuite": {
+      "passed": 658,
+      "failed": 0,
+      "log": "tests-final.log"
+    },
+    "afterFullSuite": [
+      "queue-adopted-tests.log",
+      "door-final-tests.log",
+      "walk-entry-tests.log"
+    ],
+    "build": "build.log"
+  },
+  "performance": "performance-summary.json",
+  "routes": "final-routes.json",
+  "walking": "walking.json",
+  "normalEntry": [
+    "normal-walk-entered.json",
+    "normal-yurt-entered.json",
+    "door-blocked-prompt.json"
+  ],
+  "pixelEquivalence": {
+    "a": "shadow-old.png",
+    "b": "shadow-new.png",
+    "size": [
+      1453,
+      839
+    ],
+    "decodedPixelsIdentical": true,
+    "dynamics": "frozen for comparison; restored afterward"
+  },
+  "roomPerformance": "room-performance.json",
+  "roomAddedQueryCostMs": "about 2.6; quality improvement has shader arithmetic cost",
+  "qualityConstraints": {
+    "treeCount": 80927,
+    "grassTufts": 19395,
+    "densityReduced": false,
+    "geometricDetailReduced": false,
+    "DPRReduced": false,
+    "shadowOrReflectionQualityReduced": false,
+    "fullLightingColorPassMoved": false
+  },
+  "warnings": [
+    "Rapier package initialization emits deprecated-parameters warning; no app runtime errors"
+  ],
+  "limitations": [
+    "Forest still about 10-11fps and ~35ms render query; GPU bottleneck not solved",
+    "Complete first frame not improved; GPU/driver caches not reset",
+    "Bank material continuity partially improved; continuous mud strips and straight reaches remain",
+    "Far-slope composition and pattern repetition remain",
+    "Finite aperture plus static two-bounce transport is not complete dynamic GI",
+    "Collision currently terrain/woodhouse/yurt; guest rooms, field rocks, trees and animals excluded",
+    "Current assets and overall artistic treatment remain intermediate; Blender authoring continues in representative-route stage"
+  ],
+  "deliveryURL": "http://127.0.0.1:5174/v2.html?view=walk-house_a&time=870"
+}

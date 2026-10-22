@@ -1,0 +1,274 @@
+[
+  {
+    "label": "baseline-A1",
+    "frameMs": 36.25,
+    "gpuMs": 28.09266895,
+    "cpuEnvironmentMs": 4.894166662295659,
+    "cpuStructureMs": 0.9258333335320155,
+    "loadTimings": {
+      "phases": {
+        "worldData": {
+          "startMs": 12.800000011920929,
+          "elapsedMs": 368.60000002384186,
+          "status": "complete"
+        },
+        "terrainCoarse": {
+          "startMs": 560.8000000119209,
+          "elapsedMs": 603.6999999880791,
+          "status": "complete"
+        },
+        "terrainPrefetch": {
+          "startMs": 1169.1000000238419,
+          "elapsedMs": 2257.699999988079,
+          "status": "complete"
+        },
+        "structures": {
+          "startMs": 1185.800000011921,
+          "elapsedMs": 5013.800000011921,
+          "status": "complete"
+        },
+        "ecologyAssets": {
+          "startMs": 1186.5,
+          "elapsedMs": 4907.100000023842,
+          "status": "complete"
+        },
+        "waterAssets": {
+          "startMs": 1186.9000000357628,
+          "elapsedMs": 2919.2999999523163,
+          "status": "complete"
+        },
+        "terrainSurfaces": {
+          "startMs": 1187.5,
+          "elapsedMs": 2963.5,
+          "status": "complete"
+        },
+        "initialScene": {
+          "startMs": 6265.699999988079,
+          "elapsedMs": 1216.7000000476837,
+          "status": "complete"
+        },
+        "initialShaders": {
+          "startMs": 7483.699999988079,
+          "elapsedMs": 178,
+          "status": "complete"
+        },
+        "firstFrame": {
+          "startMs": 7661.800000011921,
+          "elapsedMs": 355.10000002384186,
+          "status": "complete"
+        }
+      },
+      "totalMs": 8017,
+      "moduleStartedMs": 313.80000001192093,
+      "navigationToFirstFrameSubmittedMs": 8330.800000011921,
+      "firstFrameNewPrograms": []
+    },
+    "trees": 80927,
+    "grass": 19392,
+    "encodedBytes": 118341098
+  },
+  {
+    "label": "new-B1",
+    "frameMs": 37.70874999999999,
+    "gpuMs": 28.975457866666666,
+    "cpuEnvironmentMs": 4.92250000089407,
+    "cpuStructureMs": 0.949166668454806,
+    "loadTimings": {
+      "phases": {
+        "worldData": {
+          "startMs": 13.100000023841858,
+          "elapsedMs": 372.5,
+          "status": "complete"
+        },
+        "terrainCoarse": {
+          "startMs": 572.3000000119209,
+          "elapsedMs": 612.0999999642372,
+          "status": "complete"
+        },
+        "terrainPrefetch": {
+          "startMs": 1188.8999999761581,
+          "elapsedMs": 2248.5,
+          "status": "complete"
+        },
+        "structures": {
+          "startMs": 1205.8999999761581,
+          "elapsedMs": 4964.900000035763,
+          "status": "complete"
+        },
+        "ecologyAssets": {
+          "startMs": 1206.5,
+          "elapsedMs": 4857.5,
+          "status": "complete"
+        },
+        "waterAssets": {
+          "startMs": 1206.800000011921,
+          "elapsedMs": 2946.599999964237,
+          "status": "complete"
+        },
+        "terrainSurfaces": {
+          "startMs": 1207.3999999761581,
+          "elapsedMs": 2990.300000011921,
+          "status": "complete"
+        },
+        "initialScene": {
+          "startMs": 6236.100000023842,
+          "elapsedMs": 1204.3999999761581,
+          "status": "complete"
+        },
+        "initialShaders": {
+          "startMs": 7441.899999976158,
+          "elapsedMs": 527.8000000119209,
+          "status": "complete"
+        },
+        "firstFrame": {
+          "startMs": 7969.899999976158,
+          "elapsedMs": 494.80000001192093,
+          "status": "complete"
+        }
+      },
+      "totalMs": 8464.699999988079,
+      "moduleStartedMs": 265.80000001192093,
+      "navigationToFirstFrameSubmittedMs": 8730.5,
+      "firstFrameNewPrograms": []
+    },
+    "trees": 80927,
+    "grass": 19392,
+    "encodedBytes": 118343297
+  },
+  {
+    "label": "baseline-A2",
+    "frameMs": 36.25000000000002,
+    "gpuMs": 28.548890483333327,
+    "cpuEnvironmentMs": 4.6033333366115885,
+    "cpuStructureMs": 1.1491666694482168,
+    "loadTimings": {
+      "phases": {
+        "worldData": {
+          "startMs": 11,
+          "elapsedMs": 328.9000000357628,
+          "status": "complete"
+        },
+        "terrainCoarse": {
+          "startMs": 517.1000000238419,
+          "elapsedMs": 589.8999999761581,
+          "status": "complete"
+        },
+        "terrainPrefetch": {
+          "startMs": 1111.800000011921,
+          "elapsedMs": 2217.699999988079,
+          "status": "complete"
+        },
+        "structures": {
+          "startMs": 1127.800000011921,
+          "elapsedMs": 5014.899999976158,
+          "status": "complete"
+        },
+        "ecologyAssets": {
+          "startMs": 1128.199999988079,
+          "elapsedMs": 4914.700000047684,
+          "status": "complete"
+        },
+        "waterAssets": {
+          "startMs": 1128.300000011921,
+          "elapsedMs": 2912.699999988079,
+          "status": "complete"
+        },
+        "terrainSurfaces": {
+          "startMs": 1129,
+          "elapsedMs": 2956.300000011921,
+          "status": "complete"
+        },
+        "initialScene": {
+          "startMs": 6218.800000011921,
+          "elapsedMs": 1189.800000011921,
+          "status": "complete"
+        },
+        "initialShaders": {
+          "startMs": 7410.199999988079,
+          "elapsedMs": 168.10000002384186,
+          "status": "complete"
+        },
+        "firstFrame": {
+          "startMs": 7578.5,
+          "elapsedMs": 333.19999998807907,
+          "status": "complete"
+        }
+      },
+      "totalMs": 7911.699999988079,
+      "moduleStartedMs": 264.5,
+      "navigationToFirstFrameSubmittedMs": 8176.199999988079,
+      "firstFrameNewPrograms": []
+    },
+    "trees": 80927,
+    "grass": 19392,
+    "encodedBytes": 118341098
+  },
+  {
+    "label": "new-B2",
+    "frameMs": 35.625,
+    "gpuMs": 28.073726550000003,
+    "cpuEnvironmentMs": 4.459999999403953,
+    "cpuStructureMs": 0.9649999981125196,
+    "loadTimings": {
+      "phases": {
+        "worldData": {
+          "startMs": 11.099999964237213,
+          "elapsedMs": 347.2000000476837,
+          "status": "complete"
+        },
+        "terrainCoarse": {
+          "startMs": 534.3999999761581,
+          "elapsedMs": 594,
+          "status": "complete"
+        },
+        "terrainPrefetch": {
+          "startMs": 1132.8999999761581,
+          "elapsedMs": 2247.300000011921,
+          "status": "complete"
+        },
+        "structures": {
+          "startMs": 1148,
+          "elapsedMs": 4888.399999976158,
+          "status": "complete"
+        },
+        "ecologyAssets": {
+          "startMs": 1148.5,
+          "elapsedMs": 4787.800000011921,
+          "status": "complete"
+        },
+        "waterAssets": {
+          "startMs": 1148.5999999642372,
+          "elapsedMs": 2956.100000023842,
+          "status": "complete"
+        },
+        "terrainSurfaces": {
+          "startMs": 1148.800000011921,
+          "elapsedMs": 3000.199999988079,
+          "status": "complete"
+        },
+        "initialScene": {
+          "startMs": 6095.599999964237,
+          "elapsedMs": 1215,
+          "status": "complete"
+        },
+        "initialShaders": {
+          "startMs": 7311.899999976158,
+          "elapsedMs": 201,
+          "status": "complete"
+        },
+        "firstFrame": {
+          "startMs": 7513.099999964237,
+          "elapsedMs": 290.4000000357628,
+          "status": "complete"
+        }
+      },
+      "totalMs": 7803.5,
+      "moduleStartedMs": 277,
+      "navigationToFirstFrameSubmittedMs": 8080.5,
+      "firstFrameNewPrograms": []
+    },
+    "trees": 80927,
+    "grass": 19392,
+    "encodedBytes": 118343297
+  }
+]

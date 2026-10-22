@@ -1,0 +1,217 @@
+{
+  "version": "household-living-32",
+  "seconds": 135.92959216603776,
+  "variants": [
+    {
+      "key": "house_a-living-0",
+      "householdStyle": 0,
+      "rawModuleBytes": 598328,
+      "validProbes": 239,
+      "changedFirstSkyWordsFromBase": 0,
+      "firstSkyMaxDelta": 0,
+      "externalSources": [
+        {
+          "sourceGLB": "assets/v2/household_living.glb",
+          "sourceSHA256": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a",
+          "sourceBlend": "assets/src/v2/pastoral/household-living-32.blend",
+          "blendSHA256": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4"
+        }
+      ],
+      "elapsedSeconds": 44.54253787500784,
+      "reusedPayloads": [
+        "sky",
+        "solar",
+        "contact",
+        "apertures"
+      ],
+      "coefficientDeltas": {
+        "sky": {
+          "values": 5040,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "closed-sky": {
+          "values": 5040,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "secondSky": {
+          "values": 5040,
+          "changed": 58,
+          "maxDelta": 0.0000152587890625
+        },
+        "closed-secondSky": {
+          "values": 5040,
+          "changed": 47,
+          "maxDelta": 0.00001430511474609375
+        },
+        "solar": {
+          "values": 306180,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "closed-solar": {
+          "values": 306180,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "secondSolar": {
+          "values": 306180,
+          "changed": 12,
+          "maxDelta": 0.00001239776611328125
+        },
+        "closed-secondSolar": {
+          "values": 306180,
+          "changed": 12,
+          "maxDelta": 0.00001239776611328125
+        }
+      }
+    },
+    {
+      "key": "house_a-living-1",
+      "householdStyle": 1,
+      "rawModuleBytes": 598334,
+      "validProbes": 239,
+      "changedFirstSkyWordsFromBase": 0,
+      "firstSkyMaxDelta": 0,
+      "externalSources": [
+        {
+          "sourceGLB": "assets/v2/household_living.glb",
+          "sourceSHA256": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a",
+          "sourceBlend": "assets/src/v2/pastoral/household-living-32.blend",
+          "blendSHA256": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4"
+        }
+      ],
+      "elapsedSeconds": 89.5338181660045,
+      "reusedPayloads": [
+        "sky",
+        "solar",
+        "contact",
+        "apertures"
+      ],
+      "coefficientDeltas": {
+        "sky": {
+          "values": 5040,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "closed-sky": {
+          "values": 5040,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "secondSky": {
+          "values": 5040,
+          "changed": 47,
+          "maxDelta": 0.000002205371856689453
+        },
+        "closed-secondSky": {
+          "values": 5040,
+          "changed": 37,
+          "maxDelta": 0.000003814697265625
+        },
+        "solar": {
+          "values": 306180,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "closed-solar": {
+          "values": 306180,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "secondSolar": {
+          "values": 306180,
+          "changed": 11,
+          "maxDelta": 0.0000019669532775878906
+        },
+        "closed-secondSolar": {
+          "values": 306180,
+          "changed": 11,
+          "maxDelta": 0.0000019669532775878906
+        }
+      }
+    },
+    {
+      "key": "house_a-living-2",
+      "householdStyle": 2,
+      "rawModuleBytes": 611755,
+      "validProbes": 239,
+      "changedFirstSkyWordsFromBase": 10,
+      "firstSkyMaxDelta": 0.000018596649169921875,
+      "externalSources": [
+        {
+          "sourceGLB": "assets/v2/household_living.glb",
+          "sourceSHA256": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a",
+          "sourceBlend": "assets/src/v2/pastoral/household-living-32.blend",
+          "blendSHA256": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4"
+        }
+      ],
+      "elapsedSeconds": 135.9295709580183,
+      "reusedPayloads": [
+        "solar",
+        "contact",
+        "apertures"
+      ],
+      "coefficientDeltas": {
+        "sky": {
+          "values": 5040,
+          "changed": 10,
+          "maxDelta": 0.000018596649169921875
+        },
+        "closed-sky": {
+          "values": 5040,
+          "changed": 12,
+          "maxDelta": 0.0000171661376953125
+        },
+        "secondSky": {
+          "values": 5040,
+          "changed": 93,
+          "maxDelta": 0.00000286102294921875
+        },
+        "closed-secondSky": {
+          "values": 5040,
+          "changed": 81,
+          "maxDelta": 0.0000019073486328125
+        },
+        "solar": {
+          "values": 306180,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "closed-solar": {
+          "values": 306180,
+          "changed": 0,
+          "maxDelta": 0
+        },
+        "secondSolar": {
+          "values": 306180,
+          "changed": 12,
+          "maxDelta": 0.000007331371307373047
+        },
+        "closed-secondSolar": {
+          "values": 306180,
+          "changed": 12,
+          "maxDelta": 0.000007331371307373047
+        }
+      }
+    }
+  ],
+  "sourceHouseUnchanged": true,
+  "sourceGLBUnchanged": true,
+  "validation": {
+    "variantTests": 7,
+    "existingRoomTests": 54,
+    "activeVolumeTextureSamples": 4,
+    "newRealtimeLights": 0,
+    "grid": [
+      9,
+      5,
+      7
+    ],
+    "validProbes": 239,
+    "allSourceHashesVerified": true,
+    "closedEndpointReadyRaceVerified": true,
+    "loadedOnEnteringHousehold": true
+  }
+}

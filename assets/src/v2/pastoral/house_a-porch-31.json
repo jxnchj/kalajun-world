@@ -1,0 +1,30 @@
+{
+  "version": "pastoral-porch-31",
+  "asset": "house_a",
+  "trianglesBefore": 115740,
+  "trianglesAfter": 140044,
+  "meshCountBefore": 260,
+  "meshCountAfter": 267,
+  "protectedMeshesUnchanged": 260,
+  "newTextures": 0,
+  "porchBoundsThree": {
+    "x0": -3.45,
+    "x1": 3.45,
+    "z0": 2.78,
+    "z1": 4.76
+  },
+  "deckTop": -0.115,
+  "frontBeamBottom": 1.945,
+  "frontClearance": 2.06,
+  "doorPath": {
+    "x0": 0.45,
+    "x1": 1.55,
+    "z0": 2.5,
+    "z1": 4.76
+  },
+  "limitations": [
+    "Designed porch, not a surveyed historic household.",
+    "Shared woodhouse prototype, not yet household-specific weathering and possessions.",
+    "Existing deep eave retained; new lean-to meets its front edge."
+  ]
+}

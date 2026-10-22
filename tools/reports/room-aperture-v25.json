@@ -1,0 +1,474 @@
+{
+  "house_a": {
+    "bounds": [
+      [
+        -3.3,
+        0.14500000000000002,
+        -2.1999999999999997
+      ],
+      [
+        3.3,
+        3.4230717132713404,
+        2.1999999999999997
+      ]
+    ],
+    "size": [
+      9,
+      5,
+      7
+    ],
+    "validProbes": 239,
+    "sourceGLB": "assets/v2/house_a_lived.glb",
+    "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+    "sourceBlend": "assets/src/v2/pastoral/house_a-lived.blend",
+    "blendSHA256": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+    "openings": [
+      {
+        "kind": "door",
+        "center": [
+          1,
+          0.995,
+          2.5
+        ],
+        "width": 1.1,
+        "height": 1.99,
+        "normal": [
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "kind": "window",
+        "center": [
+          -2,
+          1.45,
+          2.5
+        ],
+        "width": 1.25,
+        "height": 1.2,
+        "normal": [
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "kind": "window",
+        "center": [
+          0,
+          1.45,
+          -2.5
+        ],
+        "width": 1.25,
+        "height": 1.2,
+        "normal": [
+          0,
+          0,
+          -1
+        ]
+      }
+    ],
+    "encoding": "u8-opening-slabs",
+    "apertureSamples": 36,
+    "crownSamples": 32,
+    "summary": [
+      {
+        "opening": 0,
+        "meanVisibility": 0.4491609671798352,
+        "occludedProbes": 246,
+        "fullyBlockedProbes": 127,
+        "maxVisibility": 1.0
+      },
+      {
+        "opening": 1,
+        "meanVisibility": 0.39623308661008755,
+        "occludedProbes": 273,
+        "fullyBlockedProbes": 139,
+        "maxVisibility": 1.0
+      },
+      {
+        "opening": 2,
+        "meanVisibility": 0.4036021834118114,
+        "occludedProbes": 282,
+        "fullyBlockedProbes": 134,
+        "maxVisibility": 1.0
+      }
+    ]
+  },
+  "yurt": {
+    "bounds": [
+      [
+        -3.06,
+        0.135,
+        -3.06
+      ],
+      [
+        3.06,
+        3.12,
+        3.06
+      ]
+    ],
+    "size": [
+      9,
+      5,
+      9
+    ],
+    "validProbes": 185,
+    "sourceGLB": "assets/v2/yurt_lived.glb",
+    "sourceSHA256": "3f1d7f403d14f95123dd11c8821d9d707ea09190bf04d9fc33da34f7818a5d41",
+    "sourceBlend": "assets/src/v2/pastoral/yurt-lived.blend",
+    "blendSHA256": "d6bf408d024cf9794ec091422185e200096d7a36b4d27501c8f9e3792b7f7924",
+    "openings": [
+      {
+        "kind": "door",
+        "center": [
+          0,
+          0.775,
+          3.154
+        ],
+        "width": 1.1,
+        "height": 1.55,
+        "normal": [
+          0,
+          0,
+          1
+        ]
+      },
+      {
+        "kind": "roof-crown",
+        "center": [
+          0,
+          3.25,
+          0
+        ],
+        "radius": 0.62,
+        "partlyCovered": true,
+        "normal": [
+          0,
+          1,
+          0
+        ]
+      }
+    ],
+    "encoding": "u8-opening-slabs",
+    "apertureSamples": 36,
+    "crownSamples": 32,
+    "summary": [
+      {
+        "opening": 0,
+        "meanVisibility": 0.3970572660552704,
+        "occludedProbes": 286,
+        "fullyBlockedProbes": 225,
+        "maxVisibility": 1.0
+      },
+      {
+        "opening": 1,
+        "meanVisibility": 0.3065795325443427,
+        "occludedProbes": 405,
+        "fullyBlockedProbes": 216,
+        "maxVisibility": 0.9253522540490121
+      }
+    ]
+  },
+  "lanchuan-freedom-1": {
+    "bounds": [
+      [
+        -1.65,
+        0.14500000000000002,
+        -3.75
+      ],
+      [
+        4.1000000000000005,
+        2.5500000000000003,
+        3.15
+      ]
+    ],
+    "size": [
+      9,
+      5,
+      9
+    ],
+    "validProbes": 357,
+    "sourceGLB": "assets/v2/gh_lanchuan_rooms.glb",
+    "sourceSHA256": "b89c00c4c27dd181e8a1bc0f8be3845e74eae471a00ee59b78f4ed816604cd6a",
+    "sourceBlend": "assets/src/v2/settlements/lanchuan-freedom.blend",
+    "blendSHA256": "31b42bf4c641fb55da6535ace265633ef696005aa628695c32ebd14e977119a6",
+    "openings": [
+      {
+        "kind": "window",
+        "center": [
+          0.6,
+          1.24,
+          3.4
+        ],
+        "width": 2.4,
+        "height": 2.32,
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "skyWeight": 0.55
+      },
+      {
+        "kind": "window",
+        "center": [
+          1.5,
+          1.475,
+          -4
+        ],
+        "width": 1.3,
+        "height": 1.15,
+        "normal": [
+          0,
+          0,
+          -1
+        ],
+        "skyWeight": 0.85
+      },
+      {
+        "kind": "door",
+        "center": [
+          2.7,
+          1.15,
+          3.4
+        ],
+        "width": 1,
+        "height": 2.3,
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "skyWeight": 0.3
+      }
+    ],
+    "encoding": "u8-opening-slabs",
+    "apertureSamples": 36,
+    "crownSamples": 32,
+    "summary": [
+      {
+        "opening": 0,
+        "meanVisibility": 0.4168656161595011,
+        "occludedProbes": 397,
+        "fullyBlockedProbes": 64,
+        "maxVisibility": 1.0
+      },
+      {
+        "opening": 1,
+        "meanVisibility": 0.35243128689323333,
+        "occludedProbes": 404,
+        "fullyBlockedProbes": 125,
+        "maxVisibility": 1.0
+      },
+      {
+        "opening": 2,
+        "meanVisibility": 0.6380671217298036,
+        "occludedProbes": 238,
+        "fullyBlockedProbes": 84,
+        "maxVisibility": 1.0
+      }
+    ]
+  },
+  "lanchuan-freedom-2": {
+    "bounds": [
+      [
+        4.5,
+        0.14500000000000002,
+        -3.75
+      ],
+      [
+        9.700000000000001,
+        2.5500000000000003,
+        3.15
+      ]
+    ],
+    "size": [
+      9,
+      5,
+      9
+    ],
+    "validProbes": 357,
+    "sourceGLB": "assets/v2/gh_lanchuan_rooms.glb",
+    "sourceSHA256": "b89c00c4c27dd181e8a1bc0f8be3845e74eae471a00ee59b78f4ed816604cd6a",
+    "sourceBlend": "assets/src/v2/settlements/lanchuan-freedom.blend",
+    "blendSHA256": "31b42bf4c641fb55da6535ace265633ef696005aa628695c32ebd14e977119a6",
+    "openings": [
+      {
+        "kind": "window",
+        "center": [
+          5.9,
+          1.24,
+          3.4
+        ],
+        "width": 2.4,
+        "height": 2.32,
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "skyWeight": 0.55
+      },
+      {
+        "kind": "window",
+        "center": [
+          7.5,
+          1.475,
+          -4
+        ],
+        "width": 1.3,
+        "height": 1.15,
+        "normal": [
+          0,
+          0,
+          -1
+        ],
+        "skyWeight": 0.85
+      },
+      {
+        "kind": "door",
+        "center": [
+          8,
+          1.15,
+          3.4
+        ],
+        "width": 1,
+        "height": 2.3,
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "skyWeight": 0.3
+      }
+    ],
+    "encoding": "u8-opening-slabs",
+    "apertureSamples": 36,
+    "crownSamples": 32,
+    "summary": [
+      {
+        "opening": 0,
+        "meanVisibility": 0.4266710355116789,
+        "occludedProbes": 393,
+        "fullyBlockedProbes": 58,
+        "maxVisibility": 1.0
+      },
+      {
+        "opening": 1,
+        "meanVisibility": 0.3937665568836231,
+        "occludedProbes": 402,
+        "fullyBlockedProbes": 97,
+        "maxVisibility": 1.0
+      },
+      {
+        "opening": 2,
+        "meanVisibility": 0.6816709741491215,
+        "occludedProbes": 206,
+        "fullyBlockedProbes": 81,
+        "maxVisibility": 1.0
+      }
+    ]
+  },
+  "lanchuan-freedom-3": {
+    "bounds": [
+      [
+        10.1,
+        0.14500000000000002,
+        -3.75
+      ],
+      [
+        14.65,
+        2.5500000000000003,
+        3.15
+      ]
+    ],
+    "size": [
+      9,
+      5,
+      9
+    ],
+    "validProbes": 342,
+    "sourceGLB": "assets/v2/gh_lanchuan_rooms.glb",
+    "sourceSHA256": "b89c00c4c27dd181e8a1bc0f8be3845e74eae471a00ee59b78f4ed816604cd6a",
+    "sourceBlend": "assets/src/v2/settlements/lanchuan-freedom.blend",
+    "blendSHA256": "31b42bf4c641fb55da6535ace265633ef696005aa628695c32ebd14e977119a6",
+    "openings": [
+      {
+        "kind": "window",
+        "center": [
+          12,
+          1.24,
+          3.4
+        ],
+        "width": 2.6,
+        "height": 2.32,
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "skyWeight": 0.55
+      },
+      {
+        "kind": "window",
+        "center": [
+          12.5,
+          1.475,
+          -4
+        ],
+        "width": 1.3,
+        "height": 1.15,
+        "normal": [
+          0,
+          0,
+          -1
+        ],
+        "skyWeight": 0.85
+      },
+      {
+        "kind": "door",
+        "center": [
+          14,
+          1.15,
+          3.4
+        ],
+        "width": 0.9,
+        "height": 2.3,
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "skyWeight": 0.3
+      }
+    ],
+    "encoding": "u8-opening-slabs",
+    "apertureSamples": 36,
+    "crownSamples": 32,
+    "summary": [
+      {
+        "opening": 0,
+        "meanVisibility": 0.4231273964453187,
+        "occludedProbes": 397,
+        "fullyBlockedProbes": 60,
+        "maxVisibility": 1.0
+      },
+      {
+        "opening": 1,
+        "meanVisibility": 0.1828837199667223,
+        "occludedProbes": 405,
+        "fullyBlockedProbes": 142,
+        "maxVisibility": 0.8950484595442068
+      },
+      {
+        "opening": 2,
+        "meanVisibility": 0.613906709765606,
+        "occludedProbes": 249,
+        "fullyBlockedProbes": 89,
+        "maxVisibility": 1.0
+      }
+    ]
+  }
+}

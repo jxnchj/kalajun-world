@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "encoding": "gzip",
+  "gzipMtime": 0,
+  "assets": {
+    "assets/v2/household_living.glb": {
+      "url": "assets/v2/household_living.glb.gz",
+      "rawBytes": 2217276,
+      "gzipBytes": 548901,
+      "sha256": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a",
+      "gzipSha256": "a0409b3c79901e5d72fc768e4aa9c8ccea0c2cc27ae9e2c8d21bc86a18df81e9"
+    },
+    "assets/v2/gh_lanchuan_rooms.glb": {
+      "url": "assets/v2/gh_lanchuan_rooms.glb.gz",
+      "rawBytes": 13427892,
+      "gzipBytes": 5773454,
+      "sha256": "b89c00c4c27dd181e8a1bc0f8be3845e74eae471a00ee59b78f4ed816604cd6a",
+      "gzipSha256": "c5af836eb26539273e1a43148824d7e42786805941e47e517eef952bdfbb0fbb"
+    },
+    "assets/v2/house_a_lived.glb": {
+      "url": "assets/v2/house_a_lived.glb.gz",
+      "rawBytes": 11122824,
+      "gzipBytes": 5593482,
+      "sha256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+      "gzipSha256": "279d3401a102d06a551afb1ffe6744075a87a7ac9002ff586e5ade853d50212a"
+    },
+    "assets/v2/yurt_lived.glb": {
+      "url": "assets/v2/yurt_lived.glb.gz",
+      "rawBytes": 7935268,
+      "gzipBytes": 5293905,
+      "sha256": "3f1d7f403d14f95123dd11c8821d9d707ea09190bf04d9fc33da34f7818a5d41",
+      "gzipSha256": "0ddddbeff5a82b39941b91f1496f3204cea195f9ca5ba189da911326304005a0"
+    },
+    "assets/v2/schrenk-spruce-hi.glb": {
+      "url": "assets/v2/schrenk-spruce-hi.glb.gz",
+      "rawBytes": 8453404,
+      "gzipBytes": 5642941,
+      "sha256": "1d7c9bb7cdc6d7ff0ab312be2a9a25d6134bd4965d2795f271b1ac36289ef2d4",
+      "gzipSha256": "d436489bee81b1fc9d8069e69b3a8b9db59fd7912d400c97b55c77abffffc26e"
+    },
+    "assets/v2/schrenk-spruce-mid.glb": {
+      "url": "assets/v2/schrenk-spruce-mid.glb.gz",
+      "rawBytes": 4875884,
+      "gzipBytes": 3624257,
+      "sha256": "62bb75ede77ac18e5c16fa005fd605a24c7baf55cf5722f72e13d49c3a1fa6aa",
+      "gzipSha256": "99ef4928d7724fdfe46b895490eed48a850d32edf900fec8d5505983e59704c1"
+    },
+    "assets/barn.glb": {
+      "url": "assets/barn.glb.gz",
+      "rawBytes": 1492204,
+      "gzipBytes": 773677,
+      "sha256": "4b2b556f5194a886d73df8b4352f835344031f0280c250e54b61ddbbab117d2f",
+      "gzipSha256": "efeb2b8cf649b569a420ab3fffa90fbad21d3a2b8abbdb1155038e26e5994515"
+    },
+    "assets/house_b.glb": {
+      "url": "assets/house_b.glb.gz",
+      "rawBytes": 4536340,
+      "gzipBytes": 2451151,
+      "sha256": "216820e6067af93483656404f2ae4c4b4ac318aeef4db72abd7815f9b72d240b",
+      "gzipSha256": "f1403c8f49338d1b74bff8415c8856ae2ba9cea9560dc5aec15c92ca233401ef"
+    },
+    "assets/cabin_small.glb": {
+      "url": "assets/cabin_small.glb.gz",
+      "rawBytes": 4585816,
+      "gzipBytes": 2462171,
+      "sha256": "949072066eaa4afc88f4689be2e2f394a8c4e444c1045bc87e7c6b1d6df096c4",
+      "gzipSha256": "12f296422d2e0a4d2b5ad22549234b3e0f90edb01f9af514dbf87152cf022ef7"
+    },
+    "assets/lodge24.glb": {
+      "url": "assets/lodge24.glb.gz",
+      "rawBytes": 7567504,
+      "gzipBytes": 3121311,
+      "sha256": "0edd1c91236ba18f2b3d38484eab014986d08f49bdeb0dc784daaec46688181f",
+      "gzipSha256": "4cfa1b7838e538a9c720492578ec15fbfc90b5d4f37bf8f39dc3e969ebe55a1c"
+    },
+    "assets/gh_fj_hut.glb": {
+      "url": "assets/gh_fj_hut.glb.gz",
+      "rawBytes": 1498000,
+      "gzipBytes": 660451,
+      "sha256": "b75cd50c78dc4a92f9c902d19dad3a7367d38a37aa1114fb9ad12cbb2d6163a7",
+      "gzipSha256": "4ed56a7f5b014fc54e0d968903ee4673fd701a1257a9daa92650a22f0ad23272"
+    },
+    "assets/gh_fj_lodge.glb": {
+      "url": "assets/gh_fj_lodge.glb.gz",
+      "rawBytes": 4397296,
+      "gzipBytes": 1998173,
+      "sha256": "99c5dc227e32591cb28cb2af5982ee84bb2970defaa59a95bd1fe3f0948b45a2",
+      "gzipSha256": "e23711a88e90c7322d67f9541c44293d32db1b54441417d701b69530f12b5937"
+    },
+    "assets/gh_fj_shed.glb": {
+      "url": "assets/gh_fj_shed.glb.gz",
+      "rawBytes": 7175012,
+      "gzipBytes": 2938311,
+      "sha256": "cca18f409503afe80bb41ac61699886dad22bdf3b697eac14518e07b824e9fb8",
+      "gzipSha256": "04e9bc7c6627061445e085cd0ad5d28faad96fa4edade0aad18094d198de6bd1"
+    },
+    "assets/gh_lanchuan_lodge.glb": {
+      "url": "assets/gh_lanchuan_lodge.glb.gz",
+      "rawBytes": 5302896,
+      "gzipBytes": 2452416,
+      "sha256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+      "gzipSha256": "39ee308250cb45a683e5acfa621fc01c07b6a0d69793ee20427582077c1e6dd2"
+    },
+    "assets/gh_tl_wing.glb": {
+      "url": "assets/gh_tl_wing.glb.gz",
+      "rawBytes": 2198936,
+      "gzipBytes": 1257182,
+      "sha256": "989e0d3d76a3895d9b9da19a6b2a6b0e4ffdd56dbb48505e6d0393bf0476d867",
+      "gzipSha256": "2720ff71ae8f7f5f40396644a6aa690f509b79249c0540ae5391c9d896f5f2d1"
+    },
+    "assets/gh_tl_main.glb": {
+      "url": "assets/gh_tl_main.glb.gz",
+      "rawBytes": 1948984,
+      "gzipBytes": 1228334,
+      "sha256": "cccf1ae8272120fb830da23bce95a07782bfc33bf2ca76442a19be22d46bdd91",
+      "gzipSha256": "31b5dc91c4db2aac689c7ad293def39dcd5ea7b3bf878ce0ac0ad26f64c74218"
+    },
+    "assets/gh_qk_cabin.glb": {
+      "url": "assets/gh_qk_cabin.glb.gz",
+      "rawBytes": 3189276,
+      "gzipBytes": 1891819,
+      "sha256": "5e1bddc80900a9654a1811b370e4d1be1ebb84ddb62f55ef5497df4894b2bd75",
+      "gzipSha256": "af434b64218112f78e7ba7584b85a4eeb0c99c77afae2d5529e6ed438903c99b"
+    },
+    "assets/gh_qk_long.glb": {
+      "url": "assets/gh_qk_long.glb.gz",
+      "rawBytes": 4039464,
+      "gzipBytes": 1914858,
+      "sha256": "4041f01789b146fe53ae088f8c28d7b977b963975e9e754800eff1abfcd4cb3d",
+      "gzipSha256": "73cabec61f14a2e1809cea05216dd271a63af7ecd8875a7cf5c749c719cf9c7b"
+    },
+    "assets/haystack.glb": {
+      "url": "assets/haystack.glb.gz",
+      "rawBytes": 591860,
+      "gzipBytes": 537702,
+      "sha256": "feefbe8de9b1a2b967b698fbf325bdb8881dbe1f1127644dddba107298c1137a",
+      "gzipSha256": "0af03637d30419d58fbbb2db6a86ef0d8e6c1bea9e0d9a37cd5a4d357377825f"
+    },
+    "assets/swing.glb": {
+      "url": "assets/swing.glb.gz",
+      "rawBytes": 377072,
+      "gzipBytes": 313946,
+      "sha256": "7e8b656e4e679c075a2bd085908251b767226332e8482abacc5594bad90d2203",
+      "gzipSha256": "0b67079ddcdaec81e369392d21063cacb33f3b88f9e27e6690c029295b5778ea"
+    },
+    "assets/yurt_deck.glb": {
+      "url": "assets/yurt_deck.glb.gz",
+      "rawBytes": 3399696,
+      "gzipBytes": 2108753,
+      "sha256": "4b61d3f54a4aab520c2486a58105b314c7f64baa9689111ed99a93587e021370",
+      "gzipSha256": "9e2611b619b8863030bbd18d7651fc54a385ad0f73d7b4847a3bb6cc692fc563"
+    }
+  },
+  "totals": {
+    "assets": 21,
+    "rawBytes": 100332904,
+    "gzipBytes": 52587195,
+    "savedBytes": 47745709,
+    "savedPercent": 47.5873
+  }
+}

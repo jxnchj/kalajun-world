@@ -1,0 +1,194 @@
+[
+  {
+    "file": "kalajun-v32-route-brook.json",
+    "view": "brook-lanchuan",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-forest.json",
+    "view": "forest",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-house.json",
+    "view": "pastoral-house_a-entry",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-household0.json",
+    "view": "household-0",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-household1.json",
+    "view": "household-1",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-household2.json",
+    "view": "household-2",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-lanchuan1.json",
+    "view": "lanchuan-freedom-1",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-lanchuan2.json",
+    "view": "lanchuan-freedom-2",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-lanchuan3.json",
+    "view": "lanchuan-freedom-3",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-meadow.json",
+    "view": "meadow",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-pasture.json",
+    "view": "pasture-sheep",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-porch.json",
+    "view": "porch-house_a",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-river-forest.json",
+    "view": "river-forest",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-river-valley.json",
+    "view": "river-valley",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-west-slope.json",
+    "view": "west-slope",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  },
+  {
+    "file": "kalajun-v32-route-yurt.json",
+    "view": "pastoral-yurt-entry",
+    "ready": true,
+    "queue": 0,
+    "errors": [],
+    "viewport": {
+      "width": 1453,
+      "height": 839,
+      "pixelRatio": 1
+    }
+  }
+]

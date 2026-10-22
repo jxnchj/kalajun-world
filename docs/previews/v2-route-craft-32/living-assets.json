@@ -1,0 +1,94 @@
+{
+  "version": "household-living-32",
+  "variants": [
+    {
+      "style": 0,
+      "name": "porch-tea",
+      "triangles": 11780,
+      "meshes": 5,
+      "materials": [
+        "v2_pastoral_wood",
+        "v2_pastoral_brass",
+        "v2_pastoral_iron",
+        "v2_pastoral_ceramic",
+        "v2_pastoral_blue"
+      ]
+    },
+    {
+      "style": 1,
+      "name": "handwork",
+      "triangles": 11064,
+      "meshes": 5,
+      "materials": [
+        "v2_pastoral_wood",
+        "v2_pastoral_ceramic",
+        "v2_pastoral_pale",
+        "v2_pastoral_blue",
+        "v2_pastoral_linen"
+      ]
+    },
+    {
+      "style": 2,
+      "name": "airing-and-storage",
+      "triangles": 12428,
+      "meshes": 5,
+      "materials": [
+        "v2_pastoral_wood",
+        "v2_pastoral_pale",
+        "v2_pastoral_red",
+        "v2_pastoral_linen",
+        "v2_pastoral_blue"
+      ]
+    }
+  ],
+  "source": "assets/src/v2/pastoral/household-living-32.blend",
+  "glb": "web/public/assets/v2/household_living.glb",
+  "newTextures": 0,
+  "originalHouseAssetModified": false,
+  "limits": [
+    "Outdoor usage sets only; not surveyed household reconstruction.",
+    "Room GI fields unchanged: original house and openings unchanged; these low outdoor furnishings have baked local AO and realtime shadows.",
+    "Indoor furniture and household-specific shell variation remain later."
+  ],
+  "households": 113,
+  "styleCounts": [
+    40,
+    28,
+    45
+  ],
+  "sourceTriangles": 35272,
+  "instanceTriangles": 1340252,
+  "spatialMaterialBatches": 460,
+  "newRuntimeMaterialObjects": 0,
+  "rawBytes": 2217276,
+  "gzipBytes": 548901,
+  "sourceAndRuntimeDetailsRetained": true,
+  "checks": {
+    "newAssetAndPhysics": 7,
+    "combinedAssetCollisionRooms": 30,
+    "existingStructuresReuseTexturesDoors": 27,
+    "transportAssets": 21
+  },
+  "browserAcceptance": "Pending root agent actual browser acceptance",
+  "sourcePreview": "Three source Blender compositions rendered and visually inspected",
+  "sharedAssetsChanged": false,
+  "centralClearPathLocalX": [
+    0.45,
+    1.55
+  ],
+  "geometryAndRoomLimit": "Three household-specific sky/solar first and second bounces, contact, aperture and closed-door endpoints are rebuilt from the retained house plus the matching outdoor set, selected by stable householdStyle. This remains the existing two-bounce static approximation; not complete dynamic GI.",
+  "householdGI": {
+    "report": "household-room-v32.json",
+    "readySnapshot": "roomSkyBounce.household.ready && roomSkyBounce.household.closedReady && !roomSkyBounce.household.pending",
+    "tests": 7,
+    "existingRoomRegressionTests": 54,
+    "sourceGrid": [
+      9,
+      5,
+      7
+    ],
+    "validProbes": 239,
+    "newRealtimeLights": 0,
+    "activeVolumeSamples": 4
+  }
+}

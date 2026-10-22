@@ -1,0 +1,137 @@
+{
+  "column": {
+    "frames": {
+      "type": "Float32Array",
+      "length": 1171872,
+      "sha256": "43ad6b272b69521980b6f6adc1653b92c55c67c4cccb52c5b50ee359d35fe61d"
+    },
+    "variations": {
+      "type": "Float32Array",
+      "length": 855360,
+      "sha256": "3632f23856a39e9f62485c4d36795cc6c3c86e3d31ddd59a77e52bf53f81cebd"
+    },
+    "wood": {
+      "type": "Float32Array",
+      "length": 439452,
+      "sha256": "67366604843e5e664dd60ebb6691f3a4ee28cdc3ceda357b0b0bf578fa30383f"
+    },
+    "sharedVariations": {
+      "type": "Float32Array",
+      "length": 46080,
+      "sha256": "2bc59cc8d599aa8b75c76e3fd6f985903685d3d5564474af81c7fbde349eba29"
+    },
+    "variationKeys": {
+      "type": "Int16Array",
+      "length": 313,
+      "sha256": "2719b89ede49c38883f893cd8326fa73688c3522e619d1f96fdc8839be810fb1"
+    }
+  },
+  "edge": {
+    "frames": {
+      "type": "Float32Array",
+      "length": 1194336,
+      "sha256": "0d6874a515e3bbfc09fdc25632fe5604b1a437d0bcd2a24ff2f635b63c3343bc"
+    },
+    "variations": {
+      "type": "Float32Array",
+      "length": 872640,
+      "sha256": "d0bb2b5ee10c895f2fc5410df75e77917d11159578bdec4cbc7150c54cdbd503"
+    },
+    "wood": {
+      "type": "Float32Array",
+      "length": 447876,
+      "sha256": "80f5cbae3dbb1b5d65c57224c0ef01eff581237f38da8e9ccc7d04df2ce23178"
+    },
+    "sharedVariations": {
+      "type": "Float32Array",
+      "length": 46080,
+      "sha256": "2bc59cc8d599aa8b75c76e3fd6f985903685d3d5564474af81c7fbde349eba29"
+    },
+    "variationKeys": {
+      "type": "Int16Array",
+      "length": 319,
+      "sha256": "b457dd5f4c384d9ff28fb53fd8bea9bf518c8c6181be5f8e9bb6e8d338f5b9b4"
+    }
+  },
+  "old": {
+    "frames": {
+      "type": "Float32Array",
+      "length": 606528,
+      "sha256": "f863e1b9c91443292bc39da1afd3fb15e9d7363c2175ff419ace67708fb99135"
+    },
+    "variations": {
+      "type": "Float32Array",
+      "length": 420480,
+      "sha256": "39460aed89aafc24e4fb3250e3c6e43cd89dbaebc0c17813f7a33f3da6617375"
+    },
+    "wood": {
+      "type": "Float32Array",
+      "length": 227448,
+      "sha256": "19ef9dcd42620f45e8ccb66668cb9bb19d3a6fc17276e67ad0d48c3d7d409b14"
+    },
+    "sharedVariations": {
+      "type": "Float32Array",
+      "length": 46080,
+      "sha256": "2bc59cc8d599aa8b75c76e3fd6f985903685d3d5564474af81c7fbde349eba29"
+    },
+    "variationKeys": {
+      "type": "Int16Array",
+      "length": 162,
+      "sha256": "daf8e62a3067ea749236b6e9ff1ecfa3f296e8d05fa9db0b0689b02939635266"
+    }
+  },
+  "pencil": {
+    "frames": {
+      "type": "Float32Array",
+      "length": 670176,
+      "sha256": "52b9ffd00a179cccc880aed6a27e0cd27251ebea62aa8337315242a4e0071d19"
+    },
+    "variations": {
+      "type": "Float32Array",
+      "length": 469440,
+      "sha256": "0e7976b96891a97b06e108226bad2260110c7c0af38326c433a04deedbe0169d"
+    },
+    "wood": {
+      "type": "Float32Array",
+      "length": 251316,
+      "sha256": "42ee698179dbbd3519bb22c719aef8a775a3c33cab6b521bfee0baea4ef520a7"
+    },
+    "sharedVariations": {
+      "type": "Float32Array",
+      "length": 46080,
+      "sha256": "2bc59cc8d599aa8b75c76e3fd6f985903685d3d5564474af81c7fbde349eba29"
+    },
+    "variationKeys": {
+      "type": "Int16Array",
+      "length": 179,
+      "sha256": "c73880e9b4ae16874e5b68496a5ae960bf5c97b71245e4f3f6d692bee627158a"
+    }
+  },
+  "young": {
+    "frames": {
+      "type": "Float32Array",
+      "length": 936000,
+      "sha256": "bbb86ed9294409e016fc5edcc7bc7fc09d567a4c7a034a7d031f41a18284a879"
+    },
+    "variations": {
+      "type": "Float32Array",
+      "length": 673920,
+      "sha256": "eed5d560ab6e7f9cab029ec9da1513ad070521fef2bdb52261b8d39e8814debc"
+    },
+    "wood": {
+      "type": "Float32Array",
+      "length": 351000,
+      "sha256": "0285f3ab949c4edc534d9f55d928c53817d7ea9ba3909eaff983ea9d3b3a9748"
+    },
+    "sharedVariations": {
+      "type": "Float32Array",
+      "length": 46080,
+      "sha256": "2bc59cc8d599aa8b75c76e3fd6f985903685d3d5564474af81c7fbde349eba29"
+    },
+    "variationKeys": {
+      "type": "Int16Array",
+      "length": 250,
+      "sha256": "120c0b4398bcdfed7142194887fad76fdf599217703868ce6d6881647a0470ff"
+    }
+  }
+}

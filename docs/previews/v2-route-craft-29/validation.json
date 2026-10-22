@@ -1,0 +1,25 @@
+{
+  "version": "route-continuity-29",
+  "nodeTests": {
+    "passed": 712,
+    "failed": 0
+  },
+  "build": "passed",
+  "routeCount": 12,
+  "routesReady": true,
+  "consoleErrors": [],
+  "aholoUsed": false,
+  "globalLightingChanged": false,
+  "fullGIComplete": false,
+  "fluidForestFPS": false,
+  "coldStartSolved": false,
+  "shoreRemaining": "Right near-water light edge and regular creek silhouette remain.",
+  "farSlopeRemaining": "Fine mottling, composition and full near/far continuity remain; no new far-slope geometry this round.",
+  "collision": "Existing behavior retained; no new W/F/C acceptance claimed.",
+  "assetReport": "../../../tools/reports/bedding-v29.json",
+  "delivery": {
+    "width": 1453,
+    "height": 814,
+    "pixelRatio": 1
+  }
+}

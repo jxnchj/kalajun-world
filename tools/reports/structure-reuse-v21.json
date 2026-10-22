@@ -1,0 +1,64 @@
+{
+  "round": 21,
+  "scope": "Structures CPU preparation and per-frame distance reuse only; no browser/GPU/startup gain established",
+  "tests": {
+    "passed": 9,
+    "preparedGeometryDigests": 305,
+    "cameraSamples": 210,
+    "triangles": 9001843,
+    "originalMaterialKeys": 1219,
+    "reusedMaterialKeys": 292,
+    "sourceMaterialReuses": 927,
+    "originalDistanceTests": 6445,
+    "reusedDistanceTests": 364
+  },
+  "benchmark": {
+    "method": "Node; all 18 GLBs decoded before timing; one warmup load; alternating off/on; 120 warm update calls then 500 samples per group. Flat synthetic y=2200 building poses, original x/z/rotation/scale. Not actual browser/DEM.",
+    "samples": [
+      {
+        "reuse": false,
+        "prepareMs": 421.985125,
+        "updateMedianMs": 0.623375,
+        "updateP90Ms": 0.968375
+      },
+      {
+        "reuse": true,
+        "prepareMs": 404.15875,
+        "updateMedianMs": 0.582166,
+        "updateP90Ms": 0.830333
+      },
+      {
+        "reuse": false,
+        "prepareMs": 403.135334,
+        "updateMedianMs": 0.595417,
+        "updateP90Ms": 1.008458
+      },
+      {
+        "reuse": true,
+        "prepareMs": 375.319125,
+        "updateMedianMs": 0.588125,
+        "updateP90Ms": 0.873875
+      },
+      {
+        "reuse": false,
+        "prepareMs": 404.749334,
+        "updateMedianMs": 0.611959,
+        "updateP90Ms": 0.848209
+      },
+      {
+        "reuse": true,
+        "prepareMs": 373.864042,
+        "updateMedianMs": 0.567042,
+        "updateP90Ms": 0.805416
+      }
+    ],
+    "activeTrianglesEachSample": 2750520
+  },
+  "AB": [
+    "structurePreparationReuse=0",
+    "structureSelectionReuse=0"
+  ],
+  "runtimeAB": "WorldStructures.selectionReuse=false",
+  "visualChange": "none intended; attributes, material descriptors, sequential selections and shadow decisions equal in tests",
+  "backup": "backups/route-continuity-v21/web/src/v2/structures.js"
+}

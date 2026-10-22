@@ -1,0 +1,295 @@
+{
+  "round": 19,
+  "date": "2026-10-21",
+  "status": "implemented-and-browser-checked; frame-rate and first-device cold-start targets remain open",
+  "url": "http://127.0.0.1:5174/dist-v2/v2.html?view=river-forest&time=870",
+  "checks": {
+    "nodeFull": {
+      "passed": 514,
+      "log": "tests-release.log"
+    },
+    "afterFinalTimerReceiverFix": {
+      "passed": 13,
+      "log": "tests-local-final.log"
+    },
+    "blender": {
+      "passed": 7,
+      "log": "blender-tests.log"
+    },
+    "build": "build-release.log",
+    "canopySourceKey": "canopy-release.log"
+  },
+  "performance": {
+    "method": "native tree submission, unchanged quality, all terrain prepared, 160 RAF per group, final 80 frame intervals and renderer last60 query samples; CPU world updates excluded from final query",
+    "groups": [
+      {
+        "fm": false,
+        "gpuScope": "render-world-and-reflection",
+        "gpuIntervalMeanMs": 41.47576056666667,
+        "frameMeanMs": 99.16750000000002,
+        "frameMedianMs": 107.85000000000218,
+        "fpsFromMeanFrameInterval": 10.083948874379205,
+        "viewport": {
+          "width": 1453,
+          "height": 783,
+          "pixelRatio": 1
+        },
+        "trees": 80927,
+        "grassTufts": 19392,
+        "errors": []
+      },
+      {
+        "fm": true,
+        "gpuScope": "render-world-and-reflection",
+        "gpuIntervalMeanMs": 36.629466133333345,
+        "frameMeanMs": 96.8675000000001,
+        "frameMedianMs": 100.0,
+        "fpsFromMeanFrameInterval": 10.323379874570923,
+        "viewport": {
+          "width": 1453,
+          "height": 783,
+          "pixelRatio": 1
+        },
+        "trees": 80927,
+        "grassTufts": 19392,
+        "errors": []
+      },
+      {
+        "fm": false,
+        "gpuScope": "render-world-and-reflection",
+        "gpuIntervalMeanMs": 41.57198218333333,
+        "frameMeanMs": 102.5,
+        "frameMedianMs": 108.5,
+        "fpsFromMeanFrameInterval": 9.75609756097561,
+        "viewport": {
+          "width": 1453,
+          "height": 783,
+          "pixelRatio": 1
+        },
+        "trees": 80927,
+        "grassTufts": 19392,
+        "errors": []
+      },
+      {
+        "fm": true,
+        "gpuScope": "render-world-and-reflection",
+        "gpuIntervalMeanMs": 36.79963621666666,
+        "frameMeanMs": 97.49874999999993,
+        "frameMedianMs": 100.09999999999854,
+        "fpsFromMeanFrameInterval": 10.25654175053527,
+        "viewport": {
+          "width": 1453,
+          "height": 783,
+          "pixelRatio": 1
+        },
+        "trees": 80927,
+        "grassTufts": 19392,
+        "errors": []
+      }
+    ],
+    "previousBuildSameViewport": {
+      "fm": null,
+      "gpuScope": "legacy-frame-update-and-render",
+      "gpuIntervalMeanMs": 43.32475923333333,
+      "frameMeanMs": 111.25,
+      "frameMedianMs": 116.69999999999708,
+      "fpsFromMeanFrameInterval": 8.98876404494382,
+      "viewport": {
+        "height": 783,
+        "pixelRatio": 1,
+        "width": 1453
+      },
+      "trees": 80927,
+      "grassTufts": 19740,
+      "errors": []
+    },
+    "previousBuildCaveat": "One supplementary route18 snapshot at the same camera pose and viewport, but bank geometry/ecological placement differ. Its legacy GPU query scope includes CPU updates and is not compared to the new scope. Earlier 2179x1221 DPR1.5 measurements are not cross-compared.",
+    "densityEvidence": "FM off/on each retains 80927 trees and 19392 grass tufts at this viewpoint. No DPR/LOD/shadow resolution/reflection cadence reduction.",
+    "matrixReuse": "Removes one duplicate full-scene main-render matrix propagation. Targeted tests passed; no stable FPS benefit is separately claimed.",
+    "remaining": "End-to-end frame intervals still about 97-103ms in final paired run. GPU-clock query interval is not pure GPU busy-time; CPU submission and system scheduling can contribute. Near-forest smoothness remains unmet.",
+    "finalReturn": {
+      "file": "final-return.json",
+      "frameMeanMs": 80.20874999999997,
+      "fpsFromMeanFrameInterval": 12.467467701466491,
+      "gpuIntervalMeanMs": 35.31702103333334,
+      "viewport": {
+        "height": 783,
+        "pixelRatio": 1,
+        "width": 1453
+      },
+      "errors": [],
+      "caveat": "Supplementary final snapshot, not a replacement for the paired four-group results."
+    }
+  },
+  "loading": {
+    "method": "Same final build, no-store local HTTP asset responses, two local-derived-cache hits alternating with two cache-off runtime samples. Same 55 resources /144519398 encoded bytes, no zero-transfer asset responses. GPU/driver cache not reset.",
+    "groups": [
+      {
+        "label": "local-fixed-hit-1",
+        "moduleToCompleteFirstFrameMs": 12831.100000023842,
+        "navigationToCompleteFirstFrameMs": 13062.19999998808,
+        "newFirstFramePrograms": [],
+        "canopy": {
+          "bindMs": 0.9000000357627869,
+          "boundBytes": 18244324,
+          "decodedBytes": 18244324,
+          "enabled": true,
+          "localBytes": 18244324,
+          "localReadMs": 3249.199999988079,
+          "localSchedulerDelayMs": 3075.5,
+          "localStatus": "hit",
+          "localWaitBudgetMs": 150,
+          "mode": "local",
+          "networkBytes": 0,
+          "persistStatus": "not-needed",
+          "prefetch": true,
+          "prefetchLeadMs": 1136.399999976158,
+          "prefetchStartedMs": 241.19999998807907,
+          "sourceVerifyMs": 12.800000011920927,
+          "status": "active",
+          "usedParts": [
+            "near:column_frond",
+            "near:edge_frond",
+            "near:old_frond",
+            "near:pencil_frond",
+            "near:young_frond",
+            "hi:column_frond",
+            "hi:edge_frond",
+            "hi:old_frond",
+            "hi:pencil_frond",
+            "hi:young_frond",
+            "mid:column_frond",
+            "mid:edge_frond",
+            "mid:old_frond",
+            "mid:pencil_frond",
+            "mid:young_frond"
+          ]
+        },
+        "assetEncodedBytes": 144519398,
+        "assetTransferBytes": 144535898,
+        "errors": []
+      },
+      {
+        "label": "runtime-off-1-matrices-off",
+        "moduleToCompleteFirstFrameMs": 14273,
+        "navigationToCompleteFirstFrameMs": 14450.799999952316,
+        "newFirstFramePrograms": [],
+        "canopy": {
+          "enabled": false,
+          "mode": "off",
+          "status": "runtime"
+        },
+        "assetEncodedBytes": 144519398,
+        "assetTransferBytes": 144535898,
+        "errors": []
+      },
+      {
+        "label": "local-fixed-hit-2",
+        "moduleToCompleteFirstFrameMs": 12416.19999998808,
+        "navigationToCompleteFirstFrameMs": 12618.099999964235,
+        "newFirstFramePrograms": [],
+        "canopy": {
+          "bindMs": 0.800000011920929,
+          "boundBytes": 18244324,
+          "decodedBytes": 18244324,
+          "enabled": true,
+          "localBytes": 18244324,
+          "localReadMs": 103.5,
+          "localSchedulerDelayMs": 7.899999976158142,
+          "localStatus": "hit",
+          "localWaitBudgetMs": 50,
+          "mode": "local",
+          "networkBytes": 0,
+          "persistStatus": "not-needed",
+          "prefetch": true,
+          "prefetchLeadMs": 1079.300000011921,
+          "prefetchStartedMs": 209.39999997615817,
+          "sourceVerifyMs": 7.499999940395355,
+          "status": "active",
+          "usedParts": [
+            "near:column_frond",
+            "near:edge_frond",
+            "near:old_frond",
+            "near:pencil_frond",
+            "near:young_frond",
+            "hi:column_frond",
+            "hi:edge_frond",
+            "hi:old_frond",
+            "hi:pencil_frond",
+            "hi:young_frond",
+            "mid:column_frond",
+            "mid:edge_frond",
+            "mid:old_frond",
+            "mid:pencil_frond",
+            "mid:young_frond"
+          ]
+        },
+        "assetEncodedBytes": 144519398,
+        "assetTransferBytes": 144535898,
+        "errors": []
+      },
+      {
+        "label": "runtime-off-2",
+        "moduleToCompleteFirstFrameMs": 14066.799999952316,
+        "navigationToCompleteFirstFrameMs": 14266.899999976158,
+        "newFirstFramePrograms": [],
+        "canopy": {
+          "enabled": false,
+          "mode": "off",
+          "status": "runtime"
+        },
+        "assetEncodedBytes": 144519398,
+        "assetTransferBytes": 144535898,
+        "errors": []
+      }
+    ],
+    "excluded": [
+      "local-hit-A: intermediate timer Illegal invocation; not a hit and not included in benefit. Earlier timeout/fallback samples and network canopy experiment are not default-cache benefit evidence."
+    ],
+    "remaining": "The first-ever visit still derives geometry. 144.5 MB full asset transfer and scene preparation remain; truly cold GPU/compiler tail not proven solved."
+  },
+  "pixelRegression": {
+    "method": "same frozen dynamic time, shadow FM off vs on; original canvas PNG pairs",
+    "timesMinutes": [
+      550,
+      870,
+      1305
+    ],
+    "pairs": [
+      {
+        "phase": "morning",
+        "pngBytesIdentical": true
+      },
+      {
+        "phase": "noon",
+        "pngBytesIdentical": true
+      },
+      {
+        "phase": "evening",
+        "pngBytesIdentical": true
+      }
+    ],
+    "note": "21:45 is low sun with positive sun elevation, not full night."
+  },
+  "routes": {
+    "count": 11,
+    "snapshots": "final-routes.json",
+    "allReady": true,
+    "errors": [],
+    "imageAssociation": "Each download filename was checked against its actual snapshot view ID. Earlier current.png labels were corrected using the final captures."
+  },
+  "intermediate": [
+    "Far-slope multi-scale patches reduce single-scale repetition but macro landcover composition remains unfinished.",
+    "Forest reach has a real -2.80 to +2.72m bend shared by terrain/water/ecology, but exposed wet-bank bands still look regular. Other reaches retain their current centreline.",
+    "Room light is static two sky/solar diffuse bounces; external occluders, fixture bounce and moving furniture are not full GI.",
+    "Full-world lighting/color remains later in the existing plan. Fine needles and upper photo cards remain deferred."
+  ],
+  "motion": {
+    "file": "motion.json",
+    "image": "forest-turn-final.png",
+    "manualDrag": true,
+    "errors": [],
+    "restoredSceneMatrixFlag": true,
+    "returnedToDefaultPose": true
+  }
+}

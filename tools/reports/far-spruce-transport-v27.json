@@ -1,0 +1,16 @@
+{
+  "generator": "tools/build_far_spruce_transport.py",
+  "encoding": "rgb-planar-shared-albedo-alpha-v1",
+  "rawRGBABytes": 47185920,
+  "originalTransportBytes": 20834110,
+  "transportBytes": 18449996,
+  "savedBytes": 2384114,
+  "savedPercent": 11.443320593008293,
+  "outputRGBAUnchanged": true,
+  "normalRGBUnderZeroAlphaPreserved": true,
+  "originalFilesPreserved": true,
+  "normalRGBA_SHA256": "01987b18c085ce98937c933cfdac540e59a0c720d33fb543e0f843d323edb3d6",
+  "albedoRGBA_SHA256": "c873510df91566847274975feff59f8072d4105edc5b20071878466f8a6ace93",
+  "rejectedPredictors": "Sub, Up, Paeth and row-adaptive gzip yielded no material benefit; no prediction decoder was added",
+  "limits": "Transfer bytes only; no claim of full first-frame or frame-rate improvement"
+}

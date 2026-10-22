@@ -1,0 +1,83 @@
+{
+  "version": "route-continuity-27",
+  "implementationAndRouteQA": "complete",
+  "overallArtAndPerformance": "not_complete",
+  "nodeTests": {
+    "passed": 679,
+    "failed": 0,
+    "log": "tests-final.log"
+  },
+  "build": {
+    "config": "web/vite.v2.config.js",
+    "passed": true,
+    "log": "build-final.log"
+  },
+  "routes": {
+    "count": 12,
+    "allReady": true,
+    "allTerrainQueuesEmpty": true,
+    "allRuntimeErrorsEmpty": true,
+    "evidence": "final-routes.json"
+  },
+  "walking": {
+    "input": "actual Chrome extension keyboard presses",
+    "shoreStone": "blocked before original scanned mesh, 9 stones / 11340 triangles active",
+    "house": "closed door blocks; back away, F opens, W enters",
+    "yurt": "standing blocked by low doorway; C+W enters",
+    "evidence": [
+      "shore-walk.json",
+      "house-walk.json",
+      "yurt-walk.json"
+    ]
+  },
+  "assets": {
+    "blenderSoftGoods": 14,
+    "newTrianglesPerInterior": 32524,
+    "extraGLBBytesPerInterior": 662188,
+    "allAffectedGIRebaked": true,
+    "aholoUsed": false
+  },
+  "farTransport": {
+    "oldBytes": 20834110,
+    "newBytes": 18449996,
+    "savedBytes": 2384114,
+    "decodedRGBABytes": 47185920,
+    "pixelExact": true,
+    "gpuTextureResolutionAndSamplingUnchanged": true
+  },
+  "adopted": [
+    "lossless far RGB planar transport",
+    "bounded two-form preparation",
+    "finite aperture streaming edge integral",
+    "Blender soft goods and matching GI",
+    "local deposition-side shore lobes",
+    "original mesh shore collision"
+  ],
+  "notAdopted": [
+    "tree view proxy not enabled by default: CPU cost offsets GPU gains",
+    "deferred far normal sampling removed: GPU 41.68 vs 41.49ms not convincing"
+  ],
+  "remaining": [
+    "forest draw burden and complete cold startup",
+    "continuous mud strip / long straight reach",
+    "far slope composition and near-far coherence",
+    "complete dynamic GI",
+    "old hard-surface props, rest of fine asset families",
+    "collision outside supported wood/yurt/shore assets",
+    "full global lighting and color at original later stage"
+  ],
+  "consoleNotes": [
+    "An early candidate failed stale GLB transport byte metadata. Official transport builder refreshed metadata and payload; final load and all 12 routes passed.",
+    "Rapier emits existing initialization deprecation warning."
+  ],
+  "delivery": {
+    "url": "http://127.0.0.1:5174/v2.html?view=pastoral-house_a-entry&time=870",
+    "normalDPR": 1.5,
+    "viewport": [
+      2179,
+      1258
+    ],
+    "terrainQueue": 0,
+    "runtimeErrors": []
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "round": 20,
+  "date": "2026-10-21",
+  "status": "iteration implemented and browser checked; performance and final art targets NOT achieved",
+  "entry": "http://127.0.0.1:5174/dist-v2/v2.html?view=river-forest&time=870&profile=1",
+  "conditions": {
+    "viewport": [
+      1453,
+      783
+    ],
+    "DPR": 1,
+    "position": [
+      -3611.9813305250705,
+      2329.161214161885,
+      4805.371282289286
+    ],
+    "yaw": -30.90412352938094,
+    "pitch": -10,
+    "time": 870,
+    "terrain": "all prepared",
+    "canopyCache": 0,
+    "httpCache": "no-store",
+    "GPU_driver_cache": "not reset; not full-device cold start",
+    "sampleOrder": [
+      "baseline-A2",
+      "new-B1",
+      "baseline-A3",
+      "new-B2"
+    ],
+    "steady": "180 RAF; last 80 frame intervals / last 60 GPU queries",
+    "gpuScope": "render-world-and-reflection; may include CPU submission idle"
+  },
+  "performance": {
+    "samples": [
+      {
+        "label": "baseline-A2",
+        "firstMs": 7971.199999988079,
+        "frameMs": 35.0,
+        "gpuMs": 27.375087000000004,
+        "trees": 80927,
+        "grass": 19392,
+        "encodedBytes": 144519398,
+        "firstFrameMs": 259.80000001192093,
+        "shaderMs": 194.19999998807907
+      },
+      {
+        "label": "baseline-A3",
+        "firstMs": 8208.599999964237,
+        "frameMs": 35.832500000000074,
+        "gpuMs": 27.47034949999999,
+        "trees": 80927,
+        "grass": 19392,
+        "encodedBytes": 144519398,
+        "firstFrameMs": 329.19999998807907,
+        "shaderMs": 174.30000001192093
+      },
+      {
+        "label": "new-B1",
+        "firstMs": 8474.800000011921,
+        "frameMs": 34.790000000000006,
+        "gpuMs": 27.31917721666667,
+        "trees": 80927,
+        "grass": 19392,
+        "encodedBytes": 118340797,
+        "firstFrameMs": 766.5999999642372,
+        "shaderMs": 525.6999999880791
+      },
+      {
+        "label": "new-B2",
+        "firstMs": 8264.600000023842,
+        "frameMs": 35.41625000000003,
+        "gpuMs": 27.361237033333335,
+        "trees": 80927,
+        "grass": 19392,
+        "encodedBytes": 118340797,
+        "firstFrameMs": 369.4000000357628,
+        "shaderMs": 164
+      }
+    ],
+    "oldMean": {
+      "firstMs": 8089.899999976158,
+      "frameMs": 35.41625000000003,
+      "gpuMs": 27.422718249999996,
+      "encodedBytes": 144519398
+    },
+    "newMean": {
+      "firstMs": 8369.700000017881,
+      "frameMs": 35.10312500000002,
+      "gpuMs": 27.340207125000003,
+      "encodedBytes": 118340797
+    },
+    "conclusion": "No stable total-frame or full-startup gain demonstrated. Do not compare absolute FPS to round19 measurements made under different machine conditions."
+  },
+  "preserved": {
+    "trees": 80927,
+    "grass": 19392,
+    "densityDetailResolutionShadowQuality": "unchanged",
+    "needleTypedArrays": "25 arrays across 5 complete forms byte identical",
+    "shadowReflectionPixels": "frozen-dynamics PNG byte identical at minutes 550,870,1305"
+  },
+  "adopted": [
+    "compact shadow mutable-signature capture without cross-frame omission",
+    "reuse explicit reflection world-matrix propagation",
+    "exact scalar needle/packet preparation",
+    "15 additional lossless GLB transports and native HTTP gzip decode",
+    "regional meadow terrain-position layers without extra GPU samples",
+    "asymmetric bank toe adjustment inside protected profile envelope",
+    "one static diffuse bounce of existing fixtures in 3 guest rooms using existing light-field texture"
+  ],
+  "notEnabled": [
+    "background/balanced terrain yielding: faster asset callbacks but slower terrain, no net full-startup benefit"
+  ],
+  "checks": {
+    "node": {
+      "passed": 548,
+      "failed": 0,
+      "log": "tests-release.log"
+    },
+    "Blender": {
+      "passed": 2,
+      "log": "blender-fixture-tests-final.log"
+    },
+    "build": "build-release.log; passed, existing large chunk warning remains",
+    "GLB": "transport-check.json; lossless",
+    "canopy": "canopy-check.log; source key unchanged",
+    "browserRoutes": 11,
+    "browserRouteErrors": [
+      {
+        "view": "river-forest",
+        "errors": []
+      },
+      {
+        "view": "valley",
+        "errors": []
+      },
+      {
+        "view": "meadow",
+        "errors": []
+      },
+      {
+        "view": "forest",
+        "errors": []
+      },
+      {
+        "view": "river-valley",
+        "errors": []
+      },
+      {
+        "view": "brook-lanchuan",
+        "errors": []
+      },
+      {
+        "view": "lanchuan-freedom-1",
+        "errors": []
+      },
+      {
+        "view": "lanchuan-freedom-2",
+        "errors": []
+      },
+      {
+        "view": "lanchuan-freedom-3",
+        "errors": []
+      },
+      {
+        "view": "pastoral-house_a-entry",
+        "errors": []
+      },
+      {
+        "view": "pastoral-yurt-entry",
+        "errors": []
+      }
+    ],
+    "fixtureAB": "fixture-routes.json; actual morning and low-sun room toggles; dynamics not frozen, not a pixel-exact lighting benchmark",
+    "interaction": "real canvas drag changed yaw/pitch, errors empty; restored fixed camera",
+    "consoleErrors": []
+  },
+  "intermediate": [
+    "Forest near-view smoothness and first-load tail remain unresolved",
+    "Fine mottled/repetitive far slopes and grass distance transition remain visible",
+    "Long smooth bank bands remain visible despite toe adjustment",
+    "Guest fixture bounce is static one-bounce only; full GI and bathroom-specific transport not complete",
+    "Needle/upper crown photo-card issues deferred by user",
+    "Global light/color and final art pass stay later in existing plan"
+  ],
+  "evidence": [
+    "final-performance-summary.json",
+    "final-routes.json",
+    "fixture-routes.json",
+    "pixel-comparison.json",
+    "brush-byte-comparison.json",
+    "restored-default.json"
+  ],
+  "excludedEvidence": {
+    "v20-scan-ab.json": "nested reflection state was not cloned; do not use for per-group reflection claims",
+    "v20-scan-ab-exact.json": "only first 3 valid groups; fourth overlapped freeze; not a valid four-group comparison",
+    "blender-fixture-tests.log": "initial module-path failure; use final log",
+    "build-balanced.log": "wrong cwd experiment; use build-release.log"
+  }
+}

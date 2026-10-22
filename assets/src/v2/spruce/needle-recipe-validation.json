@@ -1,0 +1,311 @@
+{
+  "revision": "spruce-brush-recipe-v1",
+  "runtimePayloadBytes": 564101,
+  "baselinePayloadBytes": 120202908,
+  "fullComparisonPayloadBytes": 76554473,
+  "fullComparison": "assets/src/v2/spruce/inner-v7/exports/schrenk-spruce-needle.glb.gz",
+  "brushInstances": 1143,
+  "needlesPerBrush": 1440,
+  "trianglesPerBrush": 1596,
+  "totalTreeTriangles": 1895756,
+  "generatedFrondBytes": 269858880,
+  "allFormsMaxPositionErrorMetres": 1.4543533325195312e-05,
+  "allFormsMaxNormalAngleDegrees": 0.16039657633072837,
+  "uvMaxError": 0,
+  "windMaxError": 2.384185791015625e-07,
+  "aoMaxError": 5.960464477539063e-08,
+  "nodeGenerationMsObserved": [
+    4738.516625,
+    5005.3545
+  ],
+  "browserGenerationMs": {
+    "observedBuildMs": [
+      4270.8,
+      21302.30000001192,
+      4035,
+      4173.700000017881
+    ],
+    "scope": "fetch + decode + source validation + worker expansion + geometry bounds, not pure worker CPU",
+    "longOutlierDiagnosed": false,
+    "evidence": "docs/previews/v2-crown-water/final-evidence.json"
+  },
+  "gpuCost": {
+    "baselineMeanMs": 24.6886137,
+    "currentMeanMs": 26.886325933333335,
+    "baselineWindowsMs": [
+      24.741514816666665,
+      24.635712583333337
+    ],
+    "currentWindowsMs": [
+      26.877200966666667,
+      26.863489750000003,
+      26.918287083333336
+    ],
+    "costChangePercent": 8.901723928441285,
+    "viewport": [
+      2179,
+      1218
+    ],
+    "timeMinutes": 870,
+    "grassRoots": 19728,
+    "worldTrees": 80927,
+    "activeNearTreeRoots": 4,
+    "claim": "Whole-version detail cost comparison, not an isolated optimization benchmark."
+  },
+  "hiNeedleSharedStaticBytes": 1389696,
+  "tests": "64/64 targeted tree/recipe/alpha/wind/ecology tests passed",
+  "representation": "shared algorithm + per-brush source controls, seed, wind/AO; worker expands foliage VBO; not GPU brush instancing",
+  "editableSource": "schrenk-spruce-hi.blend controls + v2_spruce.py template; realised needle .blend is separately editable but arbitrary realised edits require explicit full GLB path",
+  "forms": [
+    {
+      "form": "column",
+      "ms": 1276.3760000000002,
+      "triangles": 485522,
+      "generatedBytes": 69915168,
+      "error": {
+        "position": {
+          "max": 1.2755393981933594e-05,
+          "differences": 1,
+          "first": {
+            "i": 99014,
+            "k": 0,
+            "a": 1.3113622665405273,
+            "b": 1.3113750219345093
+          }
+        },
+        "normal": {
+          "max": 0.0016711428761482239,
+          "differences": 3362148,
+          "first": {
+            "i": 83522,
+            "k": 2,
+            "a": 0.12452805787324905,
+            "b": 0.12619920074939728
+          }
+        },
+        "uv": {
+          "max": 0,
+          "differences": 0,
+          "first": null
+        },
+        "_plant_wind": {
+          "max": 2.384185791015625e-07,
+          "differences": 0,
+          "first": {
+            "i": 235590,
+            "k": 2,
+            "a": 3.8242287635803223,
+            "b": 3.824228525161743
+          }
+        },
+        "_crown_occlusion": {
+          "max": 0,
+          "differences": 0,
+          "first": null
+        }
+      }
+    },
+    {
+      "form": "edge",
+      "ms": 1217.2777079999998,
+      "triangles": 495566,
+      "generatedBytes": 71361504,
+      "error": {
+        "position": {
+          "max": 1.436471939086914e-05,
+          "differences": 4,
+          "first": {
+            "i": 57968,
+            "k": 0,
+            "a": -0.7224266529083252,
+            "b": -0.7224122881889343
+          }
+        },
+        "normal": {
+          "max": 0.0023357123136520386,
+          "differences": 3430454,
+          "first": {
+            "i": 127298,
+            "k": 0,
+            "a": -0.18305924534797668,
+            "b": -0.18539495766162872
+          }
+        },
+        "uv": {
+          "max": 0,
+          "differences": 0,
+          "first": null
+        },
+        "_plant_wind": {
+          "max": 2.384185791015625e-07,
+          "differences": 0,
+          "first": {
+            "i": 43380,
+            "k": 2,
+            "a": 3.698160171508789,
+            "b": 3.69815993309021
+          }
+        },
+        "_crown_occlusion": {
+          "max": 5.960464477539063e-08,
+          "differences": 0,
+          "first": {
+            "i": 1390484,
+            "k": 0,
+            "a": 0.7103344798088074,
+            "b": 0.7103345394134521
+          }
+        }
+      }
+    },
+    {
+      "form": "old",
+      "ms": 584.2755829999996,
+      "triangles": 241820,
+      "generatedBytes": 34822080,
+      "error": {
+        "position": {
+          "max": 8.225440979003906e-06,
+          "differences": 0,
+          "first": {
+            "i": 72749,
+            "k": 0,
+            "a": 1.8746209144592285,
+            "b": 1.8746126890182495
+          }
+        },
+        "normal": {
+          "max": 0.0022563114762306213,
+          "differences": 1715687,
+          "first": {
+            "i": 365168,
+            "k": 2,
+            "a": -0.06694192439317703,
+            "b": -0.06919823586940765
+          }
+        },
+        "uv": {
+          "max": 0,
+          "differences": 0,
+          "first": null
+        },
+        "_plant_wind": {
+          "max": 2.384185791015625e-07,
+          "differences": 0,
+          "first": {
+            "i": 240302,
+            "k": 2,
+            "a": 3.544440746307373,
+            "b": 3.544440507888794
+          }
+        },
+        "_crown_occlusion": {
+          "max": 0,
+          "differences": 0,
+          "first": null
+        }
+      }
+    },
+    {
+      "form": "pencil",
+      "ms": 634.086542,
+      "triangles": 268498,
+      "generatedBytes": 38663712,
+      "error": {
+        "position": {
+          "max": 1.4543533325195312e-05,
+          "differences": 3,
+          "first": {
+            "i": 145820,
+            "k": 0,
+            "a": -0.8982135057449341,
+            "b": -0.8982280492782593
+          }
+        },
+        "normal": {
+          "max": 0.0024471133947372437,
+          "differences": 1890436,
+          "first": {
+            "i": 56750,
+            "k": 0,
+            "a": 0.12795038521289825,
+            "b": 0.125503271818161
+          }
+        },
+        "uv": {
+          "max": 0,
+          "differences": 0,
+          "first": null
+        },
+        "_plant_wind": {
+          "max": 2.384185791015625e-07,
+          "differences": 0,
+          "first": {
+            "i": 572972,
+            "k": 2,
+            "a": 3.7027382850646973,
+            "b": 3.702738046646118
+          }
+        },
+        "_crown_occlusion": {
+          "max": 0,
+          "differences": 0,
+          "first": null
+        }
+      }
+    },
+    {
+      "form": "young",
+      "ms": 977.695041,
+      "triangles": 382614,
+      "generatedBytes": 55096416,
+      "error": {
+        "position": {
+          "max": 6.556510925292969e-06,
+          "differences": 0,
+          "first": {
+            "i": 83399,
+            "k": 2,
+            "a": 1.0962607860565186,
+            "b": 1.0962673425674438
+          }
+        },
+        "normal": {
+          "max": 0.0013355016708374023,
+          "differences": 2648351,
+          "first": {
+            "i": 517562,
+            "k": 2,
+            "a": 0.08076643943786621,
+            "b": 0.08210194110870361
+          }
+        },
+        "uv": {
+          "max": 0,
+          "differences": 0,
+          "first": null
+        },
+        "_plant_wind": {
+          "max": 2.384185791015625e-07,
+          "differences": 0,
+          "first": {
+            "i": 25056,
+            "k": 2,
+            "a": 3.389443874359131,
+            "b": 3.3894436359405518
+          }
+        },
+        "_crown_occlusion": {
+          "max": 5.960464477539063e-08,
+          "differences": 0,
+          "first": {
+            "i": 1055960,
+            "k": 0,
+            "a": 0.8691585659980774,
+            "b": 0.8691586256027222
+          }
+        }
+      }
+    }
+  ]
+}

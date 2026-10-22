@@ -1,0 +1,14 @@
+{
+  "name": "Poly Haven Rock 07",
+  "author": "Jenelle van Heerden",
+  "source": "https://polyhaven.com/a/rock_07",
+  "license": "CC0",
+  "licenseUrl": "https://polyhaven.com/license",
+  "sourceTriangles": 14844,
+  "runtimeTriangles": 1260,
+  "vertices": 879,
+  "textureResolution": 1024,
+  "transform": "Blender Z-up to Three Y-up; original UVs, centered shell, unit top, isotropic horizontal scale",
+  "material": "Original scan diffuse, GL normal, packed AO/roughness; runtime muted tint/waterline",
+  "collision": "Runtime and vegetation collision use this identical shell"
+}

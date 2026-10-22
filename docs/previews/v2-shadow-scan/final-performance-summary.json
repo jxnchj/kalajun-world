@@ -1,0 +1,46 @@
+[
+  {
+    "label": "baseline-A2",
+    "firstMs": 7971.199999988079,
+    "frameMs": 35.0,
+    "gpuMs": 27.375087000000004,
+    "trees": 80927,
+    "grass": 19392,
+    "encodedBytes": 144519398,
+    "firstFrameMs": 259.80000001192093,
+    "shaderMs": 194.19999998807907
+  },
+  {
+    "label": "baseline-A3",
+    "firstMs": 8208.599999964237,
+    "frameMs": 35.832500000000074,
+    "gpuMs": 27.47034949999999,
+    "trees": 80927,
+    "grass": 19392,
+    "encodedBytes": 144519398,
+    "firstFrameMs": 329.19999998807907,
+    "shaderMs": 174.30000001192093
+  },
+  {
+    "label": "new-B1",
+    "firstMs": 8474.800000011921,
+    "frameMs": 34.790000000000006,
+    "gpuMs": 27.31917721666667,
+    "trees": 80927,
+    "grass": 19392,
+    "encodedBytes": 118340797,
+    "firstFrameMs": 766.5999999642372,
+    "shaderMs": 525.6999999880791
+  },
+  {
+    "label": "new-B2",
+    "firstMs": 8264.600000023842,
+    "frameMs": 35.41625000000003,
+    "gpuMs": 27.361237033333335,
+    "trees": 80927,
+    "grass": 19392,
+    "encodedBytes": 118340797,
+    "firstFrameMs": 369.4000000357628,
+    "shaderMs": 164
+  }
+]

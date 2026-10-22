@@ -1,0 +1,80 @@
+{
+  "conditions": {
+    "viewport": "1453x839 DPR1",
+    "time": 870,
+    "camera": [
+      -3611.9813305250705,
+      2329.161214161885,
+      4805.371282289286
+    ],
+    "yaw": -30.90412352938094,
+    "pitch": -10,
+    "terrain": "all ready",
+    "warmupRAF": 180,
+    "frameSamples": 80,
+    "querySamples": 60,
+    "canopyCache": false,
+    "HTTP": "no-store built server",
+    "GPUDriverCache": "not reset",
+    "newQueue": 2
+  },
+  "samples": [
+    {
+      "label": "old-A1",
+      "version": "route-continuity-25",
+      "firstFrameMs": 10348.199999988079,
+      "frameMs": 100.82750000000001,
+      "renderQueryMs": 35.463900833333334,
+      "environmentCPUms": 19.85,
+      "branchAllBuiltMs": 9117.799999952316,
+      "branchResidentBytes": 21579760,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "errors": [],
+      "queuedTiles": 0
+    },
+    {
+      "label": "new-B1",
+      "version": "route-continuity-26",
+      "firstFrameMs": 11012.800000011921,
+      "frameMs": 100.62624999999998,
+      "renderQueryMs": 35.26764811666666,
+      "environmentCPUms": 13.316666671137016,
+      "branchAllBuiltMs": 4821.599999964237,
+      "branchResidentBytes": 21579760,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "errors": [],
+      "queuedTiles": 0
+    },
+    {
+      "label": "old-A2",
+      "version": "route-continuity-25",
+      "firstFrameMs": 11126.300000011921,
+      "frameMs": 104.79749999999994,
+      "renderQueryMs": 35.8356738,
+      "environmentCPUms": 20.86083333492279,
+      "branchAllBuiltMs": 9236,
+      "branchResidentBytes": 21579760,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "errors": [],
+      "queuedTiles": 0
+    },
+    {
+      "label": "new-B2",
+      "version": "route-continuity-26",
+      "firstFrameMs": 11110.800000011921,
+      "frameMs": 89.79124999999999,
+      "renderQueryMs": 35.338861316666666,
+      "environmentCPUms": 12.5858333359162,
+      "branchAllBuiltMs": 4874.5,
+      "branchResidentBytes": 21579760,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "errors": [],
+      "queuedTiles": 0
+    }
+  ],
+  "conclusion": "Environment CPU and branch preparation tail improved; whole-frame improvement inconsistent, forest still about 10-11fps; complete first frame not improved."
+}

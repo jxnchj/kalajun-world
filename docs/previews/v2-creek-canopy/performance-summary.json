@@ -1,0 +1,98 @@
+{
+  "conditions": "same v22 build, 1453x839 DPR1, fixed round21 camera/time870; canopyCache=0; local HTTP no-store; 180RAF then last80frame/60query; GPU/driver cache not reset",
+  "samples": [
+    {
+      "sample": "off-A1",
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "firstFrameMs": 10467,
+      "frameMeanMs": 105.41749999999993,
+      "fps": 9.486091019043334,
+      "renderQueryMs": 37.97663491666667,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "layout": {
+        "enabled": false,
+        "parts": 0,
+        "bytes": 0,
+        "buffersBefore": 0,
+        "buffersAfter": 0,
+        "prepareMs": 0
+      },
+      "errors": []
+    },
+    {
+      "sample": "on-B1",
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "firstFrameMs": 10443.899999976158,
+      "frameMeanMs": 102.29124999999999,
+      "fps": 9.776007234245354,
+      "renderQueryMs": 37.8860293,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "layout": {
+        "enabled": true,
+        "parts": 15,
+        "bytes": 16754320,
+        "buffersBefore": 80,
+        "buffersAfter": 15,
+        "prepareMs": 9.600000083446503
+      },
+      "errors": []
+    },
+    {
+      "sample": "off-A2",
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "firstFrameMs": 9896.300000011921,
+      "frameMeanMs": 90.62000000000003,
+      "fps": 11.035091591260203,
+      "renderQueryMs": 36.930191183333335,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "layout": {
+        "enabled": false,
+        "parts": 0,
+        "bytes": 0,
+        "buffersBefore": 0,
+        "buffersAfter": 0,
+        "prepareMs": 0
+      },
+      "errors": []
+    },
+    {
+      "sample": "on-B2",
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "firstFrameMs": 10327.399999976158,
+      "frameMeanMs": 88.32374999999998,
+      "fps": 11.321983045330393,
+      "renderQueryMs": 36.66176963333334,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "layout": {
+        "enabled": true,
+        "parts": 15,
+        "bytes": 16754320,
+        "buffersBefore": 80,
+        "buffersAfter": 15,
+        "prepareMs": 9.699999988079071
+      },
+      "errors": []
+    }
+  ],
+  "adoption": "interleaved default remains OFF; no stable whole-frame gain"
+}

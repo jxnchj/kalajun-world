@@ -1,0 +1,13 @@
+{
+  "revision": "needle-bundle-surface-v1",
+  "source": "assets/tex/spruce_atlas.png",
+  "width": 1024,
+  "height": 512,
+  "normalStrength": 0.65,
+  "maxEncodedSlope": 0.18,
+  "maxAngleDegrees": 10.203974723815918,
+  "coveredP95AngleDegrees": 8.169503211975098,
+  "albedoAndAlpha": "unchanged",
+  "geometry": "unchanged",
+  "lod": "hi only; runtime fade 10-38 m"
+}

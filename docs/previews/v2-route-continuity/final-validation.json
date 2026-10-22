@@ -1,0 +1,285 @@
+{
+  "date": "2026-10-20",
+  "version": "route-continuity-16",
+  "browser": "existing Chrome tab, existing Vite port 5174",
+  "method": "Actual page UI navigation and screenshots; read-only #stats.dataset.snapshot, existing profile=1 diagnostics. No artificial input frames used.",
+  "tests": {
+    "passed": 357,
+    "failed": 0,
+    "durationMs": 13678.765625
+  },
+  "build": {
+    "config": "vite.v2.config.js",
+    "entry": "dist-v2/v2.html",
+    "bundle": "v2-MEXn_RJW.js",
+    "status": "passed",
+    "warning": "existing large bundle warning"
+  },
+  "performance": [
+    {
+      "label": "aabb-first",
+      "version": "route-continuity-16",
+      "boundsMode": "packet-run-aabb",
+      "viewport": {
+        "width": 2179,
+        "height": 1221,
+        "pixelRatio": 1.5
+      },
+      "view": "river-forest",
+      "timeMinutes": 870,
+      "terrainQueued": 0,
+      "trees": 80927,
+      "brushes": 2005,
+      "residentNeedleTwigTriangles": 3199980,
+      "preparedGroups": 20,
+      "gpuSamples": 60,
+      "gpuMeanMs": 54.85703349999999,
+      "gpuMaxMs": 77.425999,
+      "frameSamples": 90,
+      "frameMeanMs": 67.95333333333336,
+      "localFirstFrameMs": 9005,
+      "errors": []
+    },
+    {
+      "label": "old-spheres",
+      "version": "route-continuity-16",
+      "boundsMode": "v15-parent-sphere",
+      "viewport": {
+        "width": 2179,
+        "height": 1221,
+        "pixelRatio": 1.5
+      },
+      "view": "river-forest",
+      "timeMinutes": 870,
+      "terrainQueued": 0,
+      "trees": 80927,
+      "brushes": 2005,
+      "residentNeedleTwigTriangles": 3199980,
+      "preparedGroups": 19,
+      "gpuSamples": 60,
+      "gpuMeanMs": 61.03473703333332,
+      "gpuMaxMs": 84.248083,
+      "frameSamples": 90,
+      "frameMeanMs": 75.27222222222223,
+      "localFirstFrameMs": 9268.299999952316,
+      "errors": []
+    },
+    {
+      "label": "aabb-repeat",
+      "version": "route-continuity-16",
+      "boundsMode": "packet-run-aabb",
+      "viewport": {
+        "width": 2179,
+        "height": 1221,
+        "pixelRatio": 1.5
+      },
+      "view": "river-forest",
+      "timeMinutes": 870,
+      "terrainQueued": 0,
+      "trees": 80927,
+      "brushes": 2005,
+      "residentNeedleTwigTriangles": 3199980,
+      "preparedGroups": 19,
+      "gpuSamples": 60,
+      "gpuMeanMs": 54.988403,
+      "gpuMaxMs": 75.973625,
+      "frameSamples": 90,
+      "frameMeanMs": 67.86666666666666,
+      "localFirstFrameMs": 9069.900000035763,
+      "errors": []
+    }
+  ],
+  "route": [
+    {
+      "view": "forest",
+      "version": "route-continuity-16",
+      "ready": true,
+      "preparing": false,
+      "errors": [],
+      "nearReady": true,
+      "nearDisplayMs": 1568.6000000238419,
+      "terrainQueuedAtDisplay": 217,
+      "roomLightActive": false,
+      "roomContactActive": false
+    },
+    {
+      "view": "meadow",
+      "version": "route-continuity-16",
+      "ready": true,
+      "preparing": false,
+      "errors": [],
+      "nearReady": true,
+      "nearDisplayMs": 1463.2999999523163,
+      "terrainQueuedAtDisplay": 116,
+      "roomLightActive": false,
+      "roomContactActive": false
+    },
+    {
+      "view": "brook-lanchuan",
+      "version": "route-continuity-16",
+      "ready": true,
+      "preparing": false,
+      "errors": [],
+      "nearReady": true,
+      "nearDisplayMs": 1908.300000011921,
+      "terrainQueuedAtDisplay": 147,
+      "roomLightActive": false,
+      "roomContactActive": false
+    },
+    {
+      "view": "river-valley",
+      "version": "route-continuity-16",
+      "ready": true,
+      "preparing": false,
+      "errors": [],
+      "nearReady": true,
+      "nearDisplayMs": 3552,
+      "terrainQueuedAtDisplay": 230,
+      "roomLightActive": false,
+      "roomContactActive": false
+    },
+    {
+      "view": "lanchuan-freedom-1",
+      "version": "route-continuity-16",
+      "ready": true,
+      "preparing": false,
+      "errors": [],
+      "nearReady": true,
+      "nearDisplayMs": 1791.5999999642372,
+      "terrainQueuedAtDisplay": 176,
+      "roomLightActive": true,
+      "roomContactActive": true
+    },
+    {
+      "view": "pastoral-house_a-entry",
+      "version": "route-continuity-16",
+      "ready": true,
+      "preparing": false,
+      "errors": [],
+      "nearReady": true,
+      "nearDisplayMs": 1577.3999999761581,
+      "terrainQueuedAtDisplay": 134,
+      "roomLightActive": true,
+      "roomContactActive": true
+    },
+    {
+      "view": "pastoral-yurt-entry",
+      "version": "route-continuity-16",
+      "ready": true,
+      "preparing": false,
+      "errors": [],
+      "nearReady": true,
+      "nearDisplayMs": 1358.800000011921,
+      "terrainQueuedAtDisplay": 93,
+      "roomLightActive": true,
+      "roomContactActive": true
+    },
+    {
+      "view": "valley",
+      "version": "route-continuity-16",
+      "ready": true,
+      "preparing": false,
+      "errors": [],
+      "nearReady": true,
+      "nearDisplayMs": 467.7000000476837,
+      "terrainQueuedAtDisplay": 94,
+      "roomLightActive": false,
+      "roomContactActive": false
+    }
+  ],
+  "images": [
+    {
+      "view": "forest",
+      "file": "forest.png",
+      "download": "kalajun-forest-2026-10-20T10-36-32-546Z.png",
+      "dimensions": [
+        2179,
+        1221
+      ]
+    },
+    {
+      "view": "meadow",
+      "file": "meadow.png",
+      "download": "kalajun-meadow-2026-10-20T10-37-00-792Z.png",
+      "dimensions": [
+        2179,
+        1221
+      ]
+    },
+    {
+      "view": "brook-lanchuan",
+      "file": "brook-lanchuan.png",
+      "download": "kalajun-brook-lanchuan-2026-10-20T10-37-28-538Z.png",
+      "dimensions": [
+        2179,
+        1221
+      ]
+    },
+    {
+      "view": "river-valley",
+      "file": "river-valley.png",
+      "download": "kalajun-river-valley-2026-10-20T10-38-01-641Z.png",
+      "dimensions": [
+        2179,
+        1221
+      ]
+    },
+    {
+      "view": "lanchuan-freedom-1",
+      "file": "lanchuan-freedom-1.png",
+      "download": "kalajun-lanchuan-freedom-1-2026-10-20T10-38-44-979Z.png",
+      "dimensions": [
+        2179,
+        1221
+      ]
+    },
+    {
+      "view": "pastoral-house_a-entry",
+      "file": "pastoral-house_a-entry.png",
+      "download": "kalajun-pastoral-house_a-entry-2026-10-20T10-39-13-293Z.png",
+      "dimensions": [
+        2179,
+        1221
+      ]
+    },
+    {
+      "view": "pastoral-yurt-entry",
+      "file": "pastoral-yurt-entry.png",
+      "download": "kalajun-pastoral-yurt-entry-2026-10-20T10-39-45-362Z.png",
+      "dimensions": [
+        2179,
+        1221
+      ]
+    },
+    {
+      "view": "valley",
+      "file": "valley.png",
+      "download": "kalajun-valley-2026-10-20T10-40-28-723Z.png",
+      "dimensions": [
+        2179,
+        1221
+      ]
+    }
+  ],
+  "pageConsoleErrors": [],
+  "limitations": [
+    "A/B isolates needle bounds inside v16; it is not a whole v15 versus v16 comparison.",
+    "Dynamic cloud/wind/shadow remained active; local warm measurements, not multi-device or cold-network guarantees.",
+    "Saved v15 image 2179x1218 differs from v16 2179x1221; do not use for pixel equality.",
+    "Near-ready transition timing is not whole-world readiness.",
+    "No all-view FPS guarantee or pixel-exact wind-frozen equivalence claimed.",
+    "Raw CDP became unavailable after a download wait. Native UI and existing DOM diagnostic data completed acceptance; no console security warning was bypassed.",
+    "Art quality remains intermediate: straight source river lines, coarse broad landcover/ground, near needles and upper cards deferred, complete GI and global colour pass pending."
+  ],
+  "cleanup": {
+    "temporaryViewportOverrideCleared": true,
+    "diagnosticsPanelCollapsed": true,
+    "finalView": "river-forest",
+    "finalReady": true,
+    "finalPreparing": false,
+    "finalErrors": [],
+    "existingServerPid": 64797,
+    "port": 5174,
+    "rawCdpRecoveredAtFinalCheck": true
+  }
+}

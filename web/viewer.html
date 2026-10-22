@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>资产预览</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #1b1f1c; color: #f4f1e6; font: 13px -apple-system, "PingFang SC", sans-serif; }
+      canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+      #ui { position: fixed; top: 10px; left: 10px; background: rgba(18, 22, 20, 0.6); padding: 8px 10px; border-radius: 8px; }
+      #ui select, #ui input { font: inherit; }
+    </style>
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+    <div id="ui">
+      <select id="asset"></select>
+      <label>时间 <input id="time" type="range" min="360" max="1380" value="1280" /></label>
+      <span id="info"></span>
+    </div>
+    <script type="module" src="./src/viewer.js"></script>
+  </body>
+</html>

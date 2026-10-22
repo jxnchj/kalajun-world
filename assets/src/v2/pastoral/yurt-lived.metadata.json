@@ -1,0 +1,125 @@
+{
+  "sourceAsset": "yurt",
+  "file": "yurt_lived.glb",
+  "count": 72,
+  "floor": {
+    "shape": "circle",
+    "radius": 3.16,
+    "y": 0.025
+  },
+  "floorY": 0.025,
+  "openings": [
+    {
+      "kind": "door",
+      "center": [
+        0,
+        0.775,
+        3.154
+      ],
+      "width": 1.1,
+      "height": 1.55,
+      "normal": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "kind": "roof-crown",
+      "center": [
+        0,
+        3.25,
+        0
+      ],
+      "radius": 0.62,
+      "partlyCovered": true,
+      "normal": [
+        0,
+        1,
+        0
+      ]
+    }
+  ],
+  "entry": {
+    "from": [
+      0,
+      1.55,
+      2.2
+    ],
+    "to": [
+      -0.35,
+      0.75,
+      -1.35
+    ]
+  },
+  "window": {
+    "from": [
+      0.15,
+      1.4,
+      0.6
+    ],
+    "to": [
+      0,
+      1.35,
+      9
+    ]
+  },
+  "representativeId": "yurts:-1551,3489:3337d4a3e634caaf",
+  "representativeXZ": [
+    -1551,
+    3489
+  ],
+  "source": "assets/src/v2/pastoral/yurt-lived.blend",
+  "references": [
+    {
+      "url": "https://www.xjyl.gov.cn/xjylz/c112431/202609/bcea37d2fb954a6eb04c437c40785efb.shtml",
+      "scope": "Qiongkushitai log-built dwellings beside river/forest; cultural context, not a measured interior",
+      "observed": "2026-10-19"
+    },
+    {
+      "url": "https://ich.unesco.org/en/RL/traditional-knowledge-and-skills-in-making-kyrgyz-kazakh-and-karakalpak-yurts-turkic-nomadic-dwellings-02284",
+      "scope": "wooden circular frame, felt covering, braided ropes, woven and embroidered decoration",
+      "observed": "2026-10-19"
+    },
+    {
+      "url": "https://archive.unesco-ichcap.org/eng/ek/sub2017_4/sub2.php",
+      "scope": "Kazakh/Kyrgyz yurt craft context; household items placed along kerege, not a local house survey",
+      "observed": "2026-10-19"
+    }
+  ],
+  "provenance": "Exterior shell meshes preserved from published legacy GLB in editable source; complete replacement interior and handcrafted textile patterns are design interpretations, not surveyed or photo-exact",
+  "coordinates": "Three local x,y,z (metadata); Blender source is x,-z,y",
+  "doorState": "fixed open; no interaction",
+  "materialContract": "PBR maps retained; COLOR_0 is AO/sky, not RGB; all new mesh nodes include extras.detailRole",
+  "limitations": [
+    "same template reused across the historical mixed layout",
+    "no indoor plumbing or modern hotel bathroom invented for the pastoral dwellings",
+    "wall/furniture collision and light probes not supplied by this asset"
+  ],
+  "interiorFinish": "Existing reed, lattice and felt envelope retained",
+  "bytes": 7935268,
+  "softGoods": {
+    "version": "pastoral-soft-goods-27",
+    "objects": 7,
+    "scope": "four folded blankets and three seat cushions; sewn geometry, original placement and exact envelope; existing materials",
+    "sourceRecipe": "tools/blender/v2_soft_goods.py"
+  },
+  "teaService": {
+    "version": "pastoral-tea-service-28",
+    "objects": 31,
+    "scope": "existing kettles, ceramic bowls and tea trays; curved hollow spouts, continuous handles, foot rings and rolled rims; unchanged placement/materials",
+    "sourceRecipe": "tools/blender/v2_tea_service.py"
+  },
+  "bedding": {
+    "version": "pastoral-bedding-29",
+    "objects": 2,
+    "scope": "existing filled quilts, compressed felt mattresses and fitted bed runner; unchanged objects, materials and placement",
+    "sourceRecipe": "tools/blender/v2_bedding.py"
+  },
+  "joinery": {
+    "version": "pastoral-joinery-30",
+    "objects": 3,
+    "scope": "framed beds, frame-and-panel storage chests, breadboard lids; house wall-supported entrance cross beam with curved knees outside door swing, 2.06m passage clearance",
+    "sourceRecipe": "tools/blender/v2_joinery.py"
+  }
+}

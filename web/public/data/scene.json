@@ -1,0 +1,26 @@
+{
+  "core": {
+    "size": 20480.0,
+    "res": 10.0,
+    "n": 2048
+  },
+  "far": {
+    "size": 81920.0,
+    "res": 80.0,
+    "n": 1024
+  },
+  "origin_utm": [
+    597060.0,
+    4756230.0
+  ],
+  "crs": "EPSG:32644",
+  "height_scale": 0.1,
+  "lat": 42.95,
+  "lon": 82.19,
+  "viewpoints": [],
+  "credits": [
+    "Copernicus DEM GLO-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA",
+    "ESA WorldCover 2021 (CC BY 4.0)",
+    "OpenStreetMap contributors (ODbL)"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "version": "pastoral-tea-service-28",
+  "scope": "4 existing kettles, 17 bowls and 2 trays across two reusable interiors; 67 existing mesh parts refined",
+  "aholoUsed": false,
+  "globalLightingChanged": false,
+  "newTextures": 0,
+  "assets": [
+    {
+      "asset": "house_a",
+      "meshCount": 259,
+      "changedMeshParts": 36,
+      "unchangedMeshPayloadsByteExact": 223,
+      "nodeTransformsExact": true,
+      "originalMaterialsExact": true,
+      "originalPackedImagesExact": true,
+      "trianglesBefore": 72160,
+      "trianglesAfter": 88868,
+      "triangleDelta": 16708,
+      "glbBytesBefore": 7912588,
+      "glbBytesAfter": 8277708,
+      "glbByteDelta": 365120,
+      "gzipBytesBefore": 4764357,
+      "gzipBytesAfter": 4910932,
+      "gzipByteDelta": 146575,
+      "glbSHA256": "5b7dd14c349311bd4bbfcda171c16bde9f5450eec6d6c5b4d7104aeb57b9946d",
+      "blendSource": "assets/src/v2/pastoral/house_a-lived.blend",
+      "sourceSHA256": "4780dde26dca99c760512a64b093647b939997f58628441213e1757a0d791a3c"
+    },
+    {
+      "asset": "yurt",
+      "meshCount": 92,
+      "changedMeshParts": 31,
+      "unchangedMeshPayloadsByteExact": 61,
+      "nodeTransformsExact": true,
+      "originalMaterialsExact": true,
+      "originalPackedImagesExact": true,
+      "trianglesBefore": 60124,
+      "trianglesAfter": 72392,
+      "triangleDelta": 12268,
+      "glbBytesBefore": 6891492,
+      "glbBytesAfter": 7168900,
+      "glbByteDelta": 277408,
+      "gzipBytesBefore": 4923061,
+      "gzipBytesAfter": 5046184,
+      "gzipByteDelta": 123123,
+      "glbSHA256": "ff9cb4a2600e97b58933d7e664bd4d6db4a73747e0347cc8c355a76f400cc907",
+      "blendSource": "assets/src/v2/pastoral/yurt-lived.blend",
+      "sourceSHA256": "9ed32183caf2181f47ac3088853505eef95505cb360b6bca0b30fb8d1adc5942"
+    }
+  ],
+  "verification": {
+    "assetTests": "12 passed: tools/reports/tea-service-v28-tests.log",
+    "giAndTransportTests": "66 passed: tools/reports/tea-service-v28-gi-tests.log",
+    "transportCheck": "20 source assets, exact gzip reconstruction: tools/reports/tea-service-v28-transport-check.log",
+    "giRebake": "84.26 s: open/closed two-bounce sky + solar, floor contact and aperture visibility",
+    "studioImage": "assets/src/v2/pastoral/tea-service-28.studio.png",
+    "browserAcceptance": "parent task performs actual route acceptance after combined build"
+  },
+  "remainingIntermediate": [
+    "This is a designed household interpretation, not an exact historic surveyed tea set.",
+    "Other simple fixtures, furniture and architecture retain existing intermediate geometry.",
+    "GI remains the established finite static two-diffuse-bounce model, not complete dynamic global illumination.",
+    "Added fine triangles and transfer bytes are real cost; no additional objects/material groups/textures, existing near detail range preserved."
+  ]
+}

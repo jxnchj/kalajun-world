@@ -1,0 +1,205 @@
+{
+  "round": 25,
+  "date": "2026-10-21",
+  "version": "route-continuity-25",
+  "status": "scoped implementation and browser verification complete; whole-project stage 3 ongoing",
+  "entry": "http://127.0.0.1:5174/v2.html?view=pastoral-yurt-window&time=870",
+  "tests": {
+    "fullSuite": {
+      "total": 623,
+      "initialPass": 621,
+      "initialFail": 2,
+      "evidence": "tests.log"
+    },
+    "repair": {
+      "files": [
+        "meadow-landform.test.js",
+        "shore-elevation.test.js"
+      ],
+      "reason": "assertions expected old three-component hydrology transfer and old exact cache allocation; original geographic/color SHA and cross-LOD equality retained",
+      "targetedPass": 11,
+      "targetedFail": 0,
+      "evidence": "layout-recheck.log",
+      "runtimeCodeChangedForRepair": false
+    },
+    "outcome": "all 623 cases covered by full run plus targeted repairs; no second full run claimed",
+    "pythonPhysicalChecks": 4,
+    "build": "passed; existing large-chunk warning remains"
+  },
+  "performance": {
+    "conditions": {
+      "viewport": "1453x839 DPR1",
+      "time": 870,
+      "camera": [
+        -3611.9813305250705,
+        2329.161214161885,
+        4805.371282289286
+      ],
+      "yaw": -30.90412352938094,
+      "pitch": -10,
+      "terrain": "all ready",
+      "warmupFrames": 180,
+      "frameSamples": 80,
+      "renderQuerySamples": 60,
+      "canopyCache": false,
+      "httpCache": "no-store",
+      "gpuDriverCache": "not reset",
+      "order": [
+        "old-A1",
+        "new-B1",
+        "old-A2",
+        "new-B2"
+      ]
+    },
+    "samples": [
+      {
+        "label": "old-A1",
+        "firstFrameMs": 29259.399999976158,
+        "frameMs": 98.95875000000088,
+        "renderQueryMs": 42.47158146666667,
+        "trees": 80927,
+        "grassTufts": 19395,
+        "doors": null,
+        "errors": []
+      },
+      {
+        "label": "new-B1",
+        "firstFrameMs": 27104.399999976158,
+        "frameMs": 103.33375000000005,
+        "renderQueryMs": 44.41383563333333,
+        "trees": 80927,
+        "grassTufts": 19395,
+        "doors": {
+          "ready": true,
+          "entries": 185,
+          "leaves": 257,
+          "triangles": 14508,
+          "batches": 14,
+          "moving": 0,
+          "revision": 0,
+          "active": null,
+          "shadowBatches": 0
+        },
+        "errors": []
+      },
+      {
+        "label": "old-A2",
+        "firstFrameMs": 28766.100000023842,
+        "frameMs": 103.75,
+        "renderQueryMs": 42.727036266666666,
+        "trees": 80927,
+        "grassTufts": 19395,
+        "doors": null,
+        "errors": []
+      },
+      {
+        "label": "new-B2",
+        "firstFrameMs": 27346.099999964237,
+        "frameMs": 103.95749999999998,
+        "renderQueryMs": 42.84416761666667,
+        "trees": 80927,
+        "grassTufts": 19395,
+        "doors": {
+          "ready": true,
+          "entries": 185,
+          "leaves": 257,
+          "triangles": 14508,
+          "batches": 14,
+          "moving": 0,
+          "revision": 0,
+          "active": null,
+          "shadowBatches": 0
+        },
+        "errors": []
+      }
+    ],
+    "conclusion": "No frame-rate improvement; forest remains around 10fps. New first-frame samples about 2s shorter in this run, not proof that device cold-start tail is solved."
+  },
+  "browser": {
+    "routes": 12,
+    "allRouteImagesVisuallyInspected": true,
+    "routeEvidence": "final-routes.json",
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "doors": "door-controls.json",
+    "nativeButtonClose": true,
+    "nativeFReopen": true,
+    "yurtLeavesClosed": [
+      {
+        "angle": 0,
+        "target": 0
+      },
+      {
+        "angle": 0,
+        "target": 0
+      }
+    ],
+    "returnState": {
+      "house": 0,
+      "yurt": 0,
+      "room": {
+        "loadedRooms": 2,
+        "pending": false,
+        "active": true,
+        "openness": 0,
+        "apertureFraction": 0,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      }
+    },
+    "restoredDefaultDoors": {
+      "house": 1,
+      "yurt": 1
+    },
+    "apertureComparison": "aperture.json",
+    "apertureFiveRoomPNGChanged": true,
+    "normalSourceEntry": {
+      "ready": true,
+      "preparing": false,
+      "terrainQueued": 0,
+      "errors": [],
+      "doors": {
+        "ready": true,
+        "entries": 185,
+        "leaves": 257,
+        "triangles": 14508,
+        "batches": 14,
+        "moving": 0,
+        "revision": 0,
+        "active": {
+          "id": "yurts:-1551,3489:3337d4a3e634caaf",
+          "name": "毡房门",
+          "target": "open",
+          "openness": 1
+        },
+        "shadowBatches": 6
+      }
+    },
+    "finalCanvas": "delivery.png",
+    "tabPreserved": true,
+    "note": "optional full-UI image export disconnected browser transport after canvas/JSON were saved; reconnected existing tab and marked it, no source/browser acceptance error"
+  },
+  "quality": {
+    "trees": 80927,
+    "grassTufts": 19395,
+    "densityReduced": false,
+    "geometryReduced": false,
+    "dprReduced": false,
+    "shadowReflectionQualityReduced": false,
+    "doorEntries": 185,
+    "doorLeaves": 257,
+    "doorTriangles": 14508,
+    "doorBatches": 14,
+    "doorGeometry": "extracted from original static building; total static plus door source triangle budget unchanged",
+    "terrainExtraCacheBytes": 262144,
+    "roomExtraGPUTextureBytes": 0,
+    "roomTextureSamples": 4
+  },
+  "remaining": [
+    "Continuous near-bank mineral shoulder and long straight Lanchuan creek remain visually evident; correction targets interpolation, not full bank art completion",
+    "Distant landcover shapes and near/far composition still incomplete",
+    "GI remains low-frequency up to two diffuse bounces, with baked door endpoints and interpolation for intermediate angles; not complete dynamic/specular multi-bounce GI",
+    "Door collision/continuous walking not implemented; threshold stone and grass intersections remain",
+    "Forest around 10fps, no frame-rate improvement; startup around 27s still slow",
+    "Full lighting/color pass remains later; fine needles and upper photo-card branches remain deferred"
+  ]
+}

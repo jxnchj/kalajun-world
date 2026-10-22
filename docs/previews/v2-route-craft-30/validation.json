@@ -1,0 +1,50 @@
+{
+  "version": "route-continuity-30",
+  "nodeTests": {
+    "passed": 728,
+    "failed": 0
+  },
+  "assetTests": 14,
+  "GIAndTransportTests": 69,
+  "gzipReadbackAssets": 20,
+  "build": "passed",
+  "routeCount": 13,
+  "routesReady": true,
+  "aholoUsed": false,
+  "globalLightingChanged": false,
+  "worldTargetMSAA": 4,
+  "fullGIComplete": false,
+  "fluidForestFPS": false,
+  "coldStartSolved": false,
+  "shoreRemaining": "Near-water bright edge and regular creek shape remain. Organic surface chain continuity improved, not fully fixed.",
+  "farSlopeRemaining": "Directional macro bands and full near/far composition remain; no new far-slope geometry.",
+  "porchRemaining": "Under-eave beam and curved supports only; full porch unfinished.",
+  "assetReport": "../../../tools/reports/joinery-v30.json",
+  "consoleErrors": [],
+  "delivery": {
+    "width": 1453,
+    "height": 814,
+    "pixelRatio": 1
+  },
+  "doorUIAcceptance": {
+    "closed": {
+      "id": "cabins:-1743,3612:30f9adc9fb584805",
+      "name": "木屋门",
+      "target": "closed",
+      "openness": 0,
+      "position": "closed",
+      "pending": false,
+      "blocked": false
+    },
+    "reopened": {
+      "id": "cabins:-1743,3612:30f9adc9fb584805",
+      "name": "木屋门",
+      "target": "open",
+      "openness": 1,
+      "position": "open",
+      "pending": false,
+      "blocked": false
+    },
+    "closedInterior": "route-house-closed.png"
+  }
+}

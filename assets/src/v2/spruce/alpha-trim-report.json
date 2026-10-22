@@ -1,0 +1,53 @@
+{
+  "revision": "conservative-fixed-topology-v1",
+  "endInsets": {
+    "bottom_left": 0.38,
+    "bottom_right": 0.0,
+    "top_left": 0.0,
+    "top_right": 0.05
+  },
+  "lods": {
+    "hi": {
+      "column_frond": {
+        "verticesMoved": 2340,
+        "vertices": 22824,
+        "triangles": 13752,
+        "areaBefore": 789.7278773762519,
+        "areaAfter": 756.5836151252443,
+        "areaRemovedFraction": 0.04196921901899209
+      },
+      "edge_frond": {
+        "verticesMoved": 2456,
+        "vertices": 23632,
+        "triangles": 14272,
+        "areaBefore": 847.6340222896542,
+        "areaAfter": 810.550816206116,
+        "areaRemovedFraction": 0.04374907696999697
+      },
+      "old_frond": {
+        "verticesMoved": 1712,
+        "vertices": 16456,
+        "triangles": 9940,
+        "areaBefore": 657.2902246969752,
+        "areaAfter": 628.7542946902104,
+        "areaRemovedFraction": 0.04341450539587821
+      },
+      "pencil_frond": {
+        "verticesMoved": 1664,
+        "vertices": 15904,
+        "triangles": 9616,
+        "areaBefore": 375.8978073662147,
+        "areaAfter": 358.91630644057295,
+        "areaRemovedFraction": 0.045175844585594205
+      },
+      "young_frond": {
+        "verticesMoved": 1876,
+        "vertices": 18092,
+        "triangles": 10922,
+        "areaBefore": 706.7175703309476,
+        "areaAfter": 676.2999696271145,
+        "areaRemovedFraction": 0.04304067421104152
+      }
+    }
+  }
+}

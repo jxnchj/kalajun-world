@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-20",
+  "version": "world-coordination-15",
+  "context": "Actual Chrome / Apple M4 Pro. Performance canvas 2179x1218 DPR1.5 at14:30, cloud and shadow update running normally, terrain/ecology queues zero. GPU trailing60 and frame trailing90. Local single-session observations, not cold-network or cross-hardware guarantees.",
+  "lighting": {
+    "old": {
+      "sun": 3.25,
+      "bounce": 0.3,
+      "environment": 0.85,
+      "cloudCoverage": 0.48,
+      "cloudDensity": 0.6
+    },
+    "new": {
+      "sun": 4.8,
+      "bounce": 0.48,
+      "environment": 1,
+      "cloudCoverage": 0.36,
+      "cloudDensity": 0.5
+    },
+    "unchanged": [
+      "solar direction",
+      "solar colour",
+      "exposure curve (noon0.85)",
+      "albedo",
+      "sky radiance scale",
+      "aerial scattering"
+    ]
+  },
+  "performance": [
+    {
+      "view": "forest",
+      "entry": "route switch from meadow",
+      "gpuMeanMs": 8.917159966666667,
+      "frameMeanMs": 16.666666666666668,
+      "residentRoots": 44877
+    },
+    {
+      "view": "river-forest",
+      "entry": "route switch from forest/meadow",
+      "gpuMeanMs": 49.101520266666654,
+      "frameMeanMs": 61.48111111111163,
+      "residentRoots": 85004
+    },
+    {
+      "view": "river-forest",
+      "entry": "direct URL v14 baseline",
+      "gpuMeanMs": 38.23166063333333,
+      "frameMeanMs": 45.74222222222225,
+      "residentRoots": 80927,
+      "localFirstFrameMs": 7161.5
+    },
+    {
+      "view": "river-forest",
+      "entry": "direct URL v15",
+      "gpuMeanMs": 48.87304888333333,
+      "frameMeanMs": 60.551111111111176,
+      "residentRoots": 80927,
+      "localFirstFrameMs": 15830.69999998808
+    },
+    {
+      "view": "river-forest",
+      "entry": "direct URL v15 with only forestLayout=v14",
+      "gpuMeanMs": 39.30972441666666,
+      "frameMeanMs": 46.482222222222155,
+      "residentRoots": 80927,
+      "localFirstFrameMs": 7113.300000011921
+    }
+  ],
+  "forestLayoutCost": {
+    "old": {
+      "nearActiveRoots": 4,
+      "nearNeedleTriangles": 1408914,
+      "brushInstances": 835,
+      "detailBrushInstances": 60,
+      "highActiveInstances": 231,
+      "midActiveInstances": 2898
+    },
+    "new": {
+      "nearActiveRoots": 6,
+      "nearNeedleTriangles": 3313134,
+      "brushInstances": 2005,
+      "detailBrushInstances": 762,
+      "highActiveInstances": 234,
+      "midActiveInstances": 2982
+    },
+    "interpretation": "New placement moves a mature pencil spruce from6.92m to2.65m, changes local LOD membership and screen coverage. Same global count does not mean equal draw cost. No performance win claimed; near creek regresses in this fixed view. Do not compare cached-route root totals with direct entry totals."
+  },
+  "switches": [
+    {
+      "view": "pastoral-house_a-entry",
+      "revealMs": 1551.899999976158,
+      "distantTilesPendingAtReveal": 140
+    },
+    {
+      "view": "pastoral-yurt-entry",
+      "revealMs": 1188.300000011921,
+      "distantTilesPendingAtReveal": 100
+    }
+  ],
+  "checks": {
+    "testsPassed": 351,
+    "testsFailed": 0,
+    "productionBuild": "passed; v2-BrKk2wLU.js, existing chunk-size warning",
+    "shaderAndPageErrors": [],
+    "routes": [
+      "meadow",
+      "forest",
+      "river-forest",
+      "valley",
+      "pastoral-house_a-entry",
+      "pastoral-yurt-entry",
+      "lanchuan-freedom-1"
+    ],
+    "timesMinutes": [
+      600,
+      870,
+      1260
+    ],
+    "roomContactAndSolarBounceActive": true,
+    "roomLimit": "static one diffuse solar bounce; no external occluders"
+  },
+  "meadowPattern": {
+    "textureResolution": 512,
+    "textureBytes": 1048576,
+    "fourfoldGradientAxisBiasBefore": [
+      0.511,
+      0.488,
+      0.248,
+      0.506
+    ],
+    "fourfoldGradientAxisBiasAfter": [
+      0.038,
+      0.07,
+      0.039,
+      0.091
+    ],
+    "generationApproxMsBefore": 50,
+    "generationApproxMsAfter": 120,
+    "fixtureGrassRootsBoth": 3262,
+    "fixtureFlowerSelectionsBoth": 2210,
+    "geometryAndRootHashesIdentical": true
+  },
+  "forestLayout": {
+    "realFixtureRootCountsBoth": [
+      5987,
+      841,
+      7620
+    ],
+    "maxDisplacementMetres": 18,
+    "minimumSpacingMetres": 2.6,
+    "sourceMembershipAndVariantsPreserved": true,
+    "placementMustAvoid": [
+      "roads",
+      "building foundations",
+      "wet shores",
+      "low forest cover"
+    ]
+  },
+  "shore": {
+    "change": "separate soil saturation from surface water film, retain dry and saturation endpoints",
+    "addedTextures": 0,
+    "addedGeometry": 0,
+    "geometryReconstruction": false
+  },
+  "visualEvidence": {
+    "format": "original page canvas PNG, unretouched",
+    "forestComparisons": "forest-baseline.png, forest-lighting-only.png, forest-after.png; same2179x1218 view14:30, cloud time60 frozen for images only; NOT performance runs",
+    "meadowBaselineLimitation": "meadow-baseline.png is1453x783, do not make pixelwise comparison with final2179x1218",
+    "otherImages": [
+      "meadow-after.png",
+      "creek-after.png",
+      "valley-after.png",
+      "woodhouse-after.png",
+      "yurt-after.png",
+      "guestroom-after.png",
+      "meadow-morning.png",
+      "meadow-evening.png"
+    ]
+  },
+  "remaining": [
+    "fine needles and upper photographic branch cards explicitly deferred",
+    "forest ages and gaps still too uniform at regional scale",
+    "macro landcover boundaries and far meadow composition remain intermediate",
+    "creek bank geometry still too continuous and regular",
+    "near forest creek GPU performance and first-frame long tail not solved; fixed view slower this iteration",
+    "room materials and multi-bounce indirect light remain intermediate; no new interior assets this iteration",
+    "not reference-video visual acceptance or all-world completion"
+  ],
+  "normalEntryCheck": {
+    "url": "http://127.0.0.1:5174/v2.html?view=meadow&time=870",
+    "version": "world-coordination-15",
+    "ready": true,
+    "preparing": false,
+    "terrainQueue": 0,
+    "ecologyQueue": 0,
+    "errors": [],
+    "viewport": [
+      1453,
+      783
+    ],
+    "pixelRatio": 1,
+    "lightingProfile": "v15"
+  }
+}

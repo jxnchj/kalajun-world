@@ -1,0 +1,391 @@
+{
+  "version": "pastoral-soft-goods-27",
+  "assets": [
+    {
+      "asset": "house_a",
+      "version": "pastoral-soft-goods-27",
+      "objects": [
+        {
+          "name": "pastoral_house_chest_folded0",
+          "kind": "folded blanket",
+          "bounds": [
+            [
+              -0.41999998688697815,
+              -0.27000001072883606,
+              -0.04749999940395355
+            ],
+            [
+              0.41999998688697815,
+              0.27000001072883606,
+              0.04749999940395355
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 2940,
+          "trianglesBefore": 108,
+          "trianglesAfter": 5872,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_house_chest_folded1",
+          "kind": "folded blanket",
+          "bounds": [
+            [
+              -0.41999998688697815,
+              -0.27000001072883606,
+              -0.04749999940395355
+            ],
+            [
+              0.41999998688697815,
+              0.27000001072883606,
+              0.04749999940395355
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 2940,
+          "trianglesBefore": 108,
+          "trianglesAfter": 5872,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_house_chest_folded2",
+          "kind": "folded blanket",
+          "bounds": [
+            [
+              -0.41999998688697815,
+              -0.27000001072883606,
+              -0.04749999940395355
+            ],
+            [
+              0.41999998688697815,
+              0.27000001072883606,
+              0.04749999940395355
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 2940,
+          "trianglesBefore": 108,
+          "trianglesAfter": 5872,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_house_chest_folded3",
+          "kind": "folded blanket",
+          "bounds": [
+            [
+              -0.41999998688697815,
+              -0.27000001072883606,
+              -0.04749999940395355
+            ],
+            [
+              0.41999998688697815,
+              0.27000001072883606,
+              0.04749999940395355
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 2940,
+          "trianglesBefore": 108,
+          "trianglesAfter": 5872,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_house_floor_cushion",
+          "kind": "seat cushion",
+          "bounds": [
+            [
+              -0.26499998569488525,
+              -0.25999999046325684,
+              -0.07999999821186066
+            ],
+            [
+              0.26499998569488525,
+              0.25999999046325684,
+              0.07999999821186066
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 1634,
+          "trianglesBefore": 108,
+          "trianglesAfter": 3264,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_house_floor_cushion.001",
+          "kind": "seat cushion",
+          "bounds": [
+            [
+              -0.26499998569488525,
+              -0.25999999046325684,
+              -0.07999999821186066
+            ],
+            [
+              0.26499998569488525,
+              0.25999999046325684,
+              0.07999999821186066
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 1634,
+          "trianglesBefore": 108,
+          "trianglesAfter": 3264,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_house_floor_cushion.002",
+          "kind": "seat cushion",
+          "bounds": [
+            [
+              -0.26499998569488525,
+              -0.25999999046325684,
+              -0.07999999821186066
+            ],
+            [
+              0.26499998569488525,
+              0.25999999046325684,
+              0.07999999821186066
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 1634,
+          "trianglesBefore": 108,
+          "trianglesAfter": 3264,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        }
+      ],
+      "changedMeshes": 7,
+      "protectedMeshesUnchanged": 252,
+      "contactAORebaked": 7,
+      "source": "assets/src/v2/pastoral/house_a-lived.blend",
+      "glbBytes": 7912588,
+      "previousGLBBytes": 7250400,
+      "gzipBytes": 4764357,
+      "previousGzipBytes": 4416124,
+      "triangleIncrease": 32524
+    },
+    {
+      "asset": "yurt",
+      "version": "pastoral-soft-goods-27",
+      "objects": [
+        {
+          "name": "pastoral_yurt_honour_chest_folded0",
+          "kind": "folded blanket",
+          "bounds": [
+            [
+              -0.5950000286102295,
+              -0.27000001072883606,
+              -0.04749999940395355
+            ],
+            [
+              0.5950000286102295,
+              0.27000001072883606,
+              0.04749999940395355
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 2940,
+          "trianglesBefore": 108,
+          "trianglesAfter": 5872,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_yurt_honour_chest_folded1",
+          "kind": "folded blanket",
+          "bounds": [
+            [
+              -0.5950000286102295,
+              -0.27000001072883606,
+              -0.04749999940395355
+            ],
+            [
+              0.5950000286102295,
+              0.27000001072883606,
+              0.04749999940395355
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 2940,
+          "trianglesBefore": 108,
+          "trianglesAfter": 5872,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_yurt_honour_chest_folded2",
+          "kind": "folded blanket",
+          "bounds": [
+            [
+              -0.5950000286102295,
+              -0.27000001072883606,
+              -0.04749999940395355
+            ],
+            [
+              0.5950000286102295,
+              0.27000001072883606,
+              0.04749999940395355
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 2940,
+          "trianglesBefore": 108,
+          "trianglesAfter": 5872,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_yurt_honour_chest_folded3",
+          "kind": "folded blanket",
+          "bounds": [
+            [
+              -0.5950000286102295,
+              -0.27000001072883606,
+              -0.04749999940395355
+            ],
+            [
+              0.5950000286102295,
+              0.27000001072883606,
+              0.04749999940395355
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 2940,
+          "trianglesBefore": 108,
+          "trianglesAfter": 5872,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_yurt_seat_cushion",
+          "kind": "seat cushion",
+          "bounds": [
+            [
+              -0.25,
+              -0.25,
+              -0.08500000089406967
+            ],
+            [
+              0.25,
+              0.25,
+              0.08500000089406967
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 1634,
+          "trianglesBefore": 108,
+          "trianglesAfter": 3264,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_yurt_seat_cushion.001",
+          "kind": "seat cushion",
+          "bounds": [
+            [
+              -0.25,
+              -0.25,
+              -0.08500000089406967
+            ],
+            [
+              0.25,
+              0.25,
+              0.08500000089406967
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 1634,
+          "trianglesBefore": 108,
+          "trianglesAfter": 3264,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        },
+        {
+          "name": "pastoral_yurt_seat_cushion.002",
+          "kind": "seat cushion",
+          "bounds": [
+            [
+              -0.25,
+              -0.25,
+              -0.08500000089406967
+            ],
+            [
+              0.25,
+              0.25,
+              0.08500000089406967
+            ]
+          ],
+          "verticesBefore": 56,
+          "verticesAfter": 1634,
+          "trianglesBefore": 108,
+          "trianglesAfter": 3264,
+          "transformUnchanged": true,
+          "boundsUnchanged": true,
+          "materialsUnchanged": true
+        }
+      ],
+      "changedMeshes": 7,
+      "protectedMeshesUnchanged": 85,
+      "contactAORebaked": 7,
+      "source": "assets/src/v2/pastoral/yurt-lived.blend",
+      "glbBytes": 6891492,
+      "previousGLBBytes": 6229304,
+      "gzipBytes": 4923061,
+      "previousGzipBytes": 4573632,
+      "triangleIncrease": 32524
+    }
+  ],
+  "visibleRoutes": [
+    "pastoral-house_a-entry",
+    "pastoral-yurt-entry"
+  ],
+  "studioPreview": "assets/src/v2/pastoral/soft-goods-27.studio.png",
+  "assetChecks": {
+    "tests": 11,
+    "pass": 11,
+    "fail": 0
+  },
+  "rebakedGI": [
+    "first sky",
+    "first solar",
+    "second sky",
+    "second solar",
+    "contact",
+    "finite aperture visibility",
+    "closed-door endpoint"
+  ],
+  "limitations": [
+    "static authored textile geometry, no cloth simulation",
+    "generic interpreted household textile motifs, not measured specific home reconstruction",
+    "world layout and object count unchanged; near interior triangles increased by 32524 per prototype",
+    "room GI remains two-bounce static source-geometry transport with dynamic endpoint interpolation"
+  ],
+  "aholoUsed": false,
+  "transportChecks": {
+    "registeredAssets": 20,
+    "tests": 24,
+    "pass": 24,
+    "fail": 0,
+    "manifestRefreshed": true,
+    "generator": "tools/build_glb_transport.py"
+  }
+}

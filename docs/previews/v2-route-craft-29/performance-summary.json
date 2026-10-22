@@ -1,0 +1,276 @@
+{
+  "version": "route-continuity-29",
+  "order": [
+    "B1",
+    "A1",
+    "B2",
+    "A2"
+  ],
+  "conditions": "Chrome same tab, 1453x839 DPR1, time870, exact fixed pose, 180 settling RAF, final80 frame intervals, GPU60 samples. HTTP no-store, canopyCache=0. GPU/driver caches not reset; not device-cold.",
+  "runs": [
+    {
+      "run": "B1",
+      "version": "route-continuity-29",
+      "frameMeanMs": 65.0,
+      "fps": 15.384615384615385,
+      "gpuMeanMs": 31.81560306666666,
+      "moduleToFirstFrameMs": 10357.300000011921,
+      "navigationToFirstFrameMs": 10523.199999988079,
+      "farLoadMs": 2571.399999976158,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.5216666653752327,
+          "maxMs": 3.899999976158142
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 2.884166669348876,
+          "maxMs": 14.700000047683716
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 3.0308333297570544,
+          "maxMs": 9.599999964237213
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.06250000447034836,
+          "maxMs": 0.20000004768371582
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 1.5458333308498065,
+          "maxMs": 5.699999988079071
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.04333333174387614,
+          "maxMs": 0.19999998807907104
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 10.406666667759419,
+          "maxMs": 29.5
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 17.91333333303531,
+          "maxMs": 197.60000002384186
+        }
+      }
+    },
+    {
+      "run": "A1",
+      "version": "route-continuity-28",
+      "frameMeanMs": 64.375,
+      "fps": 15.533980582524272,
+      "gpuMeanMs": 32.40655361666666,
+      "moduleToFirstFrameMs": 9470.199999988079,
+      "navigationToFirstFrameMs": 9670.099999964237,
+      "farLoadMs": 2589.5,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.5083333323399226,
+          "maxMs": 11.400000035762787
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 3.34750000089407,
+          "maxMs": 13.5
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 2.9941666647791862,
+          "maxMs": 13.5
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.06416666805744171,
+          "maxMs": 0.20000004768371582
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 0.8291666666666667,
+          "maxMs": 3.200000047683716
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.056666665772597,
+          "maxMs": 0.19999998807907104
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 9.910833330452443,
+          "maxMs": 23.899999976158142
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 17.03833333303531,
+          "maxMs": 73.60000002384186
+        }
+      }
+    },
+    {
+      "run": "B2",
+      "version": "route-continuity-29",
+      "frameMeanMs": 64.37249999999999,
+      "fps": 15.534583867334657,
+      "gpuMeanMs": 32.19566341666667,
+      "moduleToFirstFrameMs": 9709.100000023842,
+      "navigationToFirstFrameMs": 9850.699999988079,
+      "farLoadMs": 2494.7000000476837,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.4208333348234495,
+          "maxMs": 3.199999988079071
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 3.177499999602636,
+          "maxMs": 17
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 3.3708333323399224,
+          "maxMs": 23.799999952316284
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.06916666775941849,
+          "maxMs": 0.20000004768371582
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 0.9233333364129066,
+          "maxMs": 9.5
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.05666666775941849,
+          "maxMs": 0.30000001192092896
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 10.608333336313565,
+          "maxMs": 37.30000001192093
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 17.10166666706403,
+          "maxMs": 68.5
+        }
+      }
+    },
+    {
+      "run": "A2",
+      "version": "route-continuity-28",
+      "frameMeanMs": 68.75749999999998,
+      "fps": 14.543867941679094,
+      "gpuMeanMs": 32.160850866666664,
+      "moduleToFirstFrameMs": 9264.699999988079,
+      "navigationToFirstFrameMs": 9432.900000035763,
+      "farLoadMs": 2611.900000035763,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "cpu": {
+        "terrain": {
+          "samples": 120,
+          "meanMs": 0.5041666681567828,
+          "maxMs": 8.200000047683716
+        },
+        "structures": {
+          "samples": 120,
+          "meanMs": 3.5625,
+          "maxMs": 12.099999964237213
+        },
+        "ecology": {
+          "samples": 120,
+          "meanMs": 3.202500000099341,
+          "maxMs": 13
+        },
+        "water": {
+          "samples": 120,
+          "meanMs": 0.07083333184321722,
+          "maxMs": 0.40000003576278687
+        },
+        "pasture": {
+          "samples": 120,
+          "meanMs": 1.3458333338300388,
+          "maxMs": 6.5
+        },
+        "settlements": {
+          "samples": 120,
+          "meanMs": 0.04250000069538752,
+          "maxMs": 0.19999998807907104
+        },
+        "environment": {
+          "samples": 120,
+          "meanMs": 10.515833334624768,
+          "maxMs": 45.5
+        },
+        "render": {
+          "samples": 120,
+          "meanMs": 18.90583333770434,
+          "maxMs": 209.19999998807907
+        }
+      }
+    }
+  ],
+  "motion": [
+    {
+      "run": "spatial1",
+      "frame": 61.45750000000001,
+      "scanMs": 4.249166664481163,
+      "visited": 53.391666666666666
+    },
+    {
+      "run": "cadence1",
+      "frame": 62.91166666666662,
+      "scanMs": 11.042499994734923,
+      "visited": 6357.575
+    },
+    {
+      "run": "cadence2",
+      "frame": 63.40666666666657,
+      "scanMs": 11.199166666467985,
+      "visited": 6357.575
+    },
+    {
+      "run": "spatial2",
+      "frame": 60.13083333333331,
+      "scanMs": 4.356666667759418,
+      "visited": 53.425
+    }
+  ],
+  "conclusion": "Camera-motion caster scan improved; stable whole-frame FPS gain and first-load gain not established. No density/detail reduction.",
+  "experimentalPoliciesAdopted": false
+}

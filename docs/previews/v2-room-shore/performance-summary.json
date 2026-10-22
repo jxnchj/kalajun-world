@@ -1,0 +1,196 @@
+{
+  "conditions": {
+    "viewport": "1453x839 DPR1",
+    "time": 870,
+    "camera": [
+      -3611.9813305250705,
+      2329.161214161885,
+      4805.371282289286
+    ],
+    "yaw": -30.90412352938094,
+    "pitch": -10,
+    "terrain": "all ready",
+    "warmupFrames": 180,
+    "frameSamples": 80,
+    "gpuSamples": 60,
+    "canopyCache": false,
+    "httpCache": "no-store",
+    "gpuDriverCache": "not reset",
+    "order": [
+      "old-A1",
+      "new-B1",
+      "old-A2",
+      "new-B2"
+    ]
+  },
+  "scope": "round22 baseline versus round23 before final bank-height contour adjustment; final-bank sample is a separate regression check, not averaged",
+  "samples": [
+    {
+      "label": "old-A1",
+      "firstFrameMs": 29974.80000001192,
+      "frameMs": 103.125,
+      "renderQueryMs": 37.19627731666666,
+      "environmentMs": 22.495833336313567,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "shadowCasters": {
+        "frames": 203,
+        "lastMs": 20.399999976158142,
+        "meanMs": 20.448768472143,
+        "visited": 6433,
+        "candidates": 1988,
+        "frustumTests": 5964,
+        "objectScans": 1036,
+        "geometryScans": 1036,
+        "materialScans": 140,
+        "attributeScans": 7499,
+        "attributeReuses": 2059,
+        "attributeCache": true,
+        "compactCapture": true,
+        "directAttributeCapture": true,
+        "counts": [
+          326,
+          732,
+          899
+        ]
+      },
+      "textureReuse": null
+    },
+    {
+      "label": "new-B1",
+      "firstFrameMs": 31943.400000035763,
+      "frameMs": 94.58374999999997,
+      "renderQueryMs": 36.90615028333332,
+      "environmentMs": 21.050000000496706,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "shadowCasters": {
+        "frames": 205,
+        "lastMs": 11.199999988079071,
+        "meanMs": 20.35317073333555,
+        "visited": 6433,
+        "candidates": 1988,
+        "frustumTests": 5964,
+        "objectScans": 1036,
+        "geometryScans": 1036,
+        "materialScans": 140,
+        "attributeScans": 3167,
+        "attributeReuses": 2059,
+        "terrainDepthCapture": true,
+        "terrainDepthScans": 612,
+        "surfaceAttributesSkipped": 4332,
+        "attributeCache": true,
+        "compactCapture": true,
+        "directAttributeCapture": true,
+        "counts": [
+          326,
+          732,
+          899
+        ]
+      },
+      "textureReuse": {
+        "enabled": true,
+        "requests": 192,
+        "uniqueImages": 70,
+        "reusedImages": 122,
+        "encodedBytes": 29213931,
+        "reusedEncodedBytes": 21927050,
+        "hashWaitMs": 160.89999932050705
+      }
+    },
+    {
+      "label": "old-A2",
+      "firstFrameMs": 34181.69999998808,
+      "frameMs": 90.00124999999998,
+      "renderQueryMs": 41.023653733333326,
+      "environmentMs": 17.392500003178913,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "shadowCasters": {
+        "frames": 206,
+        "lastMs": 13.400000035762787,
+        "meanMs": 16.788834952035,
+        "visited": 6433,
+        "candidates": 1988,
+        "frustumTests": 5964,
+        "objectScans": 1036,
+        "geometryScans": 1036,
+        "materialScans": 140,
+        "attributeScans": 7499,
+        "attributeReuses": 2059,
+        "attributeCache": true,
+        "compactCapture": true,
+        "directAttributeCapture": true,
+        "counts": [
+          326,
+          732,
+          899
+        ]
+      },
+      "textureReuse": null
+    },
+    {
+      "label": "new-B2",
+      "firstFrameMs": 29703.30000001192,
+      "frameMs": 91.24125000000004,
+      "renderQueryMs": 38.05666551666666,
+      "environmentMs": 18.97749999910593,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "shadowCasters": {
+        "frames": 204,
+        "lastMs": 19.80000001192093,
+        "meanMs": 17.54362744881825,
+        "visited": 6433,
+        "candidates": 1988,
+        "frustumTests": 5964,
+        "objectScans": 1036,
+        "geometryScans": 1036,
+        "materialScans": 140,
+        "attributeScans": 3167,
+        "attributeReuses": 2059,
+        "terrainDepthCapture": true,
+        "terrainDepthScans": 612,
+        "surfaceAttributesSkipped": 4332,
+        "attributeCache": true,
+        "compactCapture": true,
+        "directAttributeCapture": true,
+        "counts": [
+          326,
+          732,
+          899
+        ]
+      },
+      "textureReuse": {
+        "enabled": true,
+        "requests": 192,
+        "uniqueImages": 70,
+        "reusedImages": 122,
+        "encodedBytes": 29213931,
+        "reusedEncodedBytes": 21927050,
+        "hashWaitMs": 215.30000013113022
+      }
+    }
+  ],
+  "conclusion": "No consistent whole-frame or complete startup gain established. Surface attribute scans and repeated texture decodes reduced without geometry/detail reduction; CPU and GPU bottlenecks remain."
+}

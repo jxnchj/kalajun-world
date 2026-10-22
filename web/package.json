@@ -1,0 +1,21 @@
+{
+  "name": "kalajun-wild",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5173 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "dev:v2": "vite --config vite.v2.config.js",
+    "build:v2": "vite build --config vite.v2.config.js",
+    "test:v2": "node --test src/v2/*.test.js"
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "0.19.3",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.1"
+  }
+}

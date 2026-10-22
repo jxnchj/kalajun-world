@@ -1,0 +1,87 @@
+{
+  "round": 22,
+  "date": "2026-10-21",
+  "phase": "3 representative route; ongoing",
+  "defaultChanges": [
+    "representative forest creek v22 curve, maxOffset 5.511215m, shared wet footprint and restored former bed",
+    "reuse exact GLB buffer at parse boundary; subranges still copied"
+  ],
+  "notAdopted": [
+    "treeVertexLayout=interleaved remains opt-in after four browser samples",
+    "index order optimization: no cache-miss improvement; not integrated"
+  ],
+  "preserved": {
+    "treeSourceIDsInFixedWindow": 7620,
+    "allForestTrees": 80927,
+    "densityReduced": false,
+    "DPRReduced": false,
+    "geometryDetailReduced": false,
+    "shadowReflectionQualityReduced": false,
+    "fullLightingColorPhase": "unchanged later stage"
+  },
+  "tests": {
+    "node": {
+      "passed": 566,
+      "failed": 0,
+      "log": "tests-final.log"
+    },
+    "build": {
+      "passed": true,
+      "warning": "existing large JS chunk",
+      "log": "build.log"
+    },
+    "regressionRepair": "original batch ratio assertions unchanged; historical benchmark camera explicitly fixed after hydrology moved default viewpoint"
+  },
+  "browser": {
+    "origin": "http://127.0.0.1:5174",
+    "version": "route-continuity-22",
+    "viewCount": 11,
+    "runtimeErrors": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "consoleWarningsErrors": [],
+    "routes": "final-routes.json",
+    "performance": "performance-summary.json",
+    "oldBuildSameViewport": "baseline-final.json",
+    "allTerrainQueuesEmpty": true,
+    "dragTest": {
+      "yawBefore": -29.88794104541604,
+      "yawAfter": -14.687941045416048,
+      "errors": []
+    }
+  },
+  "visualFindings": {
+    "river-forest": "middle bend visibly breaks previous straight run; regular broad wet banks remain",
+    "meadow": "full flowers/grass/house retained; near/far contrast and boundary remain",
+    "forest": "continuous forest present; distant ground mottles and rocky patterns still repetitive",
+    "brook-lanchuan": "not reshaped this round; straight wet strip remains",
+    "river-valley": "water reflections retained; banks need regional art design",
+    "rooms": "three guest rooms, woodhouse and yurt load; contact/indirect shading and material richness remain intermediate; no new indoor lighting mechanism this round"
+  },
+  "unresolved": [
+    "near forest frame rate",
+    "device cold-start long tail",
+    "far-slope repetition and vegetation blending",
+    "broad even wet-bank strips",
+    "complete indirect/contact lighting",
+    "deferred fine needles and upper crown cards",
+    "later full lighting/color/art pass"
+  ],
+  "evidenceNotes": [
+    "render GPU query includes possible submission waits, not pure busy time",
+    "four layout samples did not establish useful stable gain; default OFF",
+    "old round21 same viewport also roughly9.5fps; do not compare previous round27fps directly",
+    "initial baseline export was undefined and excluded; baseline-final.json is valid fixed-pose sample",
+    "screens are actual unretouched app canvas downloads"
+  ]
+}

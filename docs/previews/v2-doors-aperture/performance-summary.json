@@ -1,0 +1,89 @@
+{
+  "conditions": {
+    "viewport": "1453x839 DPR1",
+    "time": 870,
+    "camera": [
+      -3611.9813305250705,
+      2329.161214161885,
+      4805.371282289286
+    ],
+    "yaw": -30.90412352938094,
+    "pitch": -10,
+    "terrain": "all ready",
+    "warmupFrames": 180,
+    "frameSamples": 80,
+    "renderQuerySamples": 60,
+    "canopyCache": false,
+    "httpCache": "no-store",
+    "gpuDriverCache": "not reset",
+    "order": [
+      "old-A1",
+      "new-B1",
+      "old-A2",
+      "new-B2"
+    ]
+  },
+  "samples": [
+    {
+      "label": "old-A1",
+      "firstFrameMs": 29259.399999976158,
+      "frameMs": 98.95875000000088,
+      "renderQueryMs": 42.47158146666667,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "doors": null,
+      "errors": []
+    },
+    {
+      "label": "new-B1",
+      "firstFrameMs": 27104.399999976158,
+      "frameMs": 103.33375000000005,
+      "renderQueryMs": 44.41383563333333,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "doors": {
+        "ready": true,
+        "entries": 185,
+        "leaves": 257,
+        "triangles": 14508,
+        "batches": 14,
+        "moving": 0,
+        "revision": 0,
+        "active": null,
+        "shadowBatches": 0
+      },
+      "errors": []
+    },
+    {
+      "label": "old-A2",
+      "firstFrameMs": 28766.100000023842,
+      "frameMs": 103.75,
+      "renderQueryMs": 42.727036266666666,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "doors": null,
+      "errors": []
+    },
+    {
+      "label": "new-B2",
+      "firstFrameMs": 27346.099999964237,
+      "frameMs": 103.95749999999998,
+      "renderQueryMs": 42.84416761666667,
+      "trees": 80927,
+      "grassTufts": 19395,
+      "doors": {
+        "ready": true,
+        "entries": 185,
+        "leaves": 257,
+        "triangles": 14508,
+        "batches": 14,
+        "moving": 0,
+        "revision": 0,
+        "active": null,
+        "shadowBatches": 0
+      },
+      "errors": []
+    }
+  ],
+  "conclusion": "No frame-rate improvement; forest remains around 10fps. New first-frame samples about 2s shorter in this run, not proof that device cold-start tail is solved."
+}

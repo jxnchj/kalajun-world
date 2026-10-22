@@ -1,0 +1,18 @@
+{
+  "license": "CC0",
+  "licenseUrl": "https://polyhaven.com/license",
+  "checked": "2026-10-19",
+  "assets": [
+    {
+      "id": "forest_ground_04",
+      "url": "https://polyhaven.com/a/forest_ground_04",
+      "metres": 3.2
+    },
+    {
+      "id": "leafy_grass",
+      "url": "https://polyhaven.com/a/leafy_grass",
+      "metres": 2
+    }
+  ],
+  "preparation": "Original existing 1K color/normal files, copied unchanged; artistic color mixing is runtime-only."
+}

@@ -1,0 +1,110 @@
+{
+  "conditions": "Chrome; 1453x839 DPR1; time870; same absolute pose; canopyCache=0; HTTP no-store; 180 RAF warmup then last80 frame intervals, last60 GPU; order A1 B1 A2 B2; baseline27 vs final28 (bounds cache OFF). GPU/driver cache not reset.",
+  "runs": [
+    {
+      "run": "A1",
+      "version": "route-continuity-27",
+      "frameMs": 85.42249999999999,
+      "fps": 11.706517603675849,
+      "gpuMs": 30.64249046666667,
+      "moduleToFirstFrameMs": 9661.300000011921,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "position": [
+        -3611.9813305250705,
+        2329.161214161885,
+        4805.371282289286
+      ],
+      "yaw": -30.90412352938094,
+      "pitch": -10,
+      "time": 870,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "treeDrawBatches": 966,
+      "queued": 0,
+      "errors": []
+    },
+    {
+      "run": "B1",
+      "version": "route-continuity-28",
+      "frameMs": 79.47624999999998,
+      "fps": 12.582375237885536,
+      "gpuMs": 31.293385566666668,
+      "moduleToFirstFrameMs": 9495.599999964237,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "position": [
+        -3611.9813305250705,
+        2329.161214161885,
+        4805.371282289286
+      ],
+      "yaw": -30.90412352938094,
+      "pitch": -10,
+      "time": 870,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "treeDrawBatches": 528,
+      "queued": 0,
+      "errors": []
+    },
+    {
+      "run": "A2",
+      "version": "route-continuity-27",
+      "frameMs": 100.10625,
+      "fps": 9.989386277080602,
+      "gpuMs": 30.464322383333332,
+      "moduleToFirstFrameMs": 10263,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "position": [
+        -3611.9813305250705,
+        2329.161214161885,
+        4805.371282289286
+      ],
+      "yaw": -30.90412352938094,
+      "pitch": -10,
+      "time": 870,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "treeDrawBatches": 966,
+      "queued": 0,
+      "errors": []
+    },
+    {
+      "run": "B2",
+      "version": "route-continuity-28",
+      "frameMs": 62.60625,
+      "fps": 15.972846161525407,
+      "gpuMs": 28.930334900000002,
+      "moduleToFirstFrameMs": 9359.900000035763,
+      "viewport": {
+        "width": 1453,
+        "height": 839,
+        "pixelRatio": 1
+      },
+      "position": [
+        -3611.9813305250705,
+        2329.161214161885,
+        4805.371282289286
+      ],
+      "yaw": -30.90412352938094,
+      "pitch": -10,
+      "time": 870,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "treeDrawBatches": 528,
+      "queued": 0,
+      "errors": []
+    }
+  ],
+  "conclusion": "Fewer draw batches and faster samples, but substantial machine variance. New 12.6-16fps is not fluent. Startup improvement modest; device cold-start unresolved."
+}

@@ -1,0 +1,29 @@
+{
+  "round": 23,
+  "scope": "Building image decode Source reuse, not reduced network or established end-to-end cold-start gain",
+  "assets": 18,
+  "preparedGeometryDigests": 305,
+  "textureUsesCompared": 260,
+  "sourceTriangles": 9001843,
+  "beforeDecodeCount": 192,
+  "afterDecodeCount": 70,
+  "avoidedDecodes": 122,
+  "encodedImageBytes": 29213931,
+  "duplicateEncodedImageBytes": 21927050,
+  "AB": "structureTextureReuse=0",
+  "stats": "snapshot.structures.textureReuse; hashWaitMs is summed asynchronous latency, not CPU time",
+  "unchanged": [
+    "All 18 assets loaded before ready",
+    "All source geometry and LOD attributes byte-exact",
+    "Each texture sampler, color space, transforms and material identity",
+    "No external URI or custom image-loader sharing"
+  ],
+  "ownership": "One private WorldStructures lifetime; individual texture disposal does not close shared bitmap; world disposal/cancellation closes owned bitmap once, including late decode/hash completions",
+  "validation": "15 combined building tests plus final 7 targeted source-ownership tests pass; browser acceptance delegated to root",
+  "files": [
+    "web/src/v2/structures.js",
+    "web/src/v2/structure-texture-reuse.js",
+    "web/src/v2/structure-texture-reuse.test.js"
+  ],
+  "backup": "backups/route-continuity-v23/web/src/v2/structures.js"
+}

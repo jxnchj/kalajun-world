@@ -1,0 +1,734 @@
+[
+  {
+    "label": "forest",
+    "view": "river-forest",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": false,
+        "field": null,
+        "cacheBytes": 0,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": false,
+      "skyBounceOrder": 1,
+      "merges": 0,
+      "lastMergeMs": 0,
+      "secondBounceBytes": 0,
+      "compositeBytes": 0,
+      "fixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-forest.png"
+  },
+  {
+    "label": "meadow",
+    "view": "meadow",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": false,
+        "field": null,
+        "cacheBytes": 0,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": false,
+      "skyBounceOrder": 1,
+      "merges": 0,
+      "lastMergeMs": 0,
+      "secondBounceBytes": 0,
+      "compositeBytes": 0,
+      "fixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-meadow.png"
+  },
+  {
+    "label": "farforest",
+    "view": "forest",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": false,
+        "field": null,
+        "cacheBytes": 0,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": false,
+      "skyBounceOrder": 1,
+      "merges": 0,
+      "lastMergeMs": 0,
+      "secondBounceBytes": 0,
+      "compositeBytes": 0,
+      "fixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-farforest.png"
+  },
+  {
+    "label": "brook",
+    "view": "brook-lanchuan",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": false,
+        "field": null,
+        "cacheBytes": 0,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": false,
+      "skyBounceOrder": 1,
+      "merges": 0,
+      "lastMergeMs": 0,
+      "secondBounceBytes": 0,
+      "compositeBytes": 0,
+      "fixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-brook.png"
+  },
+  {
+    "label": "river",
+    "view": "river-valley",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": false,
+        "field": null,
+        "cacheBytes": 0,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": false,
+      "skyBounceOrder": 1,
+      "merges": 0,
+      "lastMergeMs": 0,
+      "secondBounceBytes": 0,
+      "compositeBytes": 0,
+      "fixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-river.png"
+  },
+  {
+    "label": "west",
+    "view": "west-slope",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": false,
+        "field": null,
+        "cacheBytes": 0,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": false,
+      "skyBounceOrder": 1,
+      "merges": 0,
+      "lastMergeMs": 0,
+      "secondBounceBytes": 0,
+      "compositeBytes": 0,
+      "fixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-west.png"
+  },
+  {
+    "label": "pasture",
+    "view": "pasture-sheep",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": false,
+        "field": null,
+        "cacheBytes": 0,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": false,
+      "skyBounceOrder": 1,
+      "merges": 0,
+      "lastMergeMs": 0,
+      "secondBounceBytes": 0,
+      "compositeBytes": 0,
+      "fixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-pasture.png"
+  },
+  {
+    "label": "room1",
+    "view": "lanchuan-freedom-1",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": true,
+        "field": "lanchuan-freedom-1",
+        "cacheBytes": 1215,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": true,
+      "skyBounceOrder": 2,
+      "merges": 1,
+      "lastMergeMs": 2.799999952316284,
+      "secondBounceBytes": 12960,
+      "compositeBytes": 12960,
+      "fixtures": {
+        "loadedRooms": 1,
+        "cacheBytes": 58320,
+        "lastLoadMs": 34.80000001192093,
+        "lastComposeMs": 1.5,
+        "active": true,
+        "lights": 3,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 1,
+        "cacheBytes": 58320,
+        "lastLoadMs": 37.40000003576279,
+        "lastComposeMs": 0.699999988079071,
+        "active": true,
+        "lights": 3,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-room1.png"
+  },
+  {
+    "label": "room2",
+    "view": "lanchuan-freedom-2",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": true,
+        "field": "lanchuan-freedom-2",
+        "cacheBytes": 2430,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": true,
+      "skyBounceOrder": 2,
+      "merges": 2,
+      "lastMergeMs": 0.5,
+      "secondBounceBytes": 25920,
+      "compositeBytes": 25920,
+      "fixtures": {
+        "loadedRooms": 2,
+        "cacheBytes": 116640,
+        "lastLoadMs": 6.800000011920929,
+        "lastComposeMs": 2.300000011920929,
+        "active": true,
+        "lights": 3,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 2,
+        "cacheBytes": 116640,
+        "lastLoadMs": 8.099999964237213,
+        "lastComposeMs": 1,
+        "active": true,
+        "lights": 3,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-room2.png"
+  },
+  {
+    "label": "room3",
+    "view": "lanchuan-freedom-3",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 0,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": true,
+        "field": "lanchuan-freedom-3",
+        "cacheBytes": 3645,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": true,
+      "skyBounceOrder": 2,
+      "merges": 3,
+      "lastMergeMs": 1.100000023841858,
+      "secondBounceBytes": 38880,
+      "compositeBytes": 38880,
+      "fixtures": {
+        "loadedRooms": 3,
+        "cacheBytes": 174960,
+        "lastLoadMs": 13.600000023841858,
+        "lastComposeMs": 0.20000004768371582,
+        "active": true,
+        "lights": 3,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 3,
+        "cacheBytes": 174960,
+        "lastLoadMs": 13.300000011920929,
+        "lastComposeMs": 0.10000002384185791,
+        "active": true,
+        "lights": 3,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-room3.png"
+  },
+  {
+    "label": "house",
+    "view": "pastoral-house_a-entry",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 2,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": true,
+        "field": "house_a",
+        "cacheBytes": 5805,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": true,
+      "skyBounceOrder": 2,
+      "merges": 5,
+      "lastMergeMs": 1.5,
+      "secondBounceBytes": 61920,
+      "compositeBytes": 61920,
+      "fixtures": {
+        "loadedRooms": 3,
+        "cacheBytes": 174960,
+        "lastLoadMs": 13.600000023841858,
+        "lastComposeMs": 0.20000004768371582,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 3,
+        "cacheBytes": 174960,
+        "lastLoadMs": 13.300000011920929,
+        "lastComposeMs": 0.10000002384185791,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-house.png"
+  },
+  {
+    "label": "yurt",
+    "view": "pastoral-yurt-entry",
+    "version": "route-continuity-28",
+    "ready": true,
+    "queued": 0,
+    "errors": [],
+    "roomSkyBounce": {
+      "doors": {
+        "loadedRooms": 1,
+        "pending": false,
+        "active": false,
+        "openness": 1,
+        "apertureFraction": 1,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": true,
+        "field": "yurt",
+        "cacheBytes": 4860,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": true,
+      "skyBounceOrder": 2,
+      "merges": 4,
+      "lastMergeMs": 0.5,
+      "secondBounceBytes": 51840,
+      "compositeBytes": 51840,
+      "fixtures": {
+        "loadedRooms": 3,
+        "cacheBytes": 174960,
+        "lastLoadMs": 13.600000023841858,
+        "lastComposeMs": 0.20000004768371582,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 3,
+        "cacheBytes": 174960,
+        "lastLoadMs": 13.300000011920929,
+        "lastComposeMs": 0.10000002384185791,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      }
+    },
+    "image": "route-yurt.png"
+  }
+]
