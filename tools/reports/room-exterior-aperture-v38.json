@@ -1,0 +1,314 @@
+{
+  "bounds": [
+    [
+      -3.3,
+      0.14500000000000002,
+      -2.1999999999999997
+    ],
+    [
+      3.3,
+      3.4230717132713404,
+      2.1999999999999997
+    ]
+  ],
+  "size": [
+    9,
+    5,
+    7
+  ],
+  "validProbes": 239,
+  "sourceGLB": "assets/v2/house_a_lived.glb",
+  "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+  "sourceBlend": "assets/src/v2/pastoral/house_a-lived.blend",
+  "blendSHA256": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+  "openings": [
+    {
+      "kind": "door",
+      "center": [
+        1,
+        0.995,
+        2.5
+      ],
+      "width": 1.1,
+      "height": 1.99,
+      "normal": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "kind": "window",
+      "center": [
+        -2,
+        1.45,
+        2.5
+      ],
+      "width": 1.25,
+      "height": 1.2,
+      "normal": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "kind": "window",
+      "center": [
+        0,
+        1.45,
+        -2.5
+      ],
+      "width": 1.25,
+      "height": 1.2,
+      "normal": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "version": "room-exterior-aperture-38",
+  "entityId": "cabins:-3967,2822.3:eec01b1433084d64",
+  "roomKey": "house_a-living-2",
+  "pose": {
+    "x": -3967,
+    "y": 2265.989267002689,
+    "z": 2822.3,
+    "rot": 1.613,
+    "scale": {
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  },
+  "externalSources": [
+    {
+      "sourceGLB": "assets/v2/household_living.glb",
+      "sourceSHA256": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a",
+      "sourceBlend": "assets/src/v2/pastoral/household-living-32.blend",
+      "blendSHA256": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4"
+    }
+  ],
+  "terrainSources": [
+    {
+      "path": "web/public/data/core_height.bin.gz",
+      "sha256": "fdbb6b8ddb3ce142cbf5103e32dd1d8544285b2a362249e9dca2cfd960c8323d"
+    },
+    {
+      "path": "web/public/data/far_height.bin.gz",
+      "sha256": "2d8bd1b1fe6fd0bd4c99fcd674125443c59c6e401c52f4c1bdb168f7d04161dc"
+    },
+    {
+      "path": "web/public/data/detail.bin.gz",
+      "sha256": "9720d45e333f4c88a4a6dc0923ec6747c3782aa7beb4f780e1886563fe7646b2"
+    },
+    {
+      "path": "web/public/data/objects.json",
+      "sha256": "976e3468bbe4986923b51f298fe029da3d6d5d49df785974f55220ccb19a0825"
+    },
+    {
+      "path": "web/public/data/core_landcover.png",
+      "sha256": "b15a42484fce8ff36ce04a9c62f6936e30def1c9c34e83e1717bff3c9564a3ea"
+    },
+    {
+      "path": "web/public/data/far_landcover.png",
+      "sha256": "1db303b69f58bc25718e607f71028a7d3547bc8e463839a4a3602ef57477b816"
+    },
+    {
+      "path": "web/public/data/scene.json",
+      "sha256": "21556737321da1a2e3fa2d1e4a1e0b1a3299eef59b9ef39d9f53a865604357ee"
+    },
+    {
+      "path": "web/public/data/detail.json",
+      "sha256": "c18833ae183f4fb5b1d633642e4c2cae6a6d4045c427f0e9e545759d6c8b754c"
+    },
+    {
+      "path": "web/public/data/streams.json",
+      "sha256": "f4ef53aec55a24cfdc01920ec72bcc52d1e232f3419ea974652434b3284ea169"
+    },
+    {
+      "path": "web/public/world-v2/manifest.json",
+      "sha256": "b4bb2ecf9d28c0ab5655c54ecaeb8e289ce2cf33e0c663f14d845323b0604449"
+    },
+    {
+      "path": "web/src/v2/world-data.js",
+      "sha256": "5512f8d5afe0329c4f72701534f2a8f2c2c9022e18f209ba2410da78a4e2d98e"
+    },
+    {
+      "path": "web/src/v2/terrain-height-interpolation.js",
+      "sha256": "bf2c3e28d2a1dc19ee9538643fcee73bca0cc0b3e247c65952f22f44b9b6c0cd"
+    },
+    {
+      "path": "web/src/v2/hydrology.js",
+      "sha256": "a0d748bb113d5e19b01aea7c96bc44809bddfe1d892854d5b27c77d4d2c5a95e"
+    },
+    {
+      "path": "web/src/v2/forest-bank-curvature-v38.js",
+      "sha256": "44397864dfd606444d242dd5c0768618ccd32d211c4f4c27d824d8c2c4d8d137"
+    },
+    {
+      "path": "web/src/v2/river-section.js",
+      "sha256": "81ecf1e1428da3bceaa69b81fe3fd4a325f0ea716c302c659c769b5b61409616"
+    },
+    {
+      "path": "web/src/v2/river-meander.js",
+      "sha256": "4bbf339795e39020e0fc622fd4246fb250109216e7ffe918076c95da4457f533"
+    },
+    {
+      "path": "web/src/v2/river-bed-profile.js",
+      "sha256": "7db60050d25cbd4f8976fe89aad81735bf896eabc2e1d3bdba3d092ef1b58b3a"
+    },
+    {
+      "path": "web/src/v2/river-incision.js",
+      "sha256": "75f7f80e8767d97188be13ae08b1f0f609b9469232a7b27e4a288e89cf73031d"
+    },
+    {
+      "path": "web/src/v2/settlement-assets.js",
+      "sha256": "51e2e6f7cf3a9d4d82f28f5b122de776c1db4c249b29939b2f4376b17c922b00"
+    },
+    {
+      "path": "web/src/v2/terrain.js",
+      "sha256": "471beb69bb043de0e6cb1f049af9815667962ec19445f1f0e5e133224e192b51"
+    },
+    {
+      "path": "web/src/v2/terrain-material.js",
+      "sha256": "05c674a3518b6026d40406a91befd1b641fadf409a0fd59cc96f6b5570a89972"
+    },
+    {
+      "path": "web/src/v2/meadow-surface.js",
+      "sha256": "65a2b374bb00105f0ddf524cde97821c5477112f87becc62c4d37c332538c3e7"
+    },
+    {
+      "path": "web/src/v2/meadow-relief.js",
+      "sha256": "9ab2904c09029765251b54355654e7bfbda813e91c60010ca7a830d6925dde01"
+    }
+  ],
+  "encoding": "u8-opening-slabs",
+  "apertureSamples": 36,
+  "summary": [
+    {
+      "state": "open",
+      "ownOnlyMaxByteError": 0,
+      "openings": [
+        {
+          "index": 0,
+          "kind": "door",
+          "center": [
+            1,
+            0.995,
+            2.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "ownMean": 0.4491254279489574,
+          "skyMean": 0.07504512916277623,
+          "exteriorBlockedMean": 0.36453159041394334,
+          "downwardMissMean": 0.009623404917522565
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "center": [
+            -2,
+            1.45,
+            2.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "ownMean": 0.3962776221599751,
+          "skyMean": 0.031609088079676315,
+          "exteriorBlockedMean": 0.34506069094304387,
+          "downwardMissMean": 0.019520697167755993
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "center": [
+            0,
+            1.45,
+            -2.5
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "ownMean": 0.40358543417366943,
+          "skyMean": 0.0,
+          "exteriorBlockedMean": 0.40358543417366943,
+          "downwardMissMean": 0.0
+        }
+      ]
+    },
+    {
+      "state": "closed",
+      "ownOnlyMaxByteError": 0,
+      "openings": [
+        {
+          "index": 0,
+          "kind": "door",
+          "center": [
+            1,
+            0.995,
+            2.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "ownMean": 0.0,
+          "skyMean": 0.0,
+          "exteriorBlockedMean": 0.0,
+          "downwardMissMean": 0.0
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "center": [
+            -2,
+            1.45,
+            2.5
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "ownMean": 0.3962776221599751,
+          "skyMean": 0.031609088079676315,
+          "exteriorBlockedMean": 0.34506069094304387,
+          "downwardMissMean": 0.019520697167755993
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "center": [
+            0,
+            1.45,
+            -2.5
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "ownMean": 0.40358543417366943,
+          "skyMean": 0.0,
+          "exteriorBlockedMean": 0.40358543417366943,
+          "downwardMissMean": 0.0
+        }
+      ]
+    }
+  ],
+  "scope": "Direct diffuse upper sky only; identical original aperture quadrature extended along each probe ray. Retains opening identity and grid. No direct terrain reflected radiance or specular correction; not full dynamic GI.",
+  "bytes": 10563,
+  "elapsedSeconds": 1.5026408340054331
+}

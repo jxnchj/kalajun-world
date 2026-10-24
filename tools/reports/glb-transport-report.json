@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "generator": "tools/build_glb_transport.py",
-  "generatorSHA256": "bd27abb922a2e727707b0cdfe6c8e28e604d78782046898555850d136bd208e6",
+  "generatorSHA256": "98c96e32d270dc72a7a006785a40a8750482a2dd0f9fdcf896903e5e81c2fa44",
   "zlibVersion": "1.2.12",
-  "scope": "Twenty current initial-load structure/spruce GLBs; original GLBs preserved",
+  "scope": "Current structure/spruce GLBs and the entity-specific tea entry; original GLBs preserved",
   "gzip": {
     "level": 9,
     "mtime": 0,
@@ -13,13 +13,37 @@
   },
   "manifest": "web/public/assets/v2/glb-transport-manifest.json",
   "totals": {
-    "assets": 21,
-    "rawBytes": 100332904,
-    "gzipBytes": 52587195,
-    "savedBytes": 47745709,
-    "savedPercent": 47.5873
+    "assets": 22,
+    "rawBytes": 100553500,
+    "gzipBytes": 52657562,
+    "savedBytes": 47895938,
+    "savedPercent": 47.6323
   },
   "assets": [
+    {
+      "source": "web/public/assets/v2/household_entry_tea.glb",
+      "transport": "web/public/assets/v2/household_entry_tea.glb.gz",
+      "runtimeReference": {
+        "module": "web/src/v2/household-entry-steps.js",
+        "symbol": "HouseholdEntrySteps.load",
+        "assetId": "household_entry_tea"
+      },
+      "url": "assets/v2/household_entry_tea.glb.gz",
+      "rawBytes": 220596,
+      "gzipBytes": 70367,
+      "sha256": "277e71e74629dbe081813b900900d6824e7ad769b865d13603ccae309ff1f5dd",
+      "gzipSha256": "79648899a5059422a8c6bb7be7b27b311493caf92083bc2e4762b43f73ca05af",
+      "savedBytes": 150229,
+      "savedPercent": 68.1014,
+      "glb": {
+        "gltfVersion": "2.0",
+        "meshes": 1,
+        "materials": 1,
+        "images": 0,
+        "externalResourceURIs": []
+      },
+      "exactDecompression": true
+    },
     {
       "source": "web/public/assets/v2/household_living.glb",
       "transport": "web/public/assets/v2/household_living.glb.gz",

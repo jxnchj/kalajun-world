@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>真实草块：四命中层远距候选</title>
+<style>body{margin:0;background:#292d30;color:#eee;font:14px system-ui}canvas{display:block}aside{position:fixed;left:12px;top:12px;padding:12px;background:#171c22e8;max-width:440px}button,input,select{margin:4px}pre{white-space:pre-wrap;font-size:12px}small{color:#b8c1c8}</style>
+<aside>真实 8×8m / 55 根 · 远距四命中候选<br>
+<button id="source">原几何</button><button id="candidate">四命中候选</button>
+<label>距离 <input id="distance" type="range" min="62" max="78" value="70"> <span id="meters">70m</span></label><br>
+<label>显示 <select id="channel"><option value="response">单位方向光＋实时阴影</option><option value="albedo">原色＋覆盖</option><option value="coverage">纯覆盖</option></select></label>
+<label>光向 <input id="sun" type="range" min="-80" max="80" value="25"></label>
+<pre id="status">加载真实源资产…</pre><small>独立验收页，未接世界 LOD。单视角、零风；保留源草作阴影。覆盖与新遮挡仍待验收。此页不代表最终光色。</small></aside>
+<script type="module">
+import * as T from 'three';
+import {loadMeadowPatchReference38,createMeadowPatchReference38} from './src/v2/meadow-patch-reference-v38.js';
+import {createMeadowLayeredFar38,analyzeLayeredCapture38} from './src/v2/meadow-layered-far-v38.js';
+const status=document.querySelector('#status'),renderer=new T.WebGLRenderer({antialias:true,reversedDepthBuffer:true});
+renderer.setPixelRatio(1);renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=T.LinearSRGBColorSpace;renderer.toneMapping=T.NoToneMapping;renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.BasicShadowMap;document.body.append(renderer.domElement);
+const data=await loadMeadowPatchReference38(),lab=createMeadowPatchReference38(data,{resolution:256,lod:'middle'});
+const capture=lab.capture(renderer,{singleSample:true,perspectiveDistance:70,elevations:[25],azimuths:[0],lightDirections:[[.45,.8,.3],[-.45,.8,-.3],[.8,.2,.2]]});
+const far=createMeadowLayeredFar38(capture);lab.scene.add(far.mesh);lab.scene.background=new T.Color(.055,.065,.075);
+lab.ground.material.color.setRGB(.12,.12,.12);lab.ground.material.colorWrite=true;
+const camera=new T.PerspectiveCamera(60,innerWidth/innerHeight,.1,200);let mode='source',channel='response';
+const direction=new T.Vector3(Math.cos(25*Math.PI/180),Math.sin(25*Math.PI/180),0);
+function place(){camera.position.copy(lab.center).addScaledVector(direction,Number(document.querySelector('#distance').value));camera.lookAt(lab.center);camera.updateMatrixWorld();document.querySelector('#meters').textContent=document.querySelector('#distance').value+'m';}
+function render(){
+ place();lab.setReferenceLight(new T.Vector3().subVectors(lab.light.position,lab.light.target.position));lab.setReferencePass(channel);far.material.uniforms.mode.value=channel==='coverage'?3:channel==='albedo'?0:1;
+ // Render source first to update the exact source shadow map and light matrix.
+ far.mesh.visible=false;lab.mesh.material.colorWrite=true;lab.mesh.material.depthWrite=true;renderer.render(lab.scene,camera);far.updateLight(lab.light);
+ if(mode==='candidate'){far.mesh.visible=true;lab.mesh.material.colorWrite=false;lab.mesh.material.depthWrite=false;renderer.render(lab.scene,camera);}
+ const analysis=analyzeLayeredCapture38(capture);status.textContent=JSON.stringify({mode,distance:Number(document.querySelector('#distance').value),sourceRoots:data.roots.length,sourceTriangles:capture.cost.sourceTriangles,candidate:far.cost,capturedResponse:analysis.cases.map(c=>({energyError:c.relativeEnergyError,rmse:c.sampleRMSE})),calls:renderer.info.render.calls},null,2);
+}
+function setMode(value){if(!['source','candidate'].includes(value))throw Error('Invalid mode');mode=value;render();}
+document.querySelector('#source').onclick=()=>setMode('source');document.querySelector('#candidate').onclick=()=>setMode('candidate');document.querySelector('#distance').oninput=render;
+document.querySelector('#channel').onchange=e=>{channel=e.target.value;render();};
+function setSun(degrees){document.querySelector('#sun').value=degrees;const a=Number(degrees)*Math.PI/180;lab.light.position.copy(lab.center).add(new T.Vector3(Math.sin(a)*20,16,Math.cos(a)*12));lab.light.updateMatrixWorld();render();}
+document.querySelector('#sun').oninput=e=>setSun(e.target.value);
+addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();render();});
+window.meadowLab={renderer,lab,capture,far,camera,setMode,setSun,setChannel(value){document.querySelector('#channel').value=value;channel=value;render();},render,analysis:analyzeLayeredCapture38(capture)};setSun(25);
+</script></html>

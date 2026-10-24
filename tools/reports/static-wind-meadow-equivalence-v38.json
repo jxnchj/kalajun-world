@@ -1,0 +1,10 @@
+{
+  "allRawBytesEqual": true,
+  "rawSHA256": "2389785391c959907dc4ef98212eb4aebb64cd199c3480e29eab46985d6e88da",
+  "rawBytes": 10382316,
+  "roots": 45486,
+  "tiles": 111,
+  "inputsUnchanged": true,
+  "sourceBindingChanged": true,
+  "oldCachePreserved": "backups/route-continuity-v38/static-wind-meadow-cache/meadow-roots-38.bin.gz"
+}

@@ -1,0 +1,20 @@
+{
+  "roots": 54,
+  "sourceBytes": 254554,
+  "gzipBytes": 79728,
+  "sourceSHA256": "b219832ff68db49441995ae47ad40da76b4baa2b4b5b28ec9d60b7b9c6f66f65",
+  "sources": [
+    {
+      "path": "web/src/v2/ecology.js",
+      "sha256": "28dac4b09986cafa4e665f679e385b742b0a5ed1e76e275680cc5244533b1aae"
+    },
+    {
+      "path": "web/src/v2/meadow-surface.js",
+      "sha256": "65a2b374bb00105f0ddf524cde97821c5477112f87becc62c4d37c332538c3e7"
+    },
+    {
+      "path": "web/src/v2/grass-root-field.js",
+      "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+    }
+  ]
+}

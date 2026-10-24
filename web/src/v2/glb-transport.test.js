@@ -15,6 +15,8 @@ for(const [path,entry]of Object.entries(manifest.assets))test('lossless register
  assert.equal(requested,'./'+entry.url+'?v='+entry.gzipSha256);
  assert.equal(parsePath,'./'+path.slice(0,path.lastIndexOf('/')+1));assert.equal(gltf.userData.preserved,true);
  assert.equal(gltf.userData.assetTransport.rawBytes,raw.length);
+ const timing=gltf.userData.assetTransport.timing;let end=timing.startMs;
+ for(const phase of ['fetch','body','decode','parse']){const t=timing.phases[phase];assert.ok(t.startMs>=end&&t.endMs>=t.startMs);assert.equal(t.elapsedMs,t.endMs-t.startMs);end=t.endMs;}assert.ok(timing.endMs>=end);
 });
 test('raw switch and nonregistered/custom bases use normal loader',async()=>{
  const paths=[],loader={loadAsync:async url=>(paths.push(url),url)};

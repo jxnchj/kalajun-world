@@ -1,0 +1,80 @@
+[
+  {
+    "id": "meadow",
+    "roots": 54,
+    "sourceTriangles": 3726,
+    "groundTriangles": 2048,
+    "center": [
+      -1972.53,
+      2121.8634538710935,
+      3395.88
+    ],
+    "normal": [
+      -0.017918162120897457,
+      0.9979771899355432,
+      0.0609956378322729
+    ],
+    "sha256": "def93194878f328d919aaff24d3da2a01874a2471f2251c48b78fa21769dc257",
+    "sources": [
+      {
+        "path": "web/src/v2/ecology.js",
+        "sha256": "28dac4b09986cafa4e665f679e385b742b0a5ed1e76e275680cc5244533b1aae"
+      },
+      {
+        "path": "web/src/v2/terrain.js",
+        "sha256": "471beb69bb043de0e6cb1f049af9815667962ec19445f1f0e5e133224e192b51"
+      },
+      {
+        "path": "web/src/v2/terrain-material.js",
+        "sha256": "05c674a3518b6026d40406a91befd1b641fadf409a0fd59cc96f6b5570a89972"
+      },
+      {
+        "path": "web/src/v2/meadow-surface.js",
+        "sha256": "65a2b374bb00105f0ddf524cde97821c5477112f87becc62c4d37c332538c3e7"
+      },
+      {
+        "path": "web/src/v2/grass-root-field.js",
+        "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+      }
+    ]
+  },
+  {
+    "id": "west",
+    "roots": 80,
+    "sourceTriangles": 5520,
+    "groundTriangles": 2048,
+    "center": [
+      -7070,
+      2241.7250366210938,
+      2670
+    ],
+    "normal": [
+      0.5110041669718884,
+      0.8308977860372004,
+      0.22018994185894386
+    ],
+    "sha256": "06ee16379536182a751c085154e1378773e80fb6fa2f90b58bce77de3b790c5f",
+    "sources": [
+      {
+        "path": "web/src/v2/ecology.js",
+        "sha256": "28dac4b09986cafa4e665f679e385b742b0a5ed1e76e275680cc5244533b1aae"
+      },
+      {
+        "path": "web/src/v2/terrain.js",
+        "sha256": "471beb69bb043de0e6cb1f049af9815667962ec19445f1f0e5e133224e192b51"
+      },
+      {
+        "path": "web/src/v2/terrain-material.js",
+        "sha256": "05c674a3518b6026d40406a91befd1b641fadf409a0fd59cc96f6b5570a89972"
+      },
+      {
+        "path": "web/src/v2/meadow-surface.js",
+        "sha256": "65a2b374bb00105f0ddf524cde97821c5477112f87becc62c4d37c332538c3e7"
+      },
+      {
+        "path": "web/src/v2/grass-root-field.js",
+        "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+      }
+    ]
+  }
+]

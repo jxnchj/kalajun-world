@@ -1,0 +1,35 @@
+[
+  {
+    "key": "lanchuan-freedom-1-vanity38",
+    "sourceSHA256": "201190ad2bd3886783c2dfc9b81099ba944740bccb7973bd95102981720b7f10",
+    "blendSHA256": "0418790225b7113dec526e3ae176325dd589323a57f6e194789ae5a7ca794f2e",
+    "validProbes": 402,
+    "totalProbes": 405,
+    "bytes": 885194,
+    "gzipBytes": 456430,
+    "bakeSeconds": 72.93528579099802,
+    "contactTexels": 6830
+  },
+  {
+    "key": "lanchuan-freedom-2-vanity38",
+    "sourceSHA256": "201190ad2bd3886783c2dfc9b81099ba944740bccb7973bd95102981720b7f10",
+    "blendSHA256": "0418790225b7113dec526e3ae176325dd589323a57f6e194789ae5a7ca794f2e",
+    "validProbes": 402,
+    "totalProbes": 405,
+    "bytes": 896011,
+    "gzipBytes": 479956,
+    "bakeSeconds": 70.57045629200002,
+    "contactTexels": 7756
+  },
+  {
+    "key": "lanchuan-freedom-3-vanity38",
+    "sourceSHA256": "201190ad2bd3886783c2dfc9b81099ba944740bccb7973bd95102981720b7f10",
+    "blendSHA256": "0418790225b7113dec526e3ae176325dd589323a57f6e194789ae5a7ca794f2e",
+    "validProbes": 391,
+    "totalProbes": 405,
+    "bytes": 812493,
+    "gzipBytes": 430267,
+    "bakeSeconds": 66.9955492500012,
+    "contactTexels": 5782
+  }
+]

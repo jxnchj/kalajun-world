@@ -1,0 +1,66 @@
+{
+  "version": "household-entry-tea-34",
+  "geometryRevision": "front-bevel-17p111mm",
+  "entityId": "cabins:-1972,3678:784f73bf0ba94d17",
+  "seconds": 84.0091687499953,
+  "control": {
+    "reference": "house_a-living-0",
+    "payloadsByteIdentical": {
+      "open.sky": true,
+      "open.secondSky": true,
+      "open.solar": true,
+      "open.secondSolar": true,
+      "open.apertures": true,
+      "open.contact": true,
+      "closed.sky": true,
+      "closed.secondSky": true,
+      "closed.solar": true,
+      "closed.secondSolar": true,
+      "closed.apertures": true
+    },
+    "allPayloadsByteIdentical": true,
+    "elapsedSeconds": 42.184759333998954,
+    "blenderVersion": "5.2.2 LTS"
+  },
+  "blenderVersion": "5.2.2 LTS",
+  "unchangedSharedSources": {
+    "assets/src/v2/pastoral/house_a-lived.blend": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+    "web/public/assets/v2/house_a_lived.glb": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+    "assets/src/v2/pastoral/household-living-32.blend": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4",
+    "web/public/assets/v2/household_living.glb": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a",
+    "web/src/v2/household-room-data/house_a-living-0.js": "a90fd061973f99f1087ec1fce0bfe9349826af1c98004e21e0b00d1668fac0aa",
+    "web/src/v2/household-room-data/house_a-living-1.js": "cb907537483ccd17a676ab2c794eaaec5ab527ff0fc6951f859c0aa593239466",
+    "web/src/v2/household-room-data/house_a-living-2.js": "2804a48ec442642fe0061104b3218207963a7a972e095b1de3bf4175d24a1795"
+  },
+  "sharedSourceHashesStillMatch": true,
+  "limits": [
+    "Existing static two-bounce room model only; outdoor terrain, other buildings and arbitrary dynamic geometry remain outside this model."
+  ],
+  "variants": [
+    {
+      "key": "house_a-entry-tea-34",
+      "householdStyle": 0,
+      "rawModuleBytes": 601850,
+      "validProbes": 239,
+      "changedFirstSkyWordsFromBase": 0,
+      "firstSkyMaxDelta": 0.0,
+      "externalSources": [
+        {
+          "sourceGLB": "assets/v2/household_living.glb",
+          "sourceSHA256": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a",
+          "sourceBlend": "assets/src/v2/pastoral/household-living-32.blend",
+          "blendSHA256": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4"
+        },
+        {
+          "sourceGLB": "assets/v2/household_entry_tea.glb",
+          "sourceSHA256": "277e71e74629dbe081813b900900d6824e7ad769b865d13603ccae309ff1f5dd",
+          "sourceBlend": "assets/src/v2/pastoral/household-entry-tea-34.blend",
+          "blendSHA256": "a717f7514fd9d7f312801faf3e78884bf5387a6c64a6b642ed6a1247aa2c4836"
+        }
+      ],
+      "elapsedSeconds": 84.00913299999957
+    }
+  ],
+  "sourceHouseUnchanged": true,
+  "sourceGLBUnchanged": true
+}

@@ -1,0 +1,17 @@
+{
+  "oldSource": "b1b8d584d20a55916ff9b6f5d3938d733d10751aada2456bab5b8df82572daee",
+  "newSource": "1025f39e99a19324945adfceb1f333514590c11761ea0205941e62635e8c6b3b",
+  "oldValid": 2986,
+  "newValid": 2992,
+  "contact": {
+    "samples": 64,
+    "spacing": 0.025,
+    "changed": 131,
+    "darker": 131,
+    "lighter": 0
+  },
+  "sameFreshClosedValidity": true,
+  "oldFirstSkyEqualsNew": false,
+  "oldSecondSkyEqualsNew": false,
+  "scope": "Fresh full-source ray sampling and source-matched collision; browser acceptance remains separate."
+}

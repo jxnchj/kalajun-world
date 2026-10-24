@@ -1,4 +1,8 @@
+import {seatPathClear39,useSeatBody39,placeSeatBody39} from './seating-collision39.js';
 import * as THREE from "three";
+import {BOARDWALK_ENDPOINTS} from "./boardwalk-endpoints.js";
+import {LODGE_DOOR,lodgeEntranceViewpoints} from "./lodge-door.js";
+import {boardwalkTimber,boardwalkViewpoints,timberGeometry} from "./boardwalk-timber.js";
 import {createShoreStones,createShoreRockGeometry,shoreStoneMatrix} from "./shore-stones.js";
 import {settlementAssetFor} from "./settlement-assets.js";
 
@@ -20,13 +24,17 @@ export function collisionTriangles(parts,matrix=new THREE.Matrix4(),origin=new T
 }
 export class WorldCollision {
  constructor(world,{structures,doors}={}){
-  Object.assign(this,{world,structures,doors});this.origin=new THREE.Vector3();this.near=new Map();this.dynamic=new Map();this.stones=new Map();this.enabled=false;this.generation=0;this.disposed=false;this.crouching=false;this.velocityY=0;
+  Object.assign(this,{world,structures,doors});this.boardwalks=boardwalkTimber(world);this.timber=new Map();this.timberGeometries=new Map();this.origin=new THREE.Vector3();this.near=new Map();this.dynamic=new Map();this.stones=new Map();this.enabled=false;this.generation=0;this.disposed=false;this.crouching=false;this.velocityY=0;
   this.stats={status:"idle",mode:"flight",supportedAssets:[...SUPPORTED],activeBuildings:0,activeDoors:0,activeShoreStones:0,shoreTriangles:0,triangles:0,grounded:false,blockedDoors:0,collisions:0,errors:[]};
-  this.entries=world.entities.filter(e=>SUPPORTED.has(e.assetId)&&!e.part).map(entity=>({entity,pose:world.surface.buildingPose(entity)}));
+  const routeEntities=this.boardwalks.enabled?new Set(BOARDWALK_ENDPOINTS.flatMap(route=>[route.start,route.end]).filter(Boolean)):new Set();
+  if(doors?.lodgeDoor)routeEntities.add(LODGE_DOOR.entityId);
+  const routeAssets=new Set(world.entities.filter(e=>routeEntities.has(e.id)).map(e=>e.assetId));
+  this.stats.supportedAssets=[...SUPPORTED,...routeAssets];
+  this.entries=world.entities.filter(e=>(SUPPORTED.has(e.assetId)||routeEntities.has(e.id))&&!e.part).map(entity=>({entity,pose:world.surface.buildingPose(entity)}));
  }
  async enable(position){
   const generation=++this.generation;position=position.clone();if(this.disposed)throw new Error("Collision disposed");
-  try{if(!this.R){this.stats.status="loading";const R=await loadRapier();if(generation!==this.generation||this.disposed)return false;this.R=R;this.physics=new this.R.World({x:0,y:-9.81,z:0});this.controller=this.physics.createCharacterController(.015);this.controller.enableAutostep(WALK_BODY.step,.18,false);this.controller.enableSnapToGround(.22);this.controller.setMaxSlopeClimbAngle(Math.PI/3);this.controller.setMinSlopeSlideAngle(Math.PI/3);}
+  try{if(this.prepareAt)await this.prepareAt(position);if(generation!==this.generation||this.disposed)return false;if(!this.R){this.stats.status="loading";const R=await loadRapier();if(generation!==this.generation||this.disposed)return false;this.R=R;this.physics=new this.R.World({x:0,y:-9.81,z:0});this.controller=this.physics.createCharacterController(.015);this.controller.enableAutostep(WALK_BODY.step,.18,false);this.controller.enableSnapToGround(.22);this.controller.setMaxSlopeClimbAngle(Math.PI/3);this.controller.setMinSlopeSlideAngle(Math.PI/3);}
    this.origin.set(Math.round(position.x/256)*256,Math.round(position.y/256)*256,Math.round(position.z/256)*256);this.clearNearby();this.enabled=true;this.crouching=false;this.velocityY=0;this.ensureNearby(position,true);this.createBody(position);
    this.physics.step();if(this.overlaps(position)){this.disable();this.stats.status="blocked";throw new Error("当前位置与实体相交，请先在自由飞行模式移至空处再步行");}
    this.stats.status="ready";this.stats.mode="walk";return this;
@@ -44,7 +52,17 @@ export class WorldCollision {
     const parts=this.structures.collisionPartsFor?.(entity)??this.structures._templates.get(entity.assetId+":");if(!parts)continue;const data=collisionTriangles(parts,matrixFor(pose),this.origin);if(!data.indices.length)continue;const c=this.physics.createCollider(this.R.ColliderDesc.trimesh(data.vertices,data.indices));this.near.set(entity.id,{c,triangles:data.indices.length/3});
    }else if(distance>48&&this.near.has(entity.id)){this.physics.removeCollider(this.near.get(entity.id).c,true);this.near.delete(entity.id);}}
   if(force||!this.groundCenter||Math.hypot(position.x-this.groundCenter.x,position.z-this.groundCenter.z)>8)this.updateGround(position);
-  this.syncShoreStones(position,force);this.syncDoors();this.stats.activeBuildings=this.near.size;this.stats.triangles=[...this.near.values()].reduce((s,v)=>s+v.triangles,0);
+  this.syncTimber(position);this.syncShoreStones(position,force);this.syncDoors();this.stats.activeBuildings=this.near.size;this.stats.triangles=[...this.near.values()].reduce((s,v)=>s+v.triangles,0);
+ }
+ // Authoritative complete timber meshes, activated by distance only. Board
+ // gaps remain real; capsule sweeps/autostep operate on the visible treads.
+ syncTimber(position){
+  for(const route of this.boardwalks.routes){const distance=route.bounds.distanceToPoint(position);
+   if(distance<32&&!this.timber.has(route.id)){
+    const vertices=[],indices=[];for(const piece of route.pieces){if(!this.timberGeometries.has(piece.kind))this.timberGeometries.set(piece.kind,timberGeometry(piece.kind));const data=collisionTriangles([{geometry:this.timberGeometries.get(piece.kind)}],piece.matrix,this.origin),offset=vertices.length/3;vertices.push(...data.vertices);for(const i of data.indices)indices.push(i+offset);}
+    const c=this.physics.createCollider(this.R.ColliderDesc.trimesh(new Float32Array(vertices),new Uint32Array(indices)));this.timber.set(route.id,{c,triangles:indices.length/3});
+   }else if(distance>48&&this.timber.has(route.id)){this.physics.removeCollider(this.timber.get(route.id).c,true);this.timber.delete(route.id);}
+  }this.stats.activeBoardwalks=this.timber.size;this.stats.boardwalkTriangles=[...this.timber.values()].reduce((n,r)=>n+r.triangles,0);
  }
  // Same scanned 1,260-triangle shell and instance transform as the renderer.
  // Only nearby fixed bodies are resident; no render LOD or stone count changes.
@@ -82,16 +100,20 @@ export class WorldCollision {
   for(let i=0;i<steps;i++){const data=this.leafData(leaf,leaf.angle+step*(i+.5)),leafShape=new this.R.TriMesh(data.vertices,data.indices);if(leafShape.intersectsShape({x:0,y:0,z:0},IDENTITY,shape,pos,IDENTITY)){this.stats.blockedDoors++;return false;}}
   return true;
  }
- move(position,movement,dt,{crouch=false}={}){if(!this.enabled)return position;if(Math.max(Math.abs(position.x-this.origin.x),Math.abs(position.z-this.origin.z))>256){this.clearNearby();this.origin.set(Math.round(position.x/256)*256,Math.round(position.y/256)*256,Math.round(position.z/256)*256);this.ensureNearby(position,true);this.createBody(position);this.stats.rebases=(this.stats.rebases??0)+1;}this.setCrouching(crouch,position);this.ensureNearby(position);this.body.setTranslation(this.bodyPose(position));this.physics.step();this.velocityY=Math.max(-35,this.velocityY-9.81*Math.min(dt,.1));
+ move(position,movement,dt,{crouch=false}={}){if(!this.enabled)return position;if(this.structures?.lodgeStream?.enabled&&this.structures.lodgeStream.needs(position.clone().add(movement))){this.requestPreparation?.();return position;}if(Math.max(Math.abs(position.x-this.origin.x),Math.abs(position.z-this.origin.z))>256){this.clearNearby();this.origin.set(Math.round(position.x/256)*256,Math.round(position.y/256)*256,Math.round(position.z/256)*256);this.ensureNearby(position,true);this.createBody(position);this.stats.rebases=(this.stats.rebases??0)+1;}this.setCrouching(crouch,position);this.ensureNearby(position);this.body.setTranslation(this.bodyPose(position));this.physics.step();this.velocityY=Math.max(-35,this.velocityY-9.81*Math.min(dt,.1));
   const desired={x:movement.x,y:this.velocityY*Math.min(dt,.1),z:movement.z};this.controller.computeColliderMovement(this.body,desired);const corrected=this.controller.computedMovement();position.x+=corrected.x;position.y+=corrected.y;position.z+=corrected.z;this.body.setTranslation(this.bodyPose(position));this.stats.grounded=this.controller.computedGrounded();this.stats.collisions=this.controller.numComputedCollisions();if(this.stats.grounded)this.velocityY=0;return position;
  }
- clearNearby(){if(!this.physics)return;for(const v of this.near.values())this.physics.removeCollider(v.c,true);for(const v of this.dynamic.values())this.physics.removeCollider(v.c,true);for(const v of this.stones.values())this.physics.removeCollider(v.c,true);this.stones.clear();this.stoneCell=null;this.stats.activeShoreStones=0;this.stats.shoreTriangles=0;this.near.clear();this.dynamic.clear();if(this.ground)this.physics.removeCollider(this.ground,true);this.ground=null;this.groundCenter=null;this.stats.activeBuildings=0;this.stats.activeDoors=0;}
- dispose(){this.disposed=true;this.disable();this.stoneGeometry?.dispose();this.stoneGeometry=null;this.physics?.free();this.physics=null;this.stats.status="disposed";}
+ seatPathClear39(start,points,body){return seatPathClear39(this,start,points,body);}
+ useSeatBody39(position,body){return useSeatBody39(this,position,body);}
+ placeSeatBody39(position,body){return placeSeatBody39(this,position,body);}
+ invalidateStructure(id){const item=this.near.get(id);if(item){this.physics.removeCollider(item.c,true);this.near.delete(id);}}
+ clearNearby(){if(!this.physics)return;for(const item of this.timber.values())this.physics.removeCollider(item.c,true);this.timber.clear();this.stats.activeBoardwalks=0;for(const v of this.near.values())this.physics.removeCollider(v.c,true);for(const v of this.dynamic.values())this.physics.removeCollider(v.c,true);for(const v of this.stones.values())this.physics.removeCollider(v.c,true);this.stones.clear();this.stoneCell=null;this.stats.activeShoreStones=0;this.stats.shoreTriangles=0;this.near.clear();this.dynamic.clear();if(this.ground)this.physics.removeCollider(this.ground,true);this.ground=null;this.groundCenter=null;this.stats.activeBuildings=0;this.stats.activeDoors=0;}
+ dispose(){this.disposed=true;this.disable();for(const g of this.timberGeometries.values())g.dispose();this.timberGeometries.clear();this.stoneGeometry?.dispose();this.stoneGeometry=null;this.physics?.free();this.physics=null;this.stats.status="disposed";}
 }
 
 // Reachable menu entries for the same original thresholds used by walking QA.
 export function walkingViewpoints(world){
- return [...SUPPORTED].flatMap(id=>{
+ const viewpoints=[...SUPPORTED].flatMap(id=>{
   const asset=settlementAssetFor(id),entity=world.entities.find(e=>e.id===asset.representativeId);if(!entity)return [];
   const q=world.surface.buildingPose(entity),door=asset.openings.find(o=>o.kind==="door"),lx=door.center[0],lz=id==="house_a"?4.15:4.6,c=Math.cos(q.rot),s=Math.sin(q.rot);
   const x=q.x+c*lx*q.scale.x+s*lz*q.scale.z,z=q.z-s*lx*q.scale.x+c*lz*q.scale.z,y=Math.max(q.y+1.65*q.scale.y,world.surface.heightAt(x,z)+1.65);
@@ -103,4 +125,14 @@ export function walkingViewpoints(world){
   }
   return entries;
  });
+ // The authored tea stair belongs to a different entity from walk-house_a.
+ // Start on its actual exterior ground, aligned with the original door center;
+ // no terrain offset, collider proxy or QA-only teleport enters the house.
+ const tea=world.entities.find(e=>e.id==="cabins:-1972,3678:784f73bf0ba94d17");
+ if(tea){
+  const q=world.surface.buildingPose(tea),c=Math.cos(q.rot),s=Math.sin(q.rot),lx=1,lz=7.6;
+  const x=q.x+c*lx*q.scale.x+s*lz*q.scale.z,z=q.z-s*lx*q.scale.x+c*lz*q.scale.z;
+  viewpoints.push({id:"walk-household-tea",name:"饮茶石阶 · 步行入口",category:"牧居生活",x,z,y:world.surface.heightAt(x,z)+WALK_BODY.eye+.04,yaw:-q.rot*180/Math.PI,pitch:-7});
+ }
+ return [...viewpoints,...boardwalkViewpoints(world),...lodgeEntranceViewpoints(world)];
 }

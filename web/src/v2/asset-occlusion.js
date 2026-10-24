@@ -22,7 +22,12 @@ float assetAO=clamp(vAssetOcclusion.x,0.0,1.0);
 float skyAccess=clamp(vAssetOcclusion.y,0.0,1.0);
 // Residual interior bounce is a provisional approximation until room lightmaps.
 reflectedLight.indirectDiffuse *= assetAO * mix(${bounce},1.0,skyAccess);
-reflectedLight.indirectSpecular *= mix(.22,1.0,assetAO*skyAccess);`);
+reflectedLight.indirectSpecular *= mix(.22,1.0,assetAO*skyAccess);
+#ifdef USE_CLEARCOAT
+// Separate physical IBL accumulator: attenuate the existing external sky only.
+// Room-return transport is added later and must not receive sky attenuation.
+clearcoatSpecularIndirect *= mix(.22,1.0,assetAO*skyAccess);
+#endif`);
   };
-  material.customProgramCacheKey=()=>"world-asset-occlusion-v2-"+bounce;
+  material.customProgramCacheKey=()=>"world-asset-occlusion-v3-clearcoat-"+bounce;
 }

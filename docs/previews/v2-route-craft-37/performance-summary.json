@@ -1,0 +1,50 @@
+{
+  "method": "Chrome same tab 1280x800 DPR1 time870 river-forest, HTTP no-store canopyCache=0, GPU/driver cache not reset. Both fresh pages prepared with existing terrain.prepareView(all), queue and morph0 before20s measurement. No concurrent test/build during valid windows. Diagnostic terrain preparation is not normal startup timing.",
+  "results": [
+    {
+      "file": "candidate-b2.json",
+      "version": "route-continuity-37",
+      "frameMs": 99.24653465346536,
+      "gpuMs": 31.541111980295568,
+      "firstFrameSubmittedMs": 12797.5,
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "selectionSignatureBuilds": 0,
+      "casterEntryCreates": 0
+    },
+    {
+      "file": "baseline-a2.json",
+      "version": "route-continuity-36",
+      "frameMs": 101.36313131313132,
+      "gpuMs": 31.880399251256282,
+      "firstFrameSubmittedMs": 12687,
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "selectionSignatureBuilds": null,
+      "casterEntryCreates": null
+    }
+  ],
+  "excluded": {
+    "baseline-a1": "measurement not complete at capture; excluded from frame comparison",
+    "candidate-b1-overlapped-tests": "possible targeted test overlap; excluded"
+  },
+  "conclusion": "No established stable whole-frame/GPU or startup-tail gain; retained allocations reduced without density/detail loss."
+}

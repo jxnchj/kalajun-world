@@ -1,11 +1,14 @@
+// This regression exercises the retained original guest-room source tables.
+globalThis.location={search:'?guestVanity38=0'};
+import {assertRoomFieldSamplingContract} from './room-field-contract.assert.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {gzipSync} from 'node:zlib';
 import * as THREE from 'three';
-import {ROOM_APERTURE_DATA} from './room-aperture-data.js';
-import {ROOM_BOUNCE_DATA} from './room-bounce-data.js';
+import {ROOM_APERTURE_DATA} from './room-aperture-registry.js';
+import {ROOM_BOUNCE_DATA} from './room-bounce-registry.js';
 import {RoomBounceField,decodeRoomField,ROOM_FIELD_GLSL} from './room-bounce-field.js';
 import {ROOM_BOUNCE_GLSL} from './room-lighting.js';
 import {SettlementRuntime} from './settlements.js';
@@ -71,7 +74,7 @@ test('default full lamp transport remains byte-identical in all three rooms duri
  }}finally{runtime.dispose();}
 });
 test('shader reuses four field taps and visibility affects direct diffuse sky only',()=>{
- assert.equal((ROOM_FIELD_GLSL.match(/texture\(uRoomBounceField/g)||[]).length,4);assert.equal((ROOM_FIELD_GLSL.match(/sampler3D/g)||[]).length,1);
+ assertRoomFieldSamplingContract();assert.equal((ROOM_FIELD_GLSL.match(/sampler3D/g)||[]).length,1);
  assert.equal((ROOM_BOUNCE_GLSL.match(/apertureVisibility\[i\]/g)||[]).length,1);assert.match(ROOM_BOUNCE_GLSL,/diffuseEnergy\+=diffuseAperture\*apertureVisibility\[i\]/);
  assert.match(ROOM_BOUNCE_GLSL,/fieldIrradiance\*2.4\*uRoomFieldDayScale/);assert.match(ROOM_BOUNCE_GLSL,/windowReturn\+=visible\*aperture\*spread\*transmission/);
  for(const [input,expected]of[[undefined,1],[0,0],['0',0],[1,1],['invalid',1]]){const f=new RoomBounceField({apertureVisibility:input});assert.equal(f.uniforms.uRoomApertureVisibility.value,expected);f.dispose();}

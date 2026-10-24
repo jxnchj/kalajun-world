@@ -1,0 +1,52 @@
+{
+  "version": 37,
+  "kind": "offline geometry diagnostic; not browser acceptance",
+  "conditions": {
+    "fov": 52,
+    "viewport": [
+      1280,
+      800
+    ],
+    "near": 0.25,
+    "far": 150000,
+    "csmFade": true,
+    "nearCascadeEnd": 60,
+    "shadowMapSize": 4096,
+    "shadowCoverageMeters": 110.43624092246715,
+    "shadowPixelMeters": 0.026961972881461706
+  },
+  "results": [
+    {
+      "name": "meadow",
+      "blades": 24,
+      "nonzeroCrossSections": 120,
+      "upperBoundScale": 1.4689999999999999,
+      "widthUpperBoundTexels": {
+        "maximum": 1.8599808111976848,
+        "median": 0.9089219708291089,
+        "belowOne": 70,
+        "belowHalf": 19
+      },
+      "note": "3D width divided by shadow pixel pitch is an upper bound on projected width. Tips at zero width excluded; not a pixel-area or temporal flicker metric."
+    },
+    {
+      "name": "basal",
+      "blades": 40,
+      "nonzeroCrossSections": 160,
+      "upperBoundScale": 1.4689999999999999,
+      "widthUpperBoundTexels": {
+        "maximum": 2.5288658984008574,
+        "median": 0.9029131456658301,
+        "belowOne": 91,
+        "belowHalf": 47
+      },
+      "note": "3D width divided by shadow pixel pitch is an upper bound on projected width. Tips at zero width excluded; not a pixel-area or temporal flicker metric."
+    }
+  ],
+  "findings": [
+    "Many actual blade cross-sections remain narrower than one shadow texel even at the largest possible root scale and most favorable projection. Wind can toggle these binary depth samples; PCF filters their coverage but cannot reconstruct the missing silhouette.",
+    "Color and depth share ecoBend and uniform objects; the existing absolute-time wind interpolation fix is already present. This diagnostic does not exclude all other causes."
+  ],
+  "status": "Unresolved. No density, geometry, shadow resolution, bias, filter radius, wind strength or defaults changed.",
+  "next": "Prototype a separately fitted close-range vegetation shadow with unchanged existing cascades, resolving the occupied-room 16-sampler constraint first. Validate fixed-time moving silhouettes and GPU cost before adoption."
+}

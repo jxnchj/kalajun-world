@@ -65,7 +65,7 @@ def contour_angle(x, z):
     return math.atan2(-gx, -gz) if abs(gx) + abs(gz) > 1e-3 else 0.0
 
 
-P1, P2, P6, P7, P8 = "private-photo-01", "private-photo-02", "private-photo-06", "private-photo-07", "private-photo-08"
+P1, P2, P6, P7, P8 = "private-photo", "private-photo", "private-photo", "private-photo", "private-photo"
 objs = {"yurts": [], "cabins": [], "boardwalks": [], "paths": [], "fences": [], "horses": [], "swings": []}
 
 # --- yurts: photo 1 detections + photo 8 ---

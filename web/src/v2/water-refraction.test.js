@@ -190,3 +190,12 @@ test("actual river metadata keeps travel phase distinct from hydraulic slope and
   t.diagnostic(JSON.stringify({waterRays:water,submergedCandidates:accepted,formerlyRejectedByCrossPixelZ:formerlyRejected,scope:"physical bed and rendered water geometry; no GPU footprint/stone occlusion emulation"}));
   geometry.dispose();mesh.material.dispose();
 });
+
+test('packed HDR candidate keeps opaque refraction by matching color storage, with unchanged Float32 depth and single resolve',()=>{
+ const f=fixture();assert.equal(f.capture.prepare(f.r,f.c,f.source),true);const original=f.capture.target;
+ f.source.texture.type=THREE.UnsignedInt101111Type;f.source.texture.format=THREE.RGBFormat;f.source.texture.internalFormat='R11F_G11F_B10F';
+ assert.equal(supportsWaterRefraction(f.r,f.c,f.source),true);assert.equal(f.capture.prepare(f.r,f.c,f.source),true);const packed=f.capture.target;assert.notEqual(packed,original);assert.equal(packed.texture.type,f.source.texture.type);assert.equal(packed.texture.format,THREE.RGBFormat);assert.equal(packed.texture.internalFormat,'R11F_G11F_B10F');assert.equal(packed.samples,0);assert.equal(f.source.samples,4);assert.equal(packed.depthTexture.type,THREE.FloatType);assert.equal(packed.depthTexture.format,THREE.DepthFormat);assert.equal(packed.texture.minFilter,THREE.LinearFilter);assert.equal(f.capture.stats.attachmentBytes,600*400*8);
+ f.r.setRenderTarget(f.source);assert.equal(f.capture.capture(f.r,f.c),true);assert.equal(f.uniforms.uRiverRefractionValid.value,1);assert.deepEqual(f.gl.blits[0].args,[0,0,600,400,0,0,600,400,48,7]);
+ f.source.texture.type=THREE.HalfFloatType;f.source.texture.format=THREE.RGBAFormat;f.source.texture.internalFormat=null;assert.equal(f.capture.prepare(f.r,f.c,f.source),true);assert.notEqual(f.capture.target,packed);assert.equal(f.capture.target.texture.type,THREE.HalfFloatType);assert.equal(f.capture.stats.attachmentBytes,600*400*12);f.capture.dispose();f.source.dispose();
+});
+test('packed refraction refuses unspecified internal format or reduced multisample count',()=>{for(const samples of[0,2,4]){const f=fixture();f.source.texture.type=THREE.UnsignedInt101111Type;f.source.texture.format=THREE.RGBFormat;f.source.samples=samples;assert.equal(supportsWaterRefraction(f.r,f.c,f.source),false);f.source.texture.internalFormat='R11F_G11F_B10F';assert.equal(supportsWaterRefraction(f.r,f.c,f.source),samples===4);f.capture.dispose();f.source.dispose();}});

@@ -1,0 +1,19 @@
+{
+  "backup": "backups/route-continuity-v38/tables-source-close-20261024-141215",
+  "meadow": {
+    "oldRoots": 45440,
+    "newRoots": 45440,
+    "procedural": 46,
+    "rawPayloadEqual": true,
+    "gzipBytesEqual": true,
+    "signatureChanged": true
+  },
+  "patch": {
+    "roots": true,
+    "geometry": true,
+    "ground": true,
+    "center": true,
+    "size": true
+  },
+  "forestBindingUnchanged": true
+}

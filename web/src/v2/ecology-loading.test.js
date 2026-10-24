@@ -27,3 +27,18 @@ test('cancellation cannot publish a complete set of otherwise unabortable asset 
   const result=loadEcologySources(defaults({far:()=>far.promise}),{signal:controller.signal});await tick();controller.abort();far.resolve({dispose(){disposed++;}});
   await assert.rejects(result,error=>error.name==='AbortError');assert.equal(disposed,1);
 });
+
+
+test('source-ready and publication failures retain transaction cleanup rather than publishing partial assets',async()=>{
+ for(const stage of ['source','publish']){
+  const failure=new Error(stage+' hook failed');let released=0,aborted=0;
+  const mesh={isMesh:true,geometry:{dispose(){released++;}},material:{dispose(){released++;}}};
+  const value={scene:{traverse(fn){fn(mesh);}}};
+  const result=loadEcologySources(defaults({hi:()=>value}),{
+   onReady:name=>{if(stage==='source'&&name==='hi')throw failure;},
+   beforePublish:()=>{if(stage==='publish')return Promise.reject(failure);},
+   onFailure:error=>{assert.equal(error,failure);aborted++;},
+  });
+  await assert.rejects(result,error=>error===failure);assert.equal(released,2);assert.equal(aborted,1);
+ }
+});

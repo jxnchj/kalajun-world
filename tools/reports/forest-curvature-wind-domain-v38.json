@@ -1,0 +1,430 @@
+{
+  "roots": 1483,
+  "scope": "offline original XZ per-blade Y seating trial (brook compact footprint is explicitly NOT reused), complete original vertices/index retained; actual wind-parameter interval enclosure at every nonbasal vertex; sampled domain, continuous terrain/GPU acceptance still pending, not adopted",
+  "results": [
+    {
+      "id": "grass:-4528:5986",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 39204
+    },
+    {
+      "id": "grass:-4528:5987",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 41796
+    },
+    {
+      "id": "grass:-4532:5988",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 42606
+    },
+    {
+      "id": "grass:-4531:5989",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 44064
+    },
+    {
+      "id": "grass:-4525:5989",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 43254
+    },
+    {
+      "id": "grass:-4525:5990",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 44469
+    },
+    {
+      "id": "grass:-4524:5990",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 44469
+    },
+    {
+      "id": "grass:-4529:5992",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 43578
+    },
+    {
+      "id": "grass:-4522:5993",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 44307
+    },
+    {
+      "id": "grass:-4522:5994",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 39204
+    },
+    {
+      "id": "grass:-4521:5996",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 38556
+    },
+    {
+      "id": "grass:-4525:5998",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 34506
+    },
+    {
+      "id": "grass:-4520:5999",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40419
+    },
+    {
+      "id": "grass:-4524:6001",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 42444
+    },
+    {
+      "id": "grass:-4518:6002",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40824
+    },
+    {
+      "id": "grass:-4523:6003",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 36288
+    },
+    {
+      "id": "grass:-4519:6003",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 34992
+    },
+    {
+      "id": "grass:-4518:6003",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 37098
+    },
+    {
+      "id": "grass:-4517:6003",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 33534
+    },
+    {
+      "id": "grass:-4524:6004",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40662
+    },
+    {
+      "id": "grass:-4518:6004",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 39609
+    },
+    {
+      "id": "grass:-4517:6004",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 39609
+    },
+    {
+      "id": "grass:-4519:6005",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40662
+    },
+    {
+      "id": "grass:-4518:6005",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40095
+    },
+    {
+      "id": "grass:-4519:6006",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40662
+    },
+    {
+      "id": "grass:-4524:6007",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 42606
+    },
+    {
+      "id": "grass:-4523:6008",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 43254
+    },
+    {
+      "id": "grass:-4524:6009",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 38880
+    },
+    {
+      "id": "grass:-4525:6010",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40257
+    },
+    {
+      "id": "grass:-4520:6010",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 36288
+    },
+    {
+      "id": "grass:-4525:6011",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 39852
+    },
+    {
+      "id": "grass:-4524:6011",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 38232
+    },
+    {
+      "id": "grass:-4520:6011",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 42444
+    },
+    {
+      "id": "grass:-4525:6012",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40662
+    },
+    {
+      "id": "grass:-4527:6014",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 43578
+    },
+    {
+      "id": "grass:-4527:6015",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 43011
+    },
+    {
+      "id": "grass:-4527:6016",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 43578
+    },
+    {
+      "id": "grass:-4531:6019",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40662
+    },
+    {
+      "id": "grass:-4531:6020",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 35640
+    },
+    {
+      "id": "grass:-4532:6021",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 42363
+    },
+    {
+      "id": "grass:-4526:6021",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 35640
+    },
+    {
+      "id": "grass:-4527:6022",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 40905
+    },
+    {
+      "id": "grass:-4534:6023",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 44469
+    },
+    {
+      "id": "grass:-4533:6023",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 41553
+    },
+    {
+      "id": "grass:-4528:6023",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 39609
+    },
+    {
+      "id": "grass:-4529:6024",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 34020
+    },
+    {
+      "id": "grass:-4531:6026",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 44307
+    }
+  ],
+  "adaptedRoots": 46
+}

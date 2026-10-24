@@ -1,3 +1,4 @@
+import { TERRAIN_GRASS_PROJECTION, TERRAIN_GRASS_PROJECTION_GLSL } from './terrain-grass-projection.js';
 import * as THREE from "three";
 import { forestScanMean, FOREST_SCAN_GLSL } from "./terrain-forest-scan.js";
 import { shoreMaterialVariation, SHORE_MATERIAL_GLSL, SHORE_ELEVATION } from "./shore-material.js";
@@ -6,6 +7,10 @@ import { bindMeadowField, MEADOW_SURFACE_GLSL, MEADOW_GROUND_REFERENCE_GLSL, MEA
 
 // Metres per tile. The material is sampled in world space, independently of
 // terrain meshes, so a LOD transition cannot move a patch of grass or rock.
+// G measures canopy structure, not leaf pigment. Physical mode keeps that
+// structure in normals/roughness while R/B drive the same colour as grass.
+export const TERRAIN_CANOPY_ALBEDO=new URLSearchParams(globalThis.location?.search||"").get("canopyAlbedo")==="v37"?"v37":"physical";
+const BROOK_BANK_MATERIAL=new URLSearchParams(globalThis.location?.search||"").get("brookLandform")==="1";
 const RESOLUTION = 512;
 const PERIODS = { grass: 2, soil: 2, rock: 4, forest: 2 };
 const TAU = Math.PI * 2;
@@ -277,8 +282,11 @@ varying vec3 vTerrainWorldNormal;
 varying vec3 vTerrainCover;
 varying vec4 vTerrainHydrology;
 varying float vTerrainShoreDistance;
+${TERRAIN_GRASS_PROJECTION_GLSL}
 ${FOREST_SCAN_GLSL}
 
+uniform float forestSediment38;
+uniform float forestRootSurface38;
 float terrainRockFraction(float bare, float slope, float altitude) {
   float cliff = smoothstep(0.66, 0.9, slope) * (0.12 + 0.38 * bare);
   return clamp(bare * (0.04 + 0.56 * smoothstep(0.10, 0.42, slope)
@@ -344,7 +352,12 @@ if(terrainForestContinuity<.5 && terrainForest>.001){
   terrainMeso=.5+(terrainPatch-.5)*(1.-smoothstep(8.,30.,terrainFootprint));
   terrainBlend=.3+terrainNoise(terrainXZ/7.3)*.4;
 }
-vec4 terrainGrassValue = terrainSample(0., terrainXZ / 2.0, terrainBlend);
+// Existing ecological field bends the two source projections together. No
+// extra texture sample, density change, or distance-dependent blur is added.
+vec2 terrainGrassP=terrainXZ/2.;
+vec2 terrainGrassQ=terrainGrassP${TERRAIN_GRASS_PROJECTION==='v36'?'':'+.6*(terrainMeadowFeatures.ra-vec2(.5))'};
+vec4 terrainGrassValue = terrainSample(0., terrainGrassQ, terrainBlend);
+${TERRAIN_GRASS_PROJECTION==='v36'?'':'terrainGrassValue.gb=terrainGrassGradient(terrainGrassValue.gb,terrainGrassP,terrainGrassQ);'}
 vec4 terrainSoilValue = terrainSample(1., terrainXZ / 2.0 + 0.38, 0.64 - terrainBlend * 0.3);
 float terrainSnow = smoothstep(0.1, 0.9, vTerrainCover.b);
 // Shared sward structure interrupts mixed soil/grass boundaries. Pure source
@@ -360,6 +373,16 @@ if(terrainForest>.001){
 }
 float terrainSlope = 1.0 - max(terrainN.y, 0.0);
 float terrainWetness = clamp(vTerrainHydrology.x, 0.0, 1.0);
+// The designed 22cm incision exposes soil BELOW the rooted upper shoulder.
+// Classification follows physical height and inclination, without extra noise.
+float brookCutFace=0.;
+${BROOK_BANK_MATERIAL?`float brookReach=1.-smoothstep(84.,112.,length(vTerrainWorldPosition.xz-vec2(-2220.42,3363.42)));
+// Shared canopy and pigment identify rooted sod, rather than a new noise mask.
+float brookRootMat=smoothstep(.28,.72,terrainMeadowFeatures.r*.65+terrainMeadowFeatures.g*.35);
+float brookSoilTop=.24-mix(.035,.17,brookRootMat);
+brookCutFace=brookReach*smoothstep(.025,.075,vTerrainHydrology.w)*(1.-smoothstep(brookSoilTop-.035,brookSoilTop+.035,vTerrainHydrology.w))
+    *smoothstep(.018,.095,terrainSlope)*(1.-smoothstep(.45,1.05,vTerrainShoreDistance))*smoothstep(.015,.12,terrainWetness);`:''}
+
 // Only the channel and its immediate stony edge get river gravel. The
 // wider low-strength hydrology margin is damp vegetation, not a bare beach.
 // Vertex coverage alone linearly smears a low-water sample up an elevated
@@ -374,6 +397,7 @@ float terrainPhysicalBed=vTerrainHydrology.y*${TERRAIN_SHORE_SAMPLING==="v24"?"1
 float terrainLipRoots=terrainShoreEcotone*terrainShoreRoots*mix(
     shoreEcotoneCover(terrainWetness,vTerrainHydrology.w,terrainSlope,terrainSurfaceStructure),
     shoreEcotoneBankCover(terrainWetness,vTerrainHydrology.w,terrainSlope,terrainSurfaceStructure,vTerrainShoreDistance),terrainRootHorizon);
+terrainLipRoots*=1.-brookCutFace;
 terrainPhysicalBed*=1.-terrainLipRoots;
 float terrainRiverBed = surfaceTransitionCoverage(smoothstep(0.55, 0.95, terrainPhysicalBed),
     -terrainSurfaceStructure,uSurfaceTransitionVariation*.9);
@@ -385,8 +409,10 @@ float terrainBank = surfaceTransitionCoverage(clamp(vTerrainHydrology.z, 0.0, 1.
 // Shared broad communities reconnect damp turf to the meadow, with small open
 // sediment pockets. Steep cuts and the actual riverbed keep their bare surface.
 float terrainRootCover=max(terrainLipRoots,terrainShoreRoots*shoreRootCover(terrainWetness,vTerrainHydrology.w,terrainSlope,terrainSurfaceStructure));
+terrainRootCover*=1.-brookCutFace;
 float terrainBankLiving=(1.-smoothstep(.12,.74,terrainRiverBed))*(1.-smoothstep(.22,.52,terrainSlope))
     *smoothstep(.12,.76,terrainMeadowFeatures.r*.72+terrainMeadowFeatures.g*.28);
+terrainBankLiving*=1.-brookCutFace;
 terrainBank*=1.-terrainBankLiving*${TERRAIN_SHORE_COVER==="v22"?"0.":".92"};
 terrainBank*=1.-terrainRootCover;
 float terrainShoreGrain=clamp(terrainSoilValue.a*.7+terrainMeadowFeatures.a*.3,0.,1.);
@@ -405,6 +431,12 @@ float terrainRockWeight = max(terrainRockFraction(terrainBare, terrainSlope, vTe
 float terrainShoreMineral=terrainRiverBed*mix(.54,.84,terrainShoreGrain);
 terrainRockWeight=mix(terrainRockWeight,max(terrainRockFraction(terrainBare,terrainSlope,vTerrainWorldPosition.y),terrainShoreMineral)*(1.-terrainSnow),uShoreMaterialVariation*terrainBank);
 terrainRockWeight*=1.-terrainOrganicCover;
+// Only the representative forest reach: retain original natural rock fraction,
+// replacing only the extra mineral weight imposed by the river classification.
+float forestBankMaterialReach38=1.-smoothstep(36.,60.,length(terrainXZ-vec2(-3611.9813305250705,4805.371282289286)));
+float forestNaturalRock38=terrainRockFraction(terrainBare,terrainSlope,vTerrainWorldPosition.y)*(1.-terrainSnow)*(1.-terrainOrganicCover);
+float forestSedimentWeight38=forestSediment38*forestBankMaterialReach38*max(0.,terrainRockWeight-forestNaturalRock38)/max(.000001,terrainRockWeight);
+float forestRootSurfaceWeight38=forestRootSurface38*forestBankMaterialReach38*terrainForest;
 // Every nonzero blend, including tiny boundary weights, keeps the full surface.
 // The disabled control performs the identical explicit-gradient work everywhere.
 vec3 terrainRockDX=dFdx(vTerrainWorldPosition)/4.,terrainRockDY=dFdy(vTerrainWorldPosition)/4.;
@@ -419,6 +451,7 @@ if(terrainSkipZeroRockSamples<.5 || terrainRockWeight!=0.){
 vec4 terrainRockValue=terrainRockX*terrainAxes.x+terrainRockY*terrainAxes.y+terrainRockZ*terrainAxes.z;
 float terrainSoilWeight = clamp(terrainBare * 0.42 + terrainForest * 0.56 + terrainBank * 0.32
     + smoothstep(0.72, 0.94, terrainMeso) * 0.12, 0.0, 0.8) * (1.0 - terrainSnow);
+terrainSoilWeight=max(terrainSoilWeight,brookCutFace*.88);
 // Soil colour, its normal and roughness all consume this same weight below.
 // Damp pores retain their physical wetness; no new bright or dark shore ring.
 terrainSoilWeight=surfaceTransitionCoverage(terrainSoilWeight,-terrainSurfaceStructure,
@@ -433,6 +466,7 @@ vec3 terrainSoilColor = mix(terrainBase, vec3(0.215, 0.168, 0.119), 0.7)
 vec3 terrainRockColor = mix(terrainBase, vec3(0.16, 0.15, 0.13), 0.45)
     * (0.68 + terrainRockValue.r * 0.66);
 terrainRockColor *= mix(vec3(0.98, 1.0, 1.02), vec3(1.04, 1.01, 0.96), terrainRockValue.a);
+terrainRockColor=mix(terrainRockColor,terrainSoilColor,forestSedimentWeight38);
 // The leaf canopy and exposed ground now share the same ecological palette.
 // Geographic exposure remains a bounded multiplier; forest, rock and snow keep
 // their own surfaces. This is albedo, not a baked light/shadow correction.
@@ -454,8 +488,8 @@ float terrainSwardHeight=(terrainSward-.5)*.16*terrainSwardWeight*terrainSwardRe
 // footprint, so the near material resolves continuously into its distant mean.
 // This is at most 1.75 cm of shading relief, not raised collision geometry.
 terrainSwardHeight+=(terrainSward-.5)*.035*terrainLipRoots*terrainSwardResolved;
-terrainGrassColor*=mix(1.,mix(.88,1.06,smoothstep(.24,.76,terrainSward)),
-    terrainSwardWeight*meadowColourResolved(terrainFootprint));
+${TERRAIN_CANOPY_ALBEDO==="v37"?`terrainGrassColor*=mix(1.,mix(.88,1.06,smoothstep(.24,.76,terrainSward)),
+    terrainSwardWeight*meadowColourResolved(terrainFootprint));`:''}
 vec3 terrainLayeredColor = mix(mix(terrainGrassColor, terrainSoilColor, terrainSoilWeight),
     terrainRockColor, terrainRockWeight);
 float terrainForestCover=terrainForest*(1.-terrainRockWeight)*(1.-terrainSnow)*(1.-terrainRiverBed);
@@ -473,7 +507,7 @@ terrainForestColor=mix(terrainForestColor,terrainMossColor,max(terrainMoss,terra
 terrainForestColor=mix(terrainForestColor,terrainGrassColor,terrainLowGrass);
 // Existing CC0 scan detail enriches nearby forest material at its real metre scale.
 // Sampling stays in world space; the fading only removes subpixel information.
-float terrainOrganicFace=smoothstep(.12,.5,terrainSlope);
+float terrainOrganicFace=max(smoothstep(.12,.5,terrainSlope),brookCutFace);
 // Mineral classification no longer erases the scans beneath an organic skin.
 // The same union controls retained DC and near residuals, so both waterline and
 // the 32--90 m scan fade keep the same material identity.
@@ -516,7 +550,7 @@ vec3 terrainShoreSediment=mix(terrainSoilColor*vec3(.93,.98,1.02),terrainRockCol
 float terrainShoreSoil=uShoreMaterialVariation*terrainBank*(1.-terrainRiverBed*.65)*(.20+.22*terrainShoreGrain);
 terrainLayeredColor=mix(terrainLayeredColor,terrainShoreSediment,terrainShoreSoil);
 vec3 terrainShoreLiving=mix(terrainMossColor,terrainGrassColor,smoothstep(.28,.7,terrainSward));
-terrainLayeredColor=mix(terrainLayeredColor,terrainShoreLiving,uShoreMaterialVariation*terrainShoreZones.z*.55);
+terrainLayeredColor=mix(terrainLayeredColor,terrainShoreLiving,uShoreMaterialVariation*terrainShoreZones.z*.55*(1.-brookCutFace));
 // A cut face exposes humus/soil; a shallow shoulder retains the same forest
 // litter and moss as the surrounding floor. Existing mip-filtered fields keep
 // this horizon continuous at distance, without a new thin noise stripe.
@@ -525,7 +559,7 @@ vec3 terrainOrganicColor=mix(terrainForestColor,terrainOrganicSoil,terrainOrgani
 terrainLayeredColor=mix(terrainLayeredColor,terrainOrganicColor,terrainOrganicCover);
 // Roots reconnect the bank to the same meadow/forest patch, with matching
 // normal and roughness below; this is not an extra line of stones or plants.
-terrainLayeredColor=mix(terrainLayeredColor,terrainShoreLiving,terrainRootCover);
+if(forestRootSurfaceWeight38>0.){terrainLayeredColor=mix(terrainLayeredColor,mix(terrainShoreLiving,terrainForestColor,forestRootSurfaceWeight38),terrainRootCover);}else{terrainLayeredColor=mix(terrainLayeredColor,terrainShoreLiving,terrainRootCover);}
 diffuseColor.rgb = mix(terrainLayeredColor, terrainBase * (0.96 + terrainGrassValue.r * 0.08), terrainSnow);
 float terrainLegacyDamp=mix(1.0,0.66,terrainWetness*(0.35+0.65*terrainRiverBed));
 // A merely damp margin stays porous; a saturated bed darkens without crushing
@@ -539,7 +573,7 @@ vec3 terrainRockGradient = vec3(0.0, terrainRockX.g, terrainRockX.b) * terrainAx
     + vec3(terrainRockY.g, 0.0, terrainRockY.b) * terrainAxes.y
     + vec3(terrainRockZ.g, terrainRockZ.b, 0.0) * terrainAxes.z;
 vec3 terrainGradient = mix(mix(terrainGrassGradient, terrainSoilGradient, terrainSoilWeight),
-    terrainRockGradient * 0.72, terrainRockWeight) * (1.0 - terrainSnow * 0.8);
+    mix(terrainRockGradient * 0.72,terrainSoilGradient,forestSedimentWeight38), terrainRockWeight) * (1.0 - terrainSnow * 0.8);
 vec3 terrainForestGradient=mix(vec3(terrainForestValue.g,0.,terrainForestValue.b)*.55,terrainGrassGradient,terrainLowGrass);
 terrainGradient=mix(terrainGradient,terrainForestGradient,terrainForestCover);
 // Organic replacement used to erase the previously added scan normal.
@@ -547,7 +581,7 @@ terrainGradient=mix(terrainGradient,terrainForestGradient,terrainForestCover);
 terrainGradient+=terrainReferenceGradient;
 terrainGradient=mix(terrainGradient,mix(terrainForestGradient,terrainSoilGradient,terrainOrganicFace),terrainOrganicCover);
 terrainGradient+=terrainReferenceGradient*terrainOrganicCover*(1.-terrainOrganicFace)*terrainOrganicContinuity;
-terrainGradient=mix(terrainGradient,terrainGrassGradient,terrainRootCover);
+if(forestRootSurfaceWeight38>0.){terrainGradient=mix(terrainGradient,mix(terrainGrassGradient,terrainForestGradient+terrainReferenceGradient,forestRootSurfaceWeight38),terrainRootCover);}else{terrainGradient=mix(terrainGradient,terrainGrassGradient,terrainRootCover);}
 // Convert screen derivatives of this shallow fixed-world height into a tangent
 // gradient. It retains the true terrain slope and is filtered before subpixel aliasing.
 vec3 terrainDX=dFdx(vTerrainWorldPosition),terrainDY=dFdy(vTerrainWorldPosition);
@@ -598,6 +632,9 @@ export function createTerrainMaterial() {
   const meadowField=bindMeadowField(material);
   material.userData.shoreMaterialVariation=shoreMaterialVariation;
   material.userData.surfaceTransitionVariation=surfaceTransitionVariation;
+  const forestSediment38={value:new URLSearchParams(globalThis.location?.search||"").get("forestSediment38")!=="0"?1:0};
+  const forestRootSurface38={value:new URLSearchParams(globalThis.location?.search||"").get("forestRootSurface38")!=="0"?1:0};
+  material.userData.forestSediment38=forestSediment38;material.userData.forestRootSurface38=forestRootSurface38;
   const rockSampling={value:1};material.userData.terrainSkipZeroRockSamples=rockSampling;
   const forestContinuity={value:1};material.userData.terrainForestContinuity=forestContinuity;
   const shoreRoots={value:new URLSearchParams(globalThis.location?.search||"").get("shoreRoots")==="v25"?0:1};
@@ -616,8 +653,9 @@ export function createTerrainMaterial() {
   const forestMean={value:new URLSearchParams(globalThis.location?.search||"").get("forestMean")==="v25"?0:1};
   material.userData.terrainShoreRoots=shoreRoots;
   material.userData.terrainForestMeanContinuity=forestMean;
+  material.userData.terrainCanopyAlbedo=TERRAIN_CANOPY_ALBEDO;material.userData.brookBankMaterial=BROOK_BANK_MATERIAL;
   material.name = "GeographicTerrainPBR";
-  material.customProgramCacheKey = () => "kalajun-terrain-root-horizon-v31-"+TERRAIN_SHORE_COVER+"-"+TERRAIN_SHORE_SAMPLING;
+  material.customProgramCacheKey = () => "kalajun-terrain-projection-v38-bank-material-"+BROOK_BANK_MATERIAL+"-"+TERRAIN_CANOPY_ALBEDO+"-"+TERRAIN_GRASS_PROJECTION+"-"+TERRAIN_SHORE_COVER+"-"+TERRAIN_SHORE_SAMPLING;
   material.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms,referenceUniforms);
     shader.uniforms.meadowSurfaceField=meadowField;
@@ -626,6 +664,7 @@ export function createTerrainMaterial() {
     shader.uniforms.uMeadowCommunityVariation=meadowCommunityVariation;
     shader.uniforms.uShoreMaterialVariation=shoreMaterialVariation;
     shader.uniforms.uSurfaceTransitionVariation=surfaceTransitionVariation;
+    shader.uniforms.forestSediment38=forestSediment38;shader.uniforms.forestRootSurface38=forestRootSurface38;
     shader.uniforms.terrainSkipZeroRockSamples=rockSampling;
     shader.uniforms.terrainForestContinuity=forestContinuity;
     shader.uniforms.terrainShoreRoots=shoreRoots;
@@ -657,7 +696,7 @@ vTerrainShoreDistance += terrainShoreDistanceDelta * morphTargetInfluences[0];
       .replace("#include <color_fragment>", "#include <color_fragment>\n" + SURFACE_FRAGMENT)
       .replace("#include <roughnessmap_fragment>", `#include <roughnessmap_fragment>
 float terrainCanopyRoughness=.93+(1.-terrainGrassMicro)*.025+(terrainMeadowFeatures.g-.5)*.02+meadowLandformRoughness(vTerrainLandform)+meadowCommunityRoughness(vTerrainCommunity);
-roughnessFactor = clamp(mix(mix(terrainCanopyRoughness,.96,terrainSoilWeight), 0.87, terrainRockWeight)
+roughnessFactor = clamp(mix(mix(terrainCanopyRoughness,.96,terrainSoilWeight), mix(.87,.96,forestSedimentWeight38), terrainRockWeight)
     + (terrainSoilValue.r - 0.5) * 0.06*terrainSoilWeight, 0.8, 1.0);
 roughnessFactor = mix(roughnessFactor, .97-terrainNeedles*.09-terrainMoss*.04, terrainForestCover);
 float terrainLegacyWetRoughness=mix(roughnessFactor,.55,terrainWetness*max(terrainSoilWeight,terrainRiverBed)*.75);
@@ -673,7 +712,8 @@ float terrainOrganicWetRoughness=mix(
     shoreWetRoughness(terrainOrganicDryRoughness,terrainWetness,terrainShoreGrain),
     shoreOrganicRoughness(terrainOrganicDryRoughness,terrainWetness,terrainShoreGrain,vTerrainHydrology.w,vTerrainShoreDistance),terrainOrganicContinuity);
 roughnessFactor=mix(roughnessFactor,terrainOrganicWetRoughness,terrainOrganicCover);
-roughnessFactor=mix(roughnessFactor,terrainCanopyRoughness,terrainRootCover);
+float forestRootRoughness38=shoreOrganicRoughness(.97-terrainNeedles*.09-terrainMoss*.04,terrainWetness,terrainShoreGrain,vTerrainHydrology.w,vTerrainShoreDistance);
+if(forestRootSurfaceWeight38>0.){roughnessFactor=mix(roughnessFactor,mix(terrainCanopyRoughness,forestRootRoughness38,forestRootSurfaceWeight38),terrainRootCover);}else{roughnessFactor=mix(roughnessFactor,terrainCanopyRoughness,terrainRootCover);}
 roughnessFactor = mix(roughnessFactor, 0.84, terrainSnow);
 `)
       .replace("#include <normal_fragment_maps>", `#include <normal_fragment_maps>

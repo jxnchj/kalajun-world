@@ -1,0 +1,18 @@
+// Manual frozen-world comparison only. Never loaded by the default world.
+import * as T from 'three';import{WorldFrame}from './world-frame.js';
+export function capturePackedHDRPair(debug,{format='packed'}={}){
+ if(!['packed','rgba'].includes(format))throw Error('Unknown comparison format');
+ const {renderer:r,worldFrame:f,scene}=debug;if(!f||f.target.samples!==4||f.packedHDR38)throw Error('Comparison requires original RGBA16F 4x world');
+ const unsupported=[];scene.traverse(o=>{for(const m of(Array.isArray(o.material)?o.material:[o.material]))if(m&&(m.blending===T.CustomBlending||m.blending===T.SubtractiveBlending))unsupported.push({name:m.name,blending:m.blending});});if(unsupported.length)throw Error('Unverified destination-alpha/negative blend: '+JSON.stringify(unsupported));
+ const candidate=new WorldFrame(r,{packedHDR38:format==='packed',samples:4}),original=f.target,shadowAuto=r.shadowMap.autoUpdate;candidate.setSize(original.width,original.height);const gl=r.getContext(),w=original.width,h=original.height;
+ const state=()=>({exposure:r.toneMappingExposure,toneMapping:r.toneMapping,camera:debug.camera.matrixWorld.elements.slice(),time:debug.environment.minutes,wind:debug.ecology.uniforms.uWindTime.value,refraction:debug.water.refraction.stats.enabled,refractionReason:debug.water.refraction.stats.reason,reflectionCaptures:debug.water.reflection.stats.captures});
+ const frame=target=>{f.target=target;debug.renderFrozenWorld();const bytes=new Uint8Array(w*h*4);gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,bytes);const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d'),image=ctx.createImageData(w,h);for(let y=0;y<h;y++)image.data.set(bytes.subarray(y*w*4,(y+1)*w*4),(h-1-y)*w*4);ctx.putImageData(image,0,0);return{bytes,png:canvas.toDataURL('image/png'),state:state()};};
+ try{
+  r.shadowMap.autoUpdate=false;const baseline=frame(original),savedRead=gl.getParameter(gl.READ_FRAMEBUFFER_BINDING),hdr=new Float32Array(w*h*4);try{gl.bindFramebuffer(gl.READ_FRAMEBUFFER,r.properties.get(original).__webglFramebuffer);gl.readPixels(0,0,w,h,gl.RGBA,gl.FLOAT,hdr);if(gl.getError()!==gl.NO_ERROR)throw Error('Actual HDR float audit read failed');}finally{gl.bindFramebuffer(gl.READ_FRAMEBUFFER,savedRead);}
+  let negative=0,nonfinite=0,min=Infinity,alphaMin=Infinity,alphaMax=-Infinity;for(let i=0;i<hdr.length;i++){if(i%4===3){alphaMin=Math.min(alphaMin,hdr[i]);alphaMax=Math.max(alphaMax,hdr[i]);}else{if(hdr[i]<0)negative++;if(!Number.isFinite(hdr[i]))nonfinite++;min=Math.min(min,hdr[i]);}}if(negative||nonfinite)throw Error('HDR audit rejects negative/nonfinite source: '+JSON.stringify({negative,nonfinite,min}));
+  const packed=frame(candidate.target);let max=0,sum=0,changed=0,above1=0;for(let i=0;i<packed.bytes.length;i++){if(i%4===3)continue;const d=Math.abs(packed.bytes[i]-baseline.bytes[i]);max=Math.max(max,d);sum+=d;if(d)changed++;if(d>1)above1++;}
+  return{baselinePNG:baseline.png,packedPNG:packed.png,stats:{format,baselineState:baseline.state,candidateState:packed.state,equivalentPipeline:JSON.stringify(baseline.state)===JSON.stringify(packed.state),scope:'same synchronous frozen actual world, original OutputPass/exposure/4x samples; readback excluded from performance',width:w,height:h,capability:candidate.packedHDRCapability,hdr:{negative,nonfinite,min,alphaMin,alphaMax},error8bit:{max,mean:sum/(w*h*3),changedChannels:changed,channelsAbove1:above1,totalChannels:w*h*3}}};
+ }finally{f.target=original;r.shadowMap.autoUpdate=shadowAuto;debug.renderFrozenWorld();candidate.dispose();}
+}
+
+export function captureRGBAControl(debug){return capturePackedHDRPair(debug,{format:'rgba'});}

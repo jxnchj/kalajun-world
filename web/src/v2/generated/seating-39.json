@@ -1,0 +1,107 @@
+{
+  "version": 39,
+  "sources": [
+    {
+      "path": "assets/src/v2/settlements/lodge-tables-v38/lodge-tables-complete.blend",
+      "sha256": "df108dbc9b815cf2baf3cc8b8f6337c7eacc86d11f823f151af71903551c57d0"
+    },
+    {
+      "path": "assets/src/v2/pastoral/house_a-lived.blend",
+      "sha256": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2"
+    }
+  ],
+  "seats": [
+    {
+      "id": "sofa-1",
+      "entityId": "guesthouses:-1993.1,3453.7:5b4988c14b5aecdb",
+      "kind": "lodge",
+      "sourceNames": [
+        "export sofa 1 candidate linen original mean",
+        "export sofa 2 candidate linen original mean"
+      ],
+      "localSeat": [
+        4.650000095367432,
+        0.5300000309944153,
+        -1.9700000286102295
+      ],
+      "localFront": [
+        0,
+        0,
+        1
+      ],
+      "sourceTriangle": [
+        837,
+        676,
+        783
+      ],
+      "normal": [
+        0.0,
+        -0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "sofa-2",
+      "entityId": "guesthouses:-1993.1,3453.7:5b4988c14b5aecdb",
+      "kind": "lodge",
+      "sourceNames": [
+        "export sofa 1 candidate linen original mean",
+        "export sofa 2 candidate linen original mean"
+      ],
+      "localSeat": [
+        4.650000095367432,
+        0.5300000309944153,
+        0.5299999713897705
+      ],
+      "localFront": [
+        0,
+        0,
+        -1
+      ],
+      "sourceTriangle": [
+        3564,
+        3403,
+        3510
+      ],
+      "normal": [
+        0.0,
+        -0.0,
+        1.0
+      ]
+    },
+    {
+      "id": "porch-bench",
+      "entityId": "cabins:-1743,3612:30f9adc9fb584805",
+      "kind": "porch",
+      "sourceNames": [
+        "pastoral_house_porch_v2_pastoral_wood",
+        "pastoral_house_porch_plank",
+        "pastoral_house_porch_log",
+        "pastoral_house_porch_logend",
+        "pastoral_house_porch_v2_pastoral_pale",
+        "pastoral_house_porch_v2_pastoral_iron",
+        "pastoral_house_porch_wool_cushion"
+      ],
+      "localSeat": [
+        -2.0,
+        0.35499998927116394,
+        3.740000009536743
+      ],
+      "localFront": [
+        0,
+        0,
+        1
+      ],
+      "sourceTriangle": [
+        4193,
+        4152,
+        4179
+      ],
+      "normal": [
+        0.0,
+        -0.0,
+        1.0
+      ]
+    }
+  ]
+}

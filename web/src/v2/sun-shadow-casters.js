@@ -1,4 +1,5 @@
-import { Object3D, PCFShadowMap, VSMShadowMap } from "three";
+import {terrainShadowDomain,touchTerrainShadowObject} from './terrain-shadow-domain.js';
+import { BasicDepthPacking, Object3D, PCFShadowMap, VSMShadowMap } from "three";
 import { isStandardProjectedDepth } from "./room-shadow.js";
 
 // Compare exact scalar/reference state, not a lossy hash or every vertex/instance.
@@ -100,8 +101,11 @@ export function hasOpaqueTerrainDepth(object) {
 // Shader time/wind uniforms deliberately remain on the scheduler's bounded
 // cadence. For other custom shader changes use markChanged(object).
 export class SunShadowCasters {
-  constructor(scene, lights, { terrainDepthCapture = new URLSearchParams(globalThis.location?.search || "").get("terrainShadowSignature") !== "0", shadowType = PCFShadowMap, directAttributeCapture = new URLSearchParams(globalThis.location?.search || "").get("shadowAttributeDirect") !== "0", compactCapture = new URLSearchParams(globalThis.location?.search || "").get("shadowCaptureCompact") !== "0", attributeCache = new URLSearchParams(globalThis.location?.search || "").get("shadowAttributeCache") !== "0" } = {}) {
+  constructor(scene, lights, { terrainDomainCapture = new URLSearchParams(globalThis.location?.search || "").get("terrainShadowDomain38") === "1", entryReuse = new URLSearchParams(globalThis.location?.search || "").get("shadowCasterEntries") !== "0", terrainDepthCapture = new URLSearchParams(globalThis.location?.search || "").get("terrainShadowSignature") !== "0", shadowType = PCFShadowMap, directAttributeCapture = new URLSearchParams(globalThis.location?.search || "").get("shadowAttributeDirect") !== "0", compactCapture = new URLSearchParams(globalThis.location?.search || "").get("shadowCaptureCompact") !== "0", attributeCache = new URLSearchParams(globalThis.location?.search || "").get("shadowAttributeCache") !== "0", profilePhases = new URLSearchParams(globalThis.location?.search || "").get("shadowCasterPhases") === "1" } = {}) {
     if (!scene || !lights.every(light => light.isDirectionalLight)) throw new TypeError("SunShadowCasters requires a scene and directional lights.");
+    this.terrainDomainCapture=terrainDomainCapture;this._terrainDomains=new WeakMap();
+    this.profilePhases = profilePhases;
+    this.entryReuse = entryReuse; this._entries = lights.map(() => new Map());
     this.scene = scene; this.lights = [...lights]; this.shadowType = shadowType; this.attributeCache = attributeCache; this.compactCapture = compactCapture; this.directAttributeCapture = directAttributeCapture;
     this._attributes = [new WeakMap(), new WeakMap()];
     this.terrainDepthCapture = terrainDepthCapture; this._terrainGeometries = new WeakMap();
@@ -112,7 +116,7 @@ export class SunShadowCasters {
     this.stats = { frames: 0, lastMs: 0, meanMs: 0, visited: 0, candidates: 0, frustumTests: 0, objectScans: 0, geometryScans: 0, materialScans: 0, attributeScans: 0, attributeReuses: 0 };
   }
 
-  markChanged(object) { this._manual.set(object, (this._manual.get(object) || 0) + 1); }
+  markChanged(object) { touchTerrainShadowObject(object);this._manual.set(object, (this._manual.get(object) || 0) + 1); }
 
   _attribute(s, a, scheduledWind = false) {
     if (!a || !this.attributeCache) {
@@ -224,6 +228,13 @@ export class SunShadowCasters {
       }
       const depth = object.customDepthMaterial;
       put(s, depth); if (depth) put(s, this._material(depth));
+      // WebGLShadowMap preserves custom depth opacity, but does not copy the
+      // surface opacity. Only BasicDepthPacking reads it before alphaTest.
+      // Keep this object/depth context separate from shared surface materials.
+      if (depth?.isMeshDepthMaterial) {
+        put(s, depth.depthPacking);
+        if (depth.depthPacking === BasicDepthPacking) put(s, depth.opacity);
+      }
       if (object.isSkinnedMesh) {
         array(s, object.bindMatrix.elements); array(s, object.bindMatrixInverse.elements);
         for (const bone of object.skeleton.bones) array(s, bone.matrixWorld.elements);
@@ -235,10 +246,14 @@ export class SunShadowCasters {
     if (this.disposed) return this.result;
     if (!camera?.layers) throw new TypeError("The main render camera is required for shadow layers.");
     const start = performance.now(); this._frame++;
+    const phases = this.profilePhases ? { matrixMs:0, lightsMs:0, traversalMs:0, captureMs:0, membershipMs:0 } : null;
+    this.stats.phases = phases;
     this.stats.skippedCascades = this.lights.map((_,i)=>skipCascades[i]===true);
-    Object.assign(this.stats, { terrainDepthCapture:this.terrainDepthCapture, terrainDepthScans:0, surfaceAttributesSkipped:0, visited: 0, candidates: 0, frustumTests: 0, objectScans: 0, geometryScans: 0, materialScans: 0, attributeScans: 0, attributeReuses: 0, attributeCache: this.attributeCache, compactCapture: this.compactCapture, directAttributeCapture: this.directAttributeCapture });
+    Object.assign(this.stats, { entryReuse:this.entryReuse, entryCreates:0, terrainDepthCapture:this.terrainDepthCapture, terrainDepthScans:0, surfaceAttributesSkipped:0, visited: 0, candidates: 0, frustumTests: 0, objectScans: 0, geometryScans: 0, materialScans: 0, attributeScans: 0, attributeReuses: 0, attributeCache: this.attributeCache, compactCapture: this.compactCapture, directAttributeCapture: this.directAttributeCapture });
     // Same matrix propagation as WebGLRenderer; no forced update on fixed nodes.
     if (updateWorldMatrices && this.scene.matrixWorldAutoUpdate) this.scene.updateMatrixWorld();
+    const matrixEnd = phases ? performance.now() : 0;
+    if (phases) phases.matrixMs = matrixEnd - start;
     const frustums = this.lights.map((light,i) => {
       if(skipCascades[i])return null;
       // A target is commonly outside the scene; bring its world transform current.
@@ -246,49 +261,122 @@ export class SunShadowCasters {
       light.shadow.updateMatrices(light, camera);
       return light.shadow.getFrustum();
     });
+    const lightsEnd = phases ? performance.now() : 0;
+    if (phases) phases.lightsMs = lightsEnd - matrixEnd;
+    this.stats.terrainDomainHits=0;this.stats.terrainDomainMisses=0;
+    let collectingDomain=null, domainCascadeMask=null;
+    this.stats.terrainDomainCascadeHits=0;this.stats.terrainDomainCascadeMisses=0;
     const changed = this.result.changed;
     for (let i = 0; i < this.lights.length; i++) { this._current[i].clear(); changed[i] = this._frame === 1; }
+    const publish=(object,state,i)=>{
+      if(collectingDomain)collectingDomain[i].push([object,state]);
+      if(this.entryReuse){const entries=this._entries[i];let entry=entries.get(object);if(!entry){entry={state,frame:this._frame};entries.set(object,entry);this.stats.entryCreates++;changed[i]=true;}else{if(entry.state!==state)changed[i]=true;entry.state=state;entry.frame=this._frame;}}
+      else{this._current[i].set(object,state);if(this._previous[i].get(object)!==state)changed[i]=true;}
+    };
+    // This is preparation reuse, not cached caster membership. All properties
+    // are still observed by the normal tracker. Unknown domain shortcuts fall back.
+    const depthOwner=!this.terrainDomainCapture?this.depthPreparation:null;
+    const depthScope=depthOwner?.beginCasterVisit();
+    const prepareHidden=object=>{depthOwner.prepareObject(object);depthOwner.sharedStats.visits++;for(const child of object.children)prepareHidden(child);};
     const visit = object => {
+      if(depthScope){depthOwner.prepareObject(object);depthOwner.sharedStats.visits++;}
       this.stats.visited++;
-      if (object.visible === false) return; // Three prunes invisible ancestors.
+      if (object.visible === false) {
+        // Original depth preparation also visits hidden descendants; retain it.
+        // Their extra work is included in the tracker CPU timing.
+        if(depthScope)for(const child of object.children)prepareHidden(child);
+        return;
+      } // Three prunes invisible ancestors for caster membership.
+      const domain=this.terrainDomainCapture?terrainShadowDomain(object):null;
+      if(this.terrainDepthCapture&&domain?.eligible()&&domain.material.isMeshStandardMaterial&&domain.material.alphaTest===0&&!domain.material.alphaToCoverage&&!domain.material.displacementMap&&[...domain.depths].every(isStandardProjectedDepth)){
+        // Fixed-size receiver/domain inputs plus the existing shared material
+        // signature. No recursive Set discovery or tile attribute scan on hit.
+        const values=[domain.revision,shadowType,camera.layers.mask,this.terrainDepthCapture,...camera.matrixWorld.elements,...camera.projectionMatrix.elements,...object.matrixWorld.elements,this._material(domain.material)];
+        for(const depth of domain.depths){values.push(depth,this._material(depth),depth.depthPacking,depth.opacity,isStandardProjectedDepth(depth));}
+        // A skipped cascade retains its own last observation. Other cascades'
+        // cadence must not discard that observation or cause a terrain rescan.
+        const cache=this._terrainDomains.get(domain)||frustums.map(()=>null);
+        const misses=frustums.map(()=>false), nextValues=frustums.map(()=>null);
+        let missed=false;
+        for(let i=0;i<frustums.length;i++){
+          if(!frustums[i]||(domainCascadeMask&&!domainCascadeMask[i]))continue;
+          const own=values.slice();
+          for(const p of frustums[i].planes)own.push(p.normal.x,p.normal.y,p.normal.z,p.constant);
+          const previous=cache[i];
+          if(previous&&previous.values.length===own.length&&own.every((v,j)=>v===previous.values[j])){
+            this.stats.terrainDomainCascadeHits++;
+            for(const [mesh,state]of previous.entries)publish(mesh,state,i);
+          }else{misses[i]=true;nextValues[i]=own;missed=true;this.stats.terrainDomainCascadeMisses++;}
+        }
+        if(!missed){this.stats.terrainDomainHits++;return;}
+        this.stats.terrainDomainMisses++;
+        const entries=frustums.map(()=>[]),outer=collectingDomain,outerMask=domainCascadeMask;
+        collectingDomain=entries;domainCascadeMask=misses;
+        try{for(const child of object.children)visit(child);}
+        finally{collectingDomain=outer;domainCascadeMask=outerMask;}
+        for(let i=0;i<frustums.length;i++)if(misses[i])cache[i]={values:nextValues[i],entries:entries[i]};
+        this._terrainDomains.set(domain,cache);return;
+      }else if(domain)this._terrainDomains.delete(domain);
       if (object.layers.test(camera.layers) && (object.isMesh || object.isLine || object.isPoints)
           && (object.castShadow || (shadowType === VSMShadowMap && object.receiveShadow)) && drawable(object)) {
         this.stats.candidates++;
         let state;
         for (let i = 0; i < frustums.length; i++) {
-          if(skipCascades[i])continue;
+          if(skipCascades[i]||(domainCascadeMask&&!domainCascadeMask[i]))continue;
           this.stats.frustumTests += object.frustumCulled ? 1 : 0;
           // Preserve custom ecology bounds; never substitute Frustum.intersectsObject.
           if (object.frustumCulled && !(object.intersectsShadowCasterFrustum || object.intersectsFrustum).call(object, frustums[i])) continue;
-          state ??= this._object(object); // Compute once even when all cascades see it.
-          this._current[i].set(object, state);
-          if (this._previous[i].get(object) !== state) changed[i] = true;
+          if (state === undefined) { // Compute once even when all cascades see it.
+            const captureStart = phases ? performance.now() : 0;
+            state = this._object(object);
+            if (phases) phases.captureMs += performance.now() - captureStart;
+          }
+          if(collectingDomain)collectingDomain[i].push([object,state]);
+          if (this.entryReuse) {
+            const entries=this._entries[i];let entry=entries.get(object);
+            if(!entry){entry={state,frame:this._frame};entries.set(object,entry);this.stats.entryCreates++;changed[i]=true;}
+            else{if(entry.state!==state)changed[i]=true;entry.state=state;entry.frame=this._frame;}
+          }else{this._current[i].set(object,state);if(this._previous[i].get(object)!==state)changed[i]=true;}
         }
       }
       // A layer mismatch does not prune children in WebGLShadowMap.
       for (const child of object.children) visit(child);
     };
-    if(skipCascades.length!==this.lights.length || !skipCascades.every(Boolean))visit(this.scene);
+    if(skipCascades.length!==this.lights.length || !skipCascades.every(Boolean)){
+      visit(this.scene);if(depthScope)depthOwner.finishCasterVisit(depthScope);
+    }
+    const traversalEnd = phases ? performance.now() : 0;
+    if (phases) phases.traversalMs = traversalEnd - lightsEnd - phases.captureMs;
     for (let i = 0; i < frustums.length; i++) {
       // Keep the last captured state. A later cacheable frame compares against
       // that exact state; it may render once extra, but cannot miss a change.
       if(skipCascades[i]){changed[i]=false;continue;}
+      if (this.entryReuse) {
+        const entries = this._entries[i];
+        entries.forEach((entry, object) => { if (entry.frame !== this._frame) { entries.delete(object); changed[i] = true; } });
+        if (changed[i]) this.result.revisions[i]++;
+        this.result.counts[i] = entries.size;
+        continue;
+      }
       if (this._previous[i].size !== this._current[i].size) changed[i] = true;
       if (changed[i]) this.result.revisions[i]++;
       this.result.counts[i] = this._current[i].size;
       const previous = this._previous[i]; this._previous[i] = this._current[i]; this._current[i] = previous;
       this._current[i].clear(); // Removed objects are not retained until another frame.
     }
-    this.stats.frames++; this.stats.lastMs = performance.now() - start;
+    const end = performance.now();
+    if (phases) phases.membershipMs = end - traversalEnd;
+    this.stats.frames++; this.stats.lastMs = end - start;
     this.stats.meanMs += (this.stats.lastMs - this.stats.meanMs) / this.stats.frames;
     return this.result;
   }
 
   dispose() {
-    for (const m of [...this._previous, ...this._current]) m.clear();
+    for (const m of [...this._previous, ...this._current, ...this._entries]) m.clear();
     this._objects = new WeakMap(); this._geometries = new WeakMap(); this._materials = new WeakMap(); this._manual = new WeakMap();
     this._attributes = [new WeakMap(), new WeakMap()];
     this._terrainGeometries = new WeakMap();
+    this._terrainDomains=new WeakMap();
     this.scene = null; this.lights.length = 0; this.result.counts.fill(0); this.result.changed.fill(false); this.disposed = true;
   }
 }

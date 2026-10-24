@@ -1,0 +1,88 @@
+{
+  "version": "entry-source-rebinding-v35",
+  "pairs": [
+    {
+      "path": "assets/src/v2/pastoral/house_a-lived.blend",
+      "canonicalSHA256": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+      "handoffSHA256": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+      "semanticSHA256": {
+        "meshes": "ca7fccae881e334f0b8684061e610d6fca33f990d7cc6d38cc4bfbbd69a1b30c",
+        "materials": "6ce5f0b1a2a89dd878ffa2271553503dfe0473a71d69db708eb27f79d1af15c1",
+        "objects": "81157baba6176ccbdce48c8ede4849331caa7bc7f27c7e4110d054a6d37d56fd",
+        "images": "3eee90e6b99cef93d4d47e6552884a7ccd693bb2bc28b67591a63f5f072c884a"
+      },
+      "counts": {
+        "meshes": 267,
+        "materials": 21,
+        "objects": 269,
+        "images": 63,
+        "unusedMaterials": [],
+        "unusedImages": []
+      },
+      "renderGIInputsEqual": true
+    },
+    {
+      "path": "assets/src/v2/pastoral/household-living-32.blend",
+      "canonicalSHA256": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4",
+      "handoffSHA256": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4",
+      "semanticSHA256": {
+        "meshes": "4e96d8efb25243a8f2d7c009ad53b7546fe43510166dc0f31b1f22631dfc0467",
+        "materials": "8e02d7cb098fbcff22ec8eb2c24518ea20ac77670ae942fe1ea823b8c0f685dc",
+        "objects": "2d5110603ba4a3a558430268332679c6d5741c20442c0c3ec9917a602c0f313d",
+        "images": "7982304d6f75dfcd6b27eb608fedea24e74b252cb6b5fea836208e119639c87b"
+      },
+      "counts": {
+        "meshes": 15,
+        "materials": 8,
+        "objects": 15,
+        "images": 36,
+        "unusedMaterials": [
+          "glass",
+          "lamp",
+          "log",
+          "logend",
+          "plank",
+          "plinth",
+          "shingle",
+          "shutter",
+          "stone",
+          "v2_pastoral_clay",
+          "v2_pastoral_gold",
+          "v2_pastoral_lining",
+          "v2_pastoral_wool"
+        ],
+        "unusedImages": [
+          "shingles.png",
+          "stone.png",
+          "v2_pastoral_clay-refined-albedo.png",
+          "v2_pastoral_clay-refined-normal.png",
+          "v2_pastoral_clay-refined-roughness.png",
+          "v2_pastoral_gold-albedo.png",
+          "v2_pastoral_gold-normal.png",
+          "v2_pastoral_gold-refined-albedo.png",
+          "v2_pastoral_gold-refined-normal.png",
+          "v2_pastoral_gold-refined-roughness.png",
+          "v2_pastoral_gold-roughness.png",
+          "v2_pastoral_lining-albedo.png",
+          "v2_pastoral_lining-normal.png",
+          "v2_pastoral_lining-refined-albedo.png",
+          "v2_pastoral_lining-refined-normal.png",
+          "v2_pastoral_lining-refined-roughness.png",
+          "v2_pastoral_lining-roughness.png",
+          "v2_pastoral_wool-albedo.png",
+          "v2_pastoral_wool-normal.png",
+          "v2_pastoral_wool-refined-albedo.png",
+          "v2_pastoral_wool-refined-normal.png",
+          "v2_pastoral_wool-refined-roughness.png",
+          "v2_pastoral_wool-roughness.png",
+          "wood_end.png",
+          "wood_log.png",
+          "wood_plank.png",
+          "wood_plank_grey.png"
+        ]
+      },
+      "renderGIInputsEqual": true
+    }
+  ],
+  "scope": "Read-only exact geometry, UV/AO, material node inputs and packed images, object transforms; excludes filepaths, UI, text metadata and unreferenced orphan materials/images removed by Blender on save; each excluded orphan name is listed. This comparison is not itself a GI rebake."
+}

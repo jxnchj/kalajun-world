@@ -36,12 +36,12 @@ test("community hierarchy follows exposed shoulders, sheltered valleys, forest e
  }
 });
 
-test("cached two-scale neighbourhood adds eight DEM and eight cover reads per new fixed grid point",()=>{
+test("cached directional two-scale neighbourhood adds sixteen DEM and eight cover reads per new fixed grid point",()=>{
  let dem=0,cover=0;
  const w=world((x,z)=>{dem++;return 2300+.00025*x*x-.1*z;},x=>{cover++;return{r:x< -90?1:0,g:0,b:0};});
  const f=getMeadowLandform(w),traits=f.sample(0,0),inputs={traits,altitude:2300,cover:{r:0,g:0,b:0},wetness:0};
  const beforeDem=dem,beforeCover=cover,c=f.community(0,0,inputs),created=f.stats.communityPoints;
- assert.equal(created,8);assert.equal(dem-beforeDem,created*8);assert.equal(f.stats.regionalDemSamples,created*4);assert.equal(cover-beforeCover,created*8);
+ assert.equal(created,8);assert.equal(dem-beforeDem,created*16);assert.equal(f.stats.regionalDemSamples,created*4);assert.equal(f.stats.reliefDemSamples,created*8);assert.equal(cover-beforeCover,created*8);
  assert.ok(c[2]>0,"supplied forest neighbourhood reaches the meadow edge");
  const counts=[dem,cover];assert.deepEqual(f.community(0,0,inputs),c);assert.deepEqual([dem,cover],counts);
  assert.equal(f.community(384,0)[2],0,"no forest edge invented away from source cover");

@@ -71,7 +71,7 @@ test("source A/B reload cannot change grass roots, flower choices or source geom
       roots:hash(roots),flowers:hash(flowers),geometry,field:hash(Array.from(eco.grassRootField.sample(roots[0])))}));eco.dispose();
   `;
   const run=pattern=>JSON.parse(execFileSync(process.execPath,["--input-type=module","-e",script,pattern],{cwd:new URL(".",import.meta.url),encoding:"utf8"}));
-  const a=run("v14"),b=run("v15"),c=run("v19"),d=run("v21"),e=run("v23"),f=run("v24");
+  const a=run("v14"),b=run("v15"),c=run("v19"),d=run("v21"),e=run("v23"),f=run("v24"),g=run("v38");
   assert.equal(a.pattern,"v14");assert.equal(b.pattern,"v15");assert.equal(a.material,a.pattern);assert.equal(b.material,b.pattern);
   assert.ok(a.rootCount>1000);assert.ok(a.flowerCount>0);
   for(const key of["rootCount","flowerCount","roots","flowers","geometry"])assert.deepEqual(a[key],b[key],key+" must not be thinned or relocated by material work");
@@ -85,6 +85,9 @@ test("source A/B reload cannot change grass roots, flower choices or source geom
   assert.equal(f.pattern,"v24");assert.equal(f.material,f.pattern);
   for(const key of["rootCount","flowerCount","roots","flowers","geometry"])assert.deepEqual(e[key],f[key],key+" must remain unchanged for maturity reorganization");
   assert.notEqual(e.field,f.field);
+  assert.equal(g.pattern,"v38");assert.equal(g.material,g.pattern);
+  for(const key of["rootCount","flowerCount","roots","flowers","geometry"])assert.deepEqual(f[key],g[key],key+" stays exact for irregular canopy");
+  assert.notEqual(f.field,g.field);
 });
 
 

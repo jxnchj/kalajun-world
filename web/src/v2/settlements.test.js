@@ -93,8 +93,10 @@ test("occupied-room indirect fill registers only structure materials and clears 
  assert.equal(rooms.indirect.uniforms.uRoomBounceActive.value,0);rooms.dispose();
 });
 
-test("guest-room daylight comes from existing apertures, excludes the bathroom and keeps actual lamp specular",()=>{
-  const rooms=fixture(),camera=new PerspectiveCamera(),v=rooms.viewpoints[0];
+test("original guest-room daylight excludes its bathroom and keeps actual lamp specular",()=>{
+  const previousLocation=globalThis.location;let rooms;
+  try{globalThis.location={search:'?guestVanity38=0'};rooms=fixture();}finally{if(previousLocation===undefined)delete globalThis.location;else globalThis.location=previousLocation;}
+  const camera=new PerspectiveCamera(),v=rooms.viewpoints[0];
   camera.position.set(v.x,v.y,v.z);camera.updateMatrixWorld();rooms.update(camera,0,65);
   const u=rooms.indirect.uniforms,definition=rooms.activeGuestRoom.asset;
   assert.equal(u.uRoomAmbientActive.value,1);
@@ -130,9 +132,11 @@ test("portal softness and gable occupancy reset when returning to actual guest-r
 });
 
 
-test("structured solar input preserves fixture/daylight controls and adds no lamps or shadow invalidation",()=>{
+test("structured solar input preserves fixture/daylight controls and adds no lamps or shadow invalidation",async()=>{
   const rooms=fixture(),camera=new PerspectiveCamera(),v=rooms.viewpoints[0];camera.position.set(v.x,v.y,v.z);camera.updateMatrixWorld();
-  rooms.update(camera,0,35);const fixturePower=rooms.lights.map(l=>l.intensity);rooms.lights.forEach(l=>l.shadow.needsUpdate=false);
+  rooms.update(camera,0,35);await rooms.indirect.field.prepare();rooms.update(camera,0,35);
+  assert.match(rooms.indirect.field.key,/-living39$/,"default source is the newly baked guest room");
+  const fixturePower=rooms.lights.map(l=>l.intensity);rooms.lights.forEach(l=>l.shadow.needsUpdate=false);
   const solar={elevation:35,sun:new Vector3(0,.5736,.8192).normalize(),color:new Color(1,.7,.4),intensity:3};
   rooms.update(camera,0,solar);assert.deepEqual(rooms.lights.map(l=>l.intensity),fixturePower);assert.equal(rooms.lights.length,3);
   assert.ok(rooms.lights.every(l=>!l.shadow.needsUpdate));assert.equal(rooms.indirect.uniforms.uRoomBounceActive.value,0,"guest fixture specular must remain standard PBR");

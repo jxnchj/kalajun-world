@@ -1,0 +1,11 @@
+{
+  "meadowAllRawBytesEqual": true,
+  "meadowBytes": 10382316,
+  "meadowRoots": 45486,
+  "meadowSlots": 99900,
+  "meadowInputsEqual": true,
+  "meadowSourceBindingChanged": true,
+  "houseCompleteBinaryPayloadEqual": true,
+  "houseAllJSONExceptActualSourceSignatureEqual": true,
+  "backups": "backups/route-continuity-v38/lodge-door-cache/"
+}

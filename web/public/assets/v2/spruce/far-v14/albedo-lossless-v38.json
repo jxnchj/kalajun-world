@@ -1,0 +1,14 @@
+{
+  "version": 38,
+  "encoding": "g-rminusg-bminusg-a-planar-v1",
+  "captureSHA256": "6724b17e23c9f18bdd6c4f27c4000b2d2f3537a856ee1e030c7d3d5136495a09",
+  "width": 128,
+  "height": 384,
+  "layers": 120,
+  "rgbaSHA256": "c873510df91566847274975feff59f8072d4105edc5b20071878466f8a6ace93",
+  "url": "schrenk-far-albedo.green-planar-v38.gz",
+  "bytes": 8387206,
+  "decodedBytes": 23592960,
+  "gzipSHA256": "955b315ac0ca92529e8b2bf230aad3797fa6d74d172fd68a784e77996b5f4ab9",
+  "decodedSHA256": "e8e44632991f21f65d1fb8b70aa2dd5ad2526ae430896857c86e48e2fa89cd12"
+}

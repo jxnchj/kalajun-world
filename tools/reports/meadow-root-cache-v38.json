@@ -1,0 +1,40 @@
+{
+  "version": "meadow-final-roots-fields-v38",
+  "url": "data/v2/meadow-roots-38.bin.gz",
+  "tiles": 111,
+  "roots": 45440,
+  "procedural": 46,
+  "rawBytes": 10372176,
+  "rawSHA256": "58a688e48294f28ded529f5554e44d6dd2ff797f814758a88e902e02393eb3bd",
+  "gzipBytes": 4008205,
+  "sha256": "d3b26836b4a8db2bae628d0ac98eb092e7bca867b8b9ba8b73e64d6c1e242ad5",
+  "anchors": [
+    [
+      -3611.9813305250705,
+      4805.371282289286
+    ],
+    [
+      -2216.832094723869,
+      3361.4050159480757
+    ]
+  ],
+  "scope": "Exact ordinary final grass source slots, full JS root values and 12 Float32 field values. Wet geometry slots retain the original generator. Flowers and all ranges remain unchanged.",
+  "sourceProfiles": [
+    {
+      "x": -3611.9813305250705,
+      "z": 4805.371282289286,
+      "tiles": 54,
+      "roots": 19403,
+      "grassOnlyMs": 978.669375
+    },
+    {
+      "x": -2216.832094723869,
+      "z": 3361.4050159480757,
+      "tiles": 57,
+      "roots": 26083,
+      "grassOnlyMs": 324.9010840000001
+    }
+  ],
+  "allSourceSlotsAndFieldsEqual": true,
+  "sourceSlots": 99900
+}

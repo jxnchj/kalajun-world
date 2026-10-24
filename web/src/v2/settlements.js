@@ -1,10 +1,21 @@
+import {lodgeTablesEnabled,LODGE_TABLES_ASSET} from './lodge-tables-definition.js';
+import {lodgeChairsEnabled,LODGE_CHAIRS_ASSET} from './lodge-chairs-definition.js';
+import {guestVanityRoomKey} from './guest-vanity-gi.js';
+import {guestVanityEnabled} from './guest-vanity-definition.js';
+import {lodgeFurnitureEnabled,LODGE_FURNITURE_ASSET} from './lodge-furniture-definition.js';
+import {LODGE_WHOLE_ASSET,lodgeWholeEnabled} from './lodge-whole-definition.js';
+import {LODGE_EAST_OPENINGS} from './lodge-cross-openings.js';
+import {LODGE_DINING_ASSET} from './lodge-opening.js';
+import {EXTERIOR_ROOM_ENTITY} from './room-exterior-terrain.js';
+import { RoomTerrainSun } from './room-terrain-sun.js';
 import {householdStyle,householdViewpoints} from './household-living.js';
 import {householdRoomKey} from './household-room-fields.js';
 import * as THREE from "three";
 import { RoomFixtureControls } from "./room-fixture-controls.js";
 import { shadowDepthBias } from "./depth-mode.js";
 import { settlementAssetFor, settlementAssetViewpoints } from "./settlement-assets.js";
-import { RoomIndirectLight, openingLightSample, roomCeilingHeight } from "./room-lighting.js";
+import {RoomViewSelection,occupiedPastoralRoom} from "./room-view-selection.js";
+import { RoomIndirectLight, openingLightSample } from "./room-lighting.js";
 
 // Local coordinates match the existing guest block exactly: x east, y up, z front.
 // Right-hand rooms adopt one documented room-family design; their numbered identity
@@ -27,7 +38,7 @@ function location(world,pose,room,name,id,from,to) {
 }
 export class SettlementRuntime {
   constructor(world) {
-    this.world=world;this.group=new THREE.Group();this.group.name="world-v2-settlement-lights";
+    this.world=world;this.lodgeTerrainSun=new RoomTerrainSun((x,z)=>world.surface.heightAt(x,z));this.terrainSun=new RoomTerrainSun((x,z)=>world.surface.heightAt(x,z),{enabled:new URLSearchParams(globalThis.location?.search||" ").get("roomTerrainSun")!=="0"});this.group=new THREE.Group();this.group.name="world-v2-settlement-lights";
     this.viewpoints=[];this.anchors=[];this.poses=[];this.guestRooms=[];
     for(const entity of world.entities.filter(e=>e.assetId==="gh_lanchuan")) {
       const pose={...world.surface.buildingPose(entity),entityId:entity.id};
@@ -36,9 +47,9 @@ export class SettlementRuntime {
         // Openings follow the existing guesthouses.py shell, not the room-photo
         // label: front tall pane, rear window and the open entrance under porch.
         this.guestRooms.push({id:pose.entityId+":"+room.id,roomId:room.id,pose,asset:{
-          portalSpots:false,height:2.68,bounceField:room.id,
+          portalSpots:false,height:2.68,bounceField:guestVanityRoomKey(room.id),
           floor:{shape:"rect",x0:room.x0,x1:room.x1,z0:room.z0,z1:room.z1,y:.035},
-          excludedBounds:[room.x1-1.86,room.x1,room.z0,room.z0+2.41],
+          ...(guestVanityEnabled()?{}:{excludedBounds:[room.x1-1.86,room.x1,room.z0,room.z0+2.41]}),
           openings:[
             {kind:"window",center:[room.windowX,1.24,3.4],width:index===2?2.6:2.4,height:2.32,normal:[0,0,1],skyWeight:.55},
             {kind:"window",center:[[1.5,7.5,12.5][index],1.475,-4],width:1.3,height:1.15,normal:[0,0,-1],skyWeight:.85},
@@ -54,8 +65,19 @@ export class SettlementRuntime {
           this.anchors.push({position:transform(pose,x,y,z),target:transform(pose,x,y-1,z),intensity,roomId:room.id,entityId:pose.entityId});
       }
     }
-    this.pastoralPoses=world.entities.filter(e=>settlementAssetFor(e.assetId)).map(e=>{const asset=settlementAssetFor(e.assetId);return {id:e.id,pose:world.surface.buildingPose(e),asset:e.assetId==="house_a"?{...asset,bounceField:householdRoomKey(householdStyle(e.id))}:asset};});
+    this.pastoralPoses=world.entities.filter(e=>settlementAssetFor(e.assetId)).map(e=>{const asset=settlementAssetFor(e.assetId);return {id:e.id,pose:world.surface.buildingPose(e),asset:e.assetId==="house_a"?{...asset,bounceField:householdRoomKey(householdStyle(e.id),e.id)}:asset};});
+    this.lodgeAsset=lodgeTablesEnabled()?LODGE_TABLES_ASSET:lodgeChairsEnabled()?LODGE_CHAIRS_ASSET:lodgeFurnitureEnabled()?LODGE_FURNITURE_ASSET:lodgeWholeEnabled()?LODGE_WHOLE_ASSET:LODGE_DINING_ASSET;
+    this.pastoralPoses.push(...world.entities.filter(e=>e.assetId==='gh_lanchuan_lodge').map(e=>({id:e.id+(this.lodgeAsset===LODGE_TABLES_ASSET?':tables-whole':this.lodgeAsset===LODGE_CHAIRS_ASSET?':chairs-whole':this.lodgeAsset===LODGE_FURNITURE_ASSET?':furniture-whole':lodgeWholeEnabled()?':whole':':dining'),entityId:e.id,pose:world.surface.buildingPose(e),asset:this.lodgeAsset})));
     this.viewpoints.push(...settlementAssetViewpoints(world),...householdViewpoints(world));
+    const dining=this.pastoralPoses.find(r=>r.asset===this.lodgeAsset);
+    if(dining){this.viewpoints.push(location(world,dining.pose,{id:"lodge-dining"},"岚川餐厅 · 桌椅与窗光","lodge-dining",[-8.2,1.6,.1],[-10.5,.65,1.9]));this.viewpoints.push(location(world,dining.pose,{id:"lodge-dining-back"},"岚川餐厅 · 后窗","lodge-dining-back",[-8.0,1.6,.2],[-10.2,1,-3.5]));}
+    if(dining&&this.lodgeAsset!==LODGE_DINING_ASSET)for(const [id,name,position,target]of [
+      ['lodge-reception','岚川公共楼 · 前厅接待',[-2.1,1.6,2.3],[.3,.9,-1.2]],
+      ['lodge-lounge','岚川公共楼 · 休息厅',[4.5,1.6,.1],[6.5,.8,2.5]],
+      ['lodge-service','岚川公共楼 · 服务区',[10.3,1.6,-.8],[11.4,.8,-3.1]]
+    ])this.viewpoints.push(location(world,dining.pose,{id},name,id,position,target));
+    const hillside=this.pastoralPoses.find(r=>r.id===EXTERIOR_ROOM_ENTITY);
+    if(hillside)this.viewpoints.push(location(world,hillside.pose,{id:"hillside-window"},"山坡木屋 · 后窗","hillside-window",[0,1.6,1.25],[0,1.2,-2.2]));
     this.lights=Array.from({length:3},(_,i)=>{
       const light=new THREE.SpotLight(0xffdfb3,0,4.2,Math.PI*.38,.65,2);
       light.name="room-local-light-"+i;light.castShadow=false;
@@ -70,11 +92,13 @@ export class SettlementRuntime {
     // It is separate from the sun and exposure, and finite shadow maps prevent
     // it crossing partitions. These are not baked global-illumination probes.
     this.portalLights=this.lights; // The occupied room uses either fixtures or openings, never both pools.
-    this.indirect=new RoomIndirectLight();
+    this.indirect=new RoomIndirectLight({openingCapacity:this.pastoralPoses.some(r=>r.asset===this.lodgeAsset)?6:3});
     this.fixtureControls=new RoomFixtureControls(this.guestRooms);
     this._camera=new THREE.Vector3();
+    this.roomViewSelection=new RoomViewSelection([...this.pastoralPoses,...this.guestRooms]);
+    this.indirect.field.stats.viewSelection=this.roomViewSelection.stats;this.lightingRoom=null;
   }
-  setDoorOpenness(provider){this.doorOpenness=provider;return this;}
+  setDoorOpenness(provider,angles){this.doorOpenness=provider;this.doorAngles=angles;return this;}
   registerMaterials(materials){this.indirect.register(materials);this.fixtureControls.register(materials);return this;}
   floorHeightAt(x,z) {
     for(const pose of this.poses) {
@@ -105,14 +129,16 @@ export class SettlementRuntime {
       activeRoom=LANCHUAN_ROOMS.find(r=>x>=r.x0&&x<=r.x1&&z>=r.z0&&z<=r.z1)?.id??null;
       if(activeRoom){activePose=pose;break;}
     }
-    // Only the occupied room contributes local lamps. The fixed three-light pool
-    // avoids activating neighbouring-room lamps while viewing this room.
+    // The occupied room takes priority; just outside, keep the same bounded
+    // pool for the one visible near room instead of extinguishing its interior.
     // The lamp shades direct light downwards; finite static shadow maps prevent
     // light leaking across the bathroom wall and preserve furniture occlusion.
     // Stable authored slots keep the same shadow map as the visitor crosses the room.
     this.activeGuestRoom=activeRoom?this.guestRooms.find(r=>r.roomId===activeRoom&&r.pose===activePose):null;
     this.fixtureControls.setActive(this.activeGuestRoom);
-    const nearest=this.anchors.filter(a=>a.roomId===activeRoom&&a.entityId===activePose?.entityId).slice(0,3);
+    this.lightingRoom=this.roomViewSelection.select(camera,this._camera,occupiedPastoralRoom(this.pastoralPoses,this._camera)||this.activeGuestRoom);
+    const litGuest=this.guestRooms.includes(this.lightingRoom)?this.lightingRoom:null;
+    const nearest=this.anchors.filter(a=>a.roomId===litGuest?.roomId&&a.entityId===litGuest?.pose.entityId).slice(0,3);
     const night=1-THREE.MathUtils.smoothstep(sunElevationDegrees,-4,12);
     this.lights.forEach((light,i)=>{
       const anchor=nearest[i];
@@ -120,7 +146,7 @@ export class SettlementRuntime {
       light.color.set(0xffdfb3);light.distance=4.2;light.angle=Math.PI*.38;light.penumbra=.65;light.shadow.normalBias=.012;light.shadow.radius=1;
       // Authored lamp power is independent of visitor position; attenuation is
       // already evaluated physically from each light to the shaded surface.
-      light.intensity=anchor?anchor.intensity*this.fixtureControls.power(this.activeGuestRoom.id,night):0;
+      light.intensity=anchor?anchor.intensity*this.fixtureControls.power(litGuest.id,night):0;
       if(anchor){
         if(light.userData.anchor!==anchor.entityId+":"+anchor.roomId+":"+anchor.position.toArray().join(",")){
           light.position.copy(anchor.position);light.target.position.copy(anchor.target);
@@ -133,23 +159,27 @@ export class SettlementRuntime {
     this.updateOpeningLight();
   }
   updateOpeningLight(){
-    let occupied=null;
-    for(const item of this.pastoralPoses){
-      const {pose,asset}=item,dx=this._camera.x-pose.x,dz=this._camera.z-pose.z,c=Math.cos(pose.rot),s=Math.sin(pose.rot);
-      const x=(c*dx-s*dz)/pose.scale.x,z=(s*dx+c*dz)/pose.scale.z,y=(this._camera.y-pose.y)/pose.scale.y,f=asset.floor;
-      const inside=f.shape==="circle"?Math.hypot(x,z)<f.radius:x>=f.x0&&x<=f.x1&&z>=f.z0&&z<=f.z1;
-      if(inside&&y>0&&y<roomCeilingHeight(asset,x,z)){occupied=item;break;}
+    const room=this.lightingRoom,pastoral=this.pastoralPoses.includes(room)?room:null;
+    const doorOpen=room?this.doorOpenness?.(room.entityId??room.id)??1:1;
+    this.indirect.field.exterior.setRoom(room);
+    const actualDoorAngles=room?this.doorAngles?.(room.entityId??room.id):null;
+    const doorAngleSignature=actualDoorAngles?.map(leaf=>leaf.angle).join("|")??null;
+    this.indirect.field.setDoorAngles(actualDoorAngles);
+    const roomSun=this.terrainSun.apply(room,this.sunLighting);
+    if(room?.asset===this.lodgeAsset&&this.indirect.field.lodgeEnabled&&this.indirect.field.lodgeCross.enabled){
+      this.indirect.field.lodgeCross.lighting=this.lodgeTerrainSun.apply({...room,asset:{...room.asset,openings:LODGE_EAST_OPENINGS}},this.sunLighting);
+      this.indirect.field.lodgeCross.stats.terrainSun=this.lodgeTerrainSun.stats;
     }
-    const doorOpen=occupied?this.doorOpenness?.(occupied.id)??1:1;
-    this.indirect.setRoom(occupied||this.activeGuestRoom,this.daylight,this.sunLighting,occupied?[]:this.lights,doorOpen);
-    if(!occupied)return;
+    this.indirect.field.stats.terrainSun=this.terrainSun.stats;
+    this.indirect.setRoom(room,this.daylight,roomSun,pastoral?[]:this.lights,doorOpen);
+    if(!pastoral||pastoral.asset.portalSpots===false)return;
     this.portalLights.forEach((light,i)=>{
-      const opening=occupied?.asset.openings[i];
+      const opening=pastoral?.asset.openings[i];
       const doorFraction=opening?.kind==="door"?this.indirect.field.doorFraction:1;
       light.visible=Boolean(opening)&&this.daylight>.001&&doorFraction>0;light.castShadow=light.visible;light.intensity=0;
       light.color.set(0xd4e3ee);light.penumbra=.8;light.shadow.normalBias=.004;light.shadow.radius=2.25;
       if(!opening)return;
-      const {pose,id,asset}=occupied,key=id+":"+i,sample=openingLightSample(opening,pose),f=asset.floor;
+      const {pose,id,asset}=pastoral,key=id+":"+i,sample=openingLightSample(opening,pose),f=asset.floor;
       light.angle=sample.angle;
       light.distance=Math.hypot((f.shape==="circle"?f.radius*2:f.x1-f.x0)*pose.scale.x,
         (f.shape==="circle"?f.radius*2:f.z1-f.z0)*pose.scale.z,3*pose.scale.y)+1;
@@ -161,9 +191,9 @@ export class SettlementRuntime {
       light.intensity=sample.intensity*this.daylight*doorFraction;
       // Closing a real door changes every portal shadow, including window/crown
       // paths to the leaf. Static 512 maps only refresh while its pose changes.
-      if(this.lastDoorOpen!==doorOpen)light.shadow.needsUpdate=true;
+      if(this.lastDoorOpen!==doorOpen||this.lastDoorAngleSignature!==doorAngleSignature)light.shadow.needsUpdate=true;
     });
-    this.lastDoorOpen=doorOpen;
+    this.lastDoorOpen=doorOpen;this.lastDoorAngleSignature=doorAngleSignature;
   }
   dispose(){this.fixtureControls.dispose();this.indirect.dispose();for(const light of this.lights)light.shadow.dispose();this.group.removeFromParent();this.group.clear();this.lights.length=0;}
 }

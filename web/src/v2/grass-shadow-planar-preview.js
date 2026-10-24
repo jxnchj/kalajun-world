@@ -1,0 +1,23 @@
+import * as T from 'three';
+import {meadowGeometry,attachEcologyWind,cellRandom}from './ecology.js';
+import {MeadowWindField}from './wind-field.js';
+import {installPlanarGrassProjection}from './grass-shadow-planar.js';
+import {GPUPassProfile}from './gpu-pass-profile.js';
+const errors=[];addEventListener('error',e=>errors.push(e.message));
+const renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(1);renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFShadowMap;document.body.appendChild(renderer.domElement);
+const scene=new T.Scene();scene.background=new T.Color('#b8c9a5');
+const camera=new T.PerspectiveCamera(52,innerWidth/innerHeight,.05,150);camera.position.set(1.7,1.6,2.6);camera.lookAt(0,.15,0);
+const sun=new T.Vector3(.25,.917,.31).normalize(),light=new T.DirectionalLight(0xffffff,2);light.position.copy(sun).multiplyScalar(50);light.castShadow=true;light.shadow.mapSize.set(4096,4096);const span=110.43624092246715;Object.assign(light.shadow.camera,{left:-span/2,right:span/2,top:span/2,bottom:-span/2,near:.1,far:150});light.shadow.bias=-.000002;light.shadow.normalBias=0;light.shadow.radius=2;scene.add(light,light.target,new T.AmbientLight(0xffffff,.5));
+const groundColor=new T.Color('#658444');const ground=new T.Mesh(new T.PlaneGeometry(14,14),new T.MeshLambertMaterial({color:groundColor}));ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
+const wind=new MeadowWindField(),uniforms={...wind.uniforms,uWindTime:{value:0},uWorldViewer:{value:camera.position},uPlantRange:{value:2200}},geometry=meadowGeometry(true);
+const material=attachEcologyWind(new T.MeshStandardMaterial({vertexColors:true,roughness:.91,side:T.DoubleSide}),uniforms,2,true);
+const depth=attachEcologyWind(new T.MeshDepthMaterial({depthPacking:T.RGBADepthPacking,side:T.DoubleSide}),uniforms,2,true);
+const grass=new T.InstancedMesh(geometry,material,49),projectedMaterial=installPlanarGrassProjection(attachEcologyWind(new T.MeshBasicMaterial({color:groundColor.clone().multiplyScalar(.5),side:T.DoubleSide,depthWrite:true}),uniforms,2,true),{sun:{value:sun},height:{value:.001}}),projected=new T.InstancedMesh(geometry,projectedMaterial,49);
+const matrix=new T.Matrix4(),q=new T.Quaternion(),up=new T.Vector3(0,1,0);let k=0;for(let z=-3;z<=3;z++)for(let x=-3;x<=3;x++){const px=x*.8+(cellRandom(x,z,11)-.5)*.22,pz=z*.8+(cellRandom(x,z,17)-.5)*.22,s=.8+cellRandom(x,z,21)*.25;q.setFromAxisAngle(up,cellRandom(x,z,25)*Math.PI*2);matrix.compose(new T.Vector3(px,0,pz),q,new T.Vector3(s,s,s));grass.setMatrixAt(k,matrix);projected.setMatrixAt(k++,matrix);}grass.customDepthMaterial=depth;grass.castShadow=true;grass.frustumCulled=projected.frustumCulled=false;projected.visible=false;projected.renderOrder=1;scene.add(grass,projected);
+let mode='depth',paused=false,t=0,last=performance.now();const profiler=new GPUPassProfile(renderer,{scene,camera,enabled:true});
+function setMode(next){if(!['depth','geometry'].includes(next))throw Error('Unknown mode');mode=next;projected.visible=next==='geometry';grass.castShadow=next==='depth';ground.receiveShadow=next==='depth';light.castShadow=next==='depth';profiler.samples.length=0;return mode;}
+for(const value of [4,4.25,4.5]){const button=document.createElement('button');button.textContent='固定 '+value+' 秒';button.onclick=()=>{t=value;paused=true;};document.querySelector('#pause').parentNode.appendChild(button);}
+document.querySelector('#depth').onclick=()=>setMode('depth');document.querySelector('#geometry').onclick=()=>setMode('geometry');document.querySelector('#pause').onclick=()=>paused=!paused;
+const snapshot=()=>({scope:'49 complete original meadow tufts on flat receiver; isolated source coverage experiment',mode,time:t,roots:grass.count,sourceTriangles:geometry.index.count/3,submittedTriangles:renderer.info.render.triangles,shadowPitch:span/4096,solarDirection:sun.toArray(),gpu:profiler.snapshot(),errors:[...errors]});
+window.grassShadowPlanar={setMode,setTime(value){t=value;paused=true;},play(){paused=false;},snapshot,renderer,scene,camera};
+function frame(now){const dt=Math.min(.05,(now-last)/1000);last=now;if(!paused)t+=dt;uniforms.uWindTime.value=t;wind.update(t,camera.position);profiler.beginFrame();renderer.render(scene,camera);profiler.endFrame();if(Math.floor(now/500)!==Math.floor((now-dt*1000)/500))document.querySelector('#status').textContent=JSON.stringify({mode,time:t.toFixed(2),roots:49,triangles:renderer.info.render.triangles,gpu:profiler.snapshot().means},null,2);requestAnimationFrame(frame);}requestAnimationFrame(frame);

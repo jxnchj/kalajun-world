@@ -1,0 +1,140 @@
+{
+  "source": "assets/src/v2/settlements/guest-vanity-v38/lanchuan-vanity.blend",
+  "sourceSHA256": "0418790225b7113dec526e3ae176325dd589323a57f6e194789ae5a7ca794f2e",
+  "blendSHA256": "a1d99484eb8c35864e4517f912d51baa1f90197de3becf78a69aea3a3577920b",
+  "glbSHA256": "9c1c5e5e2dc464fe61adfa6b3f5ee55f90a180bf9bebc097586b9b9f579e35c1",
+  "glbBytes": 17060928,
+  "originalTriangles": 199856,
+  "candidateTriangles": 233060,
+  "newTriangles": 35532,
+  "retainedObjectsExact": 626,
+  "removed": [
+    {
+      "name": "freedom1_wardrobe",
+      "triangles": 188
+    },
+    {
+      "name": "freedom1_bed frame",
+      "triangles": 188
+    },
+    {
+      "name": "freedom1_nightstand",
+      "triangles": 188
+    },
+    {
+      "name": "freedom1_nightstand.001",
+      "triangles": 188
+    },
+    {
+      "name": "freedom1_drawer gap",
+      "triangles": 12
+    },
+    {
+      "name": "freedom1_drawer gap.001",
+      "triangles": 12
+    },
+    {
+      "name": "freedom2_wardrobe",
+      "triangles": 188
+    },
+    {
+      "name": "freedom2_bed frame",
+      "triangles": 188
+    },
+    {
+      "name": "freedom2_nightstand",
+      "triangles": 188
+    },
+    {
+      "name": "freedom2_nightstand.001",
+      "triangles": 188
+    },
+    {
+      "name": "freedom2_drawer gap",
+      "triangles": 12
+    },
+    {
+      "name": "freedom2_drawer gap.001",
+      "triangles": 12
+    },
+    {
+      "name": "freedom3_wardrobe",
+      "triangles": 188
+    },
+    {
+      "name": "freedom3_bed frame",
+      "triangles": 188
+    },
+    {
+      "name": "freedom3_nightstand",
+      "triangles": 188
+    },
+    {
+      "name": "freedom3_nightstand.001",
+      "triangles": 188
+    },
+    {
+      "name": "freedom3_drawer gap",
+      "triangles": 12
+    },
+    {
+      "name": "freedom3_drawer gap.001",
+      "triangles": 12
+    }
+  ],
+  "rooms": [
+    {
+      "room": 1,
+      "wardrobeCenter": [
+        -1.409999966621399,
+        -0.6000000238418579,
+        1.0
+      ],
+      "bedCenter": [
+        0.6000000238418579,
+        2.549999952316284,
+        0.25
+      ],
+      "doorRailHeight": 0.76
+    },
+    {
+      "room": 2,
+      "wardrobeCenter": [
+        4.739999771118164,
+        -0.6000000238418579,
+        1.0
+      ],
+      "bedCenter": [
+        5.900000095367432,
+        2.549999952316284,
+        0.25
+      ],
+      "doorRailHeight": 0.88
+    },
+    {
+      "room": 3,
+      "wardrobeCenter": [
+        10.34000015258789,
+        -0.6000000238418579,
+        1.0
+      ],
+      "bedCenter": [
+        12.0,
+        2.549999952316284,
+        0.25
+      ],
+      "doorRailHeight": 1.0
+    }
+  ],
+  "ao": {
+    "directions": 48,
+    "vertices": 18144,
+    "min": 0.3,
+    "mean": 0.3581858235256851
+  },
+  "seconds": 16.062616249997518,
+  "status": "offline candidate only; no runtime/GI binding changes",
+  "GI": "All three complete source-bound GI and contact fields must be genuinely rebaked after approval; original upper-contact package not reusable by source identity",
+  "collision": "Keep furniture envelopes and circulation; new shell furniture needs collision verification. New corner feet extend to actual original wood floor top .0355m; no footprint expansion.",
+  "provenance": "Original authored layouts and existing PBR materials reused; designed joinery, not surveyed reconstruction; no Aholo"
+}

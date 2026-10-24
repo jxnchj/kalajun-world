@@ -351,3 +351,23 @@ test("reuse AB changes only copies: animated stable layouts retain identical roo
   assert.equal(old.view.stats.matrixCopies,14);assert.equal(current.view.stats.matrixCopies,2);assert.equal(current.view.stats.forceCopies,14);assert.equal(current.view.stats.fullForceCopies,1);assert.equal(old.view.stats.fullForceCopies,15);
  }finally{old.cleanup();current.cleanup();}
 });
+
+test('installed renderer counts render calls, and dormant shadow view survives a new reflection allocation below capacity',async()=>{
+ const {readFileSync}=await import('node:fs');
+ const rendererSource=readFileSync(new URL('../../node_modules/three/src/renderers/WebGLRenderer.js',import.meta.url),'utf8'),shadowSource=readFileSync(new URL('../../node_modules/three/src/renderers/webgl/WebGLShadowMap.js',import.meta.url),'utf8');
+ const project=rendererSource.indexOf('projectObject( scene, camera, 0, _this.sortObjects );'),increment=rendererSource.indexOf('this.info.render.frame ++;'),shadowDraw=rendererSource.indexOf('shadowMap.render( shadowsArray, scene, camera );');
+ assert.ok(project<increment&&increment<shadowDraw);assert.doesNotMatch(shadowSource,/render\.frame\s*\+\+/);
+ let frame=1;const f=fixture({getFrame:()=>frame}),{source,view}=f,shadow=frustum(60),main=frustum();
+ try{
+  view.proxy.intersectsFrustum(shadow);const originalShadow=view.proxy.geometry,originalMatrices=originalShadow.attributes.instanceMatrix.array.slice(),matrixVersion=originalShadow.attributes.instanceMatrix.version;
+  // A dormant cascade may skip several native renders (main, HDR output,
+  // reflection), while a newly needed main/mirror view requests a slot.
+  frame=9;view.proxy.intersectsFrustum(main);
+  frame=10;source.geometry.attributes.aTreeRootWind.data.array[0]+=.1;source.geometry.attributes.aTreeRootWind.data.needsUpdate=true;
+  const copies=view.stats.matrixCopies;view.proxy.intersectsFrustum(shadow);
+  assert.strictEqual(view.proxy.geometry,originalShadow,'new unrelated view must not retire a reusable dormant cascade');
+  assert.equal(view.stats.matrixCopies,copies,'dormant exact matrix layout remains reusable');
+  assert.equal(view.stats.viewAllocations,2);assert.equal(view.stats.viewRetirements,0);
+  assert.equal(originalShadow.attributes.instanceMatrix.version,matrixVersion);assert.deepEqual(originalShadow.attributes.instanceMatrix.array,originalMatrices);
+ }finally{f.cleanup();}
+});

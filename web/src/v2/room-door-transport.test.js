@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import {gzipSync} from 'node:zlib';
 import * as THREE from 'three';
 import {doorApertureFraction,RoomDoorTransport} from './room-door-transport.js';
-import {ROOM_BOUNCE_DATA} from './room-bounce-data.js';
+import {ROOM_BOUNCE_DATA} from './room-bounce-registry.js';
 import {RoomBounceField,decodeRoomField} from './room-bounce-field.js';
 import {SettlementRuntime} from './settlements.js';
 const keys=['house_a','yurt'],lighting={sun:new THREE.Vector3(.3,.8,.4).normalize(),color:new THREE.Color(1,.7,.5),intensity:3,elevation:35};
@@ -49,4 +49,9 @@ test('actual settlement provider shuts only door source and invalidates static p
 });
 test('first arrival in an already closed room never shows unprepared open-door indirect light',async()=>{
  const f=new RoomBounceField();f.setDoorOpenness(0);f.set({sourceAsset:'house_a'},new THREE.Quaternion());f.setLighting(lighting,1);assert.equal(f.doors.stats.pending,true);assert.ok(f.uniforms.uRoomBounceField.value.image.data.every((v,i)=>i%4===3||v===0));await f.prepare();f.setLighting(lighting,1);assert.equal(f.doors.stats.pending,false);assert.ok(f.uniforms.uRoomBounceField.value.image.data.some((v,i)=>i%4!==3&&v>0));f.dispose();
+});
+test('portal shadows refresh between 90 and 102 degrees even though legacy openness remains one',()=>{
+ const entity={id:'angle-house',assetId:'house_a'},runtime=new SettlementRuntime({entities:[entity],surface:{heightAt:()=>0,buildingPose:()=>({x:0,y:0,z:0,rot:0,scale:{x:1,y:1,z:1}})}}),camera=new THREE.PerspectiveCamera();let angle=102*Math.PI/180;
+ runtime.setDoorOpenness(()=>1,()=>[{angle,open:102*Math.PI/180}]);camera.position.set(0,1.5,0);camera.updateMatrixWorld();
+ try{runtime.update(camera,0,lighting);runtime.lights.forEach(l=>l.shadow.needsUpdate=false);runtime.update(camera,0,lighting);assert.ok(runtime.lights.every(l=>!l.shadow.needsUpdate));angle=96*Math.PI/180;runtime.update(camera,0,lighting);assert.ok(runtime.lights.every(l=>l.shadow.needsUpdate));}finally{runtime.dispose();}
 });

@@ -1,0 +1,78 @@
+{
+  "scope": "Node exact CPU terrain generation only, not browser",
+  "result": {
+    "ready": true,
+    "nearReady": true,
+    "reason": "ready",
+    "elapsedMs": 5874.507417,
+    "iterations": 1753,
+    "queuedTiles": 0,
+    "nearQueuedTiles": 0,
+    "visibleTiles": 1225,
+    "minSpacing": 0.15625
+  },
+  "elapsedMs": 6567.151583,
+  "stats": {
+    "visibleTiles": 1225,
+    "residentTiles": 1612,
+    "queuedTiles": 0,
+    "triangles": 2822400,
+    "morphingGroups": 0,
+    "minSpacing": 0.15625,
+    "maxSpacing": 320,
+    "shadowDomain": null,
+    "submissionBatches": {
+      "enabled": false,
+      "groups": 0,
+      "sourceTiles": 0,
+      "savedDraws": 0,
+      "bytes": 0,
+      "buildMs": 0
+    },
+    "buildMs": 0.00004200000057608122,
+    "initialBuildMs": 190.71225000000004,
+    "generatedTiles": 1612,
+    "maxDepth": 13,
+    "sampleCache": {
+      "entries": 65536,
+      "bytes": 7405568,
+      "heightHits": 33145,
+      "heightMisses": 2529351,
+      "vertexHits": 32870,
+      "vertexMisses": 1275226,
+      "parentVertexHits": 447372
+    },
+    "tileCache": {
+      "bytes": 0,
+      "maxBytes": 67108864,
+      "tiles": 0,
+      "hits": 0,
+      "misses": 1612,
+      "evictions": 0
+    },
+    "restoredTiles": 0,
+    "nearQueuedTiles": 0
+  },
+  "timing": {
+    "_plan": {
+      "calls": 14467,
+      "ms": 129.0867760000217
+    },
+    "_sortQueue": {
+      "calls": 364,
+      "ms": 13.687083000000257
+    },
+    "_buildRow": {
+      "calls": 51084,
+      "ms": 4984.841313999982
+    },
+    "_measure": {
+      "calls": 1753,
+      "ms": 57.92963399999326
+    },
+    "_finish": {
+      "calls": 1548,
+      "ms": 157.44923100000733
+    }
+  }
+}

@@ -6,7 +6,7 @@ export function createWaterRefractionUniforms(){
 }
 export function supportsWaterRefraction(renderer,camera,source){
   return Boolean(renderer.capabilities.reversedDepthBuffer&&!renderer.capabilities.logarithmicDepthBuffer&&camera?.isPerspectiveCamera&&camera.reversedDepth&&
-    source?.isWebGLRenderTarget&&source.texture.type===THREE.HalfFloatType&&source.texture.format===THREE.RGBAFormat&&source.texture.colorSpace===THREE.LinearSRGBColorSpace&&
+    source?.isWebGLRenderTarget&&((source.texture.type===THREE.HalfFloatType&&source.texture.format===THREE.RGBAFormat)||(source.texture.type===THREE.UnsignedInt101111Type&&source.texture.format===THREE.RGBFormat&&source.texture.internalFormat==='R11F_G11F_B10F'&&source.samples===4))&&source.texture.colorSpace===THREE.LinearSRGBColorSpace&&
     source.depthTexture?.type===THREE.FloatType&&source.depthTexture.format===THREE.DepthFormat&&source.textures.length===1&&!source.scissorTest&&
     source.viewport.x===0&&source.viewport.y===0&&source.viewport.z===source.width&&source.viewport.w===source.height);
 }
@@ -40,18 +40,18 @@ export class WaterRefractionCapture{
     if(this.target){const depth=this.target.depthTexture;this.target.depthTexture=null;this.target.dispose();depth.dispose();this.target=null;}
     this.stats.attachmentBytes=0;
   }
-  setSize(width,height){
+  setSize(width,height,{type=THREE.HalfFloatType,format=THREE.RGBAFormat,internalFormat=null}={}){
     if(this.disposed)throw new Error("Water refraction disposed");
     if(!Number.isFinite(width)||!Number.isFinite(height)||width<1||height<1)throw new TypeError("Water refraction needs positive physical pixel dimensions");
     width=Math.floor(width);height=Math.floor(height);
-    if(this.target&&this.target.width===width&&this.target.height===height)return false;
+    if(this.target&&this.target.width===width&&this.target.height===height&&this.target.texture.type===type&&this.target.texture.format===format&&this.target.texture.internalFormat===internalFormat)return false;
     this._invalidate("resized");this._release();this.blocked=false;this.checked=false;
     const depth=new THREE.DepthTexture(width,height,THREE.FloatType);depth.name="river-opaque-float-depth";depth.minFilter=depth.magFilter=THREE.NearestFilter;
-    this.target=new THREE.WebGLRenderTarget(width,height,{type:THREE.HalfFloatType,format:THREE.RGBAFormat,colorSpace:THREE.LinearSRGBColorSpace,
+    this.target=new THREE.WebGLRenderTarget(width,height,{type,format,internalFormat,colorSpace:THREE.LinearSRGBColorSpace,
       minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,generateMipmaps:false,depthBuffer:true,stencilBuffer:false,depthTexture:depth,samples:0});
     this.target.texture.name="river-opaque-linear-color";
     this.uniforms.uRiverSceneColor.value=this.target.texture;this.uniforms.uRiverSceneDepth.value=depth;this.uniforms.uRiverSceneSize.value.set(width,height);
-    Object.assign(this.stats,{width,height,attachmentBytes:width*height*12});return true;
+    Object.assign(this.stats,{width,height,attachmentBytes:width*height*(format===THREE.RGBFormat?8:12)});return true;
   }
   prepare(renderer,camera,source,{nearWater=true}={}){
     if(this.disposed)return false;
@@ -60,7 +60,7 @@ export class WaterRefractionCapture{
     if(!supportsWaterRefraction(renderer,camera,source)){this._invalidate("unsupported-frame");return false;}
     if(this.source!==source)this.blocked=false;
     this.source=source;this.camera=camera;
-    const resized=this.setSize(source.width,source.height);
+    const resized=this.setSize(source.width,source.height,source.texture);
     if(this.blocked&&!resized){this._invalidate("capture-failed");return false;}
     const previous=renderer.getRenderTarget(),face=renderer.getActiveCubeFace(),level=renderer.getActiveMipmapLevel();
     try{

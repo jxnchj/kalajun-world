@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {gunzipSync} from 'node:zlib';import * as THREE from 'three';
+import test from 'node:test';import {createHash} from 'node:crypto';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {gunzipSync} from 'node:zlib';import * as THREE from 'three';
 import {createSpruceLoader} from './spruce-loading.js';import {createVolumeSpruceFoliage,createFarSpruceVolumeGeometry,applySpruceVolume,indexSpruceVolume} from './spruce-volume.js';import {createFarSpruceGeometry,SPRUCE_SPEC,spruceRadius} from './spruce-geometry.js';import {createNearShell} from './spruce-near-shell.js';import {deriveBranchDetail} from './spruce-branch-detail.js';import {configureSpruceMaterial,installNeedleSurface,needleOptics} from './spruce-material.js';import {installGpuNeedleStations} from './spruce-gpu-stations.js';import {attachEcologyWind} from './ecology.js';
 const loader=createSpruceLoader();loader.register(()=>({name:'TEXTURE_STUB',loadTexture:()=>Promise.resolve(new THREE.Texture())}));const load=async lod=>{const b=await readFile(new URL('../../public/assets/v2/schrenk-spruce-'+lod+'.glb',import.meta.url));return loader.parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'');};const hi=await load('hi'),mid=await load('mid'),recipe=JSON.parse(gunzipSync(await readFile(new URL('../../public/assets/v2/schrenk-spruce-needle.recipe.json.gz',import.meta.url))));
 const uvArea=g=>{const u=g.attributes.uv,ix=g.index?.array||Array.from({length:u.count},(_,i)=>i);let total=0;for(let j=0;j<ix.length;j+=3){const[a,b,c]=ix.slice(j,j+3);total+=Math.abs((u.getX(b)-u.getX(a))*(u.getY(c)-u.getY(a))-(u.getY(b)-u.getY(a))*(u.getX(c)-u.getX(a)))/2;}return total;};
@@ -52,5 +52,36 @@ test('cold-build reuse preserves all 15 crowns, every typed attribute/index and 
    assert.deepEqual(new Uint8Array(b.array.buffer,b.array.byteOffset,b.array.byteLength),new Uint8Array(a.array.buffer,a.array.byteOffset,a.array.byteLength),lod+'/'+name+'/'+key);
   }
   assert.deepEqual(shared.userData,original.userData);assert.ok(shared.boundingBox.equals(original.boundingBox));assert.ok(shared.boundingSphere.equals(original.boundingSphere));original.dispose();shared.dispose();
+ }
+});
+
+// Captured from the complete round-35 output before changing index storage.
+// A non-indexed comparison alone would miss changed row/index ordering.
+test('v36 dense indexing retains all 15 round-35 attribute and index byte streams',()=>{
+ const expected={
+  "hi/column": "e9b713e9846ef795b46cb77d6abbf3bece0ea1ebfd328fe3c5fed8531fe98339",
+  "hi/edge": "33bb5f4bc56978fca96cddb492488c9d8c8238bda0849cf6d96265784d725848",
+  "hi/old": "34a02a95fd8f0e9fda0cee5ec779eb72899ee29e1aa742705857ac24ffd2b557",
+  "hi/pencil": "121ab5988d93b9fe4f37bdde870086f5f30190c6f3a29dcd398f6cfd72471556",
+  "hi/young": "dccdc9453f53cd6edbc19ecd1a2ded215b6b0b343b18610eb7ca07e08b9b2329",
+  "mid/column": "fc00b9ada84df8ff8b0c11f86ab71d60241c8eecbe0e1340f09579b27a0e981f",
+  "mid/edge": "54cd211fcc3b921070e94855876911d3ca046d2a35ca564019f18db649e744d7",
+  "mid/old": "d1f3a5f81be9f0647be7233a665d56ae030187f7724e7925a163d205107579e2",
+  "mid/pencil": "e6e2e4d0f4bc2abf1a7d23e05b7cfa5684a9158b24a22ca18db13eaf74462e6f",
+  "mid/young": "93c3e568f2f85b981a4ead07884b149085ad8f76f5a547b31a9eca3ce146b5f7",
+  "near/column": "e02a5bb6e954f4cd97ab643f70ddac820bd9b0e9d701bfd83408cad5ad10328a",
+  "near/edge": "1e51bad1b0012be8121e2fded75e8ec78d50bab3fb90d62fbdad2f3c1728ad8e",
+  "near/old": "4dc76edabb4d14848365cb7b908638885cd315467bd6470faf297e70e058383e",
+  "near/pencil": "37501c854d28428a590878dddab97d80c992d0503469b9fd2dd0eddd1f6cbbf4",
+  "near/young": "fde99e0f726d00c9980852a7dffc55724c5ab281dc6c1139df068f56d038a233"
+};
+ for(const lod of ['hi','mid','near'])for(const [i,[name,form]]of Object.entries(recipe.forms).entries()){
+  const source=(lod==='mid'?mid:hi).scene.getObjectByName(name+'_frond').geometry;
+  const options={mid:lod==='mid',...(lod==='near'?{form,branchDetail:deriveBranchDetail(source,form,i)}:{})};
+  const g=createVolumeSpruceFoliage(source,options),hash=createHash('sha256');
+  for(const key of [...Object.keys(g.attributes).sort(),'index']){
+   const a=key==='index'?g.index:g.attributes[key];hash.update(key);hash.update(new Uint8Array(a.array.buffer,a.array.byteOffset,a.array.byteLength));
+  }
+  assert.equal(hash.digest('hex'),expected[lod+'/'+name],lod+'/'+name+' preserves exact geometry, normals, UV, wind, occlusion, readiness and index order');g.dispose();
  }
 });

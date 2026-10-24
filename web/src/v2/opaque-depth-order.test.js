@@ -103,7 +103,25 @@ test("sync callback return and exceptions always restore null before later refle
 });
 test("integration scopes only renderWorld and leaves reflection outside the sort",()=>{
  const source=readFileSync(new URL("./main.js",import.meta.url),"utf8");
- assert.match(source,/const renderWorld=\(scene,renderCamera\)=>opaqueDepthOrder.run\(renderCamera,\(\)=>\{\s+water.prepareRefraction\(renderer,renderCamera,worldFrame\?\.target\);\s+return worldFrame\?worldFrame.render\(scene,renderCamera\):renderer.render\(scene,renderCamera\);\s+\}\);/);
- assert.match(source,/withPreparedWorldMatrices\(scene,\(\)=>renderWorld\(scene,camera\),preparedMatrices\);\s+water.renderReflection\(renderer,scene,camera/);
+ assert.match(source,/const renderWorld=\(scene,renderCamera\)=>opaqueDepthOrder.run\(renderCamera,\(\)=>\{\s+water.prepareRefraction\(renderer,renderCamera,worldFrame\?\.target\);\s+return treePhotoPrepass.run\(renderCamera,\(\)=>worldFrame\?worldFrame.render\(scene,renderCamera\):renderer.render\(scene,renderCamera\)\);\s+\}\);/);
+ assert.match(source,/withPreparedWorldMatrices\(scene,\(\)=>renderWorld\(scene,camera\),preparedMatrices\);\s+\}\);\s+water.renderReflection\(renderer,scene,camera/);
  assert.equal(source.includes("setTransparentSort"),false);
+});
+
+test("actual main render closure nests photo prefix inside sorter and restores both before reflection",()=>{
+ const source=readFileSync(new URL("./main.js",import.meta.url),"utf8");
+ const begin=source.indexOf("const renderWorld="),end=source.indexOf("  const canopyLookup=",begin);
+ assert.ok(begin>=0&&end>begin);
+ const declaration=source.slice(begin,end);
+ for(const framed of [false,true])for(const fail of [false,true]){
+  const c=camera(),r=renderer(),sort=new OpaqueDepthOrder(r,c),events=[];let prefixActive=false;
+  const draw=()=>{assert.strictEqual(r.opaque,sort.compare);assert.equal(prefixActive,true);events.push("draw");if(fail)throw Error("draw failure");return 42;};
+  r.render=draw;
+  const frame=framed?{target:{},render:draw}:null;
+  const water={prepareRefraction(){assert.strictEqual(r.opaque,sort.compare);assert.equal(prefixActive,false);events.push("refraction");},renderReflection(){assert.equal(r.opaque,null);assert.equal(prefixActive,false);events.push("reflection");}};
+  const prefix={run(cam,callback){assert.strictEqual(cam,c);assert.strictEqual(r.opaque,sort.compare);prefixActive=true;events.push("prefix");try{return callback();}finally{prefixActive=false;}}};
+  const run=new Function("opaqueDepthOrder","water","renderer","worldFrame","treePhotoPrepass",declaration+"return renderWorld;")(sort,water,r,frame,prefix);
+  if(fail)assert.throws(()=>run({},c),/draw failure/);else assert.equal(run({},c),42);
+  water.renderReflection();assert.deepEqual(events,["refraction","prefix","draw","reflection"]);
+ }
 });

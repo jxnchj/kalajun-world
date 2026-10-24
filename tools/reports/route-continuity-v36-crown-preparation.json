@@ -1,0 +1,86 @@
+{
+  "scope": "Node local CPU preparation of all 15 hi/mid/near spruce crowns; no browser/network/GPU claim",
+  "revision": "route-continuity-36",
+  "method": "Generate identical unindexed source once; clone outside timed interval; alternate old/new indexSpruceVolume; compare every attribute, index and report to round-35 backup before timing. No geometry, foliage, draw or readiness changes.",
+  "cases": 15,
+  "vertices": 315283,
+  "triangles": 248334,
+  "exactOutputMatch": true,
+  "runs": [
+    {
+      "round": 0,
+      "name": "old",
+      "ms": 316.7485829999998
+    },
+    {
+      "round": 0,
+      "name": "new",
+      "ms": 249.66246099999967
+    },
+    {
+      "round": 1,
+      "name": "new",
+      "ms": 234.8318329999995
+    },
+    {
+      "round": 1,
+      "name": "old",
+      "ms": 291.9622479999998
+    },
+    {
+      "round": 2,
+      "name": "old",
+      "ms": 289.7100819999996
+    },
+    {
+      "round": 2,
+      "name": "new",
+      "ms": 246.24600000000146
+    },
+    {
+      "round": 3,
+      "name": "new",
+      "ms": 235.5607500000001
+    },
+    {
+      "round": 3,
+      "name": "old",
+      "ms": 298.79712500000096
+    }
+  ],
+  "meanMs": {
+    "old": 299.30450950000005,
+    "new": 241.57526100000018
+  },
+  "reductionFraction": 0.19287797767042947,
+  "outputSHA256": {
+    "hi/column": "e9b713e9846ef795b46cb77d6abbf3bece0ea1ebfd328fe3c5fed8531fe98339",
+    "hi/edge": "33bb5f4bc56978fca96cddb492488c9d8c8238bda0849cf6d96265784d725848",
+    "hi/old": "34a02a95fd8f0e9fda0cee5ec779eb72899ee29e1aa742705857ac24ffd2b557",
+    "hi/pencil": "121ab5988d93b9fe4f37bdde870086f5f30190c6f3a29dcd398f6cfd72471556",
+    "hi/young": "dccdc9453f53cd6edbc19ecd1a2ded215b6b0b343b18610eb7ca07e08b9b2329",
+    "mid/column": "fc00b9ada84df8ff8b0c11f86ab71d60241c8eecbe0e1340f09579b27a0e981f",
+    "mid/edge": "54cd211fcc3b921070e94855876911d3ca046d2a35ca564019f18db649e744d7",
+    "mid/old": "d1f3a5f81be9f0647be7233a665d56ae030187f7724e7925a163d205107579e2",
+    "mid/pencil": "e6e2e4d0f4bc2abf1a7d23e05b7cfa5684a9158b24a22ca18db13eaf74462e6f",
+    "mid/young": "93c3e568f2f85b981a4ead07884b149085ad8f76f5a547b31a9eca3ce146b5f7",
+    "near/column": "e02a5bb6e954f4cd97ab643f70ddac820bd9b0e9d701bfd83408cad5ad10328a",
+    "near/edge": "1e51bad1b0012be8121e2fded75e8ec78d50bab3fb90d62fbdad2f3c1728ad8e",
+    "near/old": "4dc76edabb4d14848365cb7b908638885cd315467bd6470faf297e70e058383e",
+    "near/pencil": "37501c854d28428a590878dddab97d80c992d0503469b9fd2dd0eddd1f6cbbf4",
+    "near/young": "fde99e0f726d00c9980852a7dffc55724c5ab281dc6c1139df068f56d038a233"
+  },
+  "limitations": "This removes local index preparation allocations, not the full loading tail. Actual same-condition browser validation remains required.",
+  "cachePayload": {
+    "sameBytes": true,
+    "file": "spruce-canopy-v1-e10a2d6afd5403ae.bin.gz",
+    "bytes": 11391085,
+    "sha256": "5e61d961399732a485ca1fbdbe940c7d3df8fae7801fb58a6d27f4f6e3e4a2ea",
+    "sourceBindingRegenerated": true
+  },
+  "targetedTests": {
+    "passed": 37,
+    "failed": 0,
+    "log": "tools/reports/route-continuity-v36-canopy-tests.log"
+  }
+}

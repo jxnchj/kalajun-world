@@ -54,7 +54,7 @@ export function disposeTreeWindGeometry(g){
       for(const key of g.userData.ecologyWindAttributes)g.deleteAttribute(key);
     }
   }
-  for(const key of Object.keys(g.attributes))if(!g.userData.ecologyWindAttributes.includes(key)&&key!=="aTreeFrustumSphere")g.deleteAttribute(key);
+  for(const key of Object.keys(g.attributes))if(!g.userData.ecologyWindAttributes.includes(key)&&key!=="aTreeFrustumSphere"&&key!=="aTreeWorldSphere"&&key!=="aCrownMaskBase")g.deleteAttribute(key);
   g.setIndex(null);g.morphAttributes={};g.userData.treeWindReleased=true;g.dispose();
 }
 export class SpruceRootWind {

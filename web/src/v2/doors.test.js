@@ -69,3 +69,8 @@ test("blocked opening reports actual closed state and requests space, then resum
  clear=true;d.update(null,.1);assert.match(button.textContent,/正在开门/);assert.equal(d.stats.active.blocked,false);for(let i=0;i<20;i++)d.update(null,.1);assert.equal(d.openness(entry.id),1);assert.equal(d.stats.active.position,"open");assert.match(button.textContent,/已打开.*关门 F/);
  clear=false;d.toggle(entry.id);d.update(null,.1);assert.match(button.textContent,/关门受阻.*离开门道/);assert.equal(d.stats.active.position,"open");assert.equal(d.stats.active.target,"closed");d.toggle(entry.id);d.update(null,.1);assert.equal(d.stats.active.blocked,false);assert.match(button.textContent,/已打开.*关门 F/);d.dispose();
 });
+test('real angle query retains authored >90 degree pose and cannot mutate motion state',async()=>{
+ const {d}=await ready();try{const state=d.angles('house-A');assert.equal(state.length,1);assert.ok(Math.abs(state[0].angle)>Math.PI/2);const before=d.entries.get('house-A').leaves[0].angle;
+ state[0].angle=0;state.push({angle:0});assert.equal(d.angles('house-A').length,1);assert.equal(d.angles('house-A')[0].angle,before);assert.equal(d.angles('unknown'),null);
+ }finally{d.dispose();}
+});

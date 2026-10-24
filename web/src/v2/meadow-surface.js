@@ -1,4 +1,6 @@
+import { scatteredCanopyField } from "./meadow-scattered-canopy.js";
 import * as THREE from "three";
+import { sampleMeadowDirectionalPosition } from "./meadow-relief.js";
 
 // Source detail pixels are periodic; their world-space sampling is not.
 // It is baked once on the CPU, never generated as per-pixel fractal noise.
@@ -13,7 +15,7 @@ export const MEADOW_PALETTE = Object.freeze({
 // Reload-only A/B keeps immutable CPU grass-root samples and the terrain
 // texture on the same source. A live texture swap would leave cached roots stale.
 const requestedPattern=new URLSearchParams(globalThis.location?.search||"").get("meadowPattern");
-export const MEADOW_PATTERN=["v14","v15","v19","v21","v23"].includes(requestedPattern)?requestedPattern:"v24";
+export const MEADOW_PATTERN=["v14","v15","v19","v21","v23","v38"].includes(requestedPattern)?requestedPattern:"v24";
 // Reload-only: CPU root caches and every ground/grass shader select together.
 export const MEADOW_ROTATION=new URLSearchParams(globalThis.location?.search||"").get("meadowRotation")==="v17"?"v17":"continuous";
 const patternPixels=new Map();
@@ -92,9 +94,9 @@ function packMeadowPattern(raw){
   }
   return out;
 }
-function meadowRadialPixels(hierarchy=false,connected=false,elongated=false,coherentMaturity=false){
+function meadowRadialPixels(hierarchy=false,connected=false,elongated=false,coherentMaturity=false,scattered=false){
   const n=MEADOW_SURFACE.size,raw=new Float32Array(n*n*4);
-  const patchAt=radialLattice(8,17),canopyAt=radialLattice(53,19),maturityAt=radialLattice(16,23),blendAt=radialLattice(18,29);
+  const patchAt=radialLattice(8,17),canopyAt=scattered?scatteredCanopyField(53,19):radialLattice(53,19),maturityAt=radialLattice(16,23),blendAt=radialLattice(18,29);
   const communityAt=hierarchy?radialLattice(3,37):null,wideAt=hierarchy?radialLattice(2,41):null;
   for(let y=0;y<n;y++)for(let x=0;x<n;x++){
     const u=(x+.5)/n,v=(y+.5)/n;
@@ -130,9 +132,9 @@ function meadowRadialPixels(hierarchy=false,connected=false,elongated=false,cohe
 }
 
 export function meadowFieldPixels(pattern=MEADOW_PATTERN) {
-  if(pattern!=="v14"&&pattern!=="v15"&&pattern!=="v19"&&pattern!=="v21"&&pattern!=="v23"&&pattern!=="v24")throw new TypeError("Unknown meadow pattern");
+  if(pattern!=="v14"&&pattern!=="v15"&&pattern!=="v19"&&pattern!=="v21"&&pattern!=="v23"&&pattern!=="v24"&&pattern!=="v38")throw new TypeError("Unknown meadow pattern");
   let pixels=patternPixels.get(pattern);
-  if(!pixels){pixels=pattern==="v14"?meadowV14Pixels():meadowRadialPixels(["v19","v21","v23","v24"].includes(pattern),["v21","v23","v24"].includes(pattern),["v23","v24"].includes(pattern),pattern==="v24");patternPixels.set(pattern,pixels);}
+  if(!pixels){pixels=pattern==="v14"?meadowV14Pixels():meadowRadialPixels(["v19","v21","v23","v24","v38"].includes(pattern),["v21","v23","v24","v38"].includes(pattern),["v23","v24","v38"].includes(pattern),pattern==="v24"||pattern==="v38",pattern==="v38");patternPixels.set(pattern,pixels);}
   return pixels;
 }
 // CPU reference uses exactly WebGL repeat/bilinear texel-centre semantics.
@@ -210,6 +212,10 @@ export function sampleMeadowField(x,z,pattern=MEADOW_PATTERN,rotation=MEADOW_ROT
 // Reload-only: cached terrain vertices and every grass-root representation
 // must use the same regional terrain positions. The accepted detail texture,
 // mip chain, source palette and plant placement remain unchanged.
+// Directional relief shares the existing community attributes across terrain
+// morphs and every immutable grass-root LOD. Reload-only A/B is necessary: a
+// live toggle would leave cached terrain/root samples describing different land.
+export const MEADOW_RELIEF=new URLSearchParams(globalThis.location?.search||"").get("meadowRelief")==="v35"?"v35":"directional";
 export const MEADOW_LANDSCAPE=new URLSearchParams(globalThis.location?.search||"").get("meadowLandscape")==="v19"?"v19":"v20";
 const landformFields=new WeakMap();
 export const meadowLandformVariation={value:1};
@@ -282,15 +288,15 @@ float meadowCommunityRoughness(vec4 community){return uMeadowCommunityVariation*
 `;
 
 export class MeadowLandformField {
-  constructor(world,{landscape=MEADOW_LANDSCAPE}={}){
-    this.world=world;this.landscape=landscape;
+  constructor(world,{landscape=MEADOW_LANDSCAPE,relief=MEADOW_RELIEF}={}){
+    this.world=world;this.landscape=landscape;this.relief=landscape==="v19"?"v35":relief;
     const field=(size,spacing)=>{const n=Math.ceil(size/spacing)+3;
       return{size,spacing,n,origin:-size/2-spacing,values:new Float32Array(n*n*2).fill(NaN),context:new Float32Array(n*n*4).fill(NaN),
         regional:landscape==="v19"?null:new Float32Array(n*n).fill(NaN)};};
     const size=Number(world.meta?.far?.size)||81920;
     this.far=field(size,512);this.core=field(world.meta?.core?.size||Math.min(20480,size),128);
     this.scratch=[new THREE.Vector2(),new THREE.Vector2()];
-    this.stats={demSamples:0,gridPoints:0,responses:0,communityPoints:0,communityDemSamples:0,communityCoverSamples:0,regionalDemSamples:0,bytes:this.far.values.byteLength+this.core.values.byteLength+this.far.context.byteLength+this.core.context.byteLength+(this.far.regional?.byteLength||0)+(this.core.regional?.byteLength||0)};
+    this.stats={demSamples:0,gridPoints:0,responses:0,communityPoints:0,communityDemSamples:0,communityCoverSamples:0,regionalDemSamples:0,reliefDemSamples:0,bytes:this.far.values.byteLength+this.core.values.byteLength+this.far.context.byteLength+this.core.context.byteLength+(this.far.regional?.byteLength||0)+(this.core.regional?.byteLength||0)};
   }
   sampleGrid(grid,x,z,target){
     const fx=Math.max(0,Math.min(grid.n-1.000001,(x-grid.origin)/grid.spacing));
@@ -324,7 +330,9 @@ export class MeadowLandformField {
   communityGrid(grid,x,z,target){
     // sampleGrid already retains the centre height and slope from its existing
     // five DEM reads. Wider terrain position and forest neighbourhood are lazy,
-    // fixed-world additions, never a per-root or per-frame DEM stencil.
+    // fixed-world additions, never a per-root or per-frame DEM stencil. The
+    // directional candidate adds four diagonal reads at each of the two scales,
+    // reuses the same scalar caches, and adds no GPU samples or attributes.
     this.sampleGrid(grid,x,z,this.scratch[0]);
     const fx=Math.max(0,Math.min(grid.n-1.000001,(x-grid.origin)/grid.spacing));
     const fz=Math.max(0,Math.min(grid.n-1.000001,(z-grid.origin)/grid.spacing));
@@ -335,8 +343,11 @@ export class MeadowLandformField {
       const at=((j+dz)*grid.n+i+dx)*4;
       if(Number.isNaN(grid.context[at+2])){
         const px=grid.origin+(i+dx)*grid.spacing,pz=grid.origin+(j+dz)*grid.spacing,e=384;
-        const average=(geographic(px-e,pz)+geographic(px+e,pz)+geographic(px,pz-e)+geographic(px,pz+e))*.25;
-        grid.context[at+2]=(average-grid.context[at])/e;
+        const cardinal=[geographic(px-e,pz),geographic(px+e,pz),geographic(px,pz-e),geographic(px,pz+e)];
+        const average=cardinal.reduce((a,b)=>a+b,0)*.25;
+        grid.context[at+2]=this.relief==="v35"?(average-grid.context[at])/e:
+          sampleMeadowDirectionalPosition(geographic,px,pz,grid.context[at],e,cardinal);
+        if(this.relief!=="v35")this.stats.reliefDemSamples+=4;
         let forest=0;
         for(const [ox,oz]of COMMUNITY_NEIGHBOURS)forest=Math.max(forest,Number(this.world.landcoverAt(px+ox,pz+oz).r)||0);
         grid.context[at+3]=forest;
@@ -348,8 +359,11 @@ export class MeadowLandformField {
         const ri=at/4;
         if(Number.isNaN(grid.regional[ri])){
           const px=grid.origin+(i+dx)*grid.spacing,pz=grid.origin+(j+dz)*grid.spacing,e=1152;
-          grid.regional[ri]=((geographic(px-e,pz)+geographic(px+e,pz)+geographic(px,pz-e)+geographic(px,pz+e))*.25-grid.context[at])/e;
+          const cardinal=[geographic(px-e,pz),geographic(px+e,pz),geographic(px,pz-e),geographic(px,pz+e)];
+          grid.regional[ri]=this.relief==="v35"?(cardinal.reduce((a,b)=>a+b,0)*.25-grid.context[at])/e:
+            sampleMeadowDirectionalPosition(geographic,px,pz,grid.context[at],e,cardinal);
           this.stats.regionalDemSamples+=4;
+          if(this.relief!=="v35")this.stats.reliefDemSamples+=4;
         }
         target[3]+=grid.regional[ri]*w;
       }
@@ -415,6 +429,7 @@ export function bindMeadowField(material) {
     sharedTexture.generateMipmaps=true;sharedTexture.anisotropy=4;sharedTexture.needsUpdate=true;
   }
   material.userData.meadowPattern=MEADOW_PATTERN;
+  material.userData.meadowRelief=MEADOW_LANDSCAPE==="v19"?"v35":MEADOW_RELIEF;
   material.userData.meadowRotation=MEADOW_ROTATION;
   material.userData.meadowWorldVariation=meadowWorldVariation;
   material.userData.meadowLandformVariation=meadowLandformVariation;

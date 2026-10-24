@@ -1,0 +1,29 @@
+{
+  "base": {
+    "version": 1,
+    "url": "data/v2/lodge-chairs-base-38.json.gz",
+    "rawBytes": 11801070,
+    "gzipBytes": 6633387,
+    "rawSHA256": "0e3821f73b1402716321229e1343d54892c90e195d1f909898e6ab754e3b2a3f",
+    "sha256": "2e2c9d8093f8934a43271a513f7b70ee32fbab83d286baf3be93d5d7aa36db05"
+  },
+  "delta": {
+    "version": 1,
+    "url": "data/v2/lodge-chairs-gi-38.xor.gz",
+    "rawBytes": 25816127,
+    "gzipBytes": 2778940,
+    "rawSHA256": "9b1fc560ca42722bbe90bf4fd2637d0eee68129abe8c65bd84374bb0cb3e7799",
+    "sha256": "eb10ef447fff9f992ccfbc5b3a43eee24544048dc56c0a676f17060438f577bf"
+  },
+  "exactStateObjects": 3,
+  "originalGzipBytes": 19961252,
+  "totalGzipBytes": 9412327,
+  "reduction": 0.5284701079872145,
+  "probes": [
+    47,
+    5,
+    13
+  ],
+  "validProbes": 2992,
+  "model": "complete closed whole-building source plus lossless Float16 XOR of actual three poses; no source data discarded"
+}

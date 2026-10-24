@@ -1,0 +1,42 @@
+{
+  "oldSource": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+  "newSource": "b1b8d584d20a55916ff9b6f5d3938d733d10751aada2456bab5b8df82572daee",
+  "sameProbeGrid": true,
+  "oldValid": 2979,
+  "newValid": 2986,
+  "gained": 7,
+  "lost": 0,
+  "fields": {
+    "local/sky": {
+      "changedCoefficients": 10842,
+      "absoluteDeltaSum": 0.2609328031539917,
+      "maxAbsoluteDelta": 0.009532928466796875
+    },
+    "local/secondSky": {
+      "changedCoefficients": 20834,
+      "absoluteDeltaSum": 0.1932429075241089,
+      "maxAbsoluteDelta": 0.0010623931884765625
+    },
+    "cross/sky": {
+      "changedCoefficients": 18739,
+      "absoluteDeltaSum": 21.132623970508575,
+      "maxAbsoluteDelta": 0.170806884765625
+    },
+    "cross/secondSky": {
+      "changedCoefficients": 30366,
+      "absoluteDeltaSum": 8.994905769824982,
+      "maxAbsoluteDelta": 0.013580262660980225
+    },
+    "cross/directSky": {
+      "changedCoefficients": 3371,
+      "absoluteDeltaSum": 5.482713878154755,
+      "maxAbsoluteDelta": 0.06158447265625
+    }
+  },
+  "contact": {
+    "sameSize": true,
+    "changedTexels": 7184,
+    "darker": 2949,
+    "lighter": 4235
+  }
+}

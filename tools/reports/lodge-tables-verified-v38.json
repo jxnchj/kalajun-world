@@ -1,0 +1,59 @@
+{
+  "sourceSHA256": "853f5690686eceaa85f00b2df0705343e55b6aea4286f599e07ee121dd170687",
+  "originalSourceSHA256": "1025f39e99a19324945adfceb1f333514590c11761ea0205941e62635e8c6b3b",
+  "removedComponents": 23,
+  "removedTriangles": 320,
+  "retainedTriangles": 113768,
+  "addedTriangles": 14560,
+  "totalTriangles": 128328,
+  "netTriangles": 14240,
+  "originalAttributesAndTransformsExact": true,
+  "originalOtherIndicesOrderExact": true,
+  "originalMaterialsUnchanged": true,
+  "originalFullBinaryPrefixExact": true,
+  "teaSupportBounds": [
+    [
+      "tablecraft38_tea_support_0",
+      [
+        5.264501571655273,
+        0.026000000536441803,
+        -0.6545727252960205
+      ],
+      [
+        5.3224287033081055,
+        0.40700000524520874,
+        -0.5158689618110657
+      ]
+    ],
+    [
+      "tablecraft38_tea_support_1",
+      [
+        5.0646467208862305,
+        0.026000000536441803,
+        -0.34692707657814026
+      ],
+      [
+        5.191253662109375,
+        0.40700000524520874,
+        -0.25209102034568787
+      ]
+    ],
+    [
+      "tablecraft38_tea_support_2",
+      [
+        5.395676612854004,
+        0.026000000536441803,
+        -0.34692707657814026
+      ],
+      [
+        5.522283554077148,
+        0.40700000524520874,
+        -0.25209102034568787
+      ]
+    ]
+  ],
+  "reusedImages": 3,
+  "reusedTextureObjects": 3,
+  "glbBytes": 20106596,
+  "blendBytes": 14990194
+}

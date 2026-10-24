@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {probePackedHDR4}from './packed-hdr.js';
+test('native packed 4x refuses absent float renderability and never allocates fallback samples',()=>{assert.throws(()=>probePackedHDR4({getExtension:()=>null}),/EXT_color_buffer_float/);for(const lists of [[[2],[4]],[[4],[2]],[[],[4]]]){let queried=0;assert.throws(()=>probePackedHDR4({getExtension:()=>({}),getInternalformatParameter:()=>lists[queried++]}),/refusing sample reduction/);assert.equal(queried,2);}});

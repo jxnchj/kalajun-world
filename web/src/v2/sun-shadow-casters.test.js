@@ -1,4 +1,5 @@
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 import * as THREE from "three";
 import { WorldShadowDepth } from "./room-shadow.js";
@@ -349,4 +350,117 @@ test('due cascades skip invalidation work without losing later edits or membersh
  f.scene.remove(mesh);f.tracker.update(f.camera,{skipCascades:[true,false,true]});
  assert.deepEqual(f.tracker.result.changed,[false,true,false]);
  assert.deepEqual(f.update(),[true,false,true]);assert.deepEqual(f.tracker.result.counts,[0,0,0]);
+});
+
+test('retained caster entries match double Maps for replacements, removals, mutation and skipped cascades',()=>{
+ const f=fixture({entryReuse:false}), reused=new SunShadowCasters(f.scene,f.lights,{entryReuse:true});
+ const a=box(0),b=box(12);f.scene.add(a,b);
+ const compare=(skipCascades=[])=>{
+  const old=f.tracker.update(f.camera,{skipCascades}),next=reused.update(f.camera,{skipCascades});
+  assert.deepEqual(next,old);
+ };
+ compare();compare();const entry=reused._entries[0].get(a);compare();assert.equal(reused._entries[0].get(a),entry);
+ a.geometry.attributes.position.needsUpdate=true;compare();compare();
+ a.removeFromParent();const replacement=box(0);f.scene.add(replacement);compare();assert.equal(reused._entries[0].has(a),false);
+ replacement.visible=false;compare([true,true,true]);compare([false,true,false]);compare();
+ replacement.visible=true;b.position.x=1000;compare();compare();
+ reused.dispose();assert.ok(reused._entries.every(m=>m.size===0));f.tracker.dispose();
+});
+
+
+test("phase diagnostic preserves every capture and reports disjoint CPU work", () => {
+  const f = fixture({ profilePhases:false }), mesh=box(0); f.scene.add(mesh);
+  const profiled=new SunShadowCasters(f.scene,f.lights,{ profilePhases:true });
+  const mutations=[()=>{},()=>{},()=>mesh.morphTargetInfluences[0]=.4,
+    ()=>mesh.geometry.attributes.position.needsUpdate=true,
+    ()=>mesh.geometry.attributes.position.itemSize=4,
+    ()=>mesh.geometry.attributes.position.itemSize=3,
+    ()=>mesh.geometry.index.needsUpdate=true,
+    ()=>mesh.position.x=12,()=>mesh.visible=false,()=>mesh.visible=true,
+    ()=>mesh.material.alphaTest=.2,()=>mesh.material.opacity=.3,
+    ()=>mesh.geometry.attributes.position=mesh.geometry.attributes.position.clone(),
+    ()=>mesh.geometry.morphAttributes.position[0].needsUpdate=true,
+    ()=>mesh.geometry.drawRange.count=3,()=>mesh.geometry.drawRange.count=Infinity,
+    ()=>mesh.userData.shadowRevision=1,()=>mesh.material.visible=false,
+    ()=>mesh.material.visible=true,()=>mesh.position.x=200];
+  for(const mutate of mutations){
+    mutate();
+    const expected=f.update(), actual=profiled.update(f.camera);
+    assert.deepEqual(actual.changed,expected);
+    assert.deepEqual(actual.counts,f.tracker.result.counts);
+    assert.deepEqual(actual.revisions,f.tracker.result.revisions);
+    for(const name of ["visited","candidates","objectScans","geometryScans","attributeScans","attributeReuses"])
+      assert.equal(profiled.stats[name],f.tracker.stats[name],name);
+    const phases=profiled.stats.phases;
+    for(const ms of Object.values(phases))assert.ok(Number.isFinite(ms)&&ms>=0);
+    assert.ok(Math.abs(Object.values(phases).reduce((sum,ms)=>sum+ms,0)-profiled.stats.lastMs)<1e-8);
+    assert.equal(f.tracker.stats.phases,null);
+  }
+  profiled.profilePhases=false;profiled.update(f.camera);assert.equal(profiled.stats.phases,null);
+  profiled.dispose();f.tracker.dispose();
+});
+
+
+test("custom BasicDepthPacking opacity invalidates real alpha depth while surface opacity does not", () => {
+  // Execute the installed Three renderer's private depth-selection body rather
+  // than duplicating its material-copy rules. This is not a GPU pixel test.
+  const source=readFileSync(new URL("../../node_modules/three/src/renderers/webgl/WebGLShadowMap.js",import.meta.url),"utf8");
+  const start=source.indexOf("function getDepthMaterial("),end=source.indexOf("function renderObject(",start);
+  assert.ok(start>0&&end>start);
+  const defaultDepth=new THREE.MeshDepthMaterial();
+  const select=new Function("_depthMaterial","_distanceMaterial","_materialCache","renderer","shadowSide","VSMShadowMap","onMaterialDispose",
+    source.slice(start,end)+"; return getDepthMaterial;")(defaultDepth,new THREE.MeshDistanceMaterial(),{},
+      {localClippingEnabled:false},{0:1,1:0,2:2},THREE.VSMShadowMap,()=>{});
+  const f=fixture(),mesh=box(12);mesh.material.alphaTest=.5;mesh.material.opacity=.9;f.scene.add(mesh);
+  const depth=new THREE.MeshDepthMaterial({depthPacking:THREE.BasicDepthPacking,opacity:.6});mesh.customDepthMaterial=depth;
+  assert.strictEqual(select(mesh,mesh.material,f.lights[0],THREE.PCFShadowMap),depth);
+  assert.equal(depth.alphaTest,.5);assert.equal(depth.opacity,.6);
+  const fragment=THREE.ShaderLib.depth.fragmentShader;
+  assert.match(fragment,/#if DEPTH_PACKING == 3200\s+diffuseColor.a = opacity;/);
+  assert.ok(fragment.indexOf("diffuseColor.a = opacity;")<fragment.indexOf("#include <alphatest_fragment>"));
+  assert.match(THREE.ShaderChunk.alphatest_fragment,/diffuseColor.a < alphaTest/);
+  f.update();assert.deepEqual(f.update(),[false,false,false]);
+  depth.opacity=.4;assert.ok(depth.opacity<depth.alphaTest,"real shader now discards instead of writing depth");
+  assert.deepEqual(f.update(),[false,true,true]);assert.deepEqual(f.update(),[false,false,false]);
+  depth.opacity=.6;assert.deepEqual(f.update(),[false,true,true]);f.update();
+  mesh.material.opacity=.1;select(mesh,mesh.material,f.lights[0],THREE.PCFShadowMap);
+  assert.equal(depth.opacity,.6,"renderer does not overwrite custom opacity with surface opacity");
+  assert.deepEqual(f.update(),[false,false,false]);
+  depth.depthPacking=THREE.RGBADepthPacking;assert.deepEqual(f.update(),[false,true,true]);f.update();
+  depth.opacity=.2;assert.deepEqual(f.update(),[false,false,false],"RGBA packing does not read opacity");
+  depth.depthPacking=THREE.BasicDepthPacking;assert.deepEqual(f.update(),[false,true,true]);f.update();
+  depth.opacity=.8;assert.deepEqual(f.update(),[false,true,true]);
+  delete mesh.customDepthMaterial;
+  assert.strictEqual(select(mesh,mesh.material,f.lights[0],THREE.PCFShadowMap),defaultDepth);
+  assert.equal(defaultDepth.opacity,1);f.update();f.update();
+  mesh.material.opacity=.7;select(mesh,mesh.material,f.lights[0],THREE.PCFShadowMap);
+  assert.equal(defaultDepth.opacity,1);assert.deepEqual(f.update(),[false,false,false]);
+  f.tracker.dispose();depth.dispose();defaultDepth.dispose();mesh.geometry.dispose();mesh.material.dispose();
+});
+
+
+test("shared depth traversal reuses only the immediate main draw and covers hidden/new/replaced casters",()=>{
+ const f=fixture(),depth=new WorldShadowDepth(f.scene,{sharedTraversal:true,profile:true});f.tracker.depthPreparation=depth;
+ const hidden=new THREE.Group();hidden.visible=false;const a=box(0);hidden.add(a);f.scene.add(hidden);
+ depth.runPreparedMain(()=>f.update(),()=>f.scene.onBeforeRender());
+ assert.ok(a.customDepthMaterial);assert.equal(depth.sharedStats.reusedMain,1);assert.equal(depth.profile.calls,0);
+ const b=box(0),replacement=new THREE.MeshDepthMaterial();f.scene.add(b);a.customDepthMaterial=replacement;
+ f.scene.onBeforeRender();assert.ok(b.customDepthMaterial);assert.equal(a.customDepthMaterial,replacement);assert.equal(depth.profile.last.patched,1);
+ assert.equal(depth.profile.calls,1);assert.equal(depth.sharedStats.reusedMain,1);
+ depth.runPreparedMain(()=>f.update(),()=>{depth.prepare();f.scene.onBeforeRender();});
+ assert.equal(depth.sharedStats.reusedMain,1,"compile/full preparation consumes the reuse credential");
+ assert.throws(()=>depth.runPreparedMain(()=>f.update(),()=>{throw Error("draw failed");}),/draw failed/);
+ assert.equal(depth.sharedScope,null);f.scene.onBeforeRender();assert.equal(depth.sharedStats.reusedMain,1);
+ depth.runPreparedMain(()=>f.tracker.update(f.camera,{skipCascades:[true,true,true]}),()=>f.scene.onBeforeRender());
+ assert.equal(depth.sharedStats.reusedMain,1,"all-skipped tracker must fall back");
+ f.tracker.terrainDomainCapture=true;depth.runPreparedMain(()=>f.update(),()=>f.scene.onBeforeRender());
+ assert.equal(depth.sharedStats.reusedMain,1,"domain shortcut cannot certify full coverage");
+ depth.dispose();replacement.dispose();
+});
+test("shared depth traversal is default off and refuses asynchronous preparation",()=>{
+ const f=fixture(),depth=new WorldShadowDepth(f.scene,{profile:true});f.tracker.depthPreparation=depth;
+ f.scene.add(box(0));depth.runPreparedMain(()=>f.update(),()=>f.scene.onBeforeRender());
+ assert.equal(depth.sharedStats.reusedMain,0);assert.equal(depth.profile.calls,1);
+ depth.sharedTraversal=true;assert.throws(()=>depth.runPreparedMain(()=>Promise.resolve(),()=>assert.fail("must not draw")),/synchronous/);
+ assert.equal(depth.sharedScope,null);depth.dispose();
 });

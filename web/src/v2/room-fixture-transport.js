@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import {ROOM_BOUNCE_DATA} from "./room-bounce-data.js";
+import {ROOM_BOUNCE_DATA} from "./room-bounce-registry.js";
 import {ROOM_FIXTURE_LOADERS} from "./room-fixture-data.js";
 import {decodeSolarDirection} from "./room-solar-transport.js";
 

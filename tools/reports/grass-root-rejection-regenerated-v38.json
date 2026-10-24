@@ -1,0 +1,19 @@
+{
+  "meadowCompressedBytesIdentical": true,
+  "independentReferenceAllDataExceptSourceBindingIdentical": true,
+  "referenceRoots": 55,
+  "referenceSources": [
+    {
+      "path": "web/src/v2/ecology.js",
+      "sha256": "b9f20ff0b3ba87ea4b18d3ef7f97804bc17b52da74ecda348923817a7847b411"
+    },
+    {
+      "path": "web/src/v2/meadow-surface.js",
+      "sha256": "65a2b374bb00105f0ddf524cde97821c5477112f87becc62c4d37c332538c3e7"
+    },
+    {
+      "path": "web/src/v2/grass-root-field.js",
+      "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+    }
+  ]
+}

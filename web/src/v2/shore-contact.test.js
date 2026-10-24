@@ -36,6 +36,19 @@ function actual(riverMeanders){
  worlds.set(riverMeanders,world);return world;
 }
 function ecology(w){const e=new WorldEcology(w);e.floraLocal=decodeHabitatMap(json("data/vegmap.json"),bin("data/vegmap.bin.gz"));e.floraCore=decodeHabitatMap(json("data/vegcore.json"),bin("data/vegcore.bin.gz"));return e;}
+// Wet roots own fresh BufferGeometry objects on each source query. Compare
+// every rendered value, not Three.js allocation UUIDs or disposer closures.
+function sameRootAndGeometry(actual,expected){
+ const {brookAsset:a,...ar}=actual,{brookAsset:b,...br}=expected;assert.deepEqual(ar,br);assert.equal(Boolean(a),Boolean(b));
+ if(!a)return;
+ for(const key of ['feet','seating','envelope','physicalOnly'])assert.deepEqual(a[key],b[key]);
+ assert.equal(a.geometries.length,b.geometries.length);
+ for(let i=0;i<a.geometries.length;i++){
+  const x=a.geometries[i],y=b.geometries[i];assert.deepEqual(x.index?.array,y.index?.array);assert.deepEqual(Object.keys(x.attributes),Object.keys(y.attributes));
+  for(const key of Object.keys(x.attributes)){assert.equal(x.attributes[key].itemSize,y.attributes[key].itemSize);assert.equal(x.attributes[key].normalized,y.attributes[key].normalized);assert.deepEqual(x.attributes[key].array,y.attributes[key].array);}
+ }
+ a.dispose();
+}
 test("rendered stone matrices match the shared tilted three-dimensional collider exactly",()=>{
  const w=actual(),view=w.hydrology.viewpoints.find(v=>v.id==="river-forest"),segments=w.hydrology.nearSegments(view.x,view.z,18),records=createShoreStones(w,segments),water=new WorldWater(w);
  const item=water.buildBucket({id:"test",segments,bounds:{minX:view.x-24,maxX:view.x+24,minZ:view.z-24,maxZ:view.z+24}});
@@ -64,7 +77,12 @@ test("swept blade envelope catches leaf contact outside the root and relocation 
  geometry.dispose();stoneGeometry.dispose();releaseShoreStoneField(w);
 });
 test("real river entrances keep grass and understory identities and counts while clearing full swept leaves",t=>{
- const w=actual(),baseline={...w,hydrology:{...w.hydrology,nearSegments:undefined}},before=ecology(baseline),after=ecology(w),field=getShoreStoneField(w),reports=[];
+ const w=actual(),baseline={...w},before=ecology(baseline),after=ecology(w),field=getShoreStoneField(w),reports=[];
+ // Isolate stone contact, not hydrology: wet-bank rooting requires the actual
+ // channel query even in this no-contact baseline. Source root eligibility
+ // still uses its own original-world collision field.
+ t.mock.method(getShoreStoneField(baseline),'intersects',()=>false);
+ assert.strictEqual(baseline.hydrology.nearSegments,w.hydrology.nearSegments);
  const floorEnvelopes=new Map();
  for(const kind of ["sedge","fern","shrub"]){const g=createForestFloorGeometry(kind);floorEnvelopes.set(kind,createPlantEnvelope([g]));g.dispose();}
  for(const view of w.hydrology.viewpoints){
@@ -72,10 +90,11 @@ test("real river entrances keep grass and understory identities and counts while
   for(let iz=Math.floor((view.z-28)/.8);iz<Math.ceil((view.z+28)/.8);iz++)for(let ix=Math.floor((view.x-28)/.8);ix<Math.ceil((view.x+28)/.8);ix++){
    const a=before.grassAt(ix,iz),b=after.grassAt(ix,iz);assert.equal(!!a,!!b);
    if(!a)continue;report.grass++;assert.equal(a.id,b.id);assert.equal(a.s,b.s);assert.equal(a.sy,b.sy);assert.equal(a.rot,b.rot);
-   if(field.intersects(a,after.shoreGrassEnvelope))report.grassBeforeHits++;
+   if(field.intersects(a,a.brookAsset?.envelope??after.shoreGrassEnvelope))report.grassBeforeHits++;
    if(b.shoreMove){report.grassMoved++;report.maxMove=Math.max(report.maxMove,b.shoreMove);}if(b.shoreUnresolved)report.unresolved++;
-   assert.equal(field.intersects(b,after.shoreGrassEnvelope),false,b.id+" leaves touch stone after relocation");
-   assert.equal(after.excluded(b.x,b.z,.3),false);assert.deepEqual(after.grassAt(ix,iz),b);
+   assert.equal(field.intersects(b,b.brookAsset?.envelope??after.shoreGrassEnvelope),false,b.id+" full rendered swept leaves touch stone after relocation");
+   assert.equal(after.excluded(b.x,b.z,.3,Boolean(b.brookAsset)),false);assert.equal(w.hydrology.sampleAt(b.x,b.z,{includeDepth:false}).insideWater,false);
+   sameRootAndGeometry(after.grassAt(ix,iz),b);a.brookAsset?.dispose();b.brookAsset?.dispose();
   }
   for(let iz=Math.floor((view.z-28)/2.4);iz<Math.ceil((view.z+28)/2.4);iz++)for(let ix=Math.floor((view.x-28)/2.4);ix<Math.ceil((view.x+28)/2.4);ix++){
    const a=forestFloorAt(baseline,ix,iz,(x,z,p)=>before.excluded(x,z,p,true)),b=forestFloorAt(w,ix,iz,(x,z,p)=>after.excluded(x,z,p,true));assert.equal(!!a,!!b);
@@ -116,7 +135,9 @@ for(const riverMeanders of [false,undefined])test("cross-tile relocated plants r
   assert.ok(probe,"default scene must exercise a real crossed root");x=probe.x;z=probe.z;
  }
  const camera={position:new THREE.Vector3(x,w.surface.heightAt(x,z)+1.8,z)};
- const baseline=ecology({...w,hydrology:{...w.hydrology,nearSegments:undefined}}),baseStart=performance.now();let baseMax=0;
+ const baseline=ecology({...w}),baseStart=performance.now();let baseMax=0;
+ t.mock.method(getShoreStoneField(baseline.world),'intersects',()=>false);
+ assert.strictEqual(baseline.world.hydrology.nearSegments,w.hydrology.nearSegments);
  eco.uniforms.uWorldViewer.value.copy(camera.position);baseline.uniforms.uWorldViewer.value.copy(camera.position);
  for(let i=0;i<160;i++){const tick=performance.now();baseline.updateMeadow(camera);baseline.forestFloor.update(camera);baseMax=Math.max(baseMax,performance.now()-tick);if(!baseline.stats.grassPending&&!baseline.forestFloor.stats.pending)break;}
  const baselineCPU=performance.now()-baseStart,baselineGrass=baseline.stats.grassTufts,baselineFloor=[...baseline.forestFloor.pools.values()].reduce((n,p)=>n+p.records.length,0),baselineIDs=[...baseline.grassTiles.values()].flatMap(tile=>tile.list.map(p=>p.id)).sort(),baselineFloorIDs=[...baseline.forestFloor.pools.values()].flatMap(p=>p.records.map(r=>r.id)).sort();baseline.dispose();

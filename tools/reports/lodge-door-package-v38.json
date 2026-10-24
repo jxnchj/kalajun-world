@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "url": "data/v2/lodge-door-gi-38.xor.gz",
+  "rawBytes": 26418171,
+  "gzipBytes": 725104,
+  "rawSHA256": "2d34ae0510b4fd8f9af3ecb66cdef679b1aa50ee9b646ae990c019b9b4170add",
+  "sha256": "daa5f05b5fd26b23c78c14a0b9191a705ab17a74d91c604055586a416b946bd7",
+  "exactStateObjects": 3,
+  "originalGzipBytes": 7864261,
+  "reduction": 0.9077975667389473,
+  "model": "binary XOR of existing Float16 bits against retained original local/cross fields; original baking outputs untouched"
+}

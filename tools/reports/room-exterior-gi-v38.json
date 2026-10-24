@@ -1,0 +1,25 @@
+{
+  "entityId": "cabins:-3967,2822.3:eec01b1433084d64",
+  "seconds": 48.2717922499869,
+  "bytes": 118743,
+  "protected": {
+    "assets/src/v2/pastoral/house_a-lived.blend": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+    "web/public/assets/v2/house_a_lived.glb": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+    "assets/src/v2/pastoral/household-living-32.blend": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4",
+    "web/public/assets/v2/household_living.glb": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a"
+  },
+  "sourcesUnchanged": true,
+  "metrics": {
+    "escapeSky": 279844,
+    "groundHits": 1215034,
+    "belowHorizonMisses": 38272,
+    "groundVisibilitySamples": 2255360
+  },
+  "limits": [
+    "Terrain 4m near/32m far, 4096m square radius; low-frequency source vertex albedo excludes GPU detail modulation.",
+    "No ground reflection of sunlight, unchanged existing direct-source solar transport.",
+    "No neighbouring building/tree occlusion; ground sky visibility 64 cosine rays cached at 8m/0.1 normal bins.",
+    "Direct aperture sky shader is unchanged; this candidate corrects indirect transport only.",
+    "Door intermediate states still interpolate two endpoints for this entity."
+  ]
+}

@@ -1,3 +1,4 @@
+import {riverBedDepth,bendDeposits} from "./river-bed-profile.js";
 // Shared local bank/bed shape for water meshes, terrain and ecological masks.
 // These bounded designed shallows are not a claim of surveyed bank geometry.
 // Reload keeps physical terrain and every material query on the same bank.
@@ -5,7 +6,7 @@ const requestedBankProfile=new URLSearchParams(globalThis.location?.search||"").
 // Independent contour A/B; earlier bankProfile modes stay available.
 const requestedContour=new URLSearchParams(globalThis.location?.search||"").get("bankContour");
 export const RIVER_BANK_CONTOUR=["v22","v23"].includes(requestedContour)?requestedContour:"v24";
-export const RIVER_BANK_PROFILE=["v19","v20","v21"].includes(requestedBankProfile)?requestedBankProfile:(RIVER_BANK_CONTOUR==="v22"?"v21":RIVER_BANK_CONTOUR);
+export const RIVER_BANK_PROFILE=["v19","v20","v21","v38"].includes(requestedBankProfile)?requestedBankProfile:(RIVER_BANK_CONTOUR==="v22"?"v21":RIVER_BANK_CONTOUR);
 export const RIVER_BANK_SHOULDERS=new URLSearchParams(globalThis.location?.search||"").get("bankShoulders")==="v16"?"v16":"variable";
 export const RIVER_BANK_LOBES=new URLSearchParams(globalThis.location?.search||"").get("shoreLobes")==="v26"?"v26":"v27";
 const mix=(a,b,t)=>a+(b-a)*t,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -64,6 +65,16 @@ export function riverSectionAt(s,t){
   return {x:mix(a.x,b.x,t),z:mix(a.z,b.z,t),level:mix(a.level,b.level,t),sourceWidth,width:left+right,left,right,
     depth:mix(a.depth,b.depth,t),distance:mix(a.distance,b.distance,t),fx:fx/len,fz:fz/len,
     weight:mix(a.bankShape?.weight??0,b.bankShape?.weight??0,t),
+    bendWeight:mix(a.bankShape?.bendWeight??0,b.bankShape?.bendWeight??0,t),
+    valleyWeight:mix(a.bankShape?.valleyWeight??0,b.bankShape?.valleyWeight??0,t),
+    bedWeight:mix(a.bankShape?.bedWeight??0,b.bankShape?.bedWeight??0,t),
+    bedDepositLeft:mix(a.bankShape?.bedDepositLeft??0,b.bankShape?.bedDepositLeft??0,t),
+    bedDepositRight:mix(a.bankShape?.bedDepositRight??0,b.bankShape?.bedDepositRight??0,t),
+    valleyRootMat:mix(a.bankShape?.valleyRootMat??0,b.bankShape?.valleyRootMat??0,t),
+    legacyLeft:mix(a.bankShape?.legacyLeft??a.bankShape?.left??a.width*.5,b.bankShape?.legacyLeft??b.bankShape?.left??b.width*.5,t),
+    legacyRight:mix(a.bankShape?.legacyRight??a.bankShape?.right??a.width*.5,b.bankShape?.legacyRight??b.bankShape?.right??b.width*.5,t),
+    valleyBarLeft:mix(a.bankShape?.valleyBarLeft??0,b.bankShape?.valleyBarLeft??0,t),
+    valleyBarRight:mix(a.bankShape?.valleyBarRight??0,b.bankShape?.valleyBarRight??0,t),
     barLeft:mix(a.bankShape?.barLeft??.5,b.bankShape?.barLeft??.5,t),barRight:mix(a.bankShape?.barRight??.5,b.bankShape?.barRight??.5,t),
     shoulderLeft:mix(a.bankShape?.shoulderLeft??1,b.bankShape?.shoulderLeft??1,t),
     shoulderRight:mix(a.bankShape?.shoulderRight??1,b.bankShape?.shoulderRight??1,t),
@@ -74,9 +85,8 @@ export function riverCrossPoint(section,across){
   return {x:section.x-section.fz*offset,z:section.z+section.fx*offset,level:section.level};
 }
 export function riverSectionDepth(section,across){
-  const u=clamp(Math.abs(across),0,1),legacy=.025+section.depth*Math.max(0,1-u*u),bar=across<0?section.barLeft:section.barRight;
-  const shallow=.025*(1-smooth(.45,1,u))+section.depth*(1-smooth(.08,1,u))*(1-.70*bar*smooth(.2,.62,u));
-  return mix(legacy,shallow,section.weight);
+  return riverBedDepth(section.depth,section.weight,across,across<0?section.barLeft:section.barRight,
+    section.bedWeight??0,across<0?(section.bedDepositLeft??0):(section.bedDepositRight??0));
 }
 // Cut-only outer-bank rise, normalised from the water edge (0) to unchanged
 // DEM (1). A depositional side has a continuous gentle shoulder; the opposite
@@ -85,6 +95,45 @@ export function riverSectionDepth(section,across){
 export function riverBankRise(section,side,u,profile=RIVER_BANK_PROFILE){
   const extent=side<0?(section.shoulderLeft??1):(section.shoulderRight??1);
   const rawQ=clamp(u/extent,0,1),bar=side<0?section.barLeft:section.barRight;
+  if(section.valleyWeight>0){
+    const half=side<0?section.left:section.right,oldHalf=side<0?section.legacyLeft:section.legacyRight;
+    const distance=half+u*(section.outer-half),old={...section,left:section.legacyLeft,right:section.legacyRight,valleyWeight:0};
+    const boundary=oldHalf+.45,oldU=(distance-oldHalf)/(section.outer-oldHalf);
+    const existing=distance<=oldHalf?0:riverBankRise(old,side,oldU,profile);
+    if(distance>=boundary)return existing;
+    const q=clamp((distance-half)/(boundary-half),0,1),deposit=side<0?section.valleyBarLeft:section.valleyBarRight;
+    // Remap the existing monotone cross-section, rather than blend a raised
+    // shelf back down into it. The endpoint derivative equals the old profile,
+    // keeping the original rooted exterior exactly C1 and avoiding a swale.
+    const stretch=(boundary-half)/.45,base=Math.pow(q,stretch);
+    const shaped=base*(1+.8*(1-deposit)*(1-q)*(1-q));
+    const legacyDesigned=riverBankRise(old,side,.45/(section.outer-oldHalf)*shaped,profile);
+    const atBoundary=riverBankRise(old,side,.45/(section.outer-oldHalf),profile);
+    // The eroding face must not acquire a second horizontal foot above water.
+    const cutFace=atBoundary*(1-Math.pow(1-q,2));
+    const designed=mix(legacyDesigned,mix(cutFace,legacyDesigned,deposit),section.bedWeight??0);
+    return mix(existing,designed,section.valleyWeight);
+  }
+  if(section.bendWeight>0){
+    // The outer bend erodes a compact turf face and retains a rooted shoulder;
+    // its inner bend has a shallow depositional bench. These physical terraces
+    // follow signed curvature, not independent dots or a painted shoreline.
+    const deposition=clamp((bar-.08)/.86,0,1),q=rawQ;
+    const rootedCut=.62*smooth(0,.32,q)+.38*smooth(.46,.85,q);
+    const pointBar=.22*smooth(0,.42,q)+.78*smooth(.50,1,q);
+    return mix(riverBankRise({...section,bendWeight:0},side,u,profile),mix(rootedCut,pointBar,deposition),section.bendWeight);
+  }
+  if(profile==="v38"){
+    // The former smoothstep imposed a horizontal foot at every water edge,
+    // including cut banks. A nonzero contact slope prevents that artificial
+    // continuous shelf. Deposition retains a gentle broad shoulder; eroding
+    // faces rise quickly. Both return C1 to the unchanged outer ground.
+    const deposition=clamp((bar-.08)/.86,0,1),q=rawQ;
+    const contactSlope=mix(3.,.65,deposition);
+    const rise=(contactSlope-2)*q*q*q+(3-2*contactSlope)*q*q+contactSlope*q;
+    return mix(smooth(0,1,q),rise,section.weight);
+  }
+
   // Continuous river-distance fields form unequal short cut reaches and long
   // deposition pockets. Neither water-edge nor bed/source width moves. The
   // old shoulder envelope still protects roads and foundations. Both endpoints
@@ -128,6 +177,21 @@ export function riverBankRise(section,side,u,profile=RIVER_BANK_PROFILE){
   const cut=profile==="v19"?compact:compact+.78*smooth(0,.25,q)*(1-compact);
   return mix(smooth(0,1,q),mix(cut,shoulder,deposition),section.weight);
 }
+// A deposited bank is added sediment, not another cut into the source DEM.
+// The low bench starts at the actual water edge, continues through the rooted
+// shoulder, and rejoins the original floodplain over metres. Its sediment side
+// is the same reach-scale field that narrows the channel; no independent noise.
+export function riverValleySedimentRise(section,side,distance){
+  if(!(section.valleyWeight>0))return 0;
+  const half=side<0?section.left:section.right,oldHalf=side<0?section.legacyLeft:section.legacyRight;
+  const deposit=side<0?section.valleyBarLeft:section.valleyBarRight;
+  const inner=smooth(0,.58,distance-half),outer=1-smooth(oldHalf+.35,oldHalf+2.1,distance);
+  // New outer cut banks expose the coherent rooted sod layer above their
+  // mineral face. Its 9cm thickness runs with the reach, not individual plants;
+  // coarse DEM ground alone lies within millimetres of the temporary water.
+  const sod=.09*(section.valleyRootMat??0)*(1-deposit)*smooth(0,.45,distance-half)*(1-smooth(half+.7,half+2.1,distance));
+  return .14*section.valleyWeight*deposit*inner*outer+sod;
+}
 // Soil moisture retains the established bank footprint and gradual shoulder.
 // Physical exposure is evaluated separately from the actual terrain height.
 export function riverBankMaterialDistance(section,side,distance){
@@ -156,4 +220,74 @@ export function projectRiverSection(x,z,s,initial){
   const section=riverSectionAt(s,t),px=x-section.x,pz=z-section.z;
   const signed=-section.fz*px+section.fx*pz,distance=Math.hypot(px,pz);
   return {t,x:section.x,z:section.z,distance,signed,section};
+}
+
+// Re-evaluate sediment sides AFTER the centreline is bent. The previous field
+// was assigned before meandering and could put a point bar on an outer bend.
+export function applyBrookBendBanks(lines,segments,viewpoints,{heightAt,protectedAt=()=>null}={}){
+ const view=viewpoints.find(v=>v.id==='brook-lanchuan'),anchor=segments.find(s=>s.id===view?.segmentId);
+ if(!anchor)return {nodes:0,reason:'missing-anchor'};
+ const line=lines.find(l=>l.id===anchor.lineId),original=line.nodes,origin=anchor.a.distance;
+ const nodes=original.map((n,i)=>{
+  const a=original[Math.max(0,i-3)],b=original[Math.min(original.length-1,i+3)];
+  const ax=n.x-a.x,az=n.z-a.z,bx=b.x-n.x,bz=b.z-n.z;
+  const turn=Math.atan2(ax*bz-az*bx,ax*bx+az*bz),drive=Math.tanh(turn/.24);
+  const weight=(1-smooth(58,92,Math.abs(n.distance-origin)))*Math.min(1,Math.max(0,(n.incisionSourceLevel-n.level)/.12)||0);
+  if(!weight||!n.bankShape)return {...n};
+  const left=(1+drive)*.5,right=(1-drive)*.5,base=n.bankShape;
+  const shallow=side=>.5*n.width*(.97+.16*Math.abs(drive)-.38*side),shoulder=side=>.40+.58*side;
+  return {...n,depth:mix(n.depth,.18+.09*Math.abs(drive),weight),bankShape:{...base,bendWeight:weight,
+   left:mix(base.left,shallow(left),weight),right:mix(base.right,shallow(right),weight),
+   barLeft:mix(base.barLeft,.08+.86*left,weight),barRight:mix(base.barRight,.08+.86*right,weight),
+   shoulderLeft:mix(base.shoulderLeft,shoulder(left),weight),shoulderRight:mix(base.shoulderRight,shoulder(right),weight)}};
+ });
+ const affected=[];let minWidth=Infinity,maxWidth=0;
+ for(const s of segments.filter(s=>s.lineId===line.id)){
+  if(!nodes[s.index].bankShape?.bendWeight&&!nodes[s.index+1].bankShape?.bendWeight)continue;
+  const candidate={...s,a:nodes[s.index],b:nodes[s.index+1]};let maxCut=0;
+  for(let i=0;i<=8;i++){
+   const q=riverSectionAt(candidate,i/8);minWidth=Math.min(minWidth,q.width);maxWidth=Math.max(maxWidth,q.width);
+   for(const side of [-1,1]){const half=side<0?q.left:q.right,extent=side<0?q.shoulderLeft:q.shoulderRight;
+    for(const radius of [0,half*.5,half,half+(q.outer-half)*extent]){
+     const x=q.x-q.fz*side*radius,z=q.z+q.fx*side*radius,ground=heightAt(x,z);
+     if(protectedAt(x,z,.025))return {nodes:0,reason:'protected-ground'};
+     if(radius<=half&&ground<q.level-.025)return {nodes:0,reason:'low-water-edge'};
+     maxCut=Math.max(maxCut,ground-q.level+q.depth);
+    }
+   }
+   if(maxCut>2.2+Math.min(2.3,q.sourceWidth*.25))return {nodes:0,reason:'excessive-cut'};
+  }
+  affected.push([s,maxCut]);
+ }
+ nodes.forEach((n,i)=>Object.assign(original[i],n));for(const [s,maxCut]of affected)s.maxCut=maxCut;
+ return {nodes:nodes.filter(n=>n.bankShape?.bendWeight>0).length,segments:affected.length,minWidth,maxWidth,policy:'signed actual bend curvature assigns inner depositional bar, outer rooted cut and shallow crossing; shared physical section, no added decor'};
+}
+
+// Reuse the existing wide-channel sediment field over a whole representative
+// reach. Bars grow inward into the old water footprint; rooted outer ground
+// outside the bounded 2.1m depositional shoulder retains its earlier section.
+export function applyValleyDeposits(lines,segments,viewpoints,{heightAt,protectedAt=()=>null,sectionProfile=false}={}){
+ const view=viewpoints.find(v=>v.id==='river-valley'),anchor=segments.find(s=>s.id===view?.segmentId);
+ if(!anchor||anchor.lineId!=='river-32d9cab5-5bea75bb')return {nodes:0,reason:'outside-adopted-valley-reach'};
+ const line=lines.find(l=>l.id===anchor.lineId),origin=anchor.a.distance,original=line.nodes;
+ const nodes=original.map((n,i)=>{
+  const weight=1-smooth(52,94,Math.abs(n.distance-origin)),base=n.bankShape;if(!base||weight<=0)return {...n};
+  const a=original[Math.max(0,i-5)],b=original[Math.min(original.length-1,i+5)],turn=Math.atan2(a.flowX*b.flowZ-a.flowZ*b.flowX,a.flowX*b.flowX+a.flowZ*b.flowZ);
+  // Existing 47m sediment succession supplies straight reaches; measured
+  // centreline turning chooses the inside bank where a real bend is present.
+  const side=clamp((base.barLeft-.08)/.86+Math.tanh(turn/.16)*.35,0,1),legacyLeft=smooth(.32,.82,side),legacyRight=smooth(.32,.82,1-side);
+  const deposition=bendDeposits(turn),left=sectionProfile?deposition.left:legacyLeft,right=sectionProfile?deposition.right:legacyRight;
+  const pinch=Math.min(1.15,n.width*.105)*weight;
+  return {...n,bankShape:{...base,valleyWeight:weight,bedWeight:sectionProfile?weight:0,bedDepositLeft:left,bedDepositRight:right,valleyRootMat:line.meanderResult?.profile==='v38-valley'?weight:0,legacyLeft:base.left,legacyRight:base.right,legacyShoulderLeft:base.shoulderLeft,legacyShoulderRight:base.shoulderRight,
+   left:base.left-pinch*left,right:base.right-pinch*right,valleyBarLeft:left,valleyBarRight:right}};
+ });
+ let count=0,minWidth=Infinity,maxWidth=0;
+ for(const s of segments.filter(s=>s.lineId===line.id)){
+  if(!nodes[s.index].bankShape?.valleyWeight&&!nodes[s.index+1].bankShape?.valleyWeight)continue;
+  const candidate={...s,a:nodes[s.index],b:nodes[s.index+1]};
+  for(let i=0;i<=8;i++){const q=riverSectionAt(candidate,i/8);minWidth=Math.min(minWidth,q.width);maxWidth=Math.max(maxWidth,q.width);
+   for(const side of [-1,1]){const half=side<0?q.left:q.right;for(const d of [half,half+.45,(side<0?q.legacyLeft:q.legacyRight)+2.1]){const x=q.x-q.fz*side*d,z=q.z+q.fx*side*d;if(protectedAt(x,z,.025))return {nodes:0,reason:'protected-ground'};if(d===half&&heightAt(x,z)<q.level-.025)return {nodes:0,reason:'low-water-edge'};}}
+  }s.valleySource={...s,a:{...s.a,bankShape:{...s.a.bankShape}},b:{...s.b,bankShape:{...s.b.bankShape}}};count++;
+ }
+ nodes.forEach((n,i)=>Object.assign(original[i],n));return {nodes:nodes.filter(n=>n.bankShape?.valleyWeight>0).length,segments:count,minWidth,maxWidth,sectionProfile,policy:'existing wide reach sediment succession; inward bars with low physical sediment benches, bounded cut changes; centreline/levels and protected infrastructure retained'};
 }

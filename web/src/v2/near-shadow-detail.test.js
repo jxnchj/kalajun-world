@@ -45,7 +45,38 @@ test('mixed map resolutions snap near light exactly like native 4096 CSM and lea
    for(const c of [legacy,mixed,fine]){c.camera.position.x+=.0073;c.camera.position.z+=.0119;c.camera.updateMatrixWorld();c.update();}
    assert.deepEqual(mixed.lights[0].position.toArray(),fine.lights[0].position.toArray());assert.deepEqual(mixed.lights[0].target.position.toArray(),fine.lights[0].target.position.toArray());
    for(let i=1;i<3;i++){assert.deepEqual(mixed.lights[i].position.toArray(),legacy.lights[i].position.toArray());assert.deepEqual(mixed.lights[i].target.position.toArray(),legacy.lights[i].target.position.toArray());}
-   assert.equal(Math.sign(mixed.lights[0].shadow.bias),reversed?-1:1);assert.equal(Math.abs(mixed.lights[0].shadow.bias),.0000005);
+   assert.equal(Math.sign(mixed.lights[0].shadow.bias),reversed?1:-1);assert.equal(Math.abs(mixed.lights[0].shadow.bias),.0000005);
   }const wrapped=mixed.update;restore();assert.notStrictEqual(mixed.update,wrapped);}finally{legacy.dispose();mixed.dispose();fine.dispose();}
  }
+});
+
+
+test('legacy receiver-bias comparison changes only the offset direction, preserving every map and geometric offset',()=>{
+ for(const reversed of [false,true]){
+  const detail=createNearShadowDetail({maxTextures:16,maxTextureSize:8192}),corrected=make(detail,reversed),legacy=make(detail,reversed);
+  const restores=[configureNearShadowDetail(corrected,detail,{reversedDepth:reversed}),configureNearShadowDetail(legacy,detail,{reversedDepth:reversed,receiverBias:'legacy'})];
+  try {for(let i=0;i<detail.cascades;i++){
+   const a=corrected.lights[i].shadow,b=legacy.lights[i].shadow;
+   assert.equal(a.bias,-b.bias);assert.equal(a.normalBias,b.normalBias);assert.equal(a.radius,b.radius);
+   assert.deepEqual(a.mapSize.toArray(),b.mapSize.toArray());assert.deepEqual(a.camera.projectionMatrix.elements,b.camera.projectionMatrix.elements);
+  }}finally{for(const restore of restores)restore();corrected.dispose();legacy.dispose();}
+ }
+});
+
+test('opt-in close cascade improves grass pitch while preserving every original map precision',()=>{
+ const d=createNearShadowDetail({maxTextures:16,maxTextureSize:8192,sharedOrmSampler:true},'close');
+ assert.equal(d.mode,'close');assert.equal(d.fragmentSamplers,16);assert.deepEqual(d.splits,[8,60,180,500]);assert.deepEqual(d.mapSizes,[4096,4096,2048,2048]);
+ assert.equal(createNearShadowDetail({maxTextures:16,maxTextureSize:8192},'close').mode,'resolution');
+ assert.equal(createNearShadowDetail({maxTextures:16,maxTextureSize:8192,sharedOrmSampler:true}).mode,'resolution');
+ const old=make(createNearShadowDetail({maxTextures:16,maxTextureSize:8192})),next=make(d);
+ const restores=[configureNearShadowDetail(old,createNearShadowDetail({maxTextures:16,maxTextureSize:8192})),configureNearShadowDetail(next,d)];
+ try{
+  for(let i=0;i<3;i++){
+   const a=old.lights[i].shadow,b=next.lights[i+1].shadow;
+   assert.equal(b.mapSize.x,a.mapSize.x);assert.equal(b.normalBias,a.normalBias);assert.equal(b.radius,a.radius);
+   assert.ok((b.camera.right-b.camera.left)/b.mapSize.x<=(a.camera.right-a.camera.left)/a.mapSize.x+1e-9);
+  }
+  const pitch=s=>(s.camera.right-s.camera.left)/s.mapSize.x;
+  assert.ok(pitch(next.lights[0].shadow)<pitch(old.lights[0].shadow)/7);
+ }finally{restores.forEach(f=>f());old.dispose();next.dispose();}
 });

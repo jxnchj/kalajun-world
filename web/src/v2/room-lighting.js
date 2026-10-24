@@ -1,3 +1,6 @@
+import {isGuestVanityRoomKey} from './guest-vanity-gi.js';
+import {LEGACY_ROOM_KEYS} from './legacy-room-loader.js';
+import {isHouseholdRoomKey} from './household-room-fields.js';
 import * as THREE from "three";
 import {RoomBounceField,ROOM_FIELD_GLSL} from "./room-bounce-field.js";
 import {RoomContactField,ROOM_CONTACT_GLSL} from "./room-contact.js";
@@ -86,8 +89,8 @@ void roomIndirectLight(vec3 worldNormal,vec3 worldReflection,float roughness,
   if(uRoomAmbientActive<.5)return;
   vec3 local=(uRoomWorldToLocal*vec4(vRoomWorldPosition,1.0)).xyz;
   float mask=roomVolumeMask(local);if(mask<=0.0)return;
-  vec3 fieldIrradiance,fieldRadiance,apertureVisibility;
-  roomDiffuseField(local,worldNormal,worldReflection,roughness,fieldIrradiance,fieldRadiance,apertureVisibility);
+  vec3 fieldIrradiance,fieldRadiance,apertureVisibility,extraApertureVisibility;
+  roomDiffuseField(local,worldNormal,worldReflection,roughness,fieldIrradiance,fieldRadiance,apertureVisibility,extraApertureVisibility);
   float energy=0.0,diffuseEnergy=0.0,windowReturn=0.0;
   for(int i=0;i<3;i++){
     float area=uRoomOpenings[i].w;if(area<=0.0)continue;
@@ -149,8 +152,9 @@ void roomIndirectLight(vec3 worldNormal,vec3 worldReflection,float roughness,
 // One occupied room, one small static volume, no extra lamps or passes. Exterior IBL retains
 // sky-visibility attenuation; room-sourced light receives contact AO only.
 export class RoomIndirectLight {
-  constructor({finiteAperture=new URLSearchParams(globalThis.location?.search??"").get("roomFiniteAperture"),apertureEdges=new URLSearchParams(globalThis.location?.search??"").get("roomApertureEdges")}={}){
-    this.field=new RoomBounceField();this.contact=new RoomContactField();
+  constructor({openingCapacity=3,finiteAperture=new URLSearchParams(globalThis.location?.search??"").get("roomFiniteAperture"),apertureEdges=new URLSearchParams(globalThis.location?.search??"").get("roomApertureEdges")}={}){
+    this.openingCapacity=Math.max(3,Math.min(16,Math.trunc(openingCapacity)));
+    this.field=new RoomBounceField();this.contact=new RoomContactField();this.contactSelection=null;this.contactLoad=null;
     this.uniforms={...this.field.uniforms,...this.contact.uniforms,
       uRoomFiniteAperture:{value:finiteAperture===0||finiteAperture==="0"?0:1},
       uRoomApertureEdges:{value:apertureEdges===0||apertureEdges==="0"?0:1},
@@ -159,11 +163,11 @@ export class RoomIndirectLight {
       uRoomBounceDay:{value:0},uRoomWorldToLocal:{value:new THREE.Matrix4()},
       uRoomBounds:{value:new THREE.Vector4()},uRoomHeight:{value:new THREE.Vector2()},
       uRoomRoof:{value:new THREE.Vector4()},uRoomRadius:{value:0},
-      uRoomOpenings:{value:Array.from({length:3},()=>new THREE.Vector4())},
-      uRoomOpeningLocal:{value:Array.from({length:3},()=>new THREE.Vector3())},
-      uRoomInward:{value:Array.from({length:3},()=>new THREE.Vector3())},
-      uRoomOpeningU:{value:Array.from({length:3},()=>new THREE.Vector4())},
-      uRoomOpeningV:{value:Array.from({length:3},()=>new THREE.Vector4())},
+      uRoomOpenings:{value:Array.from({length:this.openingCapacity},()=>new THREE.Vector4())},
+      uRoomOpeningLocal:{value:Array.from({length:this.openingCapacity},()=>new THREE.Vector3())},
+      uRoomInward:{value:Array.from({length:this.openingCapacity},()=>new THREE.Vector3())},
+      uRoomOpeningU:{value:Array.from({length:this.openingCapacity},()=>new THREE.Vector4())},
+      uRoomOpeningV:{value:Array.from({length:this.openingCapacity},()=>new THREE.Vector4())},
     };
     this.materials=new WeakSet();this.key=null;this.matrix=new THREE.Matrix4();
     this.field.stats.finiteAperture={enabled:this.uniforms.uRoomFiniteAperture.value>0,model:"hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",extraTextureSamples:0,extraGeometry:0,edgeIntegral:this.uniforms.uRoomApertureEdges.value>0};
@@ -183,7 +187,11 @@ vec4 roomWorldVertex=vec4(transformed,1.0);
 roomWorldVertex=instanceMatrix*roomWorldVertex;
 #endif
 vRoomWorldPosition=(modelMatrix*roomWorldVertex).xyz;`);
-        shader.fragmentShader=ROOM_BOUNCE_GLSL+shader.fragmentShader;
+        const roomGLSL=this.openingCapacity===3?ROOM_BOUNCE_GLSL:ROOM_BOUNCE_GLSL
+          .replace(/(uRoom(?:Openings|OpeningLocal|Inward|OpeningU|OpeningV))\[3\]/g,'$1['+this.openingCapacity+']')
+          .replace('i<3;i++','i<'+this.openingCapacity+';i++')
+          .replace('apertureVisibility[i]','(i<3?apertureVisibility[min(i,2)]:extraApertureVisibility[clamp(i-3,0,2)])');
+        shader.fragmentShader=roomGLSL+shader.fragmentShader;
         // Contact stays separate from daylight: night-time IBL needs the same
         // static furniture occlusion. Never multiply direct sun or real lamps.
         shader.fragmentShader=shader.fragmentShader.replace("#include <aomap_fragment>",`
@@ -197,6 +205,10 @@ float roomContactAO=roomContactCorrection(vRoomWorldPosition,inverseTransformDir
           shader.fragmentShader=shader.fragmentShader.replace("#include <aomap_fragment>",`#include <aomap_fragment>
 reflectedLight.indirectDiffuse*=roomContactAO;
 reflectedLight.indirectSpecular*=computeSpecularOcclusion(saturate(dot(geometryNormal,geometryViewDir)),roomContactAO,material.roughness);
+#ifdef USE_CLEARCOAT
+// Match Three's separate clearcoat AO path; leave direct sun and later room GI intact.
+clearcoatSpecularIndirect*=roomContactAO;
+#endif
 `);
         }
         const totalDiffuse="vec3 totalDiffuse = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse;";
@@ -221,12 +233,23 @@ if(uRoomAmbientActive>.5){
 }
 ${totalDiffuse}`);
       };
-      material.customProgramCacheKey=()=>key+"-bounded-room-light-v10-streamed-finite-aperture";material.needsUpdate=true;
+      material.customProgramCacheKey=()=>key+"-bounded-room-light-v11-clearcoat-finite-aperture-"+this.openingCapacity;material.needsUpdate=true;
     }
   }
-  clear({keepContact=false}={}){this.uniforms.uRoomBounceActive.value=0;this.uniforms.uRoomAmbientActive.value=0;this.field.clear();if(!keepContact)this.contact.clear();this.key=null;}
+  prepareContact(item){
+    this.contactSelection=item;
+    const key=item?.asset.bounceField??item?.asset.sourceAsset;
+    if(!item||!key||this.contact.data[key])return;
+    if(this.contactLoad?.key===key){this.field.contactPending=this.contactLoad.promise;return;}
+    const request=isGuestVanityRoomKey(key)?this.field.prepareGuestVanity(key):isHouseholdRoomKey(key)?this.field.prepareHousehold(key):LEGACY_ROOM_KEYS.includes(key)?this.field.prepareLegacyRoom(key):key===this.field.lodgeKey&&this.field.lodgeEnabled?this.field.prepareLodge():null;
+    if(!request)return;
+    this.field.contactError=null;
+    const promise=request.then(()=>{if(!this.field.disposed&&this.contactSelection===item)this.contact.set(item);}).catch(error=>{if(!this.field.disposed&&this.contactSelection===item)this.field.contactError=error;throw error;}).finally(()=>{if(this.field.contactPending===promise)this.field.contactPending=null;if(this.contactLoad?.promise===promise)this.contactLoad=null;});
+    promise.catch(()=>{});this.contactLoad={key,promise};this.field.contactPending=promise;
+  }
+  clear({keepContact=false}={}){if(!keepContact){this.contactSelection=null;this.field.contactPending=null;this.field.contactError=null;}this.uniforms.uRoomBounceActive.value=0;this.uniforms.uRoomAmbientActive.value=0;this.field.clear();if(!keepContact)this.contact.clear();this.key=null;}
   setRoom(item,daylight,sunLighting=null,fixtureLights=[],doorOpenness=1){
-    this.contact.set(item);
+    this.prepareContact(item);this.contact.set(item);
     this.field.stats.finiteAperture.enabled=this.uniforms.uRoomFiniteAperture.value>0;
     this.field.stats.finiteAperture.edgeIntegral=this.uniforms.uRoomApertureEdges.value>0;
     this.field.setDoorOpenness(doorOpenness);
@@ -237,7 +260,7 @@ ${totalDiffuse}`);
     u.uRoomAmbientActive.value=1;
     u.uRoomBounceActive.value=item.asset.portalSpots===false?0:1;
     if(this.key===item.id){
-      for(let i=0;i<3;i++)if(item.asset.openings[i]?.kind==="door")u.uRoomOpenings.value[i].w=this.openingAreas[i]*this.field.doorFraction;
+      for(let i=0;i<this.openingCapacity;i++)if(item.asset.openings[i]?.kind==="door")u.uRoomOpenings.value[i].w=this.openingAreas[i]*this.field.doorAreaFraction;
       this.field.setLighting(sunLighting,daylight,fixtureContext);return;}this.key=item.id;
     const {pose,asset}=item,f=asset.floor;
     const q=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),pose.rot);
@@ -250,7 +273,7 @@ ${totalDiffuse}`);
     u.uRoomExcludeActive.value=asset.excludedBounds?1:0;
     if(asset.excludedBounds)u.uRoomExcludedBounds.value.fromArray(asset.excludedBounds);
     this.openingAreas=[];
-    for(let i=0;i<3;i++){
+    for(let i=0;i<this.openingCapacity;i++){
       const opening=asset.openings[i],out=u.uRoomOpenings.value[i],inward=u.uRoomInward.value[i];
       if(!opening){
         out.set(0,0,0,0);inward.set(0,0,0);u.uRoomOpeningLocal.value[i].set(0,0,0);
@@ -269,7 +292,7 @@ ${totalDiffuse}`);
       u.uRoomOpeningV.value[i].set(axisV.x,axisV.y,axisV.z,halfV);
       const area=crown?Math.PI*halfU*halfV*.42:4*halfU*halfV;
       this.openingAreas[i]=area*(opening.skyWeight??1);
-      out.set(p.x,p.y,p.z,this.openingAreas[i]*(opening.kind==="door"?this.field.doorFraction:1));inward.copy(n).negate().applyQuaternion(q);
+      out.set(p.x,p.y,p.z,this.openingAreas[i]*(opening.kind==="door"?this.field.doorAreaFraction:1));inward.copy(n).negate().applyQuaternion(q);
     }
   }
   dispose(){this.clear();this.field.dispose();this.contact.dispose();this.materials=new WeakSet();}

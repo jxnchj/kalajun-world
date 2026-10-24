@@ -1,10 +1,13 @@
+// This regression exercises the retained original guest-room source tables.
+globalThis.location={search:'?guestVanity38=0'};
+import {assertRoomFieldSamplingContract} from './room-field-contract.assert.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import {createHash} from "node:crypto";
 import {readFile} from "node:fs/promises";
 import {gzipSync} from "node:zlib";
 import * as THREE from "three";
-import {ROOM_BOUNCE_DATA} from "./room-bounce-data.js";
+import {ROOM_BOUNCE_DATA} from "./room-bounce-registry.js";
 import {RoomBounceField,decodeRoomField,ROOM_FIELD_GLSL} from "./room-bounce-field.js";
 import {ROOM_FIXTURE_LOADERS} from "./room-fixture-data.js";
 import {RoomFixtureTransport} from "./room-fixture-transport.js";
@@ -99,7 +102,7 @@ test("daytime A/B returns byte-exact sky and preserves sampler and light count",
   const texture=f.uniforms.uRoomBounceField.value;assert.notDeepEqual(texture.image.data,f.skyBase());
   f.uniforms.uRoomFixtureBounce.value=0;runtime.update(camera,0,65);assert.deepEqual(texture.image.data,f.skyBase());
   assert.equal(f.uniforms.uRoomFieldDayScale.value,1);assert.equal(runtime.lights.length,3);
-  assert.equal((ROOM_FIELD_GLSL.match(/texture\(uRoomBounceField/g)||[]).length,4);assert.equal((ROOM_FIELD_GLSL.match(/sampler3D/g)||[]).length,1);
+  assertRoomFieldSamplingContract();assert.equal((ROOM_FIELD_GLSL.match(/sampler3D/g)||[]).length,1);
  }finally{runtime.dispose();}
 });
 

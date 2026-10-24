@@ -3,9 +3,9 @@ import assert from "node:assert/strict";
 import * as THREE from "three";
 import { CloudShadowCache, CLOUD_CACHE, cloudCacheOrigin } from "./cloud-cache.js";
 import { createCloudUniforms, installCloudShadows } from "./cloud-field.js";
-function fixture(supported=true){
- const calls=[],r={autoClear:false,target:{existing:true},extensions:{has:()=>supported},getRenderTarget(){return this.target;},getActiveCubeFace:()=>2,getActiveMipmapLevel:()=>1,setRenderTarget(t,f,l){this.target=t;this.face=f;this.level=l;},render(scene){calls.push({target:this.target,time:scene.children[0].material.uniforms.uCloudTime.value});}};
- const original=r.target,u=createCloudUniforms(),c=new CloudShadowCache(r,u),camera={position:new THREE.Vector3(0,2200,0)};
+function fixture(supported=true,array=false){
+ const calls=[],r={autoClear:false,target:{existing:true},extensions:{has:()=>supported},getRenderTarget(){return this.target;},getActiveCubeFace:()=>2,getActiveMipmapLevel:()=>1,setRenderTarget(t,f,l){this.target=t;this.face=f;this.level=l;},render(scene){calls.push({target:this.target,layer:this.face,time:scene.children[0].material.uniforms.uCloudTime.value});}};
+ const original=r.target,u=createCloudUniforms({array}),c=new CloudShadowCache(r,u),camera={position:new THREE.Vector3(0,2200,0)};
  return {r,u,c,camera,calls,original};
 }
 test("cloud cache reuses adjacent time slices and restores renderer state without rebaking each frame",()=>{
@@ -69,4 +69,29 @@ test("spatial/temporal cache preserves sampled cloud-shadow transmission across 
  assert.ok(max<.018,"maximum transmission error "+max);
  assert.ok(sum/10000<.0003,"mean transmission error "+sum/10000);
  console.log(JSON.stringify({cloudSamples:10000,maxTransmissionError:max,meanTransmissionError:sum/10000}));
+});
+
+
+test("array cache retains two R16F endpoints, rolls layers and matches the legacy bake schedule",()=>{
+ const a=fixture(true,true),b=fixture(true,false);
+ assert.equal(a.c.targets.length,1);assert.equal(a.c.targets[0].depth,2);assert.equal(a.c.targets[0].texture.type,THREE.HalfFloatType);assert.equal(a.c.targets[0].texture.format,THREE.RedFormat);
+ assert.equal(a.c.targets[0].texture.minFilter,THREE.LinearFilter);assert.equal(a.c.stats.attachmentBytes,b.c.stats.attachmentBytes);
+ const stored=new Map();let consumed=0;
+ for(const time of [0,.25,.51,1.01,5,.1]){
+  for(const f of [a,b]){f.u.uCloudTime.value=time;f.c.update(f.camera);}
+  for(const call of a.calls.slice(consumed))stored.set(call.layer,call.time);consumed=a.calls.length;
+  const epoch=Math.floor(time/.5)*.5;
+  assert.equal(stored.get(a.u.uCloudCacheLayers.value.x),epoch);assert.equal(stored.get(a.u.uCloudCacheLayers.value.y),epoch+.5);
+  assert.deepEqual(a.calls.map(c=>c.time),b.calls.map(c=>c.time));assert.equal(a.r.target,a.original);assert.equal(a.r.face,2);assert.equal(a.r.level,1);assert.equal(a.r.autoClear,false);
+ }
+ const shader={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};installCloudShadows(shader,a.u);
+ assert.match(shader.fragmentShader,/uniform highp sampler2DArray uCloudCacheArray/);assert.doesNotMatch(shader.fragmentShader,/sampler2D uCloudCache[AB]/);
+ assert.equal((shader.fragmentShader.match(/texture\(uCloudCacheArray/g)||[]).length,2);
+ let disposed=0;a.c.targets[0].addEventListener('dispose',()=>disposed++);a.c.dispose();assert.equal(disposed,1);b.c.dispose();
+});
+test("failed cloud bake restores caller layer and retries both endpoints without publishing mixed epochs",()=>{
+ const f=fixture(true,true);f.c.update(f.camera);const render=f.r.render;f.u.uCloudTime.value=2;
+ let n=0;f.r.render=function(...args){if(++n===2)throw Error('bake');return render.apply(this,args);};
+ assert.throws(()=>f.c.update(f.camera),/bake/);assert.equal(f.r.target,f.original);assert.equal(f.r.face,2);assert.equal(f.r.level,1);assert.equal(f.r.autoClear,false);assert.equal(f.u.uCloudCacheReady.value,0);
+ f.r.render=render;const before=f.calls.length;f.c.update(f.camera);assert.equal(f.calls.length-before,2);assert.equal(f.u.uCloudCacheReady.value,1);f.c.dispose();
 });

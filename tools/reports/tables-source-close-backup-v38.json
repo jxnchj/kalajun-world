@@ -1,0 +1,25 @@
+{
+  "backup": "backups/route-continuity-v38/tables-source-close-20261024-141215",
+  "files": [
+    {
+      "path": "web/public/data/v2/meadow-roots-38.bin.gz",
+      "sha256": "d3b26836b4a8db2bae628d0ac98eb092e7bca867b8b9ba8b73e64d6c1e242ad5"
+    },
+    {
+      "path": "web/public/data/v2/meadow-roots-38.json",
+      "sha256": "e003bc4381b56c1a1405f225741902ef3022915e888ee516fe1eb542bec1d804"
+    },
+    {
+      "path": "web/public/assets/v2/meadow-reference-v38/source.json.gz",
+      "sha256": "ede2163a41818ec97aa7fbe01ae91b42c8bf0ed4b72506f8a227437a7b654d4c"
+    },
+    {
+      "path": "tools/reports/meadow-reference-source-v38.json",
+      "sha256": "4f19d8cf7ee0022a7826010e857b00b1ff35f10003276ccbdac18d9cf48d1d05"
+    },
+    {
+      "path": "tools/reports/room-exterior-terrain-v38.json",
+      "sha256": "75d33d55ad37c3d7627800ec46f7098acd451413024259c941f2ce9d20f0799d"
+    }
+  ]
+}

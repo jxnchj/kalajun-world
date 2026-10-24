@@ -1,0 +1,1524 @@
+{
+  "kind": "read-only actual pre-incision interpolation; no geometry/runtime changes",
+  "buildMs": 8.579917000000023,
+  "bytes": 1052676,
+  "interpolation": {
+    "samples": 5476,
+    "maxAbsMetres": 2.0857942217844538e-7,
+    "meanAbsMetres": 1.7802114958530567e-8
+  },
+  "rows": [
+    {
+      "offset": -36,
+      "side": -1,
+      "distance": 0,
+      "depth": 0.06666045273914278,
+      "error": 1.554644768475555e-8,
+      "horizon": {
+        "weight": 0.0765476442305319,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": -1,
+      "distance": 0.02,
+      "depth": 0.03285133311965183,
+      "error": 2.139540811185725e-8,
+      "horizon": {
+        "weight": 0.9799041622476115,
+        "face": 0.3472492806391634,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": -1,
+      "distance": 0.05,
+      "depth": 0.005952408772827766,
+      "error": 3.0169758247211576e-8,
+      "horizon": {
+        "weight": 0.33827295007195934,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": -1,
+      "distance": 0.1,
+      "depth": 0.0001746077591633366,
+      "error": 2.888828021241352e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": -1,
+      "distance": 0.2,
+      "depth": 0,
+      "error": 1.7945239960681647e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": -1,
+      "distance": 0.35,
+      "depth": 0,
+      "error": 1.5293153410311788e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": -1,
+      "distance": 0.5,
+      "depth": 0,
+      "error": -1.488524503656663e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": -1,
+      "distance": 0.75,
+      "depth": 0,
+      "error": -3.5261109587736428e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": -1,
+      "distance": 1,
+      "depth": 0,
+      "error": 1.2355940270936117e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": 1,
+      "distance": 0,
+      "depth": 0.09007283306800673,
+      "error": -1.6811554814921692e-8,
+      "horizon": {
+        "weight": 0.07598199434103903,
+        "face": 1,
+        "mineral": 0.014784987913203375
+      }
+    },
+    {
+      "offset": -36,
+      "side": 1,
+      "distance": 0.02,
+      "depth": 0.08974126251041525,
+      "error": -2.2661424736725166e-8,
+      "horizon": {
+        "weight": 0.5851905690652821,
+        "face": 1,
+        "mineral": 0.013850576696615607
+      }
+    },
+    {
+      "offset": -36,
+      "side": 1,
+      "distance": 0.05,
+      "depth": 0.08978625550435027,
+      "error": -3.1435320124728605e-8,
+      "horizon": {
+        "weight": 0.6528825014078705,
+        "face": 1,
+        "mineral": 0.013975677725906993
+      }
+    },
+    {
+      "offset": -36,
+      "side": 1,
+      "distance": 0.1,
+      "depth": 0.08903824354138123,
+      "error": -4.1716248233569786e-8,
+      "horizon": {
+        "weight": 0.8505508248572412,
+        "face": 1,
+        "mineral": 0.011965404518920787
+      }
+    },
+    {
+      "offset": -36,
+      "side": 1,
+      "distance": 0.2,
+      "depth": 0.08512245460042323,
+      "error": -2.4925157049437985e-8,
+      "horizon": {
+        "weight": 0.9713109649846939,
+        "face": 1,
+        "mineral": 0.003918289198120711
+      }
+    },
+    {
+      "offset": -36,
+      "side": 1,
+      "distance": 0.35,
+      "depth": 0.07570177253637667,
+      "error": -8.58335624798201e-9,
+      "horizon": {
+        "weight": 0.9703354769183378,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": 1,
+      "distance": 0.5,
+      "depth": 0.06398209892267914,
+      "error": 2.05773176276125e-9,
+      "horizon": {
+        "weight": 0.9693324194566868,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": 1,
+      "distance": 0.75,
+      "depth": 0.04255854847588125,
+      "error": 9.3832568381913e-9,
+      "horizon": {
+        "weight": 0.9675981413184336,
+        "face": 0.6657772892728322,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -36,
+      "side": 1,
+      "distance": 1,
+      "depth": 0.016039319887568126,
+      "error": 2.6245743356412277e-8,
+      "horizon": {
+        "weight": 0.9657838776338429,
+        "face": 0.0015756353321888736,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": -1,
+      "distance": 0,
+      "depth": 0.04157406967033239,
+      "error": 1.65728124557063e-8,
+      "horizon": {
+        "weight": 0.078125,
+        "face": 0.6343181723013221,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": -1,
+      "distance": 0.02,
+      "depth": 0.03713107410339944,
+      "error": 1.7563706933287904e-8,
+      "horizon": {
+        "weight": 0.9986120714033311,
+        "face": 0.48770357218508653,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": -1,
+      "distance": 0.05,
+      "depth": 0.006669444433555327,
+      "error": 1.7177626432385296e-8,
+      "horizon": {
+        "weight": 0.450488902651892,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": -1,
+      "distance": 0.1,
+      "depth": 0.000637090653526684,
+      "error": 1.6569629224250093e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": -1,
+      "distance": 0.2,
+      "depth": 0,
+      "error": 1.942635208251886e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": -1,
+      "distance": 0.35,
+      "depth": 0,
+      "error": 1.1183601600350812e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": -1,
+      "distance": 0.5,
+      "depth": 0,
+      "error": -1.2058535503456369e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": -1,
+      "distance": 0.75,
+      "depth": 0,
+      "error": -8.711595000931993e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": -1,
+      "distance": 1,
+      "depth": 0,
+      "error": 7.280959835043177e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": 1,
+      "distance": 0,
+      "depth": 0.021892293103974225,
+      "error": 2.5970621209125966e-9,
+      "horizon": {
+        "weight": 0.078125,
+        "face": 0.06318991676298366,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": 1,
+      "distance": 0.02,
+      "depth": 0.021699566783354385,
+      "error": 3.0918272386770695e-9,
+      "horizon": {
+        "weight": 0.501799256237768,
+        "face": 0.05989527584583071,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": 1,
+      "distance": 0.05,
+      "depth": 0.02136777682335378,
+      "error": 1.99088390218094e-9,
+      "horizon": {
+        "weight": 0.510902713664902,
+        "face": 0.0544049370484875,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": 1,
+      "distance": 0.1,
+      "depth": 0.020712779762561695,
+      "error": -3.4747245081234723e-9,
+      "horizon": {
+        "weight": 0.5413379617467361,
+        "face": 0.04425741812219709,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": 1,
+      "distance": 0.2,
+      "depth": 0.019096172657100396,
+      "error": -1.1415977496653795e-8,
+      "horizon": {
+        "weight": 0.6463935990109169,
+        "face": 0.023348793136103694,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": 1,
+      "distance": 0.35,
+      "depth": 0.016193114593079372,
+      "error": -1.586249709362164e-8,
+      "horizon": {
+        "weight": 0.8478378790013277,
+        "face": 0.0020716452957437207,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": 1,
+      "distance": 0.5,
+      "depth": 0.01311655093331865,
+      "error": -1.1347310646669939e-8,
+      "horizon": {
+        "weight": 0.9842893507416203,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": 1,
+      "distance": 0.75,
+      "depth": 0.00855658484124433,
+      "error": -1.717580744298175e-9,
+      "horizon": {
+        "weight": 0.725944651879825,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -24,
+      "side": 1,
+      "distance": 1,
+      "depth": 0.004520099996170757,
+      "error": 4.885350790573284e-9,
+      "horizon": {
+        "weight": 0.15851729347570834,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": -1,
+      "distance": 0,
+      "depth": 0.0587758717442739,
+      "error": 7.412381819449365e-10,
+      "horizon": {
+        "weight": 0.078125,
+        "face": 0.9978202747840182,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": -1,
+      "distance": 0.02,
+      "depth": 0.045017866267244244,
+      "error": 1.23463905765675e-9,
+      "horizon": {
+        "weight": 1,
+        "face": 0.741269953865523,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": -1,
+      "distance": 0.05,
+      "depth": 0.011567423974156554,
+      "error": 1.8326318240724504e-9,
+      "horizon": {
+        "weight": 0.9945482284538696,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": -1,
+      "distance": 0.1,
+      "depth": 0.0036754201046278467,
+      "error": 2.1659616322722286e-9,
+      "horizon": {
+        "weight": 0.07480505834960485,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": -1,
+      "distance": 0.2,
+      "depth": 0,
+      "error": 1.0627445590216666e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": -1,
+      "distance": 0.35,
+      "depth": 0,
+      "error": -2.915840013884008e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": -1,
+      "distance": 0.5,
+      "depth": 0,
+      "error": -1.8308128346689045e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": -1,
+      "distance": 0.75,
+      "depth": 0,
+      "error": 4.334651748649776e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": -1,
+      "distance": 1,
+      "depth": 0,
+      "error": 2.216438588220626e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": 1,
+      "distance": 0,
+      "depth": 0.028702606604838365,
+      "error": 2.964952727779746e-10,
+      "horizon": {
+        "weight": 0.078125,
+        "face": 0.22169712798938543,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": 1,
+      "distance": 0.02,
+      "depth": 0.028197276815717487,
+      "error": -1.964508555829525e-10,
+      "horizon": {
+        "weight": 0.5022448609606438,
+        "face": 0.20757866568813943,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": 1,
+      "distance": 0.05,
+      "depth": 0.027387218060084706,
+      "error": -9.358700481243432e-10,
+      "horizon": {
+        "weight": 0.5134203470144717,
+        "face": 0.1856061462445487,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": 1,
+      "distance": 0.1,
+      "depth": 0.025919152780261356,
+      "error": -2.169144863728434e-9,
+      "horizon": {
+        "weight": 0.5496721231453439,
+        "face": 0.14806069573243674,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": 1,
+      "distance": 0.2,
+      "depth": 0.022671116864330543,
+      "error": -2.3333086573984474e-9,
+      "horizon": {
+        "weight": 0.6663081026798212,
+        "face": 0.07727171441351599,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": 1,
+      "distance": 0.35,
+      "depth": 0.017491424202489725,
+      "error": 2.43971953750588e-9,
+      "horizon": {
+        "weight": 0.8580967419622711,
+        "face": 0.008856425302221724,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": 1,
+      "distance": 0.5,
+      "depth": 0.012541943257474486,
+      "error": 2.868091542040929e-9,
+      "horizon": {
+        "weight": 0.9664537665460419,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": 1,
+      "distance": 0.75,
+      "depth": 0.005947211870534375,
+      "error": 3.979039320256561e-10,
+      "horizon": {
+        "weight": 0.34044699956712376,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": -12,
+      "side": 1,
+      "distance": 1,
+      "depth": 0.001552745046410564,
+      "error": 4.739376890938729e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": -1,
+      "distance": 0,
+      "depth": 0.13536347390436276,
+      "error": -2.326942194486037e-9,
+      "horizon": {
+        "weight": 0.078125,
+        "face": 1,
+        "mineral": 0.34546546544207013
+      }
+    },
+    {
+      "offset": 0,
+      "side": -1,
+      "distance": 0.02,
+      "depth": 0.10242954515570091,
+      "error": -2.1955202100798488e-9,
+      "horizon": {
+        "weight": 1,
+        "face": 1,
+        "mineral": 0.06877827093258541
+      }
+    },
+    {
+      "offset": 0,
+      "side": -1,
+      "distance": 0.05,
+      "depth": 0.025878875362195686,
+      "error": -1.987245923373848e-9,
+      "horizon": {
+        "weight": 1,
+        "face": 0.14707503076129796,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": -1,
+      "distance": 0.1,
+      "depth": 0.008811813400825486,
+      "error": -1.7112142813857645e-9,
+      "horizon": {
+        "weight": 0.7598768471049612,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": -1,
+      "distance": 0.2,
+      "depth": 0.000044825552322436124,
+      "error": -1.3633325579576194e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": -1,
+      "distance": 0.35,
+      "depth": 0,
+      "error": -1.1546035239007324e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": -1,
+      "distance": 0.5,
+      "depth": 0,
+      "error": -1.3224052963778377e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": -1,
+      "distance": 0.75,
+      "depth": 0,
+      "error": -1.7507773009128869e-10,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": -1,
+      "distance": 1,
+      "depth": 0,
+      "error": -4.602043190971017e-10,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": 1,
+      "distance": 0,
+      "depth": 0.1077906611749313,
+      "error": 6.825757736805826e-10,
+      "horizon": {
+        "weight": 0.078125,
+        "face": 1,
+        "mineral": 0.10256856499508683
+      }
+    },
+    {
+      "offset": 0,
+      "side": 1,
+      "distance": 0.02,
+      "depth": 0.10721091781670111,
+      "error": 5.902620614506304e-10,
+      "horizon": {
+        "weight": 0.5149926024511899,
+        "face": 1,
+        "mineral": 0.09864669105632905
+      }
+    },
+    {
+      "offset": 0,
+      "side": 1,
+      "distance": 0.05,
+      "depth": 0.10598700938953698,
+      "error": 4.5156411943025887e-10,
+      "horizon": {
+        "weight": 0.5901061109126512,
+        "face": 1,
+        "mineral": 0.09057471557561354
+      }
+    },
+    {
+      "offset": 0,
+      "side": 1,
+      "distance": 0.1,
+      "depth": 0.10314108606553418,
+      "error": 2.1691448637284338e-10,
+      "horizon": {
+        "weight": 0.8144404675045769,
+        "face": 1,
+        "mineral": 0.07293352160559932
+      }
+    },
+    {
+      "offset": 0,
+      "side": 1,
+      "distance": 0.2,
+      "depth": 0.09533948566786421,
+      "error": -2.6648194761946797e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 1,
+        "mineral": 0.03338453650978128
+      }
+    },
+    {
+      "offset": 0,
+      "side": 1,
+      "distance": 0.35,
+      "depth": 0.08156990069028325,
+      "error": -6.170921551529318e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 1,
+        "mineral": 0.00037441279778643735
+      }
+    },
+    {
+      "offset": 0,
+      "side": 1,
+      "distance": 0.5,
+      "depth": 0.06760615108260026,
+      "error": -4.929461283609271e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": 1,
+      "distance": 0.75,
+      "depth": 0.04627109229022608,
+      "error": 1.3005774235352874e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 0.7775597962746198,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 0,
+      "side": 1,
+      "distance": 1,
+      "depth": 0.024803395543131046,
+      "error": -7.639755494892597e-11,
+      "horizon": {
+        "weight": 1,
+        "face": 0.12170145226707006,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": -1,
+      "distance": 0,
+      "depth": 0.09586216300704109,
+      "error": -1.3642420526593924e-11,
+      "horizon": {
+        "weight": 0.07812499995736744,
+        "face": 1,
+        "mineral": 0.03560253256604399
+      }
+    },
+    {
+      "offset": 12,
+      "side": -1,
+      "distance": 0.02,
+      "depth": 0.09509321776795332,
+      "error": 9.731593308970332e-11,
+      "horizon": {
+        "weight": 0.7037393204430835,
+        "face": 1,
+        "mineral": 0.032362086669708454
+      }
+    },
+    {
+      "offset": 12,
+      "side": -1,
+      "distance": 0.05,
+      "depth": 0.08653323555063253,
+      "error": 2.5056579033844173e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 1,
+        "mineral": 0.00632988763638476
+      }
+    },
+    {
+      "offset": 12,
+      "side": -1,
+      "distance": 0.1,
+      "depth": 0.06644470026003546,
+      "error": 4.6475179260596633e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": -1,
+      "distance": 0.2,
+      "depth": 0.04467036383402956,
+      "error": 5.079527909401804e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 0.7309208701050913,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": -1,
+      "distance": 0.35,
+      "depth": 0.025252019583604124,
+      "error": 1.2005330063402653e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 0.13206005654188488,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": -1,
+      "distance": 0.5,
+      "depth": 0.008508646556038002,
+      "error": -9.868017514236271e-11,
+      "horizon": {
+        "weight": 0.7194295807399216,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": -1,
+      "distance": 0.75,
+      "depth": 0,
+      "error": -5.002220859751105e-12,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": -1,
+      "distance": 1,
+      "depth": 0,
+      "error": 5.911715561524034e-11,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": 1,
+      "distance": 0,
+      "depth": 0.06156747668683238,
+      "error": -1.495209289714694e-9,
+      "horizon": {
+        "weight": 0.07812499996802558,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": 1,
+      "distance": 0.02,
+      "depth": 0.058567230809330795,
+      "error": -1.3515091268345714e-9,
+      "horizon": {
+        "weight": 0.8373049627426464,
+        "face": 0.9970233276970296,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": 1,
+      "distance": 0.05,
+      "depth": 0.043577996861586143,
+      "error": -1.0854819265659899e-9,
+      "horizon": {
+        "weight": 1,
+        "face": 0.6976718594194881,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": 1,
+      "distance": 0.1,
+      "depth": 0.02876591146696228,
+      "error": -5.861693352926522e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 0.22348700997949367,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": 1,
+      "distance": 0.2,
+      "depth": 0.01274020157279665,
+      "error": -3.3924152376130223e-10,
+      "horizon": {
+        "weight": 1,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": 1,
+      "distance": 0.35,
+      "depth": 0.00003481208113953471,
+      "error": -1.0086296242661774e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": 1,
+      "distance": 0.5,
+      "depth": 0,
+      "error": -2.864908310584724e-10,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": 1,
+      "distance": 0.75,
+      "depth": 0,
+      "error": -7.466951501555741e-10,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 12,
+      "side": 1,
+      "distance": 1,
+      "depth": 0,
+      "error": 4.838511813431978e-10,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": -1,
+      "distance": 0,
+      "depth": 0.0977221988432575,
+      "error": 1.6440480976598337e-8,
+      "horizon": {
+        "weight": 0.078125,
+        "face": 1,
+        "mineral": 0.04401596682329621
+      }
+    },
+    {
+      "offset": 24,
+      "side": -1,
+      "distance": 0.02,
+      "depth": 0.06564934821562929,
+      "error": 1.607122612767853e-8,
+      "horizon": {
+        "weight": 1,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": -1,
+      "distance": 0.05,
+      "depth": 0.013376129165408202,
+      "error": 1.5702880773460492e-8,
+      "horizon": {
+        "weight": 1,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": -1,
+      "distance": 0.1,
+      "depth": 0.0012855189306719694,
+      "error": 1.5584646462230012e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": -1,
+      "distance": 0.2,
+      "depth": 0,
+      "error": 1.7211277736350894e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": -1,
+      "distance": 0.35,
+      "depth": 0,
+      "error": 1.7485035641584545e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": -1,
+      "distance": 0.5,
+      "depth": 0,
+      "error": 1.7208549252245575e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": -1,
+      "distance": 0.75,
+      "depth": 0,
+      "error": 1.6231297195190564e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": -1,
+      "distance": 1,
+      "depth": 0,
+      "error": 1.4607849152525887e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": 1,
+      "distance": 0,
+      "depth": 0.08111607366981843,
+      "error": 1.0206804290646687e-8,
+      "horizon": {
+        "weight": 0.078125,
+        "face": 1,
+        "mineral": 0.00018964292090764816
+      }
+    },
+    {
+      "offset": 24,
+      "side": 1,
+      "distance": 0.02,
+      "depth": 0.08060899716656422,
+      "error": 9.958966984413564e-9,
+      "horizon": {
+        "weight": 0.5236465377895796,
+        "face": 1,
+        "mineral": 0.000056602348315648796
+      }
+    },
+    {
+      "offset": 24,
+      "side": 1,
+      "distance": 0.05,
+      "depth": 0.07930110452980443,
+      "error": 9.577888704370707e-9,
+      "horizon": {
+        "weight": 0.6395877897658808,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": 1,
+      "distance": 0.1,
+      "depth": 0.07589454284197927,
+      "error": 8.923962013795972e-9,
+      "horizon": {
+        "weight": 0.9373795129890562,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": 1,
+      "distance": 0.2,
+      "depth": 0.06596239682221494,
+      "error": 7.53652784624137e-9,
+      "horizon": {
+        "weight": 1,
+        "face": 1,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": 1,
+      "distance": 0.35,
+      "depth": 0.04820646701637088,
+      "error": 5.262336344458163e-9,
+      "horizon": {
+        "weight": 1,
+        "face": 0.8299463640545197,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": 1,
+      "distance": 0.5,
+      "depth": 0.03117633776355433,
+      "error": 2.7557689463719726e-9,
+      "horizon": {
+        "weight": 1,
+        "face": 0.2947613286425753,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": 1,
+      "distance": 0.75,
+      "depth": 0.004083904239450931,
+      "error": -1.2653345038415864e-8,
+      "horizon": {
+        "weight": 0.11218034421394907,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 24,
+      "side": 1,
+      "distance": 1,
+      "depth": 0,
+      "error": -1.3669705367647111e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": -1,
+      "distance": 0,
+      "depth": 0.008576409529723605,
+      "error": -7.109792932169512e-8,
+      "horizon": {
+        "weight": 0.05692394240936731,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": -1,
+      "distance": 0.02,
+      "depth": 0.006144969190700067,
+      "error": -6.687832865281962e-8,
+      "horizon": {
+        "weight": 0.2752294728082522,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": -1,
+      "distance": 0.05,
+      "depth": 0.0011918514464923646,
+      "error": -6.008485797792673e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": -1,
+      "distance": 0.1,
+      "depth": 0.00026323731799493544,
+      "error": -4.7525645641144365e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": -1,
+      "distance": 0.2,
+      "depth": 2.1929781723883934e-7,
+      "error": -1.7766978999134153e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": -1,
+      "distance": 0.35,
+      "depth": 0,
+      "error": 3.404193194000982e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": -1,
+      "distance": 0.5,
+      "depth": 0,
+      "error": 6.875643521198072e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": -1,
+      "distance": 0.75,
+      "depth": 0,
+      "error": -5.8483237808104604e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": -1,
+      "distance": 1,
+      "depth": 0,
+      "error": 6.432037480408326e-8,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": 1,
+      "distance": 0,
+      "depth": 0.054782796600648,
+      "error": -2.408341970294714e-8,
+      "horizon": {
+        "weight": 0.07812499998934186,
+        "face": 0.9627920197165679,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": 1,
+      "distance": 0.02,
+      "depth": 0.05619185696150453,
+      "error": -2.977958502015099e-8,
+      "horizon": {
+        "weight": 0.5226247177309726,
+        "face": 0.9797277071776186,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": 1,
+      "distance": 0.05,
+      "depth": 0.05774957982430351,
+      "error": -3.7858171708649024e-8,
+      "horizon": {
+        "weight": 0.6382904059945166,
+        "face": 0.9927473386518604,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": 1,
+      "distance": 0.1,
+      "depth": 0.05896064108401333,
+      "error": -5.0086327973986045e-8,
+      "horizon": {
+        "weight": 0.9481398709335926,
+        "face": 0.9984242472547895,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": 1,
+      "distance": 0.2,
+      "depth": 0.057173541245902015,
+      "error": -5.47811396245379e-8,
+      "horizon": {
+        "weight": 1,
+        "face": 0.9886602259640979,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": 1,
+      "distance": 0.35,
+      "depth": 0.047613437108338985,
+      "error": 2.048636815743521e-9,
+      "horizon": {
+        "weight": 1,
+        "face": 0.8144112806969662,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": 1,
+      "distance": 0.5,
+      "depth": 0.030106295846508146,
+      "error": 1.0531493899179623e-8,
+      "horizon": {
+        "weight": 1,
+        "face": 0.2624143191204808,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": 1,
+      "distance": 0.75,
+      "depth": 0.000018508060747990385,
+      "error": -1.8453647498972714e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    },
+    {
+      "offset": 36,
+      "side": 1,
+      "distance": 1,
+      "depth": 0,
+      "error": 2.1982486941851676e-9,
+      "horizon": {
+        "weight": 0,
+        "face": 0,
+        "mineral": 0
+      }
+    }
+  ]
+}

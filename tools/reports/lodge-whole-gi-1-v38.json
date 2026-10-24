@@ -1,0 +1,21 @@
+{
+  "index": 1,
+  "angle": 0.875,
+  "seconds": 313.1292289580015,
+  "bytes": 11057347,
+  "reused": [],
+  "sourceSHA256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+  "blendSHA256": "89d4492afccb40b133491487a6f4739b6280864e7f22e87b482bce7e4482f71e",
+  "glassTriangles": 12,
+  "opaqueFaces": 40360,
+  "centreRayTransmission": 1.0,
+  "worldLeafAxis": [
+    0.6409966349601746,
+    0.7675436735153198,
+    0.0
+  ],
+  "rotationMode": "QUATERNION",
+  "samples": 96,
+  "surfaceSamples": 32,
+  "sunDirections": 81
+}

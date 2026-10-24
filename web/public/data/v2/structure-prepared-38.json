@@ -1,0 +1,180 @@
+{
+  "version": "structure-prepared-38",
+  "signature": "35376e0c4065a50d333bcc39ebf5263c2da7c9442f107e24764a78fa15bff70c",
+  "sources": [
+    {
+      "path": "src/v2/guest-living-definition.js",
+      "sha256": "7a314514c9939601cdd081f3ab44cf1d811f580a6400398d45777e41b4bffc15"
+    },
+    {
+      "path": "src/v2/guest-living-loader.js",
+      "sha256": "b8e2ff5b4e5cc327b945ba833d48ebe494cf87572322423d10aa1ed092ea51ba"
+    },
+    {
+      "path": "src/v2/generated/guest-living-source-39.json",
+      "sha256": "00d37da71a08cdb8ea1abc3bce23044e96d58ee8e878add525e30ec9cd722b26"
+    },
+    {
+      "path": "src/v2/lodge-tables-definition.js",
+      "sha256": "ec6170284959354b61527f1f78ed7f335f6ac3369536211b437a702c6b10bc34"
+    },
+    {
+      "path": "src/v2/lodge-tables-loader.js",
+      "sha256": "361c48c4636861c0c2779baf392bd6ac633beb103d3736648d3b23109394cdd6"
+    },
+    {
+      "path": "src/v2/generated/lodge-tables-source-38.json",
+      "sha256": "c3a5c03e83ce498b4264ca54dba6129fd853c278917ecbe212ef5144419c257c"
+    },
+    {
+      "path": "src/v2/generated/lodge-tables-wood-38.json",
+      "sha256": "7e8bc371e7547ac77fc757ba93b281548a2467bb4d7f9c80139004928784dfa2"
+    },
+    {
+      "path": "src/v2/generated/lodge-tables-stream-38.json",
+      "sha256": "374be7c147d21d0c8ed976d5a60bde4135ad1bf78849cbc77d0656d920c89d8f"
+    },
+    {
+      "path": "src/v2/lodge-interior-stream.js",
+      "sha256": "cf1bffafc222ff18674e24fdf984c94fba79fd70b3da813eb9e5f01169e0e56e"
+    },
+    {
+      "path": "src/v2/generated/lodge-interior-stream-38.json",
+      "sha256": "d1b0844a8d792abf3fb31eb029a8a5e2ab968deea9f7173ce4f308d865cd5a5f"
+    },
+    {
+      "path": "src/v2/structures.js",
+      "sha256": "fd9c3b29355f57903b8dba767d04b4d505fc7aca76fbb477ae14ebc5f1b46fd6"
+    },
+    {
+      "path": "src/v2/lodge-interior-wood.js",
+      "sha256": "6fb14dd189bf326f4cca7b4d7bdadb62dd004b3744f12ced54d3925b8489a18f"
+    },
+    {
+      "path": "src/v2/generated/lodge-interior-wood-38.json",
+      "sha256": "ba35555af6c7dc999ae99b5acf240bfc0388e7fad92c0ba6742cf8a15995fefb"
+    },
+    {
+      "path": "src/v2/lodge-chairs-definition.js",
+      "sha256": "f802f2f2fe66d0bb25dadf83ccf43da6b8aa137190eb6d36c3c06cd69922107d"
+    },
+    {
+      "path": "src/v2/lodge-chairs-loader.js",
+      "sha256": "3286bfa92f124858445511c1e6a73e282e5870951542a444edd90fe17b58232d"
+    },
+    {
+      "path": "src/v2/generated/lodge-chairs-source-38.json",
+      "sha256": "da76ab772f270797415d88c84552046f1260ed3cb63715aae99f287cf806aed2"
+    },
+    {
+      "path": "src/v2/generated/lodge-chairs-collision-38.json",
+      "sha256": "367c239640643388154e9d3a70f02bd54f8262b80d869c20d6dca572104826b2"
+    },
+    {
+      "path": "src/v2/guest-vanity-definition.js",
+      "sha256": "6ae154af7f632eb6af1a27205d9ef15a913f366dcced4ccffcc8c1814f46e964"
+    },
+    {
+      "path": "src/v2/guest-vanity-loader.js",
+      "sha256": "0c126710b59c510722ee9b896ac54c084fc9b236c530351149baaa3fdfa6ac1b"
+    },
+    {
+      "path": "src/v2/generated/guest-vanity-source-38.json",
+      "sha256": "8369fd0fb1eb5d898fed4ce4f95efe5af31cd4f4442346174fa12f8b1f7babbe"
+    },
+    {
+      "path": "src/v2/generated/guest-vanity-collision-38.json",
+      "sha256": "83c1167087f76b322a21df54fdf90d0547ccf3f1eed67ea299c6f20617023de2"
+    },
+    {
+      "path": "src/v2/cabin-window-glass.js",
+      "sha256": "6d3e01b05e9d968d7c5f3993a224c35e582a3796f32c0f5f7b8986af24556d1f"
+    },
+    {
+      "path": "src/v2/cabin-timber.js",
+      "sha256": "e3788cc6aab4bed1132de75309f6ee85439f830d223a593481fab0496f251181"
+    },
+    {
+      "path": "src/v2/lodge-wood.js",
+      "sha256": "9fa26893345ebf2864a905f9dab7ef4bfd1bcaff7df8e354f3ecfb964f13d3c2"
+    },
+    {
+      "path": "src/v2/lodge-furniture-definition.js",
+      "sha256": "5d213497f13771c71cbaa65f71a6175858c9b70b6f18a54a08e09d2d21c7d44e"
+    },
+    {
+      "path": "src/v2/lodge-furniture-loader.js",
+      "sha256": "163f02a32cd980518deae8d5a57b1065b7e8a6e2037d63a0d2467358db03103d"
+    },
+    {
+      "path": "src/v2/stone-occlusion.js",
+      "sha256": "24ebc658909596c77fdb6c98cc4f61396785b27f391d9c86f1bcb2c1b053d75d"
+    },
+    {
+      "path": "src/v2/stone-occlusion-data.js",
+      "sha256": "e2cad983f084decd51ec642ae4d594bcb13bf2a14e9a61e0d9b58d311bb4e2e2"
+    },
+    {
+      "path": "src/v2/lodge-door.js",
+      "sha256": "e97ef4d765fa6685e1a269c4422925e38bd2bee3bca55e696e73d291f236cb39"
+    },
+    {
+      "path": "src/v2/lodge-opening.js",
+      "sha256": "c5ce2a80add6495c9015b3f0bfdb19c8f3db93dfe7dd0e9a79b1e4d1053e4750"
+    },
+    {
+      "path": "src/v2/doors.js",
+      "sha256": "8f7295cc22dfc99dc03f618982894e6dd086262778cdd815d7490d56a07c8ac8"
+    },
+    {
+      "path": "src/v2/boardwalk-endpoints.js",
+      "sha256": "2ce072c08c40ada86597dc1721c9ed00963ab1be3e81ef72d7b21101985c9bc3"
+    },
+    {
+      "path": "src/v2/boardwalk-timber.js",
+      "sha256": "2881fd25d41085c1641c916c8cd07551df7f021169530c82bdf25e11380677a2"
+    },
+    {
+      "path": "src/v2/threshold-stones.js",
+      "sha256": "2f9e66919d206329b8a27634889765666451be4f88c81493625d04c446b8b48b"
+    },
+    {
+      "path": "src/v2/settlement-assets.js",
+      "sha256": "51e2e6f7cf3a9d4d82f28f5b122de776c1db4c249b29939b2f4376b17c922b00"
+    },
+    {
+      "path": "src/v2/asset-occlusion.js",
+      "sha256": "1aed86d726496675f5e18d6db989aa89988190b0add0cd8b8bf693ed98f6840e"
+    },
+    {
+      "path": "src/v2/timber-continuity.js",
+      "sha256": "9aa92081499c45b591e84aa6fa79bb7978cee52f58bc132ffcdd1a111ca7f5c3"
+    },
+    {
+      "path": "src/v2/timber-continuity-data.js",
+      "sha256": "b61ca5dea1ca95715734ca861fab5a57c2b3be778bf5969cd7a10bc8d76f58a4"
+    },
+    {
+      "path": "node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+      "sha256": "131c0f78c01d19368ae495caa65b3adaa10487810a36a05bb5901b769a35ac16"
+    },
+    {
+      "path": "node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "sha256": "9fb63427ce6641fa14fd0baff9cc4d1b5f9c3d85fd084bf2e90e803c44ec1797"
+    },
+    {
+      "path": "node_modules/three/examples/jsm/libs/meshopt_simplifier.module.js",
+      "sha256": "614402ffac05c8a40711f0d9a5d9a904dadc3ee2e7ed56d4568751dbd7fc8c35"
+    }
+  ],
+  "assets": {
+    "house_a": {
+      "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+      "url": "assets/v2/prepared/house_a-38.glb.gz",
+      "rawBytes": 11712888,
+      "rawSHA256": "e1a73a504e53afab72a8cd4fa0a6858a05c2c93bc06d34c7b42f5603b6f8bb98",
+      "gzipBytes": 6013589,
+      "gzipSHA256": "71e2b1b2bc09fc83dc66b046a8561892cbee21f722bb256fbe0e6796ebed6dd9"
+    }
+  }
+}

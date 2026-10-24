@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {createHash} from "node:crypto";
 import * as THREE from "three";
-import {ROOM_CONTACT_DATA} from "./room-contact-data.js";
+import {ROOM_CONTACT_DATA} from "./room-contact-registry.js";
 import {RoomContactField,decodeRoomContact,sampleRoomContact,ROOM_CONTACT_GLSL} from "./room-contact.js";
 import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
 import {RoomIndirectLight} from "./room-lighting.js";
@@ -80,7 +80,7 @@ test("shader applies missing contact once to each indirect source and never modi
     assert.doesNotMatch(shader.fragmentShader,/reflectedLight.direct(?:Diffuse|Specular)\s*[*+/=-].*roomContact/);
     assert.ok(shader.fragmentShader.indexOf("float roomContactAO=")<shader.fragmentShader.indexOf("if(uRoomAmbientActive>.5)"));
     assert.equal((ROOM_CONTACT_GLSL.match(/uniform sampler2D/g)||[]).length,1,"same sampler budget");
-    const query=ROOM_CONTACT_GLSL.slice(ROOM_CONTACT_GLSL.indexOf("float roomContactCorrection"));
+    const query=ROOM_CONTACT_GLSL.slice(ROOM_CONTACT_GLSL.indexOf("float roomFloorContactCorrection")<0?ROOM_CONTACT_GLSL.indexOf("float roomContactCorrection"):ROOM_CONTACT_GLSL.indexOf("float roomFloorContactCorrection"));
     assert.ok(query.indexOf("uRoomContactActive<.5")<query.indexOf("roomContactTexel(base"));
     assert.ok(query.indexOf("greaterThan(p")<query.indexOf("roomContactTexel(base"));
     assert.match(shader.fragmentShader,/uRoomContactHeightFilter<.5\?geometryNormal:nonPerturbedNormal/);

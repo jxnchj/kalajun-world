@@ -46,14 +46,26 @@ export function bendRepresentativeReach(line,segments,anchor,{heightAt,protected
   const shape=original.map((n,i)=>{
     if(!i||i===original.length-1||!n.bankShape||n.bankShape.weight<1-1e-9)return 0;
     const d=n.distance-anchor,window=1-smooth(52,88,Math.abs(d));if(!window)return 0;
-    const clearance=Math.min(...locks.map(v=>Math.abs(n.distance-v))),taper=smooth(8,28,clearance);
+    const clearance=Math.min(...locks.map(v=>Math.abs(n.distance-v))),taper=smooth(8,28,clearance)*(profile==="v38-landform"?smooth(0,20,Math.abs(d)):1);
+    if(profile==="v38-brook"||profile==="v38-landform"){
+      // This hillside brook is not a flat floodplain: move only toward the
+      // higher supported bank. Smooth the measured cross-slope over 12 m so
+      // sub-metre detail cannot alternate the curve from node to node.
+      let cross=0,total=0;
+      for(let j=Math.max(0,i-2);j<=Math.min(original.length-1,i+2);j++){
+        const q=original[j],w=3-Math.abs(j-i);
+        cross+=(heightAt(q.x-q.flowZ,q.z+q.flowX)-heightAt(q.x+q.flowZ,q.z-q.flowX))*.5*w;total+=w;
+      }
+      const support=Math.tanh(cross/total/.045);
+      return window*taper*(profile==="v38-landform"?.45*support+.55*lateralAt(controls,n.distance):support*(.75+.25*lateralAt(controls,n.distance)));
+    }
     return window*taper*lateralAt(controls,n.distance);
   });
   // The original drainage route anchors the design, not an invisible fixed
   // bank-width envelope. Real terrain, levels and protected facilities below
   // decide whether a wider 6.4 m bend can occupy its new footprint. The v19
   // comparison retains the exact accepted 2.8 m curve and original controls.
-  const amplitude=profile==="v19"?2.8:6.4;
+  const amplitude=(profile==="v38-brook"||profile==="v38-landform")?2.4:profile==="v19"?2.8:6.4;
   // Keep the original entrance spruce group and downstream bank tree rooted.
   // These are existing source landmarks, not extra density or synthetic rocks.
   const landmarks=profile!=="v19"&&line.id==="river-41711e76-99c57ca2"?[
@@ -68,7 +80,7 @@ export function bendRepresentativeReach(line,segments,anchor,{heightAt,protected
   });
   const peak=Math.max(1e-9,...shape.map(Math.abs)),offsets=shape.map((v,i)=>{
     const room=landmarkDistances.reduce((weight,d)=>Math.min(weight,smooth(8,18,Math.abs(original[i].distance-d))),1);
-    return mix(2.8,amplitude,room)*v/peak;
+    return mix(Math.min(2.8,amplitude),amplitude,room)*v/peak;
   });
   const errors=[];
   for(const scale of [1,.9,.8,.7,.6]){
@@ -135,4 +147,26 @@ export function applyRepresentativeMeanders(lines,segments,viewpoints,options){
     locks.push(line.nodes[source.join.index].distance,line.nodes[source.join.index+1].distance);
   }
   return bendRepresentativeReach(line,segments,anchor.a.distance,{...options,lockedDistances:locks});
+}
+
+
+// A second representative reach reuses the proven shared physical pipeline.
+// Its source anchor, endpoints and receiving junctions stay exact; only a short
+// unsurveyed sub-DEM centreline between those anchors is designed.
+export function applyBrookMeander(lines,segments,viewpoints,options){
+ const view=viewpoints.find(v=>v.id==="brook-lanchuan"),anchor=segments.find(s=>s.id===view?.segmentId);
+ if(!anchor)return {nodes:0,segments:0,reason:"missing-brook-anchor"};
+ const profile=options?.profile||"v38-brook",line=lines.find(l=>l.id===anchor.lineId),locks=profile==="v38-landform"?[]:[anchor.a.distance];
+ for(const source of lines)if(source.join?.line===line)locks.push(line.nodes[source.join.index].distance,line.nodes[source.join.index+1].distance);
+ return bendRepresentativeReach(line,segments,anchor.a.distance,{...options,lockedDistances:locks,profile});
+}
+
+// Representative wide valley, constrained by actual uncut terrain and named
+// network junctions. Source DEM polylines are drainage traces, not surveyed banks.
+export function applyValleyMeander(lines,segments,viewpoints,options){
+ const view=viewpoints.find(v=>v.id==='river-valley'),anchor=segments.find(s=>s.id===view?.segmentId);
+ if(!anchor||anchor.lineId!=='river-32d9cab5-5bea75bb')return {nodes:0,segments:0,reason:'outside-adopted-valley-reach'};
+ const line=lines.find(l=>l.id===anchor.lineId),locks=[];
+ for(const source of lines)if(source.join?.line===line)locks.push(line.nodes[source.join.index].distance,line.nodes[source.join.index+1].distance);
+ return bendRepresentativeReach(line,segments,anchor.a.distance,{...options,lockedDistances:locks,profile:'v38-valley'});
 }

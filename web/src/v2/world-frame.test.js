@@ -177,3 +177,51 @@ test("output compile failure restores the caller and does not submit any pixels"
   assert.equal(f.calls.length,0);assert.equal(f.r.target,f.previous);assert.equal(f.r.face,2);assert.equal(f.r.level,1);frame.dispose();
  }
 });
+
+test('output-only no-clear candidate preserves scene clear, MSAA, ACES and caller state through runtime toggles',()=>{
+ const f=fixture(),frame=new WorldFrame(f.r),scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera();
+ assert.equal(frame.outputNoClear38,false);
+ for(const enabled of [false,true,false]){
+  frame.outputNoClear38=enabled;f.calls.length=0;f.r.autoClear=true;
+  frame.render(scene,camera);
+  assert.equal(f.calls.length,2);assert.equal(f.calls[0].autoClear,true);assert.equal(f.calls[1].autoClear,!enabled);
+  assert.equal(f.r.autoClear,true);assert.equal(f.r.target,f.previous);assert.equal(f.r.info.autoReset,true);
+  assert.equal(frame.target.samples,4);assert.equal(frame.output.material.depthTest,false);assert.equal(frame.output.material.depthWrite,false);assert.equal(frame.output.material.blending,THREE.NoBlending);
+  assert.ok('ACES_FILMIC_TONE_MAPPING' in frame.output.material.defines);assert.ok('SRGB_TRANSFER' in frame.output.material.defines);
+  assert.equal(frame.stats.total.calls,32);assert.equal(frame.stats.total.triangles,251);assert.equal(frame.stats.outputNoClear38,enabled);
+ }
+ frame.dispose();
+});
+test('output-only no-clear restores caller policies on main and output exceptions',()=>{
+ for(const previousClear of [false,true])for(const failOn of [1,2]){
+  const f=fixture(),frame=new WorldFrame(f.r,{outputNoClear38:true});f.r.autoClear=previousClear;f.r.failOn=failOn;
+  assert.throws(()=>frame.render(new THREE.Scene(),new THREE.PerspectiveCamera()),/render failure/);
+  assert.equal(f.r.autoClear,previousClear);assert.equal(f.r.target,f.previous);assert.equal(f.r.face,2);assert.equal(f.r.level,1);assert.equal(f.r.info.autoReset,true);
+  assert.equal(f.calls[0].autoClear,true);if(failOn===2)assert.equal(f.calls[1].autoClear,false);frame.dispose();
+ }
+});
+
+test('opt-in discard follows completed main render only and restores external autoClear=false on success/error',()=>{
+ for(const failure of ['none','main','discard','output']){
+  const f=fixture(),frame=new WorldFrame(f.r,{msaaDiscard38:true}),ms={},single={},discarded=[];
+  Object.assign(f.gl,{READ_FRAMEBUFFER:11,DRAW_FRAMEBUFFER:12,READ_FRAMEBUFFER_BINDING:13,DRAW_FRAMEBUFFER_BINDING:14,COLOR_ATTACHMENT0:20,DEPTH_ATTACHMENT:21});
+  const read={},draw={};let rb=read,db=draw;
+  f.gl.getParameter=p=>p===13?rb:db;
+  f.r.state={bindFramebuffer(t,v){if(t===11)rb=v;else db=v;}};
+  f.r.properties={get:()=>({__webglMultisampledFramebuffer:ms,__webglFramebuffer:single})};
+  f.r.autoClearColor=f.r.autoClearDepth=true;
+  f.gl.invalidateFramebuffer=(t,a)=>{assert.equal(f.calls.length,1,'after main before output');assert.equal(db,ms);discarded.push(a);if(failure==='discard')throw Error('discard failure');};
+  if(failure==='main')f.r.failOn=1;if(failure==='output')f.r.failOn=2;
+  if(failure==='none'){frame.render(new THREE.Scene(),new THREE.PerspectiveCamera());assert.equal(frame.stats.msaaDiscardReason,'discarded');}
+  else assert.throws(()=>frame.render(new THREE.Scene(),new THREE.PerspectiveCamera()),/failure/);
+  assert.equal(discarded.length,failure==='main'?0:1);assert.equal(rb,read);assert.equal(db,draw);
+  assert.equal(f.r.autoClear,false);assert.equal(f.r.info.autoReset,true);assert.equal(f.r.target,f.previous);assert.equal(f.r.face,2);assert.equal(f.r.level,1);frame.dispose();
+ }
+});
+
+test('previous discard cannot silently become next partial-frame input, even after candidate disabled',()=>{
+ const f=fixture(),frame=new WorldFrame(f.r);frame.msaaAttachmentsDiscarded=true;
+ f.r.autoClearColor=false;f.r.autoClearDepth=true;
+ assert.throws(()=>frame.render(new THREE.Scene(),new THREE.PerspectiveCamera()),/requires a full/);assert.equal(f.calls.length,0);assert.equal(f.r.target,f.previous);
+ f.r.autoClearColor=true;frame.render(new THREE.Scene(),new THREE.PerspectiveCamera());assert.equal(frame.msaaAttachmentsDiscarded,false);assert.equal(f.r.autoClear,false);frame.dispose();
+});

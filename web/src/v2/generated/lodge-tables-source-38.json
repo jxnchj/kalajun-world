@@ -1,0 +1,1903 @@
+{
+  "sourceGLB": "assets/v2/gh_lanchuan_lodge_tables38.glb",
+  "sourceSHA256": "853f5690686eceaa85f00b2df0705343e55b6aea4286f599e07ee121dd170687",
+  "sourceBlend": "assets/src/v2/settlements/lodge-tables-v38/lodge-tables-complete.blend",
+  "blendSHA256": "df108dbc9b815cf2baf3cc8b8f6337c7eacc86d11f823f151af71903551c57d0",
+  "originalSHA256": "1025f39e99a19324945adfceb1f333514590c11761ea0205941e62635e8c6b3b",
+  "totalTriangles": 128328,
+  "removedTriangles": 320,
+  "addedTriangles": 14560,
+  "retainedTriangles": 113768,
+  "removed": [
+    {
+      "mesh": "gh_lanchuan_lodge_pine",
+      "bounds": [
+        [
+          -0.9000000357627869,
+          0,
+          0.19999998807907104
+        ],
+        [
+          1.5,
+          1.100000023841858,
+          0.800000011920929
+        ]
+      ],
+      "name": "reception-body",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -11.34999942779541,
+          0.7150000333786011,
+          0.949999988079071
+        ],
+        [
+          -9.449999809265137,
+          0.7649999856948853,
+          1.8499999046325684
+        ]
+      ],
+      "name": "dining-table",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -11.229999542236328,
+          0,
+          1.7300000190734863
+        ],
+        [
+          -11.170000076293945,
+          0.7200000286102295,
+          1.7899999618530273
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -11.229999542236328,
+          0,
+          1.0099999904632568
+        ],
+        [
+          -11.170000076293945,
+          0.7200000286102295,
+          1.0699999332427979
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -9.630000114440918,
+          0,
+          1.7300000190734863
+        ],
+        [
+          -9.570000648498535,
+          0.7200000286102295,
+          1.7899999618530273
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -9.630000114440918,
+          0,
+          1.0099999904632568
+        ],
+        [
+          -9.570000648498535,
+          0.7200000286102295,
+          1.0699999332427979
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -7.349999904632568,
+          0.7150000333786011,
+          0.949999988079071
+        ],
+        [
+          -5.450000286102295,
+          0.7649999856948853,
+          1.8499999046325684
+        ]
+      ],
+      "name": "dining-table",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -7.230000019073486,
+          0,
+          1.7300000190734863
+        ],
+        [
+          -7.169999599456787,
+          0.7200000286102295,
+          1.7899999618530273
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -7.230000019073486,
+          0,
+          1.0099999904632568
+        ],
+        [
+          -7.169999599456787,
+          0.7200000286102295,
+          1.0699999332427979
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -5.630000114440918,
+          0,
+          1.7300000190734863
+        ],
+        [
+          -5.569999694824219,
+          0.7200000286102295,
+          1.7899999618530273
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -5.630000114440918,
+          0,
+          1.0099999904632568
+        ],
+        [
+          -5.569999694824219,
+          0.7200000286102295,
+          1.0699999332427979
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -11.34999942779541,
+          0.7150000333786011,
+          -2.1500000953674316
+        ],
+        [
+          -9.449999809265137,
+          0.7649999856948853,
+          -1.25
+        ]
+      ],
+      "name": "dining-table",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -11.229999542236328,
+          0,
+          -1.3700000047683716
+        ],
+        [
+          -11.170000076293945,
+          0.7200000286102295,
+          -1.3100000619888306
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -11.229999542236328,
+          0,
+          -2.0899999141693115
+        ],
+        [
+          -11.170000076293945,
+          0.7200000286102295,
+          -2.0299999713897705
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -9.630000114440918,
+          0,
+          -1.3700000047683716
+        ],
+        [
+          -9.570000648498535,
+          0.7200000286102295,
+          -1.3100000619888306
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -9.630000114440918,
+          0,
+          -2.0899999141693115
+        ],
+        [
+          -9.570000648498535,
+          0.7200000286102295,
+          -2.0299999713897705
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -7.349999904632568,
+          0.7150000333786011,
+          -2.1500000953674316
+        ],
+        [
+          -5.450000286102295,
+          0.7649999856948853,
+          -1.25
+        ]
+      ],
+      "name": "dining-table",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -7.230000019073486,
+          0,
+          -1.3700000047683716
+        ],
+        [
+          -7.169999599456787,
+          0.7200000286102295,
+          -1.3100000619888306
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -7.230000019073486,
+          0,
+          -2.0899999141693115
+        ],
+        [
+          -7.169999599456787,
+          0.7200000286102295,
+          -2.0299999713897705
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -5.630000114440918,
+          0,
+          -1.3700000047683716
+        ],
+        [
+          -5.569999694824219,
+          0.7200000286102295,
+          -1.3100000619888306
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -5.630000114440918,
+          0,
+          -2.0899999141693115
+        ],
+        [
+          -5.569999694824219,
+          0.7200000286102295,
+          -2.0299999713897705
+        ]
+      ],
+      "name": "dining-leg",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          -0.949999988079071,
+          1.0950000286102295,
+          0.17999997735023499
+        ],
+        [
+          1.5499999523162842,
+          1.1449999809265137,
+          0.8600000143051147
+        ]
+      ],
+      "name": "reception-top",
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plank",
+      "bounds": [
+        [
+          4.849819183349609,
+          0.34400004148483276,
+          -0.8300877809524536
+        ],
+        [
+          5.7371110916137695,
+          0.45600003004074097,
+          0.04290264844894409
+        ]
+      ],
+      "name": "lounge-tea-top",
+      "triangles": 56
+    }
+  ],
+  "originalBinaryPrefixPreserved": true,
+  "reusedOriginalImages": 3,
+  "reusedOriginalTextures": 3,
+  "allOriginalVertexAttributesPreserved": true,
+  "originalNodesAndDoorTransformPreserved": true,
+  "newMaterials": {
+    "tablecraft38 calibrated oak": {
+      "baseColor": [
+        0.6571039395864384,
+        0.5486303625288979,
+        0.560248851859997,
+        1
+      ],
+      "metallic": 0,
+      "factorOnlyReflectance": [
+        0.6571039395864384,
+        0.5486303625288979,
+        0.560248851859997
+      ],
+      "diffuseReflectance": [
+        0.23682348430156708,
+        0.11614272743463516,
+        0.05534806847572327
+      ],
+      "reflectanceBasis": "calibrated full texture linear mean, not baseColorFactor alone"
+    },
+    "tablecraft38 real endgrain": {
+      "baseColor": [
+        0.6324314895951517,
+        0.6034742340607967,
+        0.8059409371498791,
+        1
+      ],
+      "metallic": 0,
+      "factorOnlyReflectance": [
+        0.6324314895951517,
+        0.6034742340607967,
+        0.8059409371498791
+      ],
+      "diffuseReflectance": [
+        0.23682348430156708,
+        0.11614272743463516,
+        0.05534806847572327
+      ],
+      "reflectanceBasis": "calibrated full texture linear mean, not baseColorFactor alone"
+    }
+  },
+  "materialReflectance": {
+    "frame": [
+      0.02500000037252903,
+      0.02500000037252903,
+      0.026000000536441803
+    ],
+    "iron": [
+      0.05000000074505806,
+      0.04500000178813934,
+      0.03999999910593033
+    ],
+    "lamp": [
+      0.9,
+      0.699999988079071,
+      0.3499999940395355
+    ],
+    "linen": [
+      0.8600000143051147,
+      0.8500000238418579,
+      0.8100000023841858
+    ],
+    "log": [
+      0.22521169483661652,
+      0.12365184724330902,
+      0.0576966293156147
+    ],
+    "logend": [
+      0.3746096193790436,
+      0.19257742166519165,
+      0.06875666975975037
+    ],
+    "pine": [
+      0.23682348430156708,
+      0.11614272743463516,
+      0.05534806847572327
+    ],
+    "plank": [
+      0.23682348430156708,
+      0.11614272743463516,
+      0.05534806847572327
+    ],
+    "plankpale": [
+      0.19595438241958618,
+      0.1608644723892212,
+      0.121392622590065
+    ],
+    "plasterw": [
+      0.800000011920929,
+      0.7799999713897705,
+      0.7200000286102295
+    ],
+    "plinth": [
+      0.2541235685348511,
+      0.2338634878396988,
+      0.19115954637527466
+    ],
+    "rattan": [
+      0.47999998927116394,
+      0.3400000035762787,
+      0.1899999976158142
+    ],
+    "roofelt": [
+      0.04500000178813934,
+      0.04500000178813934,
+      0.05000000074505806
+    ],
+    "rug": [
+      0.3755701184272766,
+      0.2324863225221634,
+      0.19647176563739777
+    ],
+    "seedstalk": [
+      0.41999998688697815,
+      0.36000001430511475,
+      0.20000000298023224
+    ],
+    "sod": [
+      0.09736109524965286,
+      0.17572756111621857,
+      0.018809329718351364
+    ],
+    "stone": [
+      0.2541235685348511,
+      0.2338634878396988,
+      0.19115954637527466
+    ],
+    "turfblade": [
+      0.10000000149011612,
+      0.1599999964237213,
+      0.03500000014901161
+    ],
+    "turfdry": [
+      0.30000001192092896,
+      0.25,
+      0.10000000149011612
+    ],
+    "candidate dark drum glazing": [
+      0.04250000033527612,
+      0.03825000125169753,
+      0.033999999001622205
+    ],
+    "candidate enamel original aggregate": [
+      0.7721741795539856,
+      0.7526476979255676,
+      0.6945538520812988
+    ],
+    "candidate rubber": [
+      0.05000000074505806,
+      0.04500000178813934,
+      0.03999999910593033
+    ],
+    "candidate satin alloy": [
+      0.0925000011920929,
+      0.0925000011920929,
+      0.09000000357627869
+    ],
+    "candidate hidden sofa feet": [
+      0.23999999463558197,
+      0.12999999523162842,
+      0.05999999865889549
+    ],
+    "candidate linen original mean": [
+      0.8694141507148743,
+      0.8609325885772705,
+      0.8213880658149719
+    ],
+    "chair38 calibrated oak": [
+      0.23682348430156708,
+      0.11614272743463518,
+      0.05534806847572327
+    ],
+    "chair38 real endgrain": [
+      0.23682348430156708,
+      0.11614272743463516,
+      0.055348068475723274
+    ],
+    "chair38 original rattan factor": [
+      0.4799404774252254,
+      0.3399779700220418,
+      0.19002351388439323
+    ],
+    "tablecraft38 calibrated oak": [
+      0.23682348430156708,
+      0.11614272743463516,
+      0.05534806847572327
+    ],
+    "tablecraft38 real endgrain": [
+      0.23682348430156708,
+      0.11614272743463516,
+      0.05534806847572327
+    ]
+  },
+  "ao": {
+    "samples": 64,
+    "localDistance": 1,
+    "skyDistance": 40,
+    "excluded": "original transparent glass only",
+    "stats": [
+      {
+        "node": "tablecraft38_reception_back_panel",
+        "vertices": 103,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.7349134087562561,
+        "minSky": 0.0,
+        "maxSky": 0.07692307978868484
+      },
+      {
+        "node": "tablecraft38_reception_back_panel",
+        "vertices": 71,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.6406073570251465,
+        "minSky": 0.0,
+        "maxSky": 0.07692307978868484
+      },
+      {
+        "node": "tablecraft38_reception_counter_top",
+        "vertices": 127,
+        "uniqueSamples": 88,
+        "minAO": 0.8182293772697449,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.1599999964237213
+      },
+      {
+        "node": "tablecraft38_reception_counter_top",
+        "vertices": 32,
+        "uniqueSamples": 32,
+        "minAO": 0.9684809446334839,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.09302325546741486
+      },
+      {
+        "node": "tablecraft38_reception_front_rail_0.1225",
+        "vertices": 124,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.8187850713729858,
+        "minSky": 0.0,
+        "maxSky": 0.11428571492433548
+      },
+      {
+        "node": "tablecraft38_reception_front_rail_0.1225",
+        "vertices": 51,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.7665889859199524,
+        "minSky": 0.0,
+        "maxSky": 0.10810811072587967
+      },
+      {
+        "node": "tablecraft38_reception_front_rail_1.0575",
+        "vertices": 124,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.9114105701446533,
+        "minSky": 0.0,
+        "maxSky": 0.1599999964237213
+      },
+      {
+        "node": "tablecraft38_reception_front_rail_1.0575",
+        "vertices": 51,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.8524056077003479,
+        "minSky": 0.0,
+        "maxSky": 0.11538461595773697
+      },
+      {
+        "node": "tablecraft38_reception_front_stile_0.675",
+        "vertices": 127,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.9030352830886841,
+        "minSky": 0.0,
+        "maxSky": 0.22857142984867096
+      },
+      {
+        "node": "tablecraft38_reception_front_stile_0.675",
+        "vertices": 38,
+        "uniqueSamples": 38,
+        "minAO": 0.25,
+        "maxAO": 0.6069252490997314,
+        "minSky": 0.0,
+        "maxSky": 0.20000000298023224
+      },
+      {
+        "node": "tablecraft38_reception_front_stile_1.43",
+        "vertices": 127,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.9239233136177063,
+        "minSky": 0.0,
+        "maxSky": 0.11428571492433548
+      },
+      {
+        "node": "tablecraft38_reception_front_stile_1.43",
+        "vertices": 38,
+        "uniqueSamples": 38,
+        "minAO": 0.25,
+        "maxAO": 0.6203569173812866,
+        "minSky": 0.0,
+        "maxSky": 0.1034482792019844
+      },
+      {
+        "node": "tablecraft38_reception_front_stile_-0.075",
+        "vertices": 127,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.9030352830886841,
+        "minSky": 0.0,
+        "maxSky": 0.26923078298568726
+      },
+      {
+        "node": "tablecraft38_reception_front_stile_-0.075",
+        "vertices": 38,
+        "uniqueSamples": 38,
+        "minAO": 0.25,
+        "maxAO": 0.6069253087043762,
+        "minSky": 0.0,
+        "maxSky": 0.26923078298568726
+      },
+      {
+        "node": "tablecraft38_reception_front_stile_-0.83",
+        "vertices": 127,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.9124827980995178,
+        "minSky": 0.0,
+        "maxSky": 0.07692307978868484
+      },
+      {
+        "node": "tablecraft38_reception_front_stile_-0.83",
+        "vertices": 38,
+        "uniqueSamples": 38,
+        "minAO": 0.25,
+        "maxAO": 0.6160898208618164,
+        "minSky": 0.0,
+        "maxSky": 0.07692307978868484
+      },
+      {
+        "node": "tablecraft38_reception_inset_panel_0.3",
+        "vertices": 127,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.7047528624534607,
+        "minSky": 0.0,
+        "maxSky": 0.13953489065170288
+      },
+      {
+        "node": "tablecraft38_reception_inset_panel_0.3",
+        "vertices": 32,
+        "uniqueSamples": 32,
+        "minAO": 0.25,
+        "maxAO": 0.43320655822753906,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_reception_inset_panel_1.0525",
+        "vertices": 127,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.7043892741203308,
+        "minSky": 0.0,
+        "maxSky": 0.1627907007932663
+      },
+      {
+        "node": "tablecraft38_reception_inset_panel_1.0525",
+        "vertices": 32,
+        "uniqueSamples": 32,
+        "minAO": 0.25,
+        "maxAO": 0.4350668787956238,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_reception_inset_panel_-0.4525",
+        "vertices": 127,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.7007708549499512,
+        "minSky": 0.0,
+        "maxSky": 0.09302325546741486
+      },
+      {
+        "node": "tablecraft38_reception_inset_panel_-0.4525",
+        "vertices": 32,
+        "uniqueSamples": 32,
+        "minAO": 0.25,
+        "maxAO": 0.4316226840019226,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_reception_recessed_plinth",
+        "vertices": 113,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.40041500329971313,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_reception_recessed_plinth",
+        "vertices": 62,
+        "uniqueSamples": 56,
+        "minAO": 0.25,
+        "maxAO": 0.3915138244628906,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_reception_solid_side_1.4775",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.7054330110549927,
+        "minSky": 0.0,
+        "maxSky": 0.11428571492433548
+      },
+      {
+        "node": "tablecraft38_reception_solid_side_1.4775",
+        "vertices": 32,
+        "uniqueSamples": 32,
+        "minAO": 0.25,
+        "maxAO": 0.4415559470653534,
+        "minSky": 0.0,
+        "maxSky": 0.1034482792019844
+      },
+      {
+        "node": "tablecraft38_reception_solid_side_-0.8775",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.766490638256073,
+        "minSky": 0.0,
+        "maxSky": 0.11999999731779099
+      },
+      {
+        "node": "tablecraft38_reception_solid_side_-0.8775",
+        "vertices": 32,
+        "uniqueSamples": 32,
+        "minAO": 0.25,
+        "maxAO": 0.5026427507400513,
+        "minSky": 0.0,
+        "maxSky": 0.11999999731779099
+      },
+      {
+        "node": "tablecraft38_reception_under_top",
+        "vertices": 113,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.296990305185318,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_reception_under_top",
+        "vertices": 62,
+        "uniqueSamples": 56,
+        "minAO": 0.25,
+        "maxAO": 0.25,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_cross_tenoned_apron_0.8",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.628515362739563,
+        "minSky": 0.0,
+        "maxSky": 0.1304347813129425
+      },
+      {
+        "node": "tablecraft38_table1_cross_tenoned_apron_0.8",
+        "vertices": 42,
+        "uniqueSamples": 40,
+        "minAO": 0.25,
+        "maxAO": 0.2802402079105377,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_cross_tenoned_apron_-0.8",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.6537255644798279,
+        "minSky": 0.0,
+        "maxSky": 0.13636364042758942
+      },
+      {
+        "node": "tablecraft38_table1_cross_tenoned_apron_-0.8",
+        "vertices": 42,
+        "uniqueSamples": 40,
+        "minAO": 0.25,
+        "maxAO": 0.2609575092792511,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_joint_peg_0.8_0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.43122828006744385,
+        "minSky": 0.0,
+        "maxSky": 0.023255813866853714
+      },
+      {
+        "node": "tablecraft38_table1_joint_peg_0.8_0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.25,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_joint_peg_0.8_-0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.7353848218917847,
+        "minSky": 0.0,
+        "maxSky": 0.1111111119389534
+      },
+      {
+        "node": "tablecraft38_table1_joint_peg_0.8_-0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.824630081653595,
+        "minSky": 0.0,
+        "maxSky": 0.11428571492433548
+      },
+      {
+        "node": "tablecraft38_table1_joint_peg_-0.8_0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.4314679503440857,
+        "minSky": 0.0,
+        "maxSky": 0.0714285746216774
+      },
+      {
+        "node": "tablecraft38_table1_joint_peg_-0.8_0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.25,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_joint_peg_-0.8_-0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.7589269876480103,
+        "minSky": 0.0,
+        "maxSky": 0.19354838132858276
+      },
+      {
+        "node": "tablecraft38_table1_joint_peg_-0.8_-0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.8424012064933777,
+        "minSky": 0.0,
+        "maxSky": 0.20000000298023224
+      },
+      {
+        "node": "tablecraft38_table1_leg_0.8_0.36",
+        "vertices": 98,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.678013801574707,
+        "minSky": 0.0,
+        "maxSky": 0.1190476194024086
+      },
+      {
+        "node": "tablecraft38_table1_leg_0.8_0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958619356155396,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_leg_0.8_-0.36",
+        "vertices": 98,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6410525441169739,
+        "minSky": 0.0,
+        "maxSky": 0.095238097012043
+      },
+      {
+        "node": "tablecraft38_table1_leg_0.8_-0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_leg_-0.8_0.36",
+        "vertices": 98,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6894525289535522,
+        "minSky": 0.0,
+        "maxSky": 0.1428571492433548
+      },
+      {
+        "node": "tablecraft38_table1_leg_-0.8_0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_leg_-0.8_-0.36",
+        "vertices": 98,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6450948715209961,
+        "minSky": 0.0,
+        "maxSky": 0.13953489065170288
+      },
+      {
+        "node": "tablecraft38_table1_leg_-0.8_-0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_long_tenoned_apron_0.36",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.6352639198303223,
+        "minSky": 0.0,
+        "maxSky": 0.11999999731779099
+      },
+      {
+        "node": "tablecraft38_table1_long_tenoned_apron_0.36",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.28859394788742065,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_long_tenoned_apron_-0.36",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.6243669390678406,
+        "minSky": 0.0,
+        "maxSky": 0.17142857611179352
+      },
+      {
+        "node": "tablecraft38_table1_long_tenoned_apron_-0.36",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.3017897307872772,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table1_solid_top",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.8883867859840393,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.2800000011920929
+      },
+      {
+        "node": "tablecraft38_table1_solid_top",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.9513993263244629,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.2432432472705841
+      },
+      {
+        "node": "tablecraft38_table2_cross_tenoned_apron_0.8",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.628515362739563,
+        "minSky": 0.0,
+        "maxSky": 0.1304347813129425
+      },
+      {
+        "node": "tablecraft38_table2_cross_tenoned_apron_0.8",
+        "vertices": 42,
+        "uniqueSamples": 40,
+        "minAO": 0.25,
+        "maxAO": 0.28024011850357056,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_cross_tenoned_apron_-0.8",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.6537255644798279,
+        "minSky": 0.0,
+        "maxSky": 0.20000000298023224
+      },
+      {
+        "node": "tablecraft38_table2_cross_tenoned_apron_-0.8",
+        "vertices": 42,
+        "uniqueSamples": 40,
+        "minAO": 0.25,
+        "maxAO": 0.2609575092792511,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_joint_peg_0.8_0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.43122828006744385,
+        "minSky": 0.0,
+        "maxSky": 0.023255813866853714
+      },
+      {
+        "node": "tablecraft38_table2_joint_peg_0.8_0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.25,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_joint_peg_0.8_-0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.7353848218917847,
+        "minSky": 0.0,
+        "maxSky": 0.26923078298568726
+      },
+      {
+        "node": "tablecraft38_table2_joint_peg_0.8_-0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.824630081653595,
+        "minSky": 0.0,
+        "maxSky": 0.26923078298568726
+      },
+      {
+        "node": "tablecraft38_table2_joint_peg_-0.8_0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.4314679503440857,
+        "minSky": 0.0,
+        "maxSky": 0.095238097012043
+      },
+      {
+        "node": "tablecraft38_table2_joint_peg_-0.8_0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.25,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_joint_peg_-0.8_-0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.7589269876480103,
+        "minSky": 0.0,
+        "maxSky": 0.23076923191547394
+      },
+      {
+        "node": "tablecraft38_table2_joint_peg_-0.8_-0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.8424011468887329,
+        "minSky": 0.0,
+        "maxSky": 0.23076923191547394
+      },
+      {
+        "node": "tablecraft38_table2_leg_0.8_0.36",
+        "vertices": 100,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6780136823654175,
+        "minSky": 0.0,
+        "maxSky": 0.190476194024086
+      },
+      {
+        "node": "tablecraft38_table2_leg_0.8_0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_leg_0.8_-0.36",
+        "vertices": 100,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6410524249076843,
+        "minSky": 0.0,
+        "maxSky": 0.2142857164144516
+      },
+      {
+        "node": "tablecraft38_table2_leg_0.8_-0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.4695862829685211,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_leg_-0.8_0.36",
+        "vertices": 100,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6894525289535522,
+        "minSky": 0.0,
+        "maxSky": 0.1428571492433548
+      },
+      {
+        "node": "tablecraft38_table2_leg_-0.8_0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958622336387634,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_leg_-0.8_-0.36",
+        "vertices": 100,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.64509516954422,
+        "minSky": 0.0,
+        "maxSky": 0.1428571492433548
+      },
+      {
+        "node": "tablecraft38_table2_leg_-0.8_-0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_long_tenoned_apron_0.36",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.6352633237838745,
+        "minSky": 0.0,
+        "maxSky": 0.125
+      },
+      {
+        "node": "tablecraft38_table2_long_tenoned_apron_0.36",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.28859394788742065,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_long_tenoned_apron_-0.36",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.6243658661842346,
+        "minSky": 0.0,
+        "maxSky": 0.20930232107639313
+      },
+      {
+        "node": "tablecraft38_table2_long_tenoned_apron_-0.36",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.301789790391922,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table2_solid_top",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.8883865475654602,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.4000000059604645
+      },
+      {
+        "node": "tablecraft38_table2_solid_top",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.9513992667198181,
+        "maxAO": 1.0,
+        "minSky": 0.020408162847161293,
+        "maxSky": 0.3461538553237915
+      },
+      {
+        "node": "tablecraft38_table3_cross_tenoned_apron_0.8",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.6285151839256287,
+        "minSky": 0.0,
+        "maxSky": 0.043478261679410934
+      },
+      {
+        "node": "tablecraft38_table3_cross_tenoned_apron_0.8",
+        "vertices": 42,
+        "uniqueSamples": 40,
+        "minAO": 0.25,
+        "maxAO": 0.28024017810821533,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_cross_tenoned_apron_-0.8",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.6537254452705383,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_cross_tenoned_apron_-0.8",
+        "vertices": 42,
+        "uniqueSamples": 40,
+        "minAO": 0.25,
+        "maxAO": 0.2609575092792511,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_joint_peg_0.8_0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.43122804164886475,
+        "minSky": 0.0,
+        "maxSky": 0.023255813866853714
+      },
+      {
+        "node": "tablecraft38_table3_joint_peg_0.8_0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.25,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_joint_peg_0.8_-0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.7353846430778503,
+        "minSky": 0.0,
+        "maxSky": 0.19354838132858276
+      },
+      {
+        "node": "tablecraft38_table3_joint_peg_0.8_-0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.8246300220489502,
+        "minSky": 0.0,
+        "maxSky": 0.19354838132858276
+      },
+      {
+        "node": "tablecraft38_table3_joint_peg_-0.8_0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.43146762251853943,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_joint_peg_-0.8_0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.25,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_joint_peg_-0.8_-0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.7589269876480103,
+        "minSky": 0.0,
+        "maxSky": 0.0476190485060215
+      },
+      {
+        "node": "tablecraft38_table3_joint_peg_-0.8_-0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.8424011468887329,
+        "minSky": 0.0,
+        "maxSky": 0.05128205195069313
+      },
+      {
+        "node": "tablecraft38_table3_leg_0.8_0.36",
+        "vertices": 98,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6780139207839966,
+        "minSky": 0.0,
+        "maxSky": 0.0714285746216774
+      },
+      {
+        "node": "tablecraft38_table3_leg_0.8_0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_leg_0.8_-0.36",
+        "vertices": 98,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6410525441169739,
+        "minSky": 0.0,
+        "maxSky": 0.1190476194024086
+      },
+      {
+        "node": "tablecraft38_table3_leg_0.8_-0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_leg_-0.8_0.36",
+        "vertices": 98,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6894525289535522,
+        "minSky": 0.0,
+        "maxSky": 0.02380952425301075
+      },
+      {
+        "node": "tablecraft38_table3_leg_-0.8_0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_leg_-0.8_-0.36",
+        "vertices": 98,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6450948715209961,
+        "minSky": 0.0,
+        "maxSky": 0.04651162773370743
+      },
+      {
+        "node": "tablecraft38_table3_leg_-0.8_-0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_long_tenoned_apron_0.36",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.6352639198303223,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_long_tenoned_apron_0.36",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.28859394788742065,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_long_tenoned_apron_-0.36",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.6243669390678406,
+        "minSky": 0.0,
+        "maxSky": 0.1428571492433548
+      },
+      {
+        "node": "tablecraft38_table3_long_tenoned_apron_-0.36",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.3017897307872772,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table3_solid_top",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.8883867859840393,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.1599999964237213
+      },
+      {
+        "node": "tablecraft38_table3_solid_top",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.9513993263244629,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.11538461595773697
+      },
+      {
+        "node": "tablecraft38_table4_cross_tenoned_apron_0.8",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.6285151839256287,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_cross_tenoned_apron_0.8",
+        "vertices": 42,
+        "uniqueSamples": 40,
+        "minAO": 0.25,
+        "maxAO": 0.28024011850357056,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_cross_tenoned_apron_-0.8",
+        "vertices": 125,
+        "uniqueSamples": 88,
+        "minAO": 0.25,
+        "maxAO": 0.6537254452705383,
+        "minSky": 0.0,
+        "maxSky": 0.07999999821186066
+      },
+      {
+        "node": "tablecraft38_table4_cross_tenoned_apron_-0.8",
+        "vertices": 42,
+        "uniqueSamples": 40,
+        "minAO": 0.25,
+        "maxAO": 0.2609575092792511,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_joint_peg_0.8_0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.43122804164886475,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_joint_peg_0.8_0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.25,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_joint_peg_0.8_-0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.7353846430778503,
+        "minSky": 0.0,
+        "maxSky": 0.08695652335882187
+      },
+      {
+        "node": "tablecraft38_table4_joint_peg_0.8_-0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.824630081653595,
+        "minSky": 0.0,
+        "maxSky": 0.07692307978868484
+      },
+      {
+        "node": "tablecraft38_table4_joint_peg_-0.8_0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.43146762251853943,
+        "minSky": 0.0,
+        "maxSky": 0.0476190485060215
+      },
+      {
+        "node": "tablecraft38_table4_joint_peg_-0.8_0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.25,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_joint_peg_-0.8_-0.36",
+        "vertices": 68,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.7589269876480103,
+        "minSky": 0.0,
+        "maxSky": 0.0833333358168602
+      },
+      {
+        "node": "tablecraft38_table4_joint_peg_-0.8_-0.36",
+        "vertices": 72,
+        "uniqueSamples": 72,
+        "minAO": 0.25,
+        "maxAO": 0.8424011468887329,
+        "minSky": 0.0,
+        "maxSky": 0.07692307978868484
+      },
+      {
+        "node": "tablecraft38_table4_leg_0.8_0.36",
+        "vertices": 100,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6780137419700623,
+        "minSky": 0.0,
+        "maxSky": 0.0714285746216774
+      },
+      {
+        "node": "tablecraft38_table4_leg_0.8_0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958625316619873,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_leg_0.8_-0.36",
+        "vertices": 100,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6410523653030396,
+        "minSky": 0.0,
+        "maxSky": 0.1666666716337204
+      },
+      {
+        "node": "tablecraft38_table4_leg_0.8_-0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.4695862829685211,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_leg_-0.8_0.36",
+        "vertices": 100,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6894525289535522,
+        "minSky": 0.0,
+        "maxSky": 0.02380952425301075
+      },
+      {
+        "node": "tablecraft38_table4_leg_-0.8_0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958622336387634,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_leg_-0.8_-0.36",
+        "vertices": 100,
+        "uniqueSamples": 76,
+        "minAO": 0.25,
+        "maxAO": 0.6450949907302856,
+        "minSky": 0.0,
+        "maxSky": 0.0476190485060215
+      },
+      {
+        "node": "tablecraft38_table4_leg_-0.8_-0.36",
+        "vertices": 48,
+        "uniqueSamples": 48,
+        "minAO": 0.25,
+        "maxAO": 0.46958622336387634,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_long_tenoned_apron_0.36",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.6352633237838745,
+        "minSky": 0.0,
+        "maxSky": 0.04545454680919647
+      },
+      {
+        "node": "tablecraft38_table4_long_tenoned_apron_0.36",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.28859394788742065,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_long_tenoned_apron_-0.36",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.6243658661842346,
+        "minSky": 0.0,
+        "maxSky": 0.09090909361839294
+      },
+      {
+        "node": "tablecraft38_table4_long_tenoned_apron_-0.36",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.25,
+        "maxAO": 0.3017898201942444,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_table4_solid_top",
+        "vertices": 84,
+        "uniqueSamples": 64,
+        "minAO": 0.8883865475654602,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.0882352963089943
+      },
+      {
+        "node": "tablecraft38_table4_solid_top",
+        "vertices": 73,
+        "uniqueSamples": 64,
+        "minAO": 0.9513993263244629,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.09302325546741486
+      },
+      {
+        "node": "tablecraft38_tea_support_0",
+        "vertices": 112,
+        "uniqueSamples": 78,
+        "minAO": 0.25,
+        "maxAO": 0.6818574070930481,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_tea_support_0",
+        "vertices": 90,
+        "uniqueSamples": 90,
+        "minAO": 0.25,
+        "maxAO": 0.33992356061935425,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_tea_support_1",
+        "vertices": 114,
+        "uniqueSamples": 79,
+        "minAO": 0.25,
+        "maxAO": 0.6508843898773193,
+        "minSky": 0.0,
+        "maxSky": 0.02380952425301075
+      },
+      {
+        "node": "tablecraft38_tea_support_1",
+        "vertices": 89,
+        "uniqueSamples": 89,
+        "minAO": 0.25,
+        "maxAO": 0.33666056394577026,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_tea_support_2",
+        "vertices": 114,
+        "uniqueSamples": 79,
+        "minAO": 0.25,
+        "maxAO": 0.6019130945205688,
+        "minSky": 0.0,
+        "maxSky": 0.024390242993831635
+      },
+      {
+        "node": "tablecraft38_tea_support_2",
+        "vertices": 89,
+        "uniqueSamples": 89,
+        "minAO": 0.25,
+        "maxAO": 0.3384673595428467,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_tea_top_smooth_round",
+        "vertices": 792,
+        "uniqueSamples": 512,
+        "minAO": 0.6821047067642212,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.054054055362939835
+      },
+      {
+        "node": "tablecraft38_tea_under_top_bearer",
+        "vertices": 109,
+        "uniqueSamples": 74,
+        "minAO": 0.25,
+        "maxAO": 0.8489900231361389,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "tablecraft38_tea_under_top_bearer",
+        "vertices": 69,
+        "uniqueSamples": 63,
+        "minAO": 0.25,
+        "maxAO": 0.8343589305877686,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      }
+    ]
+  },
+  "seconds": 2.576285542003461,
+  "glbBytes": 20106596,
+  "blendBytes": 14990194,
+  "limits": "Offline only. 23 original components removed precisely; original other geometry/AO/door retained. Tea support reaches rug top .026. New full GI/contact and collision recapture required after approval; production remains unchanged.",
+  "chairCollisionSourceSHA256": "b1b8d584d20a55916ff9b6f5d3938d733d10751aada2456bab5b8df82572daee"
+}

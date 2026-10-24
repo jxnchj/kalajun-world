@@ -1,5 +1,6 @@
 import { Group, Scene, PCFShadowMap, FrontSide, BackSide, DoubleSide } from "three";
 import { compilePreparedWorld } from "./shader-readiness.js";
+import { ownedShadowSide } from "./owned-shadow-policy.js";
 
 const FIELDS = ["visible", "wireframe", "side", "alphaMap", "alphaTest", "map", "clipShadows", "clippingPlanes",
   "clipIntersection", "displacementMap", "displacementScale", "displacementBias", "wireframeLinewidth", "linewidth"];
@@ -72,6 +73,9 @@ export function compileShadowWorld(renderer, scene, camera, { shadowDepth, light
     let variants = byDepth.get(depth); if (!variants) { variants = []; byDepth.set(depth, variants); }
     for (const material of materials) {
       const state = shadowDepthState(material);
+      // Query the real owner before creating compile proxies. Never replay a
+      // draw callback or derive this explicit policy from mutable depth.side.
+      state[2] = ownedShadowSide(object, material, depth) ?? state[2];
       let batch = variants.find(candidate => candidate.state.every((value, i) => value === state[i]));
       if (!batch) { batch = { depth, state, objects: [] }; variants.push(batch); batches.push(batch); }
       const proxy = Object.create(object); proxy.material = depth; batch.objects.push(proxy);

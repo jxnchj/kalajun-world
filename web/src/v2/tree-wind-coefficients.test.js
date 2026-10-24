@@ -137,9 +137,25 @@ test("actual high/mid static assets and root wind retain displacement within exp
  const field=new MeadowWindField({resolution:16});field.update(3.2,{x:-3600,z:4800});field.uniforms.uWindFieldBlend.value=.37;
  const forces=[[-1,0,0,1,-.5],[0,1,1,0,.5],[F(Math.SQRT1_2),F(-Math.SQRT1_2),1,1,.5]];
  for(const root of[{x:-3600,z:4800,rot:.3,s:.72},{x:-3620,z:4790,rot:2.6,s:1.48},{x:12000,z:3000,rot:-.8,s:1}])forces.push(Array.from(treeRootWind(field,root,3.23)));
- const times=[0,.016,3.23,120.75,600.3,3600.55,21600.75,86400],{phase}=controls();let allocatedBytes=0,checks=0,shortMaximum=0,sixHourMaximum=0,dayMaximum=0;
+ const times=[0,.016,3.23,120.75,600.3,3600.55,21600.75,86400],{phase}=controls();let allocatedBytes=0,checks=0,shortMaximum=0,sixHourMaximum=0,dayMaximum=0,allVertices=0,allCorners=0,allVertexMaximum=0;
  for(const g of geometries){
+  const originalAttributes={...g.attributes},originalIndex=g.index;
+  const originalBytes=Object.fromEntries(Object.entries(originalAttributes).map(([name,a])=>[name,Buffer.from(a.array.buffer,a.array.byteOffset,a.array.byteLength).toString("base64")]));
   const coeff=prepareTreeWindCoefficients(g);allocatedBytes+=coeff.allocatedBytes;const p=g.attributes.position,w=g.attributes.aPlantWind;
+  // Every indexed corner is covered through its referenced row, not a sparse
+  // branch sample. This also guards source/cache arrays against in-place edits.
+  const checked=new Uint8Array(p.count);updateTreeWindCoefficientPhase(phase,600.3);
+  for(const row of g.index.array){
+   assert.ok(row<p.count);allCorners++;if(checked[row])continue;checked[row]=1;allVertices++;
+   const old=original(p.getY(row),[w.getX(row),w.getY(row),w.getZ(row)],forces[2],600.3);
+   const next=optimized(coeff,row,forces[2],phase);
+   allVertexMaximum=Math.max(allVertexMaximum,Math.hypot(next[0]-old[0],next[1]-old[1])*1.48);
+  }
+  assert.strictEqual(g.index,originalIndex);
+  for(const [name,a] of Object.entries(originalAttributes)){
+   assert.strictEqual(g.attributes[name],a);
+   assert.equal(Buffer.from(a.array.buffer,a.array.byteOffset,a.array.byteLength).toString("base64"),originalBytes[name],"source bytes: "+name);
+  }
   for(let i=0;i<p.count;i+=Math.max(1,Math.floor(p.count/64))){
    const weights=[w.getX(i),w.getY(i),w.getZ(i)];
    for(const time of times){updateTreeWindCoefficientPhase(phase,time);for(const force of forces){
@@ -150,10 +166,44 @@ test("actual high/mid static assets and root wind retain displacement within exp
    }}
   }
  }
- assert.equal(parts,30);assert.ok(checks>80000);
+ assert.equal(parts,30);assert.ok(checks>80000);assert.ok(allVertices>213000);assert.ok(allCorners>515000);assert.ok(allVertexMaximum<1.5e-6);
  assert.ok(shortMaximum<1.5e-6,"first ten minutes: less than 0.0015 mm");
  assert.ok(sixHourMaximum<3e-5,"six hours: less than 0.03 mm");
  assert.ok(dayMaximum<1.5e-4,"24 hours: less than 0.15 mm");
- t.diagnostic(JSON.stringify({checks,parts,allocatedBytes,maximumWorldMetres:{firstTenMinutes:shortMaximum,sixHours:sixHourMaximum,twentyFourHours:dayMaximum},maximumRootScale:1.48,note:"float32 CPU expression replay, not a GPU timing or driver-sin measurement"}));
+ t.diagnostic(JSON.stringify({checks,parts,allocatedBytes,allVertices,allCorners,allVertexMaximum,maximumWorldMetres:{firstTenMinutes:shortMaximum,sixHours:sixHourMaximum,twentyFourHours:dayMaximum},maximumRootScale:1.48,note:"float32 CPU expression replay, not a GPU timing or driver-sin measurement"}));
  field.dispose();pool.dispose();
+});
+
+
+test("static compile path removes original active wind inputs in both colour and depth without changing legacy runtime mode",()=>{
+ for(const mode of [1,5])for(const depth of [false,true]){
+  const controlsValue=controls(),m=configureSpruceMaterial(depth?new T.MeshDepthMaterial({alphaTest:.45}):new T.MeshStandardMaterial({alphaTest:.45}));
+  attachEcologyWind(m,{},mode,false,true);
+  const sourceKey=m.customProgramCacheKey();
+  installTreeWindCoefficients(m,{...controlsValue,compileTimeOnly:true});
+  const lib=T.ShaderLib[depth?"depth":"standard"],shader={uniforms:{},vertexShader:lib.vertexShader,fragmentShader:lib.fragmentShader};m.onBeforeCompile(shader);
+  assert.doesNotMatch(shader.vertexShader,/\baPlantWind\b|\becoWeights\b|uTreeWindCoefficients/);
+  assert.match(shader.vertexShader,/attribute vec4 aTreeWindCoefficients/);
+  assert.match(shader.vertexShader,/attribute float aTreeWindEddy/);
+  assert.equal(shader.uniforms.uTreeWindCoefficients,undefined);
+  assert.strictEqual(shader.uniforms.uTreeWindCoefficientPhase,controlsValue.phase);
+  const main=shader.vertexShader.slice(shader.vertexShader.indexOf("void main()"));
+  assert.doesNotMatch(main,/ecoBend\(/);
+  assert.ok(main.indexOf("treeWindAlong")>main.indexOf("// ECO_LOD_EARLY_END"));
+  assert.match(main,/transformed.xz \+= ecoOffset/);
+  assert.match(shader.fragmentShader,/float nearTree=1.-smoothstep\(42.,62.,vPlantDistance\)/);
+  assert.equal(m.customProgramCacheKey(),sourceKey+"-tree-wind-coefficients-v1-static");
+  assert.throws(()=>installTreeWindCoefficients(m,controlsValue),/Conflicting/);
+  m.dispose();
+ }
+});
+
+test("static URL is independent, opt-in, applied only to all photo crown hi/mid colour and depth, and advances phase when runtime toggle is off",async()=>{
+ const source=await readFile(new URL("./ecology.js",import.meta.url),"utf8");
+ assert.match(source,/get\("treeWindCoefficientsStatic"\)==="1"/);
+ assert.match(source,/get\("treeWindCoefficients"\)==="1"\?1:0/);
+ assert.match(source,/if\(this.treeWindCoefficients.value\|\|this.treeWindCoefficientsStatic\)\{/);
+ assert.match(source,/for\(const part of this.nearParts\)if\(\(part.mode===1\|\|part.mode===5\)&&part.mesh.material.alphaTest>0\)/);
+ assert.match(source,/for\(const material of \[part.mesh.material,part.mesh.customDepthMaterial\]\)installTreeWindCoefficients\(material,\{phase:this.treeWindPhase,enabled:this.treeWindCoefficients,compileTimeOnly:this.treeWindCoefficientsStatic\}\)/);
+ assert.match(source,/if\(this.treeWindCoefficients.value\|\|this.treeWindCoefficientsStatic\)updateTreeWindCoefficientPhase/);
 });

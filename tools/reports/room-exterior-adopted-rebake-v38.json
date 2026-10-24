@@ -1,0 +1,50 @@
+{
+  "operation": "full four-family radiative recomputation from freshly exported current terrain sources; no hash-only rebind",
+  "seconds": 133.989292417,
+  "backup": "backups/route-continuity-v38/exterior-full-rebake-c9d22cac3625/",
+  "recipeSHA256": "c9d22cac3625a79db5f640cb24c6cc982f45d95fd55db8f56ca09a88ba3c6594",
+  "steps": [
+    {
+      "script": "v2_room_exterior_terrain.py",
+      "seconds": 49.565601875
+    },
+    {
+      "script": "v2_room_exterior_aperture.py",
+      "seconds": 2.061770040999996
+    },
+    {
+      "script": "v2_room_exterior_ground.py",
+      "seconds": 4.0366800839999994
+    },
+    {
+      "script": "v2_room_exterior_ground_bounce.py",
+      "seconds": 78.30449433399998
+    }
+  ],
+  "fields": [
+    {
+      "name": "room-exterior-terrain-data.js",
+      "oldPayloadSHA256": "93be97cd9789356a2391e52c9bee73077806f6875ce96845ec8054b42c2bd602",
+      "newPayloadSHA256": "0cf6988c0b0a45a961899b90b87ac4dbabd2d915a227d7a6901ef02d3ca70dba",
+      "payloadSameAfterFullRecompute": false
+    },
+    {
+      "name": "room-exterior-aperture-data.js",
+      "oldPayloadSHA256": "ecc69ea2563ca1e65393a20d4097e6a8f589d740feeccd88eab9526c79412af8",
+      "newPayloadSHA256": "ecc69ea2563ca1e65393a20d4097e6a8f589d740feeccd88eab9526c79412af8",
+      "payloadSameAfterFullRecompute": true
+    },
+    {
+      "name": "room-exterior-ground-data.js",
+      "oldPayloadSHA256": "cdbe79ca07007e62f6d099f133d772500fb9d18c4569d80983d19a34b23cb3f1",
+      "newPayloadSHA256": "cdbe79ca07007e62f6d099f133d772500fb9d18c4569d80983d19a34b23cb3f1",
+      "payloadSameAfterFullRecompute": true
+    },
+    {
+      "name": "room-exterior-ground-bounce-data.js",
+      "oldPayloadSHA256": "2ecb952d452f1e1b3edeb49cc8cc3385d344ce2bbd7c97dc88fe2da4c61be914",
+      "newPayloadSHA256": "2ecb952d452f1e1b3edeb49cc8cc3385d344ce2bbd7c97dc88fe2da4c61be914",
+      "payloadSameAfterFullRecompute": true
+    }
+  ]
+}

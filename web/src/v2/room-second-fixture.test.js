@@ -1,3 +1,6 @@
+// This regression exercises the retained original guest-room source tables.
+globalThis.location={search:'?guestVanity38=0'};
+import {assertRoomFieldSamplingContract} from './room-field-contract.assert.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -5,7 +8,7 @@ import {readFile} from 'node:fs/promises';
 import * as THREE from 'three';
 import {ROOM_SECOND_FIXTURE_LOADERS} from './room-second-fixture-data.js';
 import {ROOM_FIXTURE_LOADERS} from './room-fixture-data.js';
-import {ROOM_BOUNCE_DATA} from './room-bounce-data.js';
+import {ROOM_BOUNCE_DATA} from './room-bounce-registry.js';
 import {RoomBounceField,decodeRoomField,ROOM_FIELD_GLSL} from './room-bounce-field.js';
 import {RoomFixtureTransport} from './room-fixture-transport.js';
 import {decodeSolarDirection} from './room-solar-transport.js';
@@ -65,7 +68,7 @@ test('two fixture reflections compose once, follow room controls, and A/B return
    runtime.fixtureControls.setMode(runtime.activeGuestRoom.id,'off');runtime.update(camera,0,-8);assert.equal(u.uRoomFieldActive.value,0);
    runtime.fixtureControls.setMode(runtime.activeGuestRoom.id,'auto');runtime.update(camera,0,-8);assert.deepEqual(tex.image.data,two);
   }
-  assert.equal((ROOM_FIELD_GLSL.match(/texture\(uRoomBounceField/g)||[]).length,4);
+  assertRoomFieldSamplingContract();
   assert.equal((ROOM_FIELD_GLSL.match(/sampler3D/g)||[]).length,1);
  }finally{runtime.dispose();}
 });

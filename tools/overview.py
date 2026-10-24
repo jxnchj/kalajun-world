@@ -8,11 +8,11 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.colors import LightSource
 
-from pathlib import Path
-import json
-_photo_config = Path(__file__).with_name("photos.local.json")
-_private_photos = json.loads(_photo_config.read_text()) if _photo_config.exists() else {}
-PHOTOS = {name: tuple(values[:2]) for name, values in _private_photos.items()}
+PHOTOS = {  # file stem suffix -> (lat, lon)
+    "011": (42.92234, 82.1652985), "015": (42.9222033, 82.165123), "022": (42.9222033, 82.165123),
+    "025": (42.921505, 82.165123), "031": (42.9216883, 82.1648712), "035": (42.927735, 82.1641158),
+    "215": (42.92825, 82.168235), "219": (42.919785, 82.168015),
+}
 
 def load(bounds):
     srcs = [rasterio.open(f) for f in sorted(glob.glob("data/raw/Copernicus_*.tif"))]

@@ -22,6 +22,11 @@ PUBLIC = ROOT / "web/public"
 MANIFEST = PUBLIC / "assets/v2/glb-transport-manifest.json"
 REPORT = ROOT / "tools/reports/glb-transport-report.json"
 ASSETS = (
+    ("gh_lanchuan_rooms_living39", "web/src/v2/generated/guest-living-source-39.json", "gh_lanchuan", "guestLiving39 candidate"),
+    ("gh_lanchuan_lodge_tables38", "web/src/v2/generated/lodge-tables-source-38.json", "gh_lanchuan_lodge", "lodgeTables38 candidate"),
+    ("gh_lanchuan_lodge_chairs38", "web/src/v2/generated/lodge-chairs-source-38.json", "gh_lanchuan_lodge", "lodgeChairs38 candidate"),
+    ("gh_lanchuan_rooms_vanity38", "web/src/v2/generated/guest-vanity-source-38.json", "gh_lanchuan", "guestVanity38 candidate"),
+    ("household_entry_tea", "web/src/v2/household-entry-steps.js", "household_entry_tea", "HouseholdEntrySteps.load"),
     ("household_living", "web/src/v2/household-living.js", "household_living", "HouseholdLiving.load"),
     ("gh_lanchuan_rooms", "web/src/v2/structures.js", "gh_lanchuan", "ASSET_OVERRIDES"),
     ("house_a_lived", "web/src/v2/settlement-assets.js", "house_a", "SETTLEMENT_ASSETS"),
@@ -31,7 +36,8 @@ ASSETS = (
 )
 # These complete-building sources were still raw in the first scene. Keep the
 # original loader path and original GLBs intact; only transport bytes change.
-LEGACY_ASSETS = ("barn", "house_b", "cabin_small", "lodge24", "gh_fj_hut", "gh_fj_lodge", "gh_fj_shed", "gh_lanchuan_lodge", "gh_tl_wing", "gh_tl_main", "gh_qk_cabin", "gh_qk_long", "haystack", "swing", "yurt_deck")
+LEGACY_ASSETS = (
+    ("gh_lanchuan_lodge_chairs38", "web/src/v2/generated/lodge-chairs-source-38.json", "gh_lanchuan_lodge", "lodgeChairs38 candidate"),"barn", "house_b", "cabin_small", "lodge24", "gh_fj_hut", "gh_fj_lodge", "gh_fj_shed", "gh_lanchuan_lodge", "gh_tl_wing", "gh_tl_main", "gh_qk_cabin", "gh_qk_long", "haystack", "swing", "yurt_deck")
 ASSETS += tuple((name, "web/src/v2/structures.js", name, "WorldStructures._loadAsset") for name in LEGACY_ASSETS)
 
 
@@ -77,9 +83,13 @@ def write_atomic(path, data):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="verify all generated assets without writing")
+    parser.add_argument("--only", action="append", choices=[a[0] for a in ASSETS], help="build/check selected entries, preserving other registered transports")
     args = parser.parse_args()
     entries, details, payloads, original_states = {}, [], {}, {}
-    for name, module, asset_id, symbol in ASSETS:
+    if args.only:
+        entries = json.loads(MANIFEST.read_text())["assets"]
+    selected = [a for a in ASSETS if not args.only or a[0] in args.only]
+    for name, module, asset_id, symbol in selected:
         key = ("assets/" if name in LEGACY_ASSETS else "assets/v2/") + name + ".glb"
         source = PUBLIC / key
         if not source.is_file():
@@ -112,7 +122,7 @@ def main():
     manifest = {"schemaVersion": 1, "encoding": "gzip", "gzipMtime": 0, "assets": entries, "totals": totals}
     report = {"schemaVersion": 1, "generator": "tools/build_glb_transport.py",
               "generatorSHA256": sha(Path(__file__).read_bytes()), "zlibVersion": zlib.ZLIB_VERSION,
-              "scope": "Twenty current initial-load structure/spruce GLBs; original GLBs preserved",
+              "scope": ("Selected transports only: " + ",".join(args.only) if args.only else "Current structure/spruce GLBs and the entity-specific tea entry; original GLBs preserved"),
               "gzip": {"level": 9, "mtime": 0, "filename": "", "os": 255, "filesystemMtime": 0},
               "manifest": str(MANIFEST.relative_to(ROOT)), "totals": totals, "assets": details,
               "validation": {"originalGLBsReadOnly": True, "exactDecompression": True,
@@ -121,7 +131,8 @@ def main():
     def serialized(value):
         return (json.dumps(value, indent=2, ensure_ascii=False) + "\n").encode()
     payloads[MANIFEST] = serialized(manifest)
-    payloads[REPORT] = serialized(report)
+    report_path = REPORT.with_name("glb-transport-selected-report.json") if args.only else REPORT
+    payloads[report_path] = serialized(report)
     if not args.check:
         for path, payload in payloads.items():
             write_atomic(path, payload)

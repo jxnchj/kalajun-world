@@ -1,3 +1,5 @@
+import {createTerrainShadowDomain} from './terrain-shadow-domain.js';
+import {TerrainSiblingBatches} from "./terrain-sibling-batches.js";
 import {yieldWorldPreparation} from "./preparation-yield.js";
 import * as THREE from "three";
 import { createTerrainMaterial, terrainRockFraction, TERRAIN_SHORE_SAMPLING } from "./terrain-material.js";
@@ -91,14 +93,17 @@ export class WorldTerrain {
       throw new TypeError("WorldTerrain requires surface.heightAt, surface.normalAt and landcoverAt.");
     }
     this.world = world;
+    this.forestBankSubdivision38 = new URLSearchParams(globalThis.location?.search||"").get("forestBankSubdivision38")!=="0";
     this.size = Number(world.meta?.far?.size) || 81920;
     if (!(this.size > 0) || !Number.isFinite(this.size)) throw new RangeError("Invalid terrain extent.");
     this.group = new THREE.Group();
     this.group.name = "WorldTerrainV2";
+    this.submissionBatches=new TerrainSiblingBatches(this.group,{enabled:new URLSearchParams(globalThis.location?.search||"").get("terrainBatches")==="1"});
     const surfaceMaterial = createTerrainMaterial();
     this.textures = surfaceMaterial.textures;
     this.loadSurfaces = surfaceMaterial.loadReferences;
     this.material = surfaceMaterial.material;
+    this.shadowDomain=createTerrainShadowDomain(this.group,this.material,{enabled:new URLSearchParams(globalThis.location?.search||"").get("terrainShadowDomain38")==="1",available:()=>!this.submissionBatches.enabled});
     this.materials = [this.material]; // Caller may register once with CSM.setupMaterial.
     this.roots = [];
     this.queue = [];
@@ -132,7 +137,7 @@ export class WorldTerrain {
     this.stats = {
       visibleTiles: 0, residentTiles: 0, queuedTiles: 0, triangles: 0, morphingGroups: 0,
       minSpacing: this.size / BASE_TILES / GRID, maxSpacing: this.size / BASE_TILES / GRID,
-      buildMs: 0, initialBuildMs: 0, generatedTiles: 0, maxDepth: this.maxDepth, sampleCache: this.sampleCache.stats, tileCache: this.tileCache.stats, restoredTiles: 0,
+      shadowDomain:this.shadowDomain?.stats??null, submissionBatches:this.submissionBatches.stats, buildMs: 0, initialBuildMs: 0, generatedTiles: 0, maxDepth: this.maxDepth, sampleCache: this.sampleCache.stats, tileCache: this.tileCache.stats, restoredTiles: 0,
     };
     const start = now(), s = this.size / BASE_TILES;
     // Complete coarse coverage is present before the first update. All later
@@ -142,7 +147,7 @@ export class WorldTerrain {
       const job = this._job(node);
       while (job.row <= GRID) this._buildRow(job);
       this._finish(job);
-      node.mesh.visible = true;
+      node.mesh.visible = true;this.shadowDomain?.touch();
       this.roots.push(node);
     }
     this.stats.initialBuildMs = now() - start;
@@ -349,6 +354,7 @@ export class WorldTerrain {
     mesh.castShadow = node.size <= 640;
     mesh.visible = false;
     mesh.userData.terrainTile = { x: node.x, z: node.z, size: node.size, spacing: node.size / GRID, depth: node.depth };
+    this.shadowDomain?.add(mesh);
     this.group.add(mesh);
     node.mesh = mesh; node.job = null; node.heights = heights; node.centers = centers; node.minHeight = minHeight; node.maxHeight = maxHeight;
     this._activate(node.parent);
@@ -432,6 +438,7 @@ export class WorldTerrain {
   }
 
   _morphWeight(parent, weight) {
+    if(parent.morphWeight!==weight)this.shadowDomain?.touch();
     parent.morphWeight = weight;
     for (const child of parent.children || []) if (child.mesh?.morphTargetInfluences?.length) child.mesh.morphTargetInfluences[0] = weight;
   }
@@ -463,6 +470,7 @@ export class WorldTerrain {
 
   _activate(parent) {
     if (!parent || parent.dead || parent.split || !parent.wantsSplit || !parent.children?.every((c) => c.mesh)) return;
+    this.shadowDomain?.touch();
     parent.mesh.visible = false;
     parent.split = true;
     for (const child of parent.children) child.mesh.visible = true;
@@ -505,6 +513,7 @@ export class WorldTerrain {
 
   _merge(node) {
     // The retained parent mesh is ready, so there is no frame with missing land.
+    this.shadowDomain?.touch();
     node.mesh.visible = true;
     if (node.children) for (const c of node.children) this._release(c);
     node.children = null; node.split = false; node.wantsSplit = false;
@@ -562,7 +571,20 @@ export class WorldTerrain {
     else return 0;
     if (!node.riverOverlaps.has(minWidth)) node.riverOverlaps.set(minWidth, this.world.hydrology.intersectsBounds(node.bounds, { minWidth }));
     if (!node.riverOverlaps.get(minWidth)) return 0;
-    return Math.min(this.regularDepth, Math.ceil(Math.log2((this.size / BASE_TILES) / (GRID * spacing))));
+    let depthLimit=this.regularDepth;
+    // Resolve the original narrow curved section, not a new river shape. The
+    // existing parent-edge inheritance/skirt path also serves foundation tiles
+    // beyond regularDepth, so this uses that same local refinement mechanism.
+    if(this.forestBankSubdivision38&&d<48){
+      if(node.forestBankSubdivision38===undefined){
+        const cx=node.x+node.size/2,cz=node.z+node.size/2,r=node.size*Math.SQRT1_2;
+        node.forestBankSubdivision38=Math.hypot(cx+3611.9813305250705,cz-4805.371282289286)<36+r
+          &&this.world.hydrology.nearSegments(cx,cz,r+4).some(s=>s.lineId==="river-41711e76-99c57ca2"
+            &&s.bounds.minX<node.bounds.maxX&&s.bounds.maxX>node.bounds.minX&&s.bounds.minZ<node.bounds.maxZ&&s.bounds.maxZ>node.bounds.minZ);
+      }
+      if(node.forestBankSubdivision38){spacing=.15625;depthLimit=this.maxDepth;}
+    }
+    return Math.min(depthLimit, Math.ceil(Math.log2((this.size / BASE_TILES) / (GRID * spacing))));
   }
 
   _plan(node) {
@@ -647,6 +669,14 @@ export class WorldTerrain {
         }
         nearReady = nearQuiet >= 3; ready = quiet >= 3;
         if (ready || (waitFor === "near" && nearReady)) break;
+        if (this.queue[0]?.workerPending) {
+          // scheduler.yield continuations can outrank worker message tasks.
+          // Waiting for a result has no local work: yield a real event-loop turn
+          // instead of spinning/replanning and starving result/error delivery.
+          await new Promise(resolve => setTimeout(resolve, 0));
+          lastYield = now();
+          continue;
+        }
         if (now() - lastYield >= 12) {
           if (token === this._prepareToken) onProgress?.({ ...result(), reason: "preparing" });
           // Yield to input/rendering without requiring a GPU-bound animation
@@ -665,6 +695,7 @@ export class WorldTerrain {
 
   update(camera, dt = 1 / 60, { preparationToken = 0 } = {}) {
     if (this.disposed || (this._activePreparation && preparationToken !== this._activePreparation)) return;
+    this.submissionBatches.restore();
     this._camera.copy(camera.position);
     this._advanceMorphs(Math.max(0, Math.min(Number.isFinite(dt) ? dt : 0, 1)));
     camera.updateMatrixWorld();
@@ -683,21 +714,36 @@ export class WorldTerrain {
       if (!this.queue.length) break;
       const job = this.queue[0];
       if (job.node.dead || job.node.mesh) { this.queue.shift(); continue; }
-      this._buildRow(job);
+      if(this.rowWorker?.ready){
+        // Submit only the next bounded jobs. Keep original queue order and the
+        // same per-frame upload ceiling; parents stay visible until all four
+        // children are uploaded. No extra hidden meshes or lower-detail proxy.
+        for(const candidate of this.queue){
+          if(this.rowWorker.pending.size>=this.rowWorker.limit)break;
+          if(!candidate.node.dead)this.rowWorker.enqueue(candidate);
+        }
+      }
+      if(job.workerPayload){Object.assign(job,job.workerPayload);delete job.workerPayload;}
+      else if(job.workerPending)break;
+      else this._buildRow(job);
       if (job.row > GRID) { this.queue.shift(); this._finish(job); uploads++; }
     }
     this.stats.buildMs = now() - start;
     this._measure();
+    this.submissionBatches.update(this.liveNodes);
   }
 
   dispose() {
     if (this.disposed) return;
     this.disposed = true;
+    this.rowWorker?.dispose();
+    this.submissionBatches.dispose();
     this._prepareToken++;
     for (const root of this.roots) this._release(root);
     this.queue.length = 0; this.roots.length = 0; this.morphs.clear();
     for (const texture of Object.values(this.textures)) texture.dispose();
     this.sampleCache.dispose(); this.tileCache.dispose(); this.landform=null;
+    this.shadowDomain?.dispose();
     this.material.dispose(); this.group.clear(); this._measure();
   }
 }

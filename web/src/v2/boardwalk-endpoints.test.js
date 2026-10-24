@@ -1,0 +1,55 @@
+// Node uses actual local texture bytes and the production checksum loader; image decoding is a structural-test stub.
+const nativeFetch=globalThis.fetch;
+globalThis.fetch=async(url,...args)=>String(url).startsWith('./assets/')?new Response(readFileSync(new URL('../../public/'+String(url).replace(/^\.\//,'').split('?')[0],import.meta.url))):nativeFetch(url,...args);
+globalThis.createImageBitmap=async blob=>({width:1,height:1,byteLength:blob.size,close(){}});
+import test from 'node:test';import assert from 'node:assert/strict';import * as T from 'three';import {readFileSync} from 'node:fs';import {gunzipSync} from 'node:zlib';import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {createWorldData,decodeHeightBytes} from './world-data.js';import {WorldStructures} from './structures.js';import {WorldDoors} from './doors.js';import {WorldCollision,WALK_BODY} from './collision.js';import {boardwalkViewpoints,boardwalkTimber,boardwalkRoutePoints} from './boardwalk-timber.js';import {BOARDWALK_ENDPOINTS,BOARDWALK_CABIN} from './boardwalk-endpoints.js';
+function actual(){const root=new URL('../../public/',import.meta.url),j=n=>JSON.parse(readFileSync(new URL(n,root))),b=n=>new Uint8Array(gunzipSync(readFileSync(new URL(n,root)))),meta=j('data/scene.json'),lc={width:1,height:1,data:new Uint8Array([255,128,0,255])};return createWorldData({meta,objects:j('data/objects.json'),detailMeta:j('data/detail.json'),manifest:j('world-v2/manifest.json'),streamData:j('data/streams.json'),coreHeights:decodeHeightBytes(b('data/core_height.bin.gz'),meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(b('data/far_height.bin.gz'),meta.far.n,meta.height_scale),detailBytes:b('data/detail.bin.gz'),coreLandcover:lc,farLandcover:lc});}
+async function loadAsset(url){const b=readFileSync(new URL('../../public/'+url.replace(/^\.\//,''),import.meta.url)),loader=new GLTFLoader();loader.register(()=>({name:'node-texture',loadTexture:()=>Promise.resolve(new T.Texture())}));return loader.parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'');}
+const matrix=q=>new T.Matrix4().compose(new T.Vector3(q.x,q.y,q.z),new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),q.rot),new T.Vector3(q.scale.x,q.scale.y,q.scale.z));
+test('all four original route entrances and audited endpoint coverage, no invented open-land buildings',()=>{
+ const world=actual(),views=boardwalkViewpoints(world),c=new WorldCollision(world,{structures:{_templates:new Map()}});
+ assert.deepEqual(views.map(v=>v.id),[0,1,2,3].map(i=>'walk-boardwalk-'+i));assert.equal(views[2].name,'牧居木步道 · 连续通行');assert.equal(views[3].name,'岚川木步阶 · 沿原路');assert.equal(BOARDWALK_ENDPOINTS[1].start,null);assert.equal(BOARDWALK_ENDPOINTS[1].end,null);
+ for(const id of BOARDWALK_ENDPOINTS.flatMap(e=>[e.start,e.end]).filter(Boolean))assert.ok(c.entries.some(e=>e.entity.id===id),id);
+ const line=world.objects.boardwalks[0],saved=JSON.stringify(line),derived=boardwalkRoutePoints(world,0,line);assert.equal(JSON.stringify(line),saved);assert.deepEqual(derived.points.slice(0,-1),line.pts.slice(0,-1));assert.deepEqual(derived.correction.endLocal,[0,6.65]);assert.ok(derived.correction.displacement>4.8&&derived.correction.displacement<5);
+ const previous=globalThis.location;try{globalThis.location={search:'?boardwalkEndpoint=0'};assert.strictEqual(boardwalkRoutePoints(world,0,line).points,line.pts);}finally{globalThis.location=previous;}
+ assert.equal(c.entries.filter(e=>e.entity.assetId==='cabin_small').length,1);assert.equal(c.entries.find(e=>e.entity.assetId==='cabin_small').entity.id,BOARDWALK_CABIN.entityId);c.dispose();
+});
+test('real cabin source doors retain all instances but only boardwalk endpoint is interactive',async()=>{
+ const world=actual(),entities=world.entities.filter(e=>e.assetId===BOARDWALK_CABIN.assetId),g=await loadAsset('./assets/cabin_small.glb');
+ const original=[];g.scene.updateMatrixWorld(true);g.scene.getObjectByName(BOARDWALK_CABIN.name).traverse(n=>{if(n.isMesh)original.push({material:n.material,geometry:n.geometry,positions:Array.from({length:n.geometry.attributes.position.count},(_,i)=>new T.Vector3().fromBufferAttribute(n.geometry.attributes.position,i).applyMatrix4(n.matrixWorld))});});
+ const doors=new WorldDoors();try{doors.captureAsset(BOARDWALK_CABIN.assetId,g.scene,m=>m);doors.place({...world,entities});assert.equal(doors.entries.size,1);assert.equal(doors.leaves.length,1);assert.equal(doors.entries.has(BOARDWALK_CABIN.entityId),true);assert.equal(doors.toggle(entities.find(e=>e.id!==BOARDWALK_CABIN.entityId).id),false);
+ for(const mesh of doors.group.children){assert.equal(mesh.count,entities.length);const part=original.find(p=>p.material===mesh.material);assert.ok(part);for(let n=0;n<entities.length;n++){const im=new T.Matrix4();mesh.getMatrixAt(n,im);const bm=matrix(world.surface.buildingPose(entities[n]));for(let i=0;i<part.positions.length;i++)assert.ok(new T.Vector3().fromBufferAttribute(mesh.geometry.attributes.position,i).applyMatrix4(im).distanceTo(part.positions[i].clone().applyMatrix4(bm))<.0003);}}
+ }finally{doors.dispose();}
+});
+test('actual endpoint cabin wall and closed door block; authored doorway opens and supports reversible walk',async t=>{
+ const world=actual(),entity=world.entities.find(e=>e.id===BOARDWALK_CABIN.entityId),q=world.surface.buildingPose(entity),bm=matrix(q),inverse=bm.clone().invert(),doors=new WorldDoors(),structures=new WorldStructures({...world,entities:[entity]},{doors,loadAsset,preparedAssets:false,cooperativePreparation:false});await structures.load();
+ const c=new WorldCollision(world,{structures,doors});doors.motionGuard=(leaf,next)=>c.allowDoorMotion(leaf,next);
+ const point=([x,z])=>new T.Vector3(x,0,z).applyMatrix4(bm),route=boardwalkTimber(world).routes[0],first=route.steps[0],p=new T.Vector3(first.x,first.top+WALK_BODY.eye+.04,first.z);
+ const local=()=>p.clone().applyMatrix4(inverse),walkTo=(pt,max=900)=>{const a=point(pt);for(let i=0;i<max;i++){const dx=a.x-p.x,dz=a.z-p.z,d=Math.hypot(dx,dz);if(d<.06)return true;c.move(p,new T.Vector3(dx/d*Math.min(.04,d),0,dz/d*Math.min(.04,d)),1/60);}return false;};
+ try{
+ t.diagnostic(JSON.stringify({q,routeEnd:new T.Vector3(...[world.objects.boardwalks[0].pts.at(-1)[0],q.y,world.objects.boardwalks[0].pts.at(-1)[1]]).applyMatrix4(inverse).toArray()}));
+ await c.enable(p);
+ // The derived final segment joins the original centre stair rather than
+ // the legacy endpoint behind the wall/railing. Follow every derived tread.
+ let approach=0;for(const step of route.steps){const at=new T.Vector3(step.x,q.y,step.z).applyMatrix4(inverse);if(at.z<4.2)break;assert.ok(walkTo([at.x,at.z]),JSON.stringify({phase:'boardwalk-approach',approach,local:local().toArray()}));approach++;}
+ assert.ok(approach>route.steps.length*.8);assert.ok(c.near.has(entity.id));assert.equal(c.dynamic.size,1);
+ assert.ok(walkTo([0,4]),JSON.stringify({phase:'porch',local:local().toArray()}));
+ assert.equal(walkTo([0,2.4],180),false);assert.ok(local().z>3.1,JSON.stringify({phase:'closed',local:local().toArray()}));
+ doors.toggle(entity.id);for(let i=0;i<120;i++)doors.update(null,1/60);assert.equal(doors.leaves[0].angle,1.75);
+ assert.ok(walkTo([0,2.4]),JSON.stringify({phase:'open',local:local().toArray()}));assert.ok(walkTo([0,1]),JSON.stringify({phase:'inside',local:local().toArray()}));assert.equal(c.overlaps(p),false);
+ assert.ok(walkTo([0,3.1]));doors.toggle(entity.id);for(let i=0;i<120;i++)doors.update(null,1/60);assert.ok(doors.leaves[0].blocked);assert.ok(doors.leaves[0].angle>0);
+ assert.ok(walkTo([0,4]));for(let i=0;i<120;i++)doors.update(null,1/60);assert.equal(doors.leaves[0].angle,0);assert.ok(walkTo([0,7]));for(const step of [...route.steps].reverse()){const at=new T.Vector3(step.x,q.y,step.z).applyMatrix4(inverse);assert.ok(walkTo([at.x,at.z]),JSON.stringify({phase:'cabin-boardwalk-return',local:local().toArray()}));}assert.equal(c.overlaps(p),false);
+ c.disable();p.copy(point([-5.4,0]));p.y=Math.max(q.y+WALK_BODY.eye+.04,world.surface.heightAt(p.x,p.z)+WALK_BODY.eye+.04);await c.enable(p);assert.equal(walkTo([0,0],150),false);assert.ok(local().x<-4.2,JSON.stringify({phase:'wall',local:local().toArray()}));
+ t.diagnostic(JSON.stringify({doorTriangles:doors.stats.triangles,staticTriangles:structures.stats.triangles,local:local().toArray()}));
+ }finally{c.dispose();doors.dispose();structures.dispose();}
+});
+test('route-two actual yurt endpoint retains closed-leaf and wall collisions and crouched open-door access',async t=>{
+ const world=actual(),entity=world.entities.find(e=>e.id===BOARDWALK_ENDPOINTS[2].end),q=world.surface.buildingPose(entity),bm=matrix(q),inverse=bm.clone().invert(),doors=new WorldDoors(),structures=new WorldStructures({...world,entities:[entity]},{doors,loadAsset,preparedAssets:false,cooperativePreparation:false});await structures.load();const c=new WorldCollision(world,{structures,doors});doors.motionGuard=(leaf,next)=>c.allowDoorMotion(leaf,next);
+ const point=([x,z])=>new T.Vector3(x,0,z).applyMatrix4(bm),route=boardwalkTimber(world).routes[2],first=route.steps[0],p=new T.Vector3(first.x,first.top+WALK_BODY.eye+.04,first.z);
+ const walkTo=(pt,max=350)=>{const a=point(pt);for(let i=0;i<max;i++){const dx=a.x-p.x,dz=a.z-p.z,d=Math.hypot(dx,dz);if(d<.06)return true;c.move(p,new T.Vector3(dx/d*Math.min(.035,d),0,dz/d*Math.min(.035,d)),1/60,{crouch:true});}return false;};
+ try{await c.enable(p);for(const step of route.steps){const at=new T.Vector3(step.x,q.y,step.z).applyMatrix4(inverse);assert.ok(walkTo([at.x,at.z]),JSON.stringify({phase:'yurt-boardwalk',target:at.toArray(),local:p.clone().applyMatrix4(inverse).toArray()}));}assert.ok(walkTo([0,4.6]));const entry=doors.entries.get(entity.id);if(entry.target)doors.toggle(entity.id);for(let i=0;i<140;i++)doors.update(null,1/60);assert.ok(entry.leaves.every(l=>l.angle===0));assert.equal(walkTo([0,2.3],100),false);assert.ok(p.clone().applyMatrix4(inverse).z>3.558);
+ doors.toggle(entity.id);for(let i=0;i<140;i++)doors.update(null,1/60);assert.ok(entry.leaves.some(l=>l.blocked),'outward original leaves stop against character');assert.ok(walkTo([0,4.6]));for(let i=0;i<140;i++)doors.update(null,1/60);assert.ok(entry.leaves.every(l=>Math.abs(l.angle)>.2));assert.ok(walkTo([0,2.3]),JSON.stringify({local:p.clone().applyMatrix4(inverse).toArray()}));assert.ok(walkTo([0,4.6]));for(const step of [...route.steps].reverse()){const at=new T.Vector3(step.x,q.y,step.z).applyMatrix4(inverse);assert.ok(walkTo([at.x,at.z]),JSON.stringify({phase:'yurt-boardwalk-return',local:p.clone().applyMatrix4(inverse).toArray()}));}assert.equal(c.overlaps(p),false);
+ c.disable();p.copy(point([4.1,0]));p.y=Math.max(q.y+WALK_BODY.eye+.04,world.surface.heightAt(p.x,p.z)+WALK_BODY.eye+.04);await c.enable(p);assert.equal(walkTo([0,0],100),false);assert.ok(p.clone().applyMatrix4(inverse).x>3.5);t.diagnostic(JSON.stringify({entity:entity.id,local:p.clone().applyMatrix4(inverse).toArray()}));
+ }finally{c.dispose();doors.dispose();structures.dispose();}
+});

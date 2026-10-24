@@ -1,0 +1,275 @@
+{
+  "blenderVersion": "5.2.2 LTS",
+  "blenderBuildHash": "d13f752e3b9c",
+  "version": "household-entry-tea-34",
+  "geometryRevision": "front-bevel-17p111mm",
+  "entityId": "cabins:-1972,3678:784f73bf0ba94d17",
+  "householdStyle": 0,
+  "sourceBlend": "assets/src/v2/pastoral/household-entry-tea-34.blend",
+  "blendSHA256": "a717f7514fd9d7f312801faf3e78884bf5387a6c64a6b642ed6a1247aa2c4836",
+  "sourceGLB": "assets/v2/household_entry_tea.glb",
+  "sourceSHA256": "277e71e74629dbe081813b900900d6824e7ad769b865d13603ccae309ff1f5dd",
+  "recipe": "assets/src/v2/pastoral/household-entry-tea-34.recipe.json",
+  "recipeSHA256": "677d40d12d2f0908e3a4fd5d1030d8cd3b5e394069d11d8fb5ab883dd6d4f204",
+  "triangles": 2752,
+  "bakedOcclusion": {
+    "vertices": 4992,
+    "minAO": 0.25,
+    "maxAO": 1.0,
+    "minSky": 0.0,
+    "maxSky": 1.0
+  },
+  "stones": [
+    {
+      "name": "entry_course_0_tread_0",
+      "kind": "tread",
+      "course": 0,
+      "triangles": 68
+    },
+    {
+      "name": "entry_course_0_tread_1",
+      "kind": "tread",
+      "course": 0,
+      "triangles": 68
+    },
+    {
+      "name": "entry_course_0_bedding_0_0",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_0_bedding_0_1",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_0_bedding_0_2",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_0_bedding_1_0",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_0_bedding_1_1",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_0_bedding_2_0",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_0_bedding_2_1",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_0_bedding_2_2",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_0_bedding_3_0",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_0_bedding_3_1",
+      "kind": "bedding",
+      "course": 0,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_1_tread_0",
+      "kind": "tread",
+      "course": 1,
+      "triangles": 68
+    },
+    {
+      "name": "entry_course_1_tread_1",
+      "kind": "tread",
+      "course": 1,
+      "triangles": 68
+    },
+    {
+      "name": "entry_course_1_bedding_0_0",
+      "kind": "bedding",
+      "course": 1,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_1_bedding_0_1",
+      "kind": "bedding",
+      "course": 1,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_1_bedding_1_0",
+      "kind": "bedding",
+      "course": 1,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_1_bedding_1_1",
+      "kind": "bedding",
+      "course": 1,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_1_bedding_1_2",
+      "kind": "bedding",
+      "course": 1,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_1_bedding_2_0",
+      "kind": "bedding",
+      "course": 1,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_1_bedding_2_1",
+      "kind": "bedding",
+      "course": 1,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_2_tread_0",
+      "kind": "tread",
+      "course": 2,
+      "triangles": 68
+    },
+    {
+      "name": "entry_course_2_tread_1",
+      "kind": "tread",
+      "course": 2,
+      "triangles": 68
+    },
+    {
+      "name": "entry_course_2_bedding_0_0",
+      "kind": "bedding",
+      "course": 2,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_2_bedding_0_1",
+      "kind": "bedding",
+      "course": 2,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_2_bedding_0_2",
+      "kind": "bedding",
+      "course": 2,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_2_bedding_1_0",
+      "kind": "bedding",
+      "course": 2,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_2_bedding_1_1",
+      "kind": "bedding",
+      "course": 2,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_3_tread_0",
+      "kind": "tread",
+      "course": 3,
+      "triangles": 68
+    },
+    {
+      "name": "entry_course_3_tread_1",
+      "kind": "tread",
+      "course": 3,
+      "triangles": 68
+    },
+    {
+      "name": "entry_course_3_bedding_0_0",
+      "kind": "bedding",
+      "course": 3,
+      "triangles": 92
+    },
+    {
+      "name": "entry_course_3_bedding_0_1",
+      "kind": "bedding",
+      "course": 3,
+      "triangles": 92
+    }
+  ],
+  "courses": [
+    {
+      "x0": 0.23,
+      "x1": 1.77,
+      "z0": 4.76,
+      "z1": 5.2215384615384615,
+      "top": -0.36,
+      "bottom": -0.9430338728880815,
+      "groundRise": 0.5077320838796732
+    },
+    {
+      "x0": 0.23,
+      "x1": 1.77,
+      "z0": 5.2215384615384615,
+      "z1": 5.683076923076923,
+      "top": -0.53,
+      "bottom": -0.9912685342415716,
+      "groundRise": 0.3859474048665288
+    },
+    {
+      "x0": 0.23,
+      "x1": 1.77,
+      "z0": 5.683076923076923,
+      "z1": 6.144615384615385,
+      "top": -0.7,
+      "bottom": -1.0465969875877636,
+      "groundRise": 0.2722614534557579
+    },
+    {
+      "x0": 0.23,
+      "x1": 1.77,
+      "z0": 6.144615384615385,
+      "z1": 6.606153846153846,
+      "top": -0.8700000000000001,
+      "bottom": -1.1047702705319171,
+      "groundRise": 0.16041539603373156
+    }
+  ],
+  "newTextures": 0,
+  "canonicalMaterial": "stone",
+  "unchangedOriginalSources": {
+    "assets/src/v2/pastoral/house_a-lived.blend": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+    "assets/src/v2/pastoral/household-living-32.blend": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4"
+  },
+  "scope": "One designed tea-house approach only; original house, all other households and global color/light untouched.",
+  "limits": [
+    "Static local AO/sky are not complete dynamic GI.",
+    "Matching entity-specific indoor transport must be rebuilt after edits.",
+    "Browser multi-angle and walking acceptance remains required."
+  ],
+  "handoffOriginalSources": {
+    "assets/src/v2/pastoral/house_a-lived.blend": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+    "assets/src/v2/pastoral/household-living-32.blend": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4"
+  },
+  "localSourceBinding": {
+    "version": "v35",
+    "verification": "tools/reports/entry-source-rebinding-v35.json",
+    "reason": "Rebind verified identical render/GI inputs from sanitized source copies to retained canonical sources. Original handoff hashes remain recorded. No source geometry or GLB bytes rewritten. Entity GI is separately rebaked from the canonical source."
+  }
+}

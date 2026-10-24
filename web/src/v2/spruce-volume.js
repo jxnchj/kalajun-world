@@ -12,9 +12,9 @@ function sourceCounts(source,mid){
 // Exact complete-attribute indexing: unlike positional welding this cannot
 // merge a UV seam, wind phase, normal, AO or readiness boundary.
 export function indexSpruceVolume(g, patches, {merge=true,audit=false}={}){
- const attrs=Object.entries(g.attributes).map(([name,a])=>({name,a,size:a.itemSize,bits:new Uint32Array(a.array.buffer,a.array.byteOffset,a.array.length)})),count=g.attributes.position.count,heads=new Map(),next=new Int32Array(count).fill(-1),unique=[],indices=new Uint32Array(count);
+ const attrs=Object.entries(g.attributes).map(([name,a])=>({name,a,size:a.itemSize,bits:new Uint32Array(a.array.buffer,a.array.byteOffset,a.array.length)})),count=g.attributes.position.count,heads=new Map(),next=new Int32Array(count).fill(-1),unique=new Uint32Array(count),indices=new Uint32Array(count);let uniqueCount=0;
  const equal=(a,b)=>{for(const x of attrs)for(let k=0;k<x.size;k++)if(x.bits[a*x.size+k]!==x.bits[b*x.size+k])return false;return true;};
- for(let i=0;i<count;i++){let hash=2166136261;for(const x of attrs)for(let k=0;k<x.size;k++)hash=Math.imul(hash^x.bits[i*x.size+k],16777619)>>>0;let j=heads.get(hash)??-1;while(j>=0&&!equal(i,unique[j]))j=next[j];if(j<0){j=unique.length;unique.push(i);next[j]=heads.get(hash)??-1;heads.set(hash,j);}indices[i]=j;}
+ for(let i=0;i<count;i++){let hash=2166136261;for(const x of attrs)for(let k=0;k<x.size;k++)hash=Math.imul(hash^x.bits[i*x.size+k],16777619)>>>0;let j=heads.get(hash)??-1;while(j>=0&&!equal(i,unique[j]))j=next[j];if(j<0){j=uniqueCount++;unique[j]=i;next[j]=heads.get(hash)??-1;heads.set(hash,j);}indices[i]=j;}
  const value=(id,key,k)=>g.attributes[key].array[unique[id]*g.attributes[key].itemSize+k],result=[],outPatches=[],errors=Object.fromEntries(attrs.map(x=>[x.name,0]));let removed=0;
  const canRemove=(x,a,b)=>{
   const d=[0,1,2].map(k=>value(b,'position',k)-value(a,'position',k)),v=[0,1,2].map(k=>value(x,'position',k)-value(a,'position',k)),l=d.reduce((n,z)=>n+z*z,0);if(l<1e-12)return false;const t=d.reduce((n,z,k)=>n+z*v[k],0)/l;if(t<=1e-6||t>=1-1e-6)return false;
@@ -28,10 +28,14 @@ export function indexSpruceVolume(g, patches, {merge=true,audit=false}={}){
  }
  // Remove only vertices made unused by the proved coplanar merge. All kept
  // rows are byte copies of the previous candidate; no coordinate quantization.
- const used=new Map(),rows=[];for(let i=0;i<result.length;i++){const old=result[i];if(!used.has(old)){used.set(old,rows.length);rows.push(unique[old]);}result[i]=used.get(old);}
- for(const{name,a,size}of attrs){const data=new Float32Array(rows.length*size);for(let i=0;i<rows.length;i++)data.set(a.array.subarray(rows[i]*size,(rows[i]+1)*size),i*size);g.setAttribute(name,new THREE.BufferAttribute(data,size,a.normalized));}
- g.setIndex(new THREE.BufferAttribute(rows.length<=65535?Uint16Array.from(result):Uint32Array.from(result),1));
- const report={beforeVertices:count,afterVertices:rows.length,beforeTriangles:count/3,afterTriangles:result.length/3,coplanarTrianglesRemoved:removed,maximumMergeAttributeError:errors,indexBytes:g.index.array.byteLength};if(audit)report.patches=outPatches;return report;
+ // Vertex IDs are dense integers. Reuse bounded tables instead of allocating
+ // a Map entry and five typed subarray views for every retained vertex. Copy
+ // the Float32 bit patterns directly, preserving signed zero and every seam.
+ const used=new Int32Array(uniqueCount).fill(-1),rows=new Uint32Array(uniqueCount);let rowCount=0;
+ for(let i=0;i<result.length;i++){const old=result[i];if(used[old]<0){used[old]=rowCount;rows[rowCount++]=unique[old];}result[i]=used[old];}
+ for(const{name,a,size,bits}of attrs){const data=new Float32Array(rowCount*size),copy=new Uint32Array(data.buffer);for(let i=0;i<rowCount;i++){const src=rows[i]*size,dst=i*size;for(let k=0;k<size;k++)copy[dst+k]=bits[src+k];}g.setAttribute(name,new THREE.BufferAttribute(data,size,a.normalized));}
+ g.setIndex(new THREE.BufferAttribute(rowCount<=65535?Uint16Array.from(result):Uint32Array.from(result),1));
+ const report={beforeVertices:count,afterVertices:rowCount,beforeTriangles:count/3,afterTriangles:result.length/3,coplanarTrianglesRemoved:removed,maximumMergeAttributeError:errors,indexBytes:g.index.array.byteLength};if(audit)report.patches=outPatches;return report;
 }
 export function createVolumeSpruceFoliage(source,{mid=false,form=null,branchDetail=null,optimize=true,merge=true,audit=false,reuse=new URLSearchParams(globalThis.location?.search||'').get('crownBuildReuse')!=='0'}={}){
  const counts=form?.sourceTriangles||sourceCounts(source,mid),removed=new Set(form?.instances.map(r=>r.cluster)||[]),out=Object.fromEntries(Object.keys(WIDTHS).map(k=>[k,[]])),spray=branchDetail?[]:null,ix=source.index.array;const patches=[];let offset=0,clusters=0,maxShift=0,retainedSourceTriangles=0;

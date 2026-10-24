@@ -74,7 +74,9 @@ test("main integration opts out with zero and scopes only the post-environment d
  assert.match(renderer,/if \( scene.matrixWorldAutoUpdate === true \) scene.updateMatrixWorld\(\);/);
  assert.match(source,/preparedMatrices=params.get\("preparedMatrices"\)!=="0"/);
  const frame=source.slice(source.indexOf("function frame(now)"),source.indexOf("await measureLoad(\"firstFrame\""));
- const worldUpdate=frame.indexOf("environment.update(dt)"),begin=frame.indexOf("gpuContext.beginQuery"),prepared=frame.indexOf("withPreparedWorldMatrices(scene,()=>renderWorld(scene,camera),preparedMatrices)"),reflection=frame.indexOf("water.renderReflection"),end=frame.indexOf("gpuContext.endQuery");
+ const worldUpdate=frame.indexOf("environment.update(realDt)"),begin=frame.indexOf("gpuContext.beginQuery"),prepared=frame.indexOf("withPreparedWorldMatrices(scene,()=>renderWorld(scene,camera),preparedMatrices)"),reflection=frame.indexOf("water.renderReflection"),end=frame.indexOf("gpuContext.endQuery");
+ const controls=frame.indexOf("controls.update(realDt)"),terrain=frame.indexOf("terrain.update(camera,dt)");
+ assert.ok(controls>=0&&controls<terrain&&terrain<worldUpdate,"controls integrate real time before bounded world updates and matrix preparation");
  assert.ok(worldUpdate>=0&&worldUpdate<begin&&begin<prepared&&prepared<reflection&&reflection<end);
  assert.equal(source.match(/withPreparedWorldMatrices\(scene,/g)?.length,1,"photo/first draw/compilation cannot silently share this precondition");
  assert.match(source,/photo-save"\)\.addEventListener\("click",\(\)=>\{\s+renderWorld\(scene,camera\);/);

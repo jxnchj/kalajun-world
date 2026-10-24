@@ -1,0 +1,7 @@
+{
+  "allFirstFieldBytesAndOriginalMetadataEqual": true,
+  "onlyFinalWrapperAddition": "sourceOpenings equals original local openings",
+  "validProbes": 2986,
+  "sourceSHA256": "b1b8d584d20a55916ff9b6f5d3938d733d10751aada2456bab5b8df82572daee",
+  "blendSHA256": "d8170e7fa667771494058fb547fd76498945704186424c42ea97104f166b612b"
+}

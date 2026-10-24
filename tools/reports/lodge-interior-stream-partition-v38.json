@@ -1,0 +1,32 @@
+{
+  "version": "lodge-interior-stream38",
+  "sourceSHA256": "1025f39e99a19324945adfceb1f333514590c11761ea0205941e62635e8c6b3b",
+  "packages": {
+    "shell": {
+      "url": "assets/v2/lodge-interior-stream38/shell.glb",
+      "sha256": "8d7e4d7cd9231053bbe575d5eb486e1c60192142b010c7069a20c774b0e4bcc0",
+      "bytes": 4272684,
+      "gzipURL": "assets/v2/lodge-interior-stream38/shell.glb.gz",
+      "gzipSHA256": "7b0fe0ff4a8c9caf1a935424032c542673d45a75a69d28f5f4c19c727076a3b3",
+      "gzipBytes": 1607181,
+      "triangles": 38012
+    },
+    "interior": {
+      "url": "assets/v2/lodge-interior-stream38/interior.glb",
+      "sha256": "8f23ab9495af70d0ebe3878d74086a431f8840ded167ea39d7fe9ce205a6ad15",
+      "bytes": 8826112,
+      "gzipURL": "assets/v2/lodge-interior-stream38/interior.glb.gz",
+      "gzipSHA256": "c2b3f2a11e39a86c09436a75ae5834d44050c62dfda0d24465b77f3c0400dc3f",
+      "gzipBytes": 6872759,
+      "triangles": 76076
+    }
+  },
+  "totalTriangles": 114088,
+  "everyActiveTriangleExactlyOnce": true,
+  "allOriginalAttributesByteExact": true,
+  "nodeTransformsIdentical": true,
+  "allGzipRoundtripsExact": true,
+  "shellHasNoRefinedOakImages": true,
+  "unreferencedSourceMeshesExcluded": true,
+  "originalSourceUnmodified": true
+}

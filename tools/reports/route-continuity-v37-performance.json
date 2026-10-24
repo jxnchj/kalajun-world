@@ -1,0 +1,14 @@
+{
+  "round": 37,
+  "baselineEvidence": "docs/previews/v2-route-craft-36/steady-forest-b.json",
+  "baselineCpuMs": {"environmentMean":12.431666666641831,"casterLifetimeMean":11.56474820163539,"casterLast":17.099999994039536,"structuresMean":5.115833332886298},
+  "baselineCaveat":"environment uses last 120 calls; caster mean is lifetime, so these means are not a synchronized decomposition. Caster last/mean and 7002 visited nodes identify a concrete scanning cost; browser submethod timing remains necessary.",
+  "changes":[
+    {"module":"structures.js + structure-selection.js","behavior":"Reusable fixed-capacity Uint32 selections; builds comma signatures only on exact ordered selection changes. All world-bound distances, detail/LOD hysteresis, frustum and shadow decisions remain live every frame.","fallbackQuery":"structureSelectionBuffers=0","diagnostic":"structures.selectionSignatureBuilds"},
+    {"module":"sun-shadow-casters.js","behavior":"Persistent per-cascade entries with frame marks replace per-frame clear/refill allocation. Still scans every current caster signature and removes absent casters on the next scanned cascade; skipped cascades retain the same previous state as before.","fallbackQuery":"shadowCasterEntries=0","diagnostic":"shadowCasters.entryCreates"}
+  ],
+  "tests":{"passed":30,"failed":0,"log":"tools/reports/route-continuity-v37-performance-tests.log","coverage":["18 real source assets and 307 geometry digests","210 camera samples across original LOD/hysteresis boundaries; all matrices/bounds/shadow decisions match","mutable world bounds","empty/shrinking/growing/reordered selections","caster same-count replacement/removal/version edits and skipped-cascade resumption","resource disposal"]},
+  "unchanged":["all density and instance roots","geometry and texture assets","shadow maps and update cadence","LOD thresholds","lighting and color","render pixel ratio and reflection resolution"],
+  "limitations":["Browser whole-frame/GPU gains not measured by this subtask","No claim that first-load tail is solved","Caster traversal and live signature scans remain; only repeated allocation is removed","Query switches are reload comparisons, not runtime mutable policy toggles"],
+  "backup":"backups/route-continuity-v37/performance"
+}

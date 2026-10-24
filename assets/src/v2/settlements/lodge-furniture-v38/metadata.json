@@ -1,0 +1,207 @@
+{
+  "status": "offline candidate; not enabled; GI rebake required",
+  "sourceSHA256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+  "coordinates": "Blender x y z; glTF x z -y",
+  "originalSourceUnchanged": true,
+  "groups": [
+    {
+      "name": "sofa 1",
+      "bounds": [
+        [
+          4.1,
+          1.61,
+          0
+        ],
+        [
+          6.5,
+          2.47,
+          0.9
+        ]
+      ],
+      "actualBounds": [
+        [
+          4.099999904632568,
+          1.625,
+          0.0
+        ],
+        [
+          6.5,
+          2.4674999713897705,
+          0.8975000381469727
+        ]
+      ],
+      "triangles": 5244,
+      "objects": 16,
+      "originalParts": 2
+    },
+    {
+      "name": "sofa 2",
+      "bounds": [
+        [
+          4.1,
+          -1.03,
+          0
+        ],
+        [
+          6.5,
+          -0.16999999999999998,
+          0.9
+        ]
+      ],
+      "actualBounds": [
+        [
+          4.099999904632568,
+          -1.027500033378601,
+          0.0
+        ],
+        [
+          6.5,
+          -0.18500003218650818,
+          0.8975000381469727
+        ]
+      ],
+      "triangles": 5244,
+      "objects": 16,
+      "originalParts": 2
+    },
+    {
+      "name": "washer 1",
+      "bounds": [
+        [
+          8.99,
+          2.6300000000000003,
+          0
+        ],
+        [
+          9.610000000000001,
+          3.2600000000000002,
+          0.86
+        ]
+      ],
+      "actualBounds": [
+        [
+          8.989999771118164,
+          2.640000104904175,
+          0.0
+        ],
+        [
+          9.609999656677246,
+          3.259999990463257,
+          0.8600000143051147
+        ]
+      ],
+      "triangles": 4256,
+      "objects": 20,
+      "originalParts": 2
+    },
+    {
+      "name": "washer 2",
+      "bounds": [
+        [
+          9.74,
+          2.6300000000000003,
+          0
+        ],
+        [
+          10.360000000000001,
+          3.2600000000000002,
+          0.86
+        ]
+      ],
+      "actualBounds": [
+        [
+          9.739999771118164,
+          2.640000104904175,
+          0.0
+        ],
+        [
+          10.359999656677246,
+          3.259999990463257,
+          0.8600000143051147
+        ]
+      ],
+      "triangles": 4256,
+      "objects": 20,
+      "originalParts": 2
+    },
+    {
+      "name": "dryer 3",
+      "bounds": [
+        [
+          10.49,
+          2.6300000000000003,
+          0
+        ],
+        [
+          11.110000000000001,
+          3.2600000000000002,
+          0.86
+        ]
+      ],
+      "actualBounds": [
+        [
+          10.489999771118164,
+          2.640000104904175,
+          0.0
+        ],
+        [
+          11.109999656677246,
+          3.259999990463257,
+          0.8600000143051147
+        ]
+      ],
+      "triangles": 4256,
+      "objects": 20,
+      "originalParts": 2
+    }
+  ],
+  "materialBalance": {
+    "sofa": {
+      "target": [
+        0.86,
+        0.85,
+        0.81
+      ],
+      "adjustedBase": [
+        0.869414150968875,
+        0.8609325623932795,
+        0.8213880857712761
+      ],
+      "area": 28.285858011631717,
+      "method": "evaluated mesh surface area weighted diffuse RGB; not transport equivalence"
+    },
+    "appliances": {
+      "target": [
+        0.7322799097065464,
+        0.7136343115124155,
+        0.6586004514672685
+      ],
+      "adjustedBase": [
+        0.772174153757622,
+        0.752647700208508,
+        0.694553859968855
+      ],
+      "area": 14.750772534658347,
+      "method": "evaluated mesh surface area weighted diffuse RGB; not transport equivalence"
+    }
+  },
+  "exportNodes": 16,
+  "uniqueExportGeometry": 8,
+  "totalTriangles": 23256,
+  "source": "original project furniture arrangement, new authored geometry; no external product likeness claim; no Aholo",
+  "blendBytes": 177165,
+  "glbBytes": 420404,
+  "generationSeconds": 0.27458320900041144,
+  "verified": {
+    "independentBlendReopen": true,
+    "editableObjects": 92,
+    "seamCurves": 6,
+    "packedNormal": true,
+    "independentGLBReopen": true,
+    "nodes": 16,
+    "uniqueGLTFMeshes": 8,
+    "renderTriangles": 23256,
+    "originalEnvelopeRetained": true,
+    "originalAssetUnchanged": true
+  }
+}

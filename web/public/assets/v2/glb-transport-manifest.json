@@ -3,6 +3,13 @@
   "encoding": "gzip",
   "gzipMtime": 0,
   "assets": {
+    "assets/v2/household_entry_tea.glb": {
+      "url": "assets/v2/household_entry_tea.glb.gz",
+      "rawBytes": 220596,
+      "gzipBytes": 70367,
+      "sha256": "277e71e74629dbe081813b900900d6824e7ad769b865d13603ccae309ff1f5dd",
+      "gzipSha256": "79648899a5059422a8c6bb7be7b27b311493caf92083bc2e4762b43f73ca05af"
+    },
     "assets/v2/household_living.glb": {
       "url": "assets/v2/household_living.glb.gz",
       "rawBytes": 2217276,
@@ -149,13 +156,41 @@
       "gzipBytes": 2108753,
       "sha256": "4b61d3f54a4aab520c2486a58105b314c7f64baa9689111ed99a93587e021370",
       "gzipSha256": "9e2611b619b8863030bbd18d7651fc54a385ad0f73d7b4847a3bb6cc692fc563"
+    },
+    "assets/v2/gh_lanchuan_rooms_vanity38.glb": {
+      "url": "assets/v2/gh_lanchuan_rooms_vanity38.glb.gz",
+      "rawBytes": 14780020,
+      "gzipBytes": 6152672,
+      "sha256": "201190ad2bd3886783c2dfc9b81099ba944740bccb7973bd95102981720b7f10",
+      "gzipSha256": "ee9d549c9fbdab3ded4d1edb4ec40392179d870164e4eac7b32410596264ccbc"
+    },
+    "assets/v2/gh_lanchuan_lodge_chairs38.glb": {
+      "url": "assets/v2/gh_lanchuan_lodge_chairs38.glb.gz",
+      "rawBytes": 13995068,
+      "gzipBytes": 8186467,
+      "sha256": "1025f39e99a19324945adfceb1f333514590c11761ea0205941e62635e8c6b3b",
+      "gzipSha256": "2cc78ead237632ace87685dd0481532f1f6acbf183198396d17c8100e5e7b859"
+    },
+    "assets/v2/gh_lanchuan_lodge_tables38.glb": {
+      "url": "assets/v2/gh_lanchuan_lodge_tables38.glb.gz",
+      "rawBytes": 20106596,
+      "gzipBytes": 13610106,
+      "sha256": "853f5690686eceaa85f00b2df0705343e55b6aea4286f599e07ee121dd170687",
+      "gzipSha256": "1f033c912739624f66887c1cd3a061888374bb23a149b7ffb3f9b9900d825ad1"
+    },
+    "assets/v2/gh_lanchuan_rooms_living39.glb": {
+      "url": "assets/v2/gh_lanchuan_rooms_living39.glb.gz",
+      "rawBytes": 17060928,
+      "gzipBytes": 6468325,
+      "sha256": "9c1c5e5e2dc464fe61adfa6b3f5ee55f90a180bf9bebc097586b9b9f579e35c1",
+      "gzipSha256": "c24a8bbc778976b3e2aacde5f20b310368a92cd4ac5e502391675117ed2d944f"
     }
   },
   "totals": {
-    "assets": 21,
-    "rawBytes": 100332904,
-    "gzipBytes": 52587195,
-    "savedBytes": 47745709,
-    "savedPercent": 47.5873
+    "assets": 26,
+    "rawBytes": 166496112,
+    "gzipBytes": 87075132,
+    "savedBytes": 79420980,
+    "savedPercent": 47.7014
   }
 }

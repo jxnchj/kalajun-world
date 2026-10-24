@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import {ROOM_TRANSPORT_DATA} from "./room-transport-data.js";
+import {ROOM_TRANSPORT_DATA} from "./room-transport-registry.js";
 import {ROOM_SECOND_SOLAR_LOADERS} from "./room-second-solar-data.js";
 
 // Compact zero runs only; every nonzero coefficient retains the baked Float16.

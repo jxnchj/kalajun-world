@@ -22,7 +22,7 @@ export function windAt(x,z,time){
 export class MeadowWindField {
   constructor({resolution=128,span=512,interval=.1}={}){
     if(!Number.isInteger(resolution)||resolution<4||span<=0||interval<=0)throw new RangeError("Invalid wind field dimensions");
-    this.resolution=resolution;this.span=span;this.interval=interval;this.lastUpdate=-Infinity;this.origin=new THREE.Vector2(Infinity,Infinity);
+    this.resolution=resolution;this.span=span;this.interval=interval;this.lastUpdate=-Infinity;this.sampleIndex=null;this.origin=new THREE.Vector2(Infinity,Infinity);
     const make=()=>{
       const texture=new THREE.DataTexture(new Uint8Array(resolution*resolution*4),resolution,resolution,THREE.RGBAFormat,THREE.UnsignedByteType);
       texture.minFilter=texture.magFilter=THREE.LinearFilter;texture.wrapS=texture.wrapT=THREE.ClampToEdgeWrapping;texture.generateMipmaps=false;texture.flipY=false;texture.colorSpace=THREE.NoColorSpace;return texture;
@@ -45,22 +45,29 @@ export class MeadowWindField {
   update(time,position){
     if(!Number.isFinite(time)||!Number.isFinite(position.x)||!Number.isFinite(position.z))throw new TypeError("Wind coordinates must be finite");
     const step=this.span/8,ox=Math.floor((position.x-this.span*.5)/step)*step,oz=Math.floor((position.z-this.span*.5)/step)*step;
-    const initial=!Number.isFinite(this.lastUpdate);
+    const initial=this.sampleIndex===null;
+    // Sample the same absolute-time bracket regardless of frame cadence. The
+    // old 'last refresh -> next refresh' blend rewound after initialization and
+    // its endpoints/phase depended on when frames crossed refresh deadlines.
+    // Forecasting this deterministic field one interval ahead needs no extra
+    // textures or solver.
+    const index=Math.floor(time/this.interval),start=index*this.interval,end=(index+1)*this.interval;
     // Rebase only outside a central safe area; standing on a grid edge cannot trigger two uploads every frame.
     const moved=initial||Math.abs(position.x-(this.origin.x+this.span*.5))>this.span*.3||Math.abs(position.z-(this.origin.y+this.span*.5))>this.span*.3;
-    if(initial||moved||time-this.lastUpdate>=this.interval||time<this.lastUpdate){
+    const refresh=initial||moved||index!==this.sampleIndex;
+    if(refresh){
       const started=performance.now();
-      if(moved||initial){
-        this.origin.set(ox,oz);this.fill(this.previous,time-this.interval);this.fill(this.current,time);
+      if(moved||initial||index!==this.sampleIndex+1){
+        // A seek, skipped interval or spatial rebase must populate BOTH ends
+        // from their true timestamps; never interpolate unrelated snapshots.
+        this.origin.set(ox,oz);this.fill(this.previous,start);this.fill(this.current,end);
       }else{
-        const swap=this.previous;this.previous=this.current;this.current=swap;this.fill(this.current,time);
+        const swap=this.previous;this.previous=this.current;this.current=swap;this.fill(this.current,end);
       }
       this.uniforms.uWindPrevious.value=this.previous;this.uniforms.uWindCurrent.value=this.current;
-      this.lastUpdate=time;this.revisions++;this.lastRefreshMs=performance.now()-started;
-      this.uniforms.uWindFieldBlend.value=initial?1:0;
-      return true;
+      this.sampleIndex=index;this.lastUpdate=start;this.revisions++;this.lastRefreshMs=performance.now()-started;
     }
-    this.uniforms.uWindFieldBlend.value=clamp((time-this.lastUpdate)/this.interval);return false;
+    this.uniforms.uWindFieldBlend.value=clamp((time-start)/this.interval);return refresh;
   }
   dispose(){this.previous.dispose();this.current.dispose();}
 }

@@ -1,10 +1,11 @@
+import {assertRoomFieldSamplingContract} from './room-field-contract.assert.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {createHash} from "node:crypto";
 import * as THREE from "three";
-import {ROOM_TRANSPORT_DATA} from "./room-transport-data.js";
-import {ROOM_BOUNCE_DATA} from "./room-bounce-data.js";
+import {ROOM_TRANSPORT_DATA} from "./room-transport-registry.js";
+import {ROOM_BOUNCE_DATA} from "./room-bounce-registry.js";
 import {RoomBounceField,decodeRoomField,ROOM_FIELD_GLSL} from "./room-bounce-field.js";
 import {RoomSolarTransport,decodeSolarDirection,roomSolarWeights} from "./room-solar-transport.js";
 import {RoomIndirectLight} from "./room-lighting.js";
@@ -89,5 +90,5 @@ test("solar-only comparison restores v11 byte-for-byte when the second sky bounc
  light.uniforms.uRoomSunTransport.value=1;light.setRoom(item,.2,{...lighting,sun:new THREE.Vector3(0,-1,0)});assert.deepEqual(texture.image.data,source);
  light.setRoom(item,0,lighting);assert.equal(light.uniforms.uRoomFieldActive.value,0);assert.equal(light.uniforms.uRoomAmbientActive.value,0);
  light.setRoom(null,1,lighting);assert.equal(light.uniforms.uRoomAmbientActive.value,0);
- assert.equal((ROOM_FIELD_GLSL.match(/texture\(uRoomBounceField/g)||[]).length,4);light.dispose();
+ assertRoomFieldSamplingContract();light.dispose();
 });

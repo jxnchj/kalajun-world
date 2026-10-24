@@ -1,0 +1,14 @@
+{
+  "triangles": 14560,
+  "objects": 72,
+  "sourceTextures": "https://polyhaven.com/a/oak_veneer_01",
+  "metres": 1.8300000429153442,
+  "diffuseTarget": [
+    0.23682348430156708,
+    0.11614272743463516,
+    0.05534806847572327
+  ],
+  "seconds": 0.6179739579965826,
+  "newFootSupport": "3 supports bottom .026 at actual original rug surface; original floating disk now grounded",
+  "limits": "offline candidate only; full source GI/contact and collision require reevaluation after approval"
+}

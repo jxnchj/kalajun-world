@@ -1,0 +1,137 @@
+{
+  "scope": "actual source water geometry at saved forest camera, no GPU; every triangle checked in each drawn mesh; not visual equivalence/performance acceptance",
+  "sourceSnapshot": "docs/previews/v2-route-craft-38/lodge-tables-default-forest.json",
+  "position": [
+    -3611.851169467755,
+    2329.157270885741,
+    4805.483400316967
+  ],
+  "yaw": -29.88794104541604,
+  "pitch": -10,
+  "sourceChunks": 74,
+  "sourceWakes": 15,
+  "allMeshes": 79,
+  "frustumMeshes": 13,
+  "eligible": 5,
+  "eligibleTriangles": 1408,
+  "baselineWaterSubmissions": 26,
+  "candidateWaterSubmissions": 21,
+  "classificationCPUms": {
+    "mean": 0.08632033000000205,
+    "median": 0.08570799999995415,
+    "max": 0.3992920000000595,
+    "samples": 100
+  },
+  "meshes": [
+    {
+      "name": "all-rivers-overview",
+      "parent": "world-water",
+      "actualTriangles": 121246,
+      "eligible": false,
+      "reason": "back-or-edge-triangle",
+      "triangles": 11
+    },
+    {
+      "name": "",
+      "parent": "river--29,37",
+      "actualTriangles": 904,
+      "eligible": false,
+      "reason": "back-or-edge-triangle",
+      "triangles": 617
+    },
+    {
+      "name": "",
+      "parent": "river--29,36",
+      "actualTriangles": 1560,
+      "eligible": false,
+      "reason": "back-or-edge-triangle",
+      "triangles": 97
+    },
+    {
+      "name": "",
+      "parent": "river--29,36",
+      "actualTriangles": 30,
+      "eligible": true,
+      "reason": "all-actual-triangles-front",
+      "triangles": 30,
+      "minMargin": 6.563765026366126
+    },
+    {
+      "name": "",
+      "parent": "river--30,37",
+      "actualTriangles": 696,
+      "eligible": true,
+      "reason": "all-actual-triangles-front",
+      "triangles": 696,
+      "minMargin": 5.81072046791389
+    },
+    {
+      "name": "",
+      "parent": "river--30,36",
+      "actualTriangles": 288,
+      "eligible": true,
+      "reason": "all-actual-triangles-front",
+      "triangles": 288,
+      "minMargin": 6.539350963866127
+    },
+    {
+      "name": "",
+      "parent": "river--30,36",
+      "actualTriangles": 10,
+      "eligible": true,
+      "reason": "all-actual-triangles-front",
+      "triangles": 10,
+      "minMargin": 6.563765026366126
+    },
+    {
+      "name": "",
+      "parent": "river--29,35",
+      "actualTriangles": 1104,
+      "eligible": false,
+      "reason": "back-or-edge-triangle",
+      "triangles": 145
+    },
+    {
+      "name": "",
+      "parent": "river--28,35",
+      "actualTriangles": 216,
+      "eligible": false,
+      "reason": "back-or-edge-triangle",
+      "triangles": 193
+    },
+    {
+      "name": "",
+      "parent": "river--28,34",
+      "actualTriangles": 1080,
+      "eligible": false,
+      "reason": "back-or-edge-triangle",
+      "triangles": 1
+    },
+    {
+      "name": "",
+      "parent": "river--28,33",
+      "actualTriangles": 768,
+      "eligible": false,
+      "reason": "back-or-edge-triangle",
+      "triangles": 100
+    },
+    {
+      "name": "",
+      "parent": "river--27,31",
+      "actualTriangles": 816,
+      "eligible": false,
+      "reason": "back-or-edge-triangle",
+      "triangles": 241
+    },
+    {
+      "name": "",
+      "parent": "river--29,28",
+      "actualTriangles": 384,
+      "eligible": true,
+      "reason": "all-actual-triangles-front",
+      "triangles": 384,
+      "minMargin": 64.36463363131458
+    }
+  ],
+  "limits": "Frustum uses exact current Three object bounds, with no added content cull. Camera position program was audited in source: water/wake only change varyings/normal shading, not vertex positions. Any future displacement must invalidate certification. Shader/CSM runtime installation still requires integration guard."
+}

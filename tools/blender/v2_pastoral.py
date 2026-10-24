@@ -483,3 +483,4 @@ for CURRENT in(["house_a","yurt"]if args.asset=="all"else[args.asset]):
         bpy.ops.wm.save_as_mainfile(filepath=str(SRC/(CURRENT+"-lived.blend")))
     export_current()
     if args.preview:preview()
+

@@ -1,3 +1,13 @@
+import {Seating39} from './seating39.js';
+import {installSeatingUI39} from './seating-ui39.js';
+import {TerrainRowWorkerClient,terrainRowWorkerPolicy} from './terrain-row-worker-client.js';
+import {startTerrainIdlePrefetch} from './terrain-idle-prefetch.js';
+import {assertLodgeCollisionCamera,compileLodgeStreamMaterials,lodgeInteriorStreamEnabled} from './lodge-interior-stream.js';
+import { GPUPassProfile } from "./gpu-pass-profile.js";
+import { ShadowStaticProfile39 } from "./shadow-static-profile39.js";
+import {installMeadowDistanceCanopy} from './meadow-distance-canopy.js';
+import {visualDelta} from './visual-time.js';
+import {installSceneMatrixCache} from "./scene-matrix-cache.js";
 import {installShadowIndexRenderer} from "./tree-shadow-index.js";
 import {createWorldContext} from "./world-context.js";
 import {prepareEcologyQueues} from "./ecology-preparation.js";
@@ -5,18 +15,21 @@ import "./style.css";
 import * as THREE from "three";
 import { loadWorldData } from "./world-data.js";
 import { WorldTerrain } from "./terrain.js";
+import {createTerrainSurfaceContact} from "./terrain-surface-contact.js";
 import { WorldStructures } from "./structures.js";
 import { WorldEnvironment } from "./environment.js";
 import { WorldControls } from "./controls.js";
 import { WorldEcology } from "./ecology.js";
 import { prepareLocalCanopyLookup } from "./spruce-canopy-local.js";
 import { WorldPaths } from "./paths.js";
+import { householdYardViewpoints } from "./household-yards.js";
 import { WorldWater } from "./water.js";
 import { WorldCollision, walkingViewpoints } from "./collision.js";
 import { WorldDoors } from "./doors.js";
 import { WorldPasture } from "./pasture.js";
 import { WorldShadowDepth } from "./room-shadow.js";
 import { WorldFrame } from "./world-frame.js";
+import { TreePhotoPrepass } from "./tree-photo-prepass.js";
 import { withPreparedWorldMatrices } from "./prepared-world-matrices.js";
 import { compileVisibleWorld } from "./compile-visible-world.js";
 import { compileShadowWorld } from "./compile-shadow-world.js";
@@ -54,22 +67,26 @@ try {
   const shadowIndexRenderer=new URLSearchParams(location.search).get("shadowVertexReuse")==="1"?installShadowIndexRenderer(renderer):null;
   const worldFrame=reversedDepth?new WorldFrame(renderer):null;
   worldFrame?.setSize(canvas.width,canvas.height);
-  const scene=new THREE.Scene(),shadowDepth=new WorldShadowDepth(scene),camera=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,.25,150000);
+  const scene=new THREE.Scene(),shadowDepth=new WorldShadowDepth(scene,{sharedTraversal:new URLSearchParams(location.search).get('shadowDepthTraversal39')==='1'}),camera=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,.25,150000);
+  const sceneMatrixCacheMode=new URLSearchParams(location.search).get("sceneMatrixCache");
+  const sceneMatrixCache=sceneMatrixCacheMode==="parents"?installSceneMatrixCache(scene,{scope:"parents"}):sceneMatrixCacheMode==="1"?installSceneMatrixCache(scene):null;
   camera._reversedDepth=reversedDepth;camera.updateProjectionMatrix();
   const opaqueDepthOrder=new OpaqueDepthOrder(renderer,camera);
   const renderWorld=(scene,renderCamera)=>opaqueDepthOrder.run(renderCamera,()=>{
     water.prepareRefraction(renderer,renderCamera,worldFrame?.target);
-    return worldFrame?worldFrame.render(scene,renderCamera):renderer.render(scene,renderCamera);
+    return treePhotoPrepass.run(renderCamera,()=>worldFrame?worldFrame.render(scene,renderCamera):renderer.render(scene,renderCamera));
   });
   const canopyLookup=prepareLocalCanopyLookup();
-  const world=await measureLoad("worldData",()=>loadWorldData({onProgress:progress}));
-  const settlements=new SettlementRuntime(world),pasture=new WorldPasture(world),doors=new WorldDoors();settlements.setDoorOpenness(id=>doors.openness(id));scene.add(settlements.group);
+  const {requested:terrainWorkerRequested,compatible:terrainWorkerCompatible}=terrainRowWorkerPolicy(location.search);
+  let terrainWorkerInputs;
+  const world=await measureLoad("worldData",()=>loadWorldData({onProgress:progress,onSourceInputs:terrainWorkerRequested&&terrainWorkerCompatible?inputs=>{terrainWorkerInputs=inputs;}:undefined}));
+  const settlements=new SettlementRuntime(world),pasture=new WorldPasture(world),doors=new WorldDoors();settlements.setDoorOpenness(id=>doors.openness(id),id=>doors.angles(id));scene.add(settlements.group);
   const controls=new WorldControls(camera,canvas,world);
   controls.floorAt=(x,z)=>settlements.floorHeightAt(x,z);
-  let prepareDestination,cancelEarlyPreparation,selectedView="valley",viewGeneration=0;
-  const places=worldViewpoints({water:world.hydrology?.viewpoints||[],rooms:settlements.viewpoints,life:[...walkingViewpoints(world),pasture.viewpoint]});
+  let prepareDestination,cancelEarlyPreparation,cancelLodgeRetry,selectedView="valley",viewGeneration=0;
+  const places=worldViewpoints({water:world.hydrology?.viewpoints||[],rooms:settlements.viewpoints,life:[...walkingViewpoints(world),...householdYardViewpoints(world),pasture.viewpoint]});
   function go(place,index=-1){
-    viewGeneration++;
+    viewGeneration++;cancelLodgeRetry?.();
     cancelEarlyPreparation?.();
     controls.setPose(place.x,place.z,place.above??1.8,place.yaw,place.pitch,place.y);
     selectedView=place.id||"free";$("#place-name").textContent=place.name;
@@ -83,28 +100,45 @@ try {
     const b=document.createElement("button");b.textContent=p.name;b.addEventListener("click",()=>go(p,i));$("#places").appendChild(b);
   });
   const params=new URLSearchParams(location.search),preparedMatrices=params.get("preparedMatrices")!=="0",initialPlace=initialViewpoint(params,places);go(places[initialPlace],initialPlace);
-  const structures=new WorldStructures(world,{doors}),ecology=new WorldEcology(world),water=new WorldWater(world);
-  const startAssets=()=>Promise.all([measureLoad("structures",()=>structures.load({onProgress:progress})),measureLoad("ecologyAssets",()=>ecology.load({canopyLookup})),measureLoad("waterAssets",()=>water.load()),measureLoad("pastureAssets",()=>pasture.load())]);
+  const structures=new WorldStructures(world,{doors,lodgeInteriorStream:lodgeInteriorStreamEnabled()}),ecology=new WorldEcology(world),water=new WorldWater(world);
+  const treePhotoPrepass=new TreePhotoPrepass(scene,ecology,camera,{enabled:params.get("treePhotoPrepass")==="1",getShaderRegistry:()=>environment.csm.shaders});
+  const startAssets=()=>Promise.all([measureLoad("structures",()=>structures.load({onProgress:progress})),measureLoad("ecologyAssets",()=>ecology.load({canopyLookup,textureRenderer:params.get("earlyTreeTextures")==="1"?renderer:null})),measureLoad("waterAssets",()=>water.load()),measureLoad("pastureAssets",()=>pasture.load())]);
   // Asset requests need world data, not the synchronous coarse terrain build.
   // Start their I/O before that work; retain the original promise/error for the
   // awaited join, while observing early rejection during terrain construction.
   let assetsReady=params.get("assetOverlap")==="1"?startAssets():null;
   assetsReady?.catch(()=>{});
   const terrain=await measureLoad("terrainCoarse",()=>new WorldTerrain(world));scene.add(terrain.group);terrain.update(camera,0);
+  installMeadowDistanceCanopy(terrain.material,{enabled:params.get('meadowDistanceCanopy')==='1'});
+  ecology.setTerrainSurfaceContact(createTerrainSurfaceContact(terrain));
   // World geometry depends on the selected camera and the loaded world data,
   // not the plant/room GLBs. Overlap its normal scheduler with asset I/O.
   // prepareScene still revalidates the CURRENT destination and its full budget.
   const earlyTerrain=measureLoad("terrainPrefetch",()=>terrain.prepareView(camera,{maxMs:6000,waitFor:"near",nearRadius:160}));
+  if(terrainWorkerInputs){
+    const client=new TerrainRowWorkerClient(terrainWorkerInputs);terrainWorkerInputs=null;
+    terrain.rowWorker=client;terrain.stats.rowWorker=client.stats;
+  }else if(terrainWorkerRequested)terrain.stats.rowWorker={ready:false,error:'Incompatible terrain variant; original builder retained'};
   cancelEarlyPreparation=()=>terrain.cancelPreparation();
   const environment=new WorldEnvironment(renderer,scene,camera,world.meta);
+  environment.shadowCasters.depthPreparation=shadowDepth;
   environment.register(terrain.materials||[terrain.material]);
   progress("读取选定聚落与植物资产…");
   assetsReady??=startAssets();
-  await Promise.all([measureLoad("terrainSurfaces",()=>terrain.loadSurfaces()),assetsReady,earlyTerrain]);
+  const assetJoin=Promise.all([measureLoad("terrainSurfaces",()=>terrain.loadSurfaces()),assetsReady]);
+  const earlyGeneration=viewGeneration;
+  const farTerrainIdle=startTerrainIdlePrefetch({terrain,camera,near:earlyTerrain,assets:assetJoin,
+    enabled:params.get("farTerrainIdle38")==="1",isCurrent:()=>viewGeneration===earlyGeneration});
+  cancelEarlyPreparation=()=>{farTerrainIdle.stop("destination");terrain.cancelPreparation();};
+  try{await Promise.all([assetJoin,earlyTerrain]);}
+  finally{await farTerrainIdle.stop("assets-settled");}
+  if(farTerrainIdle.stats.error)throw farTerrainIdle.stats.error;
+  loadTimings.farTerrainIdle=farTerrainIdle.stats;
   await measureLoad("householdLiving",()=>structures.loadHouseholdLiving());
-  const collision=new WorldCollision(world,{structures,doors});controls.setCollision(collision);doors.motionGuard=(leaf,next)=>collision.allowDoorMotion(leaf,next);
+  const collision=new WorldCollision(world,{structures,doors});controls.setCollision(collision);const seating=new Seating39(world,controls,collision),seatingUI=installSeatingUI39(seating);doors.motionGuard=(leaf,next)=>collision.allowDoorMotion(leaf,next);
   settlements.registerMaterials(structures.materials);
   const paths=new WorldPaths(world);
+  await measureLoad("pathSurfaces",()=>paths.loadSurfaces());
   scene.add(structures.group,ecology.group,paths.group,water.group,pasture.group,doors.group);environment.register([...structures.materials,...ecology.materials,...paths.materials,...water.materials,...pasture.materials]);
   $("#photo-save").addEventListener("click",()=>{
     renderWorld(scene,camera);
@@ -160,7 +194,7 @@ try {
   addEventListener("resize",resize);
   resize(); // Loading may have outlasted a window resize before this listener existed.
   progress("准备第一眼的光与山色…");
-  let preparing=false,lastPreparation=null;
+  let preparing=false,lastPreparation=null,renderReviewHold=false;
   let windOrigin="";
   const syncShadowState=()=>{
     const origin=ecology.windField.origin.toArray().join(",");
@@ -172,22 +206,42 @@ try {
     environment.shadowReceiverCameras=mirror?[mirror]:[];
   };
   const yieldToInput=()=>new Promise(resolve=>setTimeout(resolve,0));
+  const awaitLodgeInterior=async(generation)=>{
+    while(generation===viewGeneration&&structures.lodgeStream.needs(camera.position,camera)){
+      progress("正在准备公共楼内装…");
+      try{await structures.lodgeStream.ensure();return;}
+      catch(error){
+        if(generation!==viewGeneration)return;
+        // Keep the last complete image and movement suspended. A real retry
+        // button retries the failed package/preparation rather than missing assets.
+        $("#loading").hidden=false;$("#loading").classList.remove("done");
+        progress("公共楼内装暂时无法载入，请重试。");
+        console.error("Lodge interior preparation failed",error);
+        const button=document.createElement('button');button.textContent='重试公共楼加载';$("#load-message").appendChild(button);
+        await new Promise(resolve=>{let done=false;const finish=()=>{if(done)return;done=true;button.remove();cancelLodgeRetry=null;resolve();};button.addEventListener('click',finish,{once:true});cancelLodgeRetry=finish;});
+      }
+    }
+  };
   const prepareScene=async(maxMs=6000,generation=viewGeneration)=>{
+    await awaitLodgeInterior(generation);if(generation!==viewGeneration)return null;
     const terrainStart=performance.now();
     const prepared=await terrain.prepareView(camera,{maxMs,waitFor:"near",nearRadius:160,onProgress:p=>{if(generation===viewGeneration)progress("准备脚下的草坡与地基 · "+p.visibleTiles+" 个地形分块");}});
     const terrainPrepareMs=performance.now()-terrainStart,ecologyStart=performance.now();
     const ecologyPreparation=await prepareEcologyQueues({ecology,water,camera,isCurrent:()=>generation===viewGeneration,yieldToInput,
       staticPreparation:params.get("ecologyPreparation")!=="frame"});
     if(!ecologyPreparation)return null;
+    const ecologyQueuesMs=performance.now()-ecologyStart;
     const {iterations:ecologyIterations}=ecologyPreparation;
     if(generation!==viewGeneration)return null;
     structures.update(camera,0);pasture.update(camera,0);doors.update(camera,0);
     const roomSun={elevation:environment.elevation,sun:environment.sun,color:environment.csm.lights[0].color,intensity:environment.csm.lights[0].intensity,visibility:1};
     settlements.update(camera,0,roomSun);
+    const roomIndirectStart=performance.now();
     await settlements.indirect.field.prepare();
+    const roomIndirectPrepareMs=performance.now()-roomIndirectStart;
     if(generation!==viewGeneration)return null;
     settlements.update(camera,0,roomSun);
-    syncShadowState();environment.update(.016);return {...prepared,terrainPrepareMs,ecologyPrepareMs:performance.now()-ecologyStart,ecologyIterations,ecologyPreparation};
+    syncShadowState();environment.update(.016);return {...prepared,terrainPrepareMs,ecologyQueuesMs,roomIndirectPrepareMs,ecologyPrepareMs:performance.now()-ecologyStart,ecologyIterations,ecologyPreparation};
   };
   let lastShaderPreparation=null;
   const compileDestination=()=>{
@@ -201,7 +255,7 @@ try {
     }};
     const started=performance.now(),pending=[];
     try {
-      pending.push(worldFrame?worldFrame.compileAsync(scene,camera,options):compileVisibleWorld(renderer,scene,camera,options));
+      pending.push(treePhotoPrepass.run(camera,()=>worldFrame?worldFrame.compileAsync(scene,camera,options):compileVisibleWorld(renderer,scene,camera,options),{compile:true}));
       const fullPreparation=params.get("shaderPreparation")!=="color-only";
       if(fullPreparation){
         const previous=renderer.getRenderTarget(),face=renderer.getActiveCubeFace(),level=renderer.getActiveMipmapLevel();
@@ -219,6 +273,20 @@ try {
       });
     } catch(error) {for(const work of pending)Promise.resolve(work).catch(()=>{});throw error;}
   };
+  structures.lodgeStream.finalize=async(stage)=>{
+    structures.installLodgeInterior(stage);
+    settlements.registerMaterials(structures.materials);environment.register(structures.materials);
+    const field=settlements.indirect.field;
+    await field.prepareLodge();await field.lodgeDoor.prepare(field.lodgeKey);
+    // Compile with all newly installed material hooks and full scene lights.
+    structures.update(camera,0);syncShadowState();environment.forceShadowUpdate=true;environment.update(0);water.reflection.lastCapture=-Infinity;await compileLodgeStreamMaterials(renderer,scene,camera,structures,worldFrame?.target);await compileDestination();
+    collision.invalidateStructure(structures.lodgeStream.entity.id);
+  };
+  collision.prepareAt=async position=>{
+    assertLodgeCollisionCamera(structures.lodgeStream,position,camera.position);
+    if(structures.lodgeStream.needs(position)){await prepareDestination();structures.lodgeStream.assertCollision(structures.lodgeStream.entity);}
+  };
+  collision.requestPreparation=()=>{if(!preparing)prepareDestination?.().catch(fail);};
   if(params.get("profile")==="1")window.kalajunLoading.getShaderSnapshot=()=>({
     elapsedMs:performance.now()-bootStarted,
     programs:renderer.info.programs.map(p=>({id:p.id,ready:p.isReady(),name:p.name,cacheKey:p.cacheKey}))
@@ -236,7 +304,8 @@ try {
   }
   cancelEarlyPreparation=null;
   const cpuSamples={},gpuSamples=[];
-  const gpuContext=renderer.getContext(),gpuExtension=params.get("profile")==="1"?gpuContext.getExtension("EXT_disjoint_timer_query_webgl2"):null;
+  const gpuPassProfileEnabled=params.get("gpuPassProfile")==="1";
+  const gpuContext=renderer.getContext(),gpuExtension=params.get("profile")==="1"&&!gpuPassProfileEnabled?gpuContext.getExtension("EXT_disjoint_timer_query_webgl2"):null;
   const gpuQueries=[];
   const collectGPU=()=>{
     while(gpuQueries.length&&gpuContext.getQueryParameter(gpuQueries[0],gpuContext.QUERY_RESULT_AVAILABLE)){
@@ -258,6 +327,9 @@ try {
       };
     }
   }
+  const gpuPassProfile=gpuPassProfileEnabled?new GPUPassProfile(renderer,{scene,camera,enabled:true}):null;
+  const shadowStaticProfile39=new ShadowStaticProfile39(renderer,gpuPassProfile,{enabled:params.get("shadowStaticProfile39")==="1"&&Boolean(gpuPassProfile)});
+  if(shadowStaticProfile39.enabled)gpuPassProfile.maxPending=192;
   let last=performance.now(),counter=0,uiClock=0,frames=[],running=true;
   const startup=performance.now();
   prepareDestination=async()=>{
@@ -277,28 +349,35 @@ try {
     if(!running)return;
     // A hidden world has no visible pixels to update. Keep all resident detail
     // and resume the same scene; do not compete with another visible world tab.
-    if(document.visibilityState!=="visible"){last=now;requestAnimationFrame(frame);return;}
-    const realDt=(now-last)/1000,dt=Math.min(realDt,.05);last=now;
+    if(document.visibilityState!=="visible"||renderReviewHold){last=now;requestAnimationFrame(frame);return;}
+    const realDt=visualDelta((now-last)/1000),dt=Math.min(realDt,.05);last=now;
     try{
       // Destination preparation owns streaming while the overlay is visible;
       // duplicate work and GPU passes must not delay input or the next destination.
       if(!preparing){
-        let gpuQuery=null;
+        let gpuQuery=null,gpuFrameFailed=true;
         try {
-        controls.update(dt);terrain.update(camera,dt);structures.update(camera,dt);ecology.update(camera,dt);water.update(camera,dt);pasture.update(camera,dt);doors.update(camera,dt);settlements.update(camera,dt,{elevation:environment.elevation,sun:environment.sun,color:environment.csm.lights[0].color,intensity:environment.csm.lights[0].intensity,visibility:1});syncShadowState();environment.update(dt);
+        if(structures.lodgeStream.needs(camera.position,camera)){prepareDestination().catch(fail);requestAnimationFrame(frame);return;}
+        controls.update(realDt);
+        if(structures.lodgeStream.needs(camera.position,camera)){prepareDestination().catch(fail);requestAnimationFrame(frame);return;}
+        terrain.update(camera,dt);structures.update(camera,dt);ecology.update(camera,realDt);water.update(camera,realDt);pasture.update(camera,dt);doors.update(camera,dt);settlements.update(camera,dt,{elevation:environment.elevation,sun:environment.sun,color:environment.csm.lights[0].color,intensity:environment.csm.lights[0].intensity,visibility:1});syncShadowState();
+        shadowDepth.runPreparedMain(()=>environment.update(realDt),()=>{
         // Measure only render submission, after CPU world/streaming updates.
+        gpuPassProfile?.beginFrame();
         if(gpuExtension){collectGPU();if(gpuQueries.length<8){gpuQuery=gpuContext.createQuery();gpuContext.beginQuery(gpuExtension.TIME_ELAPSED_EXT,gpuQuery);}}
         // The caster tracker just propagated every world transform. Reuse that
         // exact state for this main draw only; reflection keeps its own updates.
         withPreparedWorldMatrices(scene,()=>renderWorld(scene,camera),preparedMatrices);
+        });
         water.renderReflection(renderer,scene,camera,{now:performance.now()/1000,lightingRevision:environment.minutes});
-        } finally {if(gpuQuery){gpuContext.endQuery(gpuExtension.TIME_ELAPSED_EXT);gpuQueries.push(gpuQuery);}}
+        gpuFrameFailed=false;
+        } finally {gpuPassProfile?.endFrame({failed:gpuFrameFailed});if(gpuQuery){gpuContext.endQuery(gpuExtension.TIME_ELAPSED_EXT);gpuQueries.push(gpuQuery);}}
       }
       if(counter++>30&&realDt>0&&!preparing&&document.visibilityState==="visible")frames.push(realDt*1000);
       if(frames.length>300)frames.shift();
       uiClock+=realDt;
       if(uiClock>.5){
-        uiClock=0;const h=camera.position.y-world.surface.heightAt(camera.position.x,camera.position.z);
+        uiClock=0;seatingUI.update();const h=camera.position.y-world.surface.heightAt(camera.position.x,camera.position.z);
         $("#readout").textContent="海拔 "+Math.round(camera.position.y)+" m · 离地 "+Math.round(h)+" m";
         if($("#diagnostics").open){
           const sorted=[...frames].sort((a,b)=>a-b),median=sorted[Math.floor(sorted.length*.5)]||0,p95=sorted[Math.floor(sorted.length*.95)]||0;
@@ -322,8 +401,8 @@ try {
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     ecology.persistCanopyCache?.().catch(error=>console.warn("[spruce-canopy] background cache write:",error));
   }));
-  window.kalajunV2={getSnapshot:()=>({version:"route-continuity-32",loadTimings:structuredClone(loadTimings),assetTransfers:params.get("profile")==="1"?performance.getEntriesByType("resource").filter(r=>r.name.startsWith(location.origin)&&/\/(assets|data)\//.test(r.name)).map(r=>({path:new URL(r.name).pathname,transferBytes:r.transferSize,encodedBytes:r.encodedBodySize,decodedBytes:r.decodedBodySize,durationMs:r.duration})):undefined,depthMode:reversedDepth?"reversed-float32":"logarithmic",frameTarget:worldFrame?.stats??null,ready:running,visibility:document.visibilityState,viewport:{width:canvas.width,height:canvas.height,pixelRatio:renderer.getPixelRatio()},uptimeMs:performance.now()-startup,position:camera.position.toArray(),view:selectedView,yaw:controls.yaw,pitch:controls.pitch,time:environment.minutes,initialPreparation,lastPreparation,lastShaderPreparation,preparing,gpu:{scope:"render-world-and-reflection",available:Boolean(gpuExtension),samples:gpuSamples.length,meanMs:gpuSamples.reduce((n,x)=>n+x,0)/Math.max(1,gpuSamples.length),maxMs:Math.max(0,...gpuSamples)},cpu:Object.fromEntries(Object.entries(cpuSamples).map(([name,a])=>[name,{samples:a.length,meanMs:a.reduce((n,x)=>n+x,0)/Math.max(1,a.length),maxMs:Math.max(0,...a)}])),cloudCache:{...environment.cloudCache.stats},shadows:environment.shadowScheduler.stats,nearShadowDetail:environment.nearShadowDetail,shadowReceivers:environment.shadowReceivers.stats,shadowCasters:{...environment.shadowCasters.stats,counts:environment.shadowCasters.result.counts},sunElevation:environment.elevation,lighting:{profile:environment.lightingProfile,sunIntensity:environment.csm.lights[0].intensity,exposure:renderer.toneMappingExposure,bounce:environment.bounce.intensity,environment:scene.environmentIntensity,cloudCoverage:environment.clouds.uCloudCoverage.value,cloudDensity:environment.clouds.uCloudDensity.value},frames:[...frames],render:{...renderer.info.render},terrain:{...terrain.stats},structures:{...structures.stats},ecology:{...ecology.stats},water:{...water.stats},pasture:{...pasture.stats},doors:{...doors.stats},collision:{...collision.stats},movement:controls.mode,errors:[...errors],entities:world.entities.length,roomLight:{...settlements.indirect.field.solar.stats},roomSkyBounce:{...settlements.indirect.field.stats},roomContact:{...settlements.indirect.contact.stats},rooms:settlements.viewpoints.length}),world};
-  if(import.meta.env.DEV||params.get("profile")==="1") window.kalajunV2.debug={renderer,worldFrame,scene,camera,environment,terrain,structures,ecology,controls,settlements,water,pasture,doors,collision,places};
-  addEventListener("pagehide",()=>{running=false;gpuQueries.forEach(q=>gpuContext.deleteQuery(q));controls.dispose();terrain.dispose();collision.dispose();doors.dispose();structures.dispose();ecology.dispose();paths.dispose();water.dispose();pasture.dispose();settlements.dispose();shadowDepth.dispose();environment.dispose();worldFrame?.dispose();shadowIndexRenderer?.dispose();renderer.dispose();},{once:true});
+  window.kalajunV2={getSnapshot:()=>({version:"route-continuity-38-candidate",loadTimings:structuredClone(loadTimings),assetTransfers:params.get("profile")==="1"?performance.getEntriesByType("resource").filter(r=>r.name.startsWith(location.origin)&&/\/(assets|data)\//.test(r.name)).map(r=>({path:new URL(r.name).pathname,transferBytes:r.transferSize,encodedBytes:r.encodedBodySize,decodedBytes:r.decodedBodySize,durationMs:r.duration})):undefined,depthMode:reversedDepth?"reversed-float32":"logarithmic",frameTarget:worldFrame?.stats??null,treePhotoPrepass:{...treePhotoPrepass.stats},ready:running,visibility:document.visibilityState,viewport:{width:canvas.width,height:canvas.height,pixelRatio:renderer.getPixelRatio()},uptimeMs:performance.now()-startup,position:camera.position.toArray(),view:selectedView,yaw:controls.yaw,pitch:controls.pitch,time:environment.minutes,initialPreparation,lastPreparation,lastShaderPreparation,preparing,gpuPasses:gpuPassProfile?.snapshot()??null,gpu:{scope:"render-world-and-reflection",available:Boolean(gpuExtension),samples:gpuSamples.length,meanMs:gpuSamples.reduce((n,x)=>n+x,0)/Math.max(1,gpuSamples.length),maxMs:Math.max(0,...gpuSamples)},cpu:Object.fromEntries(Object.entries(cpuSamples).map(([name,a])=>[name,{samples:a.length,meanMs:a.reduce((n,x)=>n+x,0)/Math.max(1,a.length),maxMs:Math.max(0,...a)}])),sceneMatrixCache:sceneMatrixCache?{...sceneMatrixCache.stats}:null,cloudCache:{...environment.cloudCache.stats},shadows:environment.shadowScheduler.stats,nearShadowDetail:environment.nearShadowDetail,shadowReceivers:environment.shadowReceivers.stats,shadowCasters:{...environment.shadowCasters.stats,counts:environment.shadowCasters.result.counts},sunElevation:environment.elevation,lighting:{profile:environment.lightingProfile,sunIntensity:environment.csm.lights[0].intensity,exposure:renderer.toneMappingExposure,bounce:environment.bounce.intensity,environment:scene.environmentIntensity,cloudCoverage:environment.clouds.uCloudCoverage.value,cloudDensity:environment.clouds.uCloudDensity.value},frames:[...frames],render:{...renderer.info.render},terrain:{...terrain.stats},structures:{...structures.stats},ecology:{...ecology.stats},paths:{...paths.stats},water:{...water.stats},pasture:{...pasture.stats},doors:{...doors.stats},collision:{...collision.stats},movement:controls.mode,seating:{...seating.stats},controlTiming:{...controls.stats},errors:[...errors],entities:world.entities.length,roomLight:{...settlements.indirect.field.solar.stats},roomSkyBounce:{...settlements.indirect.field.stats},roomContact:{...settlements.indirect.contact.stats},rooms:settlements.viewpoints.length}),world};
+  if(import.meta.env.DEV||params.get("profile")==="1"||params.get("debug")==="1") window.kalajunV2.debug={setReviewHold:value=>{const previous=renderReviewHold;renderReviewHold=Boolean(value);return previous;},gpuPassProfile,shadowStaticProfile39,renderer,worldFrame,treePhotoPrepass,sceneMatrixCache,renderFrozenWorld:()=>renderWorld(scene,camera),scene,camera,environment,terrain,structures,ecology,controls,seating,settlements,water,pasture,doors,collision,paths,places};
+  addEventListener("pagehide",()=>{running=false;shadowStaticProfile39.dispose();gpuPassProfile?.dispose();treePhotoPrepass.dispose();sceneMatrixCache?.dispose();gpuQueries.forEach(q=>gpuContext.deleteQuery(q));seatingUI.dispose();controls.dispose();terrain.dispose();collision.dispose();doors.dispose();structures.dispose();ecology.dispose();paths.dispose();water.dispose();pasture.dispose();settlements.dispose();shadowDepth.dispose();environment.dispose();worldFrame?.dispose();shadowIndexRenderer?.dispose();renderer.dispose();},{once:true});
 }catch(e){fail(e);}
 function smooth(a,b,x){const t=Math.min(1,Math.max(0,(x-a)/(b-a)));return t*t*(3-2*t);}

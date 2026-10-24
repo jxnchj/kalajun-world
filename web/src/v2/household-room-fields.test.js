@@ -1,3 +1,4 @@
+import {assertRoomFieldSamplingContract} from './room-field-contract.assert.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -5,10 +6,10 @@ import {createHash} from 'node:crypto';
 import * as T from 'three';
 import {prepareHouseholdRoom,validateHouseholdRoomBundle,householdRoomKey} from './household-room-fields.js';
 import {RoomBounceField,decodeRoomField,ROOM_FIELD_GLSL} from './room-bounce-field.js';
-import {ROOM_BOUNCE_DATA} from './room-bounce-data.js';
-import {ROOM_SECOND_BOUNCE_DATA} from './room-second-bounce-data.js';
-import {ROOM_TRANSPORT_DATA} from './room-transport-data.js';
-import {ROOM_CONTACT_DATA} from './room-contact-data.js';
+import {ROOM_BOUNCE_DATA} from './room-bounce-registry.js';
+import {ROOM_SECOND_BOUNCE_DATA} from './room-second-bounce-registry.js';
+import {ROOM_TRANSPORT_DATA} from './room-transport-registry.js';
+import {ROOM_CONTACT_DATA} from './room-contact-registry.js';
 import {decodeRoomContact} from './room-contact.js';
 import {decodeSolarDirection} from './room-solar-transport.js';
 import {SETTLEMENT_ASSETS} from './settlement-assets.js';
@@ -40,7 +41,7 @@ test('only byte-identical payloads share the base; changed second-order transfer
  assert.deepEqual(decodeRoomContact(bundles[0].contact),decodeRoomContact(ROOM_CONTACT_DATA.house_a));
 });
 test('runtime waits for correct complete variant and closed-door endpoint without changing samplers',async()=>{
- assert.equal((ROOM_FIELD_GLSL.match(/texture\(uRoomBounceField/g)||[]).length,4);
+ assertRoomFieldSamplingContract();
  const f=new RoomBounceField(),q=new T.Quaternion();try{
   for(let i=0;i<3;i++){
    f.setDoorOpenness(0);f.set(asset(i),q);assert.equal(f.stats.household.ready,false);f.setLighting(lighting,1);assert.equal(f.uniforms.uRoomFieldActive.value,0);
@@ -61,4 +62,23 @@ test('three actual usage identities select corresponding fields and contact maps
 });
 test('stale external geometry metadata fails instead of silently reusing the old room field',()=>{
  const b=structuredClone(bundles[0]);b.externalSources[0].sourceSHA256='0'.repeat(64);assert.throws(()=>validateHouseholdRoomBundle(b),/geometry source differs/);
+});
+
+test('entity-specific entry transport is lazy and never selected by any other tea household',async t=>{
+ const originalLocation=globalThis.location;t.after(()=>{if(originalLocation===undefined)delete globalThis.location;else globalThis.location=originalLocation;});globalThis.location={search:'?householdEntry=editable'};
+ const {HOUSEHOLD_ENTRY_ASSET:entry}=await import('./household-entry-steps.js');
+ assert.equal(householdStyle(entry.entityId),0);assert.equal(householdRoomKey(0,entry.entityId),entry.roomKey);
+ assert.equal(householdRoomKey(0,'another-tea-house'),'house_a-living-0');assert.equal(householdRoomKey(1,entry.entityId),'house_a-living-1');
+ const previous=globalThis.location;try{
+  for(const search of ['', '?householdEntry=editable', '?householdEntry=unknown']){globalThis.location={search};assert.equal(householdRoomKey(0,entry.entityId),entry.roomKey);}
+  for(const search of ['?householdEntry=v33', '?householdYards=v32', '?householdEntry=editable&householdYards=v32']){globalThis.location={search};assert.equal(householdRoomKey(0,entry.entityId),'house_a-living-0');}
+ }finally{if(previous===undefined)delete globalThis.location;else globalThis.location=previous;}
+ const b=await prepareHouseholdRoom(entry.roomKey);assert.equal(b.entityId,entry.entityId);assert.equal(b.externalSources.length,2);
+ for(const ext of b.externalSources){assert.equal(ext.sourceSHA256,sha(await readFile(new URL('../../public/'+ext.sourceGLB,import.meta.url))));assert.equal(ext.blendSHA256,sha(await readFile(new URL('../../../'+ext.sourceBlend,import.meta.url))));}
+ for(const state of[b,b.closed]){for(const kind of['sky','secondSky']){const decoded=decodeRoomField(state[kind]),base=decodeRoomField(bundles[0][kind]);assert.equal(decoded.length,base.length);for(let i=0;i<decoded.length;i++){assert.ok(Number.isFinite(T.DataUtils.fromHalfFloat(decoded[i])));if(i%4===3)assert.equal(decoded[i],base[i]);}}for(const kind of['solar','secondSolar'])for(let d=0;d<state[kind].directions.length;d++)assert.ok(decodeSolarDirection(state[kind],d).every(Number.isFinite));}
+ assert.equal(decodeRoomContact(b.contact).length,decodeRoomContact(bundles[0].contact).length);
+ const wrongEntity=structuredClone(b);wrongEntity.entityId='another-tea-house';assert.throws(()=>validateHouseholdRoomBundle(wrongEntity),/identity/);
+ const stale=structuredClone(b);stale.externalSources[1].sourceSHA256='0'.repeat(64);assert.throws(()=>validateHouseholdRoomBundle(stale),/geometry source differs/);
+ const copied=structuredClone(b);copied.key='house_a-living-0';assert.throws(()=>validateHouseholdRoomBundle(copied),/identity/);
+ const f=new RoomBounceField(),q=new T.Quaternion();try{f.set({...SETTLEMENT_ASSETS.house_a,bounceField:entry.roomKey},q);f.setDoorOpenness(0);await f.prepare();f.setLighting(lighting,1);assert.equal(f.key,entry.roomKey);assert.equal(f.stats.household.closedReady,true);const closed=f.uniforms.uRoomBounceField.value.image.data.slice();f.setDoorOpenness(1);f.setLighting(lighting,1);assert.ok(f.uniforms.uRoomBounceField.value.image.data.some((v,i)=>i%4!==3&&v!==closed[i]));}finally{f.dispose();}
 });

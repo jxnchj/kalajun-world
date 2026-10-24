@@ -1,0 +1,44 @@
+{
+  "scope": "actual source DEM/landcover/hydrology/habitat; 90 grass preparation iterations, no flower GLB assets loaded; not browser timing",
+  "ms": 371.12087499999996,
+  "tiles": 54,
+  "roots": 19403,
+  "pending": 0,
+  "timings": {
+    "generateGrassTileRoots": {
+      "calls": 54,
+      "ms": 265.1322079999994,
+      "maxMs": 46.79954099999998
+    },
+    "addGrassMesh": {
+      "calls": 73,
+      "ms": 86.9084600000001,
+      "maxMs": 5.473959000000036
+    },
+    "addBrookWetMeshes": {
+      "calls": 54,
+      "ms": 0.07229399999914676,
+      "maxMs": 0.02037499999994452
+    },
+    "addFlowers": {
+      "calls": 23,
+      "ms": 0.09695699999986118,
+      "maxMs": 0.08154100000001563
+    },
+    "syncNearFlowers": {
+      "calls": 90,
+      "ms": 0.19387999999912608,
+      "maxMs": 0.028166000000055647
+    },
+    "syncBasalGrass": {
+      "calls": 90,
+      "ms": 10.688040000000683,
+      "maxMs": 0.7600000000002183
+    },
+    "publishMeadowPools": {
+      "calls": 1,
+      "ms": 0.5308330000000296,
+      "maxMs": 0.5308330000000296
+    }
+  }
+}

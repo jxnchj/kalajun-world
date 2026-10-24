@@ -1,0 +1,64 @@
+{
+  "candidate": "treeRootOrder",
+  "decision": "rejected-for-default-adoption",
+  "defaultEnabled": false,
+  "measurementOwner": "parent actual browser verification",
+  "conditions": {
+    "width": 1280,
+    "height": 800,
+    "dpr": 1,
+    "time": 870,
+    "quality": "fullq/m0",
+    "concurrentBuildBakeCpuTest": false
+  },
+  "runs": [
+    {
+      "enabled": false,
+      "round": 1,
+      "frameMs": 71.2188,
+      "gpuMs": 32.1492,
+      "evidence": "docs/previews/v2-route-craft-38/root-order-off-1.json",
+      "image": "docs/previews/v2-route-craft-38/root-order-off-1.png"
+    },
+    {
+      "enabled": true,
+      "round": 1,
+      "frameMs": 71.3071,
+      "gpuMs": 32.4643,
+      "evidence": "docs/previews/v2-route-craft-38/root-order-on-1.json",
+      "image": "docs/previews/v2-route-craft-38/root-order-on-1.png"
+    },
+    {
+      "enabled": false,
+      "round": 2,
+      "frameMs": 70.0655,
+      "gpuMs": 31.5009,
+      "evidence": "docs/previews/v2-route-craft-38/root-order-off-2.json",
+      "image": "docs/previews/v2-route-craft-38/root-order-off-2.png"
+    },
+    {
+      "enabled": true,
+      "round": 2,
+      "frameMs": 73.2612,
+      "gpuMs": 32.329,
+      "evidence": "docs/previews/v2-route-craft-38/root-order-on-2.json",
+      "image": "docs/previews/v2-route-craft-38/root-order-on-2.png"
+    }
+  ],
+  "means": {
+    "off": {
+      "frameMs": 70.64215,
+      "gpuMs": 31.82505
+    },
+    "on": {
+      "frameMs": 72.28415000000001,
+      "gpuMs": 32.39665
+    }
+  },
+  "onMinusOffPercent": {
+    "frameMs": 2.324391315949481,
+    "gpuMs": 1.7960694484376205
+  },
+  "pixelEquivalence": "not verified; no further pixel validation for candidate with negative net performance",
+  "furtherCandidateWork": "stopped"
+}

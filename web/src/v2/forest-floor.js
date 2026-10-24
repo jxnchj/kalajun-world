@@ -1,4 +1,6 @@
+import {seatForestShoulderRoot} from "./forest-bank-shoulder.js";
 import * as THREE from "three";
+import { ForestFloorBatches, forestFloorBatchesEnabled } from "./forest-floor-batches.js";
 import {createPlantEnvelope,relocateShorePlant,SHORE_PLANT_MAX_SHIFT} from "./shore-contact.js";
 const floorEnvelopes=new Map();
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
@@ -8,6 +10,7 @@ export const FOREST_FLOOR=Object.freeze({tile:24,cell:2.4,range:112,capacity:{sh
 const emptyHydro={wetness:0,bank:0,insideWater:false};
 // Growth-form placement from cover, terrain and existing stream banks; this is not a surveyed species inventory.
 export function forestFloorAt(world,ix,iz,excluded=()=>false){
+ if(world.forestShoulderSourceWorld)return seatForestShoulderRoot(world,forestFloorAt(world.forestShoulderSourceWorld,ix,iz,excluded));
  const x=(ix+.15+.7*random(ix,iz,151))*FOREST_FLOOR.cell,z=(iz+.15+.7*random(ix,iz,152))*FOREST_FLOOR.cell;
  const lc=world.landcoverAt(x,z),q=world.hydrology?.sampleAt(x,z,{includeDepth:false})||emptyHydro;
  if(lc.b>.16||q.insideWater||excluded(x,z,.85))return null;
@@ -129,7 +132,7 @@ export function createForestFloorGeometry(kind){
  return b.finish();
 }
 export class ForestFloor{
- constructor(world,{excluded=()=>false,wind,depth,bounds}={}){
+ constructor(world,{excluded=()=>false,wind,depth,bounds,spatialBatches=forestFloorBatchesEnabled()}={}){
   this.world=world;this.excluded=excluded;this.bounds=bounds;this.group=new THREE.Group();this.group.name="forest-stream-edge";this.materials=[];this.pools=new Map();this.tiles=new Map();this.queue=[];this.anchor="";this.revision=0;this.transform=new THREE.Object3D();this.stats={shrubs:0,sedges:0,deadwood:0,stones:0,pending:0,triangles:0,builtThisFrame:0};
   for(const [kind,mode] of [["shrub",8],["sedge",9],["fern",8],["deadwood",10],["stone",11]]){
    const geometry=createForestFloorGeometry(kind),material=new THREE.MeshStandardMaterial({vertexColors:true,roughness:kind==="stone"?.88:.94,side:THREE.DoubleSide}),dynamic=kind==="shrub"||kind==="sedge"||kind==="fern";
@@ -137,7 +140,9 @@ export class ForestFloor{
    const mesh=new THREE.InstancedMesh(geometry,material,FOREST_FLOOR.capacity[kind]);mesh.count=0;mesh.castShadow=true;mesh.receiveShadow=true;mesh.frustumCulled=true;if(depth)mesh.customDepthMaterial=depth(material,mode,dynamic);
    this.group.add(mesh);this.materials.push(material);this.pools.set(kind,{mesh,records:[],dirty:false,range:mode===8?110:mode===9?78:mode===10?110:65});
   }
+  this.submission=new ForestFloorBatches(this.group,this.pools,{bounds,enabled:spatialBatches});this.stats.spatialBatches=this.submission.stats;
  }
+ setSpatialBatches(enabled){this.submission.setEnabled(enabled);this.submission.update(this.submission.viewer,this.revision);return this.submission.enabled;}
  matrix(p){const t=this.transform;t.position.set(p.x,p.y,p.z);t.rotation.set(0,p.rot,0);if(p.pitch)t.quaternion.multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,0,1),p.pitch));t.scale.setScalar(p.s);t.updateMatrix();return t.matrix;}
  buildTile(tx,tz){
   const key=tx+","+tz,records=[];
@@ -175,11 +180,12 @@ export class ForestFloor{
    if(pool.boundsDirty){if(this.bounds)this.bounds(pool.mesh,pool.records,p,pool.range,18);else{pool.mesh.computeBoundingSphere();if(pool.mesh.boundingSphere)pool.mesh.boundingSphere.radius+=1;}pool.boundsDirty=false;}
    triangles+=pool.records.length*(pool.mesh.geometry.index?.count??pool.mesh.geometry.attributes.position.count)/3;
   }
+  this.submission.update(p,this.revision);
   if(this.shoreStatsRevision!==this.revision){
    let moved=0,unresolved=0;for(const pool of this.pools.values())for(const root of pool.records){moved+=+!!root.shoreMove;unresolved+=+!!root.shoreUnresolved;}
    this.stats.shorePlantsMoved=moved;this.stats.shorePlantsUnresolved=unresolved;this.shoreStatsRevision=this.revision;
   }
   Object.assign(this.stats,{shrubs:this.pools.get("shrub").records.length,sedges:this.pools.get("sedge").records.length,ferns:this.pools.get("fern").records.length,deadwood:this.pools.get("deadwood").records.length,stones:this.pools.get("stone").records.length,pending:this.queue.length,triangles,builtThisFrame:built,revision:this.revision,chunks:this.tiles.size});
  }
- dispose(){for(const p of this.pools.values()){p.mesh.geometry.dispose();p.mesh.material.dispose();p.mesh.customDepthMaterial?.dispose();p.mesh.dispose();}this.group.clear();this.tiles.clear();this.queue=[];}
+ dispose(){this.submission.dispose();for(const p of this.pools.values()){p.mesh.geometry.dispose();p.mesh.material.dispose();p.mesh.customDepthMaterial?.dispose();p.mesh.dispose();}this.group.clear();this.tiles.clear();this.queue=[];}
 }

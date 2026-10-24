@@ -1,0 +1,154 @@
+{
+  "scope": "real source terrain rows, parent attribute reuse and transferable payload; not browser performance",
+  "cases": [
+    {
+      "id": "forest",
+      "child": 0,
+      "bytes": 162164,
+      "ms": 15.468582999999853,
+      "exact": true
+    },
+    {
+      "id": "forest",
+      "child": 1,
+      "bytes": 162164,
+      "ms": 9.521792000000005,
+      "exact": true
+    },
+    {
+      "id": "forest",
+      "child": 2,
+      "bytes": 162164,
+      "ms": 12.356583,
+      "exact": true
+    },
+    {
+      "id": "forest",
+      "child": 3,
+      "bytes": 162164,
+      "ms": 5.467749999999796,
+      "exact": true
+    },
+    {
+      "id": "meadow",
+      "child": 0,
+      "bytes": 162164,
+      "ms": 2.6512910000001284,
+      "exact": true
+    },
+    {
+      "id": "meadow",
+      "child": 1,
+      "bytes": 162164,
+      "ms": 2.6133749999999054,
+      "exact": true
+    },
+    {
+      "id": "meadow",
+      "child": 2,
+      "bytes": 162164,
+      "ms": 2.576291000000083,
+      "exact": true
+    },
+    {
+      "id": "meadow",
+      "child": 3,
+      "bytes": 162164,
+      "ms": 2.6519170000001395,
+      "exact": true
+    },
+    {
+      "id": "west",
+      "child": 0,
+      "bytes": 162164,
+      "ms": 1.265374999999949,
+      "exact": true
+    },
+    {
+      "id": "west",
+      "child": 1,
+      "bytes": 162164,
+      "ms": 1.1945000000000618,
+      "exact": true
+    },
+    {
+      "id": "west",
+      "child": 2,
+      "bytes": 162164,
+      "ms": 1.2312090000000353,
+      "exact": true
+    },
+    {
+      "id": "west",
+      "child": 3,
+      "bytes": 162164,
+      "ms": 1.1728330000000824,
+      "exact": true
+    },
+    {
+      "id": "settlement",
+      "child": 0,
+      "bytes": 162164,
+      "ms": 2.5762090000000626,
+      "exact": true
+    },
+    {
+      "id": "settlement",
+      "child": 1,
+      "bytes": 162164,
+      "ms": 2.2543339999999716,
+      "exact": true
+    },
+    {
+      "id": "settlement",
+      "child": 2,
+      "bytes": 162164,
+      "ms": 1.5970830000001115,
+      "exact": true
+    },
+    {
+      "id": "settlement",
+      "child": 3,
+      "bytes": 162164,
+      "ms": 1.4532919999999194,
+      "exact": true
+    },
+    {
+      "id": "far",
+      "child": 0,
+      "bytes": 162164,
+      "ms": 1.350791000000072,
+      "exact": true
+    },
+    {
+      "id": "far",
+      "child": 1,
+      "bytes": 162164,
+      "ms": 1.3197909999998956,
+      "exact": true
+    },
+    {
+      "id": "far",
+      "child": 2,
+      "bytes": 162164,
+      "ms": 1.385082999999895,
+      "exact": true
+    },
+    {
+      "id": "far",
+      "child": 3,
+      "bytes": 162164,
+      "ms": 1.304290999999921,
+      "exact": true
+    }
+  ],
+  "stats": {
+    "entries": 65536,
+    "bytes": 7405568,
+    "heightHits": 308,
+    "heightMisses": 31052,
+    "vertexHits": 308,
+    "vertexMisses": 15692,
+    "parentVertexHits": 5780
+  }
+}

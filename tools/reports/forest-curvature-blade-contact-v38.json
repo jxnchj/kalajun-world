@@ -1,0 +1,196 @@
+{
+  "roots": 1483,
+  "scope": "offline original XZ per-blade Y seating trial (brook compact footprint is explicitly NOT reused), complete original vertices/index retained; conservative wind perimeter at every nonbasal vertex, not adopted",
+  "results": [
+    {
+      "id": "grass:-4521:5996",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3808
+    },
+    {
+      "id": "grass:-4525:5998",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3408
+    },
+    {
+      "id": "grass:-4520:5999",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3992
+    },
+    {
+      "id": "grass:-4518:6002",
+      "asset": true,
+      "oldPen": 0.003439610980422003,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 4032
+    },
+    {
+      "id": "grass:-4519:6003",
+      "asset": true,
+      "oldPen": 0.022174124729644973,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3456
+    },
+    {
+      "id": "grass:-4518:6003",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3664
+    },
+    {
+      "id": "grass:-4518:6004",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3912
+    },
+    {
+      "id": "grass:-4519:6005",
+      "asset": true,
+      "oldPen": 0.014642888897924422,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 4016
+    },
+    {
+      "id": "grass:-4518:6005",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3960
+    },
+    {
+      "id": "grass:-4519:6006",
+      "asset": true,
+      "oldPen": 0.015054376172884076,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 4016
+    },
+    {
+      "id": "grass:-4523:6008",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 4272
+    },
+    {
+      "id": "grass:-4520:6010",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3584
+    },
+    {
+      "id": "grass:-4524:6011",
+      "asset": true,
+      "oldPen": 0.0013576135597759276,
+      "newPen": 0.03508724675475605,
+      "added": 0.03480941447423902,
+      "worst": {
+        "kind": 0,
+        "i": 202,
+        "angle": 3.9269908169872414,
+        "position": [
+          0.2692534327507019,
+          0.16387788951396942,
+          0.0668683797121048
+        ],
+        "seatedY": 0.17248137295246124,
+        "wind": [
+          1,
+          0.05000000074505806,
+          0.7465431690216064
+        ],
+        "x": -3619.1254391619973,
+        "z": 4808.9769926098015,
+        "oldGap": 0.00024314241045431118,
+        "newGap": -0.03480941447423902
+      },
+      "samples": 3776
+    },
+    {
+      "id": "grass:-4520:6011",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 4192
+    },
+    {
+      "id": "grass:-4525:6012",
+      "asset": true,
+      "oldPen": 0.000026974846605298808,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 4016
+    },
+    {
+      "id": "grass:-4527:6016",
+      "asset": true,
+      "oldPen": 0,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 4304
+    },
+    {
+      "id": "grass:-4526:6021",
+      "asset": true,
+      "oldPen": 0.010134838332305662,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3520
+    },
+    {
+      "id": "grass:-4527:6022",
+      "asset": true,
+      "oldPen": 0.02076685588235705,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 4040
+    },
+    {
+      "id": "grass:-4528:6023",
+      "asset": true,
+      "oldPen": 0.013273893374389445,
+      "newPen": 0,
+      "added": 0,
+      "worst": null,
+      "samples": 3912
+    }
+  ]
+}

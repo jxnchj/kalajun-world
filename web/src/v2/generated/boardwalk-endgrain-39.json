@@ -1,0 +1,32 @@
+{
+  "version": 39,
+  "diameterMetres": 0.42,
+  "oldUVMetres": 0.9,
+  "oldOffset": [
+    0.67,
+    0.62
+  ],
+  "newCenter": [
+    0.5,
+    0.55
+  ],
+  "endFactor": [
+    0.23457258031325956,
+    0.29853028618445177,
+    0.4927804139068057
+  ],
+  "longFaceTargetLinearMean": [
+    0.11923990593278194,
+    0.08217329012842975,
+    0.0494497175083722
+  ],
+  "endSampleLinearMean": [
+    0.5083284063872393,
+    0.2752594759436155,
+    0.10034838259161026
+  ],
+  "sourceImages": {
+    "wood_end.png": "65d87fe9bf2d9058d74a2938348566e87d6b406d4fe4fcfd80f43d87e15b3075",
+    "rough_wood_diff_1k.jpg": "abc46d8e3163d911220f4ec3a4043b68d2b0c6d750513f80871211acfefb2a98"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "scope": "integrated forestRootedShoulder38=1 actual WorldTerrain._job/_buildRow, Float32 positions, adaptive native diagonals; one 10m tile/31.25cm spacing; not browser acceptance",
+  "node": {
+    "x": -3620,
+    "z": 4800,
+    "size": 10,
+    "depth": 13,
+    "parent": null
+  },
+  "sourceStillMatches": true,
+  "samples": [
+    {
+      "d": -0.2,
+      "baselineAnalytic": -0.07300223772017489,
+      "candidateAnalytic": -0.07300223772017489,
+      "baselineMesh": -0.07646136181710972,
+      "candidateMesh": -0.07646136181710972,
+      "meshDelta": 0
+    },
+    {
+      "d": -0.1,
+      "baselineAnalytic": -0.023042707388412964,
+      "candidateAnalytic": -0.023042707388412964,
+      "baselineMesh": -0.03996780298211888,
+      "candidateMesh": -0.0337684184992213,
+      "meshDelta": 0.006199384482897585
+    },
+    {
+      "d": -0.05,
+      "baselineAnalytic": -0.006503443669771514,
+      "candidateAnalytic": -0.006503443669771514,
+      "baselineMesh": -0.030557126865915052,
+      "candidateMesh": -0.01978525471758985,
+      "meshDelta": 0.010771872148325201
+    },
+    {
+      "d": 0,
+      "baselineAnalytic": 0,
+      "candidateAnalytic": 0,
+      "baselineMesh": -0.020876672773283644,
+      "candidateMesh": -0.005532312959530827,
+      "meshDelta": 0.015344359813752817
+    },
+    {
+      "d": 0.05,
+      "baselineAnalytic": 0.0006036401427991223,
+      "candidateAnalytic": 0.010681203966214525,
+      "baselineMesh": -0.01119621868019749,
+      "candidateMesh": 0.008720628798528196,
+      "meshDelta": 0.019916847478725686
+    },
+    {
+      "d": 0.1,
+      "baselineAnalytic": 0.0022476743197330507,
+      "candidateAnalytic": 0.022456681810581358,
+      "baselineMesh": -0.001515764587566082,
+      "candidateMesh": 0.022973570557041967,
+      "meshDelta": 0.02448933514460805
+    },
+    {
+      "d": 0.2,
+      "baselineAnalytic": 0.007639863910753775,
+      "candidateAnalytic": 0.04747992274678836,
+      "baselineMesh": 0.00831833021084094,
+      "candidateMesh": 0.04681561037477877,
+      "meshDelta": 0.03849728016393783
+    },
+    {
+      "d": 0.35,
+      "baselineAnalytic": 0.01778125139662734,
+      "candidateAnalytic": 0.082182428345277,
+      "baselineMesh": 0.018493354816655483,
+      "candidateMesh": 0.07991088547032632,
+      "meshDelta": 0.06141753065367084
+    },
+    {
+      "d": 0.5,
+      "baselineAnalytic": 0.028099905975068395,
+      "candidateAnalytic": 0.10721761967761267,
+      "baselineMesh": 0.028522106160380645,
+      "candidateMesh": 0.1059089227410368,
+      "meshDelta": 0.07738681658065616
+    },
+    {
+      "d": 0.75,
+      "baselineAnalytic": 0.043322256301962625,
+      "candidateAnalytic": 0.1259874602724267,
+      "baselineMesh": 0.04390276598587661,
+      "candidateMesh": 0.12307945038264734,
+      "meshDelta": 0.07917668439677072
+    },
+    {
+      "d": 1,
+      "baselineAnalytic": 0.06118334036455053,
+      "candidateAnalytic": 0.09776172767715252,
+      "baselineMesh": 0.06067738568481218,
+      "candidateMesh": 0.0961532996511778,
+      "meshDelta": 0.035475913966365624
+    }
+  ]
+}

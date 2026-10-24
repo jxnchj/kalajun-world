@@ -1,3 +1,4 @@
+import {csmFadeEdge,csmFadeMargin} from "./close-shadow-overlap.js";
 import { Frustum, Matrix4, PCFShadowMap, Plane, Vector3 } from "three";
 
 // A receiver r has n.r+d >= 0 in each camera half-space. Its possible
@@ -25,8 +26,8 @@ export function csmReceiverDepthRanges(camera, csm) {
   for (let i = 0; i < csm.breaks.length; i++) {
     const end = csm.breaks[i];
     if (!Number.isFinite(end) || end <= previous || end > 1) return null;
-    const lower = previous - (csm.fade ? previous * previous / 8 : 0);
-    const upper = end + (csm.fade ? end * end / 8 : 0);
+    const lower = csmFadeEdge(csm,previous) - (csm.fade ? csmFadeMargin(csm,previous) / 2 : 0);
+    const upper = csmFadeEdge(csm,end) + (csm.fade ? csmFadeMargin(csm,end) / 2 : 0);
     ranges.push([lower * span, i === csm.breaks.length - 1 ? Infinity : upper * span]);
     previous = end;
   }

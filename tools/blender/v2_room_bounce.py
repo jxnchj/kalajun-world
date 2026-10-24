@@ -112,6 +112,16 @@ def irradiance_at(point,normal,openings,bvh):
             value+=area*cosine/max(d2,.0025)
     return min(math.pi,value)
 
+def retained_grid_bounds(dims,lo,hi,validity):
+    # The original receiving grid is authoritative. libm may differ by one ULP
+    # in the computed roof height across authoring platforms; never drift the
+    # stored grid, and never accept a real floor/ceiling or size change here.
+    assert validity["size"]==dims,"Retained room grid dimensions changed"
+    saved=np.asarray(validity["bounds"],dtype=np.float64)
+    computed=np.asarray([lo,hi],dtype=np.float64)
+    assert saved.shape==computed.shape==(2,3) and np.isfinite(saved).all() and np.isfinite(computed).all() and np.max(abs(saved-computed))<=1e-12,"Retained room grid geometry changed"
+    return saved[0].copy(),saved[1].copy()
+
 def bake(key,a,bvh,albedos,source,glb,validity=None):
     started=time.monotonic();f=a["floor"]
     if f["shape"]=="circle":
@@ -120,13 +130,15 @@ def bake(key,a,bvh,albedos,source,glb,validity=None):
         lo=np.array([f["x0"]+.10,f["y"]+.11,f["z0"]+.10])
         hi=np.array([f["x1"]-.10,ceiling(a,(f["x0"]+f["x1"])/2,0)-.13,f["z1"]-.10])
         dims=[9,5,7]if a.get("sourceAsset")=="house_a"else[9,5,9]
+    dims=a.get("probeSize",dims)
+    if "probeBounds" in a:lo,hi=(np.array(b,dtype=np.float64)for b in a["probeBounds"])
     nx,ny,nz=dims;data=np.zeros((4,nz,ny,nx,4),np.float32)
     # External furnishing variants leave the original indoor receiving volume
     # unchanged. Freeze its validity instead of letting exterior hit normals
     # reclassify a room probe as inside solid furniture. Sampling stays identical.
     valid_grid=None
     if validity is not None:
-        assert validity["size"]==dims and validity["bounds"]==[lo.tolist(),hi.tolist()]
+        lo,hi=retained_grid_bounds(dims,lo,hi,validity)
         valid_grid=np.frombuffer(base64.b64decode(validity["data"]),dtype="<f2").reshape(4,nz,ny,nx,4)[0,:,:,:,3]
     dirs=[]
     for k in range(SAMPLES):

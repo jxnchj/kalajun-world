@@ -1,0 +1,19 @@
+{
+  "reference": "house_a-living-0",
+  "payloadsByteIdentical": {
+    "open.sky": true,
+    "open.secondSky": true,
+    "open.solar": true,
+    "open.secondSolar": true,
+    "open.apertures": true,
+    "open.contact": true,
+    "closed.sky": true,
+    "closed.secondSky": true,
+    "closed.solar": true,
+    "closed.secondSolar": true,
+    "closed.apertures": true
+  },
+  "allPayloadsByteIdentical": true,
+  "elapsedSeconds": 42.184759333998954,
+  "blenderVersion": "5.2.2 LTS"
+}

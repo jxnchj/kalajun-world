@@ -1,0 +1,22 @@
+{
+  "sourceSHA256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+  "derivedBlend": "assets/src/v2/settlements/lanchuan-lodge-wood-v38.blend",
+  "derivedSHA256": "8fa67bb7914a6edca8265b8729d9c830ff40ba8ef1fb302f358ed4bdd92b11e1",
+  "nodes": [
+    {
+      "node": "gh_lanchuan_lodge_plank",
+      "assignedFaces": 264,
+      "fingerprint": "24da022736c4ca4a76316c5f43ff696a821ad19c112b922da0172c1ef307901a"
+    },
+    {
+      "node": "gh_lanchuan_lodge_pine",
+      "assignedFaces": 336,
+      "fingerprint": "1d20569074db81ac56f03d11a929ae51959420a45841f5307b4a3cc5c9e869f9"
+    }
+  ],
+  "allGeometryNormalsAOUnchanged": true,
+  "reopened": true,
+  "originalMeshCount": 23,
+  "originalGeometryNormalsAOAndUVUnchangedAfterReopen": true,
+  "derivedBytes": 12373468
+}

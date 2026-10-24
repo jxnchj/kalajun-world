@@ -1,0 +1,135 @@
+{
+  "round": 36,
+  "status": "candidate not default: CPU contracts passed, browser same-page A/B did not establish a stable net GPU improvement",
+  "representation": "48 m fixed-world blocks; original five pools remain sole CPU/root/resource owners",
+  "changedFiles": [
+    "web/src/v2/forest-floor.js",
+    "web/src/v2/forest-floor-batches.js",
+    "web/src/v2/forest-floor-batches.test.js"
+  ],
+  "rollback": {
+    "url": "floorBatches=0",
+    "runtime": "kalajunV2.debug.ecology.forestFloor.setSpatialBatches(false)",
+    "restore": "kalajunV2.debug.ecology.forestFloor.setSpatialBatches(true)"
+  },
+  "pose": {
+    "source": "world.hydrology.viewpoints.find(v => v.id === \"river-forest\")",
+    "worldCreation": "forest-floor-batches.test.js actual(): createWorldData with canonical public scene/objects/detail/streams/manifest, decoded core+far heights, detail bytes, core+far landcover; default riverMeanders",
+    "cameraPosition": "[point.x, world.surface.heightAt(point.x,point.z)+point.above, point.z]",
+    "cameraRotation": "[point.pitch*pi/180, -point.yaw*pi/180, 0] YXZ",
+    "projection": {
+      "fov": 52,
+      "aspect": "1280/800",
+      "near": 0.25,
+      "far": 150000,
+      "reversedDepth": true
+    },
+    "sun": "2026-07-25 14:30:00 Beijing, world.meta.lat/lon",
+    "reflection": "selectWaterReflectionPatch(world.hydrology,camera) + createWaterReflectionCamera(camera,patch.plane)",
+    "csm": {
+      "cascades": 3,
+      "splitsMeters": [
+        60,
+        180,
+        500
+      ],
+      "lightNear": 1,
+      "lightFar": 8000,
+      "lightMargin": 2000,
+      "note": "same frustum shapes; map size does not enter spatial block inclusion in this CPU test"
+    }
+  },
+  "tests": {
+    "command": "node --test src/v2/forest-floor-batches.test.js src/v2/ecology.test.js src/v2/shore-contact.test.js",
+    "passed": 32,
+    "failed": 0,
+    "scope": "actual resident IDs/Float32 matrices at 7 positions; all potential main/reflection/CSM root contributors; unchanged resource identities; camera-only update has no instance upload; same-page rollback; block release preserves shared resources; shore-contact regressions; normal entry explicitly keeps original pools",
+    "offsetsX": [
+      0,
+      0.001,
+      12.1,
+      48.1,
+      -72.1,
+      0,
+      240
+    ],
+    "streamingTotals": {
+      "added": 2429,
+      "removed": 1351,
+      "lastPoseResident": 1078,
+      "lastPoseBlocks": 78
+    }
+  },
+  "submittedTriangles": {
+    "main": {
+      "before": 1107184,
+      "after": 394444,
+      "callsBefore": 4,
+      "callsAfter": 19,
+      "contributors": 202
+    },
+    "csm0": {
+      "before": 1107184,
+      "after": 640780,
+      "callsBefore": 4,
+      "callsAfter": 25,
+      "contributors": 357
+    },
+    "csm1": {
+      "before": 1107184,
+      "after": 1026632,
+      "callsBefore": 4,
+      "callsAfter": 47,
+      "contributors": 726
+    },
+    "csm2": {
+      "before": 1107184,
+      "after": 1104300,
+      "callsBefore": 4,
+      "callsAfter": 62,
+      "contributors": 958
+    },
+    "mirror": {
+      "before": 1107184,
+      "after": 268960,
+      "callsBefore": 4,
+      "callsAfter": 11,
+      "contributors": 71
+    }
+  },
+  "limitations": [
+    "CPU submitted geometry counts are not measured GPU time",
+    "More draw calls may offset geometry savings; same-condition browser A/B is required",
+    "No vegetation record, geometry, material, wind behavior, LOD cutoff or shadow resolution was reduced",
+    "Initial and cumulative records remain capacity-bound exactly as the original pools"
+  ],
+  "defaultEnabled": false,
+  "activation": "floorBatches=1, or forestFloor.setSpatialBatches(true)",
+  "browserSamePageResults": [
+    {
+      "run": "B2",
+      "enabled": true,
+      "gpuMs": 31.905,
+      "frameMs": 79.915
+    },
+    {
+      "run": "A2",
+      "enabled": false,
+      "gpuMs": 36.513,
+      "frameMs": 102.298
+    },
+    {
+      "run": "B3",
+      "enabled": true,
+      "gpuMs": 31.227,
+      "frameMs": 89.001
+    },
+    {
+      "run": "A3",
+      "enabled": false,
+      "gpuMs": 31.021,
+      "frameMs": 82.783
+    }
+  ],
+  "browserConclusion": "20-second samples supplied by main agent; later B3/A3 pair shows no GPU gain. Preserve opt-in candidate without claiming default-world performance improvement."
+}

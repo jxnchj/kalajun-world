@@ -1,0 +1,18 @@
+{
+  "base": {
+    "version": 1,
+    "url": "data/v2/lodge-tables-base-38.json.gz",
+    "rawBytes": 11799283,
+    "gzipBytes": 6633450,
+    "rawSHA256": "68e7a82f841319db2b78bc7266867c8bce54f52b152b7644640b6e5d5f603e43",
+    "sha256": "0caf15d3d88188a059a451a449ae1de130a270e99bedd92252db234122581878"
+  },
+  "delta": {
+    "version": 1,
+    "url": "data/v2/lodge-tables-gi-38.xor.gz",
+    "rawBytes": 26109396,
+    "gzipBytes": 2793184,
+    "rawSHA256": "89505d9193ce1eb5227a73293bfc11ceb04eb842d1c9fbd082a6dcb3efb83bab",
+    "sha256": "d258b557f965cb2ca9b94b9eab90c7dc8cf1b71b23783cad49f8e1c095d1249f"
+  }
+}

@@ -598,7 +598,7 @@ def _template_data(me):
             dv = (dv + n).normalized()
             hit += bvh.ray_cast(Vector(V[i]) + n * 0.0005, dv, 0.02)[0] is not None
         ao[i] = 1 - hit / len(dirs)
-    vJ = {f: (np.r_[0, np.cumsum(np.linalg.norm(np.diff(chains[f], axis=0), axis=1))] /
+    vJ = {f: (np.r_[0, np.cumsum(np.linalg.norm(np.diff(chains[f], axis=0), axis=1))] / 
               np.linalg.norm(np.diff(chains[f], axis=0), axis=1).sum()) for f in names}
     return dict(V=V, N=N, fs=fs, vsets=vsets, J=J, chains=chains, owner=owner, s_rel=s_rel, seg=seg, ao=ao, vJ=vJ)
 

@@ -1,0 +1,18 @@
+{
+  "forest-roots-38": {
+    "oldRawSHA256": "12ac329f1367f4a65e8034a57aaac9c751521b6240fc76a2bc6c9c85e0cbde29",
+    "newRawSHA256": "12ac329f1367f4a65e8034a57aaac9c751521b6240fc76a2bc6c9c85e0cbde29",
+    "allRawBytesEqual": true,
+    "rawBytes": 3903808,
+    "sourceBindingChanged": true,
+    "inputBindingChanged": true
+  },
+  "meadow-roots-38": {
+    "oldRawSHA256": "2389785391c959907dc4ef98212eb4aebb64cd199c3480e29eab46985d6e88da",
+    "newRawSHA256": "2389785391c959907dc4ef98212eb4aebb64cd199c3480e29eab46985d6e88da",
+    "allRawBytesEqual": true,
+    "rawBytes": 10382316,
+    "sourceBindingChanged": true,
+    "inputBindingChanged": true
+  }
+}

@@ -1,3 +1,5 @@
+// Original-source comparison explicitly retains original timber; default timber is exercised by actual endpoint and household physics tests.
+// Retained original-source comparison fixture; new default source is covered by lodge-furniture-loader.test.js.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -34,8 +36,8 @@ async function pair() {
       })());
       return sources.get(url);
     };
-    const old=new WorldStructures(world,{loadAsset,preparationReuse:false,selectionReuse:false});
-    const reused=new WorldStructures(world,{loadAsset,preparationReuse:true,selectionReuse:true});
+    const old=new WorldStructures(world,{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,loadAsset,preparationReuse:false,selectionReuse:false,selectionBuffers:false});
+    const reused=new WorldStructures(world,{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,loadAsset,preparationReuse:true,selectionReuse:true});
     await old.load();await reused.load();
     return {old,reused,entities};
   })();

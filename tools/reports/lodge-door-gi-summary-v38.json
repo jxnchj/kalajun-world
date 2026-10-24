@@ -1,0 +1,194 @@
+{
+  "model": "actual 0/0.875/1.75 rad glazed door; source geometry unchanged; finite two-bounce transport interpolation",
+  "states": [
+    {
+      "index": 0,
+      "angle": 0,
+      "seconds": 132.1300766249915,
+      "bytes": 4415296,
+      "reused": [
+        "local/apertures",
+        "cross/directSky"
+      ],
+      "sourceSHA256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+      "blendSHA256": "89d4492afccb40b133491487a6f4739b6280864e7f22e87b482bce7e4482f71e",
+      "glassTriangles": 12,
+      "opaqueFaces": 40360,
+      "centreRayTransmission": 0.9,
+      "worldLeafAxis": [
+        1,
+        0,
+        0
+      ],
+      "rotationMode": "QUATERNION",
+      "samples": 96,
+      "surfaceSamples": 32,
+      "sunDirections": 81,
+      "gzipBytes": 2591331,
+      "changesAgainstOriginalClosed": {
+        "local/sky": {
+          "changed": 36,
+          "maxDelta": 0.000030517578125
+        },
+        "local/secondSky": {
+          "changed": 279,
+          "maxDelta": 0.00000762939453125
+        },
+        "local/solar": {
+          "changed": 36,
+          "maxDelta": 0.000396728515625
+        },
+        "local/secondSolar": {
+          "changed": 1330,
+          "maxDelta": 0.00001811981201171875
+        },
+        "cross/sky": {
+          "changed": 62,
+          "maxDelta": 0.0000019073486328125
+        },
+        "cross/secondSky": {
+          "changed": 729,
+          "maxDelta": 0.0000209808349609375
+        },
+        "cross/solar": {
+          "changed": 48,
+          "maxDelta": 0.00022125244140625
+        },
+        "cross/secondSolar": {
+          "changed": 7964,
+          "maxDelta": 0.0001373291015625
+        },
+        "cross/directSky": {
+          "changed": 0,
+          "maxDelta": 0
+        }
+      }
+    },
+    {
+      "index": 1,
+      "angle": 0.875,
+      "seconds": 133.860131584006,
+      "bytes": 4468055,
+      "reused": [
+        "local/apertures"
+      ],
+      "sourceSHA256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+      "blendSHA256": "89d4492afccb40b133491487a6f4739b6280864e7f22e87b482bce7e4482f71e",
+      "glassTriangles": 12,
+      "opaqueFaces": 40360,
+      "centreRayTransmission": 1,
+      "worldLeafAxis": [
+        0.6409966349601746,
+        0.7675436735153198,
+        0
+      ],
+      "rotationMode": "QUATERNION",
+      "samples": 96,
+      "surfaceSamples": 32,
+      "sunDirections": 81,
+      "gzipBytes": 2631894,
+      "changesAgainstOriginalClosed": {
+        "local/sky": {
+          "changed": 536,
+          "maxDelta": 0.00345611572265625
+        },
+        "local/secondSky": {
+          "changed": 4446,
+          "maxDelta": 0.001010894775390625
+        },
+        "local/solar": {
+          "changed": 696,
+          "maxDelta": 0.00301361083984375
+        },
+        "local/secondSolar": {
+          "changed": 16161,
+          "maxDelta": 0.0003795623779296875
+        },
+        "cross/sky": {
+          "changed": 8535,
+          "maxDelta": 0.0037212371826171875
+        },
+        "cross/secondSky": {
+          "changed": 12241,
+          "maxDelta": 0.0012502670288085938
+        },
+        "cross/solar": {
+          "changed": 9751,
+          "maxDelta": 0.01403045654296875
+        },
+        "cross/secondSolar": {
+          "changed": 125963,
+          "maxDelta": 0.0017665624618530273
+        },
+        "cross/directSky": {
+          "changed": 1980,
+          "maxDelta": 0.0126953125
+        }
+      }
+    },
+    {
+      "index": 2,
+      "angle": 1.75,
+      "seconds": 134.70798662499874,
+      "bytes": 4478322,
+      "reused": [
+        "local/apertures"
+      ],
+      "sourceSHA256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+      "blendSHA256": "89d4492afccb40b133491487a6f4739b6280864e7f22e87b482bce7e4482f71e",
+      "glassTriangles": 12,
+      "opaqueFaces": 40360,
+      "centreRayTransmission": 1,
+      "worldLeafAxis": [
+        -0.17824621498584747,
+        0.9839858412742615,
+        0
+      ],
+      "rotationMode": "QUATERNION",
+      "samples": 96,
+      "surfaceSamples": 32,
+      "sunDirections": 81,
+      "gzipBytes": 2641036,
+      "changesAgainstOriginalClosed": {
+        "local/sky": {
+          "changed": 338,
+          "maxDelta": 0.00354766845703125
+        },
+        "local/secondSky": {
+          "changed": 3692,
+          "maxDelta": 0.001010894775390625
+        },
+        "local/solar": {
+          "changed": 408,
+          "maxDelta": 0.00301361083984375
+        },
+        "local/secondSolar": {
+          "changed": 9637,
+          "maxDelta": 0.00035637617111206055
+        },
+        "cross/sky": {
+          "changed": 11715,
+          "maxDelta": 0.0027723312377929688
+        },
+        "cross/secondSky": {
+          "changed": 12469,
+          "maxDelta": 0.0017919540405273438
+        },
+        "cross/solar": {
+          "changed": 20588,
+          "maxDelta": 0.024871826171875
+        },
+        "cross/secondSolar": {
+          "changed": 161688,
+          "maxDelta": 0.0018142461776733398
+        },
+        "cross/directSky": {
+          "changed": 2313,
+          "maxDelta": 0.009185791015625
+        }
+      }
+    }
+  ],
+  "totalRawBytes": 13361673,
+  "totalGzipBytes": 7864261
+}

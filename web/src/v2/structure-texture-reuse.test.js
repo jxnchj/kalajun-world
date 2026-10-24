@@ -1,3 +1,5 @@
+// Original-source comparison explicitly retains original timber; default timber is exercised by actual endpoint and household physics tests.
+// Retained original-source comparison fixture; new default source is covered by lodge-furniture-loader.test.js.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -22,8 +24,8 @@ test('all eighteen real buildings share only byte-identical decoded images; all 
    const b=await readFile(new URL(url.replace(/^\.\//,''),ROOT));
    return loader.parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'');
  };
- decodes=0;const old=new WorldStructures(world,{loadAsset,textureReuse:false});await old.load();const oldDecodes=decodes;
- decodes=0;const reused=new WorldStructures(world,{loadAsset,textureReuse:true});await reused.load();const newDecodes=decodes;
+ decodes=0;const old=new WorldStructures(world,{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,loadAsset,textureReuse:false});await old.load();const oldDecodes=decodes;
+ decodes=0;const reused=new WorldStructures(world,{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,loadAsset,textureReuse:true});await reused.load();const newDecodes=decodes;
  assert.equal(old.stats.assetsLoaded,18);assert.equal(reused.stats.assetsLoaded,18);
  assert.equal(old.stats.triangles,reused.stats.triangles);assert.equal(old.stats.materials,reused.stats.materials);
  assert.equal(old.stats.batches,reused.stats.batches);

@@ -1,0 +1,162 @@
+{
+  "condition": "Chrome same tab; 1280x800 DPR1; river-forest time870; 20s requestAnimationFrame intervals after ready; canopyCache=0; HTTP no-store; driver/GPU cache not reset; no tests/build/bake running",
+  "rows": [
+    {
+      "name": "forest-a1",
+      "version": "route-continuity-32",
+      "samples": 218,
+      "meanMs": 92.05000000000001,
+      "medianMs": 75.99999999999818,
+      "p95Ms": 125.10000000000218,
+      "fps": 10.863661053775122,
+      "gpuMs": 34.134993933333334,
+      "loadMs": 22020.70000000298,
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "flowerPlants": 782,
+      "nearShadowDetail": {
+        "mode": "resolution",
+        "requested": "auto",
+        "reason": null,
+        "splits": [
+          60,
+          180,
+          500
+        ],
+        "mapSizes": [
+          4096,
+          2048,
+          2048
+        ],
+        "cascades": 3,
+        "maxFar": 500,
+        "shadowMapSize": 2048,
+        "fragmentSamplers": 16,
+        "maxTextures": 16,
+        "maxTextureSize": 16384,
+        "shadowPixels": 25165824,
+        "extraShadowPixels": 12582912,
+        "extraDepthBytesLowerBound": 50331648
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "errors": []
+    },
+    {
+      "name": "forest-b",
+      "version": "route-continuity-35",
+      "samples": 249,
+      "meanMs": 80.38875502008032,
+      "medianMs": 75,
+      "p95Ms": 116.70000000000073,
+      "fps": 12.439550777347028,
+      "gpuMs": 34.00351483333333,
+      "loadMs": 9546.69999999553,
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "flowerPlants": 782,
+      "nearShadowDetail": {
+        "mode": "resolution",
+        "requested": "auto",
+        "reason": null,
+        "splits": [
+          60,
+          180,
+          500
+        ],
+        "mapSizes": [
+          4096,
+          2048,
+          2048
+        ],
+        "cascades": 3,
+        "maxFar": 500,
+        "shadowMapSize": 2048,
+        "fragmentSamplers": 16,
+        "maxTextures": 16,
+        "maxTextureSize": 16384,
+        "shadowPixels": 25165824,
+        "extraShadowPixels": 12582912,
+        "extraDepthBytesLowerBound": 50331648
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "errors": []
+    },
+    {
+      "name": "forest-a2",
+      "version": "route-continuity-32",
+      "samples": 241,
+      "meanMs": 82.9883817427386,
+      "medianMs": 75.79999999999927,
+      "p95Ms": 116.69999999999709,
+      "fps": 12.049879501204988,
+      "gpuMs": 34.53244598333333,
+      "loadMs": 12252.60000000149,
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10,
+      "trees": 80927,
+      "grassTufts": 19403,
+      "flowerPlants": 782,
+      "nearShadowDetail": {
+        "mode": "resolution",
+        "requested": "auto",
+        "reason": null,
+        "splits": [
+          60,
+          180,
+          500
+        ],
+        "mapSizes": [
+          4096,
+          2048,
+          2048
+        ],
+        "cascades": 3,
+        "maxFar": 500,
+        "shadowMapSize": 2048,
+        "fragmentSamplers": 16,
+        "maxTextures": 16,
+        "maxTextureSize": 16384,
+        "shadowPixels": 25165824,
+        "extraShadowPixels": 12582912,
+        "extraDepthBytesLowerBound": 50331648
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "errors": []
+    }
+  ],
+  "conclusion": "No established GPU improvement. Default tree/grass/flower counts and shadow quality identical. Loading varies strongly between original runs; not a resolved cold-start long tail."
+}

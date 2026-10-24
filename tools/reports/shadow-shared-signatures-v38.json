@@ -1,0 +1,71 @@
+{
+  "scope": "Synthetic 7007 nodes, 778 geometry, 579 terrain, 84 materials. Alternating 150 observations after 30 warm-ups; no matrix updates or frustum hooks. Not real Chrome net benefit.",
+  "baseline": {
+    "meanMs": 0.46825419999999873,
+    "medianMs": 0.46562499999998863
+  },
+  "candidate": {
+    "meanMs": 0.4899874400000012,
+    "medianMs": 0.4864170000000172
+  },
+  "baselineStats": {
+    "frames": 180,
+    "lastMs": 0.46416600000000585,
+    "meanMs": 0.5146076888888873,
+    "visited": 7007,
+    "candidates": 778,
+    "frustumTests": 0,
+    "objectScans": 778,
+    "geometryScans": 778,
+    "materialScans": 168,
+    "attributeScans": 1954,
+    "attributeReuses": 0,
+    "phases": null,
+    "skippedCascades": [
+      true,
+      true,
+      false
+    ],
+    "sharedSignatures38": false,
+    "standardDepthScans": 0,
+    "standardDepthReuses": 0,
+    "entryReuse": true,
+    "entryCreates": 0,
+    "terrainDepthCapture": true,
+    "terrainDepthScans": 579,
+    "surfaceAttributesSkipped": 5790,
+    "attributeCache": true,
+    "compactCapture": true,
+    "directAttributeCapture": true
+  },
+  "candidateStats": {
+    "frames": 180,
+    "lastMs": 0.47008400000001416,
+    "meanMs": 0.5373636111111121,
+    "visited": 7007,
+    "candidates": 778,
+    "frustumTests": 0,
+    "objectScans": 778,
+    "geometryScans": 778,
+    "materialScans": 168,
+    "attributeScans": 1954,
+    "attributeReuses": 0,
+    "phases": null,
+    "skippedCascades": [
+      true,
+      true,
+      false
+    ],
+    "sharedSignatures38": true,
+    "standardDepthScans": 84,
+    "standardDepthReuses": 495,
+    "entryReuse": true,
+    "entryCreates": 0,
+    "terrainDepthCapture": true,
+    "terrainDepthScans": 579,
+    "surfaceAttributesSkipped": 5790,
+    "attributeCache": true,
+    "compactCapture": true,
+    "directAttributeCapture": true
+  }
+}

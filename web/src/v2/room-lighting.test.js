@@ -161,7 +161,10 @@ test("unoccluded standard materials use the same bounded indirect path without a
 
 test("guest-room partition proxy rejects actual blocked aperture paths without blocking open bedroom paths",async()=>{
  const world={entities:[{id:"guest",assetId:"gh_lanchuan"}],surface:{buildingPose:()=>({...pose}),heightAt:()=>0}};
- const rooms=new SettlementRuntime(world),definition=rooms.guestRooms[0].asset,bounds=definition.excludedBounds;
+ // This test compares the retained original GLB against its original proxy.
+ const previousLocation=globalThis.location;let rooms;
+ try{globalThis.location={search:'?guestVanity38=0'};rooms=new SettlementRuntime(world);}finally{if(previousLocation===undefined)delete globalThis.location;else globalThis.location=previousLocation;}
+ const definition=rooms.guestRooms[0].asset,bounds=definition.excludedBounds;
  const box=new THREE.Box3(new THREE.Vector3(bounds[0],0,bounds[2]),new THREE.Vector3(bounds[1],definition.height,bounds[3]));
  const bytes=await readFile(new URL("../../public/assets/v2/gh_lanchuan_rooms.glb",import.meta.url));
  const gltf=await new GLTFLoader().parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),"");

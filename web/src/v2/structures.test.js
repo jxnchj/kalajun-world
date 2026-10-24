@@ -1,3 +1,5 @@
+// Original-source comparison explicitly retains original timber; default timber is exercised by actual endpoint and household physics tests.
+// Original-source geometry budget fixture; new default source has a separate actual-load/physics contract.
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
@@ -25,7 +27,7 @@ const cameraAt = (x,y,z) => {
 async function load(entities,options={}) {
   const poses = new Map(entities.map(e => [e.id,{x:e.x,y:2200,z:e.z,rot:e.rot,scale:e.scale}]));
   const world = {entities,surface:{buildingPose:e=>poses.get(e.id)}};
-  const structures = new WorldStructures(world,options), sourceCounts = new Map();
+  const structures = new WorldStructures(world,{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,...options}), sourceCounts = new Map();
   structures.loadAsset = async url => {
     const gltf = await new GLTFLoader().parseAsync(await bytes(url), "");
     let count = 0;
@@ -53,7 +55,9 @@ test("real assets retain every entity, source triangle and near-room shadow cast
   assert.equal(s.stats.triangles,expectedBudget); // Every entity retains its complete selected source.
   // Brass, ceramic and clay now have PBR textures in each pastoral GLB.
   // Independently loaded house/yurt images split those 3 former scalar-only shared pools.
-  assert.equal(s.stats.materials,168); // 165 previous + 3 texture-identity splits; no LOD copies.
+  assert.equal(s.stats.materials,170); // 168 existing + lodge thin glass + exact route0 cabin thin glass.
+  assert.equal(s.materials.filter(m=>m.userData.lodgeThinGlass).length,1);
+  assert.ok(s.materials.some(m=>m.userData.sourceMaterialNames.includes("glass")&&!m.transparent),"Other assets retain their original glass contract");
   for(const entity of entities)assert.deepEqual(s.entityPoses.get(entity.id),poses.get(entity.id));
   const unique = new Map(entities.map(e=>[e.assetId+":"+(e.part||""),e]));
   for(const entity of unique.values()){

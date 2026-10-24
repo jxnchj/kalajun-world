@@ -6,7 +6,7 @@ import {createHydrology,projectSegment} from "./hydrology.js";
 import {createWorldData,decodeHeightBytes} from "./world-data.js";
 import {riverSectionAt,riverCrossPoint,riverBankMargin,applyRepresentativeBanks} from "./river-section.js";
 import {createWaterGeometry} from "./water.js";
-import {bendRepresentativeReach,applyRepresentativeMeanders} from "./river-meander.js";
+import {bendRepresentativeReach,applyRepresentativeMeanders,applyBrookMeander} from "./river-meander.js";
 const near=(a,b,e=1e-6)=>assert.ok(Math.abs(a-b)<e,`${a} != ${b}`);
 function fixture(z0=0){
  const heightAt=(x,z)=>100-x*.015+Math.abs(z-z0)*.02,h=createHydrology({streamData:{lines:[Array.from({length:121},(_,i)=>[i*4,z0,1.54])]},heightAt,riverMeanders:false});
@@ -53,12 +53,13 @@ test("junction locks and protected terrain cannot be overridden to force a bend"
  const blocked=fixture(),before=JSON.stringify(blocked.line.nodes),refused=bendRepresentativeReach(blocked.line,blocked.h.segments,blocked.anchor,{heightAt:blocked.heightAt,protectedAt:()=>"road"});
  assert.equal(refused.nodes,0);assert.equal(refused.reason,"no-safe-amplitude");assert.equal(JSON.stringify(blocked.line.nodes),before);
 });
-function actual(riverMeanders=false){
+function actual(riverMeanders=false,forestBankCurvature38=true){
  const root=new URL("../../public/",import.meta.url),j=n=>JSON.parse(readFileSync(new URL(n,root))),b=n=>new Uint8Array(gunzipSync(readFileSync(new URL(n,root)))),meta=j("data/scene.json"),lc={width:1,data:new Uint8Array([255,128,0,255])};
- return createWorldData({meta,objects:j("data/objects.json"),detailMeta:j("data/detail.json"),manifest:j("world-v2/manifest.json"),streamData:j("data/streams.json"),coreHeights:decodeHeightBytes(b("data/core_height.bin.gz"),meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(b("data/far_height.bin.gz"),meta.far.n,meta.height_scale),detailBytes:b("data/detail.bin.gz"),coreLandcover:lc,farLandcover:lc,riverMeanders});
+ return createWorldData({forestBankCurvature38,meta,objects:j("data/objects.json"),detailMeta:j("data/detail.json"),manifest:j("world-v2/manifest.json"),streamData:j("data/streams.json"),coreHeights:decodeHeightBytes(b("data/core_height.bin.gz"),meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(b("data/far_height.bin.gz"),meta.far.n,meta.height_scale),detailBytes:b("data/detail.bin.gz"),coreLandcover:lc,farLandcover:lc,riverMeanders});
 }
 for(const profile of ["v19","v22"])test(profile+" actual forest bend restores retired bed, occupies new terrain and retains junctions and foundations",t=>{
- const w=actual(false),baseline=actual(false),h=w.hydrology,original=new Map(h.segments.map(s=>[s.id,{a:{...s.a},b:{...s.b},bounds:{...s.bounds}}]));
+ // These v19/v22 construction fixtures validate the pre-curvature section.
+ const w=actual(false,false),baseline=actual(false,false),h=w.hydrology,original=new Map(h.segments.map(s=>[s.id,{a:{...s.a},b:{...s.b},bounds:{...s.bounds}}]));
  const endpoints=h.lines.map(l=>[l.id,l.nodes[0].x,l.nodes[0].z,l.nodes.at(-1).x,l.nodes.at(-1).z]);
  const joins=()=>h.lines.filter(l=>l.join).map(l=>[l.id,...[l.join.line.nodes[l.join.index],l.join.line.nodes[l.join.index+1]].flatMap(n=>[n.x,n.z])]);
  const oldJoins=joins();
@@ -118,7 +119,7 @@ test("shared reach is idempotent, and runtime integration matches an explicitly 
  const saved=state(),twice=applyRepresentativeMeanders(h.lines,h.segments,h.viewpoints,{heightAt:original.surface.uncarvedHeightAt});
  assert.strictEqual(twice,once);assert.equal(state(),saved);const indexedLength=h.stats.enabledLength;h.refreshMeanderIndex();near(h.stats.enabledLength,indexedLength);
  const integrated=actual(true),active=integrated.hydrology;assert.ok(active.stats.meanders.nodes>0);
- const pick=hydrology=>hydrology.segments.filter(s=>s.meander).map(s=>[s.id,s.a.x,s.a.z,s.a.level,s.b.x,s.b.z,s.b.level,s.length,s.a.bankShape,s.b.bankShape]);
+ const pick=hydrology=>hydrology.segments.filter(s=>s.meander&&s.lineId===once.lineId).map(s=>[s.id,s.a.x,s.a.z,s.a.level,s.b.x,s.b.z,s.b.level,s.length,s.a.bankShape,s.b.bankShape]);
  assert.deepEqual(pick(active),pick(h));
  for(const s of active.segments.filter(s=>s.meander)){
   const n=riverSectionAt(s,.43),p=riverCrossPoint(n,.3),q=active.sampleAt(p.x,p.z,{includeDepth:false});
@@ -150,4 +151,34 @@ test("v19 opt-in retains the accepted 2.8m reach independently of the new terrai
  const view=h.viewpoints.find(v=>v.id==="river-forest");near(view.x,-3611.9813305250705);near(view.z,4805.371282289286);near(view.yaw,-30.90412352938094);
  const n=actual(true).hydrology;assert.equal(n.stats.meanders.profile,"v22");assert.ok(n.stats.meanders.maxOffset>h.stats.meanders.maxOffset*1.8);
  assert.ok(n.stats.meanders.rejected.some(v=>v.reason==="low-water-edge"),"actual terrain, not an arbitrary displacement cap, rejects the full requested curve");
+});
+
+
+test("bounded brook design retains source anchor, all geographic junctions, poses and actual water support",t=>{
+ const original=actual(true),oldLocation=globalThis.location;
+ let candidate;try{globalThis.location={search:'?brookMeanders=1'};candidate=actual(true);}finally{globalThis.location=oldLocation;}
+ const old=original.hydrology,h=candidate.hydrology,result=h.stats.brookMeanders;t.diagnostic(JSON.stringify(result));
+ assert.ok(result.nodes>0,'actual terrain must accept a genuine designed curve');assert.ok(result.maxOffset<=2.4&&result.maxOffset>.2);
+ const a=old.viewpoints.find(v=>v.id==='brook-lanchuan'),b=h.viewpoints.find(v=>v.id==='brook-lanchuan');assert.deepEqual(b,a);
+ const source=old.segments.find(s=>s.id===a.segmentId),anchor=h.segments.find(s=>s.id===a.segmentId);near(anchor.a.x,source.a.x);near(anchor.a.z,source.a.z);
+ let roadPoints=0;
+ for(const routes of [original.objects.tracks||[],original.objects.paths||[],original.objects.boardwalks||[]])for(const route of routes)for(let i=1;i<(route.pts?.length||0);i++){
+  const p=route.pts[i-1],q=route.pts[i],dx=q[0]-p[0],dz=q[1]-p[1],length=Math.hypot(dx,dz)||1;
+  for(let k=0;k<=8;k++)for(const side of [-1,0,1]){
+   const x=p[0]+dx*k/8-dz/length*side*(route.width||1.5)/2,z=p[1]+dz*k/8+dx/length*side*(route.width||1.5)/2;
+   near(candidate.surface.heightAt(x,z),original.surface.heightAt(x,z),1e-8);roadPoints++;
+  }
+ }
+ for(const e of original.entities)assert.deepEqual(candidate.surface.buildingPose(e.id),original.surface.buildingPose(e.id));
+ for(const line of h.lines){const before=old.lines.find(l=>l.id===line.id);line.nodes.forEach((n,i)=>near(n.level,before.nodes[i].level));assert.deepEqual([line.nodes[0].x,line.nodes[0].z,line.nodes.at(-1).x,line.nodes.at(-1).z],[before.nodes[0].x,before.nodes[0].z,before.nodes.at(-1).x,before.nodes.at(-1).z]);
+  if(line.join)for(const offset of [0,1]){const q=line.join.line.nodes[line.join.index+offset],r=before.join.line.nodes[before.join.index+offset];near(q.x,r.x);near(q.z,r.z);}
+ }
+ let waterVertices=0;
+ for(const s of h.segments.filter(s=>s.lineId===result.lineId&&s.meander)){
+  const g=createWaterGeometry([s],{detail:true});for(let i=0;i<g.attributes.position.count;i++){
+   const x=g.attributes.position.getX(i),z=g.attributes.position.getZ(i),q=h.sampleAt(x,z,{includeDepth:false});
+   assert.notEqual(q.surfaceLevel,null);near(q.surfaceLevel+.006,g.attributes.position.getY(i),.0003);assert.ok(h.bedHeightAt(x,z)<=g.attributes.position.getY(i)+.002);waterVertices++;
+  }g.dispose();
+ }
+ assert.ok(waterVertices>100);t.diagnostic(JSON.stringify({waterVertices,roadPoints,allEntityPoses:'exact',anchor:'exact'}));
 });

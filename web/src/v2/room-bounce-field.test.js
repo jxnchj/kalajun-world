@@ -1,9 +1,12 @@
+// This regression exercises the retained original guest-room source tables.
+globalThis.location={search:'?guestVanity38=0'};
+import {assertRoomFieldSamplingContract} from './room-field-contract.assert.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import {createHash} from "node:crypto";
 import {readFile} from "node:fs/promises";
 import * as THREE from "three";
-import {ROOM_BOUNCE_DATA} from "./room-bounce-data.js";
+import {ROOM_BOUNCE_DATA} from "./room-bounce-registry.js";
 import {RoomBounceField,decodeRoomField,ROOM_FIELD_GLSL} from "./room-bounce-field.js";
 import {RoomIndirectLight,roomCeilingHeight,ROOM_BOUNCE_GLSL} from "./room-lighting.js";
 import {SETTLEMENT_ASSETS} from "./settlement-assets.js";
@@ -110,7 +113,7 @@ test("one filterable half-float texture is cached per visited room and disposed 
  field.set(definitions.house_a,q);assert.equal(u.uRoomBounceField.value,house);assert.equal(field.cache.size,2);
  field.set({sourceAsset:"not-authored"},q);assert.equal(u.uRoomFieldActive.value,0);assert.equal(u.uRoomBounceField.value,field.empty);
  field.dispose();assert.equal(field.cache.size,0);assert.deepEqual(disposed.sort(),["empty","house","yurt"]);
- assert.equal((ROOM_FIELD_GLSL.match(/texture\(uRoomBounceField/g)||[]).length,4);
+ assertRoomFieldSamplingContract();
  assert.equal((ROOM_FIELD_GLSL.match(/uniform highp sampler3D/g)||[]).length,1);
 });
 

@@ -1,3 +1,4 @@
+import {ReachBankCover39} from './forest-reach-cover39.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
@@ -5,20 +6,26 @@ import {prepareEcologyQueues} from './ecology-preparation.js';
 import {WorldEcology} from './ecology.js';
 import {MeadowWindField} from './wind-field.js';
 import {SpruceRootWind} from './spruce-wind.js';
+import {ForestFloorBatches} from './forest-floor-batches.js';
 function fixture(){
+ const submission=new ForestFloorBatches(new THREE.Group(),new Map(),{enabled:false});
  const camera={position:new THREE.Vector3(0,101,0)},field=new MeadowWindField({resolution:8}),rootWind=new SpruceRootWind();
  const source=new THREE.BoxGeometry(1,1,1),geometry=rootWind.createGeometry(source,2,'fixture'),mesh=new THREE.InstancedMesh(geometry,new THREE.MeshBasicMaterial(),2);
  mesh.count=2;const roots=[{id:'one',x:0,y:100,z:0},{id:'two',x:5,y:100,z:7}];
  const batches=new Map([['fixture',{mesh,activeRecords:roots}]]),eco=Object.create(WorldEcology.prototype);
- Object.assign(eco,{uniforms:{uWindTime:{value:0},uWorldViewer:{value:new THREE.Vector3()}},treeWindCoefficients:{value:false},windField:field,treeRootWind:rootWind,nearTreeBatches:batches,treeBatchRevision:1,last:new THREE.Vector2(0,0),nearLast:new THREE.Vector2(0,0),nearY:101,queue:Array.from({length:120},(_,i)=>({x:i,z:0})),tiles:new Map(),grassQueue:[],stats:{treeNeedleShellTriangles:10},syncActiveTrees(){},updateMeadow(){},forestFloor:{update(){},stats:{pending:0}},buildTile(x,z){this.tiles.set(x+','+z,{count:3});},gpuBrushes:{stats:{triangles:100},branchCache:{stats:{builtGroups:0}},sync(){this.calls=(this.calls||0)+1;this.lastWind=geometry.attributes.aTreeRootWind.data.array.slice();}}});
+ Object.assign(eco,{uniforms:{uWindTime:{value:0},uWorldViewer:{value:new THREE.Vector3()}},treeWindCoefficients:{value:false},windField:field,treeRootWind:rootWind,nearTreeBatches:batches,treeBatchRevision:1,last:new THREE.Vector2(0,0),nearLast:new THREE.Vector2(0,0),nearY:101,queue:Array.from({length:120},(_,i)=>({x:i,z:0})),tiles:new Map(),grassQueue:[],stats:{treeNeedleShellTriangles:10},syncActiveTrees(){},updateMeadow(){},publishMeadowPools(){},reachBankCover39:new ReachBankCover39({}, {enabled:false}),forestFloor:{submission,update(camera){submission.update(camera.position,0);},stats:{pending:0,spatialBatches:submission.stats}},buildTile(x,z){this.tiles.set(x+','+z,{count:3});},gpuBrushes:{stats:{triangles:100},branchCache:{stats:{builtGroups:0}},sync(){this.calls=(this.calls||0)+1;this.lastWind=geometry.attributes.aTreeRootWind.data.array.slice();}}});
  const water={stats:{pending:0},time:0,update(_camera,dt){this.time+=dt;}};
- return {eco,water,camera,dispose(){field.dispose();rootWind.dispose();geometry.dispose();source.dispose();mesh.material.dispose();}};
+ return {eco,water,camera,dispose(){eco.reachBankCover39.dispose();submission.dispose();field.dispose();rootWind.dispose();geometry.dispose();source.dispose();mesh.material.dispose();}};
 }
 test('same 90 static ticks retain exact queue, time, wind fields and final root uploads with one final publication',async()=>{
  const a=fixture(),b=fixture();let yields=0;
  try{
   const old=await prepareEcologyQueues({...a,ecology:a.eco,staticPreparation:false,yieldToInput:async()=>{}});
   const next=await prepareEcologyQueues({...b,ecology:b.eco,yieldToInput:async()=>{yields++;if(yields===4)b.eco.gpuBrushes.branchCache.stats.builtGroups++;}});
+  assert.equal(a.eco.stats.forestFloorBatches,a.eco.forestFloor.submission.stats);
+  assert.equal(b.eco.stats.forestFloorBatches,b.eco.forestFloor.submission.stats);
+  assert.equal(b.eco.stats.forestFloorBatches.enabled,false);
+  assert.equal(next.timings.farTiles.calls,90);assert.equal(next.timings.water.calls,90);assert.equal(next.timings.windField.calls,90);assert.equal(Object.hasOwn(b.eco,"syncTreeDynamics"),false);
   assert.equal(old.iterations,90);assert.equal(next.iterations,90);assert.equal(yields,22);
   assert.deepEqual(a.eco.queue,b.eco.queue);assert.deepEqual(a.eco.tiles,b.eco.tiles);
   assert.equal(a.eco.uniforms.uWindTime.value,b.eco.uniforms.uWindTime.value);assert.equal(a.water.time,b.water.time);
@@ -32,7 +39,7 @@ test('destination cancellation never publishes a stale final sync, and short que
  const f=fixture();let current=true;
  try{
   const result=await prepareEcologyQueues({...f,ecology:f.eco,isCurrent:()=>current,yieldToInput:async()=>{current=false;}});
-  assert.equal(result,null);assert.equal(f.eco.tiles.size,4);assert.equal(f.eco.stats.preparation.finalSyncs,0);
+  assert.equal(result,null);assert.equal(Object.hasOwn(f.eco,"syncTreeDynamics"),false);assert.equal(f.eco.tiles.size,4);assert.equal(f.eco.stats.preparation.finalSyncs,0);
   f.eco.queue=[];current=true;
   const completed=await prepareEcologyQueues({...f,ecology:f.eco,isCurrent:()=>current,yieldToInput:async()=>{}});
   assert.equal(completed.iterations,14);assert.equal(f.eco.stats.preparation.finalSyncs,1);

@@ -30,3 +30,7 @@ data/raw/
 /exports/
 
 tools/cameras.json
+
+# Local work snapshots and reproducible logs are never published.
+/backups/
+*.log

@@ -1,10 +1,11 @@
+import {assertRoomFieldSamplingContract} from './room-field-contract.assert.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {createHash} from "node:crypto";
 import * as THREE from "three";
-import {ROOM_TRANSPORT_DATA} from "./room-transport-data.js";
-import {ROOM_BOUNCE_DATA} from "./room-bounce-data.js";
+import {ROOM_TRANSPORT_DATA} from "./room-transport-registry.js";
+import {ROOM_BOUNCE_DATA} from "./room-bounce-registry.js";
 import {ROOM_SECOND_SOLAR_LOADERS} from "./room-second-solar-data.js";
 import {RoomSolarTransport,decodeSolarDirection} from "./room-solar-transport.js";
 import {RoomBounceField,decodeRoomField,ROOM_FIELD_GLSL} from "./room-bounce-field.js";
@@ -67,7 +68,7 @@ test("second direction cache is bounded; unchanged frames do not synthesize or u
   const unchangedMeanMs=(performance.now()-start)/120;
   for(let i=0;i<100;i++)field.setLighting({...light,sun:sun(i*.08,.3+i*.007)},1);
   assert.ok(field.solar.cache.size<=12);assert.ok(field.solar.stats.cacheBytes<=12*19440);
-  assert.equal((ROOM_FIELD_GLSL.match(/texture\(uRoomBounceField/g)||[]).length,4);
+  assertRoomFieldSamplingContract();
   assert.equal(field.cache.size,1);assert.equal(texture.image.data.byteLength,10080);
   console.log(JSON.stringify({unchangedMeanMs,solar:field.solar.stats}));field.dispose();
 });

@@ -1,0 +1,6838 @@
+{
+  "model": "measured terrain occlusion of uniform upper sky at aperture center, cosine-weighted; no own frame, trees or neighbouring building geometry; diagnostic, not GI coefficients",
+  "samples": 128,
+  "seconds": 0.502052333,
+  "results": [
+    {
+      "id": "guesthouses:-1990,3407.8:2b64af33260a910d:lanchuan-freedom-1",
+      "field": "lanchuan-freedom-1",
+      "pose": {
+        "x": -1990,
+        "y": 2120.4689888102866,
+        "z": 3407.8,
+        "rot": -0.13,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "entityId": "guesthouses:-1990,3407.8:2b64af33260a910d"
+      },
+      "excludedNearMeters": 19.395174417269793,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "window",
+          "skyVisibleFraction": 0.8138684598397444,
+          "blockedRays": 8,
+          "heightSamples": 2976
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9171833006916835,
+          "blockedRays": 5,
+          "heightSamples": 2980
+        },
+        {
+          "index": 2,
+          "kind": "door",
+          "skyVisibleFraction": 0.8138684598397444,
+          "blockedRays": 8,
+          "heightSamples": 2976
+        }
+      ]
+    },
+    {
+      "id": "guesthouses:-1990,3407.8:2b64af33260a910d:lanchuan-freedom-2",
+      "field": "lanchuan-freedom-2",
+      "pose": {
+        "x": -1990,
+        "y": 2120.4689888102866,
+        "z": 3407.8,
+        "rot": -0.13,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "entityId": "guesthouses:-1990,3407.8:2b64af33260a910d"
+      },
+      "excludedNearMeters": 29.058252539087853,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "window",
+          "skyVisibleFraction": 0.8138684598397444,
+          "blockedRays": 8,
+          "heightSamples": 2784
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9171833006916835,
+          "blockedRays": 5,
+          "heightSamples": 2788
+        },
+        {
+          "index": 2,
+          "kind": "door",
+          "skyVisibleFraction": 0.8138684598397444,
+          "blockedRays": 8,
+          "heightSamples": 2783
+        }
+      ]
+    },
+    {
+      "id": "guesthouses:-1990,3407.8:2b64af33260a910d:lanchuan-freedom-3",
+      "field": "lanchuan-freedom-3",
+      "pose": {
+        "x": -1990,
+        "y": 2120.4689888102866,
+        "z": 3407.8,
+        "rot": -0.13,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "entityId": "guesthouses:-1990,3407.8:2b64af33260a910d"
+      },
+      "excludedNearMeters": 38.48835843399903,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "window",
+          "skyVisibleFraction": 0.8138684598397444,
+          "blockedRays": 8,
+          "heightSamples": 2655
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9171833006916835,
+          "blockedRays": 5,
+          "heightSamples": 2661
+        },
+        {
+          "index": 2,
+          "kind": "door",
+          "skyVisibleFraction": 0.8138684598397444,
+          "blockedRays": 8,
+          "heightSamples": 2655
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1006.8,3963.2:802dcf0578f66fc7",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1006.8,
+        "y": 2122.804710583547,
+        "z": 3963.2,
+        "rot": 0.568,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7862211213908957,
+          "blockedRays": 12,
+          "heightSamples": 3005
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7862211213908957,
+          "blockedRays": 12,
+          "heightSamples": 3005
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9480428199877375,
+          "blockedRays": 3,
+          "heightSamples": 3106
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1017,2865.7:40e322f4ce24fa26",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1017,
+        "y": 2001.7752488571798,
+        "z": 2865.7,
+        "rot": 1.385,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7890797526443444,
+          "blockedRays": 9,
+          "heightSamples": 3007
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7890797526443444,
+          "blockedRays": 9,
+          "heightSamples": 3007
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.739685936885005,
+          "blockedRays": 13,
+          "heightSamples": 2644
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1039.7,2620.8:594ef8e6f5541624",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1039.7,
+        "y": 2011.6054252679219,
+        "z": 2620.8,
+        "rot": 1.797,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8220967216205217,
+          "blockedRays": 9,
+          "heightSamples": 3133
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8220967216205217,
+          "blockedRays": 9,
+          "heightSamples": 3133
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8221194121448108,
+          "blockedRays": 7,
+          "heightSamples": 2871
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1071.1,1849.3:142c9f42d0341562",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1071.1,
+        "y": 1940.9806717382812,
+        "z": 1849.3,
+        "rot": 1.326,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.800596075158385,
+          "blockedRays": 9,
+          "heightSamples": 2973
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.800596075158385,
+          "blockedRays": 9,
+          "heightSamples": 2973
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8884263411351515,
+          "blockedRays": 7,
+          "heightSamples": 3006
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1078,3571:9849fa0f20e633ef",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1078,
+        "y": 2040.2305472486407,
+        "z": 3571,
+        "rot": -2.531,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8698156740065417,
+          "blockedRays": 7,
+          "heightSamples": 3029
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8698156740065417,
+          "blockedRays": 7,
+          "heightSamples": 3031
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7774865316909861,
+          "blockedRays": 12,
+          "heightSamples": 2953
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1078,4246:6151bc2a865c7824",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1078,
+        "y": 2142.090546594149,
+        "z": 4246,
+        "rot": 1.323,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7646947123765561,
+          "blockedRays": 10,
+          "heightSamples": 2989
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7646947123765561,
+          "blockedRays": 10,
+          "heightSamples": 2989
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6842692130326933,
+          "blockedRays": 16,
+          "heightSamples": 2735
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1108.9,2901.2:561924870b11a7bd",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -1108.9,
+        "y": 2015.058640845125,
+        "z": 2901.2,
+        "rot": 0.893,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.78956061027487,
+          "blockedRays": 11,
+          "heightSamples": 2937
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.78956061027487,
+          "blockedRays": 11,
+          "heightSamples": 2936
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8057976789127949,
+          "blockedRays": 10,
+          "heightSamples": 2815
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1159.6,3330:5f94eda449cbc10e",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1159.6,
+        "y": 2034.5232854747762,
+        "z": 3330,
+        "rot": 0.755,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7957231503599623,
+          "blockedRays": 10,
+          "heightSamples": 3023
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7957231503599623,
+          "blockedRays": 10,
+          "heightSamples": 3023
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6606828340838611,
+          "blockedRays": 15,
+          "heightSamples": 2514
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1178,3687:6eeef79c9030d8c2",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1178,
+        "y": 2062.1101764916993,
+        "z": 3687,
+        "rot": 1.47,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8253339532402667,
+          "blockedRays": 8,
+          "heightSamples": 3068
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8253339532402667,
+          "blockedRays": 8,
+          "heightSamples": 3068
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8075102321360744,
+          "blockedRays": 10,
+          "heightSamples": 2854
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1204.2,2732.4:43da80b17ee62505",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -1205.439214933402,
+        "y": 2032.584762618824,
+        "z": 2732.9837066235696,
+        "rot": 2.011,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8546464942719678,
+          "blockedRays": 7,
+          "heightSamples": 3158
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8546464942719678,
+          "blockedRays": 7,
+          "heightSamples": 3158
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8001025407639606,
+          "blockedRays": 10,
+          "heightSamples": 2842
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1219,1563.2:1c57be85109dbdc1",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -1219,
+        "y": 1914.071012788086,
+        "z": 1563.2,
+        "rot": 1.377,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7334298546290119,
+          "blockedRays": 13,
+          "heightSamples": 2817
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7330231122532874,
+          "blockedRays": 14,
+          "heightSamples": 2775
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8993155322610604,
+          "blockedRays": 7,
+          "heightSamples": 3024
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1348,3278:22899b2a2389b106",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1348,
+        "y": 2069.047145585945,
+        "z": 3278,
+        "rot": 0.421,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7928160107521159,
+          "blockedRays": 10,
+          "heightSamples": 3032
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7928160107521159,
+          "blockedRays": 10,
+          "heightSamples": 3033
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8555448701037506,
+          "blockedRays": 8,
+          "heightSamples": 2901
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1370.5,2802:feab61a110b6a0f9",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1371.1434093826795,
+        "y": 2045.125757088929,
+        "z": 2800.7908209936654,
+        "rot": 0.489,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7928876988582888,
+          "blockedRays": 10,
+          "heightSamples": 3017
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7928876988582888,
+          "blockedRays": 10,
+          "heightSamples": 3015
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8688161887463842,
+          "blockedRays": 7,
+          "heightSamples": 2930
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1403,4014:aa3504bdd7450b25",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1403,
+        "y": 2127.392183903166,
+        "z": 4014,
+        "rot": 2.76,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9146155227920412,
+          "blockedRays": 5,
+          "heightSamples": 3149
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9146155227920412,
+          "blockedRays": 5,
+          "heightSamples": 3149
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6993962032848977,
+          "blockedRays": 13,
+          "heightSamples": 2793
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1453,4010:384a5f4669ec9892",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -1453,
+        "y": 2127.050569279979,
+        "z": 4010,
+        "rot": -2.626,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9483776506767586,
+          "blockedRays": 4,
+          "heightSamples": 3135
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9483776506767586,
+          "blockedRays": 4,
+          "heightSamples": 3136
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7155215893333963,
+          "blockedRays": 13,
+          "heightSamples": 2882
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1512.4,3345.7:74688989dd6f91c3",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1512.4,
+        "y": 2089.058667429832,
+        "z": 3345.7,
+        "rot": 0.697,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8251532524995543,
+          "blockedRays": 10,
+          "heightSamples": 3013
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8251532524995543,
+          "blockedRays": 10,
+          "heightSamples": 3017
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8867646131597395,
+          "blockedRays": 5,
+          "heightSamples": 3001
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1612,3310:91ef73e0e6f0bbda",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1612,
+        "y": 2087.3246251220708,
+        "z": 3310,
+        "rot": -0.708,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8192424362887264,
+          "blockedRays": 8,
+          "heightSamples": 3034
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8192424362887264,
+          "blockedRays": 8,
+          "heightSamples": 3035
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8893700472732455,
+          "blockedRays": 5,
+          "heightSamples": 3084
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1656,3023:d29f541a604dbe18",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1656,
+        "y": 2076.7353394239726,
+        "z": 3023,
+        "rot": 2.18,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9046164914612974,
+          "blockedRays": 5,
+          "heightSamples": 3168
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9046164914612974,
+          "blockedRays": 5,
+          "heightSamples": 3188
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7959671653539849,
+          "blockedRays": 9,
+          "heightSamples": 2899
+        }
+      ]
+    },
+    {
+      "id": "cabins:-166.3,2291.1:98446953d98e8ce7",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -166.3,
+        "y": 1908.8151196447755,
+        "z": 2291.1,
+        "rot": -0.949,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8344823853486248,
+          "blockedRays": 7,
+          "heightSamples": 3059
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8344823853486248,
+          "blockedRays": 7,
+          "heightSamples": 3060
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7117604235539433,
+          "blockedRays": 13,
+          "heightSamples": 2744
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1676,3017:5a1e1fd46ea2fff2",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1676,
+        "y": 2079.180827521629,
+        "z": 3017,
+        "rot": 1.959,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8958151487013437,
+          "blockedRays": 5,
+          "heightSamples": 3191
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8958151487013437,
+          "blockedRays": 5,
+          "heightSamples": 3191
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8040821291056599,
+          "blockedRays": 9,
+          "heightSamples": 2902
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1683,3643:fb877ed9142d2f85",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1683,
+        "y": 2115.1911993685626,
+        "z": 3643,
+        "rot": 0.677,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8247116181294352,
+          "blockedRays": 10,
+          "heightSamples": 3064
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8247116181294352,
+          "blockedRays": 10,
+          "heightSamples": 3064
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9445659842273769,
+          "blockedRays": 3,
+          "heightSamples": 3082
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1698,4029:e6ddcfd7ecd79335",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1698,
+        "y": 2145.8386095859373,
+        "z": 4029,
+        "rot": 2.429,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8967104994712042,
+          "blockedRays": 6,
+          "heightSamples": 3068
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8967104994712042,
+          "blockedRays": 6,
+          "heightSamples": 3068
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7612110228123632,
+          "blockedRays": 11,
+          "heightSamples": 2937
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1719,4089:688f80a0ba12dc12",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1719,
+        "y": 2148.0643509708593,
+        "z": 4089,
+        "rot": -2.12,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9274302483135444,
+          "blockedRays": 5,
+          "heightSamples": 3201
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9274302483135444,
+          "blockedRays": 5,
+          "heightSamples": 3201
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7724109737068163,
+          "blockedRays": 11,
+          "heightSamples": 2813
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1743,3612:30f9adc9fb584805",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -1743,
+        "y": 2115.868597447125,
+        "z": 3612,
+        "rot": 1.677,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.873648723812989,
+          "blockedRays": 7,
+          "heightSamples": 3159
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.873648723812989,
+          "blockedRays": 7,
+          "heightSamples": 3159
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8782105474316383,
+          "blockedRays": 6,
+          "heightSamples": 2968
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1758,4037:6dac28c480a804e4",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1758,
+        "y": 2147.0687575161132,
+        "z": 4037,
+        "rot": 0.789,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7717610488474757,
+          "blockedRays": 11,
+          "heightSamples": 2978
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7717610488474757,
+          "blockedRays": 11,
+          "heightSamples": 2978
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9401579084888101,
+          "blockedRays": 4,
+          "heightSamples": 3190
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1766,4057:9744b6511e4b2591",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1766,
+        "y": 2145.4521543587794,
+        "z": 4057,
+        "rot": -0.793,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7707482969672947,
+          "blockedRays": 11,
+          "heightSamples": 2990
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7707482969672947,
+          "blockedRays": 11,
+          "heightSamples": 2992
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9078785911558355,
+          "blockedRays": 5,
+          "heightSamples": 3126
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1822.6,2056.4:4903a00889a8a77e",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1822.6,
+        "y": 2012.543273095703,
+        "z": 2056.4,
+        "rot": -1.302,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8635000487530415,
+          "blockedRays": 6,
+          "heightSamples": 3009
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8635000487530415,
+          "blockedRays": 6,
+          "heightSamples": 3028
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8440570693207419,
+          "blockedRays": 8,
+          "heightSamples": 2997
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1842.3,2352.7:8f1b292bba792185",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -1842.3,
+        "y": 2043.814227909546,
+        "z": 2352.7,
+        "rot": -0.726,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8201780881768012,
+          "blockedRays": 8,
+          "heightSamples": 3113
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8201780881768012,
+          "blockedRays": 8,
+          "heightSamples": 3114
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9125077697235804,
+          "blockedRays": 5,
+          "heightSamples": 3107
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1972,3678:784f73bf0ba94d17",
+      "field": "house_a-entry-tea-34",
+      "pose": {
+        "x": -1972,
+        "y": 2142.0167674410627,
+        "z": 3678,
+        "rot": 2.704,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9284301817683871,
+          "blockedRays": 4,
+          "heightSamples": 3233
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9284301817683871,
+          "blockedRays": 4,
+          "heightSamples": 3233
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7953692313562549,
+          "blockedRays": 9,
+          "heightSamples": 2895
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1976,4171:38c80c1236757f84",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -1976,
+        "y": 2153.249002608781,
+        "z": 4171,
+        "rot": 2.5,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8787607789986346,
+          "blockedRays": 6,
+          "heightSamples": 3062
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8787607789986346,
+          "blockedRays": 6,
+          "heightSamples": 3062
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7036168130377383,
+          "blockedRays": 14,
+          "heightSamples": 2680
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1988,4034:2b2506742e70fd06",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1988,
+        "y": 2147.875735755031,
+        "z": 4034,
+        "rot": -2.29,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9294556782415988,
+          "blockedRays": 5,
+          "heightSamples": 3055
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9294556782415988,
+          "blockedRays": 5,
+          "heightSamples": 3055
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.786386606978805,
+          "blockedRays": 10,
+          "heightSamples": 2906
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1994,3635:ae4ff20ed9f8ddf2",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -1994,
+        "y": 2138.545084699219,
+        "z": 3635,
+        "rot": 2.748,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9313076449873213,
+          "blockedRays": 4,
+          "heightSamples": 3119
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9313076449873213,
+          "blockedRays": 4,
+          "heightSamples": 3119
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7945299387702313,
+          "blockedRays": 9,
+          "heightSamples": 2992
+        }
+      ]
+    },
+    {
+      "id": "cabins:-1997,3904:54ad348df53d6619",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -1997,
+        "y": 2151.4191963955077,
+        "z": 3904,
+        "rot": 0.716,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8104947563216328,
+          "blockedRays": 10,
+          "heightSamples": 3071
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8104947563216328,
+          "blockedRays": 10,
+          "heightSamples": 3071
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9128091582956731,
+          "blockedRays": 4,
+          "heightSamples": 3090
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2022,4200:e68e5699cd748215",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2022,
+        "y": 2158.8269384828454,
+        "z": 4200,
+        "rot": 3.083,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9361511572015909,
+          "blockedRays": 5,
+          "heightSamples": 3231
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9361511572015909,
+          "blockedRays": 5,
+          "heightSamples": 3231
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6872023600460306,
+          "blockedRays": 15,
+          "heightSamples": 2545
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2029,4093:1f560542f36a18a2",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2029,
+        "y": 2148.6860888922342,
+        "z": 4093,
+        "rot": -3.013,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9409972840712505,
+          "blockedRays": 5,
+          "heightSamples": 3159
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9409972840712505,
+          "blockedRays": 5,
+          "heightSamples": 3159
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6858345139936425,
+          "blockedRays": 15,
+          "heightSamples": 2801
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2055.1,3407.1:d9ac6a884bef880a",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2055.1,
+        "y": 2117.4448426564504,
+        "z": 3407.1,
+        "rot": -0.416,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8131001261803492,
+          "blockedRays": 8,
+          "heightSamples": 3000
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8131001261803492,
+          "blockedRays": 8,
+          "heightSamples": 3003
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8527230670461895,
+          "blockedRays": 7,
+          "heightSamples": 2925
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2074.2,2483.1:ae56a5bd4066a39b",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2074.2,
+        "y": 2048.568982157871,
+        "z": 2483.1,
+        "rot": 2.176,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8963525086738797,
+          "blockedRays": 6,
+          "heightSamples": 3118
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8963525086738797,
+          "blockedRays": 6,
+          "heightSamples": 3118
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8354488170019172,
+          "blockedRays": 7,
+          "heightSamples": 2971
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2093,3963.1:c07c9a6521b28a41",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2093,
+        "y": 2149.3915039629296,
+        "z": 3963.1,
+        "rot": 0.065,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7776363858508495,
+          "blockedRays": 11,
+          "heightSamples": 2921
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7776363858508495,
+          "blockedRays": 11,
+          "heightSamples": 2921
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9462267920268848,
+          "blockedRays": 3,
+          "heightSamples": 3167
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2115,3546:3a0415da8ebec018",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2115,
+        "y": 2123.463685334123,
+        "z": 3546,
+        "rot": -2.559,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9475396888641402,
+          "blockedRays": 3,
+          "heightSamples": 3137
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9475396888641402,
+          "blockedRays": 3,
+          "heightSamples": 3137
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7743905833031106,
+          "blockedRays": 11,
+          "heightSamples": 2929
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2122,3239:6c6454129cbbca40",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2122,
+        "y": 2133.7258418593747,
+        "z": 3239,
+        "rot": -1.81,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9341739349577017,
+          "blockedRays": 5,
+          "heightSamples": 3230
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9341739349577017,
+          "blockedRays": 5,
+          "heightSamples": 3230
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8717764520435525,
+          "blockedRays": 6,
+          "heightSamples": 3108
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2144,3555:6314dd987d1035fc",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2144,
+        "y": 2122.3261428615165,
+        "z": 3555,
+        "rot": -2.795,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9487990261976345,
+          "blockedRays": 3,
+          "heightSamples": 3136
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9487990261976345,
+          "blockedRays": 3,
+          "heightSamples": 3137
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7665403467622041,
+          "blockedRays": 11,
+          "heightSamples": 2741
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2158,3907:2f2026b64cab4732",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2158,
+        "y": 2148.8707055097657,
+        "z": 3907,
+        "rot": -0.441,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7783958838833689,
+          "blockedRays": 10,
+          "heightSamples": 2931
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7783958838833689,
+          "blockedRays": 10,
+          "heightSamples": 2932
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.928208643502184,
+          "blockedRays": 4,
+          "heightSamples": 3119
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2172,2689:02f36d4952b2af4b",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2172,
+        "y": 2051.824006786379,
+        "z": 2689,
+        "rot": -1.526,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8274464142215141,
+          "blockedRays": 8,
+          "heightSamples": 3033
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8535517186375529,
+          "blockedRays": 7,
+          "heightSamples": 3064
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6808322336801933,
+          "blockedRays": 14,
+          "heightSamples": 2575
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2180.3,2499.4:6819d1e662deb80e",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2180.3,
+        "y": 2061.155465082625,
+        "z": 2499.4,
+        "rot": -0.964,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8353560399158791,
+          "blockedRays": 7,
+          "heightSamples": 3068
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8353560399158791,
+          "blockedRays": 7,
+          "heightSamples": 3068
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9044928354191598,
+          "blockedRays": 5,
+          "heightSamples": 3135
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2194,3693:771c00d1674b2479",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2194,
+        "y": 2141.7093607548827,
+        "z": 3693,
+        "rot": 2.506,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9173300636220507,
+          "blockedRays": 4,
+          "heightSamples": 3133
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9173300636220507,
+          "blockedRays": 4,
+          "heightSamples": 3134
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8163371163370363,
+          "blockedRays": 8,
+          "heightSamples": 3086
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2211,3684:cb08c7624f8b3ca4",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2211,
+        "y": 2141.890287868219,
+        "z": 3684,
+        "rot": 2.402,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.912757200863663,
+          "blockedRays": 4,
+          "heightSamples": 3097
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.912757200863663,
+          "blockedRays": 4,
+          "heightSamples": 3097
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8208907140925745,
+          "blockedRays": 8,
+          "heightSamples": 3025
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2217.2,3061.1:fa0810890a19d38d",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2217.2,
+        "y": 2078.0379890573017,
+        "z": 3061.1,
+        "rot": 1.788,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7651496093085176,
+          "blockedRays": 12,
+          "heightSamples": 2812
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7651496093085176,
+          "blockedRays": 12,
+          "heightSamples": 2807
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6961010684195232,
+          "blockedRays": 13,
+          "heightSamples": 2570
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2226,3010:51ec3a5a226c65f8",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2226,
+        "y": 2078.3566568306387,
+        "z": 3010,
+        "rot": 1.907,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8732595996577602,
+          "blockedRays": 7,
+          "heightSamples": 2936
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8732595996577602,
+          "blockedRays": 7,
+          "heightSamples": 2936
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7776731504229507,
+          "blockedRays": 10,
+          "heightSamples": 2848
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2239.4,2550.4:35b943343107e830",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2239.4,
+        "y": 2040.2191976452784,
+        "z": 2550.4,
+        "rot": -2.115,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.875279160186369,
+          "blockedRays": 9,
+          "heightSamples": 2915
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.855777471646115,
+          "blockedRays": 10,
+          "heightSamples": 2888
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7130864922316351,
+          "blockedRays": 15,
+          "heightSamples": 2516
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2260.7,3765.9:a4ff314e8a6ef722",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2260.7,
+        "y": 2149.6643431510665,
+        "z": 3765.9,
+        "rot": 0.124,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8156826921236005,
+          "blockedRays": 9,
+          "heightSamples": 2992
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8156826921236005,
+          "blockedRays": 9,
+          "heightSamples": 2993
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9464372932285642,
+          "blockedRays": 3,
+          "heightSamples": 3166
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2265,2933:cdafb82736580ff3",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2265,
+        "y": 2073.1040982396466,
+        "z": 2933,
+        "rot": 2.181,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9006204928045461,
+          "blockedRays": 6,
+          "heightSamples": 3100
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9006204928045461,
+          "blockedRays": 6,
+          "heightSamples": 3103
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7350205459027033,
+          "blockedRays": 13,
+          "heightSamples": 2674
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2269,3593:dec6f59b187c88b9",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2269,
+        "y": 2131.3362622964373,
+        "z": 3593,
+        "rot": 2.854,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9368076712424585,
+          "blockedRays": 3,
+          "heightSamples": 3109
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9368076712424585,
+          "blockedRays": 3,
+          "heightSamples": 3109
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8132744908651129,
+          "blockedRays": 9,
+          "heightSamples": 2993
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2272,3787:9cc1238c84619402",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2272,
+        "y": 2147.5511521652834,
+        "z": 3787,
+        "rot": -0.628,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8160786734399209,
+          "blockedRays": 8,
+          "heightSamples": 3108
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8160786734399209,
+          "blockedRays": 8,
+          "heightSamples": 3109
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9176985961245113,
+          "blockedRays": 4,
+          "heightSamples": 3162
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2311,3621:fa4c7e8258fe0efe",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2311,
+        "y": 2128.257896444719,
+        "z": 3621,
+        "rot": -2.906,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9472854883034493,
+          "blockedRays": 3,
+          "heightSamples": 3127
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9472854883034493,
+          "blockedRays": 3,
+          "heightSamples": 3164
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7935220439877624,
+          "blockedRays": 10,
+          "heightSamples": 2881
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2319,3557:a531d595c00f93ad",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2319,
+        "y": 2125.0995340579666,
+        "z": 3557,
+        "rot": -2.341,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9395469163389015,
+          "blockedRays": 4,
+          "heightSamples": 3150
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9395469163389015,
+          "blockedRays": 4,
+          "heightSamples": 3150
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8438286836924839,
+          "blockedRays": 8,
+          "heightSamples": 3043
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2333,2407:1aedef4517109043",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2333,
+        "y": 2033.1614585496595,
+        "z": 2407,
+        "rot": -1.134,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8014814090920038,
+          "blockedRays": 9,
+          "heightSamples": 2911
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8014814090920038,
+          "blockedRays": 9,
+          "heightSamples": 2912
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.5892891640453587,
+          "blockedRays": 18,
+          "heightSamples": 2384
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2341,3728:44caf782cc7fd362",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2341,
+        "y": 2144.013552470703,
+        "z": 3728,
+        "rot": 2.348,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9107052003462641,
+          "blockedRays": 4,
+          "heightSamples": 3092
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9107052003462641,
+          "blockedRays": 4,
+          "heightSamples": 3092
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8239219400181399,
+          "blockedRays": 8,
+          "heightSamples": 3024
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2346,3652:8c8659c3d47ba4bb",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2346,
+        "y": 2136.569934714844,
+        "z": 3652,
+        "rot": 2.966,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9419999698769275,
+          "blockedRays": 3,
+          "heightSamples": 3167
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9419999698769275,
+          "blockedRays": 3,
+          "heightSamples": 3167
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8141881016524306,
+          "blockedRays": 9,
+          "heightSamples": 3029
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2347,2471:327d3d132a068749",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2347,
+        "y": 2034.2703679179688,
+        "z": 2471,
+        "rot": 2.811,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8267734715217328,
+          "blockedRays": 9,
+          "heightSamples": 2828
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8267734715217328,
+          "blockedRays": 9,
+          "heightSamples": 2828
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7469665914366264,
+          "blockedRays": 12,
+          "heightSamples": 2780
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2350.1,2349.4:07595dbfb38d6f1f",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2350.1,
+        "y": 2037.9001345585916,
+        "z": 2349.4,
+        "rot": -0.947,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7957783858095951,
+          "blockedRays": 9,
+          "heightSamples": 2982
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7957783858095951,
+          "blockedRays": 9,
+          "heightSamples": 2983
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6081590313038551,
+          "blockedRays": 18,
+          "heightSamples": 2318
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2351.1,3148.3:edf3fb9e287b9ac8",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2352.963963461764,
+        "y": 2115.192279148299,
+        "z": 3147.7921510489095,
+        "rot": -0.266,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8132807510796987,
+          "blockedRays": 9,
+          "heightSamples": 3026
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8132807510796987,
+          "blockedRays": 9,
+          "heightSamples": 3027
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.937750664690045,
+          "blockedRays": 3,
+          "heightSamples": 3129
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2369,3904:302e7eb20018e7b8",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2369,
+        "y": 2150.139073800447,
+        "z": 3904,
+        "rot": 2.878,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9378609883742242,
+          "blockedRays": 3,
+          "heightSamples": 3175
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9378609883742242,
+          "blockedRays": 3,
+          "heightSamples": 3193
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7766255217906247,
+          "blockedRays": 11,
+          "heightSamples": 2937
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2417.2,2945.2:499081bff0f99c29",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2417.2,
+        "y": 2095.726917168211,
+        "z": 2945.2,
+        "rot": 0.621,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.835957587664718,
+          "blockedRays": 9,
+          "heightSamples": 3000
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.835957587664718,
+          "blockedRays": 9,
+          "heightSamples": 3003
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8432811811880268,
+          "blockedRays": 7,
+          "heightSamples": 2836
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2419,3621:251b4bb608d4280c",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2419,
+        "y": 2140.5985616283124,
+        "z": 3621,
+        "rot": 1.862,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8931353153382455,
+          "blockedRays": 6,
+          "heightSamples": 3127
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8931353153382455,
+          "blockedRays": 6,
+          "heightSamples": 3127
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8403536194843619,
+          "blockedRays": 7,
+          "heightSamples": 2996
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2469,3531:8c23ad5bf088c12f",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2469,
+        "y": 2133.403037498625,
+        "z": 3531,
+        "rot": 1.169,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8610722051459495,
+          "blockedRays": 7,
+          "heightSamples": 3116
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8610722051459495,
+          "blockedRays": 7,
+          "heightSamples": 3117
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8625375646200646,
+          "blockedRays": 7,
+          "heightSamples": 2916
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2472,3718:a7bdebd896e5dc48",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2472,
+        "y": 2147.1118416413124,
+        "z": 3718,
+        "rot": 0.812,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8442699614160912,
+          "blockedRays": 8,
+          "heightSamples": 3021
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8442699614160912,
+          "blockedRays": 8,
+          "heightSamples": 3021
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9083680193850464,
+          "blockedRays": 5,
+          "heightSamples": 3085
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2504,3626:387f87fbf3493669",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2504,
+        "y": 2137.8663580320876,
+        "z": 3626,
+        "rot": -2.504,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8118556457295911,
+          "blockedRays": 8,
+          "heightSamples": 2909
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8118556457295911,
+          "blockedRays": 8,
+          "heightSamples": 2916
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.806572984612819,
+          "blockedRays": 10,
+          "heightSamples": 2955
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2529,3660:b1ddddd87e173304",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2529,
+        "y": 2138.9014544213865,
+        "z": 3660,
+        "rot": -3.04,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8587267770767996,
+          "blockedRays": 8,
+          "heightSamples": 2948
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8587267770767996,
+          "blockedRays": 8,
+          "heightSamples": 2956
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7781846119529205,
+          "blockedRays": 11,
+          "heightSamples": 2854
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2583,3547:77a006c0e9bde0d0",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2583,
+        "y": 2146.7305380285643,
+        "z": 3547,
+        "rot": -2.744,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9244274566828681,
+          "blockedRays": 5,
+          "heightSamples": 3142
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9244274566828681,
+          "blockedRays": 5,
+          "heightSamples": 3144
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7986525472761261,
+          "blockedRays": 9,
+          "heightSamples": 2835
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2593,3580:5c89be33c45e50a9",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2593,
+        "y": 2153.135609704248,
+        "z": 3580,
+        "rot": -2.866,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9342648557654591,
+          "blockedRays": 3,
+          "heightSamples": 3153
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9567976244587222,
+          "blockedRays": 2,
+          "heightSamples": 3170
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8200156095293645,
+          "blockedRays": 9,
+          "heightSamples": 2950
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2610,3564:f68045482975c254",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2610,
+        "y": 2148.9707575403827,
+        "z": 3564,
+        "rot": 2.879,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.952900189399233,
+          "blockedRays": 3,
+          "heightSamples": 3137
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.952900189399233,
+          "blockedRays": 3,
+          "heightSamples": 3137
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7673549379018445,
+          "blockedRays": 12,
+          "heightSamples": 2744
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2646.5,2609:8de2bc09b455329d",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2646.7912052732136,
+        "y": 2075.908483735559,
+        "z": 2609.219179626969,
+        "rot": 2.216,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9013467903488882,
+          "blockedRays": 6,
+          "heightSamples": 3127
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9013467903488882,
+          "blockedRays": 6,
+          "heightSamples": 3128
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.5496682579074589,
+          "blockedRays": 19,
+          "heightSamples": 2225
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2665.6,2936.4:7ca86de7462969e1",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2666.4435467734497,
+        "y": 2114.8512821342565,
+        "z": 2936.162179920302,
+        "rot": 1.296,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.869713417716527,
+          "blockedRays": 7,
+          "heightSamples": 3054
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.869713417716527,
+          "blockedRays": 7,
+          "heightSamples": 3054
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8403402989657576,
+          "blockedRays": 8,
+          "heightSamples": 2980
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2688,3564:7f5fcaeb785e1969",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2688,
+        "y": 2158.428917283691,
+        "z": 3564,
+        "rot": 2.341,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9408077728364048,
+          "blockedRays": 3,
+          "heightSamples": 3192
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9408077728364048,
+          "blockedRays": 3,
+          "heightSamples": 3192
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8159124031640573,
+          "blockedRays": 9,
+          "heightSamples": 3021
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2690.5,2878.4:5ec33ae56e33d291",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2690.5,
+        "y": 2108.8368134713282,
+        "z": 2878.4,
+        "rot": 1.223,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8834227869225398,
+          "blockedRays": 6,
+          "heightSamples": 3039
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8834227869225398,
+          "blockedRays": 6,
+          "heightSamples": 3039
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7729900903184037,
+          "blockedRays": 11,
+          "heightSamples": 2752
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2713,3316:10e8b263fcb703bf",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2713,
+        "y": 2143.7853395126403,
+        "z": 3316,
+        "rot": 0.471,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8248571500664155,
+          "blockedRays": 9,
+          "heightSamples": 3065
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8248571500664155,
+          "blockedRays": 9,
+          "heightSamples": 3063
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9027969376864864,
+          "blockedRays": 7,
+          "heightSamples": 2962
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2748,3590:d98705d61219cd5a",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2748,
+        "y": 2167.959835162453,
+        "z": 3590,
+        "rot": 2.429,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9320696547072373,
+          "blockedRays": 4,
+          "heightSamples": 3163
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9320696547072373,
+          "blockedRays": 4,
+          "heightSamples": 3163
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8194749906022493,
+          "blockedRays": 8,
+          "heightSamples": 3083
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2755,3371.6:58ffc910e72236ca",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2755,
+        "y": 2140.605379158483,
+        "z": 3371.6,
+        "rot": 1.237,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8654986114262807,
+          "blockedRays": 7,
+          "heightSamples": 3054
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8654986114262807,
+          "blockedRays": 7,
+          "heightSamples": 3054
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6262250652897556,
+          "blockedRays": 16,
+          "heightSamples": 2430
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2782.5,2861.1:65d253c8f219dede",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2782.5,
+        "y": 2118.226442390064,
+        "z": 2861.1,
+        "rot": 0.538,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8303158965706183,
+          "blockedRays": 9,
+          "heightSamples": 3059
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8303158965706183,
+          "blockedRays": 9,
+          "heightSamples": 3058
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.819480933800862,
+          "blockedRays": 10,
+          "heightSamples": 2715
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2784,3672:c70f90874f4ec9cb",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2784,
+        "y": 2173.0104217282715,
+        "z": 3672,
+        "rot": 2.427,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.943478783164974,
+          "blockedRays": 3,
+          "heightSamples": 3193
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.943478783164974,
+          "blockedRays": 3,
+          "heightSamples": 3193
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8195798947863989,
+          "blockedRays": 8,
+          "heightSamples": 3013
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2801,3710:a58dd1757818ca6d",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2801,
+        "y": 2180.8352705507814,
+        "z": 3710,
+        "rot": 2.466,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9448181191565507,
+          "blockedRays": 3,
+          "heightSamples": 3131
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9448181191565507,
+          "blockedRays": 3,
+          "heightSamples": 3131
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8178127591450619,
+          "blockedRays": 8,
+          "heightSamples": 3003
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2815,2930:c26d199fea364229",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2815,
+        "y": 2116.9666915788575,
+        "z": 2930,
+        "rot": 1.658,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9127155675641467,
+          "blockedRays": 5,
+          "heightSamples": 3183
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9127155675641467,
+          "blockedRays": 5,
+          "heightSamples": 3184
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6652638500244135,
+          "blockedRays": 15,
+          "heightSamples": 2607
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2870,3785:0d5a32b2f6e68a52",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2870,
+        "y": 2188.9453289994067,
+        "z": 3785,
+        "rot": 1.846,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9219722017701855,
+          "blockedRays": 5,
+          "heightSamples": 3115
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9219722017701855,
+          "blockedRays": 5,
+          "heightSamples": 3115
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8338620988369903,
+          "blockedRays": 7,
+          "heightSamples": 2969
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2879.7,2297.9:f5620543b0b30159",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -2879.7,
+        "y": 2109.7103256870264,
+        "z": 2297.9,
+        "rot": 1.995,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9275292542335689,
+          "blockedRays": 4,
+          "heightSamples": 3166
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9275292542335689,
+          "blockedRays": 4,
+          "heightSamples": 3166
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7718453740618797,
+          "blockedRays": 10,
+          "heightSamples": 2808
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2886,2417:f4a9518e1d70c9a8",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2886,
+        "y": 2110.1311385742188,
+        "z": 2417,
+        "rot": 1.815,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9202635570101226,
+          "blockedRays": 5,
+          "heightSamples": 3110
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9202635570101226,
+          "blockedRays": 5,
+          "heightSamples": 3110
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7659361701721743,
+          "blockedRays": 11,
+          "heightSamples": 2650
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2890,3821:468157477c0409cf",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -2890,
+        "y": 2190.3645199534685,
+        "z": 3821,
+        "rot": 1.329,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8930305883168356,
+          "blockedRays": 5,
+          "heightSamples": 3021
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8930305883168356,
+          "blockedRays": 5,
+          "heightSamples": 3020
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8838149175534264,
+          "blockedRays": 8,
+          "heightSamples": 2998
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2914.7,3385.1:abdf746d19a285ef",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2914.7,
+        "y": 2188.243327501465,
+        "z": 3385.1,
+        "rot": -0.292,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8132808801590881,
+          "blockedRays": 9,
+          "heightSamples": 3082
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8132808801590881,
+          "blockedRays": 9,
+          "heightSamples": 3081
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7745471537041998,
+          "blockedRays": 10,
+          "heightSamples": 2692
+        }
+      ]
+    },
+    {
+      "id": "cabins:-2973.6,2615.1:f75b3e80cb97e186",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -2973.6,
+        "y": 2139.569021411133,
+        "z": 2615.1,
+        "rot": 0.585,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8352200179600098,
+          "blockedRays": 8,
+          "heightSamples": 3090
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8352200179600098,
+          "blockedRays": 8,
+          "heightSamples": 3090
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9312608510341641,
+          "blockedRays": 4,
+          "heightSamples": 3068
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3005,3362.5:9394257a03221852",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -3005,
+        "y": 2189.578422783199,
+        "z": 3362.5,
+        "rot": -0.245,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8134207428855784,
+          "blockedRays": 9,
+          "heightSamples": 3069
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8134207428855784,
+          "blockedRays": 9,
+          "heightSamples": 3068
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.820426802061168,
+          "blockedRays": 8,
+          "heightSamples": 2789
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3074.4,3712.5:97b1ede72beca137",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -3074.4,
+        "y": 2197.73545059082,
+        "z": 3712.5,
+        "rot": 0.059,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8150044998687352,
+          "blockedRays": 9,
+          "heightSamples": 2976
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8150044998687352,
+          "blockedRays": 9,
+          "heightSamples": 2976
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9327940425572723,
+          "blockedRays": 3,
+          "heightSamples": 3071
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3082.1,3502.1:b660bffa0b565706",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -3082.1,
+        "y": 2192.1679633138397,
+        "z": 3502.1,
+        "rot": 1.43,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9008842209879975,
+          "blockedRays": 5,
+          "heightSamples": 3080
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9008842209879975,
+          "blockedRays": 5,
+          "heightSamples": 3080
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7197543103373564,
+          "blockedRays": 13,
+          "heightSamples": 2659
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3143.4,1836.1:002ecee9576a5363",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -3143.4,
+        "y": 2117.877819213867,
+        "z": 1836.1,
+        "rot": -1.075,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8429336333551638,
+          "blockedRays": 7,
+          "heightSamples": 3017
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8429336333551638,
+          "blockedRays": 7,
+          "heightSamples": 3018
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9303195275464563,
+          "blockedRays": 4,
+          "heightSamples": 3141
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3232.8,3149.6:383ba9a392f56573",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -3232.8,
+        "y": 2185.9754502545725,
+        "z": 3149.6,
+        "rot": 0.55,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8331092060510485,
+          "blockedRays": 8,
+          "heightSamples": 3096
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8331092060510485,
+          "blockedRays": 8,
+          "heightSamples": 3097
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8060970816556396,
+          "blockedRays": 9,
+          "heightSamples": 2788
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3234.5,3762:2112b8e9ca58d95b",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -3234.5,
+        "y": 2205.871985075684,
+        "z": 3762,
+        "rot": 1.622,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9112665829458478,
+          "blockedRays": 5,
+          "heightSamples": 3083
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9112665829458478,
+          "blockedRays": 5,
+          "heightSamples": 3109
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8709526486542796,
+          "blockedRays": 7,
+          "heightSamples": 3022
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3277.3,3821.3:37f1eb616bdfadd3",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -3277.3,
+        "y": 2211.2090832263184,
+        "z": 3821.3,
+        "rot": 2.876,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9379137428241469,
+          "blockedRays": 3,
+          "heightSamples": 3118
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9379137428241469,
+          "blockedRays": 3,
+          "heightSamples": 3118
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7785342425449587,
+          "blockedRays": 11,
+          "heightSamples": 2799
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3285.1,2448.5:fa89cadf1e3e1db7",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -3285.1,
+        "y": 2146.7116206481933,
+        "z": 2448.5,
+        "rot": 0.825,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.852742408252953,
+          "blockedRays": 7,
+          "heightSamples": 2997
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.852742408252953,
+          "blockedRays": 7,
+          "heightSamples": 2998
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8491772680192755,
+          "blockedRays": 8,
+          "heightSamples": 2905
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3310.7,1463.6:7d3e31820a80abfc",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -3310.7,
+        "y": 2091.917952819824,
+        "z": 1463.6,
+        "rot": 0.222,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.847738491628433,
+          "blockedRays": 8,
+          "heightSamples": 3042
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.847738491628433,
+          "blockedRays": 8,
+          "heightSamples": 3043
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.9521720316307507,
+          "blockedRays": 3,
+          "heightSamples": 3102
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3470.2,1896.1:ea39540a68cd2d36",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -3470.2,
+        "y": 2110.2038038968317,
+        "z": 1896.1,
+        "rot": 1.448,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8790105205334917,
+          "blockedRays": 5,
+          "heightSamples": 3011
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8790105205334917,
+          "blockedRays": 5,
+          "heightSamples": 3011
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8181575360342084,
+          "blockedRays": 9,
+          "heightSamples": 2895
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3717.7,2334.7:cfec6bacb6bb52fe",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -3717.7,
+        "y": 2160.3810151369653,
+        "z": 2334.7,
+        "rot": 1.731,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9159385174482783,
+          "blockedRays": 5,
+          "heightSamples": 3103
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9159385174482783,
+          "blockedRays": 5,
+          "heightSamples": 3104
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6989533906912129,
+          "blockedRays": 13,
+          "heightSamples": 2590
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3764.4,3349.9:d4763bdf67482119",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -3764.4,
+        "y": 2191.9018197070313,
+        "z": 3349.9,
+        "rot": -1.075,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8612999762014615,
+          "blockedRays": 7,
+          "heightSamples": 2987
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8612999762014615,
+          "blockedRays": 7,
+          "heightSamples": 2988
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6351593677809715,
+          "blockedRays": 17,
+          "heightSamples": 2554
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3786.2,3314:6c274edf6a709e39",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -3786.2,
+        "y": 2190.235477492007,
+        "z": 3314,
+        "rot": -1.176,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8662120258533321,
+          "blockedRays": 8,
+          "heightSamples": 3005
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8662120258533321,
+          "blockedRays": 8,
+          "heightSamples": 3005
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.5769183053560979,
+          "blockedRays": 19,
+          "heightSamples": 2406
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3967,2822.3:eec01b1433084d64",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -3967,
+        "y": 2265.989267002689,
+        "z": 2822.3,
+        "rot": 1.613,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9149077089671122,
+          "blockedRays": 4,
+          "heightSamples": 3166
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9149077089671122,
+          "blockedRays": 4,
+          "heightSamples": 3167
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.18750285332737066,
+          "blockedRays": 40,
+          "heightSamples": 1240
+        }
+      ]
+    },
+    {
+      "id": "cabins:-3978.6,2891.5:ef6aa239f3ec606d",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -3978.6,
+        "y": 2287.1657659163834,
+        "z": 2891.5,
+        "rot": 1.626,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9158203880887573,
+          "blockedRays": 4,
+          "heightSamples": 3169
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9158203880887573,
+          "blockedRays": 4,
+          "heightSamples": 3169
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.21960763196837993,
+          "blockedRays": 38,
+          "heightSamples": 1338
+        }
+      ]
+    },
+    {
+      "id": "cabins:-687.2,2510.3:5bf74df6478ce7a0",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -687.2,
+        "y": 1958.8107402995518,
+        "z": 2510.3,
+        "rot": 0.878,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7686915870937485,
+          "blockedRays": 12,
+          "heightSamples": 2999
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7686915870937485,
+          "blockedRays": 12,
+          "heightSamples": 2999
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8371608862835173,
+          "blockedRays": 8,
+          "heightSamples": 2875
+        }
+      ]
+    },
+    {
+      "id": "cabins:-768.3,3308.3:3730c8d07510316e",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -768.3,
+        "y": 2019.514194664917,
+        "z": 3308.3,
+        "rot": -0.946,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.805082101110289,
+          "blockedRays": 9,
+          "heightSamples": 2980
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8082802798408631,
+          "blockedRays": 8,
+          "heightSamples": 3008
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8159863004952744,
+          "blockedRays": 10,
+          "heightSamples": 2991
+        }
+      ]
+    },
+    {
+      "id": "cabins:-775.1,3217.6:0e2fe2286693893c",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -775.1,
+        "y": 2023.976267736435,
+        "z": 3217.6,
+        "rot": 0.452,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7555969709897854,
+          "blockedRays": 12,
+          "heightSamples": 2988
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7555969709897854,
+          "blockedRays": 12,
+          "heightSamples": 2990
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8115227936213472,
+          "blockedRays": 9,
+          "heightSamples": 2796
+        }
+      ]
+    },
+    {
+      "id": "cabins:-809.6,2626.3:484763a16c99e5a9",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -809.6,
+        "y": 1966.1123904833985,
+        "z": 2626.3,
+        "rot": 1.881,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7984681089829965,
+          "blockedRays": 9,
+          "heightSamples": 3025
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7984681089829965,
+          "blockedRays": 9,
+          "heightSamples": 3025
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6398673360143845,
+          "blockedRays": 17,
+          "heightSamples": 2462
+        }
+      ]
+    },
+    {
+      "id": "cabins:-95.4,3101.5:21ab9a19de5472df",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -95.4,
+        "y": 1909.9474919726563,
+        "z": 3101.5,
+        "rot": -2.971,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8694855193835949,
+          "blockedRays": 9,
+          "heightSamples": 2874
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8694855193835949,
+          "blockedRays": 9,
+          "heightSamples": 2878
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7055987554483277,
+          "blockedRays": 16,
+          "heightSamples": 2701
+        }
+      ]
+    },
+    {
+      "id": "cabins:-960,2846:fc675b94ac3d3eba",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -960,
+        "y": 1996.4569729498292,
+        "z": 2846,
+        "rot": 0.8,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.771345498862249,
+          "blockedRays": 11,
+          "heightSamples": 3026
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.771345498862249,
+          "blockedRays": 11,
+          "heightSamples": 3027
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7989226006360362,
+          "blockedRays": 9,
+          "heightSamples": 2887
+        }
+      ]
+    },
+    {
+      "id": "cabins:-972,3576:5fb42400478010c2",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": -972,
+        "y": 2040.2999167700195,
+        "z": 3576,
+        "rot": 2.714,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9104433790569267,
+          "blockedRays": 5,
+          "heightSamples": 3113
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.9104433790569267,
+          "blockedRays": 5,
+          "heightSamples": 3113
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.7742301452338581,
+          "blockedRays": 10,
+          "heightSamples": 2897
+        }
+      ]
+    },
+    {
+      "id": "cabins:-974,3980:1e9a7e0f78044fdd",
+      "field": "house_a-living-1",
+      "pose": {
+        "x": -974,
+        "y": 2117.8119123241563,
+        "z": 3980,
+        "rot": 0.84,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.79215124069732,
+          "blockedRays": 11,
+          "heightSamples": 2993
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.79215124069732,
+          "blockedRays": 11,
+          "heightSamples": 2994
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8701525969091042,
+          "blockedRays": 7,
+          "heightSamples": 2890
+        }
+      ]
+    },
+    {
+      "id": "cabins:-998,4042:c59389d46bd9e9b8",
+      "field": "house_a-living-0",
+      "pose": {
+        "x": -998,
+        "y": 2120.798865991211,
+        "z": 4042,
+        "rot": 1.398,
+        "scale": {
+          "x": 0.78,
+          "y": 1,
+          "z": 0.78
+        }
+      },
+      "excludedNearMeters": 14.403605234553423,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8164299063988292,
+          "blockedRays": 8,
+          "heightSamples": 3069
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.8164299063988292,
+          "blockedRays": 8,
+          "heightSamples": 3069
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.8752274395858118,
+          "blockedRays": 8,
+          "heightSamples": 3037
+        }
+      ]
+    },
+    {
+      "id": "cabins:24.1,2341.3:671b649d93952a83",
+      "field": "house_a-living-2",
+      "pose": {
+        "x": 24.1,
+        "y": 1937.969013207495,
+        "z": 2341.3,
+        "rot": -0.58,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 16.209750300709516,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7971353289068954,
+          "blockedRays": 10,
+          "heightSamples": 2962
+        },
+        {
+          "index": 1,
+          "kind": "window",
+          "skyVisibleFraction": 0.7971353289068954,
+          "blockedRays": 10,
+          "heightSamples": 2965
+        },
+        {
+          "index": 2,
+          "kind": "window",
+          "skyVisibleFraction": 0.6361583227658386,
+          "blockedRays": 17,
+          "heightSamples": 2387
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1106,3239:608f79ded786bcb8",
+      "field": "yurt",
+      "pose": {
+        "x": -1106,
+        "y": 2043.4903334979338,
+        "z": 3239,
+        "rot": 0.7500698366005867,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7957184373774895,
+          "blockedRays": 10,
+          "heightSamples": 3113
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9659423828125,
+          "blockedRays": 22,
+          "heightSamples": 5825
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1149,3232:d6414c54df25beec",
+      "field": "yurt",
+      "pose": {
+        "x": -1149,
+        "y": 2056.6122241560474,
+        "z": 3232,
+        "rot": 0.7285946157433806,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.7953920906522757,
+          "blockedRays": 11,
+          "heightSamples": 3083
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9735107421875,
+          "blockedRays": 20,
+          "heightSamples": 5920
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1210,3482:16aed608607b5802",
+      "field": "yurt",
+      "pose": {
+        "x": -1210,
+        "y": 2033.5701818870311,
+        "z": 3482,
+        "rot": 1.9237574302713023,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8423798667309701,
+          "blockedRays": 8,
+          "heightSamples": 3096
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.97015380859375,
+          "blockedRays": 21,
+          "heightSamples": 5938
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1222,3462:cb53565b4e353e3d",
+      "field": "yurt",
+      "pose": {
+        "x": -1222,
+        "y": 2034.0894116934062,
+        "z": 3462,
+        "rot": 1.1481474536523784,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8047813197129643,
+          "blockedRays": 10,
+          "heightSamples": 3047
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.97015380859375,
+          "blockedRays": 21,
+          "heightSamples": 5912
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1470,3466.5:fa32566314aa5f17",
+      "field": "yurt",
+      "pose": {
+        "x": -1470,
+        "y": 2092.4472182612158,
+        "z": 3466.5,
+        "rot": -0.15757110805356056,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8140400238647515,
+          "blockedRays": 8,
+          "heightSamples": 3048
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98760986328125,
+          "blockedRays": 13,
+          "heightSamples": 6274
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1493.4,3430:dedb6b7008ef9e98",
+      "field": "yurt",
+      "pose": {
+        "x": -1493.4,
+        "y": 2095.422524083938,
+        "z": 3430,
+        "rot": 2.5729252999870553,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8988842874298532,
+          "blockedRays": 5,
+          "heightSamples": 3217
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98760986328125,
+          "blockedRays": 13,
+          "heightSamples": 6279
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1551,3489:3337d4a3e634caaf",
+      "field": "yurt",
+      "pose": {
+        "x": -1551,
+        "y": 2091.2813886718754,
+        "z": 3489,
+        "rot": 1.8242131811928772,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8606728622023079,
+          "blockedRays": 7,
+          "heightSamples": 3108
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9793701171875,
+          "blockedRays": 16,
+          "heightSamples": 6018
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1966.1,3394.5:beedf632cb5826cc",
+      "field": "yurt",
+      "pose": {
+        "x": -1966.1,
+        "y": 2121.952857856848,
+        "z": 3394.5,
+        "rot": -0.9333209958782674,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8335691574122321,
+          "blockedRays": 7,
+          "heightSamples": 3121
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6304
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1966.4,3403.5:8d130a6eb399c668",
+      "field": "yurt",
+      "pose": {
+        "x": -1966.4,
+        "y": 2121.037541091642,
+        "z": 3403.5,
+        "rot": 0.02525683802041126,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.814982627121721,
+          "blockedRays": 9,
+          "heightSamples": 3060
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6300
+        }
+      ]
+    },
+    {
+      "id": "yurts:-1972.6,3387:11b02aa5dbc663cf",
+      "field": "yurt",
+      "pose": {
+        "x": -1972.6,
+        "y": 2122.247354409875,
+        "z": 3387,
+        "rot": -0.27784334803768385,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8132603560946691,
+          "blockedRays": 9,
+          "heightSamples": 3143
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6333
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2002.9,3609.2:7191eddd50425637",
+      "field": "yurt",
+      "pose": {
+        "x": -2002.9,
+        "y": 2136.4984862021956,
+        "z": 3609.2,
+        "rot": 2.6375216787407956,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9243459606142439,
+          "blockedRays": 4,
+          "heightSamples": 3233
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6276
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2019.2,3559.9:dd6a3dcbdb98adf7",
+      "field": "yurt",
+      "pose": {
+        "x": -2017.6900242290749,
+        "y": 2130.1942838316713,
+        "z": 3554.9700607365703,
+        "rot": 2.8622143120547947,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9371614835219035,
+          "blockedRays": 3,
+          "heightSamples": 3191
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6278
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2022.5,3549.6:7f1f21d82f5dfa5a",
+      "field": "yurt",
+      "pose": {
+        "x": -2023.1931820900438,
+        "y": 2129.6294467095913,
+        "z": 3548.7167293398456,
+        "rot": 2.744268589012793,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9310575833671398,
+          "blockedRays": 4,
+          "heightSamples": 3182
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6269
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2055.5,3634.9:d51c70aee57a8a24",
+      "field": "yurt",
+      "pose": {
+        "x": -2055.5,
+        "y": 2138.222377132746,
+        "z": 3634.9,
+        "rot": -2.7480213597169385,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9495290717176571,
+          "blockedRays": 4,
+          "heightSamples": 3212
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6258
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2071.9,3638.9:a0c8f6fcb65c50aa",
+      "field": "yurt",
+      "pose": {
+        "x": -2071.9,
+        "y": 2138.3049703295233,
+        "z": 3638.9,
+        "rot": -3.243208207272184,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.943577608841367,
+          "blockedRays": 4,
+          "heightSamples": 3172
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6259
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2073.5,3503.4:e20c97ce4e75079e",
+      "field": "yurt",
+      "pose": {
+        "x": -2073.5,
+        "y": 2119.3439266376586,
+        "z": 3503.4,
+        "rot": -3.0129200704171115,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9464657769112691,
+          "blockedRays": 3,
+          "heightSamples": 3197
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9842529296875,
+          "blockedRays": 14,
+          "heightSamples": 6045
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2079.7,3631.3:02668e8db4116127",
+      "field": "yurt",
+      "pose": {
+        "x": -2079.7,
+        "y": 2136.998616664484,
+        "z": 3631.3,
+        "rot": -2.710251645620559,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9490808893580814,
+          "blockedRays": 4,
+          "heightSamples": 3261
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6256
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2095.2,3635.8:8e0d34bb3bedd793",
+      "field": "yurt",
+      "pose": {
+        "x": -2095.2,
+        "y": 2136.781572779125,
+        "z": 3635.8,
+        "rot": -3.0444292537570594,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9463227188623506,
+          "blockedRays": 3,
+          "heightSamples": 3233
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6257
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2096.3,3497.6:52dbf7d9447f3b1d",
+      "field": "yurt",
+      "pose": {
+        "x": -2099.30854389819,
+        "y": 2117.3380577231455,
+        "z": 3497.292659240794,
+        "rot": 3.147058209509449,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9462270902896998,
+          "blockedRays": 3,
+          "heightSamples": 3195
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9842529296875,
+          "blockedRays": 14,
+          "heightSamples": 6103
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2103.2,3503.2:b5dd4e2de356edd1",
+      "field": "yurt",
+      "pose": {
+        "x": -2103.962628467544,
+        "y": 2118.7269436659394,
+        "z": 3504.1919922953693,
+        "rot": -3.1133839336607227,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9461963122900489,
+          "blockedRays": 3,
+          "heightSamples": 3196
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6152
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2106.6,3638.2:d51c143f71ee997b",
+      "field": "yurt",
+      "pose": {
+        "x": -2106.6,
+        "y": 2136.5084840319996,
+        "z": 3638.2,
+        "rot": -2.5864614149566583,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9481467217635132,
+          "blockedRays": 4,
+          "heightSamples": 3160
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6270
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2111.7,3498.4:62ccf516f8c80d82",
+      "field": "yurt",
+      "pose": {
+        "x": -2111.7,
+        "y": 2117.979972195094,
+        "z": 3498.4,
+        "rot": 2.8904209445570075,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9384302535227627,
+          "blockedRays": 3,
+          "heightSamples": 3132
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6161
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2120.1,3649.8:32f25c7c04eeecbc",
+      "field": "yurt",
+      "pose": {
+        "x": -2120.1,
+        "y": 2137.5263456601556,
+        "z": 3649.8,
+        "rot": -2.903938019078635,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9473069946803762,
+          "blockedRays": 3,
+          "heightSamples": 3177
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6271
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2147.6,3670.6:b07a9804f8a51d5a",
+      "field": "yurt",
+      "pose": {
+        "x": -2147.6,
+        "y": 2138.9251820859376,
+        "z": 3670.6,
+        "rot": -3.129461523908413,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9462180711621551,
+          "blockedRays": 3,
+          "heightSamples": 3230
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6237
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2148,3679.2:21ebfe54ccd4b1ec",
+      "field": "yurt",
+      "pose": {
+        "x": -2148,
+        "y": 2139.728860022,
+        "z": 3679.2,
+        "rot": 2.1951145222387796,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9053929514637885,
+          "blockedRays": 5,
+          "heightSamples": 3119
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6238
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2166.6,3728.5:f2bdd8448de66a5e",
+      "field": "yurt",
+      "pose": {
+        "x": -2166.6,
+        "y": 2142.6061293324688,
+        "z": 3728.5,
+        "rot": 2.7809677069161043,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9335195052441201,
+          "blockedRays": 4,
+          "heightSamples": 3120
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6234
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2168.7,3657.8:7fa51f9f9ddc75d5",
+      "field": "yurt",
+      "pose": {
+        "x": -2168.7,
+        "y": 2137.5490526244066,
+        "z": 3657.8,
+        "rot": -3.0863017836362325,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9462118568137666,
+          "blockedRays": 3,
+          "heightSamples": 3227
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6252
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2171.1,3765.9:9d802fc0ff25ee42",
+      "field": "yurt",
+      "pose": {
+        "x": -2171.1,
+        "y": 2145.9764138910155,
+        "z": 3765.9,
+        "rot": 2.370669553835738,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9115540093129899,
+          "blockedRays": 4,
+          "heightSamples": 3180
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6283
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2174.9,3550.7:581d9d8b7ded9e55",
+      "field": "yurt",
+      "pose": {
+        "x": -2174.9,
+        "y": 2120.016845006875,
+        "z": 3550.7,
+        "rot": -2.5081848355674063,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.945869622759984,
+          "blockedRays": 3,
+          "heightSamples": 3143
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6156
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2176.5,3746.1:b0b7262cd8f260fc",
+      "field": "yurt",
+      "pose": {
+        "x": -2176.5,
+        "y": 2144.5123926098904,
+        "z": 3746.1,
+        "rot": 2.2787830833793405,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9084103297336908,
+          "blockedRays": 4,
+          "heightSamples": 3177
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6273
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2179,3657.4:00ec35ee30efa090",
+      "field": "yurt",
+      "pose": {
+        "x": -2179,
+        "y": 2137.58481439375,
+        "z": 3657.4,
+        "rot": 2.784853897341993,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.933785767622783,
+          "blockedRays": 4,
+          "heightSamples": 3182
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6253
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2184.2,3558.4:a4cf693283beff5e",
+      "field": "yurt",
+      "pose": {
+        "x": -2184.2,
+        "y": 2120.637315742236,
+        "z": 3558.4,
+        "rot": -3.350183061345857,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9404134576638791,
+          "blockedRays": 3,
+          "heightSamples": 3210
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6136
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2185.9,3782.1:3b6c1aa2d1fe0f78",
+      "field": "yurt",
+      "pose": {
+        "x": -2185.9,
+        "y": 2148.1289420377425,
+        "z": 3782.1,
+        "rot": 3.057041023694843,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9439931303215391,
+          "blockedRays": 4,
+          "heightSamples": 3193
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6278
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2186.7,3630.3:4d3b68b11bc43677",
+      "field": "yurt",
+      "pose": {
+        "x": -2186.7,
+        "y": 2134.48086120298,
+        "z": 3630.3,
+        "rot": 2.580095450520768,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.921141437516147,
+          "blockedRays": 4,
+          "heightSamples": 3207
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6267
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2190.6,3565.2:5dd514892969756b",
+      "field": "yurt",
+      "pose": {
+        "x": -2190.6,
+        "y": 2121.6981865864727,
+        "z": 3565.2,
+        "rot": 3.2864882501110926,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.946564645234187,
+          "blockedRays": 3,
+          "heightSamples": 3213
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6104
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2190.7,3637.9:c587adaf7e30161d",
+      "field": "yurt",
+      "pose": {
+        "x": -2190.7,
+        "y": 2135.831484889648,
+        "z": 3637.9,
+        "rot": 1.7571147245527654,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8885625973406539,
+          "blockedRays": 6,
+          "heightSamples": 3194
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6273
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2191.1,3739.4:4bdce8d8fee2d094",
+      "field": "yurt",
+      "pose": {
+        "x": -2190.6114296681403,
+        "y": 2144.8144163789048,
+        "z": 3739.087283590323,
+        "rot": 2.083666399343428,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9001251889873964,
+          "blockedRays": 5,
+          "heightSamples": 3252
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6289
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2192.4,3651:88b45fd744f281a7",
+      "field": "yurt",
+      "pose": {
+        "x": -2192.4,
+        "y": 2137.389518546875,
+        "z": 3651,
+        "rot": 2.745897573812523,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9311667458282528,
+          "blockedRays": 4,
+          "heightSamples": 3135
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6277
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2202.7,3622.9:796d19cb6a6d0c41",
+      "field": "yurt",
+      "pose": {
+        "x": -2202.7,
+        "y": 2134.7662602294918,
+        "z": 3622.9,
+        "rot": 2.687811967425421,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9274025689038607,
+          "blockedRays": 4,
+          "heightSamples": 3210
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6271
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2208.9,3538.1:b5853d49265809f9",
+      "field": "yurt",
+      "pose": {
+        "x": -2208.453026313147,
+        "y": 2119.216815318931,
+        "z": 3537.7549676803237,
+        "rot": 1.6356595893199766,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8847413695435413,
+          "blockedRays": 6,
+          "heightSamples": 3091
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6161
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2210.2,3731.5:c9d9df6afe543880",
+      "field": "yurt",
+      "pose": {
+        "x": -2210.2,
+        "y": 2145.107644523437,
+        "z": 3731.5,
+        "rot": 2.768632198959576,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.932691225636934,
+          "blockedRays": 4,
+          "heightSamples": 3157
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6274
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2212.2,3526.5:ecc4242eeab12faa",
+      "field": "yurt",
+      "pose": {
+        "x": -2212.2,
+        "y": 2119.0178538625,
+        "z": 3526.5,
+        "rot": 2.516381940399729,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9178356315351156,
+          "blockedRays": 4,
+          "heightSamples": 3183
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6218
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2213.4,3624.1:7f817b5e0f401b5c",
+      "field": "yurt",
+      "pose": {
+        "x": -2213.4,
+        "y": 2135.76833118901,
+        "z": 3624.1,
+        "rot": 2.6876529239596096,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9273927023833982,
+          "blockedRays": 4,
+          "heightSamples": 3213
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6287
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2214.6,3542.5:f9c67a72ea65869a",
+      "field": "yurt",
+      "pose": {
+        "x": -2215.046973686853,
+        "y": 2120.158103624313,
+        "z": 3542.845032319676,
+        "rot": 1.3281854315191777,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8716096643143061,
+          "blockedRays": 6,
+          "heightSamples": 3003
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6135
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2218.5,3615:44eae37b2d791fbf",
+      "field": "yurt",
+      "pose": {
+        "x": -2218.5,
+        "y": 2133.9596779138183,
+        "z": 3615,
+        "rot": 3.3929754858251187,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9474535938771305,
+          "blockedRays": 3,
+          "heightSamples": 3124
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6269
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2219.8,3637.1:3e5f405805f98a4c",
+      "field": "yurt",
+      "pose": {
+        "x": -2219.2059323921535,
+        "y": 2138.0917090280427,
+        "z": 3637.2463644830923,
+        "rot": 2.593183055028045,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9218464126448013,
+          "blockedRays": 4,
+          "heightSamples": 3234
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6293
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2225.2,3550.9:deb27c83f95fa323",
+      "field": "yurt",
+      "pose": {
+        "x": -2225.2,
+        "y": 2121.7590117028826,
+        "z": 3550.9,
+        "rot": 1.7996141824105922,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8903135230951061,
+          "blockedRays": 6,
+          "heightSamples": 3143
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6197
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2226.7,3635.4:ae7a2c1cbd88b2e8",
+      "field": "yurt",
+      "pose": {
+        "x": -2227.2940676078465,
+        "y": 2138.033799643011,
+        "z": 3635.2536355169077,
+        "rot": -3.1614443754988457,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.945683894935622,
+          "blockedRays": 4,
+          "heightSamples": 3216
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6292
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2237.3,3600.2:b5c4022ca9b42f3c",
+      "field": "yurt",
+      "pose": {
+        "x": -2237.3,
+        "y": 2130.4617484264622,
+        "z": 3600.2,
+        "rot": 3.2695714432502636,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.94646154790837,
+          "blockedRays": 3,
+          "heightSamples": 3225
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6200
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2244,3532.8:0286eee7f106e861",
+      "field": "yurt",
+      "pose": {
+        "x": -2244,
+        "y": 2122.1665073663285,
+        "z": 3532.8,
+        "rot": 2.8676622147253314,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9373991387295577,
+          "blockedRays": 3,
+          "heightSamples": 3220
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6218
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2261.2,3541.7:8f0520d7f9e93dd9",
+      "field": "yurt",
+      "pose": {
+        "x": -2261.2,
+        "y": 2124.0481743184096,
+        "z": 3541.7,
+        "rot": 2.6744485737598795,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9265738178585856,
+          "blockedRays": 4,
+          "heightSamples": 3212
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9892578125,
+          "blockedRays": 12,
+          "heightSamples": 6221
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2571.2,3612:2349ddf97f37ffeb",
+      "field": "yurt",
+      "pose": {
+        "x": -2571.2,
+        "y": 2154.053482310845,
+        "z": 3612,
+        "rot": 1.1691377876490359,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8786339751255826,
+          "blockedRays": 6,
+          "heightSamples": 3211
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98992919921875,
+          "blockedRays": 11,
+          "heightSamples": 6282
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2576.7,3624.7:d34ed46187f5a491",
+      "field": "yurt",
+      "pose": {
+        "x": -2576.7,
+        "y": 2153.943249169092,
+        "z": 3624.7,
+        "rot": 1.1190929238898562,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8745686354512069,
+          "blockedRays": 6,
+          "heightSamples": 3151
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98992919921875,
+          "blockedRays": 11,
+          "heightSamples": 6253
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2593,3665.9:ab7e57207e34e128",
+      "field": "yurt",
+      "pose": {
+        "x": -2593,
+        "y": 2152.2254719197517,
+        "z": 3665.9,
+        "rot": 1.146742125076524,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.876779230706458,
+          "blockedRays": 6,
+          "heightSamples": 3142
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98748779296875,
+          "blockedRays": 13,
+          "heightSamples": 6100
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2610.3,3622.5:3e55770c433c9576",
+      "field": "yurt",
+      "pose": {
+        "x": -2610.3,
+        "y": 2160.1800018293943,
+        "z": 3622.5,
+        "rot": 2.1705229813395026,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9350844724043437,
+          "blockedRays": 4,
+          "heightSamples": 3271
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9884033203125,
+          "blockedRays": 12,
+          "heightSamples": 6274
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2612.2,3817.9:3f4553977e3a8ac9",
+      "field": "yurt",
+      "pose": {
+        "x": -2612.2,
+        "y": 2155.785785417342,
+        "z": 3817.9,
+        "rot": 2.756900116140917,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9072827139730886,
+          "blockedRays": 6,
+          "heightSamples": 3116
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98162841796875,
+          "blockedRays": 15,
+          "heightSamples": 6037
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2624.2,3811.9:bd848984d7116ed2",
+      "field": "yurt",
+      "pose": {
+        "x": -2624.2,
+        "y": 2156.243149187858,
+        "z": 3811.9,
+        "rot": 2.4057592260373832,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9021125940168424,
+          "blockedRays": 5,
+          "heightSamples": 3149
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98162841796875,
+          "blockedRays": 15,
+          "heightSamples": 6038
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2630.9,3599.4:c55abd08a45c9140",
+      "field": "yurt",
+      "pose": {
+        "x": -2630.9,
+        "y": 2157.5067022327103,
+        "z": 3599.4,
+        "rot": 2.4515565810820967,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9443106990103161,
+          "blockedRays": 3,
+          "heightSamples": 3192
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9884033203125,
+          "blockedRays": 12,
+          "heightSamples": 6263
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2634.6,3547.4:28e5d8148ba0c828",
+      "field": "yurt",
+      "pose": {
+        "x": -2634.6,
+        "y": 2151.341503410278,
+        "z": 3547.4,
+        "rot": 2.065203329496596,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.930261366124191,
+          "blockedRays": 4,
+          "heightSamples": 3253
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9884033203125,
+          "blockedRays": 12,
+          "heightSamples": 6191
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2708.1,3795.4:358a398274aea990",
+      "field": "yurt",
+      "pose": {
+        "x": -2708.1,
+        "y": 2166.3291640898437,
+        "z": 3795.4,
+        "rot": 2.2231128119476797,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9323883057549662,
+          "blockedRays": 5,
+          "heightSamples": 3178
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9822998046875,
+          "blockedRays": 14,
+          "heightSamples": 6089
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2727.3,3622:9036d4f240a9aea0",
+      "field": "yurt",
+      "pose": {
+        "x": -2727.3,
+        "y": 2165.9241035934815,
+        "z": 3622,
+        "rot": 1.4030222269350916,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8986935963048989,
+          "blockedRays": 5,
+          "heightSamples": 3127
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98748779296875,
+          "blockedRays": 13,
+          "heightSamples": 6218
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2752,3641.2:b94d2c406206ef0e",
+      "field": "yurt",
+      "pose": {
+        "x": -2752,
+        "y": 2169.9407011347835,
+        "z": 3641.2,
+        "rot": 1.5475063039286667,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9085476853348732,
+          "blockedRays": 5,
+          "heightSamples": 3196
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.989013671875,
+          "blockedRays": 12,
+          "heightSamples": 6253
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2759.8,3722.3:2a527eba257931da",
+      "field": "yurt",
+      "pose": {
+        "x": -2759.8,
+        "y": 2174.096046375358,
+        "z": 3722.3,
+        "rot": 2.124636083889291,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.932883210204522,
+          "blockedRays": 4,
+          "heightSamples": 3216
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98992919921875,
+          "blockedRays": 11,
+          "heightSamples": 6223
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2769.2,3675.8:6173e71ded305247",
+      "field": "yurt",
+      "pose": {
+        "x": -2769.2,
+        "y": 2171.0027342625003,
+        "z": 3675.8,
+        "rot": 1.969618452547593,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.926617513981528,
+          "blockedRays": 4,
+          "heightSamples": 3219
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98992919921875,
+          "blockedRays": 11,
+          "heightSamples": 6224
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2770.3,3771:9be2d6e3232d8ded",
+      "field": "yurt",
+      "pose": {
+        "x": -2770.3,
+        "y": 2176.35118735325,
+        "z": 3771,
+        "rot": 0.8515592329552317,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8547487813637414,
+          "blockedRays": 7,
+          "heightSamples": 3077
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9871826171875,
+          "blockedRays": 12,
+          "heightSamples": 6196
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2771.6,3716.2:7366fa6a0c5ea7c4",
+      "field": "yurt",
+      "pose": {
+        "x": -2771.6,
+        "y": 2175.5592310436195,
+        "z": 3716.2,
+        "rot": 1.8254001325654596,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9208246836172028,
+          "blockedRays": 5,
+          "heightSamples": 3190
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98992919921875,
+          "blockedRays": 11,
+          "heightSamples": 6222
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2957.2,3658.8:20e759ddbdb6bf33",
+      "field": "yurt",
+      "pose": {
+        "x": -2957.2,
+        "y": 2180.486849684243,
+        "z": 3658.8,
+        "rot": 1.6541167334704063,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9125528007108867,
+          "blockedRays": 5,
+          "heightSamples": 3210
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98626708984375,
+          "blockedRays": 13,
+          "heightSamples": 6119
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2968.4,3689.7:15938e7cbca62c52",
+      "field": "yurt",
+      "pose": {
+        "x": -2968.4,
+        "y": 2184.5695388361414,
+        "z": 3689.7,
+        "rot": 1.2377889284090733,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.8848008620532458,
+          "blockedRays": 6,
+          "heightSamples": 3125
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.98992919921875,
+          "blockedRays": 11,
+          "heightSamples": 6227
+        }
+      ]
+    },
+    {
+      "id": "yurts:-2970,3633:798ff819c5199765",
+      "field": "yurt",
+      "pose": {
+        "x": -2970,
+        "y": 2178.3482900750173,
+        "z": 3633,
+        "rot": 2.3907711283898307,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9423166896456182,
+          "blockedRays": 3,
+          "heightSamples": 3169
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.9835205078125,
+          "blockedRays": 14,
+          "heightSamples": 6026
+        }
+      ]
+    },
+    {
+      "id": "yurts:-7151,2538:e907c8d7232ba9c7",
+      "field": "yurt",
+      "pose": {
+        "x": -7151,
+        "y": 2289.32490421875,
+        "z": 2538,
+        "rot": -2.540575967793192,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 1,
+          "blockedRays": 0,
+          "heightSamples": 3162
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.99609375,
+          "blockedRays": 6,
+          "heightSamples": 6449
+        }
+      ]
+    },
+    {
+      "id": "yurts:-7151,2549:e354d9332edd7335",
+      "field": "yurt",
+      "pose": {
+        "x": -7151,
+        "y": 2289.79506278125,
+        "z": 2549,
+        "rot": 4.0415926535897935,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9950272211724966,
+          "blockedRays": 1,
+          "heightSamples": 3221
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.99609375,
+          "blockedRays": 6,
+          "heightSamples": 6432
+        }
+      ]
+    },
+    {
+      "id": "yurts:-7163,2538:ff227cb661b6e9be",
+      "field": "yurt",
+      "pose": {
+        "x": -7163,
+        "y": 2288.3248864679686,
+        "z": 2538,
+        "rot": -2.3569448754280904,
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        }
+      },
+      "excludedNearMeters": 14.32,
+      "apertures": [
+        {
+          "index": 0,
+          "kind": "door",
+          "skyVisibleFraction": 0.9986412372886342,
+          "blockedRays": 1,
+          "heightSamples": 3222
+        },
+        {
+          "index": 1,
+          "kind": "roof-crown",
+          "skyVisibleFraction": 0.99609375,
+          "blockedRays": 6,
+          "heightSamples": 6434
+        }
+      ]
+    }
+  ]
+}

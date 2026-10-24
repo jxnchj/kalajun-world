@@ -1,4 +1,27 @@
+import {guestLivingEnabled} from './guest-living-definition.js';
+import {guestLivingURL,loadGuestLiving} from './guest-living-loader.js';
+import {lodgeTablesEnabled,LODGE_TABLES_SOURCE} from './lodge-tables-definition.js';
+import {lodgeTablesURL,loadLodgeTables} from './lodge-tables-loader.js';
+import {LodgeInteriorStream,loadLodgeStreamPackage} from './lodge-interior-stream.js';
+import {lodgeInteriorWoodEnabled,prepareLodgeInteriorWood} from './lodge-interior-wood.js';
+import {lodgeChairsEnabled,LODGE_CHAIRS_SOURCE} from './lodge-chairs-definition.js';
+import {lodgeChairsURL,loadLodgeChairs,originalLodgeChairsCollision} from './lodge-chairs-loader.js';
+import {guestVanityEnabled,isGuestVanityMesh} from './guest-vanity-definition.js';
+import {guestVanityURL,loadGuestVanity,originalGuestVanityCollision} from './guest-vanity-loader.js';
+import {cabinTimberEnabled,prepareCabinTimber,isCabinTimberPart,cabinTimberTarget,createCabinTimberMaterial} from './cabin-timber.js';
+import {cabinWindowGlassEnabled,cabinWindowTarget,verifyCabinWindowSource,isCabinWindowPart,createCabinWindowGlass} from './cabin-window-glass.js';
+import {lodgeFurnitureEnabled,LODGE_FURNITURE_SOURCE} from './lodge-furniture-definition.js';
+import {lodgeFurnitureURL,loadLodgeFurniture} from './lodge-furniture-loader.js';
+import {prepareLodgeWood,installLodgeWood} from './lodge-wood.js';
+import {clearThresholdStones} from './threshold-stones.js';
+import {StructureSelectionCache} from "./structure-selection-cache.js";
+import {prepareStoneOcclusion,applyStoneOcclusion} from './stone-occlusion.js';
+import {prepareLodgeGlass,installLodgeThinGlass} from './lodge-opening.js';
+import {StructurePreparedAssets,restorePreparedStructures} from './structure-prepared.js';
+import {prepareTimberContinuity,applyTimberContinuity} from './timber-continuity.js';
+import { createStructureSelection, commitStructureSelection } from "./structure-selection.js";
 import {HouseholdLiving} from './household-living.js';
+import {HouseholdEntrySteps} from './household-entry-steps.js';
 import {transformWorldBox} from "./world-box-transform.js";
 import {createPreparationYield} from './preparation-yield.js';
 import {StructureTextureReuse} from "./structure-texture-reuse.js";
@@ -78,6 +101,9 @@ function materialKey(source) {
 // In particular, never classify by material alone after merging: plaster/wood are
 // also used by walls, floors, doors and furniture.
 function detailRole(assetId, name) {
+  // The two authored replacement sofas inherit the original linen interior role;
+  // appliance shells keep their former structural/body visibility contract.
+  if(assetId==='gh_lanchuan_lodge'&&(/^(?:export_sofa_[12]_candidate_|chair38_)/.test(name)))return 'interior';
   if (/^freedom\d+_/.test(name)) {
     const part = name.replace(/^freedom\d+_/, "").replaceAll("_", " ");
     if (/^(floor|shared-wall|bath side|bath doorway|bath rounded opening|wet floor)/.test(part)) return "body";
@@ -112,7 +138,7 @@ function compactGeometry(source, sourceIndices) {
 }
 
 function namedSections(assetId, name, geometry, extras) {
-  const role = settlementMeshRole(assetId,name,extras) || detailRole(assetId, name);
+  const role = (assetId==="gh_lanchuan_lodge"&&extras?.lodgeChair38?"interior":null) || settlementMeshRole(assetId,name,extras) || detailRole(assetId, name);
   if (!/^yurt(?:_deck)?_orange$/.test(name)) return [{role, geometry}];
   // yurt.py uses orange both for the interior kerege/uyk and exterior crown/door.
   // Its two known radii are 3.2 and 3.6 m; crown starts at hw+rise=3.25 m.
@@ -177,15 +203,28 @@ function detailIsVisible(role, distance, scale, projection, wasVisible) {
 }
 
 export class WorldStructures {
-  constructor(world, {loadAsset=loadWorldGLB,doors=null,
+  constructor(world, {loadAsset=loadWorldGLB,doors=null,preparedAssets,
+    lodgeInteriorStream=false,lodgeStreamKind=null,lodgeStreamOptions,
+    lodgeChairs=lodgeChairsEnabled(),lodgeChairsFetch,lodgeTables=lodgeChairs&&lodgeTablesEnabled(),lodgeTablesFetch,lodgeInteriorWood=lodgeChairs&&lodgeInteriorWoodEnabled(),lodgeInteriorWoodTextureLoader,guestVanity=guestVanityEnabled(),guestVanityFetch,guestLiving=guestVanity&&guestLivingEnabled(),guestLivingFetch,lodgeFurniture=lodgeFurnitureEnabled(),lodgeFurnitureFetch,cabinWindowGlass=cabinWindowGlassEnabled(),cabinTimber=cabinTimberEnabled(),cabinTimberTextureLoader,
+    selectionCache=new URLSearchParams(globalThis.location?.search || "").get("structureSelectionCache")==="1",
     textureReuse=new URLSearchParams(globalThis.location?.search || "").get("structureTextureReuse") !== "0",
     preparationReuse=new URLSearchParams(globalThis.location?.search || "").get("structurePreparationReuse") !== "0",
     cooperativePreparation=new URLSearchParams(globalThis.location?.search || "").get("structurePreparation") !== "blocking",
+    selectionBuffers=new URLSearchParams(globalThis.location?.search || "").get("structureSelectionBuffers") !== "0",
     selectionReuse=new URLSearchParams(globalThis.location?.search || "").get("structureSelectionReuse") !== "0"} = {}) {
     this.world = world;
+    this.lodgeTables=lodgeTables;this.lodgeTablesFetch=lodgeTablesFetch;
+    if(lodgeTables&&!lodgeChairs)throw Error('Lodge tables requires chairs ancestry');
+    this._lodgeStreamKind=lodgeStreamKind;this._lodgeStreamOptions=lodgeTables?{...lodgeStreamOptions,sourceBinding:LODGE_TABLES_SOURCE,manifestLoader:()=>import('./generated/lodge-tables-stream-38.json',{with:{type:'json'}}).then(m=>m.default)}:lodgeStreamOptions;
+    if(lodgeInteriorStream&&!lodgeChairs)throw Error("Lodge streaming requires chairs source");
+    this.lodgeStream=new LodgeInteriorStream(world,{enabled:lodgeInteriorStream,shadowDistance:SHADOW_DISTANCE,load:()=>this._loadLodgeInterior()});
+    this.lodgeInteriorWood=lodgeInteriorWood;this.lodgeInteriorWoodTextureLoader=lodgeInteriorWoodTextureLoader;this.lodgeChairs=lodgeChairs;this.lodgeChairsFetch=lodgeChairsFetch;this._lodgeChairsCollision=null;if(guestLiving&&!guestVanity)throw Error("Guest living requires accepted vanity source");this.guestLiving=guestLiving;this.guestLivingFetch=guestLivingFetch;this.guestVanity=guestVanity;this.guestVanityFetch=guestVanityFetch;this._guestVanityCollision=null;this.cabinTimber=cabinTimber;this.cabinTimberTextureLoader=cabinTimberTextureLoader;this._cabinTimber=null;this.cabinWindowGlass=cabinWindowGlass;this.lodgeFurniture=lodgeFurniture;this.lodgeFurnitureFetch=lodgeFurnitureFetch;
+    this.selectionCache=new StructureSelectionCache({enabled:selectionCache});
     this.doors = doors;
+    this.preparedAssets=new StructurePreparedAssets({enabled:preparedAssets});
     this.preparationReuse = preparationReuse;
     this.selectionReuse = selectionReuse;
+    this.selectionBuffers = selectionBuffers;
     this.preparationYield = createPreparationYield({enabled:cooperativePreparation});
     this.group = new THREE.Group();
     this.group.name = "world-v2-structures";
@@ -200,6 +239,9 @@ export class WorldStructures {
       materialKeyComputations: 0, materialSourceReuses: 0, distanceTests: 0,
       assetPreparation: {mode:cooperativePreparation?"cooperative":"blocking", assets:{}, scheduler:this.preparationYield.stats},
     };
+    this.stats.selectionCache=this.selectionCache.stats;
+    this.stats.preparedAssets=this.preparedAssets.stats;
+    this.stats.lodgeInteriorStream=this.lodgeStream.stats;
     this._templates = new Map();
     this._materialCache = new Map();
     this._geometries = new Set();
@@ -314,6 +356,8 @@ export class WorldStructures {
     material.vertexColors = false;
     installAssetOcclusion(material, {interiorBounce});
     material.userData = { ...source.userData, legacyVertexAOPreserved: true, sourceMaterialNames: [source.name] };
+    installLodgeThinGlass(material);
+    installLodgeWood(material,source);
     // Keep all GLTFLoader PBR maps, scalar factors, alpha mode and sidedness.
     // Texture objects are shared with our private loader result, not the old scene.
     this._materialCache.set(key, material);
@@ -323,10 +367,24 @@ export class WorldStructures {
 
   async _loadAsset(assetId, parts) {
     const base = this.world.assetBase || "./assets/";
-    const url = base.replace(/\/?$/, "/") + (ASSET_OVERRIDES[assetId] || assetId + ".glb");
+    const tables=this.lodgeTables&&assetId==='gh_lanchuan_lodge';
+    const chairs=this.lodgeChairs&&assetId==='gh_lanchuan_lodge';
+    const furniture=this.lodgeFurniture&&assetId==='gh_lanchuan_lodge';
+    const vanity=this.guestVanity&&assetId==='gh_lanchuan',living=vanity&&this.guestLiving;
+    const url = tables?lodgeTablesURL(base):chairs?lodgeChairsURL(base):living?guestLivingURL(base):vanity?guestVanityURL(base):furniture?lodgeFurnitureURL(base):base.replace(/\/?$/, "/") + (ASSET_OVERRIDES[assetId] || assetId + ".glb");
+    const streamKind=chairs&&(this._lodgeStreamKind||(this.lodgeStream.enabled?"shell":null));
     const loadStarted=performance.now();
-    const gltf = await this.loadAsset(url);
+    const prepared=(chairs||furniture||vanity)?null:await this.preparedAssets.load(assetId,parts,this,url);
+    const gltf = streamKind?await loadLodgeStreamPackage(streamKind,this.loader,this._lodgeStreamOptions):tables?await loadLodgeTables(url,this.loader,{fetchImpl:this.lodgeTablesFetch}):chairs?await loadLodgeChairs(url,this.loader,{fetchImpl:this.lodgeChairsFetch}):living?await loadGuestLiving(url,this.loader,{fetchImpl:this.guestLivingFetch}):vanity?await loadGuestVanity(url,this.loader,{fetchImpl:this.guestVanityFetch}):furniture?await loadLodgeFurniture(url,this.loader,{fetchImpl:this.lodgeFurnitureFetch}):prepared?.gltf??await this.loadAsset(url);
     const metrics=this.stats.assetPreparation.assets[assetId]={loadMs:performance.now()-loadStarted,prepareMs:0,yieldWaitMs:0,checkpoints:0};
+    metrics.loadStartMs=loadStarted;metrics.loadEndMs=performance.now();if(gltf.userData?.assetTransport)metrics.transport=gltf.userData.assetTransport;
+    if(living)metrics.guestLiving={...gltf.userData.guestLiving};
+    if(vanity){metrics.guestVanity={...gltf.userData.guestVanity};this._guestVanityCollision=await originalGuestVanityCollision();for(const p of this._guestVanityCollision)this._geometries.add(p.geometry);}
+    if(tables)gltf.scene.traverse(n=>{if(!n.isMesh)return;for(let owner=n;owner;owner=owner.parent)if(owner.name.startsWith('tablecraft38_')){n.userData.lodgeTable38=owner.name;break;}});
+    if(tables)metrics.lodgeTables={sourceSHA256:LODGE_TABLES_SOURCE.sourceSHA256,...gltf.userData.lodgeTables};
+    if(chairs){metrics.lodgeChairs={...gltf.userData.lodgeChairs};this._lodgeChairsCollision=await originalLodgeChairsCollision();for(const p of this._lodgeChairsCollision)this._geometries.add(p.geometry);}
+    if(furniture&&!chairs)metrics.lodgeFurniture={...gltf.userData.lodgeFurniture};
+    if(streamKind){this._lodgeStreamManifest=gltf.userData.lodgeStream.manifest;if(this.lodgeStream.enabled)this.lodgeStream.setBounds(this._lodgeStreamManifest.fullBounds);metrics.lodgeStream={kind:streamKind,responseBytes:gltf.userData.lodgeStream.responseBytes};}
     const prepareStarted=performance.now();
     const checkpoint=()=>{
       const pending=this.preparationYield.checkpoint();
@@ -334,6 +392,8 @@ export class WorldStructures {
       const start=performance.now();metrics.checkpoints++;
       return pending.then(()=>{metrics.yieldWaitMs+=performance.now()-start;if(this._disposed)throw new Error("Structure loading was disposed");});
     };
+    if(this.cabinWindowGlass&&assetId==='cabin_small')metrics.cabinWindowGlass=verifyCabinWindowSource(gltf.scene);
+    prepareLodgeGlass(assetId,gltf.scene);
     this._trackSource(gltf);
     if (this._disposed) throw new Error("Structure loading was disposed");
     // GLTFLoader can return a null texture after a decode error. Treat that as failure,
@@ -345,9 +405,27 @@ export class WorldStructures {
         this._textures.add(texture);
       }
     }
+    if(prepared){
+      restorePreparedStructures(this,assetId,gltf,prepared.meta);
+      metrics.timberContinuity=prepared.meta.timberContinuity;metrics.stoneOcclusion=prepared.meta.stoneOcclusion;metrics.offlinePrepared=true;
+      metrics.prepareMs=performance.now()-prepareStarted;metrics.cpuMs=metrics.prepareMs;return;
+    }
+    const cabin=await prepareCabinTimber(assetId,gltf.scene,{enabled:this.cabinTimber&&this.world.entities.some(cabinTimberTarget),sourceSHA256:this.world.manifest?.assetMetadata?.[assetId]?.sha256,textureLoader:this.cabinTimberTextureLoader});
+    if(cabin){this._cabinTimber=cabin;metrics.cabinTimber=cabin.stats;for(const texture of Object.values(cabin.textures))this._textures.add(texture);}
+    if(streamKind==='shell'&&this.lodgeInteriorWood)for(const record of this._lodgeStreamManifest.interiorWoodLayout.nodes){const node=gltf.scene.getObjectByName(record.name);if(node?.isMesh){const old=node.material,m=new THREE.MeshPhysicalMaterial();THREE.MeshStandardMaterial.prototype.copy.call(m,old);m.clearcoat=0;node.material=m;this._sourceMaterials.add(m);}}
+    const wood=streamKind==='shell'?{active:false}:this.lodgeInteriorWood&&assetId==='gh_lanchuan_lodge'?await prepareLodgeInteriorWood(assetId,gltf.scene,{enabled:true,sourceSHA256:tables?LODGE_TABLES_SOURCE.sourceSHA256:chairs?LODGE_CHAIRS_SOURCE.sourceSHA256:undefined,sourceDefinition:tables?LODGE_TABLES_SOURCE:LODGE_CHAIRS_SOURCE,layoutOverride:streamKind?this._lodgeStreamManifest.interiorWoodLayout:tables?(await import('./generated/lodge-tables-wood-38.json',{with:{type:'json'}})).default:undefined,textureLoader:this.lodgeInteriorWoodTextureLoader}):await prepareLodgeWood(assetId,gltf.scene,{sourceSHA256:tables?LODGE_TABLES_SOURCE.sourceSHA256:chairs?LODGE_CHAIRS_SOURCE.sourceSHA256:furniture?LODGE_FURNITURE_SOURCE.sourceSHA256:this.world.manifest?.assetMetadata?.[assetId]?.sha256});
+    const {textures:woodTextures,...woodStats}=wood;metrics.lodgeWood=woodStats;
+    for(const texture of woodTextures||[])this._textures.add(texture);
+    if(wood.active)this._trackSource(gltf);
     await MeshoptSimplifier.ready;
     gltf.scene.updateMatrixWorld(true);
-    this.doors?.captureAsset(assetId,gltf.scene,source=>this._material(source));
+    const timberCandidate=await prepareTimberContinuity(assetId,gltf.scene);
+    metrics.timberContinuity=timberCandidate?{active:true,version:timberCandidate.version,samples:timberCandidate.samples,sourceSHA256:timberCandidate.sourceSHA256}:{active:false};
+    // Threshold source placement is structural, even in a viewer without door interaction.
+    if(streamKind!=="interior"){if(this.doors)this.doors.captureAsset(assetId,gltf.scene,source=>this._material(source));
+    else clearThresholdStones(assetId,gltf.scene);}
+    const stoneCandidate=await prepareStoneOcclusion(assetId,gltf.scene);
+    metrics.stoneOcclusion=stoneCandidate?{active:true,version:stoneCandidate.version,stones:stoneCandidate.stones}:{active:false};
     // A source material is immutable during this synchronous preparation pass.
     // Keep this cache local: later source/texture edits or another asset load
     // must still run the complete key (including texture sampling state).
@@ -377,6 +455,8 @@ export class WorldStructures {
           const geometry = node.geometry.clone();
           this._geometries.add(geometry);
           preserveAssetOcclusion(geometry,Boolean(SETTLEMENT_ASSETS[assetId]) || /^(gh_|cabin|yurt)/.test(assetId));
+          applyTimberContinuity(geometry,node,timberCandidate);
+          applyStoneOcclusion(geometry,node,stoneCandidate);
           geometry.clearGroups();
           if (materials.length > 1) {
             const index = geometry.index;
@@ -400,8 +480,11 @@ export class WorldStructures {
           const sections = namedSections(assetId, node.name, geometry, node.userData);
           for (const section of sections) {
             this._geometries.add(section.geometry);
-            const key = section.role + ":" + material.uuid + ":" + signature(section.geometry);
-            if (!buckets.has(key)) buckets.set(key, { role:section.role, material, geometries: [], names: [] });
+            const chairsReplacement=chairs&&Boolean(node.userData.lodgeChair38);
+            const tablesReplacement=tables&&Boolean(node.userData.lodgeTable38);
+            const vanityReplacement=vanity&&isGuestVanityMesh(node.name)&&!node.name.includes('shower');
+            const key = section.role + ":" + material.uuid + ":" + signature(section.geometry)+(chairsReplacement?":chairs38":"")+(tablesReplacement?":tables38":"")+(vanityReplacement?":vanity38":"")+(vanity&&/shower/.test(node.name)?":shower38":"");
+            if (!buckets.has(key)) buckets.set(key, { role:section.role, material, geometries: [], names: [],chairsReplacement,tablesReplacement,vanityReplacement });
             buckets.get(key).geometries.push(section.geometry);
             buckets.get(key).names.push(node.name);
           }
@@ -428,7 +511,7 @@ export class WorldStructures {
         const low = distantShell(geometry, bucket.names, bucket.role);
         if (low) { this._geometries.add(low.geometry); this.stats.lodTemplates++; }
         meshes.push({ geometry, material: bucket.material, role:bucket.role, low,
-          names: bucket.names, triangles: triangles(geometry) });
+          names: bucket.names, chairsReplacement:bucket.chairsReplacement,tablesReplacement:bucket.tablesReplacement, vanityReplacement:bucket.vanityReplacement, triangles: triangles(geometry) });
         const pending=checkpoint();if(pending)await pending;
       }
       this._templates.set(assetId + ":" + part, meshes);
@@ -468,6 +551,7 @@ export class WorldStructures {
       const template = this._templates.get(bin.templateKey);
       const buildingBox = new THREE.Box3();
       for (const part of template) buildingBox.union(part.geometry.boundingBox);
+      if(bin.assetId==="gh_lanchuan_lodge"&&this._lodgeStreamManifest){const b=this._lodgeStreamManifest.fullBounds;if(!b)throw Error("Lodge stream full bounds missing");buildingBox.min.fromArray(b[0]);buildingBox.max.fromArray(b[1]);}
       const offset = new THREE.Vector3(bin.tx * TILE_SIZE, 0, bin.tz * TILE_SIZE);
       const worldBounds = bin.matrices.map(matrix => buildingBox.clone().applyMatrix4(matrix).translate(offset));
       const scales = bin.entities.map(id => Math.max(...Object.values(this.entityPoses.get(id).scale)));
@@ -477,8 +561,19 @@ export class WorldStructures {
       const distances = new Float64Array(worldBounds.length);
       this._selectionBins.push({worldBounds, distances});
       for (const part of template) {
+        const wholeBin=bin,wholeBounds=worldBounds,wholeScales=scales,wholeDistances=distances;
+        const glassPart=this.cabinWindowGlass&&isCabinWindowPart(part),timberPart=isCabinTimberPart(part,this._cabinTimber);
+        const target=glassPart||timberPart?bin.entities.findIndex(id=>cabinWindowTarget({assetId:bin.assetId,id})):-1;
+        // Split only the exact target material batches; all other entities retain their original shared material.
+        const variants=target<0?[null]:[bin.entities.map((_,i)=>i).filter(i=>i!==target),[target]].filter(ids=>ids.length);
+        for(const selected of variants){
+        const bin=selected?{...wholeBin,entities:selected.map(i=>wholeBin.entities[i]),matrices:selected.map(i=>wholeBin.matrices[i])}:wholeBin;
+        const worldBounds=selected?selected.map(i=>wholeBounds[i]):wholeBounds,scales=selected?selected.map(i=>wholeScales[i]):wholeScales,distances=selected?new Float64Array(selected.length):wholeDistances;
+        if(selected)this._selectionBins.push({worldBounds,distances,sourceDistances:wholeDistances,sourceIndices:selected});
+        const renderMaterial=selected?.length===1&&selected[0]===target?(glassPart?createCabinWindowGlass(part.material):createCabinTimberMaterial(part.material,part,this._cabinTimber)):part.material;
+        if(renderMaterial!==part.material)this.materials.push(renderMaterial);
         const makeMesh = (geometry, level) => {
-          const mesh = new THREE.InstancedMesh(geometry, part.material, bin.matrices.length);
+          const mesh = new THREE.InstancedMesh(geometry, renderMaterial, bin.matrices.length);
           mesh.name = [bin.assetId, bin.part || "all", bin.tx + "," + bin.tz, part.role, level, part.material.name].join("/");
           mesh.position.copy(offset);
           // Tile-local TRS is fixed for this batch; instance buffers own entity motion.
@@ -492,8 +587,8 @@ export class WorldStructures {
           mesh.frustumCulled = true;
           mesh.castShadow = false;
           mesh.receiveShadow = true;
-          if(!this._depthMaterials.has(part.material))this._depthMaterials.set(part.material,createStructureDepth(part.material));
-          mesh.customDepthMaterial=this._depthMaterials.get(part.material);
+          if(!this._depthMaterials.has(renderMaterial))this._depthMaterials.set(renderMaterial,createStructureDepth(renderMaterial));
+          mesh.customDepthMaterial=this._depthMaterials.get(renderMaterial);
           mesh.userData = {
             entityIds:bin.entities, activeEntityIds:level === "near" ? [...bin.entities] : [],
             assetId:bin.assetId, part:bin.part, detailRole:part.role, lodLevel:level,
@@ -509,12 +604,14 @@ export class WorldStructures {
         const lodMesh = part.low ? makeMesh(part.low.geometry, "far") : null;
         this._batches.push({mesh, lodMesh, part, matrices:bin.matrices, worldBounds, scales, distances,
           entities:bin.entities, nearSelection:bin.entities.map((_, i) => i).join(","),
+          nearBuffer:createStructureSelection(bin.entities.length,true), farBuffer:createStructureSelection(bin.entities.length),
           farSelection:"", detailState:new Uint8Array(bin.entities.length).fill(1),
           lodState:new Uint8Array(bin.entities.length)});
         // Source budget remains comparable to the old full-detail renderer. Derived
         // far geometry is mutually exclusive and counted in activeTriangles instead.
         this.stats.instances += bin.matrices.length;
         this.stats.triangles += part.triangles * bin.matrices.length;
+        }
       }
     }
     this.doors?.place(this.world);
@@ -524,11 +621,37 @@ export class WorldStructures {
 
   async loadHouseholdLiving(options={}) {
     if(this.householdLiving)return this.householdLiving;
-    const living=new HouseholdLiving(this.world);
-    try{await living.load(this,options);if(this._disposed){living.dispose();throw new Error("Structure loading was disposed");}this.householdLiving=living;this.group.add(living.group);this.stats.householdLiving=living.stats;return living;}catch(error){living.dispose();throw error;}
+    const living=new HouseholdLiving(this.world);let steps;
+    try{await living.load(this,options);if(this._disposed){living.dispose();throw new Error("Structure loading was disposed");}steps=new HouseholdEntrySteps(this.world);await steps.load(this,options);if(this._disposed)throw new Error("Structure loading was disposed");this.householdLiving=living;this.householdEntrySteps=steps;this.group.add(living.group,steps.group);this.stats.householdLiving=living.stats;this.stats.householdEntrySteps=steps.stats;return living;}catch(error){steps?.dispose();living.dispose();throw error;}
   }
 
-  collisionPartsFor(entity){return [...(this._templates.get(entity.assetId+":"+(entity.part||""))||[]),...(this.householdLiving?.partsFor(entity)||[])];}
+  async _loadLodgeInterior(){
+    const world={...this.world,entities:this.world.entities.filter(e=>e.assetId==='gh_lanchuan_lodge')};
+    const stage=new WorldStructures(world,{lodgeInteriorStream:false,lodgeStreamKind:'interior',lodgeStreamOptions:this._lodgeStreamOptions,lodgeTables:this.lodgeTables,lodgeTablesFetch:this.lodgeTablesFetch,lodgeChairs:true,lodgeInteriorWood:this.lodgeInteriorWood,lodgeInteriorWoodTextureLoader:this.lodgeInteriorWoodTextureLoader,doors:null,preparedAssets:false});
+    try{await stage.load();if(this._disposed)throw Error('Structures disposed during lodge load');return stage;}catch(error){stage.dispose();throw error;}
+  }
+  installLodgeInterior(stage){
+    if(stage._streamInstalled)return;stage._streamInstalled=true;
+    for(const [key,parts]of stage._templates)this._templates.set(key,[...(this._templates.get(key)||[]),...parts]);
+    for(const child of [...stage.group.children])this.group.add(child);
+    this._batches.push(...stage._batches);this._selectionBins.push(...stage._selectionBins);this.materials.push(...stage.materials);
+    for(const key of ['_geometries','_sourceGeometries','_sourceMaterials','_textures']){for(const item of stage[key])this[key].add(item);stage[key].clear();}
+    for(const [key,value]of stage._depthMaterials)this._depthMaterials.set(key,value);
+    stage._depthMaterials.clear();stage._templates.clear();stage._batches=[];stage._selectionBins=[];stage.materials=[];
+    for(const key of ['instances','triangles','lodTemplates'])this.stats[key]+=stage.stats[key];
+    this.stats.batches=this.group.children.length;this.stats.materials=this.materials.length;this.stats.revision=(this.stats.revision||0)+1;this.selectionCache.clear();
+    this.group.updateMatrixWorld(true);
+  }
+  collisionPartsFor(entity){
+    this.lodgeStream.assertCollision(entity);
+    let parts=this._templates.get(entity.assetId+":"+(entity.part||""))||[];
+    if(this.lodgeChairs&&entity.assetId==='gh_lanchuan_lodge')parts=[...parts.filter(p=>!p.chairsReplacement),...(this._lodgeChairsCollision||[])];
+    if(this.guestVanity&&entity.assetId==='gh_lanchuan'){
+      const retained=(this._guestVanityCollision||[]).filter(p=>!entity.part||p.names.some(n=>n===entity.part||n.startsWith(entity.part+'_')));
+      parts=[...parts.filter(p=>!p.vanityReplacement),...retained];
+    }
+    return [...parts,...(this.householdLiving?.partsFor(entity)||[]),...(this.householdEntrySteps?.partsFor(entity)||[])];
+  }
 
   update(camera, dt) {
     if (this.stats.status !== "ready") return;
@@ -537,44 +660,54 @@ export class WorldStructures {
     this.group.updateMatrixWorld();
     this._viewProjection.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
     this._frustum.setFromProjectionMatrix(this._viewProjection,camera.coordinateSystem,camera.reversedDepth);
-    this.householdLiving?.update(camera,this._frustum);
+    this.householdLiving?.update(camera,this._frustum);this.householdEntrySteps?.update(camera);
     let visible = 0, visibleTriangles = 0, shadows = 0;
     let culledDetailInstances = 0, lowLODInstances = 0, activeTriangles = 0;
     const projection = Math.abs(camera.projectionMatrix.elements[5]) * .5;
     this.stats.distanceTests = 0;
+    this.stats.selectionBuffers = this.selectionBuffers; this.stats.selectionSignatureBuilds = 0;
+    if(this.selectionCache.reuse(this,camera))return;
     if (this.selectionReuse) for (const bin of this._selectionBins) {
+      // Material-only partitions retain the original entity distance evaluation.
+      if (bin.sourceDistances) {
+        for (let i=0;i<bin.sourceIndices.length;i++) bin.distances[i]=bin.sourceDistances[bin.sourceIndices[i]];
+        continue;
+      }
       for (let i = 0; i < bin.worldBounds.length; i++) {
         bin.distances[i] = bin.worldBounds[i].distanceToPoint(this._cameraPosition);
         this.stats.distanceTests++;
       }
     }
-    const assign = (batch, mesh, selection, key) => {
-      const signature = selection.join(",");
-      if (signature !== batch[key]) {
-        for (let i = 0; i < selection.length; i++) mesh.setMatrixAt(i, batch.matrices[selection[i]]);
-        mesh.count = selection.length;
+    const assign = (batch, mesh, selection, count, key, buffer) => {
+      const signature = buffer ? commitStructureSelection(buffer) : selection.join(",");
+      if (signature !== null) this.stats.selectionSignatureBuilds++;
+      if (signature !== null && signature !== batch[key]) {
+        for (let i = 0; i < count; i++) mesh.setMatrixAt(i, batch.matrices[selection[i]]);
+        mesh.count = count;
         mesh.instanceMatrix.needsUpdate = true;
-        mesh.userData.activeEntityIds = selection.map(i => batch.entities[i]);
+        mesh.userData.activeEntityIds = Array.from({length:count}, (_,i) => batch.entities[selection[i]]);
         // InstancedMesh bounds must follow the compacted active prefix, not the
         // original tile: otherwise distant hidden interiors still expand culling.
         if (mesh.count) { mesh.computeBoundingBox(); mesh.computeBoundingSphere(); }
         batch[key] = signature;
         this.stats.revision=(this.stats.revision||0)+1;
       }
-      mesh.visible = selection.length > 0;
+      mesh.visible = count > 0;
       mesh.castShadow = false;
       if (!mesh.visible) return;
       this._sphere.copy(mesh.boundingSphere).applyMatrix4(mesh.matrixWorld);
       transformWorldBox(this._box,mesh.boundingBox,mesh.matrixWorld);
       // Off-screen nearby objects remain casters for CSM and room light shadows.
-      mesh.castShadow = !mesh.material.transparent && this._box.distanceToPoint(this._cameraPosition) <= this.shadowDistance;
+      mesh.castShadow = !mesh.material.userData.lodgeThinGlass && !mesh.material.transparent && this._box.distanceToPoint(this._cameraPosition) <= this.shadowDistance;
       if (mesh.castShadow) shadows++;
       const triangleCount = triangles(mesh.geometry) * mesh.count;
       activeTriangles += triangleCount;
       if (this._frustum.intersectsSphere(this._sphere)) { visible++; visibleTriangles += triangleCount; }
     };
     for (const batch of this._batches) {
-      const near = [], far = [];
+      const nearBuffer = this.selectionBuffers ? batch.nearBuffer : null, farBuffer = this.selectionBuffers ? batch.farBuffer : null;
+      const near = nearBuffer?.indices ?? [], far = farBuffer?.indices ?? [];
+      let nearCount = 0, farCount = 0;
       for (let i = 0; i < batch.entities.length; i++) {
         const distance = this.selectionReuse ? batch.distances[i]
           : batch.worldBounds[i].distanceToPoint(this._cameraPosition);
@@ -587,11 +720,13 @@ export class WorldStructures {
         const useLow = batch.lodMesh && distance > (batch.lodState[i] ? 75 : 85) &&
           projectedError < (batch.lodState[i] ? .001 : .0008);
         batch.lodState[i] = useLow ? 1 : 0;
-        (useLow ? far : near).push(i);
+        if (useLow) far[farCount++] = i; else near[nearCount++] = i;
       }
-      assign(batch, batch.mesh, near, "nearSelection");
-      if (batch.lodMesh) assign(batch, batch.lodMesh, far, "farSelection");
-      lowLODInstances += far.length;
+      if (nearBuffer) nearBuffer.count = nearCount;
+      if (farBuffer) farBuffer.count = farCount;
+      assign(batch, batch.mesh, near, nearCount, "nearSelection", nearBuffer);
+      if (batch.lodMesh) assign(batch, batch.lodMesh, far, farCount, "farSelection", farBuffer);
+      lowLODInstances += farCount;
     }
     this.stats.visibleBatches = visible;
     this.stats.visibleTriangles = visibleTriangles;
@@ -599,10 +734,13 @@ export class WorldStructures {
     this.stats.culledDetailInstances = culledDetailInstances;
     this.stats.lowLODInstances = lowLODInstances;
     this.stats.activeTriangles = activeTriangles;
+    this.selectionCache.capture(this,camera);
   }
 
   _release() {
-    this.householdLiving?.dispose();this.householdLiving=null;
+    this.lodgeStream.dispose();
+    this.selectionCache.clear();
+    this.householdLiving?.dispose();this.householdLiving=null;this.householdEntrySteps?.dispose();this.householdEntrySteps=null;
     for (const { mesh, lodMesh } of this._batches) { mesh.dispose(); lodMesh?.dispose(); }
     this.group.clear();
     this._batches.length = 0;
@@ -619,6 +757,7 @@ export class WorldStructures {
     this._sourceGeometries.clear();
     this._sourceMaterials.clear();
     this._textures.clear();
+    this._cabinTimber=null;
     this._templates.clear();
     this._materialCache.clear();
     this.materials.length = 0;

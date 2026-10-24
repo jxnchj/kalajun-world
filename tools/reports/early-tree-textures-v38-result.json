@@ -1,0 +1,1488 @@
+{
+  "decision": "no reliable net benefit; keep default off",
+  "requestSetsIdentical": true,
+  "runs": [
+    {
+      "label": "off-1",
+      "navigationMs": 10069.90000000596,
+      "requests": [
+        {
+          "path": "/dist-v2/assets/barn.glb.gz",
+          "encodedBytes": 773677,
+          "decodedBytes": 1492204
+        },
+        {
+          "path": "/dist-v2/assets/cabin_small.glb.gz",
+          "encodedBytes": 2462171,
+          "decodedBytes": 4585816
+        },
+        {
+          "path": "/dist-v2/assets/flower-assets-2zI7Bf95.js",
+          "encodedBytes": 10614,
+          "decodedBytes": 10614
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_hut.glb.gz",
+          "encodedBytes": 660451,
+          "decodedBytes": 1498000
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_lodge.glb.gz",
+          "encodedBytes": 1998173,
+          "decodedBytes": 4397296
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_shed.glb.gz",
+          "encodedBytes": 2938311,
+          "decodedBytes": 7175012
+        },
+        {
+          "path": "/dist-v2/assets/gh_lanchuan_lodge.glb.gz",
+          "encodedBytes": 2452416,
+          "decodedBytes": 5302896
+        },
+        {
+          "path": "/dist-v2/assets/gh_qk_cabin.glb.gz",
+          "encodedBytes": 1891819,
+          "decodedBytes": 3189276
+        },
+        {
+          "path": "/dist-v2/assets/gh_qk_long.glb.gz",
+          "encodedBytes": 1914858,
+          "decodedBytes": 4039464
+        },
+        {
+          "path": "/dist-v2/assets/gh_tl_main.glb.gz",
+          "encodedBytes": 1228334,
+          "decodedBytes": 1948984
+        },
+        {
+          "path": "/dist-v2/assets/gh_tl_wing.glb.gz",
+          "encodedBytes": 1257182,
+          "decodedBytes": 2198936
+        },
+        {
+          "path": "/dist-v2/assets/GLTFLoader-B5vwE0h6.js",
+          "encodedBytes": 69,
+          "decodedBytes": 69
+        },
+        {
+          "path": "/dist-v2/assets/GLTFLoader-kSCxrgO0.js",
+          "encodedBytes": 51964,
+          "decodedBytes": 51964
+        },
+        {
+          "path": "/dist-v2/assets/haystack.glb.gz",
+          "encodedBytes": 537702,
+          "decodedBytes": 591860
+        },
+        {
+          "path": "/dist-v2/assets/house_b.glb.gz",
+          "encodedBytes": 2451151,
+          "decodedBytes": 4536340
+        },
+        {
+          "path": "/dist-v2/assets/lodge24.glb.gz",
+          "encodedBytes": 3121311,
+          "decodedBytes": 7567504
+        },
+        {
+          "path": "/dist-v2/assets/preload-helper-uBIymjUX.js",
+          "encodedBytes": 1233,
+          "decodedBytes": 1233
+        },
+        {
+          "path": "/dist-v2/assets/preparation-yield-DwecNgqv.js",
+          "encodedBytes": 798,
+          "decodedBytes": 798
+        },
+        {
+          "path": "/dist-v2/assets/sheep.glb",
+          "encodedBytes": 1315420,
+          "decodedBytes": 1315420
+        },
+        {
+          "path": "/dist-v2/assets/spruce-gpu-worker-DMmISPSE.js",
+          "encodedBytes": 7615,
+          "decodedBytes": 7615
+        },
+        {
+          "path": "/dist-v2/assets/spruce-gpu-worker-DMmISPSE.js",
+          "encodedBytes": 7615,
+          "decodedBytes": 7615
+        },
+        {
+          "path": "/dist-v2/assets/stone-occlusion-data-CEG1fS2S.js",
+          "encodedBytes": 407015,
+          "decodedBytes": 407015
+        },
+        {
+          "path": "/dist-v2/assets/swing.glb.gz",
+          "encodedBytes": 313946,
+          "decodedBytes": 377072
+        },
+        {
+          "path": "/dist-v2/assets/three.core-C6dWNkQQ.js",
+          "encodedBytes": 257267,
+          "decodedBytes": 257267
+        },
+        {
+          "path": "/dist-v2/assets/timber-continuity-data-BM-1PXUl.js",
+          "encodedBytes": 482211,
+          "decodedBytes": 482211
+        },
+        {
+          "path": "/dist-v2/assets/v2-B-VXR_7n.css",
+          "encodedBytes": 5268,
+          "decodedBytes": 5268
+        },
+        {
+          "path": "/dist-v2/assets/v2-C_KqJhnd.js",
+          "encodedBytes": 3287848,
+          "decodedBytes": 3287848
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_diff_1k.jpg",
+          "encodedBytes": 567074,
+          "decodedBytes": 567074
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_nor_gl_1k.jpg",
+          "encodedBytes": 790334,
+          "decodedBytes": 790334
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_rough_1k.jpg",
+          "encodedBytes": 195056,
+          "decodedBytes": 195056
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/wood_end.png",
+          "encodedBytes": 30772,
+          "decodedBytes": 30772
+        },
+        {
+          "path": "/dist-v2/assets/v2/gh_lanchuan_rooms.glb.gz",
+          "encodedBytes": 5773454,
+          "decodedBytes": 13427892
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/forest_ground_04_diff_1k.jpg",
+          "encodedBytes": 1113899,
+          "decodedBytes": 1113899
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/forest_ground_04_nor_gl_1k.jpg",
+          "encodedBytes": 1326812,
+          "decodedBytes": 1326812
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/leafy_grass_diff_1k.jpg",
+          "encodedBytes": 1195394,
+          "decodedBytes": 1195394
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/leafy_grass_nor_gl_1k.jpg",
+          "encodedBytes": 1466049,
+          "decodedBytes": 1466049
+        },
+        {
+          "path": "/dist-v2/assets/v2/house_a_lived.glb.gz",
+          "encodedBytes": 5593482,
+          "decodedBytes": 11122824
+        },
+        {
+          "path": "/dist-v2/assets/v2/household_entry_tea.glb.gz",
+          "encodedBytes": 70367,
+          "decodedBytes": 220596
+        },
+        {
+          "path": "/dist-v2/assets/v2/household_living.glb.gz",
+          "encodedBytes": 548901,
+          "decodedBytes": 2217276
+        },
+        {
+          "path": "/dist-v2/assets/v2/meadow-flowers-lod.glb",
+          "encodedBytes": 101356,
+          "decodedBytes": 101356
+        },
+        {
+          "path": "/dist-v2/assets/v2/meadow-flowers.glb",
+          "encodedBytes": 461404,
+          "decodedBytes": 461404
+        },
+        {
+          "path": "/dist-v2/assets/v2/schrenk-spruce-needle.recipe.json.gz",
+          "encodedBytes": 564101,
+          "decodedBytes": 1905748
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/arm.jpg",
+          "encodedBytes": 309735,
+          "decodedBytes": 309735
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/diff.jpg",
+          "encodedBytes": 635452,
+          "decodedBytes": 635452
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/nor_gl.jpg",
+          "encodedBytes": 766986,
+          "decodedBytes": 766986
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/far-v14/schrenk-far-albedo.rgba.gz",
+          "encodedBytes": 9622991,
+          "decodedBytes": 23592960
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/far-v14/schrenk-far-normal.rgb-planar-v27.gz",
+          "encodedBytes": 8827005,
+          "decodedBytes": 17694720
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/hi.glb.gz",
+          "encodedBytes": 3690789,
+          "decodedBytes": 6408792
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/8f0d5d16a27069ecf76ac352134f8fd9b042e4f29cf129cabc281d253c5aa2eb.png",
+          "encodedBytes": 1369349,
+          "decodedBytes": 1369349
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/a4605562d732884a4f86ec02a2e6bd829861239d186e7a5796bb06ace67936e6.png",
+          "encodedBytes": 476419,
+          "decodedBytes": 476419
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/fa086d5c55c37c2faf24db7a4056ec22ae133ae4bf44528b23a2afa2d2994e7b.png",
+          "encodedBytes": 198879,
+          "decodedBytes": 198879
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/mid.glb.gz",
+          "encodedBytes": 1810097,
+          "decodedBytes": 3030116
+        },
+        {
+          "path": "/dist-v2/assets/v2/yurt_lived.glb.gz",
+          "encodedBytes": 5293905,
+          "decodedBytes": 7935268
+        },
+        {
+          "path": "/dist-v2/assets/yurt_deck.glb.gz",
+          "encodedBytes": 2108753,
+          "decodedBytes": 3399696
+        },
+        {
+          "path": "/dist-v2/data/core_height.bin.gz",
+          "encodedBytes": 7031514,
+          "decodedBytes": 8388608
+        },
+        {
+          "path": "/dist-v2/data/core_landcover.png",
+          "encodedBytes": 866760,
+          "decodedBytes": 866760
+        },
+        {
+          "path": "/dist-v2/data/detail.bin.gz",
+          "encodedBytes": 3123117,
+          "decodedBytes": 16777216
+        },
+        {
+          "path": "/dist-v2/data/detail.json",
+          "encodedBytes": 84,
+          "decodedBytes": 84
+        },
+        {
+          "path": "/dist-v2/data/far_height.bin.gz",
+          "encodedBytes": 1912813,
+          "decodedBytes": 2097152
+        },
+        {
+          "path": "/dist-v2/data/far_landcover.png",
+          "encodedBytes": 558446,
+          "decodedBytes": 558446
+        },
+        {
+          "path": "/dist-v2/data/objects.json",
+          "encodedBytes": 51929,
+          "decodedBytes": 51929
+        },
+        {
+          "path": "/dist-v2/data/scene.json",
+          "encodedBytes": 2930,
+          "decodedBytes": 2930
+        },
+        {
+          "path": "/dist-v2/data/streams.json",
+          "encodedBytes": 1450588,
+          "decodedBytes": 1450588
+        },
+        {
+          "path": "/dist-v2/data/v2/vegcore.habitat.bin.gz",
+          "encodedBytes": 3551493,
+          "decodedBytes": 6553600
+        },
+        {
+          "path": "/dist-v2/data/v2/vegmap.habitat.bin.gz",
+          "encodedBytes": 1724252,
+          "decodedBytes": 4194304
+        }
+      ],
+      "encodedBytes": 105019180,
+      "transferBytes": 105038680,
+      "early": {
+        "enabled": false,
+        "status": "disabled"
+      },
+      "errors": [],
+      "potentialContamination": null
+    },
+    {
+      "label": "on-1",
+      "navigationMs": 15325.20000000298,
+      "requests": [
+        {
+          "path": "/dist-v2/assets/barn.glb.gz",
+          "encodedBytes": 773677,
+          "decodedBytes": 1492204
+        },
+        {
+          "path": "/dist-v2/assets/cabin_small.glb.gz",
+          "encodedBytes": 2462171,
+          "decodedBytes": 4585816
+        },
+        {
+          "path": "/dist-v2/assets/flower-assets-2zI7Bf95.js",
+          "encodedBytes": 10614,
+          "decodedBytes": 10614
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_hut.glb.gz",
+          "encodedBytes": 660451,
+          "decodedBytes": 1498000
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_lodge.glb.gz",
+          "encodedBytes": 1998173,
+          "decodedBytes": 4397296
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_shed.glb.gz",
+          "encodedBytes": 2938311,
+          "decodedBytes": 7175012
+        },
+        {
+          "path": "/dist-v2/assets/gh_lanchuan_lodge.glb.gz",
+          "encodedBytes": 2452416,
+          "decodedBytes": 5302896
+        },
+        {
+          "path": "/dist-v2/assets/gh_qk_cabin.glb.gz",
+          "encodedBytes": 1891819,
+          "decodedBytes": 3189276
+        },
+        {
+          "path": "/dist-v2/assets/gh_qk_long.glb.gz",
+          "encodedBytes": 1914858,
+          "decodedBytes": 4039464
+        },
+        {
+          "path": "/dist-v2/assets/gh_tl_main.glb.gz",
+          "encodedBytes": 1228334,
+          "decodedBytes": 1948984
+        },
+        {
+          "path": "/dist-v2/assets/gh_tl_wing.glb.gz",
+          "encodedBytes": 1257182,
+          "decodedBytes": 2198936
+        },
+        {
+          "path": "/dist-v2/assets/GLTFLoader-B5vwE0h6.js",
+          "encodedBytes": 69,
+          "decodedBytes": 69
+        },
+        {
+          "path": "/dist-v2/assets/GLTFLoader-kSCxrgO0.js",
+          "encodedBytes": 51964,
+          "decodedBytes": 51964
+        },
+        {
+          "path": "/dist-v2/assets/haystack.glb.gz",
+          "encodedBytes": 537702,
+          "decodedBytes": 591860
+        },
+        {
+          "path": "/dist-v2/assets/house_b.glb.gz",
+          "encodedBytes": 2451151,
+          "decodedBytes": 4536340
+        },
+        {
+          "path": "/dist-v2/assets/lodge24.glb.gz",
+          "encodedBytes": 3121311,
+          "decodedBytes": 7567504
+        },
+        {
+          "path": "/dist-v2/assets/preload-helper-uBIymjUX.js",
+          "encodedBytes": 1233,
+          "decodedBytes": 1233
+        },
+        {
+          "path": "/dist-v2/assets/preparation-yield-DwecNgqv.js",
+          "encodedBytes": 798,
+          "decodedBytes": 798
+        },
+        {
+          "path": "/dist-v2/assets/sheep.glb",
+          "encodedBytes": 1315420,
+          "decodedBytes": 1315420
+        },
+        {
+          "path": "/dist-v2/assets/spruce-gpu-worker-DMmISPSE.js",
+          "encodedBytes": 7615,
+          "decodedBytes": 7615
+        },
+        {
+          "path": "/dist-v2/assets/spruce-gpu-worker-DMmISPSE.js",
+          "encodedBytes": 7615,
+          "decodedBytes": 7615
+        },
+        {
+          "path": "/dist-v2/assets/stone-occlusion-data-CEG1fS2S.js",
+          "encodedBytes": 407015,
+          "decodedBytes": 407015
+        },
+        {
+          "path": "/dist-v2/assets/swing.glb.gz",
+          "encodedBytes": 313946,
+          "decodedBytes": 377072
+        },
+        {
+          "path": "/dist-v2/assets/three.core-C6dWNkQQ.js",
+          "encodedBytes": 257267,
+          "decodedBytes": 257267
+        },
+        {
+          "path": "/dist-v2/assets/timber-continuity-data-BM-1PXUl.js",
+          "encodedBytes": 482211,
+          "decodedBytes": 482211
+        },
+        {
+          "path": "/dist-v2/assets/v2-B-VXR_7n.css",
+          "encodedBytes": 5268,
+          "decodedBytes": 5268
+        },
+        {
+          "path": "/dist-v2/assets/v2-C_KqJhnd.js",
+          "encodedBytes": 3287848,
+          "decodedBytes": 3287848
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_diff_1k.jpg",
+          "encodedBytes": 567074,
+          "decodedBytes": 567074
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_nor_gl_1k.jpg",
+          "encodedBytes": 790334,
+          "decodedBytes": 790334
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_rough_1k.jpg",
+          "encodedBytes": 195056,
+          "decodedBytes": 195056
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/wood_end.png",
+          "encodedBytes": 30772,
+          "decodedBytes": 30772
+        },
+        {
+          "path": "/dist-v2/assets/v2/gh_lanchuan_rooms.glb.gz",
+          "encodedBytes": 5773454,
+          "decodedBytes": 13427892
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/forest_ground_04_diff_1k.jpg",
+          "encodedBytes": 1113899,
+          "decodedBytes": 1113899
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/forest_ground_04_nor_gl_1k.jpg",
+          "encodedBytes": 1326812,
+          "decodedBytes": 1326812
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/leafy_grass_diff_1k.jpg",
+          "encodedBytes": 1195394,
+          "decodedBytes": 1195394
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/leafy_grass_nor_gl_1k.jpg",
+          "encodedBytes": 1466049,
+          "decodedBytes": 1466049
+        },
+        {
+          "path": "/dist-v2/assets/v2/house_a_lived.glb.gz",
+          "encodedBytes": 5593482,
+          "decodedBytes": 11122824
+        },
+        {
+          "path": "/dist-v2/assets/v2/household_entry_tea.glb.gz",
+          "encodedBytes": 70367,
+          "decodedBytes": 220596
+        },
+        {
+          "path": "/dist-v2/assets/v2/household_living.glb.gz",
+          "encodedBytes": 548901,
+          "decodedBytes": 2217276
+        },
+        {
+          "path": "/dist-v2/assets/v2/meadow-flowers-lod.glb",
+          "encodedBytes": 101356,
+          "decodedBytes": 101356
+        },
+        {
+          "path": "/dist-v2/assets/v2/meadow-flowers.glb",
+          "encodedBytes": 461404,
+          "decodedBytes": 461404
+        },
+        {
+          "path": "/dist-v2/assets/v2/schrenk-spruce-needle.recipe.json.gz",
+          "encodedBytes": 564101,
+          "decodedBytes": 1905748
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/arm.jpg",
+          "encodedBytes": 309735,
+          "decodedBytes": 309735
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/diff.jpg",
+          "encodedBytes": 635452,
+          "decodedBytes": 635452
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/nor_gl.jpg",
+          "encodedBytes": 766986,
+          "decodedBytes": 766986
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/far-v14/schrenk-far-albedo.rgba.gz",
+          "encodedBytes": 9622991,
+          "decodedBytes": 23592960
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/far-v14/schrenk-far-normal.rgb-planar-v27.gz",
+          "encodedBytes": 8827005,
+          "decodedBytes": 17694720
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/hi.glb.gz",
+          "encodedBytes": 3690789,
+          "decodedBytes": 6408792
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/8f0d5d16a27069ecf76ac352134f8fd9b042e4f29cf129cabc281d253c5aa2eb.png",
+          "encodedBytes": 1369349,
+          "decodedBytes": 1369349
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/a4605562d732884a4f86ec02a2e6bd829861239d186e7a5796bb06ace67936e6.png",
+          "encodedBytes": 476419,
+          "decodedBytes": 476419
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/fa086d5c55c37c2faf24db7a4056ec22ae133ae4bf44528b23a2afa2d2994e7b.png",
+          "encodedBytes": 198879,
+          "decodedBytes": 198879
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/mid.glb.gz",
+          "encodedBytes": 1810097,
+          "decodedBytes": 3030116
+        },
+        {
+          "path": "/dist-v2/assets/v2/yurt_lived.glb.gz",
+          "encodedBytes": 5293905,
+          "decodedBytes": 7935268
+        },
+        {
+          "path": "/dist-v2/assets/yurt_deck.glb.gz",
+          "encodedBytes": 2108753,
+          "decodedBytes": 3399696
+        },
+        {
+          "path": "/dist-v2/data/core_height.bin.gz",
+          "encodedBytes": 7031514,
+          "decodedBytes": 8388608
+        },
+        {
+          "path": "/dist-v2/data/core_landcover.png",
+          "encodedBytes": 866760,
+          "decodedBytes": 866760
+        },
+        {
+          "path": "/dist-v2/data/detail.bin.gz",
+          "encodedBytes": 3123117,
+          "decodedBytes": 16777216
+        },
+        {
+          "path": "/dist-v2/data/detail.json",
+          "encodedBytes": 84,
+          "decodedBytes": 84
+        },
+        {
+          "path": "/dist-v2/data/far_height.bin.gz",
+          "encodedBytes": 1912813,
+          "decodedBytes": 2097152
+        },
+        {
+          "path": "/dist-v2/data/far_landcover.png",
+          "encodedBytes": 558446,
+          "decodedBytes": 558446
+        },
+        {
+          "path": "/dist-v2/data/objects.json",
+          "encodedBytes": 51929,
+          "decodedBytes": 51929
+        },
+        {
+          "path": "/dist-v2/data/scene.json",
+          "encodedBytes": 2930,
+          "decodedBytes": 2930
+        },
+        {
+          "path": "/dist-v2/data/streams.json",
+          "encodedBytes": 1450588,
+          "decodedBytes": 1450588
+        },
+        {
+          "path": "/dist-v2/data/v2/vegcore.habitat.bin.gz",
+          "encodedBytes": 3551493,
+          "decodedBytes": 6553600
+        },
+        {
+          "path": "/dist-v2/data/v2/vegmap.habitat.bin.gz",
+          "encodedBytes": 1724252,
+          "decodedBytes": 4194304
+        }
+      ],
+      "encodedBytes": 105019180,
+      "transferBytes": 105038680,
+      "early": {
+        "enabled": true,
+        "status": "complete",
+        "startedAtMs": 1511.5,
+        "firstUploadAtMs": 3942.9000000059605,
+        "completedAtMs": 4728.100000008941,
+        "selected": 7,
+        "duplicates": 0,
+        "initialized": 7,
+        "alreadyInitialized": 0,
+        "skipped": 0,
+        "uploadTotalMs": 98.8999999910593,
+        "maxUploadMs": 82.59999999403954,
+        "sources": [
+          {
+            "name": "mid",
+            "readyAtMs": 3885.1000000089407,
+            "firstStepAtMs": 3942.9000000059605,
+            "completedAtMs": 3945.2000000029802,
+            "duplicates": 0,
+            "queue": {
+              "selected": 2,
+              "initialized": 2,
+              "alreadyInitialized": 0,
+              "skipped": 0,
+              "uploadTotalMs": 2.2999999970197678,
+              "maxUploadMs": 1.2999999970197678,
+              "elapsedMs": 60.20000000298023,
+              "status": "complete"
+            }
+          },
+          {
+            "name": "hi",
+            "readyAtMs": 3885.1000000089407,
+            "firstStepAtMs": 4060.5,
+            "completedAtMs": 4060.9000000059605,
+            "duplicates": 0,
+            "queue": {
+              "selected": 3,
+              "initialized": 3,
+              "alreadyInitialized": 0,
+              "skipped": 0,
+              "uploadTotalMs": 0.4000000059604645,
+              "maxUploadMs": 0.4000000059604645,
+              "elapsedMs": 175.79999999701977,
+              "status": "complete"
+            }
+          },
+          {
+            "name": "far",
+            "readyAtMs": 4275.5,
+            "firstStepAtMs": 4304.79999999702,
+            "completedAtMs": 4416.79999999702,
+            "duplicates": 0,
+            "queue": {
+              "selected": 2,
+              "initialized": 2,
+              "alreadyInitialized": 0,
+              "skipped": 0,
+              "uploadTotalMs": 96.19999998807907,
+              "maxUploadMs": 82.59999999403954,
+              "elapsedMs": 141.3999999910593,
+              "status": "complete"
+            }
+          }
+        ]
+      },
+      "errors": [],
+      "potentialContamination": null
+    },
+    {
+      "label": "off-2",
+      "navigationMs": 20886.40000000596,
+      "requests": [
+        {
+          "path": "/dist-v2/assets/barn.glb.gz",
+          "encodedBytes": 773677,
+          "decodedBytes": 1492204
+        },
+        {
+          "path": "/dist-v2/assets/cabin_small.glb.gz",
+          "encodedBytes": 2462171,
+          "decodedBytes": 4585816
+        },
+        {
+          "path": "/dist-v2/assets/flower-assets-2zI7Bf95.js",
+          "encodedBytes": 10614,
+          "decodedBytes": 10614
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_hut.glb.gz",
+          "encodedBytes": 660451,
+          "decodedBytes": 1498000
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_lodge.glb.gz",
+          "encodedBytes": 1998173,
+          "decodedBytes": 4397296
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_shed.glb.gz",
+          "encodedBytes": 2938311,
+          "decodedBytes": 7175012
+        },
+        {
+          "path": "/dist-v2/assets/gh_lanchuan_lodge.glb.gz",
+          "encodedBytes": 2452416,
+          "decodedBytes": 5302896
+        },
+        {
+          "path": "/dist-v2/assets/gh_qk_cabin.glb.gz",
+          "encodedBytes": 1891819,
+          "decodedBytes": 3189276
+        },
+        {
+          "path": "/dist-v2/assets/gh_qk_long.glb.gz",
+          "encodedBytes": 1914858,
+          "decodedBytes": 4039464
+        },
+        {
+          "path": "/dist-v2/assets/gh_tl_main.glb.gz",
+          "encodedBytes": 1228334,
+          "decodedBytes": 1948984
+        },
+        {
+          "path": "/dist-v2/assets/gh_tl_wing.glb.gz",
+          "encodedBytes": 1257182,
+          "decodedBytes": 2198936
+        },
+        {
+          "path": "/dist-v2/assets/GLTFLoader-B5vwE0h6.js",
+          "encodedBytes": 69,
+          "decodedBytes": 69
+        },
+        {
+          "path": "/dist-v2/assets/GLTFLoader-kSCxrgO0.js",
+          "encodedBytes": 51964,
+          "decodedBytes": 51964
+        },
+        {
+          "path": "/dist-v2/assets/haystack.glb.gz",
+          "encodedBytes": 537702,
+          "decodedBytes": 591860
+        },
+        {
+          "path": "/dist-v2/assets/house_b.glb.gz",
+          "encodedBytes": 2451151,
+          "decodedBytes": 4536340
+        },
+        {
+          "path": "/dist-v2/assets/lodge24.glb.gz",
+          "encodedBytes": 3121311,
+          "decodedBytes": 7567504
+        },
+        {
+          "path": "/dist-v2/assets/preload-helper-uBIymjUX.js",
+          "encodedBytes": 1233,
+          "decodedBytes": 1233
+        },
+        {
+          "path": "/dist-v2/assets/preparation-yield-DwecNgqv.js",
+          "encodedBytes": 798,
+          "decodedBytes": 798
+        },
+        {
+          "path": "/dist-v2/assets/sheep.glb",
+          "encodedBytes": 1315420,
+          "decodedBytes": 1315420
+        },
+        {
+          "path": "/dist-v2/assets/spruce-gpu-worker-DMmISPSE.js",
+          "encodedBytes": 7615,
+          "decodedBytes": 7615
+        },
+        {
+          "path": "/dist-v2/assets/spruce-gpu-worker-DMmISPSE.js",
+          "encodedBytes": 7615,
+          "decodedBytes": 7615
+        },
+        {
+          "path": "/dist-v2/assets/stone-occlusion-data-CEG1fS2S.js",
+          "encodedBytes": 407015,
+          "decodedBytes": 407015
+        },
+        {
+          "path": "/dist-v2/assets/swing.glb.gz",
+          "encodedBytes": 313946,
+          "decodedBytes": 377072
+        },
+        {
+          "path": "/dist-v2/assets/three.core-C6dWNkQQ.js",
+          "encodedBytes": 257267,
+          "decodedBytes": 257267
+        },
+        {
+          "path": "/dist-v2/assets/timber-continuity-data-BM-1PXUl.js",
+          "encodedBytes": 482211,
+          "decodedBytes": 482211
+        },
+        {
+          "path": "/dist-v2/assets/v2-B-VXR_7n.css",
+          "encodedBytes": 5268,
+          "decodedBytes": 5268
+        },
+        {
+          "path": "/dist-v2/assets/v2-C_KqJhnd.js",
+          "encodedBytes": 3287848,
+          "decodedBytes": 3287848
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_diff_1k.jpg",
+          "encodedBytes": 567074,
+          "decodedBytes": 567074
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_nor_gl_1k.jpg",
+          "encodedBytes": 790334,
+          "decodedBytes": 790334
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_rough_1k.jpg",
+          "encodedBytes": 195056,
+          "decodedBytes": 195056
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/wood_end.png",
+          "encodedBytes": 30772,
+          "decodedBytes": 30772
+        },
+        {
+          "path": "/dist-v2/assets/v2/gh_lanchuan_rooms.glb.gz",
+          "encodedBytes": 5773454,
+          "decodedBytes": 13427892
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/forest_ground_04_diff_1k.jpg",
+          "encodedBytes": 1113899,
+          "decodedBytes": 1113899
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/forest_ground_04_nor_gl_1k.jpg",
+          "encodedBytes": 1326812,
+          "decodedBytes": 1326812
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/leafy_grass_diff_1k.jpg",
+          "encodedBytes": 1195394,
+          "decodedBytes": 1195394
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/leafy_grass_nor_gl_1k.jpg",
+          "encodedBytes": 1466049,
+          "decodedBytes": 1466049
+        },
+        {
+          "path": "/dist-v2/assets/v2/house_a_lived.glb.gz",
+          "encodedBytes": 5593482,
+          "decodedBytes": 11122824
+        },
+        {
+          "path": "/dist-v2/assets/v2/household_entry_tea.glb.gz",
+          "encodedBytes": 70367,
+          "decodedBytes": 220596
+        },
+        {
+          "path": "/dist-v2/assets/v2/household_living.glb.gz",
+          "encodedBytes": 548901,
+          "decodedBytes": 2217276
+        },
+        {
+          "path": "/dist-v2/assets/v2/meadow-flowers-lod.glb",
+          "encodedBytes": 101356,
+          "decodedBytes": 101356
+        },
+        {
+          "path": "/dist-v2/assets/v2/meadow-flowers.glb",
+          "encodedBytes": 461404,
+          "decodedBytes": 461404
+        },
+        {
+          "path": "/dist-v2/assets/v2/schrenk-spruce-needle.recipe.json.gz",
+          "encodedBytes": 564101,
+          "decodedBytes": 1905748
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/arm.jpg",
+          "encodedBytes": 309735,
+          "decodedBytes": 309735
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/diff.jpg",
+          "encodedBytes": 635452,
+          "decodedBytes": 635452
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/nor_gl.jpg",
+          "encodedBytes": 766986,
+          "decodedBytes": 766986
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/far-v14/schrenk-far-albedo.rgba.gz",
+          "encodedBytes": 9622991,
+          "decodedBytes": 23592960
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/far-v14/schrenk-far-normal.rgb-planar-v27.gz",
+          "encodedBytes": 8827005,
+          "decodedBytes": 17694720
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/hi.glb.gz",
+          "encodedBytes": 3690789,
+          "decodedBytes": 6408792
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/8f0d5d16a27069ecf76ac352134f8fd9b042e4f29cf129cabc281d253c5aa2eb.png",
+          "encodedBytes": 1369349,
+          "decodedBytes": 1369349
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/a4605562d732884a4f86ec02a2e6bd829861239d186e7a5796bb06ace67936e6.png",
+          "encodedBytes": 476419,
+          "decodedBytes": 476419
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/fa086d5c55c37c2faf24db7a4056ec22ae133ae4bf44528b23a2afa2d2994e7b.png",
+          "encodedBytes": 198879,
+          "decodedBytes": 198879
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/mid.glb.gz",
+          "encodedBytes": 1810097,
+          "decodedBytes": 3030116
+        },
+        {
+          "path": "/dist-v2/assets/v2/yurt_lived.glb.gz",
+          "encodedBytes": 5293905,
+          "decodedBytes": 7935268
+        },
+        {
+          "path": "/dist-v2/assets/yurt_deck.glb.gz",
+          "encodedBytes": 2108753,
+          "decodedBytes": 3399696
+        },
+        {
+          "path": "/dist-v2/data/core_height.bin.gz",
+          "encodedBytes": 7031514,
+          "decodedBytes": 8388608
+        },
+        {
+          "path": "/dist-v2/data/core_landcover.png",
+          "encodedBytes": 866760,
+          "decodedBytes": 866760
+        },
+        {
+          "path": "/dist-v2/data/detail.bin.gz",
+          "encodedBytes": 3123117,
+          "decodedBytes": 16777216
+        },
+        {
+          "path": "/dist-v2/data/detail.json",
+          "encodedBytes": 84,
+          "decodedBytes": 84
+        },
+        {
+          "path": "/dist-v2/data/far_height.bin.gz",
+          "encodedBytes": 1912813,
+          "decodedBytes": 2097152
+        },
+        {
+          "path": "/dist-v2/data/far_landcover.png",
+          "encodedBytes": 558446,
+          "decodedBytes": 558446
+        },
+        {
+          "path": "/dist-v2/data/objects.json",
+          "encodedBytes": 51929,
+          "decodedBytes": 51929
+        },
+        {
+          "path": "/dist-v2/data/scene.json",
+          "encodedBytes": 2930,
+          "decodedBytes": 2930
+        },
+        {
+          "path": "/dist-v2/data/streams.json",
+          "encodedBytes": 1450588,
+          "decodedBytes": 1450588
+        },
+        {
+          "path": "/dist-v2/data/v2/vegcore.habitat.bin.gz",
+          "encodedBytes": 3551493,
+          "decodedBytes": 6553600
+        },
+        {
+          "path": "/dist-v2/data/v2/vegmap.habitat.bin.gz",
+          "encodedBytes": 1724252,
+          "decodedBytes": 4194304
+        }
+      ],
+      "encodedBytes": 105019180,
+      "transferBytes": 105038680,
+      "early": {
+        "enabled": false,
+        "status": "disabled"
+      },
+      "errors": [],
+      "potentialContamination": "Parent reported system Python startup accidentally invoked Xcode tooling for about 2.5 seconds during this run"
+    },
+    {
+      "label": "on-2",
+      "navigationMs": 10037.90000000596,
+      "requests": [
+        {
+          "path": "/dist-v2/assets/barn.glb.gz",
+          "encodedBytes": 773677,
+          "decodedBytes": 1492204
+        },
+        {
+          "path": "/dist-v2/assets/cabin_small.glb.gz",
+          "encodedBytes": 2462171,
+          "decodedBytes": 4585816
+        },
+        {
+          "path": "/dist-v2/assets/flower-assets-2zI7Bf95.js",
+          "encodedBytes": 10614,
+          "decodedBytes": 10614
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_hut.glb.gz",
+          "encodedBytes": 660451,
+          "decodedBytes": 1498000
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_lodge.glb.gz",
+          "encodedBytes": 1998173,
+          "decodedBytes": 4397296
+        },
+        {
+          "path": "/dist-v2/assets/gh_fj_shed.glb.gz",
+          "encodedBytes": 2938311,
+          "decodedBytes": 7175012
+        },
+        {
+          "path": "/dist-v2/assets/gh_lanchuan_lodge.glb.gz",
+          "encodedBytes": 2452416,
+          "decodedBytes": 5302896
+        },
+        {
+          "path": "/dist-v2/assets/gh_qk_cabin.glb.gz",
+          "encodedBytes": 1891819,
+          "decodedBytes": 3189276
+        },
+        {
+          "path": "/dist-v2/assets/gh_qk_long.glb.gz",
+          "encodedBytes": 1914858,
+          "decodedBytes": 4039464
+        },
+        {
+          "path": "/dist-v2/assets/gh_tl_main.glb.gz",
+          "encodedBytes": 1228334,
+          "decodedBytes": 1948984
+        },
+        {
+          "path": "/dist-v2/assets/gh_tl_wing.glb.gz",
+          "encodedBytes": 1257182,
+          "decodedBytes": 2198936
+        },
+        {
+          "path": "/dist-v2/assets/GLTFLoader-B5vwE0h6.js",
+          "encodedBytes": 69,
+          "decodedBytes": 69
+        },
+        {
+          "path": "/dist-v2/assets/GLTFLoader-kSCxrgO0.js",
+          "encodedBytes": 51964,
+          "decodedBytes": 51964
+        },
+        {
+          "path": "/dist-v2/assets/haystack.glb.gz",
+          "encodedBytes": 537702,
+          "decodedBytes": 591860
+        },
+        {
+          "path": "/dist-v2/assets/house_b.glb.gz",
+          "encodedBytes": 2451151,
+          "decodedBytes": 4536340
+        },
+        {
+          "path": "/dist-v2/assets/lodge24.glb.gz",
+          "encodedBytes": 3121311,
+          "decodedBytes": 7567504
+        },
+        {
+          "path": "/dist-v2/assets/preload-helper-uBIymjUX.js",
+          "encodedBytes": 1233,
+          "decodedBytes": 1233
+        },
+        {
+          "path": "/dist-v2/assets/preparation-yield-DwecNgqv.js",
+          "encodedBytes": 798,
+          "decodedBytes": 798
+        },
+        {
+          "path": "/dist-v2/assets/sheep.glb",
+          "encodedBytes": 1315420,
+          "decodedBytes": 1315420
+        },
+        {
+          "path": "/dist-v2/assets/spruce-gpu-worker-DMmISPSE.js",
+          "encodedBytes": 7615,
+          "decodedBytes": 7615
+        },
+        {
+          "path": "/dist-v2/assets/spruce-gpu-worker-DMmISPSE.js",
+          "encodedBytes": 7615,
+          "decodedBytes": 7615
+        },
+        {
+          "path": "/dist-v2/assets/stone-occlusion-data-CEG1fS2S.js",
+          "encodedBytes": 407015,
+          "decodedBytes": 407015
+        },
+        {
+          "path": "/dist-v2/assets/swing.glb.gz",
+          "encodedBytes": 313946,
+          "decodedBytes": 377072
+        },
+        {
+          "path": "/dist-v2/assets/three.core-C6dWNkQQ.js",
+          "encodedBytes": 257267,
+          "decodedBytes": 257267
+        },
+        {
+          "path": "/dist-v2/assets/timber-continuity-data-BM-1PXUl.js",
+          "encodedBytes": 482211,
+          "decodedBytes": 482211
+        },
+        {
+          "path": "/dist-v2/assets/v2-B-VXR_7n.css",
+          "encodedBytes": 5268,
+          "decodedBytes": 5268
+        },
+        {
+          "path": "/dist-v2/assets/v2-C_KqJhnd.js",
+          "encodedBytes": 3287848,
+          "decodedBytes": 3287848
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_diff_1k.jpg",
+          "encodedBytes": 567074,
+          "decodedBytes": 567074
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_nor_gl_1k.jpg",
+          "encodedBytes": 790334,
+          "decodedBytes": 790334
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/rough_wood_rough_1k.jpg",
+          "encodedBytes": 195056,
+          "decodedBytes": 195056
+        },
+        {
+          "path": "/dist-v2/assets/v2/boardwalk/wood_end.png",
+          "encodedBytes": 30772,
+          "decodedBytes": 30772
+        },
+        {
+          "path": "/dist-v2/assets/v2/gh_lanchuan_rooms.glb.gz",
+          "encodedBytes": 5773454,
+          "decodedBytes": 13427892
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/forest_ground_04_diff_1k.jpg",
+          "encodedBytes": 1113899,
+          "decodedBytes": 1113899
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/forest_ground_04_nor_gl_1k.jpg",
+          "encodedBytes": 1326812,
+          "decodedBytes": 1326812
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/leafy_grass_diff_1k.jpg",
+          "encodedBytes": 1195394,
+          "decodedBytes": 1195394
+        },
+        {
+          "path": "/dist-v2/assets/v2/ground/leafy_grass_nor_gl_1k.jpg",
+          "encodedBytes": 1466049,
+          "decodedBytes": 1466049
+        },
+        {
+          "path": "/dist-v2/assets/v2/house_a_lived.glb.gz",
+          "encodedBytes": 5593482,
+          "decodedBytes": 11122824
+        },
+        {
+          "path": "/dist-v2/assets/v2/household_entry_tea.glb.gz",
+          "encodedBytes": 70367,
+          "decodedBytes": 220596
+        },
+        {
+          "path": "/dist-v2/assets/v2/household_living.glb.gz",
+          "encodedBytes": 548901,
+          "decodedBytes": 2217276
+        },
+        {
+          "path": "/dist-v2/assets/v2/meadow-flowers-lod.glb",
+          "encodedBytes": 101356,
+          "decodedBytes": 101356
+        },
+        {
+          "path": "/dist-v2/assets/v2/meadow-flowers.glb",
+          "encodedBytes": 461404,
+          "decodedBytes": 461404
+        },
+        {
+          "path": "/dist-v2/assets/v2/schrenk-spruce-needle.recipe.json.gz",
+          "encodedBytes": 564101,
+          "decodedBytes": 1905748
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/arm.jpg",
+          "encodedBytes": 309735,
+          "decodedBytes": 309735
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/diff.jpg",
+          "encodedBytes": 635452,
+          "decodedBytes": 635452
+        },
+        {
+          "path": "/dist-v2/assets/v2/shore/nor_gl.jpg",
+          "encodedBytes": 766986,
+          "decodedBytes": 766986
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/far-v14/schrenk-far-albedo.rgba.gz",
+          "encodedBytes": 9622991,
+          "decodedBytes": 23592960
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/far-v14/schrenk-far-normal.rgb-planar-v27.gz",
+          "encodedBytes": 8827005,
+          "decodedBytes": 17694720
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/hi.glb.gz",
+          "encodedBytes": 3690789,
+          "decodedBytes": 6408792
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/8f0d5d16a27069ecf76ac352134f8fd9b042e4f29cf129cabc281d253c5aa2eb.png",
+          "encodedBytes": 1369349,
+          "decodedBytes": 1369349
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/a4605562d732884a4f86ec02a2e6bd829861239d186e7a5796bb06ace67936e6.png",
+          "encodedBytes": 476419,
+          "decodedBytes": 476419
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/images/fa086d5c55c37c2faf24db7a4056ec22ae133ae4bf44528b23a2afa2d2994e7b.png",
+          "encodedBytes": 198879,
+          "decodedBytes": 198879
+        },
+        {
+          "path": "/dist-v2/assets/v2/spruce/shared-v38/mid.glb.gz",
+          "encodedBytes": 1810097,
+          "decodedBytes": 3030116
+        },
+        {
+          "path": "/dist-v2/assets/v2/yurt_lived.glb.gz",
+          "encodedBytes": 5293905,
+          "decodedBytes": 7935268
+        },
+        {
+          "path": "/dist-v2/assets/yurt_deck.glb.gz",
+          "encodedBytes": 2108753,
+          "decodedBytes": 3399696
+        },
+        {
+          "path": "/dist-v2/data/core_height.bin.gz",
+          "encodedBytes": 7031514,
+          "decodedBytes": 8388608
+        },
+        {
+          "path": "/dist-v2/data/core_landcover.png",
+          "encodedBytes": 866760,
+          "decodedBytes": 866760
+        },
+        {
+          "path": "/dist-v2/data/detail.bin.gz",
+          "encodedBytes": 3123117,
+          "decodedBytes": 16777216
+        },
+        {
+          "path": "/dist-v2/data/detail.json",
+          "encodedBytes": 84,
+          "decodedBytes": 84
+        },
+        {
+          "path": "/dist-v2/data/far_height.bin.gz",
+          "encodedBytes": 1912813,
+          "decodedBytes": 2097152
+        },
+        {
+          "path": "/dist-v2/data/far_landcover.png",
+          "encodedBytes": 558446,
+          "decodedBytes": 558446
+        },
+        {
+          "path": "/dist-v2/data/objects.json",
+          "encodedBytes": 51929,
+          "decodedBytes": 51929
+        },
+        {
+          "path": "/dist-v2/data/scene.json",
+          "encodedBytes": 2930,
+          "decodedBytes": 2930
+        },
+        {
+          "path": "/dist-v2/data/streams.json",
+          "encodedBytes": 1450588,
+          "decodedBytes": 1450588
+        },
+        {
+          "path": "/dist-v2/data/v2/vegcore.habitat.bin.gz",
+          "encodedBytes": 3551493,
+          "decodedBytes": 6553600
+        },
+        {
+          "path": "/dist-v2/data/v2/vegmap.habitat.bin.gz",
+          "encodedBytes": 1724252,
+          "decodedBytes": 4194304
+        }
+      ],
+      "encodedBytes": 105019180,
+      "transferBytes": 105038680,
+      "early": {
+        "enabled": true,
+        "status": "complete",
+        "startedAtMs": 1516.2999999970198,
+        "firstUploadAtMs": 3993.0999999940395,
+        "completedAtMs": 4811.29999999702,
+        "selected": 7,
+        "duplicates": 0,
+        "initialized": 7,
+        "alreadyInitialized": 0,
+        "skipped": 0,
+        "uploadTotalMs": 59.400000020861626,
+        "maxUploadMs": 41.5,
+        "sources": [
+          {
+            "name": "mid",
+            "readyAtMs": 3909.5999999940395,
+            "firstStepAtMs": 3993.0999999940395,
+            "completedAtMs": 3996.0999999940395,
+            "duplicates": 0,
+            "queue": {
+              "selected": 2,
+              "initialized": 2,
+              "alreadyInitialized": 0,
+              "skipped": 0,
+              "uploadTotalMs": 2.800000011920929,
+              "maxUploadMs": 1.5,
+              "elapsedMs": 86.40000000596046,
+              "status": "complete"
+            }
+          },
+          {
+            "name": "hi",
+            "readyAtMs": 3909.5999999940395,
+            "firstStepAtMs": 4110,
+            "completedAtMs": 4110.5,
+            "duplicates": 0,
+            "queue": {
+              "selected": 3,
+              "initialized": 3,
+              "alreadyInitialized": 0,
+              "skipped": 0,
+              "uploadTotalMs": 0.5,
+              "maxUploadMs": 0.5,
+              "elapsedMs": 200.90000000596046,
+              "status": "complete"
+            }
+          },
+          {
+            "name": "far",
+            "readyAtMs": 4291.70000000298,
+            "firstStepAtMs": 4311.20000000298,
+            "completedAtMs": 4382.4000000059605,
+            "duplicates": 0,
+            "queue": {
+              "selected": 2,
+              "initialized": 2,
+              "alreadyInitialized": 0,
+              "skipped": 0,
+              "uploadTotalMs": 56.1000000089407,
+              "maxUploadMs": 41.5,
+              "elapsedMs": 90.70000000298023,
+              "status": "complete"
+            }
+          }
+        ]
+      },
+      "errors": [],
+      "potentialContamination": null
+    }
+  ]
+}

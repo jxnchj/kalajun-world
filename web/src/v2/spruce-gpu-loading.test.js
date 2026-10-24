@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {gunzipSync} from 'node:zlib';
-import {createGpuPacketBuilder,estimateGpuPacketBytes,prepareSpruceForms,loadGpuSpruceRecipe} from './spruce-gpu-loading.js';
+import {createGpuPacketBuilder,estimateGpuPacketBytes,prepareSpruceForms,loadGpuSpruceRecipe,loadGpuSpruceRecipeData} from './spruce-gpu-loading.js';
 import {buildBrushPacket} from './spruce-brush-packet.js';
 const recipe=JSON.parse(gunzipSync(await readFile(new URL('../../public/assets/v2/schrenk-spruce-needle.recipe.json.gz',import.meta.url))));
 function mock(){return{messages:[],terminated:0,postMessage(message){this.messages.push(message);},terminate(){this.terminated++;}};}
@@ -80,9 +80,21 @@ test('five actual forms remain byte-identical in serial and bounded prequeue, in
  const source=await loader.parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');
  const fetchImpl=async()=>({ok:true,arrayBuffer:async()=>payload.buffer.slice(payload.byteOffset,payload.byteOffset+payload.byteLength)});
  const options={fetchImpl,workerFactory:null,branches:true,crown:true,volume:true};
- const old=await loadGpuSpruceRecipe(source,'fixture',{...options,formQueue:1}),next=await loadGpuSpruceRecipe(source,'fixture',{...options,formQueue:2});
+ const prepared=loadGpuSpruceRecipeData('fixture',{fetchImpl});
+ const old=await loadGpuSpruceRecipe(source,'fixture',{...options,formQueue:1}),next=await loadGpuSpruceRecipe(source,'fixture',{...options,fetchImpl:()=>{throw Error('duplicate fetch');},recipeData:prepared,formQueue:2});
+ assert.equal(next.userData.timings.recipePrefetched,true);
  assert.deepEqual(next.gpuPackets,old.gpuPackets);assert.equal(next.userData.parameterBytes,old.userData.parameterBytes);assert.equal(next.userData.brushes,old.userData.brushes);assert.equal(next.userData.needles,old.userData.needles);
  old.scene.traverse(o=>{if(!o.isMesh)return;const a=o.geometry,b=next.scene.getObjectByName(o.name).geometry;assert.deepEqual(b.index?.array,a.index?.array);for(const k of Object.keys(a.attributes))assert.deepEqual(b.attributes[k].array,a.attributes[k].array);});
  assert.equal(old.userData.timings.peakQueuedForms,1);assert.equal(next.userData.timings.peakQueuedForms,2);assert.ok(next.userData.timings.peakInFlightParameterBytes<=24*1024*1024);
  for(const gltf of[old,next])gltf.scene.traverse(o=>{if(o.isMesh){o.geometry.dispose();o.material.dispose();}});
+});
+
+test('independent recipe preparation validates data and honors transport failure and cancellation',async()=>{
+ const payload=await readFile(new URL('../../public/assets/v2/schrenk-spruce-needle.recipe.json.gz',import.meta.url));
+ const fetchImpl=async()=>({ok:true,arrayBuffer:async()=>payload.buffer.slice(payload.byteOffset,payload.byteOffset+payload.byteLength)});
+ const prepared=await loadGpuSpruceRecipeData('fixture',{fetchImpl});assert.deepEqual(prepared.recipe,recipe);
+ await assert.rejects(loadGpuSpruceRecipeData('fixture',{fetchImpl:async()=>({ok:false,status:404})}),/404/);
+ const controller=new AbortController();controller.abort();
+ await assert.rejects(loadGpuSpruceRecipeData('fixture',{signal:controller.signal,fetchImpl:()=>{throw Error('must not fetch');}}),e=>e.name==='AbortError');
+ await assert.rejects(loadGpuSpruceRecipeData('fixture',{fetchImpl:async()=>({ok:true,arrayBuffer:async()=>new TextEncoder().encode('{}').buffer})}),/Unsupported/);
 });

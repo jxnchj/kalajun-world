@@ -1,0 +1,221 @@
+{
+  "version": "route-continuity-35",
+  "date": "2026-10-23",
+  "scope": "Selective local merge of accepted round33–34 components plus authored yard soil wear; not whole-world final acceptance",
+  "tests": {
+    "canonicalNode": {
+      "passed": 813,
+      "failed": 0
+    },
+    "isolatedHandoffNode": {
+      "passed": 910,
+      "failed": 0
+    },
+    "entryNode": {
+      "passed": 33,
+      "failed": 0
+    },
+    "yardNode": {
+      "passed": 8,
+      "failed": 0
+    },
+    "build": "pass with existing large-chunk warning",
+    "transportAssets": 22
+  },
+  "captures": [
+    {
+      "file": "forest-a1.json",
+      "view": "river-forest",
+      "version": "route-continuity-32",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "forest-a2.json",
+      "view": "river-forest",
+      "version": "route-continuity-32",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "forest-b.json",
+      "view": "river-forest",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "route-brook.json",
+      "view": "brook-lanchuan",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "route-forest.json",
+      "view": "forest",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "route-guest-room.json",
+      "view": "lanchuan-freedom-1",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "route-valley.json",
+      "view": "valley",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "route-west-slope.json",
+      "view": "west-slope",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "route-yurt.json",
+      "view": "pastoral-yurt-entry",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "tea-door-blocked.json",
+      "view": "free",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "tea-room-closed.json",
+      "view": "free",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "tea-steps-evening.json",
+      "view": "household-0",
+      "version": "route-continuity-35",
+      "time": 1260,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "tea-steps-morning.json",
+      "view": "household-0",
+      "version": "route-continuity-35",
+      "time": 600,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "tea-walk-entered.json",
+      "view": "free",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "tea-walk-exited.json",
+      "view": "free",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "yard-linen.json",
+      "view": "yard-2",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "yard-tea.json",
+      "view": "yard-0",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    },
+    {
+      "file": "yard-work.json",
+      "view": "yard-1",
+      "version": "route-continuity-35",
+      "time": 870,
+      "ready": true,
+      "errors": []
+    }
+  ],
+  "walking": {
+    "method": "Real Chrome keyboard W/S/F and canvas drag, normal WorldControls and full Rapier geometry",
+    "enteredLocal": [
+      1.0038553382243809,
+      1.595005957898593,
+      -0.7402534988538036
+    ],
+    "exitedLocal": [
+      1.0033973190023178,
+      0.42742100041641606,
+      7.869092489015132
+    ],
+    "closedDoorBlockedLocal": [
+      1.0066360157596448,
+      1.4500926185151002,
+      2.861538810606838
+    ],
+    "reopenedAndReentered": true,
+    "closedRoomGI": {
+      "key": "house_a-entry-tea-34",
+      "ready": true,
+      "openness": 0,
+      "apertureFraction": 0
+    },
+    "traceSamples": 1806
+  },
+  "normalEntry": {
+    "url": "http://127.0.0.1:5174/v2.html?view=yard-0&time=870",
+    "viewport": {
+      "width": 1453,
+      "height": 870,
+      "pixelRatio": 1
+    },
+    "version": "route-continuity-35",
+    "ready": true,
+    "preparing": false,
+    "errors": [],
+    "consoleErrors": [],
+    "server": "normal npm run dev:v2; temporary review server stopped"
+  },
+  "limits": [
+    "Not complete GI or final lighting/color",
+    "Grass shadow temporal dot expansion remains open",
+    "Low-sun timber and stone self-shadow stripes remain visible",
+    "Yard branch shape and cleared-ground transitions remain authored and need further art development",
+    "Forest GPU and cold-start long tail unresolved; see performance-summary.json",
+    "Normal route screenshots are load/visual regression, not stationary performance samples"
+  ],
+  "noAholo": true,
+  "noGitHubPush": true
+}

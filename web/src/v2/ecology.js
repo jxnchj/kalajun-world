@@ -1,3 +1,22 @@
+import {ReachBankCover39} from './forest-reach-cover39.js';
+import {createForestReachCommunity39} from './forest-reach-community39.js';
+import {brookGrassIntersectsWater} from './brook-shoulder-grass.js';
+import {BoardwalkPlantContact39} from './boardwalk-plant-contact39.js';
+import {seatForestShoulderRoot} from "./forest-bank-shoulder.js";
+import {TreeRootOrder} from './tree-root-order.js';
+import {EarlyTreeTextures} from './early-tree-textures.js';
+import {riverSectionAt} from './river-section.js';
+import {valleyBankContext} from './valley-bank-roots.js';
+import {SpruceSharedImages} from "./spruce-shared-images.js";
+import {MeadowRootCache} from "./meadow-root-cache.js";
+import {SpruceMiddleBatched} from "./spruce-middle-batched.js";
+import {CrownRootMask} from "./crown-root-mask.js";
+import {visualDelta} from './visual-time.js';
+import {createBrookWetAsset,forestCurvatureNeedsBladeSeat,createBrookWetBatch,installBrookWetBatchMaterial,refreshBrookWetContact} from "./brook-wetgrass.js";
+import {brookShoulderSuitable,valleyShoulderSuitable,valleySourceExcluded,grassStemFeet,seatBrookShoulderGrass} from "./brook-shoulder-grass.js";
+import {cellRandom,createForestExclusionIndex,rootExcluded,originalForestRoot} from "./forest-root-source.js";
+export {cellRandom};
+import {installTreeWorldFrustum} from "./tree-world-frustum.js";
 import {createTreeShadowIndex,installTreeShadowIndex} from "./tree-shadow-index.js";
 import {WorldBoundsCache,worldBoundsCacheControl} from "./world-bounds-cache.js";
 import {ThresholdPlantField} from "./threshold-plants.js";
@@ -15,7 +34,7 @@ import { GrassRootField, createGrassFieldGeometry, disposeGrassFieldGeometry, ma
 import { createSpruceLoader, SpruceGeometryPool, spruceGeometryContainer } from "./spruce-loading.js";
 import { treeVertexLayoutEnabled, interleaveTreeVertices } from "./tree-vertex-layout.js";
 import { loadSpruceRecipe } from "./spruce-recipe.js";
-import {loadGpuSpruceRecipe} from "./spruce-gpu-loading.js";
+import {loadGpuSpruceRecipe,loadGpuSpruceRecipeData} from "./spruce-gpu-loading.js";
 import {createStationGeometry,installGpuNeedleStations,SpruceGpuStationBrushes} from "./spruce-gpu-stations.js";
 import {createGpuBrushTables,createGpuBrushTemplate,installGpuBrush,SpruceGpuBrushes} from "./spruce-gpu-brush.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
@@ -31,15 +50,30 @@ import { loadFarSpruceAssets, createFarSpruceImpostorGeometry, setFarSpruceImpos
 import { installFarSpruceShape, installCrownOcclusion } from "./spruce-geometry.js";
 import { ForestFloor } from "./forest-floor.js";
 import { ForestRootLayout, forestLayoutMode } from "./forest-root-layout.js";
+import { ForestRootCache } from "./forest-root-cache.js";
 import {createPlantEnvelope,getShoreStoneField,relocateShorePlant,releaseShoreStoneField,SHORE_PLANT_MAX_SHIFT} from "./shore-contact.js";
 
-export function cellRandom(x, z, salt = 0) {
-  let h = Math.imul(x ^ 0x45d9f3b, 374761393) ^ Math.imul(z ^ salt, 668265263);
-  h = Math.imul(h ^ (h >>> 13), 1274126177);
-  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
-}
+
 const smooth = (a, b, x) => { const t = Math.max(0, Math.min(1, (x-a)/(b-a))); return t*t*(3-2*t); };
 export const MEADOW = Object.freeze({ tile: 24, cell: .8, nearStart: 23, nearEnd: 33, farStart: 62, farEnd: 78, nearPrefetch: 58, flowerRange: 42, flowerNearStart: 11, flowerNearEnd: 17, flowerNearPrefetch: 23 });
+// Explicit reference candidate; only ordinary middle grass uses this range.
+export function meadowSourceRange39(search=globalThis.location?.search||''){
+  return new URLSearchParams(search).get('meadowSourceRange39')==='1'?{enabled:true,farStart:120,farEnd:140}:{enabled:false,farStart:62,farEnd:78};
+}
+export function installMeadowSourceRange39(material,range){
+  if(!range.enabled)return material;
+  const previous=material.onBeforeCompile,key=material.customProgramCacheKey.bind(material);
+  material.onBeforeCompile=(shader,renderer)=>{
+    previous.call(material,shader,renderer);
+    const early='vPlantDistance<=23. || vPlantDistance>=78.',fade='smoothstep(62.,78.,vPlantDistance)';
+    if(!shader.vertexShader.includes(early)||!shader.fragmentShader.includes(fade))throw new Error('Middle grass source range hook changed');
+    shader.vertexShader=shader.vertexShader.replace(early,'vPlantDistance<=23. || vPlantDistance>=140.');
+    shader.fragmentShader=shader.fragmentShader.replace(fade,'smoothstep(120.,140.,vPlantDistance)');
+  };
+  material.customProgramCacheKey=()=>key()+'-source-range39-120-140';
+  return material;
+}
+
 const NAMES = ["column", "edge", "old", "pencil", "young"];
 export const TREE_NEEDLES=Object.freeze({mode:12,start:9,end:15,prefetch:28});
 // Spatial submission only: this does not change resident roots or visual LODs.
@@ -366,12 +400,17 @@ export class WorldEcology {
   constructor(world,{forestLayout=forestLayoutMode(),treeBatchSize=treeBatchSizeFromURL()}={}) {
     if(![64,96].includes(treeBatchSize))throw new RangeError("Tree submission blocks must be 64 or 96 metres");
     this.treeBatchSize=treeBatchSize;
+    this.treeRootOrder=new TreeRootOrder({enabled:new URLSearchParams(globalThis.location?.search||"").get("treeRootOrder")==="1"});
+    this.treeWindCoefficientsStatic=new URLSearchParams(globalThis.location?.search||"").get("treeWindCoefficientsStatic")==="1";
     this.treeWindCoefficients={value:new URLSearchParams(globalThis.location?.search||"").get("treeWindCoefficients")==="1"?1:0};
     this.treeWindPhase={value:new THREE.Vector2(0,1)};
     this.shadowVertexReuse={value:new URLSearchParams(globalThis.location?.search||"").get("shadowVertexReuse")==="1"};
     this.treeViewCull={value:new URLSearchParams(globalThis.location?.search||"").get("treeViewCull")==="1"?1:0};
-    this.treeFrustumCull={value:new URLSearchParams(globalThis.location?.search||"").get("treeFrustumCull")==="1"?1:0};
+    this.treeWorldFrustum=!this.treeViewCull.value&&new URLSearchParams(globalThis.location?.search||"").get("treeFrustumCull")==="world";
+    this.treeFrustumCull={value:this.treeWorldFrustum||new URLSearchParams(globalThis.location?.search||"").get("treeFrustumCull")==="1"?1:0};
     this.world=world;this.group=new THREE.Group();this.group.name="world-ecology";
+    this.crownRootMask=new URLSearchParams(globalThis.location?.search||"").get("crownRootMask")==="1"?new CrownRootMask():null;
+    if(this.crownRootMask)this.group.addEventListener("added",()=>{let scene=this.group.parent;while(scene&&!scene.isScene)scene=scene.parent;if(scene)this.crownRootMask.attachScene(scene);});
     this.materials=[];this.tiles=new Map();this.queue=[];this.range=2200;
     this.last=new THREE.Vector2(Infinity,Infinity);this.nearLast=new THREE.Vector2(Infinity,Infinity);
     this.windField=new MeadowWindField();this.treeRootWind=new SpruceRootWind();
@@ -379,14 +418,20 @@ export class WorldEcology {
     this.farGeometry=farTreeGeometry();
     this.farMaterial=attachEcologyWind(new THREE.MeshStandardMaterial({vertexColors:true,roughness:.94,side:THREE.DoubleSide}),this.uniforms,0);
     installFarSpruceShape(this.farMaterial);this.materials.push(this.farMaterial);
+    this.meadowSourceRange39=meadowSourceRange39();
     this.grassGeometries=[meadowGeometry(true),meadowGeometry(false)];
     this.grassMaterials=[2,4].map(mode=>attachEcologyWind(new THREE.MeshStandardMaterial({vertexColors:true,roughness:.91,side:THREE.DoubleSide}),this.uniforms,mode,true));
-    this.grassRootField=new GrassRootField(this.world);this.uniforms.uGrassRootField={value:1};
+    installMeadowSourceRange39(this.grassMaterials[1],this.meadowSourceRange39);
+    this.grassRootField=new GrassRootField(this.world);this.meadowRootCache=new MeadowRootCache(this);this.uniforms.uGrassRootField={value:1};
     this.grassMaterials.forEach(m=>installGrassSurface(m,this.uniforms.uGrassRootField));
     this.grassDepth=depthFor(this.grassMaterials[0],this.uniforms,2,true);this.materials.push(...this.grassMaterials);
     this.baseGrassGeometry=basalGrassGeometry();this.shoreGrassEnvelope=createPlantEnvelope([this.grassGeometries[0],this.baseGrassGeometry]);this.baseGrassMaterial=attachEcologyWind(new THREE.MeshStandardMaterial({vertexColors:true,roughness:.91,side:THREE.DoubleSide}),this.uniforms,7,true);installGrassSurface(this.baseGrassMaterial,this.uniforms.uGrassRootField);this.materials.push(this.baseGrassMaterial);
     const baseMesh=new THREE.InstancedMesh(createGrassFieldGeometry(this.baseGrassGeometry,8000,true),this.baseGrassMaterial,8000);baseMesh.onBeforeRender=baseMesh.onBeforeShadow=markGrassFieldRendered;baseMesh.count=0;baseMesh.castShadow=true;baseMesh.receiveShadow=true;baseMesh.frustumCulled=true;baseMesh.customDepthMaterial=depthFor(this.baseGrassMaterial,this.uniforms,7,true);this.group.add(baseMesh);
     this.baseGrass={mesh:baseMesh,meadowField:baseMesh.geometry.attributes.aMeadowRootField,meadowLandform:baseMesh.geometry.attributes.aMeadowLandform,meadowCommunity:baseMesh.geometry.attributes.aMeadowCommunity,records:[],dirtyMin:Infinity,dirtyMax:0};this.baseGrassAnchor="";this.grassRootsChanged=false;
+    // Materials must exist before main registers the ecology lighting chain.
+    this.valleyBanks=valleyBankContext(this.world);
+    this.riverValleyWet=new URLSearchParams(globalThis.location?.search||'').get('riverValleyWet')==='1'||Boolean(this.world.hydrology?.stats?.valleyDeposits?.nodes);
+    if(this.world.hydrology?.stats?.brookBendBanks?.nodes||this.riverValleyWet)this.prepareBrookWetMaterials();
     this.grassGroup=new THREE.Group();this.group.add(this.grassGroup);this.grassTiles=new Map();this.grassQueue=[];this.grassWanted=new Set();this.grassAnchor="";
     this.nearGroup=new THREE.Group();this.group.add(this.nearGroup);this.nearParts=[];this.nearTreeBatches=new Map();this.treeBatchRevision=0;
     this.flowerPools=[];this.flowerNearPools=[];this.flowerTiles=new Map();this.flowerRootsChanged=false;this.flowerNearAnchor="";
@@ -401,44 +446,30 @@ export class WorldEcology {
       for(const b of this.nearTreeBatches.values())if(b.view){total.batches++;for(const k of Object.keys(total))if(k!=="enabled"&&k!=="batches")total[k]+=b.view.stats[k]||0;}
       return total;
     }});
-    this.thresholdPlants=new ThresholdPlantField(world);
-    this.exclusions=new Map();
-    for(const e of world.entities){const key=Math.floor(e.x/64)+","+Math.floor(e.z/64);if(!this.exclusions.has(key))this.exclusions.set(key,[]);this.exclusions.get(key).push(e);}
-    this.routeBins=new Map();
-    for(const route of [...(world.objects.tracks||[]),...(world.objects.paths||[]),...(world.objects.boardwalks||[])])
-      for(let j=0;j<(route.pts?.length||0)-1;j++){
-        const a=route.pts[j],b=route.pts[j+1],radius=(route.width||1.5)/2+.35,segment={a,b,radius};
-        for(let x=Math.floor((Math.min(a[0],b[0])-radius)/64);x<=Math.floor((Math.max(a[0],b[0])+radius)/64);x++)
-          for(let z=Math.floor((Math.min(a[1],b[1])-radius)/64);z<=Math.floor((Math.max(a[1],b[1])+radius)/64);z++){
-            const key=x+","+z;if(!this.routeBins.has(key))this.routeBins.set(key,[]);this.routeBins.get(key).push(segment);
-          }
-      }
+    this.thresholdPlants=new ThresholdPlantField(world);this.boardwalkPlantContact39=new BoardwalkPlantContact39(world);
+    Object.assign(this,createForestExclusionIndex(world));
     this.forestLayout=new ForestRootLayout(world,{mode:forestLayout,originalAt:(ix,iz)=>this.originalTreeAt(ix,iz),excluded:(x,z,pad)=>this.excluded(x,z,pad),random:cellRandom});
     this.stats.forestLayout=this.forestLayout.stats;
+    this.stats.meadowRootCache=this.meadowRootCache.stats;
+    this.rootCache=new ForestRootCache(world,{mode:forestLayout});this.stats.forestRootCache=this.rootCache.stats;
     this.transform=new THREE.Object3D();
     this.forestFloor=new ForestFloor(world,{excluded:(x,z,pad)=>this.excluded(x,z,pad,true),wind:(m,mode,herb)=>attachEcologyWind(m,this.uniforms,mode,herb),depth:(m,mode,herb)=>depthFor(m,this.uniforms,mode,herb),bounds:refreshPlantBounds});
     this.group.add(this.forestFloor.group);this.materials.push(...this.forestFloor.materials);
+    this.reachBankCover39=new ReachBankCover39(world,{rootField:this.grassRootField,excluded:(x,z,p)=>this.excluded(x,z,p,true),wind:(m,mode,herb)=>attachEcologyWind(m,this.uniforms,mode,herb),depth:(m,mode,herb)=>depthFor(m,this.uniforms,mode,herb)});this.group.add(this.reachBankCover39.group);this.materials.push(...this.reachBankCover39.materials);
   }
-  excluded(x,z,padding=2,allowWetBank=false) {
-    if(!allowWetBank&&this.world.hydrology?.isExcluded(x,z,padding))return true;
-    const ix=Math.floor(x/64),iz=Math.floor(z/64);
-    for(const route of this.routeBins.get(ix+","+iz)||[]){
-      const dx=route.b[0]-route.a[0],dz=route.b[1]-route.a[1],len=dx*dx+dz*dz,t=len?Math.max(0,Math.min(1,((x-route.a[0])*dx+(z-route.a[1])*dz)/len)):0;
-      if(Math.hypot(x-route.a[0]-t*dx,z-route.a[1]-t*dz)<route.radius)return true;
-    }
-    for(let dz=-1;dz<=1;dz++)for(let dx=-1;dx<=1;dx++)for(const e of this.exclusions.get((ix+dx)+","+(iz+dz))||[]){
-      const pad=e.pad,hx=pad?.hx??(e.kind==="yurt"?4:12),hz=pad?.hz??7,c=Math.cos(e.rot||0),s=Math.sin(e.rot||0);
-      const ux=(x-e.x)*c-(z-e.z)*s-(pad?.cx||0),uz=(x-e.x)*s+(z-e.z)*c-(pad?.cz||0);
-      if(Math.abs(ux)<hx+padding&&Math.abs(uz)<hz+padding)return true;
-    }
-    return false;
-  }
-  async load({canopyLookup=null}={}) {
+  excluded(x,z,padding=2,allowWetBank=false) {return rootExcluded(this,x,z,padding,allowWetBank);}
+  async load({canopyLookup=null,textureRenderer=null}={}) {
     const loader=createSpruceLoader();this.spruceGeometryPool=new SpruceGeometryPool();this.treeLoadController=new AbortController();
     const useFarImpostor=new URLSearchParams(globalThis.location?.search||"").get("farImpostor")!=="0";
     const gpuMode=typeof location==='undefined'?'stations':(new URLSearchParams(location.search).get('needleGpu')||'stations');
     const useGpu=gpuMode!=='0',useStations=gpuMode==='stations',usePacked=gpuMode!=='stations'&&gpuMode!=='tex';
     const signal=this.treeLoadController.signal;
+    this.earlyTreeTextures=textureRenderer?new EarlyTreeTextures(textureRenderer,{signal,onFailure:error=>this.treeLoadController.abort(error)}):null;
+    this.stats.earlyTreeTextures=this.earlyTreeTextures?.stats??{enabled:false,status:"disabled"};
+    this.spruceSharedImages=new SpruceSharedImages({signal});this.stats.spruceSharedImages=this.spruceSharedImages.stats;
+    // Optional source-identical cache never blocks asset readiness. A late result
+    // serves subsequent cells; existing cells retain their exact root values.
+    this.rootCache.prepare({signal});this.meadowRootCache.prefetch({signal});
     this.stats.assetLoads={mode:'dependency-parallel',phases:{}};
     const crown=typeof location==='undefined'||new URLSearchParams(location.search).get('needleCrown')!=='0';
     const branches=useStations&&(typeof location==='undefined'||new URLSearchParams(location.search).get('needleBranches')!=='0');
@@ -457,20 +488,25 @@ export class WorldEcology {
       canopyFallback(this.stats.canopyPreparation,error);return null;
     });
     canopyReady.catch(()=>{});
+    const recipePrefetch=useGpu&&new URLSearchParams(globalThis.location?.search||'').get('needleRecipePrefetch')!=='0';
+    const recipeData=recipePrefetch?loadGpuSpruceRecipeData(undefined,{signal}):null;
+    // Fail fast through the shared transaction, and handle rejection even if
+    // the hi dependency fails before it can consume this promise.
+    recipeData?.catch(error=>this.treeLoadController.abort(error));
     let sources;
     try {
       sources=await loadEcologySources({
-        hi:()=>loadWorldGLB("./assets/v2/schrenk-spruce-hi.glb",loader),
-        mid:()=>loadWorldGLB("./assets/v2/schrenk-spruce-mid.glb",loader),
+        hi:()=>this.spruceSharedImages.load("hi",loader),
+        mid:()=>this.spruceSharedImages.load("mid",loader),
         local:()=>loadHabitatMap("vegmap",{signal}),core:()=>loadHabitatMap("vegcore",{signal}),
         flowerModule:()=>import("./flower-assets.js"),
         far:()=>useFarImpostor?loadFarSpruceAssets({signal}):null,
         needle:async hi=>{
           this.canopyCapture?.captureSource('hi',hi);
-          return (useGpu?loadGpuSpruceRecipe:loadSpruceRecipe)(hi,undefined,{signal,canopyCache:await canopyReady,onCanopyRecipe:(bytes,contract)=>this.canopyCapture?.captureRecipe(bytes,contract),packing:usePacked,branches,crown});
+          return (useGpu?loadGpuSpruceRecipe:loadSpruceRecipe)(hi,undefined,{signal,recipeData,canopyCache:await canopyReady,onCanopyRecipe:(bytes,contract)=>this.canopyCapture?.captureRecipe(bytes,contract),packing:usePacked,branches,crown});
         }
-      },{signal,onFailure:error=>this.treeLoadController.abort(error),phases:this.stats.assetLoads.phases});
-    } catch(error){this.canopyCapture?.dispose();this.spruceGeometryPool.dispose();throw error;}
+      },{signal,onFailure:error=>this.treeLoadController.abort(error),onReady:(name,value)=>this.earlyTreeTextures?.enqueue(name,value),beforePublish:()=>this.earlyTreeTextures?.finish(),phases:this.stats.assetLoads.phases});
+    } catch(error){await recipeData?.catch(()=>{});this.spruceSharedImages.dispose();this.canopyCapture?.dispose();this.spruceGeometryPool.dispose();throw error;}
     const postSourcesStarted=performance.now(),{hi,mid,local,core,needle,far:farAssets,flowerLOD,flowerNear}=sources;
     this.canopyCapture?.captureSource('mid',mid);
     let canopyCache=await canopyReady;
@@ -493,7 +529,7 @@ export class WorldEcology {
       this.farAttributeWriter=setFarSpruceImpostorAttributes;
       this.stats.farTrees={...farAssets.stats,templateTriangles:this.farGeometry.index.count/3,forms:5,azimuths:8,elevations:3};
     } else this.stats.farTrees={representation:"v13 opaque crown A/B",templateTriangles:104};
-    this.floraLocal=local;this.floraCore=core;this.stats.habitatTransport={local:local.transport,core:core.transport};this.treeSourceTextures=new Set();
+    this.floraLocal=local;this.floraCore=core;this.meadowRootCache.prepare({signal});this.stats.habitatTransport={local:local.transport,core:core.transport};this.treeSourceTextures=new Set();
     const gpuForms=[];
     this.stats.treeVertexLayout={enabled:treeVertexLayoutEnabled(),parts:0,bytes:0,buffersBefore:0,buffersAfter:0,prepareMs:0};
     for(const [gltf,mode] of [[hi,5],[mid,1],[needle,TREE_NEEDLES.mode]]) {
@@ -544,15 +580,19 @@ export class WorldEcology {
       }
       gltf.scene.traverse(o=>{if(o.isMesh){o.geometry.dispose();o.material.dispose();}});
     }
-    if(this.treeWindCoefficients.value){
+    if(this.treeWindCoefficients.value||this.treeWindCoefficientsStatic){
       let bytes=0,parts=0;
       for(const part of this.nearParts)if((part.mode===1||part.mode===5)&&part.mesh.material.alphaTest>0){
         bytes+=prepareTreeWindCoefficients(part.mesh.geometry).allocatedBytes;parts++;
-        for(const material of [part.mesh.material,part.mesh.customDepthMaterial])installTreeWindCoefficients(material,{phase:this.treeWindPhase,enabled:this.treeWindCoefficients});
+        for(const material of [part.mesh.material,part.mesh.customDepthMaterial])installTreeWindCoefficients(material,{phase:this.treeWindPhase,enabled:this.treeWindCoefficients,compileTimeOnly:this.treeWindCoefficientsStatic});
       }
-      this.stats.treeWindCoefficients={bytes,parts};
+      this.stats.treeWindCoefficients={bytes,parts,compileTimeOnly:this.treeWindCoefficientsStatic,activeWindBytesPerVertex:this.treeWindCoefficientsStatic?20:32,originalWindBytesPerVertex:12};
     }
     if(this.shadowVertexReuse.value&&!this.treeViewCull.value)for(const part of this.nearParts)if(part.mode===5&&part.mesh.material.alphaTest>0)part.shadowIndex=createTreeShadowIndex(part.mesh.geometry);
+    if(new URLSearchParams(globalThis.location?.search||"").get("middleTreeBatched")==="1"){
+      this.middleBatched=new SpruceMiddleBatched(this.nearParts,this.nearGroup,{onChange:()=>{this.treeBatchRevision++;}});
+      this.stats.middleTreeBatched=this.middleBatched.stats;
+    }
     if(needle.gpuPackets){
       if(gpuForms.filter(Boolean).length!==5)throw new Error('Missing GPU spruce form material');
       this.gpuBrushes=new (useStations?SpruceGpuStationBrushes:SpruceGpuBrushes)(gpuForms,createGpuBrushTemplate(needle.gpuPackets[0].topology));this.group.add(this.gpuBrushes.group);
@@ -576,26 +616,22 @@ export class WorldEcology {
     const m=this.floraLocal;
     return m&&x>=m.meta.origin[0]&&z>=m.meta.origin[1]&&x<m.meta.origin[0]+m.meta.size&&z<m.meta.origin[1]+m.meta.size?sampleHabitat(m,x,z,ch):sampleHabitat(this.floraCore,x,z,ch);
   }
-  treeAt(ix,iz) {return this.forestLayout.at(ix,iz);}
-  originalTreeAt(ix,iz) {
-    const x=(ix+.15+.7*cellRandom(ix,iz,1))*12,z=(iz+.15+.7*cellRandom(ix,iz,2))*12,cover=this.world.landcoverAt(x,z),density=smooth(.24,.8,cover.r);
-    if(cellRandom(ix,iz,3)>density*.86||this.excluded(x,z,3))return null;
-    const y=this.world.surface.heightAt(x,z);if(y>3300)return null;
-    return {id:"spruce:"+ix+":"+iz,x,y:y-.15,z,s:.72+cellRandom(ix,iz,4)*.76,rot:cellRandom(ix,iz,5)*Math.PI*2,variant:Math.floor(cellRandom(ix,iz,6)*5)};
-  }
+  treeAt(ix,iz) {const cached=this.rootCache.at(ix,iz);return cached===undefined?this.forestLayout.at(ix,iz):cached;}
+  originalTreeAt(ix,iz) {return originalForestRoot(this,ix,iz);}
   matrix(p) {
     const t=this.transform;t.position.set(p.x,p.y,p.z);t.rotation.set(0,p.rot,0);
     t.scale.set(p.s,p.sy??p.s,p.s);t.updateMatrix();return t.matrix;
   }
   buildTile(tx,tz) {
-    const list=[];
+    const started=performance.now(),list=[];
     for(let iz=tz*32;iz<(tz+1)*32;iz++)for(let ix=tx*32;ix<(tx+1)*32;ix++){const t=this.treeAt(ix,iz);if(t)list.push(t);}
-    let mesh=null;
+    const rootsDone=performance.now();let mesh=null;
     if(list.length){
       mesh=createFarTreeBatch(this.farGeometry,this.farMaterial,list,p=>this.matrix(p),{setAttributes:this.farAttributeWriter});
       this.group.add(mesh);
     }
     this.tiles.set(tx+","+tz,{mesh,tx,tz,count:list.length});
+    const timing=this.stats.farTileBuild??={tiles:0,rootsMs:0,batchesMs:0};timing.tiles++;timing.rootsMs+=rootsDone-started;timing.batchesMs+=performance.now()-rootsDone;
   }
   rebuildNearTrees(camera) {
     const p=camera.position,byVariant=Array.from({length:5},()=>[]),sourceRange=252+this.forestLayout.maxShift;
@@ -620,11 +656,12 @@ export class WorldEcology {
           mesh.name="spruce-"+mode+"-"+variant+"-"+chunk+"-"+partIndex;mesh.count=0;mesh.visible=false;
           mesh.castShadow=true;mesh.receiveShadow=true;mesh.frustumCulled=true;
           mesh.customDepthMaterial=template.customDepthMaterial;
-          if(mode===1||mode===5)installTreeFrustumCull(mesh,this.treeFrustumCull);
+          if(mode===1||mode===5)(this.treeWorldFrustum?installTreeWorldFrustum:installTreeFrustumCull)(mesh,this.treeFrustumCull);
           // Foliage dominates submitted vertices. Keep cheap bark/core batches on
           // their existing path: compacting them costs more CPU than it saves.
           const view=this.treeViewCull.value&&(mode===1||mode===5)&&template.material.alphaTest>0?installTreeViewBatch(mesh,{enabled:this.treeViewCull}):null;
           if(!view&&part.shadowIndex?.index)installTreeShadowIndex(mesh,part.shadowIndex,{enabled:this.shadowVertexReuse});
+          if(this.crownRootMask&&!view&&(mode===1||mode===5)&&template.material.alphaTest>0)this.crownRootMask.add(mesh);
           this.nearGroup.add(view?.proxy||mesh);
           batch={mesh,view,partIndex,variant,mode,chunk,records:[],ids:"",activeRecords:[],activeIndex:new Map()};
           this.nearTreeBatches.set(key,batch);this.treeBatchRevision++;
@@ -691,41 +728,138 @@ export class WorldEcology {
     return changedAny;
   }
   grassAt(ix,iz) {
+    const context=this.valleyBanks;if(!context)return this._grassAt(ix,iz);
+    const x=(ix+.15+.7*cellRandom(ix,iz,11))*MEADOW.cell,z=(iz+.15+.7*cellRandom(ix,iz,12))*MEADOW.cell;
+    if(!context.locate(x,z))return this._grassAt(ix,iz);
+    if(!this.valleySourceEcology){this.valleySourceEcology=Object.create(this);this.valleySourceEcology.world=context.sourceWorld;this.valleySourceEcology.valleyBanks=null;}
+    const source=this.valleySourceEcology._grassAt(ix,iz);if(!source)return null;
+    let placed=context.map(source);const suitable=(x,z)=>!this.excluded(x,z,.3,!!source.brookAsset)&&!this.world.hydrology.sampleAt(x,z,{includeDepth:false}).insideWater;
+    placed=relocateShorePlant(this.world,placed,this.shoreGrassEnvelope,suitable);
+    if(!source.brookAsset)return placed;
+    source.brookAsset.dispose();delete placed.brookAsset;
+    const geometries=[this.grassGeometries[0],this.grassGeometries[1],this.baseGrassGeometry],q=this.world.hydrology.sampleAt(placed.x,placed.z,{includeDepth:false});
+    const segment=q.id===null?null:this.world.hydrology.nearSegments(placed.x,placed.z,q.distance+.1).find(s=>s.id===q.id),section=segment?riverSectionAt(segment,.5):null;
+    const side=section?Math.sign(-section.fz*(placed.x-section.x)+section.fx*(placed.z-section.z)):1;
+    for(const offset of [0,.18,.36,.6,.9,1.3,1.8,2.4,3.2]){
+      const x=placed.x-(section?.fz??0)*side*offset,z=placed.z+(section?.fx??0)*side*offset;if(!suitable(x,z))continue;
+      const r={...placed,x,z,y:this.world.surface.heightAt(x,z)-.035},asset=createBrookWetAsset(this.world,r,geometries,{physicalOnly:true});if(asset)return{...r,brookShoulder:true,brookAsset:asset};
+    }
+    throw new Error('Valley bend could not support original wet root '+source.id+' '+JSON.stringify({x:placed.x,y:placed.y,z:placed.z,water:q,section,side}));
+  }
+  _grassAt(ix,iz) {
+    if(this.world.forestShoulderSourceWorld){
+      if(!this.forestShoulderSourceEcology){this.forestShoulderSourceEcology=Object.create(this);this.forestShoulderSourceEcology.world=this.world.forestShoulderSourceWorld;}
+      let root=seatForestShoulderRoot(this.world,this.forestShoulderSourceEcology._grassAt(ix,iz));
+      const reach=this.world.hydrology.forestReach39;
+      if(root&&reach&&Math.hypot(root.x+3611.9813305250705,root.z-4805.371282289286)<30){
+        const sources=[this.grassGeometries[0],this.grassGeometries[1],this.baseGrassGeometry];
+        if(!this.forestReachCommunity39){
+          const local=reach.waterSamples?this.world.hydrology.segments.filter(reach.activeSegment):[],xs=local.flatMap(s=>[s.a.x,s.b.x]),zs=local.flatMap(s=>[s.a.z,s.b.z]),records=[];
+          for(let z=Math.floor((Math.min(...zs)-4)/MEADOW.cell);z<=Math.ceil((Math.max(...zs)+4)/MEADOW.cell);z++)for(let x=Math.floor((Math.min(...xs)-4)/MEADOW.cell);x<=Math.ceil((Math.max(...xs)+4)/MEADOW.cell);x++){
+            const original=this.forestShoulderSourceEcology._grassAt(x,z);if(original){const {brookAsset,...record}=original;records.push(record);brookAsset?.dispose();}
+          }
+          this.forestReachCommunity39=createForestReachCommunity39(this.world,records,{accept:r=>{
+            if(this.excluded(r.x,r.z,.3,true))return false;
+            const asset=createBrookWetAsset(this.world,r,sources,{physicalOnly:true,preserveFootprint:true});if(!asset)return false;
+            const valid=!brookGrassIntersectsWater(this.world,r,asset.envelope);asset.dispose();return valid;
+          }});
+        }
+        const moved=this.forestReachCommunity39.placed.get(root.id);
+        if(moved){root.brookAsset?.dispose();const asset=createBrookWetAsset(this.world,moved,sources,{physicalOnly:true,preserveFootprint:true});if(!asset)throw new Error('Reach community lost validated footprint '+root.id);return{...moved,forestReachMove:Math.hypot(moved.x-root.x,moved.z-root.z),brookAsset:asset};}
+      }
+      if(root){
+        const sources=[this.grassGeometries[0],this.grassGeometries[1],this.baseGrassGeometry];
+        if(forestCurvatureNeedsBladeSeat(this.world,root,sources)){
+          const asset=createBrookWetAsset(this.world,root,sources,{physicalOnly:true,preserveFootprint:true});
+          if(!asset)throw new Error('Forest curvature cannot support original full-footprint root '+root.id);
+          return {...root,brookAsset:asset};
+        }
+      }
+      return root;
+    }
     const cell=MEADOW.cell,x=(ix+.15+.7*cellRandom(ix,iz,11))*cell,z=(iz+.15+.7*cellRandom(ix,iz,12))*cell;
-    if(this.excluded(x,z,.3))return null;
-    const lc=this.world.landcoverAt(x,z),normal=this.world.surface.normalAt(x,z,2);
-    if(lc.b>.12||normal.y<.72||cellRandom(ix,iz,13)<lc.g*.85+lc.r*.52)return null;
+    const oldExcluded=this.excluded(x,z,.3)||(this.riverValleyWet&&valleySourceExcluded(this.world,x,z,.3)),brookShoulder=oldExcluded&&(brookShoulderSuitable(this.world,x,z)||(this.riverValleyWet&&valleyShoulderSuitable(this.world,x,z)))&&!this.excluded(x,z,.3,true);
+    if(oldExcluded&&!brookShoulder)return null;
+    const lc=this.world.landcoverAt(x,z);
+    // These source-cell hashes are stateless. Reject the same doomed cells
+    // before normalAt's four height queries; accepted roots and seating stay exact.
+    if(lc.b>.12||(!brookShoulder&&cellRandom(ix,iz,13)<lc.g*.85+lc.r*.52))return null;
     const patch=cellRandom(Math.floor(x/5),Math.floor(z/5),79),vigor=.78+.35*patch;
     if(cellRandom(ix,iz,81)>.72+.22*patch)return null;
+    if(this.world.surface.normalAt(x,z,2).y<.72)return null;
     const flowers=this.habitat(x,z,0),s=.80+cellRandom(ix,iz,14)*.50;
     const root={id:"grass:"+ix+":"+iz,x,y:this.world.surface.heightAt(x,z)-.035,z,s,sy:s*vigor*(1-flowers*.23),rot:cellRandom(ix,iz,15)*Math.PI*2};
+    // Added wet-bank tufts keep every leaf and full stem height, with a
+    // narrower rooted footprint suited to a shoulder instead of meadow sod.
+    // New wet-bank sources retain full leaf dimensions; per-blade feet adapt below.
     const suitable=(px,pz)=>{
-      if(this.excluded(px,pz,.3))return false;
+      if(brookShoulder?(!(brookShoulderSuitable(this.world,px,pz)||(this.riverValleyWet&&valleyShoulderSuitable(this.world,px,pz)))||this.excluded(px,pz,.3,true)):this.excluded(px,pz,.3))return false;
       const cover=this.world.landcoverAt(px,pz);return cover.b<=.12&&Math.abs(cover.r-lc.r)<.25&&Math.abs(cover.g-lc.g)<.35&&this.world.surface.normalAt(px,pz,2).y>=.72;
     };
+    // Preserve every previously validated narrow-base shoulder tuft exactly;
+    // the richer per-blade asset only adds further admissible source roots.
+    if(brookShoulder&&brookShoulderSuitable(this.world,x,z)&&cellRandom(ix,iz,13)>=lc.g*.85+lc.r*.52){
+      const compact={...root,s:root.s*.48},shifted=relocateShorePlant(this.world,compact,this.shoreGrassEnvelope,suitable);
+      const fitted=this.thresholdPlants.relocate(shifted,this.shoreGrassEnvelope,p=>suitable(p.x,p.z)&&!getShoreStoneField(this.world).intersects(p,this.shoreGrassEnvelope),compact);
+      const retained=seatBrookShoulderGrass(this.world,fitted,grassStemFeet([this.grassGeometries[0],this.baseGrassGeometry]),this.shoreGrassEnvelope);
+      if(retained&&!getShoreStoneField(this.world).intersects(retained,this.shoreGrassEnvelope))return retained;
+    }
     const shoreRoot=relocateShorePlant(this.world,root,this.shoreGrassEnvelope,suitable);
-    return this.thresholdPlants.relocate(shoreRoot,this.shoreGrassEnvelope,p=>suitable(p.x,p.z)&&!getShoreStoneField(this.world).intersects(p,this.shoreGrassEnvelope),root);
+    const placed=this.thresholdPlants.relocate(shoreRoot,this.shoreGrassEnvelope,p=>suitable(p.x,p.z)&&!getShoreStoneField(this.world).intersects(p,this.shoreGrassEnvelope),root);
+    if(!brookShoulder)return this.boardwalkPlantContact39.relocate(placed,this.shoreGrassEnvelope,p=>suitable(p.x,p.z)&&!this.thresholdPlants.intersects(p,this.shoreGrassEnvelope)&&!getShoreStoneField(this.world).intersects(p,this.shoreGrassEnvelope));
+    const asset=createBrookWetAsset(this.world,placed,[this.grassGeometries[0],this.grassGeometries[1],this.baseGrassGeometry],{physicalOnly:this.riverValleyWet&&valleyShoulderSuitable(this.world,x,z)});
+    return asset?{...placed,brookShoulder:true,brookAsset:asset}:null;
   }
-  buildGrassTile(tx,tz,camera) {
-    const key=tx+","+tz,size=MEADOW.tile,list=[];
+  generateGrassTileRoots(tx,tz) {
+    const cached=this.meadowRootCache?.readTile(tx,tz);if(cached!==undefined)return cached;
+    const size=MEADOW.tile,list=[];
     for(let iz=Math.floor(tz*size/MEADOW.cell);iz<Math.ceil((tz+1)*size/MEADOW.cell);iz++)
       for(let ix=Math.floor(tx*size/MEADOW.cell);ix<Math.ceil((tx+1)*size/MEADOW.cell);ix++){
         const p=this.grassAt(ix,iz);if(p)list.push(p); // Ownership stays with the source cell even when a rock moves the root across a tile edge.
       }
-    const tile={tx,tz,list,meshes:[]};this.grassTiles.set(key,tile);this.grassRootsChanged=true;this.shoreStatsDirty=true;
+    return list;
+  }
+  buildGrassTile(tx,tz,camera) {
+    const key=tx+","+tz,size=MEADOW.tile,list=this.generateGrassTileRoots(tx,tz);
+    const tile={tx,tz,list,regular:list.filter(p=>!p.brookAsset),wet:list.filter(p=>p.brookAsset),meshes:[],wetMeshes:[]};this.grassTiles.set(key,tile);this.grassRootsChanged=true;this.shoreStatsDirty=true;
     this.addGrassMesh(tile,1);
+    const wetRange=MEADOW.farEnd+MEADOW.tile*.72+SHORE_PLANT_MAX_SHIFT;
+    if(!this.meadowSourceRange39.enabled||Math.hypot((tx+.5)*size-camera.position.x,(tz+.5)*size-camera.position.z)<=wetRange){this.addBrookWetMeshes(tile);tile.wetPrepared=true;}
     if(Math.hypot((tx+.5)*size-camera.position.x,(tz+.5)*size-camera.position.z)<MEADOW.nearPrefetch)this.addGrassMesh(tile,0);
     if(Math.hypot((tx+.5)*size-camera.position.x,(tz+.5)*size-camera.position.z)<MEADOW.flowerRange+size*.72+6)this.addFlowers(tx,tz);return tile;
   }
   addGrassMesh(tile,lod) {
-    if(tile.meshes[lod]||!tile.list.length)return;
-    const mesh=new THREE.InstancedMesh(createGrassFieldGeometry(this.grassGeometries[lod],tile.list.length),this.grassMaterials[lod],tile.list.length);
+    if(tile.meshes[lod]||!tile.regular.length)return;
+    const mesh=new THREE.InstancedMesh(createGrassFieldGeometry(this.grassGeometries[lod],tile.regular.length),this.grassMaterials[lod],tile.regular.length);
     mesh.onBeforeRender=mesh.onBeforeShadow=markGrassFieldRendered;
-    tile.list.forEach((p,i)=>{mesh.setMatrixAt(i,this.matrix(p));this.grassRootField.write(mesh.geometry.attributes.aMeadowRootField,i,p,mesh.geometry.attributes.aMeadowLandform,mesh.geometry.attributes.aMeadowCommunity);});mesh.instanceMatrix.needsUpdate=true;
-    mesh.computeBoundingSphere();mesh.boundingSphere.radius+=1;mesh.receiveShadow=true;mesh.castShadow=lod===0;
-    if(lod===0){mesh.customDepthMaterial=this.grassDepth;refreshPlantBounds(mesh,tile.list,this.uniforms.uWorldViewer.value,MEADOW.nearEnd);}
+    tile.regular.forEach((p,i)=>{mesh.setMatrixAt(i,this.matrix(p));this.grassRootField.write(mesh.geometry.attributes.aMeadowRootField,i,p,mesh.geometry.attributes.aMeadowLandform,mesh.geometry.attributes.aMeadowCommunity);});mesh.instanceMatrix.needsUpdate=true;
+    mesh.receiveShadow=true;mesh.castShadow=lod===0;
+    if(lod===0){
+      // Preserve geometry metadata, but do not merge every instance sphere:
+      // refreshPlantBounds immediately replaces that result with the wind box.
+      if(!mesh.geometry.boundingSphere)mesh.geometry.computeBoundingSphere();
+      mesh.customDepthMaterial=this.grassDepth;refreshPlantBounds(mesh,tile.regular,this.uniforms.uWorldViewer.value,MEADOW.nearEnd);
+    }else{mesh.computeBoundingSphere();mesh.boundingSphere.radius+=1;}
     tile.meshes[lod]=mesh;this.grassGroup.add(mesh);
   }
+  setTerrainSurfaceContact(contact){this.terrainSurfaceContact=contact;}
+  prepareBrookWetMaterials(){
+    if(!this.brookWetMaterials){
+      this.brookWetMaterials=[2,4,7].map(mode=>installBrookWetBatchMaterial(installGrassSurface(attachEcologyWind(new THREE.MeshStandardMaterial({vertexColors:true,roughness:.91,side:THREE.DoubleSide}),this.uniforms,mode,true),this.uniforms.uGrassRootField)));
+      this.brookWetDepth=[2,4,7].map((mode,i)=>installBrookWetBatchMaterial(depthFor(this.brookWetMaterials[i],this.uniforms,mode,true)));
+      this.materials.push(...this.brookWetMaterials);
+    }
+  }
+  addBrookWetMeshes(tile){
+    if(!tile.wet.length)return;
+    this.prepareBrookWetMaterials();
+    tile.wetMeshes=[0,1,2].map(kind=>{
+      const mesh=new THREE.Mesh(createBrookWetBatch(tile.wet,kind,this.grassRootField),this.brookWetMaterials[kind]);mesh.name='brook-root-mat-'+kind;
+      mesh.castShadow=kind!==1;mesh.receiveShadow=true;mesh.customDepthMaterial=this.brookWetDepth[kind];this.grassGroup.add(mesh);return mesh;
+    });
+    refreshBrookWetContact(this.world,tile,this.terrainSurfaceContact);
+  }
+  disposeBrookWetTile(tile){for(const mesh of tile.wetMeshes||[]){this.grassGroup.remove(mesh);mesh.geometry.dispose();}for(const root of tile.wet||[])root.brookAsset.dispose();}
   flowerChoice(x,z,seed) {
     const cosmos=this.habitat(x,z,0),daisy=this.habitat(x,z,1),blue=this.habitat(x,z,2);
     if(cosmos>.035&&seed<Math.min(.91,cosmos*1.35))return{kind:"cosmos",pick:cellRandom(Math.floor(x*9),Math.floor(z*9),41)};
@@ -736,16 +870,27 @@ export class WorldEcology {
   addFlowers(tx,tz) {
     if(!this.flowerPools.length)return;
     const key=tx+","+tz;if(this.flowerTiles.has(key))return;
+    const world=this.world.forestShoulderSourceWorld||this.world;
     const records=[],cell=.8,size=MEADOW.tile;
     for(let iz=Math.floor(tz*size/cell);iz<Math.ceil((tz+1)*size/cell);iz++)for(let ix=Math.floor(tx*size/cell);ix<Math.ceil((tx+1)*size/cell);ix++){
       const x=(ix+.2+.6*cellRandom(ix,iz,31))*cell,z=(iz+.2+.6*cellRandom(ix,iz,32))*cell;
-      if(Math.floor(x/size)!==tx||Math.floor(z/size)!==tz||this.excluded(x,z,.12))continue;
+      const valley=this.valleyBanks?.locate(x,z)?this.valleyBanks:null;
+      const sourceExcluded=valley?rootExcluded({...this,world:valley.sourceWorld},x,z,.12):this.excluded(x,z,.12);
+      if(Math.floor(x/size)!==tx||Math.floor(z/size)!==tz||sourceExcluded)continue;
       const choice=this.flowerChoice(x,z,cellRandom(ix,iz,33));if(!choice)continue;
       const options=this.flowerPools.filter(p=>p.variant.kind===choice.kind&&!/seed/.test(p.variant.id)).sort((a,b)=>a.variant.id.localeCompare(b.variant.id));
       const pool=options[Math.min(options.length-1,Math.floor(choice.pick*options.length))];if(!pool||pool.records.length>=pool.mesh.instanceMatrix.count)continue;
-      const scale=.8+.38*cellRandom(ix,iz,35),source={pool,slot:pool.records.length,tile:key,id:"flower:"+ix+":"+iz,x,y:this.world.surface.heightAt(x,z)-.025,z,s:scale,rot:cellRandom(ix,iz,34)*Math.PI*2};
+      const scale=.8+.38*cellRandom(ix,iz,35),source={pool,slot:pool.records.length,tile:key,id:"flower:"+ix+":"+iz,x,y:world.surface.heightAt(x,z)-.025,z,s:scale,rot:cellRandom(ix,iz,34)*Math.PI*2};
       if(!pool.shoreEnvelope){const high=this.flowerNearAssets?.variants.find(v=>v.id===pool.variant.id);pool.shoreEnvelope=createPlantEnvelope([...pool.variant.parts,...(high?.parts||[])].map(p=>p.geometry));}
-      const record=relocateShorePlant(this.world,source,pool.shoreEnvelope,(px,pz)=>!this.excluded(px,pz,.12)&&this.flowerChoice(px,pz,cellRandom(ix,iz,33))?.kind===choice.kind&&this.world.surface.normalAt(px,pz,1).y>.72);
+      const suitable=(px,pz)=>!this.excluded(px,pz,.12)&&this.flowerChoice(px,pz,cellRandom(ix,iz,33))?.kind===choice.kind&&world.surface.normalAt(px,pz,1).y>.72;
+      const bankSource=valley?valley.map({...source,y:valley.sourceWorld.surface.heightAt(x,z)-.025}):source;
+      const shoreRecord=relocateShorePlant(world,bankSource,pool.shoreEnvelope,suitable);
+      // The new authored yard circulation moves existing flowers into matching
+      // adjacent habitat, just as grass roots do. Do not delete or resow them,
+      // and do not extend this change to unrelated historical doorway layouts.
+      const selected=(this.thresholdPlants.intersectsYard(shoreRecord,pool.shoreEnvelope)||this.thresholdPlants.intersectsLodge(shoreRecord,pool.shoreEnvelope)||this.thresholdPlants.intersectsGuest(shoreRecord,pool.shoreEnvelope))?this.thresholdPlants.relocate(shoreRecord,pool.shoreEnvelope,p=>suitable(p.x,p.z)&&!getShoreStoneField(this.world).intersects(p,pool.shoreEnvelope),source):shoreRecord;
+      const boardwalkSelected=this.boardwalkPlantContact39.relocate(selected,pool.shoreEnvelope,p=>suitable(p.x,p.z)&&!this.thresholdPlants.intersects(p,pool.shoreEnvelope)&&!getShoreStoneField(this.world).intersects(p,pool.shoreEnvelope));
+      const record=seatForestShoulderRoot(this.world,boardwalkSelected);
       pool.records.push(record);pool.mesh.setMatrixAt(record.slot,this.matrix(record));pool.dirtyMin=Math.min(pool.dirtyMin,record.slot);pool.dirtyMax=Math.max(pool.dirtyMax,record.slot+1);records.push(record);
     }
     this.flowerTiles.set(key,records);this.flowerRootsChanged=true;this.shoreStatsDirty=true;
@@ -782,43 +927,11 @@ export class WorldEcology {
     const p=camera.position,anchor=Math.floor(p.x/4)+","+Math.floor(p.z/4);
     if(!this.grassRootsChanged&&anchor===this.baseGrassAnchor)return;
     this.baseGrassAnchor=anchor;this.grassRootsChanged=false;const wanted=new Map();
-    for(const tile of this.grassTiles.values())for(const root of tile.list)if(Math.hypot(root.x-p.x,root.z-p.z)<31)wanted.set(root.id,root);
+    for(const tile of this.grassTiles.values())for(const root of (tile.regular||tile.list))if(Math.hypot(root.x-p.x,root.z-p.z)<31)wanted.set(root.id,root);
     this.syncPool(this.baseGrass,wanted);
   }
-  updateMeadow(camera) {
-    const p=camera.position,above=p.y-this.world.surface.heightAt(p.x,p.z),visible=above<95;
-    this.grassGroup.visible=visible;this.baseGrass.mesh.visible=visible;for(const pool of [...this.flowerPools,...this.flowerNearPools])pool.mesh.visible=visible;
-    if(!visible){this.grassAnchor="";this.grassQueue=[];return;}
-    const tx=Math.floor(p.x/MEADOW.tile),tz=Math.floor(p.z/MEADOW.tile),anchor=Math.floor(p.x/4)+","+Math.floor(p.z/4);
-    if(anchor!==this.grassAnchor){
-      this.grassAnchor=anchor;const wanted=[],keep=new Set(),radius=MEADOW.farEnd+MEADOW.tile*.72+SHORE_PLANT_MAX_SHIFT,n=Math.ceil(radius/MEADOW.tile);
-      for(let z=tz-n;z<=tz+n;z++)for(let x=tx-n;x<=tx+n;x++){
-        const d=Math.hypot((x+.5)*MEADOW.tile-p.x,(z+.5)*MEADOW.tile-p.z);
-        if(d>radius)continue;const key=x+","+z;keep.add(key);
-        if(!this.grassTiles.has(key))wanted.push({x,z,d});
-        else {
-          const tile=this.grassTiles.get(key),needsNear=d<MEADOW.nearPrefetch&&!tile.meshes[0]&&tile.list.length;
-          const needsFlowers=d<MEADOW.flowerRange+MEADOW.tile*.72+6&&!this.flowerTiles.has(key);
-          if(needsNear||needsFlowers)wanted.push({x,z,d,existing:true});
-        }
-      }
-      this.grassWanted=keep;this.grassQueue=wanted.sort((a,b)=>a.d-b.d);
-      for(const [key,tile] of this.grassTiles){
-        const d=Math.hypot((tile.tx+.5)*MEADOW.tile-p.x,(tile.tz+.5)*MEADOW.tile-p.z);
-        if(d>radius+MEADOW.tile*1.8){for(const mesh of tile.meshes)if(mesh){this.grassGroup.remove(mesh);disposeGrassFieldGeometry(mesh.geometry);mesh.dispose();}this.removeFlowers(key);this.grassTiles.delete(key);this.grassRootsChanged=true;}
-        else {if(d>MEADOW.nearPrefetch+MEADOW.tile&&tile.meshes[0]){this.grassGroup.remove(tile.meshes[0]);disposeGrassFieldGeometry(tile.meshes[0].geometry);tile.meshes[0].dispose();tile.meshes[0]=null;}if(d>MEADOW.flowerRange+MEADOW.tile*1.4)this.removeFlowers(key);if(tile.meshes[0])refreshPlantBounds(tile.meshes[0],tile.list,p,MEADOW.nearEnd);}
-      }
-    }
-    const start=performance.now();let built=0;
-    while(this.grassQueue.length&&built<2){
-      const q=this.grassQueue.shift(),tile=this.grassTiles.get(q.x+","+q.z);
-      if(tile){
-        if(q.d<MEADOW.nearPrefetch)this.addGrassMesh(tile,0);
-        if(q.d<MEADOW.flowerRange+MEADOW.tile*.72+6)this.addFlowers(q.x,q.z);
-      } else this.buildGrassTile(q.x,q.z,camera);
-      built++;if(performance.now()-start>2.5)break;
-    }
-    this.syncNearFlowers(camera);this.syncBasalGrass(camera);
+  publishMeadowPools(camera) {
+    const p=camera.position,anchor=Math.floor(p.x/4)+","+Math.floor(p.z/4);
     for(const pool of [...this.flowerPools,...this.flowerNearPools,this.baseGrass]){
       const changed=pool.mesh.count!==pool.records.length||pool.dirtyMin<Infinity||pool.boundsAnchor!==anchor;
       pool.mesh.count=pool.records.length;
@@ -835,6 +948,48 @@ export class WorldEcology {
         pool.dirtyMin=Infinity;pool.dirtyMax=0;
       }
     }
+  }
+  updateMeadow(camera,{deferPools=false}={}) {
+    const p=camera.position,above=p.y-this.world.surface.heightAt(p.x,p.z),visible=above<95;
+    this.grassGroup.visible=visible;this.baseGrass.mesh.visible=visible;for(const pool of [...this.flowerPools,...this.flowerNearPools])pool.mesh.visible=visible;
+    if(!visible){this.grassAnchor="";this.grassQueue=[];return;}
+    const tx=Math.floor(p.x/MEADOW.tile),tz=Math.floor(p.z/MEADOW.tile),anchor=Math.floor(p.x/4)+","+Math.floor(p.z/4);
+    if(anchor!==this.grassAnchor){
+      this.grassAnchor=anchor;const wanted=[],keep=new Set(),radius=(this.meadowSourceRange39?.farEnd??MEADOW.farEnd)+MEADOW.tile*.72+SHORE_PLANT_MAX_SHIFT,n=Math.ceil(radius/MEADOW.tile);
+      for(let z=tz-n;z<=tz+n;z++)for(let x=tx-n;x<=tx+n;x++){
+        const d=Math.hypot((x+.5)*MEADOW.tile-p.x,(z+.5)*MEADOW.tile-p.z);
+        if(d>radius)continue;const key=x+","+z;keep.add(key);
+        if(!this.grassTiles.has(key))wanted.push({x,z,d});
+        else {
+          const tile=this.grassTiles.get(key),needsNear=d<MEADOW.nearPrefetch&&!tile.meshes[0]&&tile.regular.length;
+          const needsFlowers=d<MEADOW.flowerRange+MEADOW.tile*.72+6&&!this.flowerTiles.has(key);
+          const needsWet=this.meadowSourceRange39?.enabled&&!tile.wetPrepared&&tile.wet.length&&d<=MEADOW.farEnd+MEADOW.tile*.72+SHORE_PLANT_MAX_SHIFT;
+          if(needsNear||needsFlowers||needsWet)wanted.push({x,z,d,existing:true});
+        }
+      }
+      this.grassWanted=keep;this.grassQueue=wanted.sort((a,b)=>a.d-b.d);
+      for(const [key,tile] of this.grassTiles){
+        const d=Math.hypot((tile.tx+.5)*MEADOW.tile-p.x,(tile.tz+.5)*MEADOW.tile-p.z);
+        if(d>radius+MEADOW.tile*1.8){for(const mesh of tile.meshes)if(mesh){this.grassGroup.remove(mesh);disposeGrassFieldGeometry(mesh.geometry);mesh.dispose();}this.disposeBrookWetTile(tile);this.removeFlowers(key);this.grassTiles.delete(key);this.grassRootsChanged=true;}
+        else {if(d>MEADOW.nearPrefetch+MEADOW.tile&&tile.meshes[0]){this.grassGroup.remove(tile.meshes[0]);disposeGrassFieldGeometry(tile.meshes[0].geometry);tile.meshes[0].dispose();tile.meshes[0]=null;}if(d>MEADOW.flowerRange+MEADOW.tile*1.4)this.removeFlowers(key);if(tile.meshes[0])refreshPlantBounds(tile.meshes[0],tile.regular,p,MEADOW.nearEnd);}
+      }
+    }
+    const start=performance.now();let built=0;
+    while(this.grassQueue.length&&built<2){
+      const q=this.grassQueue.shift(),tile=this.grassTiles.get(q.x+","+q.z);
+      if(tile){
+        if(this.meadowSourceRange39?.enabled&&!tile.wetPrepared&&q.d<=MEADOW.farEnd+MEADOW.tile*.72+SHORE_PLANT_MAX_SHIFT){this.addBrookWetMeshes(tile);tile.wetPrepared=true;}
+        if(q.d<MEADOW.nearPrefetch)this.addGrassMesh(tile,0);
+        if(q.d<MEADOW.flowerRange+MEADOW.tile*.72+6)this.addFlowers(q.x,q.z);
+      } else this.buildGrassTile(q.x,q.z,camera);
+      built++;if(performance.now()-start>2.5)break;
+    }
+    let wetContactPending=0,wetContactUpdated=0;
+    for(const tile of this.grassTiles.values())if(tile.wet?.some(r=>r.brookAsset.physicalOnly)){const result=refreshBrookWetContact(this.world,tile,this.terrainSurfaceContact);wetContactPending+=result.pending;wetContactUpdated+=result.updated;}
+    this.stats.wetContactPending=wetContactPending;this.stats.wetContactUpdated=wetContactUpdated;
+    for(const tile of this.grassTiles.values())for(let i=0;i<(tile.wetMeshes?.length||0);i++)tile.wetMeshes[i].visible=tile.wet.some(r=>Math.hypot(r.x-p.x,r.z-p.z)<[35,80,27][i]);
+    this.syncNearFlowers(camera);this.syncBasalGrass(camera);
+    if(!deferPools)this.publishMeadowPools(camera);
     this.stats.basalGrassTufts=this.baseGrass.records.length;this.stats.grassBuiltThisFrame=built;this.stats.grassPending=this.grassQueue.length;this.stats.grassChunks=this.grassTiles.size;
     this.stats.grassTufts=[...this.grassTiles.values()].reduce((n,t)=>n+t.list.length,0);
     this.stats.grassFieldSamples=this.grassRootField.samples;
@@ -849,19 +1004,23 @@ export class WorldEcology {
     this.stats.flowerPlants=this.flowerPools.reduce((n,pool)=>n+pool.records.length,0);this.stats.flowerNearPlants=this.flowerNearPools.reduce((n,pool)=>n+pool.records.length,0);
   }
   syncTreeDynamics(camera,{roots=true}={}) {
+    if(this.treeRootOrder?.sync(this.nearTreeBatches,camera,this.treeBatchRevision)){this.treeBatchRevision++;roots=true;}
+    if(this.treeRootOrder){this.stats.treeRootOrder=this.treeRootOrder.stats;this.stats.treeBatchRevision=this.treeBatchRevision;}
     if(roots)this.treeRootWind.update(this.nearTreeBatches,this.windField,this.uniforms.uWindTime.value,this.treeBatchRevision);
+    this.middleBatched?.sync(this.nearTreeBatches,this.treeBatchRevision);
     if(this.gpuBrushes){this.gpuBrushes.sync(this.nearTreeBatches,camera.position);this.stats.needleGPU=this.gpuBrushes.stats;this.stats.treeNeedleTriangles=this.stats.treeNeedleShellTriangles+this.gpuBrushes.stats.triangles;}
     Object.assign(this.stats,{treeRootWindRoots:this.treeRootWind.stats.roots,treeRootWindCPUms:this.treeRootWind.stats.cpuMs,treeRootWindUploadBytes:this.treeRootWind.stats.bytes,treeRootWindBatches:this.treeRootWind.stats.batches});
   }
   finishPreparation(camera) {
     // No extra simulation tick or queue item. Publish the exact final wind state
     // and every completed lazy branch before shaders or the first scene render.
-    this.syncTreeDynamics(camera);this.preparationTreeState=null;
+    this.publishMeadowPools(camera);this.syncTreeDynamics(camera);this.preparationTreeState=null;
     if(this.stats.preparation)this.stats.preparation.finalSyncs++;
   }
   update(camera,dt,{preparing=false}={}) {
-    this.uniforms.uWindTime.value+=Math.min(dt,.05);if(this.treeWindCoefficients.value)updateTreeWindCoefficientPhase(this.treeWindPhase,this.uniforms.uWindTime.value);this.uniforms.uWorldViewer.value.copy(camera.position);const p=camera.position;
+    this.uniforms.uWindTime.value+=visualDelta(dt);if(this.treeWindCoefficients.value||this.treeWindCoefficientsStatic)updateTreeWindCoefficientPhase(this.treeWindPhase,this.uniforms.uWindTime.value);this.uniforms.uWorldViewer.value.copy(camera.position);const p=camera.position;
     this.windField.update(this.uniforms.uWindTime.value,p);this.stats.windFieldUpdates=this.windField.revisions;this.stats.windFieldCPUms=this.windField.lastRefreshMs;
+    this.stats.windSampling={mode:"absolute-time-bracket-33",time:this.uniforms.uWindTime.value,start:this.windField.lastUpdate,end:(this.windField.sampleIndex+1)*this.windField.interval,blend:this.windField.uniforms.uWindFieldBlend.value};
     if(Math.hypot(p.x-this.last.x,p.z-this.last.y)>120){
       this.last.set(p.x,p.z);const wanted=[];
       for(let z=Math.floor((p.z-this.range)/384);z<=Math.floor((p.z+this.range)/384);z++)for(let x=Math.floor((p.x-this.range)/384);x<=Math.floor((p.x+this.range)/384);x++){
@@ -885,13 +1044,15 @@ export class WorldEcology {
       else stats.skippedDynamicSyncs++;
       this.preparationTreeState={revision:this.treeBatchRevision,x:p.x,y:p.y,z:p.z,built:branches?.builtGroups};
     }else{this.syncTreeDynamics(camera);this.preparationTreeState=null;}
-    this.updateMeadow(camera);this.forestFloor.update(camera);Object.assign(this.stats,{forestShrubs:this.forestFloor.stats.shrubs,forestFerns:this.forestFloor.stats.ferns,wetBankSedges:this.forestFloor.stats.sedges,forestDeadwood:this.forestFloor.stats.deadwood,forestStones:this.forestFloor.stats.stones,forestFloorTriangles:this.forestFloor.stats.triangles,forestFloorPending:this.forestFloor.stats.pending,forestFloorRevision:this.forestFloor.stats.revision,forestFloorChunks:this.forestFloor.stats.chunks,forestFloorBuiltThisFrame:this.forestFloor.stats.builtThisFrame});
-    this.stats.treeChunks=this.tiles.size;this.stats.trees=[...this.tiles.values()].reduce((n,t)=>n+t.count,0);this.stats.pending=this.queue.length+this.grassQueue.length+this.forestFloor.stats.pending;
+    this.updateMeadow(camera,{deferPools:preparing});this.forestFloor.update(camera);this.reachBankCover39.update(camera,this.terrainSurfaceContact);this.stats.reachBankCover39=this.reachBankCover39.stats;Object.assign(this.stats,{forestShrubs:this.forestFloor.stats.shrubs,forestFerns:this.forestFloor.stats.ferns,wetBankSedges:this.forestFloor.stats.sedges,forestDeadwood:this.forestFloor.stats.deadwood,forestStones:this.forestFloor.stats.stones,forestFloorTriangles:this.forestFloor.stats.triangles,forestFloorPending:this.forestFloor.stats.pending,forestFloorRevision:this.forestFloor.stats.revision,forestFloorChunks:this.forestFloor.stats.chunks,forestFloorBuiltThisFrame:this.forestFloor.stats.builtThisFrame,forestFloorBatches:this.forestFloor.submission.stats});
+    this.stats.treeChunks=this.tiles.size;this.stats.trees=[...this.tiles.values()].reduce((n,t)=>n+t.count,0);this.stats.pending=this.queue.length+this.grassQueue.length+this.forestFloor.stats.pending+this.reachBankCover39.stats.pending;
   }
   dispose() {
-    this.treeLoadController?.abort();this.canopyCapture?.dispose();this.forestLayout.dispose();
+    this.middleBatched?.dispose();this.crownRootMask?.dispose();this.treeLoadController?.abort();this.earlyTreeTextures?.dispose();this.canopyCapture?.dispose();this.rootCache.dispose();this.forestLayout.dispose();
     if(this.gpuBrushes){this.group.remove(this.gpuBrushes.group);this.gpuBrushes.dispose();this.gpuBrushes=null;}
-    releaseShoreStoneField(this.world);this.windField.dispose();this.forestFloor.dispose();this.group.remove(this.forestFloor.group);
+    for(const tile of this.grassTiles.values())this.disposeBrookWetTile(tile);
+    this.brookWetDepth?.forEach(m=>m.dispose());
+    this.reachBankCover39.dispose();this.group.remove(this.reachBankCover39.group);releaseShoreStoneField(this.world);this.windField.dispose();this.forestFloor.dispose();this.group.remove(this.forestFloor.group);
     for(const tile of this.tiles.values())disposeFarTreeBatch(tile.mesh);
     const depths=new Set([this.grassDepth,...this.nearParts.map(p=>p.mesh.customDepthMaterial)]);
     this.group.traverse(o=>{if(o.isInstancedMesh){disposeGrassFieldGeometry(o.geometry);o.dispose();}if(o.customDepthMaterial)depths.add(o.customDepthMaterial);});
@@ -902,8 +1063,8 @@ export class WorldEcology {
     if(this.spruceGeometryPool)this.spruceGeometryPool.dispose();else new Set(this.nearParts.map(p=>p.mesh.geometry)).forEach(g=>g.dispose());
     // Flower assets own their materials and geometries.
     const flowerMaterials=new Set([...(this.flowerAssets?.materials||[]),...(this.flowerNearAssets?.materials||[])]);
-    for(const m of new Set(this.materials))if(!flowerMaterials.has(m)&&!this.forestFloor.materials.includes(m))m.dispose();
-    this.farAssets?.dispose();this.flowerAssets?.dispose();this.flowerNearAssets?.dispose();this.treeSourceTextures?.forEach(t=>t.dispose());this.group.clear();
-    this.grassRootField.dispose();this.grassTiles.clear();this.tiles.clear();this.flowerTiles.clear();this.floraLocal=null;this.floraCore=null;
+    for(const m of new Set(this.materials))if(!flowerMaterials.has(m)&&!this.forestFloor.materials.includes(m)&&!this.reachBankCover39.materials.includes(m))m.dispose();
+    this.farAssets?.dispose();this.flowerAssets?.dispose();this.flowerNearAssets?.dispose();this.treeSourceTextures?.forEach(t=>t.dispose());this.spruceSharedImages?.dispose();this.group.clear();
+    this.meadowRootCache.dispose();this.grassRootField.dispose();this.grassTiles.clear();this.tiles.clear();this.flowerTiles.clear();this.floraLocal=null;this.floraCore=null;
   }
 }

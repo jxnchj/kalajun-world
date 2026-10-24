@@ -69,10 +69,23 @@ export async function prepareSpruceForms(builder,count,getForm,{concurrency=1,ma
   return stats;
  }catch(error){builder.dispose();await Promise.allSettled(pending);throw error;}
 }
-export async function loadGpuSpruceRecipe(hi,url='./assets/v2/schrenk-spruce-needle.recipe.json.gz',{fetchImpl=fetch,signal,workerFactory,onPhase,canopyCache=null,onCanopyRecipe,crown=true,packing=false,branches=false,lazyBranches=branches,volume=spruceVolumeEnabled(),overlap=typeof location==='undefined'||new URLSearchParams(location.search).get('sprucePreparation')!=='serial',formQueue=typeof location==='undefined'?2:Number(new URLSearchParams(location.search).get('needleFormQueue')??2),formQueueBytes=24*1024*1024}={}){
+// Transport/JSON validation has no dependency on a loaded hi GLB or canopy.
+// Start it with the other ecology assets, but retain source digest validation
+// and publication in the original needle transaction.
+export async function loadGpuSpruceRecipeData(url='./assets/v2/schrenk-spruce-needle.recipe.json.gz',{fetchImpl=fetch,signal}={}){
+ const timings={},start=performance.now();abort(signal);
+ const response=await fetchImpl(url,{signal});if(!response.ok)throw new Error('GPU spruce recipe request failed: '+response.status);
+ const transport=new Uint8Array(await response.arrayBuffer());timings.fetchMs=performance.now()-start;abort(signal);
+ let t=performance.now();const json=await decodeGzipBytes(transport),recipe=JSON.parse(new TextDecoder().decode(json));timings.decodeMs=performance.now()-t;abort(signal);
+ t=performance.now();validateSpruceRecipe(recipe);timings.recipeValidateMs=performance.now()-t;abort(signal);
+ return {transportBytes:transport.length,json,recipe,timings};
+}
+export async function loadGpuSpruceRecipe(hi,url='./assets/v2/schrenk-spruce-needle.recipe.json.gz',{fetchImpl=fetch,signal,workerFactory,onPhase,recipeData=null,canopyCache=null,onCanopyRecipe,crown=true,packing=false,branches=false,lazyBranches=branches,volume=spruceVolumeEnabled(),overlap=typeof location==='undefined'||new URLSearchParams(location.search).get('sprucePreparation')!=='serial',formQueue=typeof location==='undefined'?2:Number(new URLSearchParams(location.search).get('needleFormQueue')??2),formQueueBytes=24*1024*1024}={}){
  const started=performance.now(),timings={},mark=(key,t)=>{timings[key]=performance.now()-t;onPhase?.(key,timings[key]);};let t=started;abort(signal);
- const response=await fetchImpl(url,{signal});if(!response.ok)throw new Error('GPU spruce recipe request failed: '+response.status);const transport=new Uint8Array(await response.arrayBuffer());mark('fetchMs',t);t=performance.now();
- const json=await decodeGzipBytes(transport),recipe=JSON.parse(new TextDecoder().decode(json));mark('decodeMs',t);t=performance.now();abort(signal);validateSpruceRecipe(recipe);await validateSpruceRecipeSource(hi,recipe);mark('validateMs',t);abort(signal);
+ const prepared=await (recipeData??loadGpuSpruceRecipeData(url,{fetchImpl,signal}));abort(signal);
+ const {json,recipe}=prepared;Object.assign(timings,prepared.timings);timings.recipePrefetched=!!recipeData;
+ timings.recipeWaitMs=performance.now()-started;for(const key of ['fetchMs','decodeMs'])onPhase?.(key,timings[key]);
+ t=performance.now();await validateSpruceRecipeSource(hi,recipe);mark('validateMs',t);abort(signal);
  if(crown&&branches&&volume)onCanopyRecipe?.(json,{volume:true,crown:true,branches:true,branchDetail:BRANCH_DETAIL});
  let cachedCanopy=canopyCache&&!canopyCache.disabled&&crown&&branches&&volume?canopyCache:null;
  if(cachedCanopy){
@@ -100,6 +113,6 @@ export async function loadGpuSpruceRecipe(hi,url='./assets/v2/schrenk-spruce-nee
   templateMs=performance.now()-preparationStarted;Object.assign(timings,queueStats);
   scene.traverse(o=>{if(o.isMesh){if(!materials.has(o.material)){const m=o.material.clone();m.userData.spruceBranchDetails=branches;materials.set(o.material,m);const association=hi.parser?.associations.get(o.material);if(association)hi.parser.associations.set(m,association);}o.material=materials.get(o.material);}});
   Object.assign(timings,{preparationMode:overlap?'overlap-worker-shell':'serial-worker-shell',formPreparationMs:templateMs,templateBuildMs:Math.max(0,templateMs-setupMs),geometrySetupMs:setupMs,parameterPackingMs:packets.reduce((n,p)=>n+(p.packingMs||0),0)});onPhase?.('templateBuildMs',timings.templateBuildMs);onPhase?.('geometrySetupMs',setupMs);
-  return{...hi,scene,scenes:[scene],gpuPackets:packets,userData:{representation:'GPU shared 1596-triangle brush; station/needle/twig parameter tables',recipeRevision:recipe.revision,responseBodyBytes:transport.length,recipeJSONBytes:json.length,generatedFrondBytes:0,crown:crown?(volume?'twisted-branch-volume-v13':'curved-open-crown-v1'):'source',branchDetail:branches?(lazyBranches?'lazy-spatial-brushes-v12':'spatial-brushes-v12'):'none',potentialShortSprays:packets.reduce((n,p)=>n+(p.drawGroups||[]).filter(g=>g.extra).reduce((a,g)=>a+g.count,0),0),parameterBytes:packets.reduce((n,p)=>n+p.bytes,0),brushes:packets.reduce((n,p)=>n+p.brushes,0),needles:packets.reduce((n,p)=>n+p.brushes*1440,0),timings,buildMs:performance.now()-started}};
+  return{...hi,scene,scenes:[scene],gpuPackets:packets,userData:{representation:'GPU shared 1596-triangle brush; station/needle/twig parameter tables',recipeRevision:recipe.revision,responseBodyBytes:prepared.transportBytes,recipeJSONBytes:json.length,generatedFrondBytes:0,crown:crown?(volume?'twisted-branch-volume-v13':'curved-open-crown-v1'):'source',branchDetail:branches?(lazyBranches?'lazy-spatial-brushes-v12':'spatial-brushes-v12'):'none',potentialShortSprays:packets.reduce((n,p)=>n+(p.drawGroups||[]).filter(g=>g.extra).reduce((a,g)=>a+g.count,0),0),parameterBytes:packets.reduce((n,p)=>n+p.bytes,0),brushes:packets.reduce((n,p)=>n+p.brushes,0),needles:packets.reduce((n,p)=>n+p.brushes*1440,0),timings,buildMs:performance.now()-started}};
  }catch(e){for(const g of owned)g.dispose();for(const m of materials.values())m.dispose();throw e;}finally{builder.dispose();}
 }

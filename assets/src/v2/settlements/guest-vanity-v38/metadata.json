@@ -1,0 +1,188 @@
+{
+  "source": "assets/src/v2/settlements/lanchuan-freedom.blend",
+  "sourceSHA256": "31b42bf4c641fb55da6535ace265633ef696005aa628695c32ebd14e977119a6",
+  "originalGLBSHA256": "b89c00c4c27dd181e8a1bc0f8be3845e74eae471a00ee59b78f4ed816604cd6a",
+  "candidate": "web/public/assets/v2/gh_lanchuan_rooms_vanity38.glb",
+  "candidateSHA256": "201190ad2bd3886783c2dfc9b81099ba944740bccb7973bd95102981720b7f10",
+  "candidateBytes": 14780020,
+  "blendSHA256": "0418790225b7113dec526e3ae176325dd589323a57f6e194789ae5a7ca794f2e",
+  "originalTriangles": 167930,
+  "removed": [
+    {
+      "name": "freedom1_vanity cabinet",
+      "triangles": 188
+    },
+    {
+      "name": "freedom1_vanity drawer",
+      "triangles": 188
+    },
+    {
+      "name": "freedom1_vanity drawer.001",
+      "triangles": 188
+    },
+    {
+      "name": "freedom1_basin counter",
+      "triangles": 188
+    },
+    {
+      "name": "freedom1_basin bowl",
+      "triangles": 360
+    },
+    {
+      "name": "freedom1_tap",
+      "triangles": 36
+    },
+    {
+      "name": "freedom1_tap spout",
+      "triangles": 36
+    },
+    {
+      "name": "freedom2_vanity cabinet",
+      "triangles": 188
+    },
+    {
+      "name": "freedom2_vanity drawer",
+      "triangles": 188
+    },
+    {
+      "name": "freedom2_vanity drawer.001",
+      "triangles": 188
+    },
+    {
+      "name": "freedom2_basin counter",
+      "triangles": 188
+    },
+    {
+      "name": "freedom2_basin bowl",
+      "triangles": 360
+    },
+    {
+      "name": "freedom2_tap",
+      "triangles": 36
+    },
+    {
+      "name": "freedom2_tap spout",
+      "triangles": 36
+    },
+    {
+      "name": "freedom3_vanity cabinet",
+      "triangles": 188
+    },
+    {
+      "name": "freedom3_vanity drawer",
+      "triangles": 188
+    },
+    {
+      "name": "freedom3_vanity drawer.001",
+      "triangles": 188
+    },
+    {
+      "name": "freedom3_basin counter",
+      "triangles": 188
+    },
+    {
+      "name": "freedom3_basin bowl",
+      "triangles": 360
+    },
+    {
+      "name": "freedom3_tap",
+      "triangles": 36
+    },
+    {
+      "name": "freedom3_tap spout",
+      "triangles": 36
+    }
+  ],
+  "removedTriangles": 3552,
+  "newTriangles": 35478,
+  "candidateTriangles": 199856,
+  "retainedObjectsExact": 569,
+  "reposedShowerScreens": [
+    {
+      "name": "freedom1_shower glass",
+      "hingeBlender": [
+        3.2200000286102295,
+        2.559999942779541,
+        0.0
+      ],
+      "angleDegrees": -35,
+      "reason": "original fixed side screen blocked bath passage next to WC; inward-open static authored door"
+    },
+    {
+      "name": "freedom2_shower glass",
+      "hingeBlender": [
+        8.819999694824219,
+        2.559999942779541,
+        0.0
+      ],
+      "angleDegrees": -35,
+      "reason": "original fixed side screen blocked bath passage next to WC; inward-open static authored door"
+    },
+    {
+      "name": "freedom3_shower glass",
+      "hingeBlender": [
+        13.770000457763672,
+        2.559999942779541,
+        0.0
+      ],
+      "angleDegrees": -35,
+      "reason": "original fixed side screen blocked bath passage next to WC; inward-open static authored door"
+    }
+  ],
+  "newObjects": 72,
+  "rooms": [
+    {
+      "room": 1,
+      "cabinetCenter": [
+        3.299999952316284,
+        3.5299999713897705,
+        0.49000000953674316
+      ],
+      "originalCabinetSize": [
+        1.1200000047683716,
+        0.5,
+        0.7799999713897705
+      ],
+      "counterTop": 0.9400000262260437
+    },
+    {
+      "room": 2,
+      "cabinetCenter": [
+        8.899999618530273,
+        3.5299999713897705,
+        0.49000000953674316
+      ],
+      "originalCabinetSize": [
+        1.1200000047683716,
+        0.5,
+        0.7799999713897705
+      ],
+      "counterTop": 0.9400000262260437
+    },
+    {
+      "room": 3,
+      "cabinetCenter": [
+        13.850000381469727,
+        3.5299999713897705,
+        0.49000000953674316
+      ],
+      "originalCabinetSize": [
+        1.1200000047683716,
+        0.5,
+        0.7799999713897705
+      ],
+      "counterTop": 0.9400000262260437
+    }
+  ],
+  "ao": {
+    "samples": 48,
+    "vertices": 19200,
+    "min": 0.3,
+    "max": 0.9340696423076565,
+    "mean": 0.4837876854071219
+  },
+  "elapsedSeconds": 9.052550416003214,
+  "provenance": "Original existing room configuration; designed construction details, not newly measured reference; original materials/textures reused; no Aholo",
+  "collision": "Original vanity furniture collision retained exactly. Three incorrect fixed shower screens are reposed inward 35 degrees with matching visible pivot hardware and collision; all other collision triangles preserved.",
+  "GI": "All 3 guest rooms source-bound sky 1/2, solar 1/2, fixtures 1/2, aperture, contact must be rebaked before adoption; mirror light positions unchanged."
+}

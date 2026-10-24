@@ -1,0 +1,56 @@
+{
+  "chair38 calibrated oak": {
+    "baseColor": [
+      0.6571039395864384,
+      0.5486303625288979,
+      0.560248851859997,
+      1
+    ],
+    "metallic": 0,
+    "diffuseReflectance": [
+      0.23682348430156708,
+      0.11614272743463518,
+      0.05534806847572327
+    ],
+    "transparent": false,
+    "alphaMode": "OPAQUE",
+    "transmission": 0,
+    "measurement": "Actual embedded baseColor image decoded sRGB to linear, times exported factor*(1-metallic); not factor alone"
+  },
+  "chair38 real endgrain": {
+    "baseColor": [
+      0.6324314895951517,
+      0.6034742340607967,
+      0.8059409371498791,
+      1
+    ],
+    "metallic": 0,
+    "diffuseReflectance": [
+      0.23682348430156708,
+      0.11614272743463516,
+      0.055348068475723274
+    ],
+    "transparent": false,
+    "alphaMode": "OPAQUE",
+    "transmission": 0,
+    "measurement": "Actual embedded baseColor image decoded sRGB to linear, times exported factor*(1-metallic); not factor alone"
+  },
+  "chair38 original rattan factor": {
+    "baseColor": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "metallic": 0,
+    "diffuseReflectance": [
+      0.4799404774252254,
+      0.3399779700220418,
+      0.19002351388439323
+    ],
+    "transparent": false,
+    "alphaMode": "OPAQUE",
+    "transmission": 0,
+    "measurement": "Actual embedded baseColor image decoded sRGB to linear, times exported factor*(1-metallic); not factor alone"
+  }
+}

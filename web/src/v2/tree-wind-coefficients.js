@@ -76,12 +76,22 @@ if(uTreeWindCoefficients>.5) {
 }
 `;
 
-export function installTreeWindCoefficients(material, { phase, enabled }) {
+// Same five stored float32 coefficients and arithmetic as the established
+// experiment. Unlike its runtime branch, no original wind attributes remain
+// active, and the compiler cannot retain the fallback sin path.
+const STATIC_REPLACEMENT = /* glsl */`
+float treeWindAlong=dot(aTreeRootWind.zw,aTreeWindCoefficients.xy)
+  +dot(uTreeWindCoefficientPhase,aTreeWindCoefficients.zw);
+vec2 ecoOffset=aTreeRootWind.xy*treeWindAlong
+  +vec2(-aTreeRootWind.y,aTreeRootWind.x)*aTreeRootEddy*aTreeWindEddy;
+`;
+
+export function installTreeWindCoefficients(material, { phase, enabled, compileTimeOnly = false }) {
   if (!phase?.value?.isVector2 || !enabled || !Number.isFinite(enabled.value))
     throw new Error("Tree wind coefficients require shared phase and enabled uniforms.");
   const current = installed.get(material);
   if (current) {
-    if (current.phase !== phase || current.enabled !== enabled) throw new Error("Conflicting tree wind coefficient controls.");
+    if (current.phase !== phase || current.enabled !== enabled || current.compileTimeOnly !== compileTimeOnly) throw new Error("Conflicting tree wind coefficient controls.");
     return material;
   }
   const previous = material.onBeforeCompile, key = material.customProgramCacheKey();
@@ -93,11 +103,25 @@ export function installTreeWindCoefficients(material, { phase, enabled }) {
         shader.vertexShader.split(OFFSET).length !== 2)
       throw new Error("Tree wind coefficients require the unchanged mode 1/5 static ecology wind hook.");
     shader.uniforms.uTreeWindCoefficientPhase = phase;
-    shader.uniforms.uTreeWindCoefficients = enabled;
-    shader.vertexShader = DECLARATIONS + shader.vertexShader.replace(OFFSET, REPLACEMENT);
+    if (compileTimeOnly) {
+      // Keep the immutable source attribute on the geometry for fallback/cache
+      // ownership, but do not expose it as an active vertex input in this program.
+      const weights = /vec3 ecoWeights=vec3\(clamp\(position.y,0\.,1\.\),0\.,0\.\);\s*#if defined\(ECO_HERB\) \|\| defined\(ECO_TREE\)\s*ecoWeights=aPlantWind;\s*#endif/;
+      if (!weights.test(shader.vertexShader)) throw new Error("Tree coefficient source weights hook changed.");
+      shader.vertexShader = DECLARATIONS.replace("uniform float uTreeWindCoefficients;", "")
+        + shader.vertexShader.replace(weights, "")
+          .replace("attribute vec3 aPlantWind;", "")
+          .replace(/#ifdef ECO_HERB\n[\s\S]*?#endif/g, "")
+          .replace(OFFSET, STATIC_REPLACEMENT);
+      if (/\baPlantWind\b|\becoWeights\b/.test(shader.vertexShader))
+        throw new Error("Static tree coefficients retained an original wind input consumer.");
+    } else {
+      shader.uniforms.uTreeWindCoefficients = enabled;
+      shader.vertexShader = DECLARATIONS + shader.vertexShader.replace(OFFSET, REPLACEMENT);
+    }
   };
-  material.customProgramCacheKey = () => key + "-tree-wind-coefficients-v1";
-  material.userData.treeWindCoefficients = { phase, enabled };
-  installed.set(material, { phase, enabled });
+  material.customProgramCacheKey = () => key + "-tree-wind-coefficients-v1" + (compileTimeOnly ? "-static" : "");
+  material.userData.treeWindCoefficients = { phase, enabled, compileTimeOnly };
+  installed.set(material, { phase, enabled, compileTimeOnly });
   return material;
 }

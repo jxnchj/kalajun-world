@@ -1,0 +1,104 @@
+{
+  "scope": "isolated actual 134 forest-creek tile CPU root generation; not browser/whole startup",
+  "equalAllRootRecords": true,
+  "baselineMeanMs": 331.2869233333334,
+  "indexedMeanMs": 209.1898611666667,
+  "samples": [
+    {
+      "enabled": false,
+      "round": 0,
+      "ms": 450.030166,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": true,
+      "round": 0,
+      "ms": 217.54716699999994,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": true,
+      "round": 1,
+      "ms": 217.25158299999998,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": false,
+      "round": 1,
+      "ms": 305.78470800000014,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": false,
+      "round": 2,
+      "ms": 341.4603750000001,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": true,
+      "round": 2,
+      "ms": 202.66233300000022,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": true,
+      "round": 3,
+      "ms": 205.498834,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": false,
+      "round": 3,
+      "ms": 296.25949999999966,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": false,
+      "round": 4,
+      "ms": 294.176833,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": true,
+      "round": 4,
+      "ms": 206.59820800000034,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": true,
+      "round": 5,
+      "ms": 205.5810419999998,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    },
+    {
+      "enabled": false,
+      "round": 5,
+      "ms": 300.00995800000055,
+      "queried": 137216,
+      "trees": 80927,
+      "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd"
+    }
+  ]
+}

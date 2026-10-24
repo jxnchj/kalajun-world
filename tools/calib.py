@@ -6,7 +6,7 @@ sys.path.insert(0, "tools")
 from viewpoint import *
 from fit_cameras import syn_rows, project
 
-CAM = json.load(open("tools/cameras.local.json"))
+CAM = json.load(open("tools/cameras.json"))
 OUT = sys.argv[1]
 names = sys.argv[2:] or list(CAM)
 terr = Terrain()

@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import {ROOM_BOUNCE_DATA} from './room-bounce-data.js';
+import {ROOM_BOUNCE_DATA} from './room-bounce-registry.js';
 import {RoomSolarTransport} from './room-solar-transport.js';
 const LOADERS={house_a:()=>import('./room-closed-door-data/house_a.js').then(m=>m.default),yurt:()=>import('./room-closed-door-data/yurt.js').then(m=>m.default)};
 const decode=f=>{const s=atob(f.data),a=new Uint16Array(s.length/2);for(let i=0;i<a.length;i++)a[i]=s.charCodeAt(i*2)|(s.charCodeAt(i*2+1)<<8);return a;};
@@ -13,7 +13,7 @@ export class RoomDoorTransport{
  constructor({loaders=LOADERS}={}){
   this.loaders=loaders;this.pending=new Map();this.fields=new Map();this.errors=new Map();this.disposed=false;
   this.solar=new RoomSolarTransport({data:{},secondData:{},secondLoaders:{}});this.sky=new Map();this.outputs=new Map();
-  this.stats={loadedRooms:0,pending:false,active:false,openness:1,apertureFraction:1,model:'two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI'};
+  this.stats={loadedRooms:0,pending:false,active:false,bypassedBy:null,openness:1,apertureFraction:1,model:'two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI'};
  }
  prepare(key){
   if(this.pending.has(key))return this.pending.get(key);if(!this.loaders[key])return Promise.resolve();
@@ -28,6 +28,7 @@ export class RoomDoorTransport{
   }).catch(e=>{this.errors.set(key,e);throw e;});this.pending.set(key,pending);return pending;
  }
  compose(key,output,normalToLocal,lighting,daylight,scale,skyWeight,sunEnabled,sunSecond,fraction){
+  this.stats.bypassedBy=null;
   if(this.errors.has(key))throw this.errors.get(key);
   const f=this.fields.get(key);this.stats.active=fraction<1;this.stats.apertureFraction=fraction;
   this.stats.pending=fraction<1&&!f;
@@ -47,6 +48,6 @@ export class RoomDoorTransport{
   this.solar.compose(key,entry.data,closed,normalToLocal,lighting,scale,sunEnabled,sunSecond);
   for(let i=0;i<output.length;i++)if(i%4!==3)output[i]=THREE.DataUtils.toHalfFloat(THREE.MathUtils.lerp(THREE.DataUtils.fromHalfFloat(closed[i]),THREE.DataUtils.fromHalfFloat(output[i]),fraction));
  }
- clear(){this.stats.pending=false;this.stats.active=false;this.stats.openness=1;this.stats.apertureFraction=1;this.solar.clear();}
+ clear(){this.stats.bypassedBy=null;this.stats.pending=false;this.stats.active=false;this.stats.openness=1;this.stats.apertureFraction=1;this.solar.clear();}
  dispose(){this.disposed=true;this.clear();this.fields.clear();this.pending.clear();this.errors.clear();this.sky.clear();this.outputs.clear();this.solar.dispose();this.stats.loadedRooms=0;}
 }

@@ -43,8 +43,8 @@ const fetcher=decoded=>async url=>{
 };
 test('real new and legacy loaders deliver identical GPU texture bytes through both HTTP and application gzip',async()=>{
  for(const decoded of [false,true]){
-  const old=await loadFarSpruceAssets({url:'http://localhost/impostor-manifest.json',fetch:fetcher(decoded),transport:'v26'});
-  const current=await loadFarSpruceAssets({url:'http://localhost/impostor-manifest.json',fetch:fetcher(decoded),transport:'v27'});
+  const old=await loadFarSpruceAssets({url:'http://localhost/impostor-manifest.json',fetch:fetcher(decoded),transport:'v26',farLossless38:false});
+  const current=await loadFarSpruceAssets({url:'http://localhost/impostor-manifest.json',fetch:fetcher(decoded),transport:'v27',farLossless38:false});
   for(const kind of ['albedo','normal'])assert.deepEqual(current[kind].image.data,old[kind].image.data);
   assert.equal(current.stats.encodedBytes,files.albedo.bytes+files.normal.losslessTransport.bytes);
   assert.equal(current.stats.decodedBytes,old.stats.decodedBytes);assert.equal(current.stats.gpuTextureBytes,old.stats.gpuTextureBytes);

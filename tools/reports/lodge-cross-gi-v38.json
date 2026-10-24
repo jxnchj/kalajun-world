@@ -1,0 +1,199 @@
+{
+  "seconds": 71.0664526670007,
+  "sourceSHA256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+  "blendSHA256": "89d4492afccb40b133491487a6f4739b6280864e7f22e87b482bce7e4482f71e",
+  "moduleBytes": 1298523,
+  "visibleDirectSamplesByOpening": [
+    3304,
+    11224,
+    11377,
+    6552,
+    0,
+    0,
+    6902,
+    5385,
+    1295,
+    0,
+    0
+  ],
+  "firstSkyMean": 0.00217437744140625,
+  "sourceOpenings": [
+    {
+      "kind": "window",
+      "center": [
+        -2.3,
+        1.15,
+        3.5
+      ],
+      "width": 1.2,
+      "height": 2.3,
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "skyWeight": 0.9,
+      "source": "closed-glazed-main-door"
+    },
+    {
+      "kind": "window",
+      "center": [
+        0.7,
+        1.24,
+        3.5
+      ],
+      "width": 2,
+      "height": 2.32,
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "skyWeight": 0.9
+    },
+    {
+      "kind": "window",
+      "center": [
+        3.9,
+        1.24,
+        3.5
+      ],
+      "width": 2,
+      "height": 2.32,
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "skyWeight": 0.9
+    },
+    {
+      "kind": "window",
+      "center": [
+        6.9,
+        1.24,
+        3.5
+      ],
+      "width": 1.6,
+      "height": 2.32,
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "skyWeight": 0.9
+    },
+    {
+      "kind": "window",
+      "center": [
+        9.3,
+        1.475,
+        3.5
+      ],
+      "width": 1,
+      "height": 1.15,
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "skyWeight": 0.9
+    },
+    {
+      "kind": "window",
+      "center": [
+        11.4,
+        1.475,
+        3.5
+      ],
+      "width": 1,
+      "height": 1.15,
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "skyWeight": 0.9
+    },
+    {
+      "kind": "window",
+      "center": [
+        -0.7,
+        1.5,
+        -3.5
+      ],
+      "width": 0.8,
+      "height": 0.7,
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "skyWeight": 0.9
+    },
+    {
+      "kind": "window",
+      "center": [
+        3.3,
+        1.5,
+        -3.5
+      ],
+      "width": 0.8,
+      "height": 0.7,
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "skyWeight": 0.9
+    },
+    {
+      "kind": "window",
+      "center": [
+        6.8,
+        1.5,
+        -3.5
+      ],
+      "width": 0.8,
+      "height": 0.7,
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "skyWeight": 0.9
+    },
+    {
+      "kind": "window",
+      "center": [
+        10.4,
+        1.5,
+        -3.5
+      ],
+      "width": 0.8,
+      "height": 0.7,
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "skyWeight": 0.9
+    },
+    {
+      "kind": "window",
+      "center": [
+        12.7,
+        1.475,
+        0
+      ],
+      "width": 1,
+      "height": 1.15,
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "skyWeight": 0.9
+    }
+  ]
+}

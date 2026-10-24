@@ -1,0 +1,8 @@
+{
+  "binaryIdentical": true,
+  "jsonIdenticalExceptSignature": true,
+  "oldSignature": "87571fde0beff3583a3a8fd4dac4d4a6b1ccb78b37493637ed4a9e0c5510881d",
+  "newSignature": "432fed1065f2d8226d6dfda4757234c02494b16e840bbfd869830ac4728c8912",
+  "binaryBytes": 11645696,
+  "binarySHA256": "a61c01b5eae22fb4aa6f0a41c898e21f4567f3be4397d40998a798b2142ef2ee"
+}

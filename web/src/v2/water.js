@@ -1,3 +1,5 @@
+import {RIVER_BED_GLSL} from "./river-bed-profile.js";
+import {visualDelta} from './visual-time.js';
 import * as THREE from "three";
 import { shoreMaterialVariation, SHORE_MATERIAL_GLSL } from "./shore-material.js";
 import { createShoreStones, createShoreRockGeometry, createRiverPebbleGeometry, shoreStoneMatrix } from "./shore-stones.js";
@@ -34,18 +36,19 @@ export function createRiverPhaseData(lines){
   return values;
 }
 // Both representations use the same cross-sections, level profile and channel positions.
-export function createWaterGeometry(segments,{detail=false,phaseData=null}={}){
-  const positions=[],flow=[],hydro=[],phase=[],profile=[],across=[],indices=[],cross=detail?[-1,-.55,0,.55,1]:[-1,1];
+export function createWaterGeometry(segments,{detail=false,phaseData=null,reach=null}={}){
+  const positions=[],flow=[],hydro=[],phase=[],profile=[],bedShape=[],across=[],indices=[],reachDepth=[],baseCross=detail?[-1,-.55,0,.55,1]:[-1,1];
   for(const s of segments){
+    const physical=Boolean(reach?.activeSegment(s)),cross=physical?Array.from({length:65},(_,i)=>-1+i/32):baseCross;
     const pa=phaseData?.get(s.a),pb=phaseData?.get(s.b);
     if(phaseData&&(!pa||!pb))throw new Error("Missing shared river phase for "+s.id);
-    const steps=detail?Math.max(1,Math.ceil(s.length/1.7)):1,start=positions.length/3;
+    const times=physical?reach.waterSamples(s):null,steps=physical?times.length-1:detail?Math.max(1,Math.ceil(s.length/1.7)):1,start=positions.length/3;
     for(let j=0;j<=steps;j++){
-      const t=j/steps,n=at(s,t),length=Math.hypot(n.fx,n.fz)||1,fx=n.fx/length,fz=n.fz/length;
+      const t=physical?times[j]:j/steps,n=physical?reach.waterSectionAt(s,t):at(s,t),length=Math.hypot(n.fx,n.fz)||1,fx=n.fx/length,fz=n.fz/length;
       const travelPhase=mix(pa?.phase??s.a.distance,pb?.phase??s.b.distance,t),slope=mix(pa?.slope??s.slope,pb?.slope??s.slope,t);
       const fallbackSpeed=.38+Math.min(2.8,slope*10)+Math.sqrt(n.width)*.12,speed=mix(pa?.speed??fallbackSpeed,pb?.speed??fallbackSpeed,t);
       for(const side of cross){const point=riverCrossPoint(n,side);positions.push(point.x,n.level+.006,point.z);
-        flow.push(fx,fz);hydro.push(n.depth,n.width,s.slope,n.distance);phase.push(travelPhase,slope,speed);profile.push(n.weight,n.barLeft,n.barRight,n.left/n.width);across.push(side);}
+        flow.push(fx,fz);hydro.push(n.depth,n.width,s.slope,n.distance);phase.push(travelPhase,slope,speed);profile.push(n.weight,n.barLeft,n.barRight,n.left/n.width);bedShape.push(n.bedWeight,n.bedDepositLeft,n.bedDepositRight);across.push(side);if(reach)reachDepth.push(physical?reach.depthAt(point.x,point.z,n.level):0,physical?1:0);}
     }
     for(let j=0;j<steps;j++)for(let k=0;k<cross.length-1;k++){
       const a=start+j*cross.length+k,b=a+1,c=a+cross.length,d=c+1;
@@ -55,9 +58,11 @@ export function createWaterGeometry(segments,{detail=false,phaseData=null}={}){
   const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.Float32BufferAttribute(positions,3));
   g.setAttribute("aRiverFlow",new THREE.Float32BufferAttribute(flow,2));g.setAttribute("aRiver",new THREE.Float32BufferAttribute(hydro,4));g.setAttribute("aAcross",new THREE.Float32BufferAttribute(across,1));
   g.setAttribute("aRiverPhase",new THREE.Float32BufferAttribute(phase,3));g.setAttribute("aRiverProfile",new THREE.Float32BufferAttribute(profile,4));
+  g.setAttribute("aRiverBedShape",new THREE.Float32BufferAttribute(bedShape,3));
+  if(reach)g.setAttribute("aReachDepth",new THREE.Float32BufferAttribute(reachDepth,2));
   g.setIndex(indices);g.computeVertexNormals();g.computeBoundingBox();g.computeBoundingSphere();return g;
 }
-export function createWaterMaterial(uniforms,{overview=false}={}){
+export function createWaterMaterial(uniforms,{overview=false,reachEnabled=false}={}){
   // PBR reflection plus an optional opaque scene snapshot, without a second scene pass.
   const m=new THREE.MeshPhysicalMaterial({color:0xffffff,roughness:.21,metalness:0,ior:1.333,
     transparent:true,opacity:1,depthWrite:false,side:THREE.DoubleSide,envMapIntensity:.85,specularIntensity:1});
@@ -65,20 +70,27 @@ export function createWaterMaterial(uniforms,{overview=false}={}){
   const reflectionDefaults=createWaterReflectionUniforms(),surfaceDefaults={...bindWaterSlopeField(m),uWaterSurfaceDetail:{value:1},uWaterOpticsDetail:{value:1}};
   m.onBeforeCompile=shader=>{
     Object.assign(shader.uniforms,reflectionDefaults,surfaceDefaults,createWaterRefractionUniforms(),uniforms);
+    if(reachEnabled){
+      shader.vertexShader=shader.vertexShader.replace('#include <common>','#include <common>\nattribute vec2 aReachDepth; varying vec2 vReachDepth;').replace('#include <begin_vertex>','#include <begin_vertex>\nvReachDepth=aReachDepth;');
+      shader.fragmentShader=shader.fragmentShader.replace('#include <common>','#include <common>\nvarying vec2 vReachDepth;');
+    }
     shader.vertexShader=shader.vertexShader.replace("#include <common>",`#include <common>
 attribute vec2 aRiverFlow;
 attribute vec3 aRiverPhase;
 attribute vec4 aRiverProfile;
+attribute vec3 aRiverBedShape;
 attribute vec4 aRiver;
 attribute float aAcross;
 varying vec2 vRiverFlow;
 varying vec3 vRiverPhase;
 varying vec4 vRiverProfile;
+varying vec3 vRiverBedShape;
 varying vec4 vRiver;
 varying float vAcross;
 varying vec3 vRiverWorld;`).replace("#include <begin_vertex>",`#include <begin_vertex>
-vRiverFlow=aRiverFlow;vRiverPhase=aRiverPhase;vRiverProfile=aRiverProfile;vRiver=aRiver;vAcross=aAcross;vRiverWorld=(modelMatrix*vec4(transformed,1.0)).xyz;`);
+vRiverBedShape=aRiverBedShape;vRiverFlow=aRiverFlow;vRiverPhase=aRiverPhase;vRiverProfile=aRiverProfile;vRiver=aRiver;vAcross=aAcross;vRiverWorld=(modelMatrix*vec4(transformed,1.0)).xyz;`);
     shader.fragmentShader=shader.fragmentShader.replace("#include <common>",`#include <common>
+${RIVER_BED_GLSL}
 ${WATER_SURFACE_GLSL}
 ${WATER_REFRACTION_GLSL}
 uniform float uWaterTime;
@@ -93,6 +105,7 @@ uniform float uRiverReflectionValid;
 varying vec2 vRiverFlow;
 varying vec3 vRiverPhase;
 varying vec4 vRiverProfile;
+varying vec3 vRiverBedShape;
 varying vec4 vRiver;
 varying float vAcross;
 varying vec3 vRiverWorld;
@@ -114,9 +127,9 @@ vec2 riverPacketField(vec2 p){
 float riverDistance=length(vRiverWorld.xz-uWaterViewer.xz);
 float riverU=clamp(abs(vAcross),0.0,1.0);
 float riverShelf=mix(vRiverProfile.y,vRiverProfile.z,step(0.0,vAcross));
-float riverShallowDepth=.025*(1.0-smoothstep(.45,1.0,riverU))
-  +vRiver.x*(1.0-smoothstep(.08,1.0,riverU))*(1.0-.70*riverShelf*smoothstep(.2,.62,riverU));
-float riverDepth=mix(.025+vRiver.x*max(0.0,1.0-vAcross*vAcross),riverShallowDepth,vRiverProfile.x);
+float riverDeposit=mix(vRiverBedShape.y,vRiverBedShape.z,step(0.0,vAcross));
+float riverDepth=riverBedDepth(vRiver.x,vRiverProfile.x,vAcross,riverShelf,vRiverBedShape.x,riverDeposit);
+${reachEnabled?'if(vReachDepth.y>.5)riverDepth=max(0.,vReachDepth.x);':''}
 float riverEdge=1.0-smoothstep(.84,1.0,abs(vAcross));
 // Shared cumulative travel time, scaled to reference metres, increases downstream.
 // dot(worldXZ,changingFlow) is NOT a streamline coordinate: it creates large
@@ -348,7 +361,7 @@ if(riverRefractionBlend>0.0){
 }
 #include <tonemapping_fragment>`);
   };
-  m.customProgramCacheKey=()=>overview?"river-overview-v12-hit2":"river-near-v12-hit2";return m;
+  m.customProgramCacheKey=()=>(overview?"river-overview-v38-section":"river-near-v38-section")+(reachEnabled?"-reach39-physical":"");return m;
 }
 function foamMaterial(uniforms){
   const m=new THREE.MeshStandardMaterial({color:0xc4ccc1,roughness:.88,transparent:true,opacity:.55,depthWrite:false,side:THREE.DoubleSide});
@@ -550,7 +563,7 @@ export class WorldWater {
     this.phaseData=createRiverPhaseData(this.hydrology.lines);
     this.group=new THREE.Group();this.group.name="world-water";this.viewpoints=this.hydrology.viewpoints;
     this.uniforms={...createWaterReflectionUniforms(),...createWaterRefractionUniforms(),uWaterTime:{value:0},uWaterViewer:{value:new THREE.Vector3()},uWaterNearCoverage:{value:0},uWaterSurfaceDetail:{value:1},uWaterOpticsDetail:{value:1}};
-    this.nearMaterial=createWaterMaterial(this.uniforms);this.overviewMaterial=createWaterMaterial(this.uniforms,{overview:true});this.foamMaterial=foamMaterial(this.uniforms);
+    this.nearMaterial=createWaterMaterial(this.uniforms,{reachEnabled:Boolean(this.hydrology.forestReach39)});this.overviewMaterial=createWaterMaterial(this.uniforms,{overview:true,reachEnabled:Boolean(this.hydrology.forestReach39)});this.foamMaterial=foamMaterial(this.uniforms);
     this.rockMaterial=createShoreRockMaterial({scanned:true});this.gravelMaterial=createShoreRockMaterial();this.rockTextures=[];
     this.materials=[this.nearMaterial,this.overviewMaterial,this.foamMaterial,this.rockMaterial,this.gravelMaterial];
     this.reflection=new LocalWaterReflection(this.hydrology,this.uniforms,{waterMaterials:[this.nearMaterial,this.overviewMaterial,this.foamMaterial]});
@@ -580,13 +593,13 @@ export class WorldWater {
       Object.assign(this.rockMaterial,{map:color,normalMap:normal,roughnessMap:arm,aoMap:arm,needsUpdate:true});
       this.rockTextures=maps;
     }
-    const geometry=createWaterGeometry(this.hydrology.segments,{phaseData:this.phaseData}),mesh=new THREE.Mesh(geometry,this.overviewMaterial);
+    const geometry=createWaterGeometry(this.hydrology.segments,{phaseData:this.phaseData,reach:this.hydrology.forestReach39}),mesh=new THREE.Mesh(geometry,this.overviewMaterial);
     mesh.name="all-rivers-overview";mesh.receiveShadow=true;mesh.renderOrder=2;this.group.add(mesh);this.overview=mesh;
     this.stats.overviewTriangles=geometry.index.count/3;this.loaded=true;return this;
   }
   buildBucket(bucket){
     const group=new THREE.Group();group.name="river-"+bucket.id;
-    const mesh=new THREE.Mesh(createWaterGeometry(bucket.segments,{detail:true,phaseData:this.phaseData}),this.nearMaterial);
+    const mesh=new THREE.Mesh(createWaterGeometry(bucket.segments,{detail:true,phaseData:this.phaseData,reach:this.hydrology.forestReach39}),this.nearMaterial);
     mesh.receiveShadow=true;mesh.renderOrder=2;group.add(mesh);
     this.group.add(group);const item={...bucket,group,mesh,rocks:null,wakes:null,stoneCount:0};this.active.set(bucket.id,item);return item;
   }
@@ -633,7 +646,7 @@ export class WorldWater {
   update(camera,dt=0){
     if(!this.loaded)return;
     this.reflection.prepare(camera);
-    const p=camera.position;this.uniforms.uWaterTime.value+=Math.min(.1,Math.max(0,dt));this.uniforms.uWaterViewer.value.copy(p);
+    const p=camera.position;this.uniforms.uWaterTime.value+=visualDelta(dt);this.uniforms.uWaterViewer.value.copy(p);
     if(this.anchor.distanceToSquared(new THREE.Vector2(p.x,p.z))>32**2){
       const desired=[...this.buckets.values()].filter(b=>distanceBox(p,b.bounds)<NEAR+190);
       const wanted=new Set(desired.map(b=>b.id));this.queue=desired.filter(b=>!this.active.has(b.id)).sort((a,b)=>distanceBox(p,a.bounds)-distanceBox(p,b.bounds));

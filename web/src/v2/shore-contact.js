@@ -45,6 +45,12 @@ export function createShoreStoneCollider(record,geometry){
  const slabs=finishSlabs(bins),box=geometry.boundingBox.clone().applyMatrix4(matrix);
  return {record,slabs,box};
 }
+// Same height-sliced physical shell used for shore stones; also accepts exact
+// original architectural meshes without replacing them by a clearing rectangle.
+export function createPlantGeometryCollider(geometry,matrix){
+ const bins=new Map();addGeometrySlabs(bins,geometry,matrix);geometry.computeBoundingBox();
+ return {slabs:finishSlabs(bins),box:geometry.boundingBox.clone().applyMatrix4(matrix)};
+}
 function overlap2D(a,b,padding){
  for(const poly of [a,b])for(let i=0;i<poly.length;i++){
   const p=poly[i],q=poly[(i+1)%poly.length],dx=q[0]-p[0],dz=q[1]-p[1],len=Math.hypot(dx,dz);if(len<1e-10)continue;

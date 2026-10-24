@@ -1,0 +1,50 @@
+{
+  "routes": [
+    {
+      "file": "candidate-b2.json",
+      "view": "river-forest",
+      "queue": 0,
+      "morph": 0,
+      "errors": []
+    },
+    {
+      "file": "west-after.json",
+      "view": "west-slope",
+      "queue": 0,
+      "morph": 0,
+      "errors": []
+    },
+    {
+      "file": "yard-after.json",
+      "view": "yard-0",
+      "queue": 0,
+      "morph": 0,
+      "errors": []
+    },
+    {
+      "file": "brook.json",
+      "view": "brook-lanchuan",
+      "queue": 0,
+      "morph": 0,
+      "errors": []
+    },
+    {
+      "file": "yard-work.json",
+      "view": "yard-1",
+      "queue": 0,
+      "morph": 0,
+      "errors": []
+    },
+    {
+      "file": "yard-linen.json",
+      "view": "yard-2",
+      "queue": 0,
+      "morph": 0,
+      "errors": []
+    }
+  ],
+  "tests": 830,
+  "build": "passed",
+  "visual": "intermediate",
+  "routeMeasurementCaution": "Only named performance-summary samples are timing evidence; route snapshots may contain an earlier measurement field."
+}

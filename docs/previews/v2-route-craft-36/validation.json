@@ -1,0 +1,499 @@
+{
+  "round": 36,
+  "device": {
+    "browser": "Chrome156",
+    "renderer": "ANGLE Metal Apple M4 Pro"
+  },
+  "consoleErrors": [],
+  "defaultRelief": "directional",
+  "floorBatchesDefault": false,
+  "tests": {
+    "fullBeforeFinalDefaultGate": 825,
+    "targetedAfterFinalDefaultGate": 32,
+    "build": "passed"
+  },
+  "artAcceptance": "intermediate; not final",
+  "physics": "No geometry/collision modified; previous walking evidence not counted as new validation",
+  "entrySmokeRoutes": [
+    {
+      "name": "route-brook",
+      "version": "route-continuity-36",
+      "view": "brook-lanchuan",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 229,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 0
+      },
+      "image": "route-brook.png"
+    },
+    {
+      "name": "route-forest",
+      "version": "route-continuity-36",
+      "view": "forest",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 252,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 0
+      },
+      "image": "route-forest.png"
+    },
+    {
+      "name": "route-guest-room",
+      "version": "route-continuity-36",
+      "view": "lanchuan-freedom-1",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 296,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 0
+      },
+      "image": "route-guest-room.png"
+    },
+    {
+      "name": "route-log-house",
+      "version": "route-continuity-36",
+      "view": "pastoral-house_a-entry",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 258,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": "house_a-living-1",
+        "pending": false,
+        "bundleReady": true,
+        "closedReady": true,
+        "ready": true,
+        "loadedStyles": 1
+      },
+      "image": "route-log-house.png"
+    },
+    {
+      "name": "route-river-forest",
+      "version": "route-continuity-36",
+      "view": "river-forest",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 160,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 0
+      },
+      "image": "route-river-forest.png"
+    },
+    {
+      "name": "route-valley",
+      "version": "route-continuity-36",
+      "view": "valley",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 158,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "route-valley.png"
+    },
+    {
+      "name": "route-west",
+      "version": "route-continuity-36",
+      "view": "west-slope",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 61,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "route-west.png"
+    },
+    {
+      "name": "route-yard",
+      "version": "route-continuity-36",
+      "view": "yard-0",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 276,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "route-yard.png"
+    },
+    {
+      "name": "route-yurt",
+      "version": "route-continuity-36",
+      "view": "pastoral-yurt-entry",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 228,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "route-yurt.png"
+    }
+  ],
+  "entrySmokeCaution": "Entry loading overlay had cleared but distant terrain was still refining; use fullRoutes for full-detail route acceptance.",
+  "fullRoutes": [
+    {
+      "name": "full-brook",
+      "version": "route-continuity-36",
+      "view": "brook-lanchuan",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "full-brook.png"
+    },
+    {
+      "name": "full-forest",
+      "version": "route-continuity-36",
+      "view": "forest",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "full-forest.png"
+    },
+    {
+      "name": "full-guest-room",
+      "version": "route-continuity-36",
+      "view": "lanchuan-freedom-1",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "full-guest-room.png"
+    },
+    {
+      "name": "full-log-house",
+      "version": "route-continuity-36",
+      "view": "pastoral-house_a-entry",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": "house_a-living-1",
+        "pending": false,
+        "bundleReady": true,
+        "closedReady": true,
+        "ready": true,
+        "loadedStyles": 1
+      },
+      "image": "full-log-house.png"
+    },
+    {
+      "name": "full-river-forest",
+      "version": "route-continuity-36",
+      "view": "river-forest",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "full-river-forest.png"
+    },
+    {
+      "name": "full-valley",
+      "version": "route-continuity-36",
+      "view": "valley",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "full-valley.png"
+    },
+    {
+      "name": "full-west",
+      "version": "route-continuity-36",
+      "view": "west-slope",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "full-west.png"
+    },
+    {
+      "name": "full-yard",
+      "version": "route-continuity-36",
+      "view": "yard-0",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "full-yard.png"
+    },
+    {
+      "name": "full-yurt",
+      "version": "route-continuity-36",
+      "view": "pastoral-yurt-entry",
+      "ready": true,
+      "preparing": false,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "time": 870,
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "errors": [],
+      "floorBatchesEnabled": false,
+      "householdGI": {
+        "key": null,
+        "pending": false,
+        "bundleReady": false,
+        "closedReady": false,
+        "ready": false,
+        "loadedStyles": 1
+      },
+      "image": "full-yurt.png"
+    }
+  ],
+  "fullTerrainMethod": "Existing terrain.prepareView(all) drained background queue; all9 saved states queuedTiles=0,morphingGroups=0. This is full-detail visual verification, not a measurement of normal startup time.",
+  "restoredNormalEntry": {
+    "url": "http://127.0.0.1:5174/v2.html?view=valley&time=870",
+    "version": "route-continuity-36",
+    "ready": true,
+    "preparing": false,
+    "viewport": {
+      "width": 1453,
+      "height": 870,
+      "pixelRatio": 1
+    },
+    "errors": [],
+    "consoleErrors": [],
+    "floorBatchesEnabled": false,
+    "terrainQueuedAtCheck": 169,
+    "terrainMorphingAtCheck": 0,
+    "note": "Normal dev server restored; entry smoke only, distant refinement continuing. Nine separate fullRoutes above are full-detail acceptance."
+  }
+}

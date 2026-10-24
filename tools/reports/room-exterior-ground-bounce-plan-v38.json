@@ -1,0 +1,112 @@
+{
+  "version": "room-exterior-ground-bounce-38",
+  "entityId": "cabins:-3967,2822.3:eec01b1433084d64",
+  "roomKey": "house_a-living-2",
+  "pose": {
+    "x": -3967,
+    "y": 2265.989267002689,
+    "z": 2822.3,
+    "rot": 1.613,
+    "scale": {
+      "x": 1,
+      "y": 1,
+      "z": 1
+    }
+  },
+  "terrainSources": [
+    {
+      "path": "web/public/data/core_height.bin.gz",
+      "sha256": "fdbb6b8ddb3ce142cbf5103e32dd1d8544285b2a362249e9dca2cfd960c8323d"
+    },
+    {
+      "path": "web/public/data/far_height.bin.gz",
+      "sha256": "2d8bd1b1fe6fd0bd4c99fcd674125443c59c6e401c52f4c1bdb168f7d04161dc"
+    },
+    {
+      "path": "web/public/data/detail.bin.gz",
+      "sha256": "9720d45e333f4c88a4a6dc0923ec6747c3782aa7beb4f780e1886563fe7646b2"
+    },
+    {
+      "path": "web/public/data/objects.json",
+      "sha256": "976e3468bbe4986923b51f298fe029da3d6d5d49df785974f55220ccb19a0825"
+    },
+    {
+      "path": "web/public/data/core_landcover.png",
+      "sha256": "b15a42484fce8ff36ce04a9c62f6936e30def1c9c34e83e1717bff3c9564a3ea"
+    },
+    {
+      "path": "web/public/data/far_landcover.png",
+      "sha256": "1db303b69f58bc25718e607f71028a7d3547bc8e463839a4a3602ef57477b816"
+    },
+    {
+      "path": "web/src/v2/terrain.js",
+      "sha256": "93c921867bbf98a278748dcc835203a78bda19627f02ffe1cab49c6f1a33b331"
+    },
+    {
+      "path": "web/src/v2/meadow-surface.js",
+      "sha256": "65a2b374bb00105f0ddf524cde97821c5477112f87becc62c4d37c332538c3e7"
+    }
+  ],
+  "externalSources": [
+    {
+      "sourceGLB": "assets/v2/household_living.glb",
+      "sourceSHA256": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a",
+      "sourceBlend": "assets/src/v2/pastoral/household-living-32.blend",
+      "blendSHA256": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4"
+    }
+  ],
+  "recipeSHA256": "3892de16fc49a57aa381d7d476f61d216da57801e3c1c34be215f69fb0072f16",
+  "samples": 96,
+  "surfaceSamples": 32,
+  "apertureSamples": 4,
+  "interiorBounceOrders": [
+    1,
+    2
+  ],
+  "summary": [
+    {
+      "closed": false,
+      "probeRayCount": 22711,
+      "firstSurfaces": 22711,
+      "secondSurfaces": 222874,
+      "secondLinks": 719170,
+      "groundHits": 354497,
+      "groundPaths": 354502,
+      "pathsByOpening": [
+        65093,
+        66263,
+        223146
+      ],
+      "limitedApertureSamples": 12,
+      "geometrySeconds": 14.625708667008439,
+      "directions": [
+        {
+          "index": 80,
+          "seconds": 0.26228041599097196,
+          "litGround": 341358,
+          "firstMean": [
+            0.00014492015179712325,
+            0.00013834834680892527,
+            2.410768502159044e-05
+          ],
+          "secondMean": [
+            3.287307845312171e-05,
+            1.908355625346303e-05,
+            1.8407347397442209e-06
+          ]
+        }
+      ],
+      "stateSeconds": 14.887991333001992
+    }
+  ],
+  "scope": "Only unit directional sun -> terrain Lambert reflection -> aperture -> exactly one/two indoor Lambert reflections -> probe. No sky, zero-indoor-bounce ground return or direct-aperture solar path. Raw linear cosine-convolved SH, original 239 valid probes, 96 probe directions and 32 secondary cosine rays. Four aperture quadrants as existing internal bounce bake; exact hit ground shadow, existing 3.5cm secondary source cache.",
+  "planOnly": true,
+  "seconds": 15.475756416009972,
+  "protected": {
+    "assets/src/v2/pastoral/house_a-lived.blend": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+    "web/public/assets/v2/house_a_lived.glb": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+    "assets/src/v2/pastoral/household-living-32.blend": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4",
+    "web/public/assets/v2/household_living.glb": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a"
+  },
+  "sourcesUnchanged": true
+}

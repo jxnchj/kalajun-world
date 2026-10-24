@@ -7,6 +7,12 @@ import { sampleMeadowField, getMeadowLandform } from "./meadow-surface.js";
 // hardware filtering precision can still differ slightly from CPU interpolation.
 export class GrassRootField {
   constructor(world){this.cache=new WeakMap();this.samples=0;this.landformCache=new WeakMap();this.landform=world?getMeadowLandform(world):null;this.landformSamples=0;}
+  seed(root,fields){
+    if(!(fields instanceof Float32Array)||fields.length!==12)throw new Error("Prepared grass fields must retain 12 Float32 values");
+    const x=Math.fround(root.x),z=Math.fround(root.z);
+    this.cache.set(root,{x,z,value:fields.subarray(0,4)});
+    this.landformCache.set(root,{x,z,value:fields.subarray(4,8),community:fields.subarray(8,12)});
+  }
   sample(root){
     const x=Math.fround(root.x),z=Math.fround(root.z),cached=this.cache.get(root);
     if(cached&&cached.x===x&&cached.z===z)return cached.value;

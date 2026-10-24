@@ -69,17 +69,17 @@ def fit(name, yaw_range=None, mask_cols=None):
 if __name__ == "__main__":
     # sun-derived yaw windows for sunset shots; building columns masked
     opts = {
-        "private-photo-02": dict(yaw_range=(285, 315), mask_cols=[(0.52, 0.80)]),
-        "private-photo-03": dict(yaw_range=(280, 305)),
-        "private-photo-04": dict(mask_cols=[(0.28, 1.0)]),
-        "private-photo-05": dict(mask_cols=[(0.0, 0.42)]),
-        "private-photo-06": dict(mask_cols=[(0.0, 0.47)]),
+        "private-photo": dict(yaw_range=(285, 315), mask_cols=[(0.52, 0.80)]),
+        "private-photo": dict(yaw_range=(280, 305)),
+        "private-photo": dict(mask_cols=[(0.28, 1.0)]),
+        "private-photo": dict(mask_cols=[(0.0, 0.42)]),
+        "private-photo": dict(mask_cols=[(0.0, 0.47)]),
     }
-    names = sys.argv[1:] or [n for n in PHOTOS if n != "private-photo-07"]
+    names = sys.argv[1:] or [n for n in PHOTOS if n != "private-photo"]
     res = {}
     for n in names:
         res[n] = fit(n, **opts.get(n, {}))
         print(n, res[n], flush=True)
-    old = json.load(open("tools/cameras.local.json")) if __import__("os").path.exists("tools/cameras.local.json") else {}
+    old = json.load(open("tools/cameras.json")) if __import__("os").path.exists("tools/cameras.json") else {}
     old.update(res)
-    json.dump(old, open("tools/cameras.local.json", "w"), indent=1)
+    json.dump(old, open("tools/cameras.json", "w"), indent=1)

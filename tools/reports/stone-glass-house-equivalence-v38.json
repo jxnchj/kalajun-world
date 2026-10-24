@@ -1,0 +1,6 @@
+{
+  "completeBinaryPayloadEqual": true,
+  "allJSONExceptSourceSignatureEqual": true,
+  "stoneCandidateDefaultOff": true,
+  "originalAndPreviousPreparedPreserved": true
+}

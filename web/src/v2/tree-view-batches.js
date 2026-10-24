@@ -84,7 +84,7 @@ export function installTreeViewBatch(source,{enabled=true,cacheIndices=true,reus
   localCentre=new Vector3(),localHalf=new Vector3(),supported=!!localBox&&!localBox.isEmpty()&&[...localBox.min,...localBox.max].every(Number.isFinite);
  if(supported){localBox.getCenter(localCentre);localBox.getSize(localHalf).multiplyScalar(.5);}
  const owned=new Set(["instanceMatrix","aTreeRootWind","aTreeRootEddy",...constants.map(([name])=>name)]);
- Object.assign(stats,{queries:0,tested:0,selected:0,rejected:0,uploads:0,bytes:bytesPerView,viewGeometries:0,drawnInstances:0,draws:0,unsupportedBounds:!supported,capacityFallbacks:0,boundsBuilds:0,boundsBytes:worldBounds.byteLength,shadowCasterQueries:0,transformUpdates:0,batchBoundsBuilds:0,indexCacheHits:0,indexCacheMisses:0,indexCacheBypasses:0,indexTests:0,matrixCopies:0,forceCopies:0,fullMatrixCopies:0,fullForceCopies:0,layoutReuses:0});
+ Object.assign(stats,{queries:0,tested:0,selected:0,rejected:0,uploads:0,bytes:bytesPerView,viewGeometries:0,viewAllocations:0,viewRetirements:0,drawnInstances:0,draws:0,unsupportedBounds:!supported,capacityFallbacks:0,boundsBuilds:0,boundsBytes:worldBounds.byteLength,shadowCasterQueries:0,transformUpdates:0,batchBoundsBuilds:0,indexCacheHits:0,indexCacheMisses:0,indexCacheBypasses:0,indexTests:0,matrixCopies:0,forceCopies:0,fullMatrixCopies:0,fullForceCopies:0,layoutReuses:0});
  function sync(){
   if(disposed)return;
   if(source.geometry!==geometry||source.instanceMatrix!==sourceMatrix||source.instanceMatrix.count!==capacity||geometry.attributes.aTreeRootWind!==wind||geometry.attributes.aTreeRootEddy!==eddy||source.material!==colour.source||source.customDepthMaterial!==depth?.source)throw new Error("Reinstall the tree view proxy after replacing its source resources");
@@ -145,9 +145,12 @@ export function installTreeViewBatch(source,{enabled=true,cacheIndices=true,reus
   }
   if(syncBuffers)fullCount=source.count;full.instanceCount=source.count;proxy.count=source.count;proxy.geometry=full;
  }
- function retire(record){releaseGeometry(record.geometry,owned);record.retired=true;records.delete(record);}
+ function retire(record){releaseGeometry(record.geometry,owned);record.retired=true;records.delete(record);stats.viewRetirements++;}
  function allocate(frame){
-  for(const record of records)if(record.frame<frame-2)retire(record);
+  // Native render.frame counts main, output and reflection renders. A dormant
+  // cadence-delayed cascade can therefore be old yet still useful. Retire only
+  // under capacity pressure; unrelated new views must not churn its VBOs.
+  if(records.size>=MAX_VIEW_RECORDS)for(const record of records)if(record.frame<frame-2)retire(record);
   // Transient precompile frustums must not accumulate permanent VBOs. If all
   // slots may still be referenced, draw the full prefix until they can retire.
   if(records.size>=MAX_VIEW_RECORDS){stats.capacityFallbacks++;return null;}
@@ -155,7 +158,7 @@ export function installTreeViewBatch(source,{enabled=true,cacheIndices=true,reus
    forces=new InstancedInterleavedBuffer(new Float32Array(capacity*5),5).setUsage(DynamicDrawUsage);
   g.setAttribute("instanceMatrix",matrices);g.setAttribute("aTreeRootWind",new InterleavedBufferAttribute(forces,4,0));g.setAttribute("aTreeRootEddy",new InterleavedBufferAttribute(forces,1,4));g.instanceCount=0;
   const r={geometry:g,matrices,forces,indices:new Uint32Array(capacity),count:0,matrixVersion:-1,windVersion:-1,eddyVersion:-1,frame:-Infinity};
-  records.add(r);stats.viewGeometries=records.size;stats.bytes=(records.size+1)*bytesPerView;return r;
+  records.add(r);stats.viewAllocations++;stats.viewGeometries=records.size;stats.bytes=(records.size+1)*bytesPerView;return r;
  }
  function selectionState(frustum){
   if(!indexCache.value||frustum.planes?.length!==6)return null;

@@ -1,5 +1,6 @@
+import {VanityUpperContact39,VANITY_UPPER_CONTACT_GLSL,vanityUpperContact39Enabled,packVanityContactAtlas39} from './vanity-upper-contact39.js';
 import * as THREE from "three";
-import {ROOM_CONTACT_DATA} from "./room-contact-data.js";
+import {ROOM_CONTACT_DATA} from "./room-contact-registry.js";
 
 export function decodeRoomContact(field){
   const source=Uint8Array.from(atob(field.data),c=>c.charCodeAt(0)),count=field.size[0]*field.size[1]*2;
@@ -12,6 +13,7 @@ export function decodeRoomContact(field){
 
 export const ROOM_CONTACT_GLSL=/* glsl */`
 uniform sampler2D uRoomContactMap;
+uniform vec2 uRoomContactAtlasUV;
 uniform float uRoomContactActive,uRoomContactDetail,uRoomContactHeightFilter;
 uniform mat4 uRoomContactWorldToLocal;
 uniform mat3 uRoomContactNormalToLocal;
@@ -19,7 +21,7 @@ uniform vec4 uRoomContactBounds;
 uniform vec2 uRoomContactSize,uRoomContactHeight;
 float roomContactTexel(vec2 index,vec3 local,vec3 localNormal){
   vec2 uv=(index+.5)/uRoomContactSize;
-  vec2 contactSample=texture2D(uRoomContactMap,uv).rg;
+  vec2 contactSample=texture2D(uRoomContactMap,uv*uRoomContactAtlasUV).rg;
   float receiver=mix(uRoomContactHeight.x,uRoomContactHeight.y,contactSample.g);
   vec2 sampleXZ=mix(uRoomContactBounds.xy,uRoomContactBounds.zw,index/max(uRoomContactSize-1.0,vec2(1.0)));
   // Compare each stored height with the receiver's tangent plane. A sloping
@@ -28,7 +30,7 @@ float roomContactTexel(vec2 index,vec3 local,vec3 localNormal){
   float support=1.0-smoothstep(.008,.032,abs(planeY-receiver));
   return mix(1.0,contactSample.r,support);
 }
-float roomContactCorrection(vec3 worldPosition,vec3 worldNormal){
+float ${vanityUpperContact39Enabled()?'roomFloorContactCorrection':'roomContactCorrection'}(vec3 worldPosition,vec3 worldNormal){
   if(uRoomContactActive<.5||uRoomContactDetail<=0.0||worldNormal.y<=.65)return 1.0;
   vec3 local=(uRoomContactWorldToLocal*vec4(worldPosition,1.0)).xyz;
   if(local.y<uRoomContactHeight.x-.032||local.y>uRoomContactHeight.y+.032)return 1.0;
@@ -37,7 +39,7 @@ float roomContactCorrection(vec3 worldPosition,vec3 worldNormal){
   if(uRoomContactHeightFilter<.5){
     // v16 comparison only; the default retains separate receiver heights.
     vec2 uv=(p*(uRoomContactSize-1.0)+.5)/uRoomContactSize;
-    vec2 contactSample=texture2D(uRoomContactMap,uv).rg;
+    vec2 contactSample=texture2D(uRoomContactMap,uv*uRoomContactAtlasUV).rg;
     float receiver=mix(uRoomContactHeight.x,uRoomContactHeight.y,contactSample.g);
     float support=(1.0-smoothstep(.008,.032,abs(local.y-receiver)))*smoothstep(.65,.95,worldNormal.y);
     return mix(1.0,contactSample.r,support*clamp(uRoomContactDetail,0.0,1.0));
@@ -55,7 +57,9 @@ float roomContactCorrection(vec3 worldPosition,vec3 worldNormal){
   float support=smoothstep(.65,.95,worldNormal.y)*clamp(uRoomContactDetail,0.0,1.0);
   return mix(1.0,visibility,support);
 }
-`;
+`+(vanityUpperContact39Enabled()?VANITY_UPPER_CONTACT_GLSL+/*glsl*/`
+float roomContactCorrection(vec3 p,vec3 n){return roomFloorContactCorrection(p,n)*vanityUpperCorrection(p,n);}
+`:" ");
 
 // CPU reference for height-aware RG8 visibility filtering and receiver slopes.
 export function sampleRoomContact(field,data,local,up=1,enabled=1,localNormal=[0,1,0]){
@@ -75,13 +79,13 @@ export function sampleRoomContact(field,data,local,up=1,enabled=1,localNormal=[0
 }
 
 export class RoomContactField{
-  constructor({data=ROOM_CONTACT_DATA}={}){
-    this.data=data;this.cache=new Map();this.key=null;this.instance=null;
+  constructor({data=ROOM_CONTACT_DATA,upperContactOptions}={}){
+    this.upperContact=new VanityUpperContact39(upperContactOptions);this.data=data;this.cache=new Map();this.key=null;this.instance=null;
     this.empty=this._texture(new Uint8Array([255,0]),1,1);
-    this.uniforms={uRoomContactMap:{value:this.empty},uRoomContactActive:{value:0},uRoomContactDetail:{value:1},uRoomContactHeightFilter:{value:1},
+    this.uniforms={...this.upperContact.uniforms,uRoomContactAtlasUV:{value:new THREE.Vector2(1,1)},uRoomContactMap:{value:this.empty},uRoomContactActive:{value:0},uRoomContactDetail:{value:1},uRoomContactHeightFilter:{value:1},
       uRoomContactWorldToLocal:{value:new THREE.Matrix4()},uRoomContactNormalToLocal:{value:new THREE.Matrix3()},uRoomContactBounds:{value:new THREE.Vector4()},
       uRoomContactSize:{value:new THREE.Vector2(1,1)},uRoomContactHeight:{value:new THREE.Vector2(-.1,.25)}};
-    this.stats={active:false,field:null,textureBytes:0,textures:0,model:"missing short-range floor contact visibility; no direct light baked"};
+    this.stats={upperContact:this.upperContact.stats,active:false,field:null,textureBytes:0,textures:0,model:"missing short-range floor contact visibility; no direct light baked"};
     Object.defineProperties(this.stats,{
       filter:{enumerable:true,get:()=>this.uniforms.uRoomContactHeightFilter.value<.5?"height-mixed-v16":"receiver-plane-bilinear"},
       samplesPerEligibleFragment:{enumerable:true,get:()=>this.uniforms.uRoomContactHeightFilter.value<.5?1:4},
@@ -98,7 +102,11 @@ export class RoomContactField{
     const u=this.uniforms;
     if(this.instance===item&&this.key===key)return;
     let texture=this.cache.get(key);
-    if(!texture){texture=this._texture(decodeRoomContact(field),...field.size);texture.name="room-contact-"+key;this.cache.set(key,texture);}
+    this.upperContact.set(key);
+    if(!texture){const raw=decodeRoomContact(field),high=this.upperContact.stats.active?this.upperContact.source.fields[key]:null,atlas=high?packVanityContactAtlas39(field,raw,high):null;
+      texture=atlas?this._texture(atlas.data,atlas.width,atlas.height):this._texture(raw,...field.size);texture.userData.contactAtlas=atlas?{floorUV:atlas.floorUV,upperUV:atlas.upperUV,originalBytes:raw.byteLength}:null;texture.name="room-contact-"+key;this.cache.set(key,texture);}
+    Object.assign(this.upperContact.stats,{atlasTextureBytes:[...this.cache.values()].filter(t=>t.userData.contactAtlas).reduce((n,t)=>n+t.image.data.byteLength,0),atlasExtraBytes:[...this.cache.values()].filter(t=>t.userData.contactAtlas).reduce((n,t)=>n+t.image.data.byteLength-t.userData.contactAtlas.originalBytes,0)});
+    const atlas=texture.userData.contactAtlas;u.uRoomContactAtlasUV.value.fromArray(atlas?.floorUV??[1,1]);u.uVanityUpperAtlasUV.value.fromArray(atlas?.upperUV??[0,0,1,1]);
     const p=item.pose,q=new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0),p.rot);
     // Local contacts follow the instance exactly. Nonuniform scale warps this
     // static local visibility; it is not a new metric bake.
@@ -109,6 +117,6 @@ export class RoomContactField{
     u.uRoomContactMap.value=texture;u.uRoomContactActive.value=1;this.instance=item;this.key=key;
     Object.assign(this.stats,{active:true,field:key,textureBytes:[...this.cache.values()].reduce((n,t)=>n+t.image.data.byteLength,0),textures:this.cache.size});
   }
-  clear(){this.instance=null;this.key=null;this.uniforms.uRoomContactActive.value=0;this.uniforms.uRoomContactMap.value=this.empty;this.stats.active=false;this.stats.field=null;}
-  dispose(){this.clear();for(const texture of this.cache.values())texture.dispose();this.cache.clear();this.empty.dispose();this.stats.textureBytes=0;this.stats.textures=0;}
+  clear(){this.upperContact.clear();this.instance=null;this.key=null;this.uniforms.uRoomContactActive.value=0;this.uniforms.uRoomContactMap.value=this.empty;this.stats.active=false;this.stats.field=null;}
+  dispose(){this.clear();this.upperContact.dispose();for(const texture of this.cache.values())texture.dispose();this.cache.clear();this.empty.dispose();this.stats.textureBytes=0;this.stats.textures=0;}
 }

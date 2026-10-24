@@ -1,0 +1,236 @@
+{
+  "scope": "isolated CPU 134 actual forest-creek tiles, no GPU or whole startup",
+  "ms": 313.58241599999985,
+  "queried": 137216,
+  "trees": 80927,
+  "digest": "93ad9d92426f6b8f6e3f3ab26b6642f7cb9a734d296c0bb27af567ed68dea3fd",
+  "stats": {
+    "mode": "v15",
+    "priorityFirst": true,
+    "skippedLowerPriority": 334752,
+    "maxShift": 18,
+    "minSpacing": 2.6,
+    "proposals": 81470,
+    "resolved": 80927,
+    "moved": 80773,
+    "conflictFallbacks": 31,
+    "habitatFallbacks": 123,
+    "cachedCells": 137839,
+    "cachedTiles": 158,
+    "fieldNodes": 2931,
+    "demSamples": 14655,
+    "coverSamples": 247504
+  },
+  "top": [
+    {
+      "ms": 59.668,
+      "name": "at",
+      "url": "file://./web/src/v2/forest-root-layout.js",
+      "line": 92
+    },
+    {
+      "ms": 54.875,
+      "name": "post",
+      "url": "node:inspector",
+      "line": 115
+    },
+    {
+      "ms": 51.289,
+      "name": "excluded",
+      "url": "file://./web/src/v2/ecology.js",
+      "line": 424
+    },
+    {
+      "ms": 24.292,
+      "name": "excluded",
+      "url": "file://./web/src/v2/ecology.js",
+      "line": 424
+    },
+    {
+      "ms": 24.249,
+      "name": "_proposal",
+      "url": "file://./web/src/v2/forest-root-layout.js",
+      "line": 70
+    },
+    {
+      "ms": 23.003,
+      "name": "_node",
+      "url": "file://./web/src/v2/forest-root-layout.js",
+      "line": 19
+    },
+    {
+      "ms": 12.79,
+      "name": "displacement",
+      "url": "file://./web/src/v2/forest-root-layout.js",
+      "line": 38
+    },
+    {
+      "ms": 12.083,
+      "name": "excluded",
+      "url": "file://./web/src/v2/ecology.js",
+      "line": 418
+    },
+    {
+      "ms": 11.664,
+      "name": "originalTreeAt",
+      "url": "file://./web/src/v2/ecology.js",
+      "line": 587
+    },
+    {
+      "ms": 11.458,
+      "name": "(garbage collector)",
+      "url": "",
+      "line": 0
+    },
+    {
+      "ms": 10.751,
+      "name": "query",
+      "url": "file://./web/src/v2/hydrology.js",
+      "line": 134
+    },
+    {
+      "ms": 7.165,
+      "name": "query",
+      "url": "file://./web/src/v2/hydrology.js",
+      "line": 134
+    },
+    {
+      "ms": 6.584,
+      "name": "(program)",
+      "url": "",
+      "line": 0
+    },
+    {
+      "ms": 5.417,
+      "name": "excluded",
+      "url": "file://./web/src/v2/ecology.js",
+      "line": 424
+    },
+    {
+      "ms": 4.876,
+      "name": "query",
+      "url": "file://./web/src/v2/hydrology.js",
+      "line": 134
+    },
+    {
+      "ms": 4.834,
+      "name": "_valid",
+      "url": "file://./web/src/v2/forest-root-layout.js",
+      "line": 60
+    },
+    {
+      "ms": 4,
+      "name": "_clearOriginals",
+      "url": "file://./web/src/v2/forest-root-layout.js",
+      "line": 50
+    },
+    {
+      "ms": 3.874,
+      "name": "query",
+      "url": "file://./web/src/v2/hydrology.js",
+      "line": 134
+    },
+    {
+      "ms": 3.167,
+      "name": "isExcluded",
+      "url": "file://./web/src/v2/hydrology.js",
+      "line": 249
+    },
+    {
+      "ms": 3,
+      "name": "landcoverAt",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 246
+    },
+    {
+      "ms": 2.667,
+      "name": "sampleRasterRGBA",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 73
+    },
+    {
+      "ms": 2.542,
+      "name": "",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 142
+    },
+    {
+      "ms": 2.041,
+      "name": "sampleRasterRGBA",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 73
+    },
+    {
+      "ms": 1.875,
+      "name": "heightAt",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 237
+    },
+    {
+      "ms": 1.542,
+      "name": "bedHeightAt",
+      "url": "file://./web/src/v2/hydrology.js",
+      "line": 176
+    },
+    {
+      "ms": 1.542,
+      "name": "isExcluded",
+      "url": "file://./web/src/v2/hydrology.js",
+      "line": 249
+    },
+    {
+      "ms": 1.333,
+      "name": "sampleRasterRGBA",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 73
+    },
+    {
+      "ms": 1.25,
+      "name": "cellRandom",
+      "url": "file://./web/src/v2/ecology.js",
+      "line": 37
+    },
+    {
+      "ms": 1.126,
+      "name": "",
+      "url": "file://./tools/profile_forest_root_v38.mjs",
+      "line": 0
+    },
+    {
+      "ms": 1,
+      "name": "query",
+      "url": "file://./web/src/v2/hydrology.js",
+      "line": 134
+    },
+    {
+      "ms": 0.792,
+      "name": "rawHeight",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 232
+    },
+    {
+      "ms": 0.791,
+      "name": "",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 142
+    },
+    {
+      "ms": 0.75,
+      "name": "",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 142
+    },
+    {
+      "ms": 0.75,
+      "name": "rawHeight",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 232
+    },
+    {
+      "ms": 0.75,
+      "name": "sampleRaster",
+      "url": "file://./web/src/v2/world-data.js",
+      "line": 62
+    }
+  ]
+}

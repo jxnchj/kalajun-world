@@ -1,5 +1,10 @@
-import { applyRepresentativeMeanders } from "./river-meander.js";
-import { riverBankMargin, riverSectionDepth, riverBankRise, riverBankMaterialDistance, projectRiverSection, applyRepresentativeBanks } from "./river-section.js";
+import {createForestReach39} from './forest-reach39.js';
+import {createForestBankCurvature38,forestBankCurvatureHeight38} from "./forest-bank-curvature-v38.js";
+import {FOREST_BANK_LINE,forestBankRootCover,forestRootedShoulderHeight} from "./forest-bank-shoulder.js";
+import {sampleMeadowField} from "./meadow-surface.js";
+import { applyBrookIncision } from "./river-incision.js";
+import { applyRepresentativeMeanders, applyBrookMeander, applyValleyMeander } from "./river-meander.js";
+import { riverBankMargin, riverSectionDepth, riverBankRise, riverValleySedimentRise, riverBankMaterialDistance, projectRiverSection, applyRepresentativeBanks, applyBrookBendBanks, applyValleyDeposits } from "./river-section.js";
 // Shared, cut-only channel geometry derived from the preserved DEM drainage lines.
 // This is a bounded visual/physical channel model, not a surveyed river or fluid solver.
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -50,8 +55,9 @@ function makeProtection(entities,assets,objects){
     return null;
   };
 }
-export function createHydrology({streamData={lines:[]},heightAt,entities=[],assetMetadata={},objects={},naturalBanks=true,riverMeanders=new URLSearchParams(globalThis.location?.search??"").get("riverMeanders")!=="0"}){
+export function createHydrology({streamData={lines:[]},heightAt,entities=[],assetMetadata={},objects={},naturalBanks=true,forestRootedShoulder38=false,forestBankCurvature38=false,forestReach39=false,landcoverAt,riverMeanders=new URLSearchParams(globalThis.location?.search??"").get("riverMeanders")!=="0",valleyLandform=naturalBanks&&new URLSearchParams(globalThis.location?.search??"").get("valleyLandform")!=="0",valleyMeanders=valleyLandform&&riverMeanders!==false&&new URLSearchParams(globalThis.location?.search??"").get("valleyMeanders")!=="0",valleySection=valleyMeanders&&new URLSearchParams(globalThis.location?.search??"").get("valleySection")!=="0"}){
   if(typeof heightAt!=="function")throw new TypeError("Hydrology requires the uncarved physical height function");
+  const valleySource=valleyMeanders?createHydrology({streamData,heightAt,entities,assetMetadata,objects,naturalBanks,riverMeanders,valleyLandform,valleyMeanders:false,valleySection:false}):null;
   const protectedAt=makeProtection(entities,assetMetadata,objects),sourceIndex=new Map(),seen=new Set();
   const lines=(streamData.lines||[]).map((points,sourceIndex)=>{
     const id=riverLineId(points);if(seen.has(id))throw new Error("Duplicate river source: "+id);seen.add(id);
@@ -130,10 +136,11 @@ export function createHydrology({streamData={lines:[]},heightAt,entities=[],asse
     }
   }
   const activeIds=new Set(segments.map(s=>s.lineId)),activeLines=lines.filter(l=>activeIds.has(l.id));
-  let physicalHeight=null;
-  function query(x,z){
+  let physicalHeight=null,forestReach=null;
+  function query(x,z,source=false){
     let best=null,score=Infinity,stripBest=null,stripScore=Infinity,naturalStrip=false;
-    for(const s of bins.get(key(x,z))||[]){
+    for(const current of bins.get(key(x,z))||[]){
+      const s=source?(current.valleySource??current):current;
       let p=projectSegment(x,z,s.a,s.b),section=null;
       if(s.naturalBanks){p=projectRiverSection(x,z,s,p.t);section=p.section;}
       const width=section?.width??mix(s.a.width,s.b.width,p.t),half=section?(p.signed<0?section.left:section.right):width/2;
@@ -156,7 +163,11 @@ export function createHydrology({streamData={lines:[]},heightAt,entities=[],asse
         if(stripWins){stripScore=q;stripBest=candidate;}
       }
     }
-    return naturalStrip&&stripBest.distance<=stripBest.half+.001?stripBest:best;
+    // The new wide-bank section owns its whole physical shoulder. Selecting a
+    // neighbouring round end here creates an artificial step in hydraulic
+    // level across a dry bank, despite a continuous longitudinal water level.
+    const stripLimit=stripBest?.section?.valleyWeight>0?stripBest.section.outer:stripBest?.half;
+    return naturalStrip&&stripBest.distance<=stripLimit+.001?stripBest:best;
   }
   function bedFor(q,base){
     const d=q.distance,inside=d<=q.half;
@@ -167,32 +178,56 @@ export function createHydrology({streamData={lines:[]},heightAt,entities=[],asse
       // A shallow depositional shoulder and a compact opposite bank share
       // the water's side strengths, inside the unchanged protection footprint.
       const rise=riverBankRise(q.section,q.signed<0?-1:1,u);
-      return Math.min(base,mix(edge,base,rise));
+      const cut=Math.min(base,mix(edge,base,rise));
+      // This opt-in deposited material can rise above a coarse DEM. The old
+      // generic cut-only minimum flattened the entire new point bar to water.
+      return cut+riverValleySedimentRise(q.section,q.signed<0?-1:1,d);
     }
     const bowl=q.level-.025-q.channelDepth*Math.max(0,1-(d/q.half)**2);
     const edge=q.level-.025,blend=1-smooth(0,q.margin,Math.max(0,d-q.half));
     return Math.min(base,inside?bowl:mix(base,edge,blend));
   }
-  function bedHeightAt(x,z,base=heightAt(x,z)){const q=query(x,z);return q?bedFor(q,base):base;}
-  function sampleAt(x,z,{includeDepth=true}={}){
+  function baselineBedHeightAt(x,z,base=heightAt(x,z)){const q=query(x,z);return q?bedFor(q,base):base;}
+  function currentBedHeightAt(x,z,base=heightAt(x,z)){
+    const q=query(x,z);let height=q?bedFor(q,base):base;
+    if(forestBankCurvature38)height=forestBankCurvatureHeight38({field:forestCurvatureField,query:q,rawHeight:base,baseline:height,protectedGround:Boolean(q&&Math.abs((q.section?.distance??Infinity)-(forestShoulderAnchor?.a.distance??0))<18&&protectedAt(x,z))});
+    if(!forestRootedShoulder38||!q?.section||q.segment.lineId!==FOREST_BANK_LINE||!forestShoulderAnchor)return height;
+    if(Math.abs(q.section.distance-forestShoulderAnchor.a.distance)>=60||q.distance<=q.half||q.distance>=q.section.outer||base<=q.section.level)return height;
+    return forestRootedShoulderHeight({lineId:q.segment.lineId,section:q.section,side:q.signed<0?-1:1,distance:q.distance,height,rawHeight:base,
+      rootCover:forestBankRootCover(landcoverAt(x,z),sampleMeadowField(x,z)),offset:q.section.distance-forestShoulderAnchor.a.distance,protectedGround:Boolean(protectedAt(x,z))});
+  }
+  function bedHeightAt(x,z,base=heightAt(x,z)){return forestReach?forestReach.heightAt(x,z):currentBedHeightAt(x,z,base);}
+  function sampleBaseAt(x,z,{includeDepth=true}={},surface=physicalHeight){
     const q=query(x,z);if(!q)return EMPTY;
     const inside=q.distance<=q.half;
     const materialDistance=q.section?riverBankMaterialDistance(q.section,q.signed<0?-1:1,q.distance):q.distance;
     const wetness=1-smooth(q.half*.65,q.half+q.margin,materialDistance);
-    const actual=includeDepth?(physicalHeight?physicalHeight(x,z):bedFor(q,heightAt(x,z))):q.level-(q.section?riverSectionDepth(q.section,q.distance/q.half*(q.signed<0?-1:1)):q.channelDepth),depth=Math.max(0,q.level-actual);
+    const actual=includeDepth?(surface?surface(x,z):bedFor(q,heightAt(x,z))):q.level-(q.section?riverSectionDepth(q.section,q.distance/q.half*(q.signed<0?-1:1)):q.channelDepth),depth=Math.max(0,q.level-actual);
     return {wetness,riverBed:1-smooth(q.half*.8,q.half+q.margin*.85,materialDistance),
       bank:Math.exp(-(((materialDistance-q.half)/Math.max(.25,q.margin*.48))**2))*wetness,
       depth:inside?depth:0,waterLevel:inside?q.level:null,surfaceLevel:q.level,width:q.width,flowX:q.segment.meander?q.section.fx:q.segment.flowX,flowZ:q.segment.meander?q.section.fz:q.segment.flowZ,
       insideWater:inside&&depth>.008,shoreDistance:q.distance-q.half,distance:q.distance,id:q.segment.id};
   }
+  function sampleAt(x,z,options={}){
+    const original=sampleBaseAt(x,z,options);if(!forestReach)return original;
+    const q=forestReach.queryAt(x,z);if(!q||!forestReach.activeSegment(q.segment)||Math.abs(q.section.distance-forestReach.origin)>=18)return original;
+    const section=forestReach.waterSectionAt(q.segment,q.t),half=q.signed<0?section.left:section.right,inside=q.distance<=half;
+    const level=section.level,depth=Math.max(0,level-(physicalHeight?physicalHeight(x,z):bedHeightAt(x,z)));
+    const margin=section.outer-half,wetness=1-smooth(half*.65,section.outer,q.distance),riverBed=1-smooth(half*.8,half+margin*.85,q.distance),bank=Math.exp(-(((q.distance-half)/Math.max(.25,margin*.48))**2))*wetness;
+    return {...original,wetness,riverBed,bank,depth:inside?depth:0,waterLevel:inside?level:null,insideWater:inside&&depth>.008,shoreDistance:q.distance-half,width:section.width};
+  }
   function intersectsBounds(rect,{minWidth=0}={}){
+    if(![rect.minX,rect.maxX,rect.minZ,rect.maxZ,minWidth].every(Number.isFinite)||rect.minX>rect.maxX||rect.minZ>rect.maxZ)throw new RangeError("River bounds must be finite and ordered");
+    if(!Object.values(rect).every(v=>Number.isSafeInteger(Math.floor(v/CELL))))throw new RangeError("River bounds exceed finite grid coordinates");
     if(rect.maxX-rect.minX>256||rect.maxZ-rect.minZ>256)return activeLines.some(l=>l.maxWidth>=minWidth&&overlap(l.bounds,rect));
     for(let ix=Math.floor(rect.minX/CELL);ix<=Math.floor(rect.maxX/CELL);ix++)for(let iz=Math.floor(rect.minZ/CELL);iz<=Math.floor(rect.maxZ/CELL);iz++)
       if((bins.get(ix+","+iz)||[]).some(s=>Math.max(s.a.width,s.b.width)>=minWidth&&overlap(s.bounds,rect)))return true;
     return false;
   }
   function nearSegments(x,z,radius){
+    if(![x,z,radius].every(Number.isFinite)||radius<0)throw new RangeError("River query coordinates and radius must be finite; radius must be nonnegative");
     const rect={minX:x-radius,maxX:x+radius,minZ:z-radius,maxZ:z+radius},result=[],used=new Set();
+    if(!Object.values(rect).every(v=>Number.isFinite(v)&&Number.isSafeInteger(Math.floor(v/CELL))))throw new RangeError("River query exceeds finite grid coordinates");
     for(let ix=Math.floor(rect.minX/CELL);ix<=Math.floor(rect.maxX/CELL);ix++)for(let iz=Math.floor(rect.minZ/CELL);iz<=Math.floor(rect.maxZ/CELL);iz++)
       for(const s of bins.get(ix+","+iz)||[])if(!used.has(s.id)){used.add(s.id);if(projectSegment(x,z,s.a,s.b).distance<=radius)result.push(s);}
     return result;
@@ -201,7 +236,7 @@ export function createHydrology({streamData={lines:[]},heightAt,entities=[],asse
   const originalLength=(streamData.lines||[]).reduce((sum,line)=>sum+line.slice(1).reduce((n,p,i)=>n+Math.hypot(p[0]-line[i][0],p[1]-line[i][1]),0),0);
   const stats={sourceLines:lines.length,sourcePoints:sampled,sourceLength:originalLength,profileLength:sourceLength,enabledSegments:segments.length,enabledLength,unresolvedSegments:unresolved.length,unresolvedLength:sourceLength-enabledLength,reasons,
     connectedJunctions:lines.filter(l=>l.join&&!l.joinConflict).length,policy:"cut-only bed; downhill profile; protected roads/buildings; excessive cuts omitted; source network is not surveyed"};
-
+  
   for(const line of lines)line.points=line.nodes;
   const viewpoints=[];
   for(const [id,name,x,z,minWidth] of [["brook-lanchuan","岚川溪岸",-2180,3380,.8],["river-valley","草原河谷",-1500,3050,2.5],["river-forest","林缘流水",-3000,4900,1.2]]){
@@ -240,15 +275,35 @@ export function createHydrology({streamData={lines:[]},heightAt,entities=[],asse
     }
   }
   stats.naturalBanks=naturalBanks?applyRepresentativeBanks(lines,segments,viewpoints):{reaches:0,segments:0,length:0,reachRadius:180};
+  const brookLandform=new URLSearchParams(globalThis.location?.search??"").get("brookLandform")==="1";
+  stats.brookIncision=naturalBanks&&(brookLandform||new URLSearchParams(globalThis.location?.search??"").get("brookIncision")==="1")?applyBrookIncision(lines,segments,viewpoints,{heightAt,protectedAt}):{nodes:0,segments:0,reason:"disabled"};
   stats.meanders=naturalBanks&&riverMeanders?applyRepresentativeMeanders(lines,segments,viewpoints,{heightAt,protectedAt,profile:riverMeanders==="v19"||new URLSearchParams(globalThis.location?.search??"").get("riverMeanders")==="v19"?"v19":"v22"}):{segments:0,nodes:0,maxOffset:0,reason:"disabled"};
-  if(stats.meanders.nodes){
+  const brookRequested=brookLandform||new URLSearchParams(globalThis.location?.search??"").get("brookMeanders")==="1";
+  stats.brookMeanders=naturalBanks&&brookRequested?applyBrookMeander(lines,segments,viewpoints,{heightAt,protectedAt,profile:brookLandform?"v38-landform":"v38-brook"}):{nodes:0,segments:0,reason:"disabled"};
+  stats.brookBendBanks=brookLandform&&stats.brookIncision.nodes&&stats.brookMeanders.nodes?applyBrookBendBanks(lines,segments,viewpoints,{heightAt,protectedAt}):{nodes:0,reason:"disabled-or-no-safe-structure"};
+  stats.valleyMeanders=valleyMeanders?applyValleyMeander(lines,segments,viewpoints,{heightAt,protectedAt}):{nodes:0,reason:'disabled'};
+  stats.valleyDeposits=valleyLandform?applyValleyDeposits(lines,segments,viewpoints,{heightAt,protectedAt,sectionProfile:valleySection}):{nodes:0,reason:'disabled'};
+  if(stats.meanders.nodes||stats.brookMeanders.nodes||stats.valleyMeanders.nodes){
     refreshMeanderIndex();
     stats.naturalBanks.policy="designed representative shallows; forest reach footprint follows the physically validated bend; water levels and facilities retained";
   }
-  return {lines,segments,unresolved,stats,viewpoints,bedHeightAt,sampleAt,intersectsBounds,nearSegments,refreshMeanderIndex,
-    bindSurface(fn){physicalHeight=fn;},isExcluded(x,z,padding=0){
+  if(stats.brookIncision.nodes)stats.naturalBanks.policy="designed representative shallows; opt-in brook incision lowers shared water and bed with monotone hydraulic grade; geographic anchors, source interfaces and facilities retained";
+  const forestShoulderAnchor=segments.find(s=>s.id===viewpoints.find(v=>v.id==="river-forest")?.segmentId);
+  if(forestRootedShoulder38&&typeof landcoverAt!=="function")throw new TypeError("Forest shoulder requires authoritative land cover");
+  stats.forestRootedShoulder38=Boolean(forestRootedShoulder38);
+  const forestCurvatureField=forestBankCurvature38?createForestBankCurvature38(segments,forestShoulderAnchor):null;
+  stats.forestBankCurvature38=Boolean(forestBankCurvature38);
+  if(forestReach39)forestReach=createForestReach39({segments,queryAt:query,rawHeight:heightAt,baseHeightAt:currentBedHeightAt,protectedAt});
+  stats.forestReach39=Boolean(forestReach);if(forestReach)stats.forestReach39Source=forestReach.stats;
+  const result={lines,segments,unresolved,stats,viewpoints,valleySource,baselineBedHeightAt,bedHeightAt,sampleAt,intersectsBounds,nearSegments,refreshMeanderIndex,forestReach39:forestReach,
+    bindSurface(fn){physicalHeight=fn;},isExcludedSource(x,z,padding=0){
+      const q=query(x,z,true);if(!q)return false;const extent=q.segment.meander?(q.signed<0?q.section.shoulderLeft:q.section.shoulderRight):1;
+      return q.distance<q.half+Math.min(q.margin*extent,.45+padding);
+    },isExcluded(x,z,padding=0){
       const q=query(x,z);if(!q)return false;
       const extent=q.segment.meander?(q.signed<0?q.section.shoulderLeft:q.section.shoulderRight):1;
       return q.distance<q.half+Math.min(q.margin*extent,.45+padding);
     }};
+  if(forestReach)result.reachSource={...result,forestReach39:null,stats:{...stats,forestReach39:false},bedHeightAt:currentBedHeightAt,sampleAt:(x,z,options)=>sampleBaseAt(x,z,options,currentBedHeightAt)};
+  return result;
 }

@@ -1,0 +1,26 @@
+{
+  "entry": {
+    "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+    "url": "assets/v2/prepared/house_a-38.glb.gz",
+    "rawBytes": 11712456,
+    "rawSHA256": "589d17a35520ffa75d184d3d0e23532b1a99553bb26a24e1de09576c730c9f1d",
+    "gzipBytes": 6025057,
+    "gzipSHA256": "211f4ae5c8cf82a2282e11fa6cffe24b2333ea92a1e7590e527b05ed3d243cf0"
+  },
+  "templates": 28,
+  "sourceBytes": 11122824,
+  "elapsedMs": 417.179833,
+  "stats": {
+    "loadMs": 33.687417,
+    "prepareMs": 96.85187499999999,
+    "yieldWaitMs": 0,
+    "checkpoints": 0,
+    "timberContinuity": {
+      "active": true,
+      "version": "timber-continuity-38",
+      "samples": 256,
+      "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2"
+    },
+    "cpuMs": 96.85187499999999
+  }
+}

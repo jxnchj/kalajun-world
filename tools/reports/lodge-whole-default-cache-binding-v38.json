@@ -1,0 +1,17 @@
+{
+  "checks": [
+    {
+      "path": "web/public/data/v2/meadow-roots-38.json",
+      "signature": "95db2de4271c6da5653eb947518237faf5f3fe51c042227a8209408ea2ba331b",
+      "changedSources": [],
+      "regenerationNeeded": false
+    },
+    {
+      "path": "web/public/data/v2/structure-prepared-38.json",
+      "signature": "432fed1065f2d8226d6dfda4757234c02494b16e840bbfd869830ac4728c8912",
+      "changedSources": [],
+      "regenerationNeeded": false
+    }
+  ],
+  "reason": "Only lodge-whole-definition default and test scopes changed; neither strict source set changed. Prior real regeneration remains valid."
+}

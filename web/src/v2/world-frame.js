@@ -1,3 +1,5 @@
+import {discardResolvedWorldMSAA} from './world-msaa-discard.js';
+import {probePackedHDR4} from './packed-hdr.js';
 import * as THREE from "three";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { compilePreparedWorld } from "./shader-readiness.js";
@@ -25,17 +27,23 @@ function difference(after, before) {
 // Keep the complete geographic camera range in a real Float32 depth attachment.
 // OutputPass performs the renderer's existing tone mapping and output conversion.
 export class WorldFrame {
-  constructor(renderer, { samples = 4 } = {}) {
+  constructor(renderer, { samples = 4, msaaDiscard38 = new URLSearchParams(globalThis.location?.search || "").get("msaaDiscard38") === "1", packedHDR38 = new URLSearchParams(globalThis.location?.search || '').get('packedHDR38') === '1', outputNoClear38 = new URLSearchParams(globalThis.location?.search || "").get("outputNoClear38") === "1" } = {}) {
     if (!supportsWorldFrame(renderer)) throw new Error("WorldFrame requires reversed depth and float color rendering.");
+    if (packedHDR38 && samples !== 4) throw new Error('Packed HDR requires unchanged 4x samples');
+    this.packedHDR38 = packedHDR38;
+    this.packedHDRCapability = packedHDR38 ? probePackedHDR4(renderer.getContext()) : null;
     this.renderer = renderer;
+    this.msaaDiscard38 = msaaDiscard38;
+    this.msaaAttachmentsDiscarded = false;
+    this.outputNoClear38 = outputNoClear38;
     const size = renderer.getDrawingBufferSize(new THREE.Vector2());
     const depth = new THREE.DepthTexture(size.x, size.y, THREE.FloatType);
     depth.name = "world-float32-depth";
     this.target = new THREE.WebGLRenderTarget(size.x, size.y, {
-      type: THREE.HalfFloatType, format: THREE.RGBAFormat, colorSpace: THREE.LinearSRGBColorSpace,
+      type: packedHDR38 ? THREE.UnsignedInt101111Type : THREE.HalfFloatType, format: packedHDR38 ? THREE.RGBFormat : THREE.RGBAFormat, internalFormat: packedHDR38 ? 'R11F_G11F_B10F' : null, colorSpace: THREE.LinearSRGBColorSpace,
       minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, generateMipmaps: false,
       depthBuffer: true, stencilBuffer: false, depthTexture: depth,
-      samples: sampleCount(renderer, samples),
+      samples: packedHDR38 ? 4 : sampleCount(renderer, samples),
       // No pass samples depth: avoid a redundant depth resolve, while the MSAA
       // depth renderbuffer still derives DEPTH_COMPONENT32F from depth.type.
       resolveDepthBuffer: false, resolveStencilBuffer: false,
@@ -51,7 +59,7 @@ export class WorldFrame {
     this.disposed = false;
     this.stats = {
       enabled: true, frames: 0, width: size.x, height: size.y, samples: this.target.samples,
-      colorFormat: "RGBA16F", depthFormat: "DEPTH_COMPONENT32F",
+      colorFormat: packedHDR38 ? "R11F_G11F_B10F" : "RGBA16F", packedHDRCapability: this.packedHDRCapability, depthFormat: "DEPTH_COMPONENT32F",
       scene: null, output: null, total: null, estimatedAttachmentBytes: 0
     };
     this._updateBytes();
@@ -59,7 +67,7 @@ export class WorldFrame {
 
   _updateBytes() {
     const { width, height, samples } = this.stats;
-    this.stats.estimatedAttachmentBytes = width * height * (12 + (samples > 0 ? samples * 12 : 0));
+    this.stats.estimatedAttachmentBytes = width * height * ((this.packedHDR38 ? 8 : 12) * (1 + (samples > 0 ? samples : 0)));
   }
 
   // Physical drawing-buffer pixels; callers must not apply DPR a second time.
@@ -110,6 +118,10 @@ export class WorldFrame {
   render(scene, camera) {
     if (this.disposed) throw new Error("WorldFrame has been disposed.");
     const r = this.renderer, previous = r.getRenderTarget();
+    // A discarded frame cannot later become the input to a partial redraw.
+    // Fail before drawing rather than silently consuming undefined samples.
+    if(this.msaaAttachmentsDiscarded && (r.autoClearColor !== true || r.autoClearDepth !== true || this.target.scissorTest))
+      throw new Error("Discarded WorldFrame requires a full color/depth clear before partial redraw");
     const face = r.getActiveCubeFace(), level = r.getActiveMipmapLevel();
     const autoClear = r.autoClear, autoReset = r.info.autoReset;
     try {
@@ -119,10 +131,28 @@ export class WorldFrame {
       const before = { ...r.info.render };
       r.setRenderTarget(this.target);
       r.render(scene, camera);
+      this.msaaAttachmentsDiscarded = false;
+      // Main render has resolved final color. Only transient MS renderbuffers
+      // may now be discarded; never before transparent water completes.
+      this.stats.msaaDiscard38 = this.msaaDiscard38;
+      if(this.msaaDiscard38){
+        // Conservatively keep this true if the GL call throws after invalidation.
+        this.msaaAttachmentsDiscarded = true;
+        this.stats.msaaDiscardReason = discardResolvedWorldMSAA(r,this.target);
+        this.msaaAttachmentsDiscarded = this.stats.msaaDiscardReason === "discarded";
+      }else this.stats.msaaDiscardReason = "disabled";
       this.stats.scene = difference(r.info.render, before);
       const afterScene = { ...r.info.render };
       // A separate full-screen mesh has no main-scene lights or shadow casters.
-      this.output.render(r, null, this.target);
+      // The opaque full-screen triangle writes every covered output sample;
+      // its material neither blends nor reads/writes depth. Optional diagnostic
+      // candidate skips only this redundant screen clear, never the world clear.
+      const outputAutoClear = r.autoClear;
+      this.stats.outputNoClear38 = this.outputNoClear38;
+      try {
+        if (this.outputNoClear38) r.autoClear = false;
+        this.output.render(r, null, this.target);
+      } finally { r.autoClear = outputAutoClear; }
       this.stats.output = difference(r.info.render, afterScene);
       this.stats.total = difference(r.info.render, before);
       this.stats.frames++;

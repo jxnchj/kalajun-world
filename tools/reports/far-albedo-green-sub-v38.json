@@ -1,0 +1,43 @@
+{
+  "mode": "green-sub",
+  "dimensions": [
+    128,
+    384,
+    120
+  ],
+  "node": "v24.15.0",
+  "zlib": "1.3.1-e00f703",
+  "originalBytes": 9622991,
+  "candidateBytes": 8833302,
+  "savedBytes": 789689,
+  "savedPercent": 8.206273912133977,
+  "rgbaSHA256": "c873510df91566847274975feff59f8072d4105edc5b20071878466f8a6ace93",
+  "candidateSHA256": "408133d828bf715cb91cbe5732ff546b5c529b05534952996fa8d899826b0143",
+  "everyByteExact": true,
+  "alphaZeroRGBPreserved": true,
+  "baselineMedianMs": 44.62470799999983,
+  "inflateMedianMs": 40.15545800000018,
+  "restoreMedianMs": 53.31708400000002,
+  "candidateMedianMs": 92.4636680000001,
+  "samples": [
+    {
+      "baselineMs": 44.34141700000009,
+      "inflateMs": 39.146584000000075,
+      "restoreMs": 53.31708400000002,
+      "totalMs": 92.4636680000001
+    },
+    {
+      "baselineMs": 44.77395799999999,
+      "inflateMs": 40.15545800000018,
+      "restoreMs": 50.91620899999998,
+      "totalMs": 91.07166700000016
+    },
+    {
+      "baselineMs": 44.62470799999983,
+      "inflateMs": 40.4535420000002,
+      "restoreMs": 54.53966700000001,
+      "totalMs": 94.9932090000002
+    }
+  ],
+  "limits": "Node zlib CPU only, not Chrome DecompressionStream or network/upload/first-frame evidence. Existing runtime and assets untouched. Extra RGBA output allocation: 23592960 bytes."
+}

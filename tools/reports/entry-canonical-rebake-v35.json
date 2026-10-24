@@ -1,0 +1,23 @@
+{
+  "version": "v35-canonical-source-rebake",
+  "comparedWith": "review/candidate web/src/v2/household-room-data/house_a-entry-tea-34.js",
+  "payloadsEqualToHandoff": {
+    "open.sky": true,
+    "open.secondSky": true,
+    "open.solar": true,
+    "open.secondSolar": true,
+    "open.apertures": true,
+    "open.contact": true,
+    "closed.sky": true,
+    "closed.secondSky": true,
+    "closed.solar": true,
+    "closed.secondSolar": true,
+    "closed.apertures": true
+  },
+  "all11PayloadsEqual": true,
+  "localRoomSourceHash": "5db55d3bdd05313acf402d9f3ad901812dd0b8e3fa4dd0e5f6d708cb80ac53ea",
+  "entryBlendUnchanged": true,
+  "entryGLBUnchanged": true,
+  "sourceBindingReport": "tools/reports/entry-source-rebinding-v35.json",
+  "rebakeReport": "tools/reports/household-entry-room-v34.json"
+}

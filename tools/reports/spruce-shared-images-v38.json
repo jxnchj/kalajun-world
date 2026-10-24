@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "images": [
+    {
+      "uri": "images/a4605562d732884a4f86ec02a2e6bd829861239d186e7a5796bb06ace67936e6.png",
+      "url": "assets/v2/spruce/shared-v38/images/a4605562d732884a4f86ec02a2e6bd829861239d186e7a5796bb06ace67936e6.png",
+      "bytes": 476419,
+      "sha256": "a4605562d732884a4f86ec02a2e6bd829861239d186e7a5796bb06ace67936e6"
+    },
+    {
+      "uri": "images/fa086d5c55c37c2faf24db7a4056ec22ae133ae4bf44528b23a2afa2d2994e7b.png",
+      "url": "assets/v2/spruce/shared-v38/images/fa086d5c55c37c2faf24db7a4056ec22ae133ae4bf44528b23a2afa2d2994e7b.png",
+      "bytes": 198879,
+      "sha256": "fa086d5c55c37c2faf24db7a4056ec22ae133ae4bf44528b23a2afa2d2994e7b"
+    },
+    {
+      "uri": "images/8f0d5d16a27069ecf76ac352134f8fd9b042e4f29cf129cabc281d253c5aa2eb.png",
+      "url": "assets/v2/spruce/shared-v38/images/8f0d5d16a27069ecf76ac352134f8fd9b042e4f29cf129cabc281d253c5aa2eb.png",
+      "bytes": 1369349,
+      "sha256": "8f0d5d16a27069ecf76ac352134f8fd9b042e4f29cf129cabc281d253c5aa2eb"
+    }
+  ],
+  "lods": {
+    "hi": {
+      "url": "assets/v2/spruce/shared-v38/hi.glb.gz",
+      "base": "assets/v2/spruce/shared-v38/",
+      "rawBytes": 6408792,
+      "gzipBytes": 3690789,
+      "sha256": "1447c4438156899001b5312e5a82b0820fac5965bf1ee544736174bb4cef8c5c",
+      "gzipSha256": "6c52c8d1a1b5014dc899d235e44ddf71ada2209369b2fd0f94dd1feb1dd30a27",
+      "source": "assets/v2/schrenk-spruce-hi.glb",
+      "sourceSha256": "1d7c9bb7cdc6d7ff0ab312be2a9a25d6134bd4965d2795f271b1ac36289ef2d4",
+      "sourceGzipBytes": 5642941,
+      "imageURIs": [
+        "images/a4605562d732884a4f86ec02a2e6bd829861239d186e7a5796bb06ace67936e6.png",
+        "images/fa086d5c55c37c2faf24db7a4056ec22ae133ae4bf44528b23a2afa2d2994e7b.png",
+        "images/8f0d5d16a27069ecf76ac352134f8fd9b042e4f29cf129cabc281d253c5aa2eb.png"
+      ],
+      "accessors": 86,
+      "views": 86
+    },
+    "mid": {
+      "url": "assets/v2/spruce/shared-v38/mid.glb.gz",
+      "base": "assets/v2/spruce/shared-v38/",
+      "rawBytes": 3030116,
+      "gzipBytes": 1810097,
+      "sha256": "5374784b6b6ac424fd680f76ca64e710c2e24d6e0738a64954e6f5ee379f0d91",
+      "gzipSha256": "24c74a1be0a56b4313006f6d67cb5d995de03b07fa05f3127a4721b086dcaecd",
+      "source": "assets/v2/schrenk-spruce-mid.glb",
+      "sourceSha256": "62bb75ede77ac18e5c16fa005fd605a24c7baf55cf5722f72e13d49c3a1fa6aa",
+      "sourceGzipBytes": 3624257,
+      "imageURIs": [
+        "images/a4605562d732884a4f86ec02a2e6bd829861239d186e7a5796bb06ace67936e6.png",
+        "images/8f0d5d16a27069ecf76ac352134f8fd9b042e4f29cf129cabc281d253c5aa2eb.png"
+      ],
+      "accessors": 86,
+      "views": 86
+    }
+  },
+  "scope": "Exact original geometry/accessors/materials; embedded PNG bytes externalized once without image re-encoding",
+  "bytes": {
+    "previousBytes": 9267198,
+    "replacementBytes": 7545533,
+    "savedBytes": 1721665,
+    "savedPercent": 18.578053474200075
+  }
+}

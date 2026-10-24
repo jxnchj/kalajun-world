@@ -1,7 +1,9 @@
+import {installFarRectGate39} from './spruce-far-rect-gate39.js';
 import * as THREE from "three";
 import bundledManifest from "../../public/assets/v2/spruce/far-v14/impostor-manifest.json" with {type:"json"};
+import albedoTransport38 from "../../public/assets/v2/spruce/far-v14/albedo-lossless-v38.json" with {type:"json"};
 import {decodeGzipBytes} from "./world-data.js";
-import {FAR_NORMAL_TRANSPORT,farTransportFile,restoreFarNormalRGBA,validateFarTransport} from "./spruce-far-transport.js";
+import {FAR_NORMAL_TRANSPORT,FAR_ALBEDO_TRANSPORT,farAlbedoTransport38,restoreFarAlbedoRGBA,verifyFarAlbedoPayload38,farTransportFile,restoreFarNormalRGBA,validateFarTransport} from "./spruce-far-transport.js";
 const DEFAULT_URL="./assets/v2/spruce/far-v14/impostor-manifest.json";
 export const FAR_SPRUCE_FORMS=Object.freeze(["column","edge","old","pencil","young"]);
 const installed=new WeakSet();
@@ -26,7 +28,7 @@ function resourceTimingFor(performanceAPI,url,requestStart){
   const size=key=>Number.isFinite(entry[key])&&entry[key]>=0?entry[key]:null;
   return {startTime:entry.startTime,duration:entry.duration,transferSize:size("transferSize"),encodedBodySize:size("encodedBodySize"),decodedBodySize:size("decodedBodySize"),deliveryType:entry.deliveryType??null};
 }
-export async function loadFarSpruceAssets({url=DEFAULT_URL,signal,onProgress,fetch:fetcher=globalThis.fetch,performance:performanceAPI=globalThis.performance,manifest=new URLSearchParams(globalThis.location?.search??"").get("farManifest")??"bundled",transport=new URLSearchParams(globalThis.location?.search??"").get("farTransport")??"v27"}={}){
+export async function loadFarSpruceAssets({url=DEFAULT_URL,signal,onProgress,fetch:fetcher=globalThis.fetch,performance:performanceAPI=globalThis.performance,manifest=new URLSearchParams(globalThis.location?.search??"").get("farManifest")??"bundled",farLossless38=new URLSearchParams(globalThis.location?.search??"").get("farLossless38")!=="0",transport=new URLSearchParams(globalThis.location?.search??"").get("farTransport")??"v27"}={}){
   const start=clock(),textures=[];abort(signal);
   // The canonical capture is part of this exact build, like the GLB transport
   // manifest. Its payload requests can start immediately, before busy terrain
@@ -37,21 +39,24 @@ export async function loadFarSpruceAssets({url=DEFAULT_URL,signal,onProgress,fet
   if(useBundled)metadata=validateFarSpruceManifest(structuredClone(bundledManifest));
   else{const response=await fetcher(url,{signal});if(!response.ok)throw new Error(`Far spruce manifest ${response.status}: ${url}`);metadata=validateFarSpruceManifest(await response.json());}
   abort(signal);const manifestMs=clock()-start;
-  const files=metadata.files.map(f=>farTransportFile(f,transport));
-  const base=new URL(url,globalThis.location?.href??"http://localhost/");const stats={representation:"same-source 5×8×3 upright normal-lit impostor",manifestMs,manifestMode:useBundled?"bundled":"network",transportMode:transport,rgbaRestoreMs:0,fetchMs:0,decodeMs:0,textureSetupMs:0,encodedBytes:files.reduce((n,f)=>n+f.bytes,0),responseBodyBytes:0,decodedBytes:0,gpuTextureBytes:0,applicationGzipDecodes:0,byteScope:"two texture payloads; manifest excluded",resourceTiming:{entries:[],complete:false,transferSize:null,encodedBodySize:null,decodedBodySize:null}};
+  const files=metadata.files.map(f=>farLossless38&&f.kind==="albedo"?farAlbedoTransport38(metadata,albedoTransport38):farTransportFile(f,transport));
+  const base=new URL(url,globalThis.location?.href??"http://localhost/");const stats={representation:"same-source 5×8×3 upright normal-lit impostor",manifestMs,manifestMode:useBundled?"bundled":"network",transportMode:transport,farLossless38:Boolean(farLossless38),albedoRestoreMs:0,payloadVerificationMs:0,rgbaRestoreMs:0,fetchMs:0,decodeMs:0,textureSetupMs:0,encodedBytes:files.reduce((n,f)=>n+f.bytes,0),responseBodyBytes:0,decodedBytes:0,gpuTextureBytes:0,applicationGzipDecodes:0,byteScope:"two texture payloads; manifest excluded",resourceTiming:{entries:[],complete:false,transferSize:null,encodedBodySize:null,decodedBodySize:null}};
   try{
     const records=await Promise.all(files.map(async f=>{
       abort(signal);const requestURL=new URL(f.url+(f.gzipSHA256?"?v="+f.gzipSHA256:""),base).href,t0=clock(),r=await fetcher(requestURL,{signal});if(!r.ok)throw new Error(`Far spruce ${f.kind} ${r.status}`);const raw=new Uint8Array(await r.arrayBuffer());abort(signal);const t1=clock(),gzip=raw[0]===0x1f&&raw[1]===0x8b;
       // Fetch already removes HTTP Content-Encoding. Count explicit application
       // gzip work only when compressed bytes actually reach JavaScript.
+      if(f.encoding===FAR_ALBEDO_TRANSPORT){const v0=clock();await verifyFarAlbedoPayload38(raw,f,gzip);stats.payloadVerificationMs+=clock()-v0;abort(signal);}
       const data=gzip?await decodeGzipBytes(raw):raw;abort(signal);const t2=clock(),timing=resourceTimingFor(performanceAPI,r.url||requestURL,t0);
       if(data.length!==f.decodedBytes)throw new Error(`Far spruce ${f.kind} byte count mismatch`);
       onProgress?.({phase:"far-spruce-texture",kind:f.kind,responseBodyBytes:raw.byteLength,encodedBytes:f.bytes});return {f,data,bytes:raw.byteLength,fetchMs:t1-t0,decodeMs:gzip?t2-t1:0,gzip,timing};
     }));abort(signal);
+    const albedoRecord=records.find(r=>r.f.kind==="albedo");
+    if(albedoRecord.f.encoding===FAR_ALBEDO_TRANSPORT){const t=clock();albedoRecord.data=restoreFarAlbedoRGBA(albedoRecord.data,metadata.width*metadata.height*metadata.layers);stats.albedoRestoreMs=clock()-t;stats.rgbaRestoreMs+=stats.albedoRestoreMs;albedoRecord.decodeMs+=stats.albedoRestoreMs;abort(signal);}
     const normalRecord=records.find(r=>r.f.kind==="normal");
     if(normalRecord.f.encoding===FAR_NORMAL_TRANSPORT){
       const t=clock();normalRecord.data=restoreFarNormalRGBA(normalRecord.data,records.find(r=>r.f.kind==="albedo").data,metadata.width*metadata.height*metadata.layers);
-      stats.rgbaRestoreMs=clock()-t;normalRecord.decodeMs+=stats.rgbaRestoreMs;abort(signal);
+      const restoreMs=clock()-t;stats.rgbaRestoreMs+=restoreMs;normalRecord.decodeMs+=restoreMs;abort(signal);
     }
     const t0=clock(),out={metadata,stats};
     for(const {f,data,bytes,fetchMs,decodeMs,gzip,timing}of records){
@@ -106,6 +111,9 @@ uniform highp sampler2DArray uFarAlbedo;
 uniform highp sampler2DArray uFarNormal;
 uniform vec4 uFarFrameRects[120];
 uniform float uFarMultisample;
+uniform float uFarZeroWeightLayers;
+uniform float uFarDeferredNormal;
+vec2 farPlaneDx,farPlaneDy;
 varying vec2 vFarPlane;
 varying vec4 vFarSelection;
 varying float vFarForm;
@@ -114,15 +122,30 @@ varying vec2 vFarBendSlope;
 void farSample(float layer,out vec4 c,out vec3 n){
  vec4 rect=uFarFrameRects[int(layer+.1)];vec2 st=(vFarPlane-rect.xy)/(rect.zw-rect.xy);
  // Always sample before the domain mask, so derivatives are defined across borders.
- c=texture(uFarAlbedo,vec3(st,layer));n=texture(uFarNormal,vec3(st,layer)).xyz*2.-1.;
+ if(uFarZeroWeightLayers>.5||uFarDeferredNormal>.5){
+  vec2 dx=farPlaneDx/(rect.zw-rect.xy),dy=farPlaneDy/(rect.zw-rect.xy);
+  c=textureGrad(uFarAlbedo,vec3(st,layer),dx,dy);n=vec3(0.);
+  if(uFarDeferredNormal<.5)n=textureGrad(uFarNormal,vec3(st,layer),dx,dy).xyz*2.-1.;
+ }else{
+  c=texture(uFarAlbedo,vec3(st,layer));n=texture(uFarNormal,vec3(st,layer)).xyz*2.-1.;
+ }
  float inside=step(0.,st.x)*step(st.x,1.)*step(0.,st.y)*step(st.y,1.);c*=inside;n*=inside;
+}
+vec3 farSurvivingNormal(float layer){
+ vec4 rect=uFarFrameRects[int(layer+.1)];vec2 st=(vFarPlane-rect.xy)/(rect.zw-rect.xy);
+ vec2 dx=farPlaneDx/(rect.zw-rect.xy),dy=farPlaneDy/(rect.zw-rect.xy);
+ vec3 n=textureGrad(uFarNormal,vec3(st,layer),dx,dy).xyz*2.-1.;
+ float inside=step(0.,st.x)*step(st.x,1.)*step(0.,st.y)*step(st.y,1.);
+ return n*inside;
 }
 `;
 export function installFarSpruceImpostor(material,assets){
   if(installed.has(material))return material;validateFarSpruceManifest(assets.metadata);installed.add(material);
   material.vertexColors=false;material.alphaTest=.003;material.alphaToCoverage=true;material.side=THREE.DoubleSide;
   const previous=material.onBeforeCompile,key=material.customProgramCacheKey(),before=material.onBeforeRender;
-  const uniforms={uFarAlbedo:{value:assets.albedo},uFarNormal:{value:assets.normal},uFarFrameRects:{value:assets.metadata.frames.map(f=>new THREE.Vector4(...f.rect))},uFarFormRects:{value:assets.metadata.formRects.map(r=>new THREE.Vector4(...r))},uFarMultisample:{value:1}};
+  const uniforms={uFarAlbedo:{value:assets.albedo},uFarNormal:{value:assets.normal},uFarFrameRects:{value:assets.metadata.frames.map(f=>new THREE.Vector4(...f.rect))},uFarFormRects:{value:assets.metadata.formRects.map(r=>new THREE.Vector4(...r))},uFarMultisample:{value:1},uFarZeroWeightLayers:{value:new URLSearchParams(globalThis.location?.search??"").get("farZeroWeightLayers")==="1"?1:0},uFarDeferredNormal:{value:new URLSearchParams(globalThis.location?.search??"").get("farDeferredNormal")==="1"?1:0}};
+  const rectGate=new URLSearchParams(globalThis.location?.search??"").get("farRectGate39")==="1"?{value:2}:null;
+  if(rectGate)uniforms.uFarRectGate39=rectGate;
   material.userData.farImpostorUniforms=uniforms;
   material.onBeforeRender=function(renderer,...rest){before?.call(this,renderer,...rest);uniforms.uFarMultisample.value=(renderer.getRenderTarget()?.samples??0)>1?1:0;};
   material.onBeforeCompile=(shader,renderer)=>{
@@ -150,25 +173,58 @@ vFarBendSlope=ecoOffset*2./max(.15,farPlane.y);
 `);
     shader.vertexShader=shader.vertexShader.replace("#include <begin_vertex>","#include <begin_vertex>\ntransformed=farRight*farPlane.x+vec3(0.,farPlane.y,0.);").replace("ecoOffset*2./max(.15,position.y)","ecoOffset*2./max(.15,farPlane.y)");
     shader.fragmentShader=FRAGMENT+shader.fragmentShader;
+    // Before clipping, ecological LOD discards or view-dependent branches.
+    // Layer rectangles are constant per instance, so st derivatives equal the
+    // plane derivatives divided by that layer's own rectangle extent.
+    const main=/void\s+main\s*\(\s*\)\s*\{/;
+    if(!main.test(shader.fragmentShader))throw new Error("Missing far spruce fragment main");
+    shader.fragmentShader=shader.fragmentShader.replace(main,"$&\nfarPlaneDx=dFdx(vFarPlane);farPlaneDy=dFdy(vFarPlane);\n");
     shader.fragmentShader=shader.fragmentShader.replace("#include <map_fragment>",`
 float farBase=vFarForm*24.+vFarSelection.y*8.;
 vec4 farC0,farC1,farC2,farC3;vec3 farN0,farN1,farN2,farN3;
 float farNext=mod(vFarSelection.x+1.,8.);
-farSample(farBase+vFarSelection.x,farC0,farN0);farSample(farBase+farNext,farC1,farN1);
-farSample(farBase+8.+vFarSelection.x,farC2,farN2);farSample(farBase+8.+farNext,farC3,farN3);
-vec4 farColour=mix(mix(farC0,farC1,vFarSelection.z),mix(farC2,farC3,vFarSelection.z),vFarSelection.w);
-vec3 farNormal=mix(mix(farN0,farN1,vFarSelection.z),mix(farN2,farN3,vFarSelection.z),vFarSelection.w);
+vec4 farColour;vec3 farNormal;
+// Only clamped exact endpoints: no epsilon changes to elevation blending.
+if(uFarZeroWeightLayers>.5 && vFarSelection.w<=0.){
+ farSample(farBase+vFarSelection.x,farC0,farN0);farSample(farBase+farNext,farC1,farN1);
+ farColour=mix(farC0,farC1,vFarSelection.z);farNormal=mix(farN0,farN1,vFarSelection.z);
+}else if(uFarZeroWeightLayers>.5 && vFarSelection.w>=1.){
+ farSample(farBase+8.+vFarSelection.x,farC2,farN2);farSample(farBase+8.+farNext,farC3,farN3);
+ farColour=mix(farC2,farC3,vFarSelection.z);farNormal=mix(farN2,farN3,vFarSelection.z);
+}else{
+ farSample(farBase+vFarSelection.x,farC0,farN0);farSample(farBase+farNext,farC1,farN1);
+ farSample(farBase+8.+vFarSelection.x,farC2,farN2);farSample(farBase+8.+farNext,farC3,farN3);
+ farColour=mix(mix(farC0,farC1,vFarSelection.z),mix(farC2,farC3,vFarSelection.z),vFarSelection.w);
+ farNormal=mix(mix(farN0,farN1,vFarSelection.z),mix(farN2,farN3,vFarSelection.z),vFarSelection.w);
+}
 diffuseColor.rgb*=farColour.rgb/max(farColour.a,.0001);diffuseColor.a*=farColour.a;
 `);
     // Preserve integrated coverage rather than rethresholding filtered mip alpha.
     shader.fragmentShader=shader.fragmentShader.replace("#include <alphatest_fragment>",`
 if(diffuseColor.a<.003)discard;
 if(uFarMultisample<.5){float farAlphaNoise=fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(.06711056,.00583715))+ .381966));if(diffuseColor.a<farAlphaNoise)discard;diffuseColor.a=1.;}
+
 `);
     shader.fragmentShader=shader.fragmentShader.replace("#include <normal_fragment_maps>",`#include <normal_fragment_maps>
+// Coverage is EXACTLY the existing alpha/A2C policy. Only surviving fragments
+// read normal layers; all gradients were computed before any discard/branch.
+if(uFarDeferredNormal>.5){
+ if(uFarZeroWeightLayers>.5 && vFarSelection.w<=0.){
+  farN0=farSurvivingNormal(farBase+vFarSelection.x);farN1=farSurvivingNormal(farBase+farNext);
+  farNormal=mix(farN0,farN1,vFarSelection.z);
+ }else if(uFarZeroWeightLayers>.5 && vFarSelection.w>=1.){
+  farN2=farSurvivingNormal(farBase+8.+vFarSelection.x);farN3=farSurvivingNormal(farBase+8.+farNext);
+  farNormal=mix(farN2,farN3,vFarSelection.z);
+ }else{
+  farN0=farSurvivingNormal(farBase+vFarSelection.x);farN1=farSurvivingNormal(farBase+farNext);
+  farN2=farSurvivingNormal(farBase+8.+vFarSelection.x);farN3=farSurvivingNormal(farBase+8.+farNext);
+  farNormal=mix(mix(farN0,farN1,vFarSelection.z),mix(farN2,farN3,vFarSelection.z),vFarSelection.w);
+ }
+}
 farNormal.y-=dot(vFarBendSlope,farNormal.xz);
 normal=normalize(vFarNormalMatrix*farNormal+vec3(.000001));
 `);
+    if(rectGate)installFarRectGate39(shader,rectGate);
   };
-  material.customProgramCacheKey=()=>key+"-far-spruce-impostor-v14-premult-4view";material.needsUpdate=true;return material;
+  material.customProgramCacheKey=()=>key+"-far-spruce-impostor-v38-deferred-normal-optin"+(rectGate?"-rect-gate39":"");material.needsUpdate=true;return material;
 }

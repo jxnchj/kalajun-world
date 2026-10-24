@@ -4,8 +4,9 @@ import { readFileSync } from "node:fs";
 import * as THREE from "three";
 import { WebGLPrograms } from "three/src/renderers/webgl/WebGLPrograms.js";
 import { compileShadowWorld } from "./compile-shadow-world.js";
-import { WorldShadowDepth, useProjectedShadowDepth } from "./room-shadow.js";
+import { WorldShadowDepth, useProjectedShadowDepth, createStructureDepth } from "./room-shadow.js";
 import { attachEcologyWind } from "./ecology.js";
+import {validateClosedEntryGeometry,installClosedEntryShadow} from "./household-entry-shadow.js";
 
 const shadowSource = readFileSync(new URL("../../node_modules/three/src/renderers/webgl/WebGLShadowMap.js", import.meta.url), "utf8");
 // Execute the installed custom-depth branch itself, not a second copy of our
@@ -165,4 +166,35 @@ test("shadow precompile checks resident counts rather than an empty previous cam
  const f=fixture(),source=new THREE.InstancedMesh(new THREE.BoxGeometry(),new THREE.MeshStandardMaterial(),2),proxy=mesh("view");proxy.userData.treeViewSource=source;proxy.geometry.instanceCount=0;proxy.intersectsFrustum=()=>true;f.scene.add(proxy);
  const result=await f.run();assert.equal(result.userData.compileShadowSelection.objects,1);
  source.count=0;const empty=await f.run();assert.equal(empty.userData.compileShadowSelection.objects,0);
+});
+
+
+test("explicit closed-owner policy matches intended installed-Three render parameters without callback replay",async()=>{
+ // This checks parameters/cache keys, not actual GPU compilation or timing.
+ for(const mode of["standard","closed","disposed"]){
+  const f=fixture(),object=mesh(mode);object.geometry.clearGroups();object.material.side=THREE.DoubleSide;object.customDepthMaterial=createStructureDepth(object.material);f.scene.add(object);f.scene.updateMatrixWorld(true);
+  let callbackCalls=0;object.onBeforeShadow=()=>callbackCalls++;let handle;
+  if(mode!=="standard"){handle=installClosedEntryShadow(object,validateClosedEntryGeometry(object.geometry,{triangles:12,components:1}));if(mode==="disposed")handle.dispose();}
+  const depth=object.customDepthMaterial,before=Object.getOwnPropertyDescriptors(depth),canonical=Object.getOwnPropertyDescriptors(object.material),drawStats=handle?{...handle.stats}:null;
+  const lights={sun:[],directional:[{}],point:[],spot:[],spotLightMap:[],rectArea:[],hemi:[{}],sunShadowMap:[],directionalShadowMap:[{}],pointShadowMap:[],spotShadowMap:[],numSpotLightShadowsWithMaps:0,numLightProbes:0};
+  const programs=WebGLPrograms(f.renderer,{get:()=>null},{has:()=>false},{precision:"highp",getMaxPrecision:()=>"highp",logarithmicDepthBuffer:false},{},{numPlanes:0,numIntersection:0});
+  const signature=(d,s,o)=>{const p=programs.getParameters(d,lights,[f.light],s,o,[]);return{side:d.side,doubleSided:p.doubleSided,flipSided:p.flipSided,key:programs.getProgramCacheKey(p)};};
+  const compiled=[],compile=f.renderer.compile;f.renderer.compile=function(input,camera,scene){input.traverse(o=>{if(o.isMesh)compiled.push(signature(o.material,scene,o));});return compile.call(this,input,camera,scene);};
+  await f.run();assert.equal(compiled.length,1);assert.equal(callbackCalls,0);if(handle)assert.deepEqual(handle.stats,drawStats);
+  assert.deepEqual(Object.getOwnPropertyDescriptors(depth),before);assert.deepEqual(Object.getOwnPropertyDescriptors(object.material),canonical);assert.equal(f.renderer.properties.get(depth).__version,undefined);
+  const actual=installedDepth(object,object.material,f.light,THREE.PCFShadowMap),args=[f.renderer,object,f.camera,f.light.shadow.camera,object.geometry,actual,null];object.onBeforeShadow(...args);
+  assert.deepEqual(compiled[0],signature(actual,{fog:null,environment:null},object));assert.equal(actual.side,mode==="closed"?THREE.BackSide:THREE.DoubleSide);object.onAfterShadow(...args);
+  assert.equal(callbackCalls,1);handle?.dispose();f.shadowDepth.dispose();depth.dispose();object.geometry.dispose();object.material.dispose();
+ }
+});
+
+test("owned-policy compile failure restores fields and invalid contracts reject before any compile",()=>{
+ for(const mode of["compile-failure","changed-material","changed-geometry"]){
+  const f=fixture(),object=mesh(mode);object.geometry.clearGroups();object.material.side=THREE.DoubleSide;object.customDepthMaterial=createStructureDepth(object.material);f.scene.add(object);f.scene.updateMatrixWorld(true);
+  const handle=installClosedEntryShadow(object,validateClosedEntryGeometry(object.geometry,{triangles:12,components:1})),depth=object.customDepthMaterial,drawStats={...handle.stats};
+  if(mode==="changed-material")object.material.alphaTest=.5;if(mode==="changed-geometry")object.geometry.attributes.position.needsUpdate=true;
+  const before=Object.getOwnPropertyDescriptors(depth);if(mode==="compile-failure")f.renderer.compile=()=>{throw new Error("owned compile failed");};
+  assert.throws(()=>f.run(),/owned compile failed|opaque undeformed|geometry changed/);assert.deepEqual(Object.getOwnPropertyDescriptors(depth),before);assert.deepEqual(handle.stats,drawStats);assert.equal(f.calls.length,0);assert.equal(depth.side,THREE.BackSide);assert.equal(object.material.side,THREE.DoubleSide);
+  handle.dispose();f.shadowDepth.dispose();depth.dispose();object.geometry.dispose();object.material.dispose();
+ }
 });

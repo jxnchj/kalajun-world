@@ -1,0 +1,172 @@
+{
+  "version": "household-entry-tea-34",
+  "geometryRevision": "front-bevel-17p111mm",
+  "sourceSHA256": "277e71e74629dbe081813b900900d6824e7ad769b865d13603ccae309ff1f5dd",
+  "blendSHA256": "a717f7514fd9d7f312801faf3e78884bf5387a6c64a6b642ed6a1247aa2c4836",
+  "stones": [
+    {
+      "name": "entry_course_0_tread_0",
+      "triangles": 68,
+      "volume": 0.024379857456854854
+    },
+    {
+      "name": "entry_course_0_tread_1",
+      "triangles": 68,
+      "volume": 0.04687353647022974
+    },
+    {
+      "name": "entry_course_0_bedding_0_0",
+      "triangles": 92,
+      "volume": 0.031847522898412216
+    },
+    {
+      "name": "entry_course_0_bedding_0_1",
+      "triangles": 92,
+      "volume": 0.026288815288959693
+    },
+    {
+      "name": "entry_course_0_bedding_0_2",
+      "triangles": 92,
+      "volume": 0.021270670811645704
+    },
+    {
+      "name": "entry_course_0_bedding_1_0",
+      "triangles": 92,
+      "volume": 0.035379399851080975
+    },
+    {
+      "name": "entry_course_0_bedding_1_1",
+      "triangles": 92,
+      "volume": 0.044885054880675554
+    },
+    {
+      "name": "entry_course_0_bedding_2_0",
+      "triangles": 92,
+      "volume": 0.03169191183314977
+    },
+    {
+      "name": "entry_course_0_bedding_2_1",
+      "triangles": 92,
+      "volume": 0.026322753656131664
+    },
+    {
+      "name": "entry_course_0_bedding_2_2",
+      "triangles": 92,
+      "volume": 0.021206116080672185
+    },
+    {
+      "name": "entry_course_0_bedding_3_0",
+      "triangles": 92,
+      "volume": 0.03538258679327554
+    },
+    {
+      "name": "entry_course_0_bedding_3_1",
+      "triangles": 92,
+      "volume": 0.044826063435418
+    },
+    {
+      "name": "entry_course_1_tread_0",
+      "triangles": 68,
+      "volume": 0.05015385527318966
+    },
+    {
+      "name": "entry_course_1_tread_1",
+      "triangles": 68,
+      "volume": 0.02109907614067198
+    },
+    {
+      "name": "entry_course_1_bedding_0_0",
+      "triangles": 92,
+      "volume": 0.035110535691880294
+    },
+    {
+      "name": "entry_course_1_bedding_0_1",
+      "triangles": 92,
+      "volume": 0.044607724198916315
+    },
+    {
+      "name": "entry_course_1_bedding_1_0",
+      "triangles": 92,
+      "volume": 0.03150679486861918
+    },
+    {
+      "name": "entry_course_1_bedding_1_1",
+      "triangles": 92,
+      "volume": 0.026146399837064852
+    },
+    {
+      "name": "entry_course_1_bedding_1_2",
+      "triangles": 92,
+      "volume": 0.02108496914540107
+    },
+    {
+      "name": "entry_course_1_bedding_2_0",
+      "triangles": 92,
+      "volume": 0.03507915311153435
+    },
+    {
+      "name": "entry_course_1_bedding_2_1",
+      "triangles": 92,
+      "volume": 0.04468239155054712
+    },
+    {
+      "name": "entry_course_2_tread_0",
+      "triangles": 68,
+      "volume": 0.024379645319034648
+    },
+    {
+      "name": "entry_course_2_tread_1",
+      "triangles": 68,
+      "volume": 0.04687390702504976
+    },
+    {
+      "name": "entry_course_2_bedding_0_0",
+      "triangles": 92,
+      "volume": 0.03208300461119507
+    },
+    {
+      "name": "entry_course_2_bedding_0_1",
+      "triangles": 92,
+      "volume": 0.02658842336192418
+    },
+    {
+      "name": "entry_course_2_bedding_0_2",
+      "triangles": 92,
+      "volume": 0.021463130193296796
+    },
+    {
+      "name": "entry_course_2_bedding_1_0",
+      "triangles": 92,
+      "volume": 0.03567144827290274
+    },
+    {
+      "name": "entry_course_2_bedding_1_1",
+      "triangles": 92,
+      "volume": 0.0452829955514365
+    },
+    {
+      "name": "entry_course_3_tread_0",
+      "triangles": 68,
+      "volume": 0.050153746240539455
+    },
+    {
+      "name": "entry_course_3_tread_1",
+      "triangles": 68,
+      "volume": 0.021099576784763503
+    },
+    {
+      "name": "entry_course_3_bedding_0_0",
+      "triangles": 92,
+      "volume": 0.03824390380759723
+    },
+    {
+      "name": "entry_course_3_bedding_0_1",
+      "triangles": 92,
+      "volume": 0.04883175436164791
+    }
+  ],
+  "closedOutward": true,
+  "canonicalMaterialByteMatched": true,
+  "canonicalImageCount": 1,
+  "separateEditableObjects": true
+}

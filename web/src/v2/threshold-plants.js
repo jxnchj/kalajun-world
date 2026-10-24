@@ -1,4 +1,8 @@
+import {GuestStairPlantField} from './guest-stair-plants.js';
+import {LodgeStairPlantField} from './lodge-stair-plants.js';
 import {settlementAssetFor} from "./settlement-assets.js";
+import {householdYards} from "./household-yards.js";
+import {householdEntryStepSegments} from "./household-entry-steps.js";
 // Source door coordinates and asset bounds are available before GLB loading.
 // Ownership stays with the original meadow cell; this never deletes a root.
 export const THRESHOLD_PLANT_MAX_SHIFT=4.8;
@@ -6,7 +10,7 @@ const BIN=64;
 const hash=id=>{let h=2166136261;for(const c of id)h=Math.imul(h^c.charCodeAt(0),16777619);return(h>>>0)/4294967296;};
 export class ThresholdPlantField{
  constructor(world){
-  this.world=world;this.enabled=new URLSearchParams(globalThis.location?.search||"").get("thresholdPlants")!=="v25";this.entries=[];this.bins=new Map();
+  this.world=world;this.guestStairs=new GuestStairPlantField(world);this.lodgeStairs=new LodgeStairPlantField(world);this.enabled=new URLSearchParams(globalThis.location?.search||"").get("thresholdPlants")!=="v25";this.entries=[];this.bins=new Map();
   for(const entity of world.entities||[]){
    const asset=settlementAssetFor(entity.assetId);if(!asset||entity.part)continue;
    const door=asset.openings.find(o=>o.kind==="door"),meta=world.manifest?.assetMetadata?.[entity.assetId];
@@ -25,6 +29,22 @@ export class ThresholdPlantField{
     const key=x+","+z;if(!this.bins.has(key))this.bins.set(key,[]);this.bins.get(key).push(entry);
    }
   }
+  this.yards=householdYards(world);this.yardBins=new Map();
+  for(const segment of [...this.yards.segments,...householdEntryStepSegments(world)]){const r=segment.radius;
+   for(let x=Math.floor((Math.min(segment.a[0],segment.b[0])-r)/BIN);x<=Math.floor((Math.max(segment.a[0],segment.b[0])+r)/BIN);x++)for(let z=Math.floor((Math.min(segment.a[1],segment.b[1])-r)/BIN);z<=Math.floor((Math.max(segment.a[1],segment.b[1])+r)/BIN);z++){
+    const key=x+","+z;if(!this.yardBins.has(key))this.yardBins.set(key,[]);this.yardBins.get(key).push(segment);
+   }
+  }
+ }
+ intersectsGuest(root,envelope){return this.guestStairs.intersects(root,envelope);}
+ intersectsLodge(root,envelope){return this.lodgeStairs.intersects(root,envelope);}
+ intersectsYard(root,envelope){
+  const radius=envelope.radius*(root.s??1),seen=new Set();
+  for(let x=Math.floor((root.x-radius)/BIN);x<=Math.floor((root.x+radius)/BIN);x++)for(let z=Math.floor((root.z-radius)/BIN);z<=Math.floor((root.z+radius)/BIN);z++)for(const e of this.yardBins.get(x+","+z)||[]){
+   if(seen.has(e))continue;seen.add(e);const dx=e.b[0]-e.a[0],dz=e.b[1]-e.a[1],d2=dx*dx+dz*dz,t=d2?Math.max(0,Math.min(1,((root.x-e.a[0])*dx+(root.z-e.a[1])*dz)/d2)):0;
+   if(Math.hypot(root.x-e.a[0]-t*dx,root.z-e.a[1]-t*dz)<=radius+e.radius)return true;
+  }
+  return false;
  }
  intersects(root,envelope){
   const radius=envelope.radius*(root.s??1),seen=new Set();
@@ -33,7 +53,7 @@ export class ThresholdPlantField{
    const nx=Math.max(e.x0-lx,0,lx-e.x1)*e.pose.scale.x,nz=Math.max(e.z0-lz,0,lz-e.z1)*e.pose.scale.z;
    if(Math.hypot(nx,nz)<=radius)return true;
   }
-  return false;
+  return this.intersectsYard(root,envelope)||this.intersectsLodge(root,envelope)||this.intersectsGuest(root,envelope);
  }
  relocate(root,envelope,suitable=()=>true,source=root){
   if(!this.enabled||!this.intersects(root,envelope))return root;
@@ -42,7 +62,7 @@ export class ThresholdPlantField{
    const angle=phase+j*Math.PI/12,x=root.x+Math.cos(angle)*radius,z=root.z+Math.sin(angle)*radius;
    const moved={...root,x,z,y:this.world.surface.heightAt(x,z)+offset};
    if(Math.hypot(x-source.x,z-source.z)>THRESHOLD_PLANT_MAX_SHIFT+.000001||!Number.isFinite(moved.y)||this.intersects(moved,envelope)||!suitable(moved))continue;
-   return {...moved,thresholdMove:radius};
+   return {...moved,thresholdMove:radius,...(this.intersectsYard(root,envelope)?{yardMove:radius}:{})};
   }
   return {...root,thresholdUnresolved:true};
  }

@@ -1,0 +1,87 @@
+[
+  {
+    "camera": {
+      "id": "river-forest",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10
+    },
+    "regularRootAnnulus78to140": 26292,
+    "wetRootAnnulus78to140": 0,
+    "sourceTrianglesPerRoot": 69,
+    "states": {
+      "original": {
+        "tiles": 54,
+        "roots": 19357,
+        "triangles": 1335633,
+        "mainVisibleTiles": 22,
+        "mainSubmittedRoots": 7668
+      },
+      "extended": {
+        "tiles": 142,
+        "roots": 50372,
+        "triangles": 3475668,
+        "mainVisibleTiles": 44,
+        "mainSubmittedRoots": 15190
+      }
+    },
+    "delta": {
+      "tiles": 88,
+      "roots": 31015,
+      "triangles": 2140035,
+      "mainVisibleTiles": 22,
+      "mainSubmittedRoots": 7522
+    },
+    "mainSubmittedExtraTriangles": 519018,
+    "additionalInstanceAndFieldBytes": 3473680,
+    "scope": "Actual CPU source roots/matrices/sphere + real camera frustum, cold resident tiles without movement hysteresis; no GPU timing; normal middle remains non-caster. All tile instances submitted even beyond fragment fade."
+  },
+  {
+    "camera": {
+      "id": "meadow-baseline",
+      "position": [
+        -1911.6746320544553,
+        2133.699873785899,
+        3396.603433350617
+      ],
+      "target": [
+        -1972.53,
+        2121.8634538710935,
+        3395.88
+      ]
+    },
+    "regularRootAnnulus78to140": 49750,
+    "wetRootAnnulus78to140": 0,
+    "sourceTrianglesPerRoot": 69,
+    "states": {
+      "original": {
+        "tiles": 56,
+        "roots": 37947,
+        "triangles": 2618343,
+        "mainVisibleTiles": 22,
+        "mainSubmittedRoots": 14099
+      },
+      "extended": {
+        "tiles": 141,
+        "roots": 95489,
+        "triangles": 6588741,
+        "mainVisibleTiles": 44,
+        "mainSubmittedRoots": 26423
+      }
+    },
+    "delta": {
+      "tiles": 85,
+      "roots": 57542,
+      "triangles": 3970398,
+      "mainVisibleTiles": 22,
+      "mainSubmittedRoots": 12324
+    },
+    "mainSubmittedExtraTriangles": 850356,
+    "additionalInstanceAndFieldBytes": 6444704,
+    "scope": "Actual CPU source roots/matrices/sphere + real camera frustum, cold resident tiles without movement hysteresis; no GPU timing; normal middle remains non-caster. All tile instances submitted even beyond fragment fade."
+  }
+]

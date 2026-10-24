@@ -1,10 +1,11 @@
+import {assertRoomFieldSamplingContract} from './room-field-contract.assert.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {createHash} from "node:crypto";
 import * as THREE from "three";
-import {ROOM_BOUNCE_DATA} from "./room-bounce-data.js";
-import {ROOM_SECOND_BOUNCE_DATA} from "./room-second-bounce-data.js";
+import {ROOM_BOUNCE_DATA} from "./room-bounce-registry.js";
+import {ROOM_SECOND_BOUNCE_DATA} from "./room-second-bounce-registry.js";
 import {RoomBounceField,decodeRoomField,ROOM_FIELD_GLSL} from "./room-bounce-field.js";
 const hash=b=>createHash("sha256").update(b).digest("hex");
 const asFloat=data=>Float32Array.from(data,THREE.DataUtils.fromHalfFloat);
@@ -61,7 +62,7 @@ test("zero restores the old sky exactly; default adds only baked second order us
   }
   assert.equal(field.cache.size,5);assert.equal(field.stats.secondBounceBytes,61920);assert.equal(field.stats.compositeBytes,61920);
   assert.equal([...field.cache.values()].reduce((n,t)=>n+t.image.data.byteLength,0),61920,"no additional GPU volume");
-  assert.equal((ROOM_FIELD_GLSL.match(/texture\(uRoomBounceField/g)||[]).length,4);
+  assertRoomFieldSamplingContract();
   assert.equal((ROOM_FIELD_GLSL.match(/uniform highp sampler3D/g)||[]).length,1);
   field.dispose();assert.equal(field.stats.secondBounceBytes,0);assert.equal(field.stats.compositeBytes,0);
 });

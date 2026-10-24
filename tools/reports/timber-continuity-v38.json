@@ -1,0 +1,33 @@
+{
+  "version": "timber-continuity-38",
+  "assetId": "house_a",
+  "nodeName": "house_a_log",
+  "vertexCount": 18029,
+  "sourceGLB": "assets/v2/house_a_lived.glb",
+  "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+  "sourceBlend": "assets/src/v2/pastoral/house_a-lived.blend",
+  "blendSHA256": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+  "positionSHA256": "a8daaa2b9243c971d0ab6f78719ccd426c7afc73b952b63e4175533c1b87593d",
+  "indexSHA256": "74181c92c3f0f99dca7285dcd0a83a96d6afdd8b28d609ac2bd2fb9aaeb5a78a",
+  "uvSHA256": "811d6975f1b627049a2c2ca33fffc529b42f01b2235d213bf7e8ced340226082",
+  "samples": 256,
+  "uniquePositionCount": 4498,
+  "scope": "Original side geometry only; caps, UV, index, bounds and base color unchanged. AO and legacy sky visibility are traced against original editable complete house. This is not new GI.",
+  "elapsedSeconds": 2.7424309159978293,
+  "bytes": 481659,
+  "oldMeanAO": 0.47162260976391274,
+  "newMeanAO": 0.44559305906295776,
+  "oldMeanSky": 0.1758838670366461,
+  "newMeanSky": 0.15832118690013885,
+  "occlusionRange": [
+    [
+      0.30000001192092896,
+      0.0
+    ],
+    [
+      1.0,
+      1.0
+    ]
+  ],
+  "originalAssetsUnchanged": true
+}

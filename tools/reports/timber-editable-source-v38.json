@@ -1,0 +1,8 @@
+{
+  "path": "assets/src/v2/pastoral/house_a-lived-timber-38.blend",
+  "sha256": "f21d111cba501a8ba709b3521494ae9f2252d999796a7e7a1271c57af7b2fe46",
+  "originalSpatialUVMaterialAndOtherMeshShadingSHA256": "cd06388d0b9e0c54f356e19fd0e09b6d4b9de6848b4db47eb516d2688037b0ac",
+  "persistedNormalMaxError": 0.00018577785989329037,
+  "sourceAndOriginalGLBUnchanged": true,
+  "runtimeContract": "Runtime still loads original GLB plus hash-bound sidecar. This editable Blend represents the exact side shading derivation; GI tables retain their actual original source identity, not this file hash."
+}

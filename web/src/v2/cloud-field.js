@@ -30,12 +30,12 @@ float cloudTransmittance(vec3 worldPosition) {
   return mix(1.0,exp(-depth*uCloudDensity*12.0),sunlight*belowLayer);
 }
 `;
-export function createCloudUniforms() {
+export function createCloudUniforms({array=new URLSearchParams(globalThis.location?.search||"").get("cloudCacheArray39")!=="0"}={}) {
   return {
     uCloudTime:{value:0},uCloudAltitude:{value:4400},
     uCloudCoverage:{value:.48},uCloudDensity:{value:.6},
     uCloudSun:{value:new THREE.Vector3(0,1,0)},
-    uCloudCacheA:{value:null},uCloudCacheB:{value:null},
+    ...(array?{uCloudCacheArray:{value:null},uCloudCacheLayers:{value:new THREE.Vector2(0,1)}}:{uCloudCacheA:{value:null},uCloudCacheB:{value:null}}),
     uCloudCacheOrigin:{value:new THREE.Vector2()},uCloudCacheSpan:{value:8192},
     uCloudCacheBlend:{value:0},uCloudCacheReady:{value:0}
   };
@@ -69,14 +69,14 @@ cloudWorld = instanceMatrix * cloudWorld;
 #endif
 vCloudWorld = (modelMatrix * cloudWorld).xyz;`);
   const cachedField=cloudFieldGLSL.replace("float cloudTransmittance",`
-uniform sampler2D uCloudCacheA;uniform sampler2D uCloudCacheB;
+${uniforms.uCloudCacheArray?"uniform highp sampler2DArray uCloudCacheArray;uniform vec2 uCloudCacheLayers;":"uniform sampler2D uCloudCacheA;uniform sampler2D uCloudCacheB;"}
 uniform vec2 uCloudCacheOrigin;uniform float uCloudCacheSpan;
 uniform float uCloudCacheBlend;uniform float uCloudCacheReady;
 float cachedCloudDepthAt(vec2 p) {
   vec2 uv=(p-uCloudCacheOrigin)/uCloudCacheSpan;
   float edge=min(min(uv.x,uv.y),min(1.-uv.x,1.-uv.y));
   if(uCloudCacheReady<.5||edge<=0.)return cloudDepthAt(p);
-  float d=mix(texture2D(uCloudCacheA,uv).r,texture2D(uCloudCacheB,uv).r,uCloudCacheBlend);
+  float d=${uniforms.uCloudCacheArray?"mix(texture(uCloudCacheArray,vec3(uv,uCloudCacheLayers.x)).r,texture(uCloudCacheArray,vec3(uv,uCloudCacheLayers.y)).r,uCloudCacheBlend)":"mix(texture2D(uCloudCacheA,uv).r,texture2D(uCloudCacheB,uv).r,uCloudCacheBlend)"};
   if(edge>=.02)return d;
   return mix(cloudDepthAt(p),d,smoothstep(0.,.02,edge));
 }

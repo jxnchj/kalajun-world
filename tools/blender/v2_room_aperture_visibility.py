@@ -38,7 +38,7 @@ def aperture_visibility(point,opening,bvh):
 def bake(key,base,bvh):
     nx,ny,nz=base['size'];n=nx*ny*nz
     raw=np.frombuffer(base64.b64decode(base['data']),dtype='<f2').reshape(4,nz,ny,nx,4)
-    result=np.zeros((3,nz,ny,nx),np.uint8);lo=np.array(base['bounds'][0]);hi=np.array(base['bounds'][1]);summary=[]
+    result=np.zeros((max(3,len(base["openings"])),nz,ny,nx),np.uint8);lo=np.array(base['bounds'][0]);hi=np.array(base['bounds'][1]);summary=[]
     for i,opening in enumerate(base['openings']):
         values=[]
         for z in range(nz):

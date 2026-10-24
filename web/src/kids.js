@@ -284,3 +284,4 @@ export class Kids {
     for (const k of this.list) k.update(dt);
   }
 }
+

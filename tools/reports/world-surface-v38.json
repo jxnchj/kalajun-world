@@ -1,0 +1,297 @@
+{
+  "status": "physical canopy albedo accepted and default; DEM/scattered canopy/shore geometry remain opt-in",
+  "files": [
+    "web/src/v2/world-data.js",
+    "web/src/v2/terrain-height-interpolation.js",
+    "web/src/v2/terrain-height-interpolation.test.js",
+    "web/src/v2/river-section.js",
+    "web/src/v2/household-entry-steps.test.js",
+    "web/src/v2/river-incision.js",
+    "web/src/v2/river-incision.test.js",
+    "web/src/v2/hydrology.js",
+    "web/src/v2/terrain-material.js",
+    "web/src/v2/terrain-canopy-albedo.test.js",
+    "web/src/v2/ecology.js",
+    "web/src/v2/brook-shoulder-grass.js",
+    "web/src/v2/brook-shoulder-grass.test.js",
+    "web/src/v2/brook-wetgrass.js"
+  ],
+  "backup": "backups/route-continuity-v38/world",
+  "dem": {
+    "control": "demInterpolation=monotone",
+    "baseline": "bilinear",
+    "method": "separable monotone Hermite interpolation; same DEM samples and authored detail; no mesh density change",
+    "caveat": "16 height reads instead of 4 per query; browser loading and repeat-pattern benefit remain unverified",
+    "realRasterProbe": {
+      "samples": 1600,
+      "grid": "core ix730..847 iz1270..1387 stride3; pixel-centred east boundary offset0 and south offset.27; derivative epsilon.01m; interior height offset2.7m",
+      "meanDerivativeJumpBilinear": 0.03425432204986123,
+      "meanDerivativeJumpMonotone": 0.0003519940133998034,
+      "meanHeightChangeMetres": 0.04750377563133114,
+      "maxHeightChangeMetres": 0.3348710799368746
+    },
+    "authoredProtection": {
+      "reason": "initial browser candidate rejected by existing stone source guard; corrected without relaxing validator",
+      "interior": "source bounds/pad and placement footprint plus32m",
+      "releaseMetres": 24,
+      "implementation": "128m bins; smoothstep union, exact old sample inside protected footprint",
+      "realSceneRegression": "every entity buildingPose and all three household step recipes exactly equal; GLB validateHouseholdEntrySource passed"
+    },
+    "browserOutcome": "Entry now passes and full terrain queues drain, but west-slope repeating waves remain almost unchanged. DO NOT adopt as repeat fix."
+  },
+  "bank": {
+    "control": "bankProfile=v38",
+    "baseline": "v24",
+    "method": "nonzero shore-contact tangent; monotone cubic from eroding face slope3 to depositional slope.65, C1 outer join; same waterline, protection envelope and plant exclusion field",
+    "caveat": "changes bed cut inside existing envelope; not yet proven to remove bright shore band",
+    "browser": "brook-bank-v38.png still has straight water reflection and grey lip; not adopted"
+  },
+  "verification": {
+    "newTargetedTests": 5,
+    "existingWorldAndRiverTests": 25,
+    "passed": 30,
+    "browser": false
+  },
+  "unchanged": [
+    "density",
+    "source DEM samples",
+    "texture detail",
+    "global lighting and grading",
+    "source river network",
+    "foundation protection envelope",
+    "default water level; only brookIncision opt-in modifies temporary designed levels"
+  ],
+  "diagnosis": {
+    "baseNormal": "almost unchanged: micro normal not main source",
+    "unlitAlbedo": "repeating waves remain",
+    "plainLit": "waves disappear with constant colour; geometric contours remain",
+    "conclusion": "main origin is shared 2.4m G canopy field, not DEM or micro normals",
+    "neutralField": "waves disappear when entire shared field neutralized",
+    "neutralCanopyG": "waves disappear with only G neutralized; meaningful broad landform colour remains"
+  },
+  "meadow": {
+    "control": "meadowPattern=v38",
+    "baseline": "v24 default until browser acceptance",
+    "method": "toroidal irregular minimum-spacing sites replace one-jittered-site-per-square; same shared texture and physical canopy scale",
+    "unchanged": [
+      "R/B/A byte-identical",
+      "G mean exact",
+      "root IDs/count/flower choices/geometry hashes exact",
+      "4 GPU world reads",
+      "1048576 byte source field"
+    ],
+    "measured": {
+      "GchangedTexels": 260855,
+      "totalTexels": 262144,
+      "oldGsd": 0.22563987420936638,
+      "newGsd": 0.2256208660036308,
+      "halfMetreVariationRatio": 1.003406323770299
+    },
+    "tests": "2 source tests + expanded existing actual ecology A/B passed; CPU complete",
+    "browser": "v38 scattered G texture did not materially eliminate oblique short waves; not adopted"
+  },
+  "canopyAlbedo": {
+    "control": "physical default; canopyAlbedo=v37 restores old path",
+    "baseline": "v37 opt-in",
+    "cause": "G defines canopy structure but ground alone multiplies RGB by .88..1.06 from G; grass blades use R/B pigment with G only in roughness",
+    "change": "remove only ground-only G painted brightness; retain actual G structure normal roughness and R/B broad colour, original texture and density",
+    "shaderRegression": "physical compiled shader exactly equals old shader minus that one two-line multiplier;1 test passed",
+    "browser": "west-physical-canopy.png: obvious parallel short waves eliminated; broad colour, near grass and hill form retained; actual browser confirmation by main agent",
+    "defaultRegression": "7/7 related shader/material/grass-projection tests passed"
+  },
+  "brook": {
+    "control": "brookMeanders=1 opt-in",
+    "sourceLine": "river-c71f43bd-df6e8899",
+    "sourceAnchor": "river-c71f43bd-df6e8899:132",
+    "baseline": "old source polyline retained by default",
+    "method": "limited displacement toward supported uphill side from measured 12m averaged cross-slope; same water/terrain/ecology section; origin anchor, endpoints and junction nodes locked",
+    "rejectedApproach": "unconstrained lateral control failed unchanged low-water-edge check at all amplitudes; never adopted",
+    "measurements": {
+      "nodes": 40,
+      "segments": 46,
+      "maxOffsetMetres": 2.4,
+      "offsetRange": [
+        -1.0878638676138435,
+        2.4
+      ],
+      "lengthDeltaMetres": 1.1176763457969576,
+      "maxHeadingDeltaDegrees": 15.75992854742037,
+      "waterVerticesVerified": 920,
+      "unchangedRoadPathBoardwalkGroundSamples": 5103
+    },
+    "regression": "21 river/meander/section tests passed; all source water levels, every entity pose, anchor and junction coordinates exact",
+    "browser": "brook-meander-v38.png: curve appears mainly mid/far; near water remains a bright strip. Default remains off; no adoption claim."
+  },
+  "brookIncision": {
+    "control": "brookIncision=1",
+    "default": "off until actual browser acceptance",
+    "basis": "Original reconstruction plan allows designed near-bank and riverbed shaping. Temporary water level was raw DEM cross-section minimum minus 0.035m; brook source freeboard is 0.035-0.111m. No source-water-level freeze is required.",
+    "method": "Shared water/bed lower by 0.22m at representative anchor; smooth 42-104m envelope; 8-28m locked-junction/inactive-interface release. Forward/backward constrained cut envelope retains >=65% old hydraulic drop and <=0.004 grade change; footprint is never extended.",
+    "measured": {
+      "nodes": 52,
+      "segments": 53,
+      "maxLowering": 0.22,
+      "anchorLowering": 0.22,
+      "maxGradeChange": 0.004000000000088162,
+      "maxTotalCut": 0.7013157393117349
+    },
+    "checks": {
+      "roadsPathsBoardwalkPoints": 5103,
+      "waterVertices": 1060,
+      "bankAndShoulderPoints": 530,
+      "allEntityPoses": "exact",
+      "allGeographicCoordinates": "exact",
+      "sourceEndpointsAndReceivingJunctionLevels": "exact",
+      "idempotence": "passed",
+      "flatReachAndProtectedGroundRejection": "passed without partial mutation",
+      "existingRelatedAndNewTests": 22,
+      "extraFailureScenarioTest": 1
+    },
+    "browser": "brook-incision-22cm.png: real bank relief is readable and water no longer appears glued to the grass plane, but continuous uniform shoulders resemble an artificial drainage ditch. Not adopted."
+  },
+  "brookLandform": {
+    "control": "brookLandform=1",
+    "default": "off pending actual browser acceptance",
+    "basis": "Incision alone revealed missing relief but not natural landform. Previous bankShape was assigned before meandering, leaving sediment sides unrelated to actual bent channel.",
+    "method": "Combine constrained 22cm incision with terrain-supported 2.4m bends, preserve exact source anchor without an artificial 16m straight lock bubble. Recompute sediment sides from signed centreline turning over nearby nodes; inner shallow depositional benches, outer compact rooted shoulders, wider/deeper bend pools and shallow straighter crossings share water, bed and ecological queries. Old profile is smoothly mixed at interface.",
+    "measured": {
+      "meanderNodes": 43,
+      "meanderSegments": 47,
+      "maxOffset": 2.4,
+      "offsetRange": [
+        -2.3035290550273304,
+        2.4
+      ],
+      "maxHeadingDegrees": 12.725864296968792,
+      "lengthDeltaMetres": 2.5936356397169265,
+      "bankNodes": 45,
+      "bankSegments": 46,
+      "waterWidthRange": [
+        0.7842572452162349,
+        0.992023462149607
+      ]
+    },
+    "verification": {
+      "coreInnerLeftBends": 8,
+      "coreInnerRightBends": 21,
+      "waterVertices": 1060,
+      "bankShoulderChecks": 530,
+      "roadPoints": 5103,
+      "allEntityPoses": "exact",
+      "sourceAnchorAndEndpoints": "exact",
+      "hydraulicGrade": "nonincreasing",
+      "crossSectionProfiles": "monotone with exact outer join",
+      "relatedExistingTests": 23,
+      "additionalCombinedRealSceneTest": 1
+    },
+    "browser": "brook-landform-combined.png and brook-landform-overview.png: relief and bends improve, but both shoulders remain continuously bare. Not adopted; diagnose ecological exclusion instead of further tiny curvature changes."
+  },
+  "brookShoulderGrass": {
+    "control": "only enabled when brookLandform produced accepted local bend banks; default world unchanged",
+    "cause": "grassAt calls excluded(...,.3), which uses half-width + min(full shoulder, .45+.3). This rejects all roots inside an extra <=.75m shore strip regardless of physical elevation above water.",
+    "method": "Retain original two-dimensional deterministic source cells and all existing grass outputs. Previously excluded, elevated candidate shoulders may gain narrow-base upright wet-bank tufts; same leaf count/full stem height. Seat every stem foot on actual surface and reject water crossing, excessive micro-slope, swept foliage-water contact and stone overlap. Flowers and tree logic unchanged.",
+    "measurement80x80m": {
+      "oldRootsExact": 3807,
+      "addedRoots": 13,
+      "eligiblePreviouslyExcludedCells": 126,
+      "unitTuftSeatableSites": 35,
+      "occupied8mReachCellsLeft": 4,
+      "occupied8mReachCellsRight": 3,
+      "maxStemBurial": 0.1629371906792585,
+      "minFootWaterClearance": 0.06256824096362834,
+      "flowersInThisWindow": 0,
+      "maxVisibleStemFloatMetres": -0.012000000000170985
+    },
+    "verification": "new actual shoulder + meadow pattern identity/flower choice/source geometry + incision/combined protection: 11/11 pass",
+    "browser": "brook-landform-safe-grass.png: 13 narrow-base tufts are insufficient; continuous homogeneous channel shoulders remain. Superseded by per-blade grounded wet-grass asset candidate.",
+    "actualMeshContact": "Initial physical-height-only planting could float 2.4cm over the rendered near-bank triangle. Fixed by matching near-channel 0.3125m sampling, Float32 heights and centre-chosen diagonal, then seating against both mesh and physical surface. Three unsafe additions rejected; all original 3807 roots unchanged."
+  },
+  "brookWetGrassAsset": {
+    "control": "brookLandform=1 only; default off",
+    "method": "Reuse complete 24-blade near/mid grass and 40-blade basal geometry. Compact rooted bases only, preserving leaf shape/width/height; seat each blade independently against actual terrain triangles, retain vertical growth. Newly admissible wet-shoulder sources use their own wet habitat eligibility; every original root result is exact. Build 3 batches per occupied 24m tile (near/mid/basal), common deformed geometry in colour/depth, world-root attributes preserve wind and LOD decisions.",
+    "realWindow": {
+      "oldRootsExact": 3807,
+      "priorSafeShoulderRootsRetained": 13,
+      "additionalPerBladeAssets": 24,
+      "totalAddedRoots": 37,
+      "maxVisibleFootFloat": -0.012000000000170985,
+      "maxFootBurial": 0.1629371906792585,
+      "minimumFootWaterClearance": 0.023337246444498305,
+      "occupied8mReachCellsLeft": 6,
+      "occupied8mReachCellsRight": 9
+    },
+    "checks": "Real source/landcover test preserves original 3807 roots plus prior 13 safe shoulder tufts; 24 further per-blade assets retain complete near/mid/basal vertex counts. Every new foot is grounded; full wind-envelope water/stone separation; world-space batching retains original instance vertical sway scaling. Colour/depth compile-hook parity and disposal checks pass. Final targeted wet-grass/material/identity suite 9/9, existing ecology/grass-field streaming regression 25/25.",
+    "browser": "brook-landform-lighting-fixed: parent verified bright mismatched colour removed, 3 new materials have CSM1/aerial key, 1280x800 queues/missing0 and no errors. Geometry/material remain candidate; continuous grey soil strip still visible and unresolved.",
+    "lightingCorrection": {
+      "cause": "New tile-time materials missed environment.register startup snapshot, therefore no common physical CSM/cloud/aerial chain.",
+      "fix": "Candidate materials created during ecology construction; same original leaf colours, UVs, root/landform/community fields and roughness. Source normals retained under per-blade translation then transformed analytically by inverse-transpose, avoiding world-coordinate quantization.",
+      "verification": "Startup material snapshot registered through actual WorldEnvironment.register and CSM; compiled hooks include physical lighting, clouds and common grass fields. All transformed source normals/colours/UVs and whole-plant safety verified. Targeted 6/6 pass."
+    }
+  },
+  "brookCutMaterial": {
+    "control": "brookLandform=1 only",
+    "cause": "Existing shore living restoration treated the modestly inclined newly cut faces as intact turf, masking soil classification.",
+    "method": "Within the authored representative reach, exposed soil eligibility uses physical clearance/slope/shore distance plus existing shared R/G rooted canopy coverage. Designed root-mat thickness varies 3.5–17cm across the same community field; soil upper boundary follows that thickness rather than one continuous 22cm horizon. No additional noise/texture samples or global light/colour change.",
+    "caveat": "Previous uniform exposed face produced continuous grey bands in actual screenshot. Latest canopy/height-based horizon remains candidate pending actual browser image; not surveyed stratigraphy."
+  },
+  "riverValleyWet": {
+    "control": "riverValleyWet=1; default off",
+    "entry": "view=river-valley&riverValleyWet=1",
+    "view": {
+      "x": -125.53816850327283,
+      "z": 2969.0470910417616,
+      "yaw": -53.3275749445041,
+      "pitch": -10,
+      "segment": "river-32d9cab5-5bea75bb:2347"
+    },
+    "scope": "Existing wide valley +/-80m; source shoulder >=4.5cm water clearance. Each rendered planted foot is supported by its actual terrain triangle and outside the finite water footprint; there is no arbitrary clearance above an infinite neighbouring water plane. Flexible leaf ends may touch water naturally; full stone collision retained. Shared water levels/channel geography unchanged.",
+    "renderContact": "Independent terrain-surface-contact reads actual indexed logical terrain leaves, including submission-batch hidden meshes and morph weights. Fixed physical source root/ID; per-blade GPU seat offsets change only when dependent actual nodes/position/index/morph change. Colour and depth share displaced geometry; planted feet stay outside actual water coverage and complete stone checks share displaced geometry.",
+    "verification": {
+      "oldRootsExact": 5810,
+      "settledPending": 0,
+      "actualTerrainPatches": 9,
+      "transition": "Production WorldTerrain geometry at .625m -> .3125m -> .625m; ID/root/count exact and pending0; settled frames do not rescan all blade feet",
+      "targetedWithExistingEcologyRegressions": "29/29 pass,4.2sec",
+      "newWetRoots": 67,
+      "targetedWithRiverGeometryRegressions": "17/17 pass,8.6sec"
+    },
+    "knownGap": "Initial whole-plant wind-water veto was stronger than ecological requirements. The disputed plant had all feet on land >=2.35cm above hydraulic level, no static vertices in water; only flexible wind-swept leaf ends approached water. Corrected the semantic rule instead of adding artificial earth or deleting roots. Overall bank art remains pending.",
+    "browser": "Upper-shoulder11-root version was seen by parent: grounded, pending0, still uniform hard banks. Latest67-root wet-margin version pending browser."
+  },
+  "valleyLandform": {
+    "control": "valleyLandform=1; default off; includes riverValleyWet",
+    "entry": "view=river-valley&valleyLandform=1",
+    "method": "Existing47m sediment succession plus real turning supplies opposite-side depositional shelves. Bars grow inward into old channel, max1.15m, without moving source centreline/water levels. The original cut-only remap left 0-1mm high false point bars: now a bounded physical sediment bench up to14cm starts at water edge and rejoins existing ground by2.1m outside old edge, using the same sediment side weights. This is opt-in authored deposition, not claimed surveyed terrain. No random small sawteeth or added stones.",
+    "verification": {
+      "nodes": 47,
+      "segments": 48,
+      "waterWidthRange": [
+        6.0593483676902995,
+        8.674651942089747
+      ],
+      "monotoneSections": 288,
+      "roadPathBoardwalkPointsExact": 2795,
+      "allSourceCenterlineAndWaterLevels": "exact",
+      "allEntityPoses": "exact",
+      "oldGrassSourceIDsScalesAndRotationsRetained": 5810,
+      "newWetRoots": 181,
+      "authoredStoneAvoidanceRelocations": 34,
+      "maxAuthoredRelocation": 1.8633044263784138,
+      "sameLandformLODTransitions": "actual .625 -> .3125 -> .625 meshes, fixed IDs/root coordinates/count and pending0",
+      "tests": "16/16 water-bank regressions; additional exact entry bench/outer join assertion 4/4 wet grass tests",
+      "browserFarRootRegression": {
+        "id": "grass:-176:3615",
+        "cameraDistanceMetres": 78.145,
+        "minRenderedFootWaterClearance": 0.003538639950193101,
+        "logicalRootUnchanged": true,
+        "pendingAfterFix": 0,
+        "waterCoveredFootRejected": true,
+        "tests": "5/5 actual shoulder + terrain contact tests, 8.05 sec; browser recheck pending"
+      },
+      "actualEntryBenchClearanceMetres": 0.10738958190563608,
+      "outerOriginalGroundExactAt": "old edge +2.1m"
+    },
+    "caveat": "Authored river geometry moves some existing shoreline stones and therefore existing deterministic grass avoidance positions. That is distinguished from camera/LOD changes, which never move logical roots. Neither brook grey band nor full valley artistry claimed solved.",
+    "browser": "Actual original river-valley view ready/terrain q0/m0/errors[]; pending1 at grass:-176:3615 was diagnosed from actual .625m rendered triangles: lowest planted foot +0.00353864m above nearby water, all feet outside water footprint. Old artificial +.008m threshold rejected valid supported dry-side feet. Fixed; exact root regression and invalid-water-foot negative case pass, actual browser recheck pending. Straight equal-width grey edge remains artistically unfinished. New physical sediment bench pending actual browser image; default stays off."
+  }
+}

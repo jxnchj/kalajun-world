@@ -1,3 +1,5 @@
+import {forestRootInputHashes} from './forest-root-inputs.js';
+import { sampleMonotoneHeight, createAuthoredHeightProtection } from "./terrain-height-interpolation.js";
 import {settlementAssetFor} from "./settlement-assets.js";
 import { createHydrology } from "./hydrology.js";
 // Authoritative V2 world coordinates and surface. No renderer or legacy buildSlice side effects.
@@ -206,50 +208,75 @@ function placeEntities(entities, assets, rawHeight) {
   }
   return {pads,heightAt};
 }
-export function createWorldData({meta,objects,coreHeights,farHeights,detailMeta,detailBytes,coreLandcover,farLandcover,manifest,streamData={lines:[]},riverMeanders,landcoverSampling=new URLSearchParams(globalThis.location?.search||"").get("landcoverSampling")==="scalar"?"scalar":"rgba"}) {
+export function createWorldData({meta,objects,coreHeights,farHeights,detailMeta,detailBytes,coreLandcover,farLandcover,manifest,streamData={lines:[]},riverMeanders,forestReach39=new URLSearchParams(globalThis.location?.search||"").get("forestReach39")==="1",forestBankCurvature38=new URLSearchParams(globalThis.location?.search||"").get("forestBankCurvature38")!=="0",forestRootedShoulder38=new URLSearchParams(globalThis.location?.search||"").get("forestRootedShoulder38")==="1",demInterpolation=new URLSearchParams(globalThis.location?.search||"").get("demInterpolation")==="monotone"?"monotone":"bilinear",landcoverSampling=new URLSearchParams(globalThis.location?.search||"").get("landcoverSampling")==="scalar"?"scalar":"rgba"}) {
   const metadata=deepFreeze(structuredClone(meta)), source=deepFreeze(structuredClone(objects));
   const core=makeRaster(coreHeights,{...meta.core}),far=makeRaster(farHeights,{...meta.far});
   const detail=makeRaster(detailBytes,{n:detailMeta.size,res:detailMeta.res,x0:detailMeta.origin[0],z0:detailMeta.origin[1],channels:4});
   const coreLC=makeRaster(coreLandcover.data,{n:coreLandcover.width,res:meta.core.size/coreLandcover.width,channels:4});
   const farLC=makeRaster(farLandcover.data,{n:farLandcover.width,res:meta.far.size/farLandcover.width,channels:4});
   const weight=(x,z)=>smooth(0,600,Math.min(meta.core.size/2-Math.abs(x),meta.core.size/2-Math.abs(z)));
-  const geographicHeightAt=(x,z)=>{finite(x,z);const w=weight(x,z);if(w===1)return sampleRaster(core,x,z);if(w===0)return sampleRaster(far,x,z);return sampleRaster(far,x,z)*(1-w)+sampleRaster(core,x,z)*w;};
+  const entities=createEntities(source,manifest.assetMetadata);
+  const reconstructionWeight=demInterpolation==="monotone"?createAuthoredHeightProtection(entities,manifest.assetMetadata):null;
+  const heightSample=reconstructionWeight?(r,x,z)=>{
+    const w=reconstructionWeight(x,z);
+    if(w===0)return sampleRaster(r,x,z);
+    if(w===1)return sampleMonotoneHeight(r,x,z);
+    return sampleRaster(r,x,z)*(1-w)+sampleMonotoneHeight(r,x,z)*w;
+  }:sampleRaster;
+  const geographicHeightAt=(x,z)=>{finite(x,z);const w=weight(x,z);if(w===1)return heightSample(core,x,z);if(w===0)return heightSample(far,x,z);return heightSample(far,x,z)*(1-w)+heightSample(core,x,z)*w;};
   const detailAt=(x,z,channel=0)=>{
     const edge=Math.min((x-detail.x0)/detail.res-.5,(z-detail.z0)/detail.res-.5,detail.n-.5-(x-detail.x0)/detail.res,detail.n-.5-(z-detail.z0)/detail.res);
     if(edge<=0)return 0;
     const val=sampleRaster(detail,x,z,channel),w=smooth(0,2,edge);
     return (channel===0?(val-128)*detailMeta.scale:val/255)*w;
   };
-  const rawHeight=(x,z)=>geographicHeightAt(x,z)+detailAt(x,z);
-  const entities=createEntities(source,manifest.assetMetadata);
-  const hydrology=createHydrology({streamData,heightAt:rawHeight,entities,assetMetadata:manifest.assetMetadata,objects:source,riverMeanders});
-  const channelHeight=(x,z)=>hydrology.bedHeightAt(x,z,rawHeight(x,z));
-  const placed=placeEntities(entities,manifest.assetMetadata,channelHeight);
-  const byId=new Map(entities.map(e=>[e.id,e]));
-  const heightAt=(x,z)=>{finite(x,z);return placed.heightAt(x,z);};
-  hydrology.bindSurface(heightAt);
-  const surface={geographicHeightAt,heightAt,uncarvedHeightAt:rawHeight,detailAt,
-    normalAt(x,z,step=2){finite(x,z,step);if(step<=0)throw new RangeError("Normal step must be positive");const dx=heightAt(x-step,z)-heightAt(x+step,z),dz=heightAt(x,z-step)-heightAt(x,z+step),dy=2*step,len=Math.hypot(dx,dy,dz);return{x:dx/len,y:dy/len,z:dz/len};},
-    buildingPose(entity){const e=typeof entity==="string"?byId.get(entity):byId.get(entity?.id);if(!e)throw new Error("Unknown entity");return{x:e.x,y:e.y,z:e.z,rot:e.rot,scale:{...e.scale}};},
-    pads:deepFreeze(placed.pads),heightPolicy:"DEM + authored detail + bounded cut-only river beds + analytical cut-only building pads; no exaggeration or earth curvature",
-  };
-  const bounds=deepFreeze({minX:-meta.far.size/2,maxX:meta.far.size/2,minZ:-meta.far.size/2,maxZ:meta.far.size/2,core:{minX:-meta.core.size/2,maxX:meta.core.size/2,minZ:-meta.core.size/2,maxZ:meta.core.size/2}});
-  return {meta:metadata,objects:source,manifest:deepFreeze(structuredClone(manifest)),entities:deepFreeze(entities),surface,hydrology,bounds,chunkAt,...coordinateFrame(meta.origin_utm),assetBase:"./assets/",
-    landcoverAt(x,z){
+  const landcoverAt=(x,z)=>{
       finite(x,z);const w=weight(x,z),single=w===1?coreLC:w===0?farLC:null;
       if(landcoverSampling==="scalar")return Object.fromEntries(["r","g","b","a"].map((k,i)=>[k,clamp((single?sampleRaster(single,x,z,i):sampleRaster(coreLC,x,z,i)*w+sampleRaster(farLC,x,z,i)*(1-w))/255,0,1)]));
       const c=sampleRasterRGBA(single||coreLC,x,z);
       if(!single){const f=sampleRasterRGBA(farLC,x,z);for(const k of ["r","g","b","a"])c[k]=c[k]*w+f[k]*(1-w);}
       c.r=clamp(c.r/255,0,1);c.g=clamp(c.g/255,0,1);c.b=clamp(c.b/255,0,1);c.a=clamp(c.a/255,0,1);return c;
-    },
+    };
+  const rawHeight=(x,z)=>geographicHeightAt(x,z)+detailAt(x,z);
+  const hydrology=createHydrology({streamData,heightAt:rawHeight,entities,assetMetadata:manifest.assetMetadata,objects:source,riverMeanders,forestRootedShoulder38,forestBankCurvature38,forestReach39,landcoverAt});
+  const channelHeight=(x,z)=>hydrology.bedHeightAt(x,z,rawHeight(x,z));
+  const placed=placeEntities(entities,manifest.assetMetadata,channelHeight);
+  const byId=new Map(entities.map(e=>[e.id,e]));
+  const heightAt=(x,z)=>{finite(x,z);return placed.heightAt(x,z);};
+  hydrology.bindSurface(heightAt);
+  const surface={demInterpolation,geographicHeightAt,heightAt,uncarvedHeightAt:rawHeight,detailAt,
+    normalAt(x,z,step=2){finite(x,z,step);if(step<=0)throw new RangeError("Normal step must be positive");const dx=heightAt(x-step,z)-heightAt(x+step,z),dz=heightAt(x,z-step)-heightAt(x,z+step),dy=2*step,len=Math.hypot(dx,dy,dz);return{x:dx/len,y:dy/len,z:dz/len};},
+    buildingPose(entity){const e=typeof entity==="string"?byId.get(entity):byId.get(entity?.id);if(!e)throw new Error("Unknown entity");return{x:e.x,y:e.y,z:e.z,rot:e.rot,scale:{...e.scale}};},
+    pads:deepFreeze(placed.pads),heightPolicy:"DEM + authored detail + bounded cut-only river beds + analytical cut-only building pads; no exaggeration or earth curvature",
   };
+  let rootInputHashes;
+  const getForestRootInputHashes=()=>rootInputHashes??=(forestRootInputHashes({meta:metadata,objects:source,assetMetadata:manifest.assetMetadata,detailMeta,streamData,coreHeights,farHeights,detailBytes,coreLandcover:coreLandcover.data,farLandcover:farLandcover.data,options:{...(forestReach39?{forestReach39:true}:{}),...(forestBankCurvature38?{forestBankCurvature38:true}:{}),...(forestRootedShoulder38?{forestRootedShoulder38:true}:{}),demInterpolation,landcoverSampling,riverMeanders:riverMeanders??'default',valleyLandform:Boolean(hydrology.stats.valleyDeposits?.nodes),valleyMeanders:Boolean(hydrology.stats.valleyMeanders?.nodes),valleySection:Boolean(hydrology.stats.valleyDeposits?.sectionProfile)}}));
+  const bounds=deepFreeze({minX:-meta.far.size/2,maxX:meta.far.size/2,minZ:-meta.far.size/2,maxZ:meta.far.size/2,core:{minX:-meta.core.size/2,maxX:meta.core.size/2,minZ:-meta.core.size/2,maxZ:meta.core.size/2}});
+  const world={getForestRootInputHashes,meta:metadata,objects:source,manifest:deepFreeze(structuredClone(manifest)),entities:deepFreeze(entities),surface,hydrology,bounds,chunkAt,...coordinateFrame(meta.origin_utm),assetBase:"./assets/",
+    landcoverAt,
+  };
+  if(forestRootedShoulder38||forestBankCurvature38||forestReach39){
+    // Keep the exact existing habitat/relocation inputs. Only final plant Y is
+    // reseated; candidate banks must not resow the procedural population.
+    const nearby=makePadIndex(placed.pads),baselineHeightAt=(x,z)=>{
+      const h=hydrology.baselineBedHeightAt(x,z,rawHeight(x,z));
+      return nearby(x,z).reduce((v,p)=>Math.min(v,padHeight(h,p,x,z)),h);
+    };
+    const selectionSurface={...surface,heightAt:baselineHeightAt,normalAt(x,z,step=2){
+      finite(x,z,step);if(step<=0)throw new RangeError("Normal step must be positive");
+      const dx=baselineHeightAt(x-step,z)-baselineHeightAt(x+step,z),dz=baselineHeightAt(x,z-step)-baselineHeightAt(x,z+step),dy=2*step,len=Math.hypot(dx,dy,dz);return{x:dx/len,y:dy/len,z:dz/len};
+    }};
+    world.forestShoulderSourceWorld={...world,surface:selectionSurface,hydrology:hydrology.reachSource??hydrology};
+  }
+  if(forestReach39&&hydrology.forestReach39)world.forestReach39={...hydrology.forestReach39.stats,giMatched:false};
+  return world;
 }
 async function fetchChecked(url) {const r=await fetch(url);if(!r.ok)throw new Error(url+": HTTP "+r.status);return r;}
 async function loadPNG(url) {
   const bitmap=await createImageBitmap(await (await fetchChecked(url)).blob(),{colorSpaceConversion:"none",premultiplyAlpha:"none"});
   try{const canvas=document.createElement("canvas");canvas.width=bitmap.width;canvas.height=bitmap.height;const ctx=canvas.getContext("2d",{willReadFrequently:true});if(!ctx)throw new Error("2D canvas unavailable");ctx.drawImage(bitmap,0,0);return {width:bitmap.width,height:bitmap.height,data:ctx.getImageData(0,0,bitmap.width,bitmap.height).data};}finally{bitmap.close();}
 }
-export async function loadWorldData({onProgress}={}) {
+export async function loadWorldData({onProgress,onSourceInputs}={}) {
   let completed=0;const total=10;
   const done=stage=>onProgress?.({stage,completed:++completed,total,ratio:completed/total});
   const json=async(url,label)=>{const v=await(await fetchChecked(url)).json();done(label);return v;};
@@ -259,7 +286,9 @@ export async function loadWorldData({onProgress}={}) {
     json("./data/scene.json","世界坐标"),json("./data/objects.json","地物目录"),json("./world-v2/manifest.json","数据来源"),
     json("./data/detail.json","局部地表"),binary("./data/core_height.bin.gz","核心高程"),binary("./data/far_height.bin.gz","远景高程"),
     binary("./data/detail.bin.gz","局部地表解码"),image("./data/core_landcover.png","核心地类"),image("./data/far_landcover.png","远景地类"),json("./data/streams.json","原始河网")]);
-  const world=createWorldData({meta,objects,manifest,detailMeta,detailBytes,coreHeights:decodeHeightBytes(cb,meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(fb,meta.far.n,meta.height_scale),coreLandcover,farLandcover,streamData});
+  const inputs={meta,objects,manifest,detailMeta,detailBytes,coreHeights:decodeHeightBytes(cb,meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(fb,meta.far.n,meta.height_scale),coreLandcover,farLandcover,streamData};
+  const world=createWorldData(inputs);
+  onSourceInputs?.(inputs);
   onProgress?.({stage:"地表与地基就绪",completed:total,total,ratio:1});return world;
 }
 
@@ -318,3 +347,4 @@ function settle(items, margin, iters = 16) {
   }
   return moved.size;
 }
+

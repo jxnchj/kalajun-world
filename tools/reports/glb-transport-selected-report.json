@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "generator": "tools/build_glb_transport.py",
+  "generatorSHA256": "ff5308d8d06dbf7a051af66593dff670d996f6f03fd78c9e163e56bd2c4b0de8",
+  "zlibVersion": "1.2.12",
+  "scope": "Selected transports only: gh_lanchuan_rooms_living39",
+  "gzip": {
+    "level": 9,
+    "mtime": 0,
+    "filename": "",
+    "os": 255,
+    "filesystemMtime": 0
+  },
+  "manifest": "web/public/assets/v2/glb-transport-manifest.json",
+  "totals": {
+    "assets": 26,
+    "rawBytes": 166496112,
+    "gzipBytes": 87075132,
+    "savedBytes": 79420980,
+    "savedPercent": 47.7014
+  },
+  "assets": [
+    {
+      "source": "web/public/assets/v2/gh_lanchuan_rooms_living39.glb",
+      "transport": "web/public/assets/v2/gh_lanchuan_rooms_living39.glb.gz",
+      "runtimeReference": {
+        "module": "web/src/v2/generated/guest-living-source-39.json",
+        "symbol": "guestLiving39 candidate",
+        "assetId": "gh_lanchuan"
+      },
+      "url": "assets/v2/gh_lanchuan_rooms_living39.glb.gz",
+      "rawBytes": 17060928,
+      "gzipBytes": 6468325,
+      "sha256": "9c1c5e5e2dc464fe61adfa6b3f5ee55f90a180bf9bebc097586b9b9f579e35c1",
+      "gzipSha256": "c24a8bbc778976b3e2aacde5f20b310368a92cd4ac5e502391675117ed2d944f",
+      "savedBytes": 10592603,
+      "savedPercent": 62.0869,
+      "glb": {
+        "gltfVersion": "2.0",
+        "meshes": 808,
+        "materials": 32,
+        "images": 31,
+        "externalResourceURIs": []
+      },
+      "exactDecompression": true
+    }
+  ],
+  "validation": {
+    "originalGLBsReadOnly": true,
+    "exactDecompression": true,
+    "compressedFilesReadBack": true,
+    "deterministicRebuild": true
+  },
+  "limits": "Transfer size evidence only. Does not establish browser loading time, parsing time or visual acceptance."
+}

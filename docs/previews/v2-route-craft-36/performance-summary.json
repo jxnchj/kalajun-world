@@ -1,0 +1,330 @@
+{
+  "method": "Same Chrome tab, 1280x800 DPR1, river-forest time870, canopyCache=0, HTTP no-store, no concurrent build/test/bake. GPU/driver caches not reset. Each navigation immediately reapplies viewport. GPU values are timer queries returned within each 20s window and include query-queue latency. All final default measurements have floor batches disabled.",
+  "conclusion": "No demonstrated whole-frame GPU or loading improvement. Fully refined terrain pair: v36 frame106.75ms GPU30.767ms; v35 frame100.52ms GPU30.763ms. Earlier near-ready A2/B2/A3 still had terrain work queued and must not be used as steady-state evidence; A3 also had unexplained severe stalls. First-frame submission9.64/9.49/9.62s does not establish stable loading-tail improvement. Local crown CPU benefit independently verified; spatial floor candidate remains off.",
+  "earlyResults": [
+    {
+      "name": "final-forest-a2",
+      "version": "route-continuity-35",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10,
+      "time": 870,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "samples": 235,
+      "frameMeanMs": 85.14297872340425,
+      "frameMedianMs": 75.90000000000146,
+      "frameP95Ms": 125,
+      "fps": 11.744949671641194,
+      "gpuSamples": 234,
+      "gpuMeanMs": 34.080657311965815,
+      "firstFrameSubmittedMs": 9635.60000000149,
+      "counts": {
+        "trees": 80927,
+        "grassTufts": 19403,
+        "flowerPlants": 782,
+        "forestShrubs": 288,
+        "forestFerns": 720,
+        "wetBankSedges": 44,
+        "forestDeadwood": 20,
+        "forestStones": 0
+      },
+      "errors": [],
+      "floorBatches": null,
+      "nearShadowDetail": {
+        "mode": "resolution",
+        "requested": "auto",
+        "reason": null,
+        "splits": [
+          60,
+          180,
+          500
+        ],
+        "mapSizes": [
+          4096,
+          2048,
+          2048
+        ],
+        "cascades": 3,
+        "maxFar": 500,
+        "shadowMapSize": 2048,
+        "fragmentSamplers": 16,
+        "maxTextures": 16,
+        "maxTextureSize": 16384,
+        "shadowPixels": 25165824,
+        "extraShadowPixels": 12582912,
+        "extraDepthBytesLowerBound": 50331648
+      },
+      "terrainQueuedAtEnd": 174,
+      "classification": "early after near-view ready; background terrain still streaming; not full-terrain steady state"
+    },
+    {
+      "name": "final-forest-b2",
+      "version": "route-continuity-36",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10,
+      "time": 870,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "samples": 266,
+      "frameMeanMs": 75.18947368421053,
+      "frameMedianMs": 67.40000000000055,
+      "frameP95Ms": 116.39999999999964,
+      "fps": 13.299734005319893,
+      "gpuSamples": 266,
+      "gpuMeanMs": 32.186775823308274,
+      "firstFrameSubmittedMs": 9491.19999999553,
+      "counts": {
+        "trees": 80927,
+        "grassTufts": 19403,
+        "flowerPlants": 782,
+        "forestShrubs": 288,
+        "forestFerns": 720,
+        "wetBankSedges": 44,
+        "forestDeadwood": 20,
+        "forestStones": 0
+      },
+      "errors": [],
+      "floorBatches": {
+        "enabled": false,
+        "blockSize": 48,
+        "batches": 0,
+        "residentInstances": 0,
+        "matrixUploads": 0,
+        "boundsRefreshes": 0,
+        "instanceMatrixBytes": 0,
+        "sourceInstanceMatrixBytes": 0
+      },
+      "nearShadowDetail": {
+        "mode": "resolution",
+        "requested": "auto",
+        "reason": null,
+        "splits": [
+          60,
+          180,
+          500
+        ],
+        "mapSizes": [
+          4096,
+          2048,
+          2048
+        ],
+        "cascades": 3,
+        "maxFar": 500,
+        "shadowMapSize": 2048,
+        "fragmentSamplers": 16,
+        "maxTextures": 16,
+        "maxTextureSize": 16384,
+        "shadowPixels": 25165824,
+        "extraShadowPixels": 12582912,
+        "extraDepthBytesLowerBound": 50331648
+      },
+      "terrainQueuedAtEnd": 134,
+      "classification": "early after near-view ready; background terrain still streaming; not full-terrain steady state"
+    },
+    {
+      "name": "final-forest-a3",
+      "version": "route-continuity-35",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10,
+      "time": 870,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "samples": 48,
+      "frameMeanMs": 432.6458333333333,
+      "frameMedianMs": 208.3000000000011,
+      "frameP95Ms": 1883.5,
+      "fps": 2.3113593682284392,
+      "gpuSamples": 48,
+      "gpuMeanMs": 41.694184354166666,
+      "firstFrameSubmittedMs": 9624.5,
+      "counts": {
+        "trees": 80927,
+        "grassTufts": 19403,
+        "flowerPlants": 782,
+        "forestShrubs": 288,
+        "forestFerns": 720,
+        "wetBankSedges": 44,
+        "forestDeadwood": 20,
+        "forestStones": 0
+      },
+      "errors": [],
+      "floorBatches": null,
+      "nearShadowDetail": {
+        "mode": "resolution",
+        "requested": "auto",
+        "reason": null,
+        "splits": [
+          60,
+          180,
+          500
+        ],
+        "mapSizes": [
+          4096,
+          2048,
+          2048
+        ],
+        "cascades": 3,
+        "maxFar": 500,
+        "shadowMapSize": 2048,
+        "fragmentSamplers": 16,
+        "maxTextures": 16,
+        "maxTextureSize": 16384,
+        "shadowPixels": 25165824,
+        "extraShadowPixels": 12582912,
+        "extraDepthBytesLowerBound": 50331648
+      },
+      "caution": "This baseline rerun contains severe 0.5–2.17s frame stalls; cause not established. Retained in full; cannot attribute the candidate difference to optimization.",
+      "terrainQueuedAtEnd": 181,
+      "classification": "early after near-view ready; background terrain still streaming; not full-terrain steady state"
+    }
+  ],
+  "steadyMethod": "Fresh reload for both versions, then existing terrain.prepareView(camera,{waitFor:all,maxMs:60000}) fully drains terrain. Both queuedTiles=0 and morphingGroups=0 before and after20s sampling. This diagnostic preparation is only for steady rendering, not a cold-load measurement. Order36 then35. Single supplementary pair does not establish stable improvement. Render counters are last-frame values and shadow cadence varies; do not use those as fixed per-frame cost.",
+  "steadyResults": [
+    {
+      "name": "steady-forest-b",
+      "version": "route-continuity-36",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10,
+      "time": 870,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "samples": 188,
+      "frameMeanMs": 106.74734042553192,
+      "frameMedianMs": 102.15000000000146,
+      "frameP95Ms": 154.40000000000146,
+      "fps": 9.367914891496623,
+      "gpuSamples": 189,
+      "gpuMeanMs": 30.767177407407406,
+      "counts": {
+        "trees": 80927,
+        "grassTufts": 19403,
+        "flowerPlants": 782,
+        "forestShrubs": 288,
+        "forestFerns": 720,
+        "wetBankSedges": 44,
+        "forestDeadwood": 20,
+        "forestStones": 0
+      },
+      "nearShadowDetail": {
+        "mode": "resolution",
+        "requested": "auto",
+        "reason": null,
+        "splits": [
+          60,
+          180,
+          500
+        ],
+        "mapSizes": [
+          4096,
+          2048,
+          2048
+        ],
+        "cascades": 3,
+        "maxFar": 500,
+        "shadowMapSize": 2048,
+        "fragmentSamplers": 16,
+        "maxTextures": 16,
+        "maxTextureSize": 16384,
+        "shadowPixels": 25165824,
+        "extraShadowPixels": 12582912,
+        "extraDepthBytesLowerBound": 50331648
+      },
+      "errors": []
+    },
+    {
+      "name": "steady-forest-a",
+      "version": "route-continuity-35",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10,
+      "time": 870,
+      "viewport": {
+        "width": 1280,
+        "height": 800,
+        "pixelRatio": 1
+      },
+      "terrainQueued": 0,
+      "terrainMorphing": 0,
+      "samples": 199,
+      "frameMeanMs": 100.52160804020102,
+      "frameMedianMs": 97.79999999999927,
+      "frameP95Ms": 136.5,
+      "fps": 9.948109859126765,
+      "gpuSamples": 200,
+      "gpuMeanMs": 30.7629464,
+      "counts": {
+        "trees": 80927,
+        "grassTufts": 19403,
+        "flowerPlants": 782,
+        "forestShrubs": 288,
+        "forestFerns": 720,
+        "wetBankSedges": 44,
+        "forestDeadwood": 20,
+        "forestStones": 0
+      },
+      "nearShadowDetail": {
+        "mode": "resolution",
+        "requested": "auto",
+        "reason": null,
+        "splits": [
+          60,
+          180,
+          500
+        ],
+        "mapSizes": [
+          4096,
+          2048,
+          2048
+        ],
+        "cascades": 3,
+        "maxFar": 500,
+        "shadowMapSize": 2048,
+        "fragmentSamplers": 16,
+        "maxTextures": 16,
+        "maxTextureSize": 16384,
+        "shadowPixels": 25165824,
+        "extraShadowPixels": 12582912,
+        "extraDepthBytesLowerBound": 50331648
+      },
+      "errors": []
+    }
+  ]
+}

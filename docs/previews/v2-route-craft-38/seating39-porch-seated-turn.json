@@ -1,0 +1,3126 @@
+{
+  "version": "route-continuity-38-candidate",
+  "loadTimings": {
+    "phases": {
+      "worldData": {
+        "startMs": 12.900000005960464,
+        "elapsedMs": 1354.3999999910593,
+        "status": "complete"
+      },
+      "terrainCoarse": {
+        "startMs": 1651.4000000059605,
+        "elapsedMs": 425.20000000298023,
+        "status": "complete"
+      },
+      "terrainPrefetch": {
+        "startMs": 2119.9000000059605,
+        "elapsedMs": 893.2999999970198,
+        "status": "complete"
+      },
+      "structures": {
+        "startMs": 2146.7999999970198,
+        "elapsedMs": 2350.6000000089407,
+        "status": "complete"
+      },
+      "ecologyAssets": {
+        "startMs": 2147.4000000059605,
+        "elapsedMs": 2039.7000000029802,
+        "status": "complete"
+      },
+      "waterAssets": {
+        "startMs": 2148.2999999970198,
+        "elapsedMs": 1072.4000000059605,
+        "status": "complete"
+      },
+      "pastureAssets": {
+        "startMs": 2148.4000000059605,
+        "elapsedMs": 1019.5999999940395,
+        "status": "complete"
+      },
+      "terrainSurfaces": {
+        "startMs": 2148.7999999970198,
+        "elapsedMs": 1115.4000000059605,
+        "status": "complete"
+      },
+      "householdLiving": {
+        "startMs": 4497.600000008941,
+        "elapsedMs": 71.09999999403954,
+        "status": "complete"
+      },
+      "pathSurfaces": {
+        "startMs": 4645.4000000059605,
+        "elapsedMs": 14.5,
+        "status": "complete"
+      },
+      "initialScene": {
+        "startMs": 4702,
+        "elapsedMs": 11227.60000000894,
+        "status": "complete"
+      },
+      "initialShaders": {
+        "startMs": 15938,
+        "elapsedMs": 942,
+        "status": "complete"
+      },
+      "firstFrame": {
+        "startMs": 16880,
+        "elapsedMs": 3312,
+        "status": "complete"
+      }
+    },
+    "totalMs": 20192.10000000894,
+    "moduleStartedMs": 315.3999999910593,
+    "navigationToFirstFrameSubmittedMs": 20507.5,
+    "context": {
+      "screenAntialias": false,
+      "requestedScreenAntialias": false,
+      "worldTargetSamples": 4,
+      "probeEligible": true,
+      "fallback": false
+    },
+    "farTerrainIdle": {
+      "enabled": false,
+      "slices": 0,
+      "workMs": 0,
+      "reason": "disabled",
+      "error": null,
+      "last": null
+    },
+    "firstFrameNewPrograms": []
+  },
+  "depthMode": "reversed-float32",
+  "frameTarget": {
+    "enabled": true,
+    "frames": 1504,
+    "width": 1280,
+    "height": 800,
+    "samples": 4,
+    "colorFormat": "RGBA16F",
+    "packedHDRCapability": null,
+    "depthFormat": "DEPTH_COMPONENT32F",
+    "scene": {
+      "calls": 993,
+      "triangles": 6295640,
+      "points": 0,
+      "lines": 0
+    },
+    "output": {
+      "calls": 1,
+      "triangles": 1,
+      "points": 0,
+      "lines": 0
+    },
+    "total": {
+      "calls": 994,
+      "triangles": 6295641,
+      "points": 0,
+      "lines": 0
+    },
+    "estimatedAttachmentBytes": 61440000,
+    "msaaDiscard38": false,
+    "msaaDiscardReason": "disabled",
+    "outputNoClear38": false
+  },
+  "treePhotoPrepass": {
+    "enabled": false,
+    "active": false,
+    "batches": 0,
+    "instances": 0,
+    "syncs": 0,
+    "frames": 0,
+    "error": null
+  },
+  "ready": true,
+  "visibility": "visible",
+  "viewport": {
+    "width": 1280,
+    "height": 800,
+    "pixelRatio": 1
+  },
+  "uptimeMs": 108417,
+  "position": [
+    -1739.069064041172,
+    2117.021597436396,
+    3613.5922759054033
+  ],
+  "view": "free",
+  "yaw": -276.08502224343897,
+  "pitch": -7,
+  "time": 870,
+  "initialPreparation": {
+    "ready": false,
+    "nearReady": true,
+    "reason": "near-ready",
+    "elapsedMs": 59.099999994039536,
+    "iterations": 17,
+    "queuedTiles": 191,
+    "nearQueuedTiles": 0,
+    "visibleTiles": 415,
+    "minSpacing": 0.3125,
+    "terrainPrepareMs": 59.29999999701977,
+    "ecologyQueuesMs": 7798.899999991059,
+    "roomIndirectPrepareMs": 39.900000005960464,
+    "ecologyPrepareMs": 7883.20000000298,
+    "ecologyIterations": 90,
+    "ecologyPreparation": {
+      "mode": "static-queues",
+      "iterations": 90,
+      "pending": 44,
+      "waterPending": 0,
+      "timings": {
+        "farTiles": {
+          "calls": 90,
+          "totalMs": 741.1999999433756,
+          "maxMs": 40.3999999910593
+        },
+        "nearTrees": {
+          "calls": 1,
+          "totalMs": 2.9000000059604645,
+          "maxMs": 2.9000000059604645
+        },
+        "activeTrees": {
+          "calls": 91,
+          "totalMs": 0.4000000059604645,
+          "maxMs": 0.29999999701976776
+        },
+        "treeDynamics": {
+          "calls": 2,
+          "totalMs": 2.7999999970197678,
+          "maxMs": 2.7000000029802322
+        },
+        "meadow": {
+          "calls": 90,
+          "totalMs": 6696.600000008941,
+          "maxMs": 1470.1000000089407
+        },
+        "grassRoots": {
+          "calls": 54,
+          "totalMs": 5577.79999999702,
+          "maxMs": 1463.199999988079
+        },
+        "grassMeshes": {
+          "calls": 75,
+          "totalMs": 661.2999999672174,
+          "maxMs": 26.200000002980232
+        },
+        "wetMeshes": {
+          "calls": 54,
+          "totalMs": 0.20000000298023224,
+          "maxMs": 0.20000000298023224
+        },
+        "flowers": {
+          "calls": 21,
+          "totalMs": 163.90000000596046,
+          "maxMs": 46.5
+        },
+        "nearFlowerPool": {
+          "calls": 90,
+          "totalMs": 9.60000005364418,
+          "maxMs": 6.4000000059604645
+        },
+        "basalPool": {
+          "calls": 90,
+          "totalMs": 142.0999999642372,
+          "maxMs": 9.799999997019768
+        },
+        "windField": {
+          "calls": 90,
+          "totalMs": 78.19999998807907,
+          "maxMs": 14.5
+        },
+        "forestFloor": {
+          "calls": 90,
+          "totalMs": 49.300000071525574,
+          "maxMs": 4.4000000059604645
+        },
+        "water": {
+          "calls": 90,
+          "totalMs": 55.89999996125698,
+          "maxMs": 12.400000005960464
+        }
+      }
+    }
+  },
+  "lastPreparation": null,
+  "lastShaderPreparation": {
+    "elapsedMs": 936.5,
+    "probes": 50,
+    "maxProbeMs": 0,
+    "probeTotalMs": 0,
+    "programCount": 50,
+    "verifiedPrograms": 50,
+    "stalledProbes": 0,
+    "status": "complete",
+    "objects": 850,
+    "cameras": 1,
+    "mode": "color-shadow-output",
+    "color": {
+      "elapsedMs": 926.5999999940395,
+      "probes": 50,
+      "maxProbeMs": 0,
+      "probeTotalMs": 0,
+      "programCount": 50,
+      "verifiedPrograms": 50,
+      "stalledProbes": 0,
+      "status": "complete"
+    },
+    "depth": {
+      "compileShadowSelection": {
+        "objects": 578,
+        "variants": 120,
+        "skippedUnsupported": 0,
+        "reason": "prepared"
+      },
+      "compileReadiness": {
+        "elapsedMs": 646.2999999970198,
+        "probes": 16,
+        "maxProbeMs": 0,
+        "probeTotalMs": 0,
+        "programCount": 16,
+        "verifiedPrograms": 16,
+        "stalledProbes": 0,
+        "status": "complete"
+      }
+    },
+    "output": {
+      "elapsedMs": 0,
+      "probes": 1,
+      "maxProbeMs": 0,
+      "probeTotalMs": 0,
+      "programCount": 1,
+      "verifiedPrograms": 1,
+      "stalledProbes": 0,
+      "status": "complete"
+    }
+  },
+  "preparing": false,
+  "gpuPasses": null,
+  "gpu": {
+    "scope": "render-world-and-reflection",
+    "available": false,
+    "samples": 0,
+    "meanMs": 0,
+    "maxMs": 0
+  },
+  "cpu": {},
+  "sceneMatrixCache": null,
+  "cloudCache": {
+    "enabled": true,
+    "array": true,
+    "attachmentBytes": 16777216,
+    "renders": 204,
+    "rebases": 1,
+    "size": 2048,
+    "texelMetres": 4
+  },
+  "shadows": {
+    "requested": 4195,
+    "reused": 320,
+    "cascades": [
+      {
+        "updates": 1505,
+        "reused": 0,
+        "intervalMs": 6.470873491550809
+      },
+      {
+        "updates": 1440,
+        "reused": 65,
+        "intervalMs": 38.8294597063361
+      },
+      {
+        "updates": 1250,
+        "reused": 255,
+        "intervalMs": 107.8908603474615
+      }
+    ]
+  },
+  "nearShadowDetail": {
+    "mode": "resolution",
+    "requested": "auto",
+    "reason": null,
+    "splits": [
+      60,
+      180,
+      500
+    ],
+    "mapSizes": [
+      4096,
+      2048,
+      2048
+    ],
+    "cascades": 3,
+    "maxFar": 500,
+    "shadowMapSize": 2048,
+    "fragmentSamplers": 16,
+    "maxTextures": 16,
+    "maxTextureSize": 16384,
+    "shadowPixels": 25165824,
+    "extraShadowPixels": 12582912,
+    "extraDepthBytesLowerBound": 50331648
+  },
+  "shadowReceivers": {
+    "enabled": true,
+    "active": true,
+    "cascadeActive": true,
+    "projectionActive": true,
+    "projectionBuilds": 1995,
+    "cameras": 1,
+    "planes": [
+      3
+    ],
+    "tests": 111,
+    "culled": 99,
+    "cascades": [
+      {
+        "tests": 27,
+        "culled": 15,
+        "margin": 0.08361047415802961,
+        "depthRange": [
+          0,
+          60.86955
+        ],
+        "planes": [
+          16
+        ]
+      },
+      {
+        "tests": 28,
+        "culled": 28,
+        "margin": 0.6283816164541348,
+        "depthRange": [
+          59.07045,
+          188.00594999999998
+        ],
+        "planes": [
+          16
+        ]
+      },
+      {
+        "tests": 56,
+        "culled": 56,
+        "margin": 1.6108414943933527,
+        "depthRange": [
+          171.81405,
+          null
+        ],
+        "planes": [
+          13
+        ]
+      }
+    ]
+  },
+  "shadowCasters": {
+    "frames": 1505,
+    "lastMs": 5,
+    "meanMs": 7.042591362062867,
+    "visited": 6298,
+    "candidates": 1343,
+    "frustumTests": 1343,
+    "objectScans": 731,
+    "geometryScans": 663,
+    "materialScans": 193,
+    "attributeScans": 2051,
+    "attributeReuses": 0,
+    "phases": null,
+    "skippedCascades": [
+      true,
+      true,
+      false
+    ],
+    "entryReuse": true,
+    "entryCreates": 0,
+    "terrainDepthCapture": true,
+    "terrainDepthScans": 500,
+    "surfaceAttributesSkipped": 4015,
+    "attributeCache": true,
+    "compactCapture": true,
+    "directAttributeCapture": true,
+    "terrainDomainHits": 0,
+    "terrainDomainMisses": 0,
+    "terrainDomainCascadeHits": 0,
+    "terrainDomainCascadeMisses": 0,
+    "counts": [
+      0,
+      558,
+      731
+    ]
+  },
+  "sunElevation": 66.62517354526419,
+  "lighting": {
+    "profile": "v15",
+    "sunIntensity": 4.8,
+    "exposure": 0.85,
+    "bounce": 0.48,
+    "environment": 1,
+    "cloudCoverage": 0.36,
+    "cloudDensity": 0.5
+  },
+  "frames": [
+    25,
+    58.29999999998836,
+    91.70000000001164,
+    82.39999999999418,
+    34.19999999999709,
+    16.69999999999709,
+    16.70000000001164,
+    8.299999999988358,
+    41.70000000001164,
+    75,
+    33.29999999998836,
+    8.30000000000291,
+    16.69999999999709,
+    50,
+    66.70000000001164,
+    58.39999999999418,
+    16.60000000000582,
+    58.39999999999418,
+    5950.100000000006,
+    50,
+    75,
+    91.59999999999127,
+    16.60000000000582,
+    74.89999999999418,
+    91.90000000000873,
+    216.6999999999971,
+    124.89999999999418,
+    100.10000000000582,
+    16.59999999999127,
+    75,
+    83.30000000000291,
+    25,
+    133.40000000000873,
+    108.29999999998836,
+    25,
+    66.70000000001164,
+    123.5,
+    34.79999999998836,
+    75,
+    75,
+    33.30000000000291,
+    66.69999999999709,
+    16.60000000000582,
+    66.69999999999709,
+    75.30000000000291,
+    82.80000000000291,
+    25.30000000000291,
+    75,
+    75,
+    75.09999999999127,
+    24.80000000000291,
+    83.5,
+    74.89999999999418,
+    25,
+    83.30000000000291,
+    65.60000000000582,
+    93.09999999999127,
+    33,
+    83.30000000000291,
+    75,
+    17,
+    83.10000000000582,
+    83.30000000000291,
+    25,
+    91.69999999999709,
+    108.30000000000291,
+    25,
+    83.39999999999418,
+    91.10000000000582,
+    25.5,
+    91.59999999999127,
+    90.80000000000291,
+    25.89999999999418,
+    83.30000000000291,
+    91.69999999999709,
+    16.70000000001164,
+    91.69999999999709,
+    83.30000000000291,
+    25,
+    83.39999999999418,
+    91.60000000000582,
+    33.29999999998836,
+    75,
+    91.80000000000291,
+    24.90000000000873,
+    91.69999999999709,
+    91.69999999999709,
+    25,
+    83.30000000000291,
+    100,
+    25,
+    83.30000000000291,
+    91.69999999999709,
+    24.89999999999418,
+    75.10000000000582,
+    83.19999999999709,
+    16.80000000000291,
+    83.30000000000291,
+    100,
+    25,
+    83.29999999998836,
+    75.10000000000582,
+    25,
+    66.60000000000582,
+    75,
+    74.89999999999418,
+    25.10000000000582,
+    66.69999999999709,
+    75,
+    75,
+    33.30000000000291,
+    75,
+    83.39999999999418,
+    24.89999999999418,
+    66.70000000001164,
+    83.39999999999418,
+    33.30000000000291,
+    66.69999999999709,
+    100,
+    33.30000000000291,
+    66.69999999999709,
+    116.69999999999709,
+    24.80000000000291,
+    66.89999999999418,
+    91.60000000000582,
+    23.80000000000291,
+    25.39999999999418,
+    16.69999999999709,
+    76,
+    74.80000000000291,
+    16.60000000000582,
+    82.59999999999127,
+    82.60000000000582,
+    26.5,
+    66.60000000000582,
+    91.69999999999709,
+    33.39999999999418,
+    75,
+    100,
+    25,
+    74.90000000000873,
+    100,
+    25,
+    75.09999999999127,
+    99.90000000000873,
+    25.09999999999127,
+    66.69999999999709,
+    100,
+    24.90000000000873,
+    75,
+    100,
+    33.30000000000291,
+    75.09999999999127,
+    116.69999999999709,
+    33.20000000001164,
+    75,
+    100.39999999999418,
+    33.10000000000582,
+    74.89999999999418,
+    83.30000000000291,
+    33.39999999999418,
+    75,
+    91.60000000000582,
+    25.09999999999127,
+    75,
+    83.30000000000291,
+    33.30000000000291,
+    66.69999999999709,
+    83.30000000000291,
+    66.69999999999709,
+    33.30000000000291,
+    66.69999999999709,
+    75,
+    83.30000000000291,
+    25,
+    75,
+    83.30000000000291,
+    25.09999999999127,
+    75,
+    75,
+    74.90000000000873,
+    25,
+    75.09999999999127,
+    83.5,
+    33.20000000001164,
+    91.59999999999127,
+    91.69999999999709,
+    33.40000000000873,
+    74.89999999999418,
+    75.10000000000582,
+    33.19999999999709,
+    66.69999999999709,
+    91.69999999999709,
+    25,
+    83.40000000000873,
+    83.19999999999709,
+    25,
+    75.10000000000582,
+    74.89999999999418,
+    75.10000000000582,
+    25,
+    83.29999999998836,
+    91.60000000000582,
+    25.10000000000582,
+    74.89999999999418,
+    91.80000000000291,
+    33.19999999999709,
+    75.10000000000582,
+    66.69999999999709,
+    74.89999999999418,
+    25.10000000000582,
+    83.30000000000291,
+    83.29999999998836,
+    33.20000000001164,
+    75.19999999999709,
+    91.59999999999127,
+    33.30000000000291,
+    58.30000000000291,
+    25,
+    83.39999999999418,
+    16.60000000000582,
+    75.10000000000582,
+    91.69999999999709,
+    24.89999999999418,
+    75.10000000000582,
+    83.30000000000291,
+    24.39999999999418,
+    75.60000000000582,
+    91.59999999999127,
+    33.40000000000873,
+    66.69999999999709,
+    74.89999999999418,
+    83.40000000000873,
+    33.39999999999418,
+    66.60000000000582,
+    92,
+    33,
+    75,
+    75,
+    33.29999999998836,
+    75,
+    83.40000000000873,
+    25,
+    66.69999999999709,
+    75,
+    91.60000000000582,
+    25,
+    66.69999999999709,
+    100,
+    25,
+    75,
+    91.69999999999709,
+    24.89999999999418,
+    75,
+    83.40000000000873,
+    25,
+    75,
+    83.30000000000291,
+    25,
+    83.29999999998836,
+    83.40000000000873,
+    25,
+    83.30000000000291,
+    100.09999999999127,
+    25,
+    100,
+    99.10000000000582,
+    34.09999999999127,
+    75.10000000000582,
+    91.60000000000582,
+    25,
+    83.39999999999418,
+    66.60000000000582,
+    25,
+    83.39999999999418,
+    91.60000000000582,
+    25,
+    75.09999999999127,
+    91.60000000000582,
+    33.39999999999418,
+    83.30000000000291,
+    83.39999999999418,
+    33.20000000001164,
+    83.39999999999418,
+    83.30000000000291,
+    25,
+    83.30000000000291,
+    83.39999999999418,
+    25,
+    83.30000000000291,
+    83.30000000000291,
+    25,
+    75,
+    83.39999999999418,
+    25.30000000000291,
+    83.09999999999127,
+    74.90000000000873,
+    25,
+    65.69999999999709,
+    84.30000000000291
+  ],
+  "render": {
+    "frame": 3340,
+    "calls": 994,
+    "triangles": 6295641,
+    "points": 0,
+    "lines": 0
+  },
+  "terrain": {
+    "visibleTiles": 1135,
+    "residentTiles": 1492,
+    "queuedTiles": 0,
+    "triangles": 2615040,
+    "morphingGroups": 0,
+    "minSpacing": 0.3125,
+    "maxSpacing": 320,
+    "shadowDomain": null,
+    "submissionBatches": {
+      "enabled": false,
+      "groups": 0,
+      "sourceTiles": 0,
+      "savedDraws": 0,
+      "bytes": 0,
+      "buildMs": 0
+    },
+    "buildMs": 0,
+    "initialBuildMs": 245.69999998807907,
+    "generatedTiles": 1527,
+    "maxDepth": 13,
+    "sampleCache": {
+      "entries": 65536,
+      "bytes": 7405568,
+      "heightHits": 12645,
+      "heightMisses": 856411,
+      "vertexHits": 12504,
+      "vertexMisses": 431592,
+      "parentVertexHits": 135252
+    },
+    "tileCache": {
+      "bytes": 648656,
+      "maxBytes": 67108864,
+      "tiles": 4,
+      "hits": 0,
+      "misses": 1532,
+      "evictions": 0
+    },
+    "restoredTiles": 0,
+    "nearQueuedTiles": 0,
+    "rowWorker": {
+      "ready": true,
+      "pending": 0,
+      "completed": 996,
+      "discarded": 0,
+      "computeMs": 13231.199999898672,
+      "error": null,
+      "initMs": 1256
+    }
+  },
+  "structures": {
+    "status": "ready",
+    "entities": 364,
+    "assets": 18,
+    "assetsLoaded": 18,
+    "batches": 3515,
+    "instances": 6607,
+    "triangles": 24985673,
+    "upgradedRooms": 188,
+    "visibleBatches": 366,
+    "visibleTriangles": 1179588,
+    "shadowBatches": 275,
+    "materials": 185,
+    "errors": [],
+    "culledDetailInstances": 3735,
+    "lowLODInstances": 379,
+    "activeTriangles": 5810050,
+    "lodTemplates": 16,
+    "materialKeyComputations": 301,
+    "materialSourceReuses": 972,
+    "distanceTests": 365,
+    "assetPreparation": {
+      "mode": "cooperative",
+      "assets": {
+        "barn": {
+          "loadMs": 1118.300000011921,
+          "prepareMs": 36.3999999910593,
+          "yieldWaitMs": 21.80000001192093,
+          "checkpoints": 2,
+          "loadStartMs": 2462.699999988079,
+          "loadEndMs": 3581,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 2464.2999999970198,
+              "endMs": 3580.8999999910593,
+              "phases": {
+                "fetch": {
+                  "startMs": 2464.3999999910593,
+                  "endMs": 3330.3999999910593,
+                  "elapsedMs": 866
+                },
+                "body": {
+                  "startMs": 3330.3999999910593,
+                  "endMs": 3359.8999999910593,
+                  "elapsedMs": 29.5
+                },
+                "decode": {
+                  "startMs": 3359.8999999910593,
+                  "endMs": 3359.8999999910593,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 3360,
+                  "endMs": 3580.8999999910593,
+                  "elapsedMs": 220.8999999910593
+                }
+              }
+            },
+            "responseBytes": 1492204,
+            "rawBytes": 1492204,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 14.599999979138374
+        },
+        "house_b": {
+          "loadMs": 1159.3999999910593,
+          "prepareMs": 35.70000000298023,
+          "yieldWaitMs": 6.5,
+          "checkpoints": 3,
+          "loadStartMs": 2462.7999999970198,
+          "loadEndMs": 3622.199999988079,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 2464.699999988079,
+              "endMs": 3622.199999988079,
+              "phases": {
+                "fetch": {
+                  "startMs": 2464.699999988079,
+                  "endMs": 3330.699999988079,
+                  "elapsedMs": 866
+                },
+                "body": {
+                  "startMs": 3330.699999988079,
+                  "endMs": 3390.0999999940395,
+                  "elapsedMs": 59.400000005960464
+                },
+                "decode": {
+                  "startMs": 3390.0999999940395,
+                  "endMs": 3390.0999999940395,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 3390.199999988079,
+                  "endMs": 3622.199999988079,
+                  "elapsedMs": 232
+                }
+              }
+            },
+            "responseBytes": 4536340,
+            "rawBytes": 4536340,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 29.200000002980232
+        },
+        "cabin_small": {
+          "loadMs": 1159.3999999910593,
+          "prepareMs": 618.8000000119209,
+          "yieldWaitMs": 53.29999999701977,
+          "checkpoints": 5,
+          "loadStartMs": 2462.7999999970198,
+          "loadEndMs": 3622.199999988079,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 2464.699999988079,
+              "endMs": 3622.199999988079,
+              "phases": {
+                "fetch": {
+                  "startMs": 2464.699999988079,
+                  "endMs": 3330.5999999940395,
+                  "elapsedMs": 865.9000000059605
+                },
+                "body": {
+                  "startMs": 3330.5999999940395,
+                  "endMs": 3394.699999988079,
+                  "elapsedMs": 64.09999999403954
+                },
+                "decode": {
+                  "startMs": 3394.699999988079,
+                  "endMs": 3394.699999988079,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 3394.699999988079,
+                  "endMs": 3622.199999988079,
+                  "elapsedMs": 227.5
+                }
+              }
+            },
+            "responseBytes": 4585816,
+            "rawBytes": 4585816,
+            "parseBufferCopiedBytes": 0
+          },
+          "cabinWindowGlass": {
+            "windows": 6,
+            "triangles": 72,
+            "sourceSHA256": "949072066eaa4afc88f4689be2e2f394a8c4e444c1045bc87e7c6b1d6df096c4"
+          },
+          "cabinTimber": {
+            "active": true,
+            "sourceOriginalCase": "cabin_small.glb",
+            "sourceSHA256": "949072066eaa4afc88f4689be2e2f394a8c4e444c1045bc87e7c6b1d6df096c4",
+            "entityId": "cabins:-1999.5,3372.6:0f598bcbed84e01b",
+            "components": 5,
+            "textureBytes": 9228572,
+            "endTreatment": "Original separate cabin_small_logend node and its radial UV retained byte-identically; no veneer on cut ends."
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 565.5000000149012
+        },
+        "house_a": {
+          "loadMs": 1167,
+          "prepareMs": 531.0999999940395,
+          "yieldWaitMs": 95.70000000298023,
+          "checkpoints": 8,
+          "loadStartMs": 2462.7999999970198,
+          "loadEndMs": 3629.7999999970198,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 2464.699999988079,
+              "endMs": 3629.699999988079,
+              "phases": {
+                "fetch": {
+                  "startMs": 2464.699999988079,
+                  "endMs": 3330.3999999910593,
+                  "elapsedMs": 865.7000000029802
+                },
+                "body": {
+                  "startMs": 3330.3999999910593,
+                  "endMs": 3585.8999999910593,
+                  "elapsedMs": 255.5
+                },
+                "decode": {
+                  "startMs": 3585.8999999910593,
+                  "endMs": 3585.8999999910593,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 3586,
+                  "endMs": 3629.699999988079,
+                  "elapsedMs": 43.69999998807907
+                }
+              }
+            },
+            "responseBytes": 11122824,
+            "rawBytes": 11122824,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": true,
+            "version": "timber-continuity-38",
+            "samples": 256,
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2"
+          },
+          "stoneOcclusion": {
+            "active": true,
+            "version": "stone-occlusion-38",
+            "stones": 48
+          },
+          "cpuMs": 435.3999999910593
+        },
+        "gh_fj_hut": {
+          "loadMs": 48.70000000298023,
+          "prepareMs": 7.299999997019768,
+          "yieldWaitMs": 0.30000001192092896,
+          "checkpoints": 1,
+          "loadStartMs": 3657.8999999910593,
+          "loadEndMs": 3706.5999999940395,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 3657.8999999910593,
+              "endMs": 3706.5999999940395,
+              "phases": {
+                "fetch": {
+                  "startMs": 3657.8999999910593,
+                  "endMs": 3703.2999999970198,
+                  "elapsedMs": 45.400000005960464
+                },
+                "body": {
+                  "startMs": 3703.2999999970198,
+                  "endMs": 3705.5,
+                  "elapsedMs": 2.2000000029802322
+                },
+                "decode": {
+                  "startMs": 3705.5,
+                  "endMs": 3705.5,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 3705.5,
+                  "endMs": 3706.5999999940395,
+                  "elapsedMs": 1.0999999940395355
+                }
+              }
+            },
+            "responseBytes": 1498000,
+            "rawBytes": 1498000,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 6.999999985098839
+        },
+        "lodge24": {
+          "loadMs": 249,
+          "prepareMs": 128.19999998807907,
+          "yieldWaitMs": 67.5,
+          "checkpoints": 4,
+          "loadStartMs": 3617.3999999910593,
+          "loadEndMs": 3866.5,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 3617.3999999910593,
+              "endMs": 3866.3999999910593,
+              "phases": {
+                "fetch": {
+                  "startMs": 3617.3999999910593,
+                  "endMs": 3640.0999999940395,
+                  "elapsedMs": 22.700000002980232
+                },
+                "body": {
+                  "startMs": 3640.0999999940395,
+                  "endMs": 3756.3999999910593,
+                  "elapsedMs": 116.29999999701977
+                },
+                "decode": {
+                  "startMs": 3756.3999999910593,
+                  "endMs": 3756.3999999910593,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 3756.3999999910593,
+                  "endMs": 3866.3999999910593,
+                  "elapsedMs": 110
+                }
+              }
+            },
+            "responseBytes": 7567504,
+            "rawBytes": 7567504,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 60.69999998807907
+        },
+        "gh_fj_lodge": {
+          "loadMs": 276.69999998807907,
+          "prepareMs": 215.6000000089407,
+          "yieldWaitMs": 79.29999999701977,
+          "checkpoints": 6,
+          "loadStartMs": 3714,
+          "loadEndMs": 3990.699999988079,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 3714.0999999940395,
+              "endMs": 3990.699999988079,
+              "phases": {
+                "fetch": {
+                  "startMs": 3714.0999999940395,
+                  "endMs": 3755.2999999970198,
+                  "elapsedMs": 41.20000000298023
+                },
+                "body": {
+                  "startMs": 3755.2999999970198,
+                  "endMs": 3972.8999999910593,
+                  "elapsedMs": 217.59999999403954
+                },
+                "decode": {
+                  "startMs": 3972.8999999910593,
+                  "endMs": 3972.8999999910593,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 3972.8999999910593,
+                  "endMs": 3990.699999988079,
+                  "elapsedMs": 17.799999997019768
+                }
+              }
+            },
+            "responseBytes": 4397296,
+            "rawBytes": 4397296,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 136.30000001192093
+        },
+        "gh_fj_shed": {
+          "loadMs": 189.59999999403954,
+          "prepareMs": 63.79999999701977,
+          "yieldWaitMs": 12.599999994039536,
+          "checkpoints": 4,
+          "loadStartMs": 4016.2999999970198,
+          "loadEndMs": 4205.899999991059,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4016.5,
+              "endMs": 4205.899999991059,
+              "phases": {
+                "fetch": {
+                  "startMs": 4016.5,
+                  "endMs": 4033.199999988079,
+                  "elapsedMs": 16.69999998807907
+                },
+                "body": {
+                  "startMs": 4033.199999988079,
+                  "endMs": 4200.0999999940395,
+                  "elapsedMs": 166.90000000596046
+                },
+                "decode": {
+                  "startMs": 4200.0999999940395,
+                  "endMs": 4200.0999999940395,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4200.0999999940395,
+                  "endMs": 4205.79999999702,
+                  "elapsedMs": 5.700000002980232
+                }
+              }
+            },
+            "responseBytes": 7175012,
+            "rawBytes": 7175012,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 51.20000000298023
+        },
+        "gh_lanchuan_lodge": {
+          "loadMs": 86.80000001192093,
+          "prepareMs": 25.299999997019768,
+          "yieldWaitMs": 6.600000008940697,
+          "checkpoints": 2,
+          "loadStartMs": 4217.199999988079,
+          "loadEndMs": 4304,
+          "lodgeTables": {
+            "sourceSHA256": "853f5690686eceaa85f00b2df0705343e55b6aea4286f599e07ee121dd170687"
+          },
+          "lodgeChairs": {},
+          "lodgeStream": {
+            "kind": "shell",
+            "responseBytes": 4283024
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 18.69999998807907
+        },
+        "gh_tl_main": {
+          "loadMs": 38.30000001192093,
+          "prepareMs": 3.7999999970197678,
+          "yieldWaitMs": 1.9000000059604645,
+          "checkpoints": 1,
+          "loadStartMs": 4269.699999988079,
+          "loadEndMs": 4308,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4269.79999999702,
+              "endMs": 4308,
+              "phases": {
+                "fetch": {
+                  "startMs": 4269.79999999702,
+                  "endMs": 4304.5,
+                  "elapsedMs": 34.70000000298023
+                },
+                "body": {
+                  "startMs": 4304.5,
+                  "endMs": 4306.699999988079,
+                  "elapsedMs": 2.199999988079071
+                },
+                "decode": {
+                  "startMs": 4306.699999988079,
+                  "endMs": 4306.699999988079,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4306.699999988079,
+                  "endMs": 4308,
+                  "elapsedMs": 1.300000011920929
+                }
+              }
+            },
+            "responseBytes": 1948984,
+            "rawBytes": 1948984,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 1.8999999910593033
+        },
+        "gh_tl_wing": {
+          "loadMs": 45.20000000298023,
+          "prepareMs": 3.9000000059604645,
+          "yieldWaitMs": 0.10000000894069672,
+          "checkpoints": 1,
+          "loadStartMs": 4264.699999988079,
+          "loadEndMs": 4309.899999991059,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4264.79999999702,
+              "endMs": 4309.899999991059,
+              "phases": {
+                "fetch": {
+                  "startMs": 4264.79999999702,
+                  "endMs": 4297.5,
+                  "elapsedMs": 32.70000000298023
+                },
+                "body": {
+                  "startMs": 4297.5,
+                  "endMs": 4308.5,
+                  "elapsedMs": 11
+                },
+                "decode": {
+                  "startMs": 4308.5,
+                  "endMs": 4308.5,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4308.5,
+                  "endMs": 4309.899999991059,
+                  "elapsedMs": 1.3999999910593033
+                }
+              }
+            },
+            "responseBytes": 2198936,
+            "rawBytes": 2198936,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 3.7999999970197678
+        },
+        "gh_lanchuan": {
+          "loadMs": 170.09999999403954,
+          "prepareMs": 62.1000000089407,
+          "yieldWaitMs": 6.599999979138374,
+          "checkpoints": 5,
+          "loadStartMs": 4177.79999999702,
+          "loadEndMs": 4347.899999991059,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4177.79999999702,
+              "endMs": 4347.899999991059,
+              "phases": {
+                "fetch": {
+                  "startMs": 4177.79999999702,
+                  "endMs": 4199.899999991059,
+                  "elapsedMs": 22.099999994039536
+                },
+                "body": {
+                  "startMs": 4199.899999991059,
+                  "endMs": 4272.79999999702,
+                  "elapsedMs": 72.90000000596046
+                },
+                "decode": {
+                  "startMs": 4272.79999999702,
+                  "endMs": 4272.79999999702,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4272.79999999702,
+                  "endMs": 4347.899999991059,
+                  "elapsedMs": 75.09999999403954
+                }
+              }
+            },
+            "responseBytes": 14780020,
+            "rawBytes": 14780020,
+            "parseBufferCopiedBytes": 0
+          },
+          "guestVanity": {
+            "active": true,
+            "sourceSHA256": "201190ad2bd3886783c2dfc9b81099ba944740bccb7973bd95102981720b7f10",
+            "responseBytes": 14780020,
+            "rawBytes": 14780020,
+            "encoding": "gzip"
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 55.50000002980232
+        },
+        "gh_qk_cabin": {
+          "loadMs": 45.29999999701977,
+          "prepareMs": 177.70000000298023,
+          "yieldWaitMs": 158.79999999701977,
+          "checkpoints": 2,
+          "loadStartMs": 4313.79999999702,
+          "loadEndMs": 4359.0999999940395,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4313.79999999702,
+              "endMs": 4359.0999999940395,
+              "phases": {
+                "fetch": {
+                  "startMs": 4313.79999999702,
+                  "endMs": 4332.29999999702,
+                  "elapsedMs": 18.5
+                },
+                "body": {
+                  "startMs": 4332.29999999702,
+                  "endMs": 4351.5999999940395,
+                  "elapsedMs": 19.299999997019768
+                },
+                "decode": {
+                  "startMs": 4351.5999999940395,
+                  "endMs": 4351.5999999940395,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4351.699999988079,
+                  "endMs": 4359.0999999940395,
+                  "elapsedMs": 7.4000000059604645
+                }
+              }
+            },
+            "responseBytes": 3189276,
+            "rawBytes": 3189276,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 18.900000005960464
+        },
+        "gh_qk_long": {
+          "loadMs": 198.59999999403954,
+          "prepareMs": 43.400000005960464,
+          "yieldWaitMs": 6.0999999940395355,
+          "checkpoints": 3,
+          "loadStartMs": 4313.79999999702,
+          "loadEndMs": 4512.399999991059,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4314,
+              "endMs": 4512.29999999702,
+              "phases": {
+                "fetch": {
+                  "startMs": 4314,
+                  "endMs": 4332.399999991059,
+                  "elapsedMs": 18.399999991059303
+                },
+                "body": {
+                  "startMs": 4332.399999991059,
+                  "endMs": 4502.79999999702,
+                  "elapsedMs": 170.40000000596046
+                },
+                "decode": {
+                  "startMs": 4502.79999999702,
+                  "endMs": 4502.79999999702,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4502.899999991059,
+                  "endMs": 4512.29999999702,
+                  "elapsedMs": 9.400000005960464
+                }
+              }
+            },
+            "responseBytes": 4039464,
+            "rawBytes": 4039464,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 37.30000001192093
+        },
+        "swing": {
+          "loadMs": 39.79999999701977,
+          "prepareMs": 3.2000000029802322,
+          "yieldWaitMs": 1.3999999910593033,
+          "checkpoints": 1,
+          "loadStartMs": 4554.5999999940395,
+          "loadEndMs": 4594.399999991059,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4554.5999999940395,
+              "endMs": 4594.399999991059,
+              "phases": {
+                "fetch": {
+                  "startMs": 4554.5999999940395,
+                  "endMs": 4563.5999999940395,
+                  "elapsedMs": 9
+                },
+                "body": {
+                  "startMs": 4563.5999999940395,
+                  "endMs": 4591.79999999702,
+                  "elapsedMs": 28.200000002980232
+                },
+                "decode": {
+                  "startMs": 4591.79999999702,
+                  "endMs": 4591.79999999702,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4591.79999999702,
+                  "endMs": 4594.399999991059,
+                  "elapsedMs": 2.5999999940395355
+                }
+              }
+            },
+            "responseBytes": 377072,
+            "rawBytes": 377072,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 1.800000011920929
+        },
+        "haystack": {
+          "loadMs": 258,
+          "prepareMs": 0.29999999701976776,
+          "yieldWaitMs": 0,
+          "checkpoints": 0,
+          "loadStartMs": 4340,
+          "loadEndMs": 4598,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4340.0999999940395,
+              "endMs": 4598,
+              "phases": {
+                "fetch": {
+                  "startMs": 4340.0999999940395,
+                  "endMs": 4348.399999991059,
+                  "elapsedMs": 8.299999997019768
+                },
+                "body": {
+                  "startMs": 4348.399999991059,
+                  "endMs": 4513.0999999940395,
+                  "elapsedMs": 164.70000000298023
+                },
+                "decode": {
+                  "startMs": 4513.0999999940395,
+                  "endMs": 4513.0999999940395,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4513.199999988079,
+                  "endMs": 4598,
+                  "elapsedMs": 84.80000001192093
+                }
+              }
+            },
+            "responseBytes": 591860,
+            "rawBytes": 591860,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 0.29999999701976776
+        },
+        "yurt": {
+          "loadMs": 80,
+          "prepareMs": 50.70000000298023,
+          "yieldWaitMs": 2.0999999940395355,
+          "checkpoints": 4,
+          "loadStartMs": 4563.29999999702,
+          "loadEndMs": 4643.29999999702,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4563.29999999702,
+              "endMs": 4643.199999988079,
+              "phases": {
+                "fetch": {
+                  "startMs": 4563.29999999702,
+                  "endMs": 4572.0999999940395,
+                  "elapsedMs": 8.799999997019768
+                },
+                "body": {
+                  "startMs": 4572.0999999940395,
+                  "endMs": 4611.0999999940395,
+                  "elapsedMs": 39
+                },
+                "decode": {
+                  "startMs": 4611.0999999940395,
+                  "endMs": 4611.0999999940395,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4611.199999988079,
+                  "endMs": 4643.199999988079,
+                  "elapsedMs": 32
+                }
+              }
+            },
+            "responseBytes": 7935268,
+            "rawBytes": 7935268,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 48.6000000089407
+        },
+        "yurt_deck": {
+          "loadMs": 46.1000000089407,
+          "prepareMs": 79.20000000298023,
+          "yieldWaitMs": 2.5,
+          "checkpoints": 6,
+          "loadStartMs": 4597.699999988079,
+          "loadEndMs": 4643.79999999702,
+          "transport": {
+            "encoding": "gzip",
+            "timing": {
+              "startMs": 4597.699999988079,
+              "endMs": 4643.199999988079,
+              "phases": {
+                "fetch": {
+                  "startMs": 4597.699999988079,
+                  "endMs": 4605.199999988079,
+                  "elapsedMs": 7.5
+                },
+                "body": {
+                  "startMs": 4605.199999988079,
+                  "endMs": 4636.29999999702,
+                  "elapsedMs": 31.100000008940697
+                },
+                "decode": {
+                  "startMs": 4636.29999999702,
+                  "endMs": 4636.29999999702,
+                  "elapsedMs": 0
+                },
+                "parse": {
+                  "startMs": 4636.29999999702,
+                  "endMs": 4643.199999988079,
+                  "elapsedMs": 6.899999991059303
+                }
+              }
+            },
+            "responseBytes": 3399696,
+            "rawBytes": 3399696,
+            "parseBufferCopiedBytes": 0
+          },
+          "lodgeWood": {
+            "active": false
+          },
+          "timberContinuity": {
+            "active": false
+          },
+          "stoneOcclusion": {
+            "active": false
+          },
+          "cpuMs": 76.70000000298023
+        }
+      },
+      "scheduler": {
+        "enabled": true,
+        "budgetMs": 8,
+        "yields": 33,
+        "maxOverrunMs": 1879.7999999970198
+      }
+    },
+    "selectionCache": {
+      "enabled": false,
+      "hits": 0,
+      "misses": 0,
+      "checks": 0,
+      "lastCheckMs": 0,
+      "values": 0
+    },
+    "preparedAssets": {
+      "enabled": false,
+      "assets": {},
+      "prepared": 0,
+      "fallbacks": 0
+    },
+    "lodgeInteriorStream": {
+      "enabled": true,
+      "status": "ready",
+      "attempts": 1,
+      "error": null,
+      "requiredRange": 400
+    },
+    "textureReuse": {
+      "enabled": true,
+      "requests": 191,
+      "uniqueImages": 70,
+      "reusedImages": 121,
+      "encodedBytes": 28371961,
+      "reusedEncodedBytes": 21085080,
+      "hashWaitMs": 267.69999995827675
+    },
+    "householdLiving": {
+      "version": "household-living-32",
+      "status": "ready",
+      "households": 113,
+      "styleCounts": [
+        40,
+        28,
+        45
+      ],
+      "sourceTriangles": 35272,
+      "instanceTriangles": 1340252,
+      "batches": 460,
+      "newMaterials": 0,
+      "newTextures": 0,
+      "visibleBatches": 66,
+      "visibleTriangles": 194692,
+      "loadMs": 25.900000005960464,
+      "prepareMs": 32.3999999910593
+    },
+    "householdEntrySteps": {
+      "version": "household-entry-tea-34",
+      "mode": "editable",
+      "shadowMode": "standard",
+      "status": "ready",
+      "checked": 3,
+      "households": 1,
+      "courses": 4,
+      "triangles": 2752,
+      "drawMeshes": 1,
+      "newMaterials": 0,
+      "newTextures": 0,
+      "sites": [
+        {
+          "entityId": "cabins:-1972,3678:784f73bf0ba94d17",
+          "existingTreadGap": 0.6283095268841499,
+          "courses": 4,
+          "groundRise": 0.16041539603373156
+        },
+        {
+          "entityId": "cabins:-1743,3612:30f9adc9fb584805",
+          "existingTreadGap": 0.12500000000005457,
+          "courses": 0,
+          "groundRise": 0.12500000000005457
+        },
+        {
+          "entityId": "cabins:-1683,3643:fb877ed9142d2f85",
+          "existingTreadGap": 0.12500000000005457,
+          "courses": 0,
+          "groundRise": 0.12500000000005457
+        }
+      ],
+      "loadMs": 9,
+      "geometryRevision": "front-bevel-17p111mm"
+    },
+    "revision": 2146,
+    "selectionBuffers": true,
+    "selectionSignatureBuilds": 0
+  },
+  "ecology": {
+    "trees": 42599,
+    "treeChunks": 134,
+    "grassTufts": 40763,
+    "grassChunks": 57,
+    "flowerPlants": 1050,
+    "pending": 0,
+    "grassPending": 0,
+    "grassBuiltThisFrame": 0,
+    "flowerNearPlants": 103,
+    "basalGrassTufts": 3709,
+    "shadowVertexReuse": {
+      "enabled": false,
+      "parts": 0,
+      "beforeVertices": 0,
+      "afterVertices": 0,
+      "remappedVertices": 0,
+      "triangles": 0,
+      "bytes": 0,
+      "buildMs": 0,
+      "uploads": 0,
+      "liveBuffers": 0,
+      "draws": 0
+    },
+    "treeViews": {
+      "enabled": false,
+      "batches": 0,
+      "bytes": 0,
+      "viewGeometries": 0,
+      "queries": 0,
+      "tested": 0,
+      "selected": 0,
+      "rejected": 0,
+      "draws": 0,
+      "drawnInstances": 0
+    },
+    "forestLayout": {
+      "mode": "v15",
+      "priorityFirst": true,
+      "skippedLowerPriority": 176510,
+      "maxShift": 18,
+      "minSpacing": 2.6,
+      "proposals": 43018,
+      "resolved": 42599,
+      "moved": 42498,
+      "conflictFallbacks": 18,
+      "habitatFallbacks": 83,
+      "cachedCells": 137716,
+      "cachedTiles": 160,
+      "fieldNodes": 1989,
+      "demSamples": 9945,
+      "coverSamples": 130973
+    },
+    "meadowRootCache": {
+      "enabled": false,
+      "status": "bypass",
+      "reason": "disabled",
+      "ready": false,
+      "tiles": 0,
+      "roots": 0,
+      "hits": 0,
+      "misses": 0,
+      "cachedRoots": 0,
+      "proceduralRoots": 0,
+      "elapsedMs": 0
+    },
+    "forestRootCache": {
+      "enabled": false,
+      "ready": false,
+      "status": "bypass",
+      "reason": "disabled",
+      "tiles": 0,
+      "trees": 0,
+      "hits": 0,
+      "outside": 0,
+      "records": 0,
+      "responseBytes": 0,
+      "rawBytes": 0,
+      "elapsedMs": 0
+    },
+    "earlyTreeTextures": {
+      "enabled": false,
+      "status": "disabled"
+    },
+    "spruceSharedImages": {
+      "enabled": true,
+      "reason": null,
+      "status": "active",
+      "imageRequests": 3,
+      "imageDecodes": 3,
+      "sharedSourceSlots": 2,
+      "imageResponseBytes": 2044647,
+      "glbResponseBytes": 9438908,
+      "imageDecodeMs": 119.70000000298023,
+      "byLod": {
+        "mid": {
+          "status": "shared",
+          "elapsedMs": 949.2000000029802
+        },
+        "hi": {
+          "status": "shared",
+          "elapsedMs": 949.5
+        }
+      },
+      "previousBytes": 9267198,
+      "replacementBytes": 7545533,
+      "savedBytes": 1721665,
+      "savedPercent": 18.578053474200075
+    },
+    "assetLoads": {
+      "mode": "dependency-parallel",
+      "phases": {
+        "hi": {
+          "queuedMs": 0,
+          "startMs": 1.1000000089406967,
+          "elapsedMs": 949.5999999940395,
+          "status": "complete"
+        },
+        "mid": {
+          "queuedMs": 0,
+          "startMs": 1.300000011920929,
+          "elapsedMs": 949.3999999910593,
+          "status": "complete"
+        },
+        "local": {
+          "queuedMs": 0,
+          "startMs": 1.4000000059604645,
+          "elapsedMs": 932.5999999940395,
+          "status": "complete"
+        },
+        "core": {
+          "queuedMs": 0,
+          "startMs": 1.4000000059604645,
+          "elapsedMs": 1139.7000000029802,
+          "status": "complete"
+        },
+        "flowerModule": {
+          "queuedMs": 0,
+          "startMs": 1.5,
+          "elapsedMs": 940.4000000059605,
+          "status": "complete"
+        },
+        "far": {
+          "queuedMs": 0,
+          "startMs": 1.7000000029802322,
+          "elapsedMs": 1289.5,
+          "status": "complete"
+        },
+        "needle": {
+          "queuedMs": 0,
+          "startMs": 950.7000000029802,
+          "elapsedMs": 951.9000000059605,
+          "status": "complete"
+        },
+        "flowerLOD": {
+          "queuedMs": 0,
+          "startMs": 941.9000000059605,
+          "elapsedMs": 266.59999999403954,
+          "status": "complete"
+        },
+        "flowerNear": {
+          "queuedMs": 0,
+          "startMs": 942.2000000029802,
+          "elapsedMs": 267.1000000089407,
+          "status": "complete"
+        }
+      },
+      "postSourceMs": 136.1000000089407
+    },
+    "canopyPreparation": {
+      "enabled": true,
+      "status": "active",
+      "prefetch": true,
+      "prefetchStartedMs": 328,
+      "mode": "local",
+      "localStatus": "hit",
+      "networkBytes": 0,
+      "decodedBytes": 18244324,
+      "usedParts": [
+        "near:column_frond",
+        "near:edge_frond",
+        "near:old_frond",
+        "near:pencil_frond",
+        "near:young_frond",
+        "hi:column_frond",
+        "hi:edge_frond",
+        "hi:old_frond",
+        "hi:pencil_frond",
+        "hi:young_frond",
+        "mid:column_frond",
+        "mid:edge_frond",
+        "mid:old_frond",
+        "mid:pencil_frond",
+        "mid:young_frond"
+      ],
+      "boundBytes": 18244324,
+      "bindMs": 0.5000000149011612,
+      "sourceVerifyMs": 5.5,
+      "localBytes": 18244324,
+      "localReadMs": 52.099999994039536,
+      "localSchedulerDelayMs": 0,
+      "localWaitBudgetMs": 0,
+      "prefetchLeadMs": 2135.199999988079,
+      "persistStatus": "not-needed"
+    },
+    "needleTextureReuse": {
+      "reusedSlots": 0,
+      "releasedTextures": 0,
+      "closedImages": 0,
+      "duplicateEmbeddedBytes": 0,
+      "avoidedTextureRGBABytes": 0
+    },
+    "needlePayload": {
+      "representation": "GPU shared five-needle station + shared 156-triangle twig geometry; v11 needles use 0 vertex texture fetches; v12 uses 1 shared variation fetch and 5 station attributes",
+      "recipeRevision": "spruce-brush-recipe-v1",
+      "responseBodyBytes": 1905748,
+      "recipeJSONBytes": 1905748,
+      "generatedFrondBytes": 0,
+      "crown": "twisted-branch-volume-v13",
+      "branchDetail": "lazy-spatial-brushes-v12",
+      "potentialShortSprays": 8457,
+      "parameterBytes": 37627902,
+      "brushes": 1143,
+      "needles": 1645920,
+      "timings": {
+        "fetchMs": 886.3000000119209,
+        "decodeMs": 2.699999988079071,
+        "recipeValidateMs": 1.300000011920929,
+        "recipePrefetched": true,
+        "recipeWaitMs": 0.09999999403953552,
+        "validateMs": 2,
+        "canopyVerifyMs": 2.9000000059604645,
+        "canopyMode": "precomputed-indexed",
+        "formQueue": 2,
+        "maxInFlightParameterBytes": 25165824,
+        "peakQueuedForms": 2,
+        "peakInFlightParameterBytes": 20296048,
+        "preparationMode": "overlap-worker-shell",
+        "formPreparationMs": 945.7999999970198,
+        "templateBuildMs": 941,
+        "geometrySetupMs": 4.799999997019768,
+        "parameterPackingMs": 0
+      },
+      "buildMs": 951.5999999940395,
+      "gpuMode": "stations",
+      "gpuTableBytes": 37796080,
+      "templateBytes": 290880,
+      "needleTemplateTriangles": 5,
+      "twigTemplateTriangles": 156
+    },
+    "treeGeometryReuse": {
+      "reusedGeometries": 10,
+      "vertexBytesSaved": 1259280,
+      "indexBytesSaved": 130416
+    },
+    "spruceVolume": {
+      "enabled": true,
+      "forms": {
+        "hi:column_frond": {
+          "indexing": {
+            "beforeVertices": 67608,
+            "afterVertices": 29412,
+            "beforeTriangles": 22536,
+            "afterTriangles": 22536,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 135216
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1512,
+          "sourceTriangles": 13752,
+          "triangles": 22536,
+          "maxShift": 0.30932987793582706,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        },
+        "hi:edge_frond": {
+          "indexing": {
+            "beforeVertices": 69504,
+            "afterVertices": 30304,
+            "beforeTriangles": 23168,
+            "afterTriangles": 23168,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 139008
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1560,
+          "sourceTriangles": 14272,
+          "triangles": 23168,
+          "maxShift": 0.29538986230246445,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        },
+        "hi:old_frond": {
+          "indexing": {
+            "beforeVertices": 48372,
+            "afterVertices": 21094,
+            "beforeTriangles": 16124,
+            "afterTriangles": 16124,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 96744
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1086,
+          "sourceTriangles": 9940,
+          "triangles": 16124,
+          "maxShift": 0.299419873663861,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        },
+        "hi:pencil_frond": {
+          "indexing": {
+            "beforeVertices": 46608,
+            "afterVertices": 20344,
+            "beforeTriangles": 15536,
+            "afterTriangles": 15536,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 93216
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1048,
+          "sourceTriangles": 9616,
+          "triangles": 15536,
+          "maxShift": 0.25712553266314797,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        },
+        "hi:young_frond": {
+          "indexing": {
+            "beforeVertices": 53274,
+            "afterVertices": 23219,
+            "beforeTriangles": 17758,
+            "afterTriangles": 17758,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 106548
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1195,
+          "sourceTriangles": 10922,
+          "triangles": 17758,
+          "maxShift": 0.3003122555386119,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        },
+        "mid:column_frond": {
+          "indexing": {
+            "beforeVertices": 54432,
+            "afterVertices": 21168,
+            "beforeTriangles": 18144,
+            "afterTriangles": 18144,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 108864
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1512,
+          "sourceTriangles": 6048,
+          "triangles": 18144,
+          "maxShift": 0.30938015180300554,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        },
+        "mid:edge_frond": {
+          "indexing": {
+            "beforeVertices": 56160,
+            "afterVertices": 21840,
+            "beforeTriangles": 18720,
+            "afterTriangles": 18720,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 112320
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1560,
+          "sourceTriangles": 6240,
+          "triangles": 18720,
+          "maxShift": 0.2992350322672327,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        },
+        "mid:old_frond": {
+          "indexing": {
+            "beforeVertices": 39096,
+            "afterVertices": 15204,
+            "beforeTriangles": 13032,
+            "afterTriangles": 13032,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 78192
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1086,
+          "sourceTriangles": 4344,
+          "triangles": 13032,
+          "maxShift": 0.31023484549103353,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        },
+        "mid:pencil_frond": {
+          "indexing": {
+            "beforeVertices": 37728,
+            "afterVertices": 14672,
+            "beforeTriangles": 12576,
+            "afterTriangles": 12576,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 75456
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1048,
+          "sourceTriangles": 4192,
+          "triangles": 12576,
+          "maxShift": 0.25699492887785563,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        },
+        "mid:young_frond": {
+          "indexing": {
+            "beforeVertices": 43020,
+            "afterVertices": 16730,
+            "beforeTriangles": 14340,
+            "afterTriangles": 14340,
+            "coplanarTrianglesRemoved": 0,
+            "maximumMergeAttributeError": {
+              "position": 0,
+              "normal": 0,
+              "uv": 0,
+              "_plant_wind": 0,
+              "_crown_occlusion": 0
+            },
+            "indexBytes": 86040
+          },
+          "gpuBrushShell": false,
+          "crownRevision": "twisted-branch-volume-v13",
+          "clusters": 1195,
+          "sourceTriangles": 4780,
+          "triangles": 14340,
+          "maxShift": 0.300415170255186,
+          "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+        }
+      },
+      "addedTriangles": 87828,
+      "geometryBytes": 11302980
+    },
+    "farTrees": {
+      "representation": "same-source 5×8×3 upright normal-lit impostor",
+      "manifestMs": 0.29999999701976776,
+      "manifestMode": "bundled",
+      "transportMode": "v27",
+      "farLossless38": true,
+      "albedoRestoreMs": 14.5,
+      "payloadVerificationMs": 10.299999997019768,
+      "rgbaRestoreMs": 25,
+      "fetchMs": 1253.4000000059605,
+      "decodeMs": 25,
+      "textureSetupMs": 0.20000000298023224,
+      "encodedBytes": 17214211,
+      "responseBodyBytes": 41287680,
+      "decodedBytes": 47185920,
+      "gpuTextureBytes": 62914560,
+      "applicationGzipDecodes": 0,
+      "byteScope": "two texture payloads; manifest excluded",
+      "resourceTiming": {
+        "entries": [
+          {
+            "kind": "albedo",
+            "startTime": 2466,
+            "duration": 1239.7999999970198,
+            "transferSize": 8387506,
+            "encodedBodySize": 8387206,
+            "decodedBodySize": 23592960,
+            "deliveryType": ""
+          },
+          {
+            "kind": "normal",
+            "startTime": 2466,
+            "duration": 1193.199999988079,
+            "transferSize": 8827305,
+            "encodedBodySize": 8827005,
+            "decodedBodySize": 17694720,
+            "deliveryType": ""
+          }
+        ],
+        "complete": true,
+        "transferSize": 17214811,
+        "encodedBodySize": 17214211,
+        "decodedBodySize": 41287680
+      },
+      "loadMs": 1289.3999999910593,
+      "templateTriangles": 8,
+      "forms": 5,
+      "azimuths": 8,
+      "elevations": 3
+    },
+    "habitatTransport": {
+      "local": {
+        "mode": "derived",
+        "revision": "v2-habitat-exact-v1",
+        "responseBytes": 4194304,
+        "decodedBytes": 4194304,
+        "dataBytes": 4194304,
+        "elapsedMs": 932.4000000059605
+      },
+      "core": {
+        "mode": "derived",
+        "revision": "v2-habitat-exact-v1",
+        "responseBytes": 6553600,
+        "decodedBytes": 6553600,
+        "dataBytes": 6553600,
+        "elapsedMs": 1139.6000000089407
+      }
+    },
+    "treeVertexLayout": {
+      "enabled": false,
+      "parts": 0,
+      "bytes": 0,
+      "buffersBefore": 0,
+      "buffersAfter": 0,
+      "prepareMs": 0
+    },
+    "windFieldUpdates": 986,
+    "windFieldCPUms": 2,
+    "windSampling": {
+      "mode": "absolute-time-bracket-33",
+      "time": 109.81090000000961,
+      "start": 109.80000000000001,
+      "end": 109.9,
+      "blend": 0.10900000009598898
+    },
+    "farTileBuild": {
+      "tiles": 134,
+      "rootsMs": 1046.7999999672174,
+      "batchesMs": 87.30000005662441
+    },
+    "treeBatchSize": 96,
+    "treeDrawBatches": 0,
+    "treeBatchInstances": 0,
+    "needleTreeRoots": 0,
+    "highTreeRoots": 0,
+    "midTreeRoots": 0,
+    "treeNeedleResidentInstances": 0,
+    "treeNeedleActiveInstances": 0,
+    "treeNeedleActiveRoots": 0,
+    "treeNeedleTriangles": 0,
+    "treeNeedleShellTriangles": 0,
+    "treeHighResidentInstances": 0,
+    "treeHighActiveInstances": 0,
+    "treeMidResidentInstances": 0,
+    "treeMidActiveInstances": 0,
+    "treeActiveInstances": 0,
+    "treeActiveBatches": 0,
+    "treeBatchRevision": 0,
+    "preparation": {
+      "iterations": 90,
+      "dynamicSyncs": 1,
+      "skippedDynamicSyncs": 89,
+      "finalSyncs": 1
+    },
+    "treeRootOrder": {
+      "enabled": false,
+      "updates": 0,
+      "sorts": 0,
+      "groups": 0,
+      "roots": 0,
+      "changedGroups": 0,
+      "matrixUploads": 0,
+      "windUploads": 0,
+      "cpuMs": 0
+    },
+    "needleGPU": {
+      "twigIndexed": false,
+      "twigTemplateVertices": 468,
+      "twigCornerIndices": 0,
+      "boundsMode": "packet-run-aabb",
+      "boundsBytes": 54864,
+      "boundsBuildMs": 93.10000002384186,
+      "representation": "GPU shared five-needle station + shared 156-triangle twig geometry; v11 needles use 0 vertex texture fetches; v12 uses 1 shared variation fetch and 5 station attributes",
+      "batches": 0,
+      "roots": 0,
+      "brushInstances": 0,
+      "triangles": 0,
+      "tableBytes": 37796080,
+      "templateBytes": 290880,
+      "branchCache": {
+        "pending": 0,
+        "residentBytes": 0,
+        "residentGroups": 0,
+        "builtGroups": 0,
+        "evictedGroups": 0,
+        "retries": 0,
+        "staleCompletions": 0,
+        "buildMs": 0,
+        "maxBuildMs": 0,
+        "error": null,
+        "concurrency": 2,
+        "activeBuilds": 0,
+        "peakActiveBuilds": 0,
+        "inFlightParameterBytes": 0,
+        "peakInFlightParameterBytes": 0,
+        "maxInFlightParameterBytes": 8388608,
+        "requiredGroups": 0,
+        "preparedGroups": 0,
+        "overBudgetBytes": 0
+      },
+      "residentParameterBytes": 37796080,
+      "detailBrushInstances": 0,
+      "contributingDetailBrushInstances": 0,
+      "zeroFadeGapBrushInstances": 0,
+      "joinedGapMaximumBrushes": 6,
+      "potentialDetailBrushInstances": 0,
+      "twigPotentialVertexExecutions": 0,
+      "twigCornerSubmissions": 0
+    },
+    "treeRootWindRoots": 0,
+    "treeRootWindCPUms": 0,
+    "treeRootWindUploadBytes": 0,
+    "treeRootWindBatches": 0,
+    "wetContactPending": 0,
+    "wetContactUpdated": 0,
+    "grassFieldSamples": 40763,
+    "grassFieldBytes": 1021696,
+    "grassLandformBytes": 1021696,
+    "grassCommunityBytes": 1021696,
+    "thresholdPlants": {
+      "enabled": true,
+      "entries": 185,
+      "moved": 423,
+      "unresolved": 0
+    },
+    "shorePlantsMoved": 0,
+    "shorePlantsUnresolved": 0,
+    "forestShrubs": 0,
+    "forestFerns": 0,
+    "wetBankSedges": 0,
+    "forestDeadwood": 0,
+    "forestStones": 0,
+    "forestFloorTriangles": 0,
+    "forestFloorPending": 0,
+    "forestFloorRevision": 97,
+    "forestFloorChunks": 97,
+    "forestFloorBuiltThisFrame": 0,
+    "forestFloorBatches": {
+      "enabled": false,
+      "blockSize": 48,
+      "batches": 0,
+      "residentInstances": 0,
+      "matrixUploads": 0,
+      "boundsRefreshes": 0,
+      "instanceMatrixBytes": 0,
+      "sourceInstanceMatrixBytes": 0
+    }
+  },
+  "paths": {
+    "households": 3,
+    "routes": 9,
+    "publicConnections": 1,
+    "length": 99.13509986907528,
+    "triangles": 2512,
+    "version": "household-yards-37",
+    "enabled": true,
+    "timber": {
+      "enabled": true,
+      "routes": 4,
+      "pieces": 1328,
+      "triangles": 143424,
+      "maxStep": 0.05524624209965623,
+      "materialsReady": true
+    }
+  },
+  "water": {
+    "sourceLines": 219,
+    "sourcePoints": 62637,
+    "sourceLength": 250008.97704743233,
+    "profileLength": 250178.413120804,
+    "enabledSegments": 60623,
+    "enabledLength": 242818.21562181172,
+    "unresolvedSegments": 1795,
+    "unresolvedLength": 7360.197498992289,
+    "reasons": {
+      "junction-level": 717,
+      "low-bank": 366,
+      "excessive-cut": 519,
+      "protected-building": 150,
+      "protected-road": 43
+    },
+    "connectedJunctions": 38,
+    "policy": "cut-only bed; downhill profile; protected roads/buildings; excessive cuts omitted; source network is not surveyed",
+    "naturalBanks": {
+      "reaches": 3,
+      "segments": 257,
+      "length": 1032.7714411259856,
+      "reachRadius": 180,
+      "policy": "designed representative shallows; forest reach footprint follows the physically validated bend; water levels and facilities retained"
+    },
+    "brookIncision": {
+      "nodes": 0,
+      "segments": 0,
+      "reason": "disabled"
+    },
+    "meanders": {
+      "lineId": "river-41711e76-99c57ca2",
+      "segments": 48,
+      "nodes": 45,
+      "maxOffset": 5.511215242013899,
+      "offsetRange": [
+        -5.511215242013899,
+        4.337161243063263
+      ],
+      "scale": 0.9,
+      "lengthDelta": 2.77042935935295,
+      "minLengthRatio": 0.8866954041483341,
+      "maxLengthRatio": 1.120701355388677,
+      "maxHeadingDeltaDegrees": 24.089514829760923,
+      "profile": "v22",
+      "retainedLandmarks": [
+        "spruce:-302:395",
+        "spruce:-302:400",
+        "spruce:-302:401"
+      ],
+      "requestedAmplitude": 6.4,
+      "reachRadius": 88,
+      "controlSpans": [
+        37.591027457099244,
+        36.29147535715265,
+        41.92038609517749,
+        45.75608090646574,
+        39.94492807027882,
+        44.14589143048988,
+        32.1178916997369,
+        42.44109288135542
+      ],
+      "checksPerSegment": 9,
+      "rejected": [
+        {
+          "scale": 1,
+          "reason": "low-water-edge"
+        }
+      ],
+      "policy": "representative metre-scale bend on actual terrain; shared new footprint; old bed restored; node levels, endpoints, junctions and facilities retained"
+    },
+    "brookMeanders": {
+      "nodes": 0,
+      "segments": 0,
+      "reason": "disabled"
+    },
+    "brookBendBanks": {
+      "nodes": 0,
+      "reason": "disabled-or-no-safe-structure"
+    },
+    "valleyMeanders": {
+      "lineId": "river-32d9cab5-5bea75bb",
+      "segments": 41,
+      "nodes": 35,
+      "maxOffset": 6.400000000000001,
+      "offsetRange": [
+        -6.400000000000001,
+        0
+      ],
+      "scale": 1,
+      "lengthDelta": 2.500550258588891,
+      "minLengthRatio": 0.93763861732315,
+      "maxLengthRatio": 1.1085699593093437,
+      "maxHeadingDeltaDegrees": 29.169526364339326,
+      "profile": "v38-valley",
+      "retainedLandmarks": [],
+      "requestedAmplitude": 6.4,
+      "reachRadius": 88,
+      "controlSpans": [
+        137.8874009278461,
+        181.78521910849486
+      ],
+      "checksPerSegment": 9,
+      "rejected": [],
+      "policy": "representative metre-scale bend on actual terrain; shared new footprint; old bed restored; node levels, endpoints, junctions and facilities retained"
+    },
+    "valleyDeposits": {
+      "nodes": 47,
+      "segments": 48,
+      "minWidth": 6.0593483676902995,
+      "maxWidth": 9.191049017060777,
+      "sectionProfile": true,
+      "policy": "existing wide reach sediment succession; inward bars with low physical sediment benches, bounded cut changes; centreline/levels and protected infrastructure retained"
+    },
+    "forestRootedShoulder38": false,
+    "forestBankCurvature38": true,
+    "forestReach39": false,
+    "waterChunks": 68,
+    "shoreStones": 113,
+    "gravelPebbles": 0,
+    "gravelTriangles": 0,
+    "gravelCapacity": 1400,
+    "wakePatches": 10,
+    "pending": 0,
+    "nearCoverage": 900,
+    "overviewTriangles": 121246,
+    "nearTriangles": 35960,
+    "buildMilliseconds": 0,
+    "reflection": "PBR and local tangent-plane reflection, with bounded opaque color/depth refraction",
+    "localReflection": {
+      "supported": true,
+      "active": false,
+      "captures": 0,
+      "skipped": 1502,
+      "width": 0,
+      "height": 0,
+      "estimatedAttachmentBytes": 0,
+      "lastCalls": 0,
+      "lastTriangles": 0,
+      "lastCPUms": 0,
+      "reason": "no-visible-near-water",
+      "patch": null,
+      "preparedMatrices": true,
+      "depthOrder": {
+        "enabled": false,
+        "active": false,
+        "objects": 0,
+        "unknownGroups": 0,
+        "bucketsPerOctave": 0.5
+      }
+    },
+    "refraction": {
+      "enabled": false,
+      "captures": 0,
+      "failures": 0,
+      "width": 0,
+      "height": 0,
+      "attachmentBytes": 0,
+      "reason": "disabled"
+    }
+  },
+  "pasture": {
+    "ready": true,
+    "count": 12,
+    "planned": 12,
+    "triangles": 48000,
+    "source": "assets/sheep.glb",
+    "quality": "original lod0 with original normal/basecolor maps",
+    "anchorId": "yurts:-1551,3489:3337d4a3e634caaf",
+    "center": {
+      "x": -1543.1573191233526,
+      "z": 3424.4748703475375
+    },
+    "elapsed": 67.62079999999862,
+    "states": {
+      "graze": 6,
+      "walk": 3,
+      "lie": 1,
+      "look": 2
+    }
+  },
+  "doors": {
+    "ready": true,
+    "entries": 188,
+    "leaves": 261,
+    "triangles": 15672,
+    "batches": 23,
+    "moving": 0,
+    "revision": 0,
+    "active": null,
+    "thresholdStones": {
+      "moved": 3,
+      "triangles": 240,
+      "assets": [
+        {
+          "assetId": "house_a",
+          "moved": 3,
+          "triangles": 240,
+          "stones": [
+            {
+              "triangles": 80,
+              "from": [
+                -0.2264735847711563,
+                -0.29983988404273987,
+                2.1069207191467285
+              ],
+              "to": [
+                -0.4731421905755997,
+                -0.29983988404273987,
+                2.1069207191467285
+              ],
+              "deltaX": -0.24666860580444336
+            },
+            {
+              "triangles": 80,
+              "from": [
+                0.6036390066146851,
+                -0.2005707323551178,
+                2.2131142616271973
+              ],
+              "to": [
+                -1.141068897843361,
+                -0.2005707323551178,
+                2.2131142616271973
+              ],
+              "deltaX": -1.744707904458046
+            },
+            {
+              "triangles": 80,
+              "from": [
+                0.9407551288604736,
+                -0.25662365555763245,
+                2.06437611579895
+              ],
+              "to": [
+                1.6549999999999998,
+                -0.25662365555763245,
+                2.06437611579895
+              ],
+              "deltaX": 0.7142448711395263
+            }
+          ]
+        },
+        {
+          "assetId": "cabin_small",
+          "moved": 0,
+          "triangles": 0,
+          "stones": []
+        },
+        {
+          "assetId": "gh_lanchuan_lodge",
+          "moved": 0,
+          "triangles": 0,
+          "stones": []
+        },
+        {
+          "assetId": "yurt",
+          "moved": 0,
+          "triangles": 0,
+          "stones": []
+        },
+        {
+          "assetId": "yurt_deck",
+          "moved": 0,
+          "triangles": 0,
+          "stones": []
+        }
+      ]
+    },
+    "pending": 0,
+    "shadowBatches": 14
+  },
+  "collision": {
+    "status": "ready",
+    "mode": "walk",
+    "supportedAssets": [
+      "house_a",
+      "yurt",
+      "cabin_small",
+      "gh_lanchuan",
+      "gh_lanchuan_lodge",
+      "yurt_deck"
+    ],
+    "activeBuildings": 2,
+    "activeDoors": 3,
+    "activeShoreStones": 0,
+    "shoreTriangles": 0,
+    "triangles": 170074,
+    "grounded": true,
+    "blockedDoors": 0,
+    "collisions": 1,
+    "errors": [],
+    "activeBoardwalks": 2,
+    "boardwalkTriangles": 66960
+  },
+  "movement": "walk",
+  "seating": {
+    "enabled": true,
+    "state": "seated",
+    "seat": "porch-bench",
+    "blocked": null,
+    "sweeps": 134,
+    "model": "first-person seated upper-body capsule; no leg skeleton",
+    "turn": "complete"
+  },
+  "controlTiming": {
+    "steps": 5944,
+    "lastSteps": 5,
+    "droppedSeconds": 9.227600000008941,
+    "resets": 6,
+    "stepSeconds": 0.016666666666666666,
+    "maxCatchupSeconds": 0.25
+  },
+  "errors": [],
+  "entities": 364,
+  "roomLight": {
+    "updates": 1,
+    "lastCpuMs": 5.199999988079071,
+    "cacheBytes": 120960,
+    "cachedDirections": 8,
+    "uploadBytes": 10080,
+    "active": false,
+    "directionSamples": 4,
+    "loadedSecondRooms": 0,
+    "lastLoadMs": 0,
+    "solarBounceOrder": 2,
+    "secondBounceWeight": 1,
+    "model": "up to two static diffuse solar bounces; no external occluders"
+  },
+  "roomSkyBounce": {
+    "guestVanity": {
+      "loadedRooms": 0,
+      "keys": [],
+      "model": "source-bound two sky/solar/fixture orders; bathroom included; static low-frequency GI"
+    },
+    "legacyRooms": {
+      "requests": 5,
+      "loadedRooms": 5,
+      "failures": 0,
+      "loads": [
+        {
+          "key": "house_a",
+          "startMs": 257.8999999910593,
+          "endMs": 310.8999999910593,
+          "status": "complete"
+        },
+        {
+          "key": "yurt",
+          "startMs": 257.8999999910593,
+          "endMs": 310.79999999701977,
+          "status": "complete"
+        },
+        {
+          "key": "lanchuan-freedom-1",
+          "startMs": 257.8999999910593,
+          "endMs": 310.8999999910593,
+          "status": "complete"
+        },
+        {
+          "key": "lanchuan-freedom-2",
+          "startMs": 257.8999999910593,
+          "endMs": 311,
+          "status": "complete"
+        },
+        {
+          "key": "lanchuan-freedom-3",
+          "startMs": 257.8999999910593,
+          "endMs": 311.09999999403954,
+          "status": "complete"
+        }
+      ]
+    },
+    "lodgeDoor": {
+      "enabled": true,
+      "ready": true,
+      "active": false,
+      "pending": false,
+      "model": "actual glazed-door poses 0/0.875/1.75 rad; sky orders 0/1/2 and solar orders 1/2; adjacent-state interpolation, not full dynamic GI",
+      "extraSamplers": 0,
+      "extraTextureFetches": 0,
+      "delivery": {
+        "base": {
+          "status": "gzip-base",
+          "parseAndValidateMs": 10.899999991059303,
+          "responseBytes": 11799283,
+          "compressedBytes": 6633435,
+          "rawBytes": 11799283
+        },
+        "status": "delta",
+        "compressedBytes": 2793157,
+        "rawBytes": 26109396,
+        "responseBytes": 26109396,
+        "delivery": "http-decoded-body",
+        "decodeMs": 1746.6000000089407,
+        "elapsedMs": 1843.2999999970198,
+        "scheduler": {
+          "enabled": true,
+          "budgetMs": 8,
+          "yields": 159,
+          "maxOverrunMs": 19.100000008940697
+        }
+      },
+      "angle": null,
+      "bracket": null
+    },
+    "lodgeCross": {
+      "enabled": true,
+      "ready": false,
+      "pending": false,
+      "model": "eleven east exterior sources through original passage and furniture; sky orders 0/1/2, solar orders 1/2; static original closed glazed door"
+    },
+    "lodge": {
+      "enabled": true,
+      "tables": true,
+      "chairs": true,
+      "furniture": true,
+      "key": "gh_lanchuan_lodge-tables-whole",
+      "sourceSHA256": "853f5690686eceaa85f00b2df0705343e55b6aea4286f599e07ee121dd170687",
+      "ready": true,
+      "pending": false,
+      "model": "source-bound detailed tables/reception/tea table; independently rebaked complete three-pose sky/solar transport and contact"
+    },
+    "household": {
+      "key": null,
+      "pending": false,
+      "bundleReady": false,
+      "closedReady": false,
+      "ready": false,
+      "loadedStyles": 1
+    },
+    "exteriorTerrain": {
+      "enabled": false,
+      "active": false,
+      "pending": false,
+      "ready": false,
+      "model": "one entity: upper sky plus terrain sky reflection; one/two internal diffuse bounces; original solar remains; direct terrain sky/solar return plus terrain solar followed by one/two internal bounces; finite static transport, not complete dynamic GI"
+    },
+    "doorAngles": {
+      "ready": false,
+      "active": false,
+      "pending": false,
+      "degrees": null,
+      "model": "tea single-leaf 0/30/60/90/102 degree two-bounce tables; adjacent-angle interpolation, not full dynamic GI"
+    },
+    "doors": {
+      "loadedRooms": 1,
+      "pending": false,
+      "active": false,
+      "bypassedBy": null,
+      "openness": 1,
+      "apertureFraction": 1,
+      "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+    },
+    "aperture": {
+      "active": false,
+      "field": null,
+      "cacheBytes": 945,
+      "extraTextureBytes": 0,
+      "extraSamples": 0,
+      "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+    },
+    "active": false,
+    "skyBounceOrder": 2,
+    "merges": 1,
+    "lastMergeMs": 1.6000000089406967,
+    "secondBounceBytes": 10080,
+    "compositeBytes": 10080,
+    "fixtures": {
+      "loadedRooms": 0,
+      "cacheBytes": 0,
+      "lastLoadMs": 0,
+      "lastComposeMs": 0,
+      "active": false,
+      "lights": 0,
+      "bounceOrder": 1,
+      "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+    },
+    "secondFixtures": {
+      "loadedRooms": 0,
+      "cacheBytes": 0,
+      "lastLoadMs": 0,
+      "lastComposeMs": 0,
+      "active": false,
+      "lights": 0,
+      "bounceOrder": 2,
+      "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+    },
+    "model": "up to two static sky/solar/fixture bounces; not complete GI",
+    "finiteAperture": {
+      "enabled": true,
+      "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+      "extraTextureSamples": 0,
+      "extraGeometry": 0,
+      "edgeIntegral": true
+    },
+    "viewSelection": {
+      "roomId": null,
+      "reason": "none",
+      "visibleRooms": 0,
+      "openingKind": null,
+      "distance": null
+    },
+    "terrainSun": {
+      "enabled": true,
+      "active": false,
+      "blockedRays": 0,
+      "rays": 27,
+      "heightSamples": 1350,
+      "updates": 1,
+      "lastCpuMs": 2.9000000059604645,
+      "partial": false,
+      "model": "all sampled sun-facing apertures blocked by terrain; partial sun-facing occlusion unresolved",
+      "apertures": [
+        {
+          "rays": 9,
+          "blocked": 0,
+          "kind": "door",
+          "sunFacing": false,
+          "facingCosine": -0.010053788827215138
+        },
+        {
+          "rays": 9,
+          "blocked": 0,
+          "kind": "window",
+          "sunFacing": false,
+          "facingCosine": -0.010053788827215138
+        },
+        {
+          "rays": 9,
+          "blocked": 0,
+          "kind": "window",
+          "sunFacing": true,
+          "facingCosine": 0.010053788827215138
+        }
+      ],
+      "sunFacingApertures": 1,
+      "allApertureSamplesBlocked": false,
+      "minHitDistance": null,
+      "maxHitDistance": null,
+      "excludedNearMeters": 16.209750300709516
+    }
+  },
+  "roomContact": {
+    "upperContact": {
+      "enabled": true,
+      "active": false,
+      "key": null,
+      "atlasTextureBytes": 0,
+      "atlasExtraBytes": 0,
+      "model": "actual source vertex AO residual; shared floor RG atlas, no separate texture"
+    },
+    "active": false,
+    "field": null,
+    "textureBytes": 101010,
+    "textures": 1,
+    "model": "missing short-range floor contact visibility; no direct light baked",
+    "filter": "receiver-plane-bilinear",
+    "samplesPerEligibleFragment": 4
+  },
+  "rooms": 17
+}

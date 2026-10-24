@@ -46,3 +46,21 @@ test("projected shadow depth retains native normal and reversed depth buffer bra
  }
  depth.dispose();
 });
+
+
+test("opt-in depth preparation review counts streamed and replaced casters without skipping hidden trees",()=>{
+ const scene=new THREE.Scene(),g=new THREE.BoxGeometry(),m=new THREE.MeshStandardMaterial();
+ const hidden=new THREE.Group();hidden.visible=false;scene.add(hidden);
+ const a=new THREE.Mesh(g,m);a.castShadow=true;hidden.add(a);
+ const pass=new WorldShadowDepth(scene,{profile:true}),stats=scene.userData.shadowDepthProfile39;
+ assert.equal(stats.owner,pass);assert.doesNotThrow(()=>JSON.stringify(stats));
+ scene.onBeforeRender();assert.equal(stats.last.visited,3);assert.equal(stats.last.assigned,1);assert.equal(stats.last.created,1);
+ scene.onBeforeRender();assert.equal(stats.last.alreadyPrepared,1);assert.equal(stats.last.assigned,0);
+ const b=new THREE.Mesh(g,m);b.castShadow=true;scene.add(b);scene.onBeforeRender();
+ assert.equal(stats.last.assigned,1);assert.equal(stats.last.created,0);assert.equal(a.customDepthMaterial,b.customDepthMaterial);
+ const replacement=new THREE.MeshDepthMaterial();a.customDepthMaterial=replacement;scene.onBeforeRender();
+ assert.equal(stats.last.patched,1);assert.equal(stats.last.alreadyPrepared,1);assert.equal(a.customDepthMaterial,replacement);
+ assert.equal(stats.calls,4);assert.ok(stats.totalMs>=0);pass.dispose();assert.equal(scene.userData.shadowDepthProfile39,undefined);
+ const ordinary=new WorldShadowDepth(scene,{profile:false});ordinary.prepare();assert.equal(ordinary.profile,null);assert.equal(scene.userData.shadowDepthProfile39,undefined);
+ ordinary.dispose();replacement.dispose();g.dispose();m.dispose();
+});

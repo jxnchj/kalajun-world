@@ -1,0 +1,44 @@
+{
+  "sourceSHA256": "cba148d08eb64a883bc3ba3d68628b83d414c91370955235ef65de614454d71c",
+  "candidateSHA256": "04bf369861dbc9398b022b0a8498023d752f19afb277db7c1fc61e1a26e63fcb",
+  "checks": {
+    "plank": {
+      "positions": true,
+      "triangles": true,
+      "normals": true,
+      "materials": true,
+      "matrix": true,
+      "triangleCount": 108,
+      "uvChanged": true
+    },
+    "bearer": {
+      "positions": true,
+      "triangles": true,
+      "normals": true,
+      "materials": true,
+      "matrix": true,
+      "triangleCount": 108,
+      "uvChanged": true
+    },
+    "post": {
+      "positions": true,
+      "triangles": true,
+      "normals": true,
+      "materials": true,
+      "matrix": true,
+      "triangleCount": 108,
+      "uvChanged": true
+    },
+    "endgrain": {
+      "positions": true,
+      "triangles": true,
+      "normals": true,
+      "materials": true,
+      "matrix": true,
+      "triangleCount": 108,
+      "uvChanged": true
+    }
+  },
+  "geometryChanged": false,
+  "candidateOnly": true
+}

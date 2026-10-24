@@ -1,0 +1,15 @@
+{
+  "changedSources": [
+    "src/v2/asset-occlusion.js"
+  ],
+  "oldCode": "400f9b359fd9479eaf909a5d6e932ba338f75e200a78a0f36ac9c00a792e8af7",
+  "newCode": "95db2de4271c6da5653eb947518237faf5f3fe51c042227a8209408ea2ba331b",
+  "compressedBinaryIdentical": true,
+  "rawBinaryIdentical": true,
+  "manifestIdenticalExceptCode": true,
+  "tiles": 111,
+  "roots": 45486,
+  "rawBytes": 10382316,
+  "gzipBytes": 4011243,
+  "sourceSlots": 99900
+}

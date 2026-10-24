@@ -1,0 +1,18 @@
+{
+  "base": {
+    "version": 1,
+    "url": "data/v2/lodge-furniture-base-38.json.gz",
+    "rawBytes": 11774576,
+    "gzipBytes": 6635929,
+    "rawSHA256": "aa7c72a5e152194b189b61f50ff4b0e700769db435dd264ed2347fae460c00d7",
+    "sha256": "f13d96ebee1aea6c3109e4847c4da1fed840ae1d2cc51781f76f01afc12d7c9c"
+  },
+  "delta": {
+    "version": 1,
+    "url": "data/v2/lodge-furniture-gi-38.xor.gz",
+    "rawBytes": 25962746,
+    "gzipBytes": 2802880,
+    "rawSHA256": "dff1550674623b254839957691e431f0cab458e47ef0b3766a18c4b0d4532174",
+    "sha256": "fa5902443338f9e55fbe7c86859f265b3a950827172914adafa3750353384800"
+  }
+}

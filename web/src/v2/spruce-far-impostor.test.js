@@ -7,7 +7,7 @@ import * as THREE from 'three';
 import {attachEcologyWind} from './ecology.js';
 import {validateFarSpruceManifest,loadFarSpruceAssets as loadFarSpruceAssetsActual,farSpruceBounds,createFarSpruceImpostorGeometry,setFarSpruceImpostorAttributes,installFarSpruceImpostor,selectFarSpruceFrames} from './spruce-far-impostor.js';
 // Retain the original transport and HTTP/resource timing regression suite.
-const loadFarSpruceAssets=options=>loadFarSpruceAssetsActual({...options,transport:"v26",manifest:"network"});
+const loadFarSpruceAssets=options=>loadFarSpruceAssetsActual({...options,transport:"v26",manifest:"network",farLossless38:false});
 const dir=new URL('../../public/assets/v2/spruce/far-v14/',import.meta.url),metadata=JSON.parse(readFileSync(new URL('impostor-manifest.json',dir)));
 const payload=kind=>gunzipSync(readFileSync(new URL(metadata.files.find(f=>f.kind===kind).url,dir)));
 const assets={metadata,albedo:new THREE.Texture(),normal:new THREE.Texture()};

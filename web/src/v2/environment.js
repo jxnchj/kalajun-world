@@ -1,3 +1,10 @@
+import {csmBacklitSkipEligible,installCSMBacklitSkip} from './csm-backlit-skip.js';
+import {installCSMZeroFadeSkip} from './csm-zero-fade.js';
+import {createCloseSolarShadow,installCloseSolarShadow} from './close-solar-shadow.js';
+import {visualDelta} from './visual-time.js';
+import {installShadowReceiverFootprint} from "./shadow-receiver-footprint.js";
+import {installCloseShadowOverlap,installCloseShadowOverlapShader} from "./close-shadow-overlap.js";
+import { installSharedOrmSampler, sharedOrmSamplerEligible } from './shared-orm-sampler.js';
 import {createNearShadowDetail,configureNearShadowDetail} from './near-shadow-detail.js';
 import * as THREE from "three";
 import { Sky } from "three/addons/objects/Sky.js";
@@ -46,9 +53,15 @@ export class WorldEnvironment {
     this.envScene=new THREE.Scene();this.envSky=calibratedSky();this.envSky.scale.setScalar(1000);this.envScene.add(this.envSky);
     installSkyCloudField(this.envSky,this.clouds,this.cloudOrigin);
     this.pmrem=new THREE.PMREMGenerator(renderer);this.pmrem.compileCubemapShader();
-    this.nearShadowDetail=createNearShadowDetail(renderer.capabilities,new URLSearchParams(globalThis.location?.search||"").get("nearShadowDetail")||"auto");
+    this.nearShadowDetail=createNearShadowDetail({...renderer.capabilities,sharedOrmSampler:true},new URLSearchParams(globalThis.location?.search||"").get("nearShadowDetail")||"auto");
     this.csm=new CSM({camera,parent:scene,cascades:this.nearShadowDetail.cascades,maxFar:500,mode:"custom",customSplitsCallback:this.nearShadowDetail.customSplitsCallback,shadowMapSize:this.nearShadowDetail.shadowMapSize,shadowBias:shadowDepthBias(.000002,camera.reversedDepth),lightIntensity:3,lightDirection:new THREE.Vector3(-1,-1,0).normalize(),lightNear:1,lightFar:8000,lightMargin:2000});
+    this.csmBacklitSkip=new URLSearchParams(globalThis.location?.search||'').get('csmBacklitSkip')==='1'?{value:1}:null;
+    this.csmZeroFadeSkip={value:new URLSearchParams(globalThis.location?.search||'').get('csmZeroFadeSkip')==='1'?1:0};
     this.csm.fade=true;configureCSMDepth(this.csm,camera);this.restoreShadowSnap=configureNearShadowDetail(this.csm,this.nearShadowDetail,{reversedDepth:camera.reversedDepth});
+    this.closeShadowOverlap=installCloseShadowOverlap(this.csm,{enabled:this.nearShadowDetail.mode==="close"&&new URLSearchParams(globalThis.location?.search||"").get("closeShadowOverlap")==="1"});
+    this.closeSolarShadow=createCloseSolarShadow(this.csm,{enabled:this.nearShadowDetail.mode==="close"&&new URLSearchParams(globalThis.location?.search||"").get("closeSolarShadow")==="1"});
+    this.closeShadowFootprint=new URLSearchParams(globalThis.location?.search||"").get("closeShadowFootprint")==="1"?{value:1}:null;
+    this.cascadeDebug=new URLSearchParams(globalThis.location?.search||"").get("shadowDiagnostics")==="1"?{value:0}:null;
     this.shadowScheduler=new SunShadowScheduler(this.csm.lights);
     this.shadowDueScan=new URLSearchParams(globalThis.location?.search||"").get("shadowDueScan")!=="0";
     this.shadowCasters=new SunShadowCasters(scene,this.csm.lights);
@@ -60,13 +73,21 @@ export class WorldEnvironment {
   register(materials) {
     for(const material of materials){
       if(!material||this.registered.has(material)||!(material.isMeshStandardMaterial||material.isMeshPhongMaterial||material.isMeshLambertMaterial))continue;
+      const sharedOrm=this.nearShadowDetail?.mode==='close'&&sharedOrmSamplerEligible(material);
+      const backlitSkip=csmBacklitSkipEligible(material)?this.csmBacklitSkip:null;
+      if(backlitSkip)material.userData.csmBacklitSkip=backlitSkip;
       const previous=material.onBeforeCompile;
       const previousKey=material.customProgramCacheKey();
       this.csm.setupMaterial(material);
       const csmCompile=material.onBeforeCompile;
       material.onBeforeCompile=(shader,r)=>{
         csmCompile(shader,r);previous.call(material,shader,r);
+        if(sharedOrm)installSharedOrmSampler(shader);
         installCloudShadows(shader,this.clouds);installCSMPhysicalLighting(shader);
+        installCSMZeroFadeSkip(shader,this.csmZeroFadeSkip);
+        installCloseShadowOverlapShader(shader,this.closeShadowOverlap,this.cascadeDebug);
+        if(this.closeSolarShadow)installCloseSolarShadow(shader,this.closeSolarShadow);else installShadowReceiverFootprint(shader,this.closeShadowFootprint);
+        if(backlitSkip)installCSMBacklitSkip(shader,backlitSkip);
         // The shadow maps belong to the viewer, also when a reflected camera
         // shades the same world. Do not choose cascades in mirror-camera space.
         shader.uniforms.uWorldCSMView={value:(this.camera||this.csm.camera).matrixWorldInverse};
@@ -75,9 +96,12 @@ export class WorldEnvironment {
           "float linearDepth = -(uWorldCSMView * vec4(vCloudWorld, 1.0)).z / (shadowFar - cameraNear);");
         if(material.fog!==false)installAerialPerspective(shader,this.aerial);
       };
-      material.customProgramCacheKey=()=>previousKey+"-world-aerial-physical-v3";
+      material.customProgramCacheKey=()=>previousKey+"-world-aerial-physical-v3-zero-fade-v1"+(sharedOrm?"-shared-orm-v1":"")+(backlitSkip?"-backlit-skip-v1":"")+(this.closeShadowOverlap?.state.enabled?"-close-overlap-v1":"")+(this.cascadeDebug?"-cascade-debug-v1":"")+(this.closeShadowFootprint?"-receiver-footprint-v1":"")+(this.closeSolarShadow?"-close-solar-v1"+(this.closeSolarShadow.reuseDepth?"-reuse":""):"");
       material.needsUpdate=true;this.registered.add(material);
     }
+  }
+  async exportShadowDepth(options={}) {
+    const {exportShadowDepth}=await import("./shadow-depth-diagnostic.js");return exportShadowDepth(this.renderer,this.csm,options);
   }
   setLightingProfile(name) {
     if(!Object.hasOwn(WORLD_LIGHTING,name))throw new RangeError("Unknown world lighting profile");
@@ -115,7 +139,7 @@ export class WorldEnvironment {
     return {text:hh+":"+mm+" 北京时间",elevation:s.elevation};
   }
   update(dt) {
-    this.elapsed+=dt;
+    dt=visualDelta(dt);this.elapsed+=dt;
     this.sky.position.copy(this.camera.position);this.cloudOrigin.copy(this.camera.position);
     this.clouds.uCloudTime.value=this.elapsed;this.cloudCache.update(this.camera);
     this.sky.material.uniforms.time.value=this.elapsed;
@@ -144,5 +168,5 @@ export class WorldEnvironment {
       this.lastEnvironmentOrigin.copy(this.camera.position);this.lastEnvironmentTime=this.elapsed;
     }
   }
-  dispose(){this.restoreShadowSnap?.();this.cloudCache.dispose();this.shadowReceivers.dispose();this.shadowCasters.dispose();this.shadowScheduler.dispose();this.csm.dispose();this.csm.remove();this.bounce.removeFromParent();this.pmrem.dispose();this.environmentTarget?.dispose();this.sky.geometry.dispose();this.sky.material.dispose();this.envSky.geometry.dispose();this.envSky.material.dispose();}
+  dispose(){this.closeSolarShadow?.dispose();this.closeShadowOverlap?.dispose();this.restoreShadowSnap?.();this.cloudCache.dispose();this.shadowReceivers.dispose();this.shadowCasters.dispose();this.shadowScheduler.dispose();this.csm.dispose();this.csm.remove();this.bounce.removeFromParent();this.pmrem.dispose();this.environmentTarget?.dispose();this.sky.geometry.dispose();this.sky.material.dispose();this.envSky.geometry.dispose();this.envSky.material.dispose();}
 }

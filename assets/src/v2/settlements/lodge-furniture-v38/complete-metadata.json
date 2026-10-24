@@ -1,0 +1,511 @@
+{
+  "sourceGLB": "assets/v2/gh_lanchuan_lodge_furniture38.glb",
+  "sourceSHA256": "b1b8d584d20a55916ff9b6f5d3938d733d10751aada2456bab5b8df82572daee",
+  "sourceBlend": "assets/src/v2/settlements/lodge-furniture-v38/lodge-complete.blend",
+  "blendSHA256": "d8170e7fa667771494058fb547fd76498945704186424c42ea97104f166b612b",
+  "originalSHA256": "21d20750939a5915f33211eb3f68d5c9a691307589756fa68055b85c90f85997",
+  "totalTriangles": 63688,
+  "removedTriangles": 120,
+  "addedTriangles": 23256,
+  "nonFurnitureTriangles": 40432,
+  "removed": [
+    {
+      "mesh": "gh_lanchuan_lodge_linen",
+      "material": "linen",
+      "center": [
+        5.3,
+        2.04,
+        0.25
+      ],
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_linen",
+      "material": "linen",
+      "center": [
+        5.3,
+        2.36,
+        0.65
+      ],
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_linen",
+      "material": "linen",
+      "center": [
+        5.3,
+        -0.6,
+        0.25
+      ],
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_linen",
+      "material": "linen",
+      "center": [
+        5.3,
+        -0.9199999999999999,
+        0.65
+      ],
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plasterw",
+      "material": "plasterw",
+      "center": [
+        9.3,
+        2.95,
+        0.43
+      ],
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_iron",
+      "material": "iron",
+      "center": [
+        9.3,
+        2.64,
+        0.5
+      ],
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plasterw",
+      "material": "plasterw",
+      "center": [
+        10.05,
+        2.95,
+        0.43
+      ],
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_iron",
+      "material": "iron",
+      "center": [
+        10.05,
+        2.64,
+        0.5
+      ],
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_plasterw",
+      "material": "plasterw",
+      "center": [
+        10.8,
+        2.95,
+        0.43
+      ],
+      "triangles": 12
+    },
+    {
+      "mesh": "gh_lanchuan_lodge_iron",
+      "material": "iron",
+      "center": [
+        10.8,
+        2.64,
+        0.5
+      ],
+      "triangles": 12
+    }
+  ],
+  "originalBinaryPrefixPreserved": true,
+  "allOriginalVertexAttributesPreserved": true,
+  "originalNodesAndDoorTransformPreserved": true,
+  "newMaterials": {
+    "candidate dark drum glazing": {
+      "baseColor": [
+        0.05000000074505806,
+        0.04500000178813934,
+        0.03999999910593033,
+        1
+      ],
+      "metallic": 0.15000000596046448,
+      "diffuseReflectance": [
+        0.04250000033527612,
+        0.03825000125169753,
+        0.033999999001622205
+      ],
+      "transparent": false,
+      "alphaMode": "OPAQUE",
+      "transmission": 0
+    },
+    "candidate enamel original aggregate": {
+      "baseColor": [
+        0.7721741795539856,
+        0.7526476979255676,
+        0.6945538520812988,
+        1
+      ],
+      "metallic": 0,
+      "diffuseReflectance": [
+        0.7721741795539856,
+        0.7526476979255676,
+        0.6945538520812988
+      ],
+      "transparent": false,
+      "alphaMode": "OPAQUE",
+      "transmission": 0
+    },
+    "candidate rubber": {
+      "baseColor": [
+        0.05000000074505806,
+        0.04500000178813934,
+        0.03999999910593033,
+        1
+      ],
+      "metallic": 0,
+      "diffuseReflectance": [
+        0.05000000074505806,
+        0.04500000178813934,
+        0.03999999910593033
+      ],
+      "transparent": false,
+      "alphaMode": "OPAQUE",
+      "transmission": 0
+    },
+    "candidate satin alloy": {
+      "baseColor": [
+        0.3700000047683716,
+        0.3700000047683716,
+        0.36000001430511475,
+        1
+      ],
+      "metallic": 0.75,
+      "diffuseReflectance": [
+        0.0925000011920929,
+        0.0925000011920929,
+        0.09000000357627869
+      ],
+      "transparent": false,
+      "alphaMode": "OPAQUE",
+      "transmission": 0
+    },
+    "candidate hidden sofa feet": {
+      "baseColor": [
+        0.23999999463558197,
+        0.12999999523162842,
+        0.05999999865889549,
+        1
+      ],
+      "metallic": 0,
+      "diffuseReflectance": [
+        0.23999999463558197,
+        0.12999999523162842,
+        0.05999999865889549
+      ],
+      "transparent": false,
+      "alphaMode": "OPAQUE",
+      "transmission": 0
+    },
+    "candidate linen original mean": {
+      "baseColor": [
+        0.8694141507148743,
+        0.8609325885772705,
+        0.8213880658149719,
+        1
+      ],
+      "metallic": 0,
+      "diffuseReflectance": [
+        0.8694141507148743,
+        0.8609325885772705,
+        0.8213880658149719
+      ],
+      "transparent": false,
+      "alphaMode": "OPAQUE",
+      "transmission": 0
+    }
+  },
+  "materialReflectance": {
+    "frame": [
+      0.02500000037252903,
+      0.02500000037252903,
+      0.026000000536441803
+    ],
+    "iron": [
+      0.05000000074505806,
+      0.04500000178813934,
+      0.03999999910593033
+    ],
+    "lamp": [
+      0.9,
+      0.699999988079071,
+      0.3499999940395355
+    ],
+    "linen": [
+      0.8600000143051147,
+      0.8500000238418579,
+      0.8100000023841858
+    ],
+    "log": [
+      0.22521169483661652,
+      0.12365184724330902,
+      0.0576966293156147
+    ],
+    "logend": [
+      0.3746096193790436,
+      0.19257742166519165,
+      0.06875666975975037
+    ],
+    "pine": [
+      0.23682348430156708,
+      0.11614272743463516,
+      0.05534806847572327
+    ],
+    "plank": [
+      0.23682348430156708,
+      0.11614272743463516,
+      0.05534806847572327
+    ],
+    "plankpale": [
+      0.19595438241958618,
+      0.1608644723892212,
+      0.121392622590065
+    ],
+    "plasterw": [
+      0.800000011920929,
+      0.7799999713897705,
+      0.7200000286102295
+    ],
+    "plinth": [
+      0.2541235685348511,
+      0.2338634878396988,
+      0.19115954637527466
+    ],
+    "rattan": [
+      0.47999998927116394,
+      0.3400000035762787,
+      0.1899999976158142
+    ],
+    "roofelt": [
+      0.04500000178813934,
+      0.04500000178813934,
+      0.05000000074505806
+    ],
+    "rug": [
+      0.3755701184272766,
+      0.2324863225221634,
+      0.19647176563739777
+    ],
+    "seedstalk": [
+      0.41999998688697815,
+      0.36000001430511475,
+      0.20000000298023224
+    ],
+    "sod": [
+      0.09736109524965286,
+      0.17572756111621857,
+      0.018809329718351364
+    ],
+    "stone": [
+      0.2541235685348511,
+      0.2338634878396988,
+      0.19115954637527466
+    ],
+    "turfblade": [
+      0.10000000149011612,
+      0.1599999964237213,
+      0.03500000014901161
+    ],
+    "turfdry": [
+      0.30000001192092896,
+      0.25,
+      0.10000000149011612
+    ],
+    "candidate dark drum glazing": [
+      0.04250000033527612,
+      0.03825000125169753,
+      0.033999999001622205
+    ],
+    "candidate enamel original aggregate": [
+      0.7721741795539856,
+      0.7526476979255676,
+      0.6945538520812988
+    ],
+    "candidate rubber": [
+      0.05000000074505806,
+      0.04500000178813934,
+      0.03999999910593033
+    ],
+    "candidate satin alloy": [
+      0.0925000011920929,
+      0.0925000011920929,
+      0.09000000357627869
+    ],
+    "candidate hidden sofa feet": [
+      0.23999999463558197,
+      0.12999999523162842,
+      0.05999999865889549
+    ],
+    "candidate linen original mean": [
+      0.8694141507148743,
+      0.8609325885772705,
+      0.8213880658149719
+    ]
+  },
+  "ao": {
+    "samples": 64,
+    "localDistance": 1,
+    "skyDistance": 40,
+    "excluded": "original transparent glass only",
+    "stats": [
+      {
+        "node": "dryer 3 export washer 1 candidate dark drum glazing",
+        "vertices": 248,
+        "uniqueSamples": 147,
+        "minAO": 0.37359094619750977,
+        "maxAO": 0.7045257687568665,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "dryer 3 export washer 1 candidate enamel original aggregate",
+        "vertices": 1916,
+        "uniqueSamples": 1480,
+        "minAO": 0.25,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.0416666679084301
+      },
+      {
+        "node": "dryer 3 export washer 1 candidate rubber",
+        "vertices": 448,
+        "uniqueSamples": 344,
+        "minAO": 0.25,
+        "maxAO": 0.9648210406303406,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "dryer 3 export washer 1 candidate satin alloy",
+        "vertices": 696,
+        "uniqueSamples": 397,
+        "minAO": 0.25,
+        "maxAO": 0.9989675879478455,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "export sofa 1 candidate hidden sofa feet",
+        "vertices": 816,
+        "uniqueSamples": 608,
+        "minAO": 0.25,
+        "maxAO": 0.5890453457832336,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "export sofa 1 candidate linen original mean",
+        "vertices": 2727,
+        "uniqueSamples": 2064,
+        "minAO": 0.25,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.1041666641831398
+      },
+      {
+        "node": "export sofa 2 candidate hidden sofa feet",
+        "vertices": 816,
+        "uniqueSamples": 608,
+        "minAO": 0.25,
+        "maxAO": 0.5892916917800903,
+        "minSky": 0.0,
+        "maxSky": 0.0
+      },
+      {
+        "node": "export sofa 2 candidate linen original mean",
+        "vertices": 2727,
+        "uniqueSamples": 2064,
+        "minAO": 0.25,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.27272728085517883
+      },
+      {
+        "node": "export washer 1 candidate dark drum glazing",
+        "vertices": 248,
+        "uniqueSamples": 147,
+        "minAO": 0.37359094619750977,
+        "maxAO": 0.7045257687568665,
+        "minSky": 0.0,
+        "maxSky": 0.02857142873108387
+      },
+      {
+        "node": "export washer 1 candidate enamel original aggregate",
+        "vertices": 1916,
+        "uniqueSamples": 1480,
+        "minAO": 0.25,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.04545454680919647
+      },
+      {
+        "node": "export washer 1 candidate rubber",
+        "vertices": 448,
+        "uniqueSamples": 344,
+        "minAO": 0.25,
+        "maxAO": 0.9648210406303406,
+        "minSky": 0.0,
+        "maxSky": 0.02857142873108387
+      },
+      {
+        "node": "export washer 1 candidate satin alloy",
+        "vertices": 696,
+        "uniqueSamples": 397,
+        "minAO": 0.25,
+        "maxAO": 0.9989675879478455,
+        "minSky": 0.0,
+        "maxSky": 0.02777777798473835
+      },
+      {
+        "node": "washer 2 export washer 1 candidate dark drum glazing",
+        "vertices": 248,
+        "uniqueSamples": 147,
+        "minAO": 0.37359094619750977,
+        "maxAO": 0.7045257687568665,
+        "minSky": 0.0,
+        "maxSky": 0.02857142873108387
+      },
+      {
+        "node": "washer 2 export washer 1 candidate enamel original aggregate",
+        "vertices": 1916,
+        "uniqueSamples": 1480,
+        "minAO": 0.25,
+        "maxAO": 1.0,
+        "minSky": 0.0,
+        "maxSky": 0.0833333358168602
+      },
+      {
+        "node": "washer 2 export washer 1 candidate rubber",
+        "vertices": 448,
+        "uniqueSamples": 344,
+        "minAO": 0.25,
+        "maxAO": 0.9648210406303406,
+        "minSky": 0.0,
+        "maxSky": 0.02857142873108387
+      },
+      {
+        "node": "washer 2 export washer 1 candidate satin alloy",
+        "vertices": 696,
+        "uniqueSamples": 397,
+        "minAO": 0.25,
+        "maxAO": 0.9989675879478455,
+        "minSky": 0.0,
+        "maxSky": 0.02631578966975212
+      }
+    ]
+  },
+  "seconds": 2.2558005829923786,
+  "glbBytes": 6025616,
+  "blendBytes": 3571882,
+  "limits": "New contextual AO has per-instance COLOR attributes; all identical geometry accessors remain shared. Original retained AO unchanged. GI and contact rebake mandatory.",
+  "independentVerification": {
+    "completeBlendReopened": true,
+    "allGLBTrianglesMatchBlend": 63688,
+    "maximumCoordinateError": 0,
+    "closedDoorQuaternionUnchanged": true,
+    "everyNewMeshHasNonWhiteAO": true,
+    "originalGLBUnchanged": true
+  }
+}

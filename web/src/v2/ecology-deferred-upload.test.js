@@ -88,3 +88,25 @@ test("tree active prefixes retain unsent swap and append ranges across multiple 
     prepare(-190);prepare(-180);storage.upload([attribute]);check();assert.equal(mesh.visible,true);
   }finally{eco.dispose();geometry.dispose();material.dispose();}
 });
+
+test('hidden preparation combines meadow pool publication without changing selected rows, bounds or final GPU bytes',()=>{
+ const a=new WorldEcology(world()),b=new WorldEcology(world()),cam=camera(),storage=gpuStorage();
+ const roots=Array.from({length:12},(_,i)=>({id:'defer-publish:'+i,x:i*1.8,y:100,z:i*.9,s:1,rot:i*.1}));
+ for(const eco of[a,b])eco.grassAnchor=eco.baseGrassAnchor=eco.flowerNearAnchor='0,0';
+ const attrs=pool=>[pool.mesh.instanceMatrix,pool.meadowField,pool.meadowLandform,pool.meadowCommunity];
+ try{
+  storage.upload(attrs(b.baseGrass));const version=b.baseGrass.mesh.instanceMatrix.version;
+  for(const list of[roots.slice(0,3),roots.slice(0,7),roots.slice(2,8),roots.slice(1,12)]){
+   for(const eco of[a,b])eco.syncPool(eco.baseGrass,new Map(list.map(r=>[r.id,r])));
+   a.updateMeadow(cam);b.updateMeadow(cam,{deferPools:true});
+  }
+  assert.equal(b.baseGrass.mesh.instanceMatrix.version,version,'no intermediate GPU publication');
+  b.publishMeadowPools(cam);
+  assert.deepEqual(b.baseGrass.records.map(r=>r.id),a.baseGrass.records.map(r=>r.id));
+  assert.deepEqual(b.baseGrass.mesh.boundingBox,a.baseGrass.mesh.boundingBox);
+  assert.deepEqual(b.baseGrass.mesh.boundingSphere,a.baseGrass.mesh.boundingSphere);
+  assert.equal(b.baseGrass.mesh.count,a.baseGrass.mesh.count);
+  attrs(b.baseGrass).forEach((attr,i)=>assert.deepEqual(attr.array,attrs(a.baseGrass)[i].array));
+  storage.upload(attrs(b.baseGrass));attrs(b.baseGrass).forEach(attr=>storage.check(attr,b.baseGrass.records.length,'coalesced complete pool'));
+ }finally{a.dispose();b.dispose();}
+});
