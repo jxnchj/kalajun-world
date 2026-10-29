@@ -22,7 +22,11 @@ test('main installs diagnostics only for profile, retains old per-call samples a
  const main=readFileSync(new URL('./main.js',import.meta.url),'utf8');
  assert.match(main,/params\.get\("profile"\)===\"1\"\?new RafCPUProfile42\(\):null/);
  assert.match(main,/if\(rafCPU42\)\{[\s\S]*?wrap\(worldFrame\?\.output,"render","output"\)/);
- assert.match(main,/scope:"per-call",samples:a.length/);assert.match(main,/finally\{rafCPU42\?\.end\(\);\}/);
+ assert.match(main,/scope:"per-call",samples:a.length/);const frame=main.slice(main.indexOf('  function frame(now){'),main.indexOf('  const firstFrameGeneration=viewGeneration;'));
+ const closing=frame.slice(frame.lastIndexOf('    finally{'));
+ assert.match(closing,/^    finally\{\s+rafCPU42\?\.end\(\);/);
+ assert.match(closing,/if\(softwareReview75\)softwareReview75.endFrame\(/);
+ assert.ok(closing.indexOf('rafCPU42?.end();')<closing.indexOf('softwareReview75.endFrame('),'CPU RAF owner closes before optional asynchronous QA fence ownership');
  assert.ok(main.indexOf('renderReviewHold){last=now;requestAnimationFrame(frame);return;}')<main.indexOf('rafCPU42?.begin();'));
  assert.match(main,/rafCPU42:rafCPU42\?\.snapshot\(\)\?\?null/);
 });

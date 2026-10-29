@@ -1,0 +1,44 @@
+{
+  "baseCommit": "8ea4753",
+  "method": "Read-only real generator code-binding functions; check changed runtime files against exact source path closure. No source in any closure is edited by this patch.",
+  "changedRuntimeFiles": [
+    "src/v2/main.js",
+    "src/v2/terrain-row-worker-client.js",
+    "src/v2/software-review75.js",
+    "src/v2/software-review-policy75.js"
+  ],
+  "reports": [
+    {
+      "generator": "terrain-prepared-binding42.js",
+      "signature": "08764a921660fc6a6a5253cf7c05ca37226979382f23a597fe6efcf721ee4b90",
+      "sourceCount": 41,
+      "changedInClosure": []
+    },
+    {
+      "generator": "meadow-root-binding.js",
+      "signature": "11700f7961d897c78ed4c43dc38eae52a2bf969f45f567433fc3cc6d538ee56d",
+      "sourceCount": 67,
+      "changedInClosure": []
+    },
+    {
+      "generator": "forest-root-binding.js",
+      "signature": "ce3a7617216ab620b3607d388e0440c17eb89ba45206bb478f15a881ed3ca97e",
+      "sourceCount": 26,
+      "changedInClosure": []
+    },
+    {
+      "generator": "reach-cover-prepared-binding42.js",
+      "signature": "f6bc54fc58dfe3c38f2c78640196d0ee0cb8d59fda7bc259e2d321c818086d1e",
+      "sourceCount": 83,
+      "changedInClosure": []
+    },
+    {
+      "generator": "structure-prepared-binding.js",
+      "signature": "5e18bda9e030b3530c42f93d0bb9da0fabbd08485c492799e247571213c36943",
+      "sourceCount": 45,
+      "changedInClosure": []
+    }
+  ],
+  "affectedGeneratedOutputs": [],
+  "regenerationRequired": false
+}

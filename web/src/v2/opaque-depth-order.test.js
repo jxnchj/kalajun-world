@@ -103,7 +103,7 @@ test("sync callback return and exceptions always restore null before later refle
 });
 test("integration scopes only renderWorld and leaves reflection outside the sort",()=>{
  const source=readFileSync(new URL("./main.js",import.meta.url),"utf8");
- assert.match(source,/const renderWorld=\(scene,renderCamera,colorViewsPrepared=false\)=>opaqueDepthOrder.run\(renderCamera,\(\)=>\{\s+if\(meadowViews.enabled&&!colorViewsPrepared\)syncColorVisibility41\(\);\s+if\(meadowRootWind.enabled\)meadowRootWind.update\(renderer\);\s+if\(meadowClusterWind.enabled\)meadowClusterWind.update\(renderer\);\s+roomShadowAtlas42.prepare\(scene,renderCamera\);\s+grassShadowCoverage41.render\(\);\s+water.prepareRefraction\(renderer,renderCamera,worldFrame\?\.target\);\s+return treePhotoPrepass.run\(renderCamera,\(\)=>worldFrame\?worldFrame.render\(scene,renderCamera\):renderer.render\(scene,renderCamera\)\);\s+\}\);/);
+ assert.match(source,/const renderWorld=\(scene,renderCamera,colorViewsPrepared=false\)=>opaqueDepthOrder.run\(renderCamera,\(\)=>\{\s+softwareReview75\?\.assertOpen\(\);\s+if\(meadowViews.enabled&&!colorViewsPrepared\)syncColorVisibility41\(\);\s+if\(meadowRootWind.enabled\)meadowRootWind.update\(renderer\);\s+if\(meadowClusterWind.enabled\)meadowClusterWind.update\(renderer\);\s+roomShadowAtlas42.prepare\(scene,renderCamera\);\s+grassShadowCoverage41.render\(\);\s+water.prepareRefraction\(renderer,renderCamera,worldFrame\?\.target\);\s+return treePhotoPrepass.run\(renderCamera,\(\)=>worldFrame\?worldFrame.render\(scene,renderCamera\):renderer.render\(scene,renderCamera\)\);\s+\}\);/);
  assert.match(source,/withPreparedWorldMatrices\(scene,\(\)=>renderWorld\(scene,camera,true\),preparedMatrices\);\s+\}\);\s+water.renderReflection\(renderer,scene,camera/);
  assert.equal(source.includes("setTransparentSort"),false);
 });
@@ -113,7 +113,7 @@ test("actual main render closure nests photo prefix inside sorter and restores b
  const begin=source.indexOf("const renderWorld="),end=source.indexOf("  const canopyLookup=",begin);
  assert.ok(begin>=0&&end>begin);
  const declaration=source.slice(begin,end);
- for(const framed of [false,true])for(const fail of [false,true])for(const meadowEnabled of[false,true])for(const prepared of[undefined,false,true])for(const windEnabled of[false,true])for(const clusterWindEnabled of[false,true])for(const roomsEnabled of[false,true]){
+ for(const framed of [false,true])for(const fail of [false,true])for(const meadowEnabled of[false,true])for(const prepared of[undefined,false,true])for(const windEnabled of[false,true])for(const clusterWindEnabled of[false,true])for(const roomsEnabled of[false,true])for(const reviewEnabled of[false,true]){
   const c=camera(),r=renderer(),sort=new OpaqueDepthOrder(r,c),events=[];let prefixActive=false;
   const draw=()=>{assert.strictEqual(r.opaque,sort.compare);assert.equal(prefixActive,true);events.push("draw");if(fail)throw Error("draw failure");return 42;};
   r.render=draw;
@@ -124,8 +124,20 @@ test("actual main render closure nests photo prefix inside sorter and restores b
   const rootWind={enabled:windEnabled,update(renderer){assert.strictEqual(renderer,r);assert.strictEqual(r.opaque,sort.compare);assert.equal(prefixActive,false);events.push("rootWind");}};
   const clusterWind={enabled:clusterWindEnabled,update(renderer){assert.strictEqual(renderer,r);assert.strictEqual(r.opaque,sort.compare);assert.equal(prefixActive,false);events.push("clusterWind");}};
   const roomAtlas={active:roomsEnabled,prepare(scene,cam){assert.strictEqual(cam,c);assert.strictEqual(r.opaque,sort.compare);assert.equal(prefixActive,false);events.push("roomAtlas");return this.active;}};
-  const run=new Function("opaqueDepthOrder","water","renderer","worldFrame","treePhotoPrepass","meadowViews","syncColorVisibility41","grassShadowCoverage41","meadowRootWind","meadowClusterWind","roomShadowAtlas42",declaration+"return renderWorld;")(sort,water,r,frame,prefix,meadowViews,syncViews,coverage,rootWind,clusterWind,roomAtlas);
+  const review=reviewEnabled?{assertOpen(){assert.strictEqual(r.opaque,sort.compare);assert.equal(prefixActive,false);events.push("review");}}:null;
+  const run=new Function("softwareReview75","opaqueDepthOrder","water","renderer","worldFrame","treePhotoPrepass","meadowViews","syncColorVisibility41","grassShadowCoverage41","meadowRootWind","meadowClusterWind","roomShadowAtlas42",declaration+"return renderWorld;")(review,sort,water,r,frame,prefix,meadowViews,syncViews,coverage,rootWind,clusterWind,roomAtlas);
   if(fail)assert.throws(()=>run({},c,prepared),/draw failure/);else assert.equal(run({},c,prepared),42);
-  water.renderReflection();assert.deepEqual(events,[...(meadowEnabled&&!prepared?["visibility"]:[]),...(windEnabled?["rootWind"]:[]),...(clusterWindEnabled?["clusterWind"]:[]),"roomAtlas","coverage","refraction","prefix","draw","reflection"]);
+  water.renderReflection();assert.deepEqual(events,[...(reviewEnabled?["review"]:[]),...(meadowEnabled&&!prepared?["visibility"]:[]),...(windEnabled?["rootWind"]:[]),...(clusterWindEnabled?["clusterWind"]:[]),"roomAtlas","coverage","refraction","prefix","draw","reflection"]);
  }
+});
+
+
+test("QA abort guard restores the actual sorter before any world/photo/reflection preparation",()=>{
+ const source=readFileSync(new URL("./main.js",import.meta.url),"utf8"),begin=source.indexOf("const renderWorld="),end=source.indexOf("  const canopyLookup=",begin);
+ assert.ok(begin>=0&&end>begin);const declaration=source.slice(begin,end),c=camera(),r=renderer(),sort=new OpaqueDepthOrder(r,c);let checks=0;
+ const review={assertOpen(){checks++;assert.strictEqual(r.opaque,sort.compare);throw Error("QA disposed");}};
+ // Other owners are intentionally unbound: the exact actual closure must reject
+ // at its QA guard without touching any later world/GPU preparation.
+ const run=new Function("softwareReview75","opaqueDepthOrder",declaration+"return renderWorld;")(review,sort);
+ assert.throws(()=>run({},c),/QA disposed/);assert.equal(checks,1);assert.equal(r.opaque,null);
 });

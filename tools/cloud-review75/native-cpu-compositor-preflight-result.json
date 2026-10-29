@@ -1,0 +1,158 @@
+{
+  "scope": "Verified native cloud CPU-compositor optional mode; lightweight 4x4 offscreen HDR capability/readback only; no world attempted",
+  "verified_utc": "2026-10-29T06:21:54Z",
+  "rerun_rule": "Choose a NEW nonexistent run directory; never reuse this completed run. For separately released full-world scope select outer1320 before launch, preflight-first, then navigate only after visible viewport/capability gates. Deadline includes setup and cleanup.",
+  "served_url": "http://127.0.0.1:5175/webgl-cpu-preflight.html",
+  "native_server_root": "backups/cloud75-baseline",
+  "hashes": {
+    "previous_default_monitor_sha256": "0e3915f70fbaabac9d243e1f04b5854d8ce72498606884d4619a0267a87ad740",
+    "current_optional_monitor_sha256": "650f9a7cc4a0ed32b7c61f2e7d5e70b4c29375bbd6274718f035ea55a964e1d7",
+    "original_preflight_unchanged_sha256": "e113fd786a2b8433168887bab3ec0ae9a2fa69bdadb39d998665eaf35093d792",
+    "additional_cpu_preflight_sha256": "026ba12f5cf2b514fec72b67b38b904181bb9582386b0cda30fc732f31e33e88"
+  },
+  "root_identity": {
+    "pgid": 1021,
+    "pid": 1021,
+    "ppid": 1020,
+    "rss_kib": 0,
+    "sid": 1021,
+    "start_ticks": 339867,
+    "state": "R",
+    "uid": 1000
+  },
+  "requested_argv": [
+    "/usr/bin/chromium",
+    "--user-data-dir=<checkout>/backups/cloud75-baseline/native-owned-cpu-preflight-01/profile",
+    "--use-gl=angle",
+    "--use-angle=swiftshader",
+    "--gpu-watchdog-timeout-seconds=180",
+    "--force-device-scale-factor=1",
+    "--window-size=1288,891",
+    "--disable-gpu-compositing",
+    "--new-window",
+    "http://127.0.0.1:5175/webgl-cpu-preflight.html"
+  ],
+  "bounds": {
+    "outer_seconds": 300.0,
+    "cleanup_seconds": 10.0,
+    "poll_seconds": 1.0,
+    "rss_cap_kib": 2097152,
+    "minimum_prestart_mem_available_bytes": 4500000000,
+    "prestart_mem_available_bytes": 7413768192
+  },
+  "sample_count": 73,
+  "max_simultaneous_observed_processes": 12,
+  "peak_sampled_owned_rss_kib": 749128,
+  "visible_result": {
+    "viewport": {
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "devicePixelRatio": 1
+    },
+    "canvas": [
+      1280,
+      800
+    ],
+    "drawingBuffer": [
+      1280,
+      800
+    ],
+    "outerWindow": [
+      1288,
+      891
+    ],
+    "webgl2": true,
+    "events": [],
+    "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "extensions": {
+      "clipControl": true,
+      "colorBufferFloat": true,
+      "floatBlend": true,
+      "timerQuery": true,
+      "parallelShaderCompile": false
+    },
+    "limits": {
+      "maxTextureSize": 8192,
+      "maxRenderbufferSize": 8192,
+      "maxSamples": 4,
+      "maxTextureImageUnits": 32,
+      "maxCombinedTextureImageUnits": 64,
+      "maxVertexTextureImageUnits": 32,
+      "maxDrawBuffers": 8,
+      "maxColorAttachments": 8
+    },
+    "msaa": {
+      "rgba16fSamples": [
+        4
+      ],
+      "depth32fSamples": [
+        4
+      ]
+    },
+    "floatFramebuffer": {
+      "status": 36053,
+      "complete": true
+    },
+    "hdr4xReadback": {
+      "size": [
+        4,
+        4
+      ],
+      "requestedSamples": 4,
+      "colorFormat": "RGBA16F",
+      "depthFormat": "DEPTH_COMPONENT32F",
+      "expected": [
+        2,
+        0.25,
+        0.5,
+        1
+      ],
+      "errors": [],
+      "colorSamples": 4,
+      "depthSamples": 4,
+      "multisampleStatus": 36053,
+      "resolveStatus": 36053,
+      "readback": [
+        2,
+        0.25,
+        0.5,
+        1
+      ],
+      "pass": true
+    },
+    "clearReadback": [
+      32,
+      64,
+      128,
+      255
+    ],
+    "glError": 0,
+    "contextLost": false
+  },
+  "viewport_procedure": "Fresh window auto-normalized to1188x848; moved/resized through normal native UI to1288x891, reloaded, then visibly verified1280x800/DPR1. Never resize after scene scheduler starts.",
+  "cleanup": {
+    "method": "Alt+F4 in specifically owned native CPU preflight window",
+    "root_returncode": 0,
+    "reason": "root-exited-no-live-observed-owned",
+    "remaining_live_observed_owned": [],
+    "unknown_owned": [],
+    "signal_failures": [],
+    "signal_events": 0,
+    "owned_window_closed": true,
+    "terminal_prompt_returned": true,
+    "original_managed_window_untouched": true,
+    "native_preflight_server_retained": true
+  },
+  "limitations": [
+    "Ownership covers the fresh root process group plus descendants observed while ancestry was verifiable.",
+    "A child that detaches/reparents before observation can escape attribution. Unobserved detached processes are not proven absent.",
+    "RSS is a sampled sum (shared pages can be counted repeatedly); this is not a cgroup hard cap and between-poll peaks can be missed.",
+    "PID start ticks and pidfds prevent signaling a replacement PID. Inaccessible or ambiguous identities are not signaled.",
+    "Monotonic deadlines bound monitor waits; OS scheduling stalls or blocked kernel/filesystem operations cannot be bounded by Python.",
+    "SIGKILL or interpreter/host failure can prevent cleanup; keep the monitor Terminal alive and cancel with Ctrl+C or the CANCEL file.",
+    "No claim of browser sandbox audit, scene completion, GPU completion, or visual/performance acceptance follows from this process log.",
+    "HDR4x test clears a tiny framebuffer and resolves/readbacks it; it does not run scene shaders or prove world rendering, fence completion, quality or realtime performance. CPU-compositor selection is in requested argv; internal compositor architecture was not separately inspected."
+  ],
+  "native_terminal_command_with_checkout_placeholder": "python3 -u <checkout>/tools/cloud-review75/monitor/native_owned_monitor.py --run-dir <checkout>/backups/cloud75-baseline/native-owned-cpu-preflight-01 --url http://127.0.0.1:5175/webgl-cpu-preflight.html --window-size 1288,891 --full-world-cpu-compositing --outer-seconds 300 --cleanup-seconds 10 --poll-seconds 1",
+  "path_redaction": "Checkout prefix replaced with <checkout> for publication; original exact command and raw run evidence retained locally in ignored backups. Recorded source hashes still identify the code used at the original launch."
+}

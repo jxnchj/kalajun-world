@@ -1,0 +1,15 @@
+{
+  "observedUTC":"2026-10-29T06:04:26Z",
+  "scope":"Native cloud SwANGLE preflight only, no world rendered",
+  "launchArguments":["--user-data-dir=<new-task-owned-profile>","--use-gl=angle","--use-angle=swiftshader","--window-size=1288,891","--force-device-scale-factor=1","--gpu-watchdog-timeout-seconds=180","--new-window","<loopback-preflight-url>"],
+  "initializationObservation":"Initial report showed1280x800/DPR1, but desktop subsequently normalized the new native window to1188x848. A settled reload then reported1180x757/DPR1. Initial script-time measurement alone was insufficient.",
+  "normalNativeCorrection":"Moved window into desktop bounds, dragged bottom-right frame edge to measured outer1288x891, reloaded probe normally and waited for completed load before reading visible JSON.",
+  "verifiedWindow":{"id":39845892,"x":29,"y":50,"width":1288,"height":891},
+  "verifiedViewport":{"innerWidth":1280,"innerHeight":800,"devicePixelRatio":1},
+  "canvas":{"width":1280,"height":800},
+  "webgl2":true,
+  "events":[],
+  "status":"Probe idle; no QA scene navigation. Must verify fresh actual viewport before each run; no resize after scheduler scene initializes.",
+  "resourcePrecheck":{"memAvailableKiB":8086216,"swapFreeKiB":0,"meaning":"Read-only prelaunch system observation, not browser memory usage"},
+  "limits":"No security settings, unsafe fallback, sandbox disabling or quality reduction. Current probe itself was not launched under the new proposed process monitor; monitor launch is separate pending validation."
+}

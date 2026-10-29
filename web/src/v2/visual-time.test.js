@@ -38,7 +38,7 @@ async function systems(){
  const env=Object.create(WorldEnvironment.prototype);
  Object.assign(env,{elapsed:0,camera,sky:{position:new THREE.Vector3(),material:{uniforms:{time:{value:0}}}},cloudOrigin:new THREE.Vector3(),clouds:createCloudUniforms(),cloudCache:{update(){}},csm:{update(){},lights:[{color:new THREE.Color(),intensity:1}]},sun:new THREE.Vector3(0,1,0),renderer:{shadowMap:{type:THREE.PCFShadowMap}},shadowReceivers:{update(){}},shadowCasters:{update:()=>({revisions:[]})},shadowScheduler:{setSceneState(){},update(){}},forceShadowUpdate:false,pendingEnv:false,lastEnvironmentTime:0,lastEnvironmentOrigin:camera.position.clone()});
  env.shadowAtlas40=new NearShadowAtlas40(env.renderer,env.csm);
- const controlSteps=[],steps=[],control={update:(first,second)=>steps.push(typeof first==="number"?first:second)},element={open:false},context={visualDelta,rafCPU42:null,shadowDepth:new WorldShadowDepth(new THREE.Scene()),seatingUI:{update(){}},running:true,document:{visibilityState:'visible'},last:0,preparing:false,renderReviewHold:false,gpuExtension:false,gpuPassProfile:null,controls:{update:dt=>controlSteps.push(dt)},terrain:control,structures:{...control,lodgeStream:{needs:()=>false}},ecology,water,pasture:control,doors:control,settlements:{...control,groupRooms42:null},preparedGuestGroup42:false,roomLightingSyncs:0,syncRoomLighting42(){context.roomLightingSyncs++;},preparationRequests:0,async prepareDestination(){context.preparing=true;context.preparationRequests++;},environment:env,camera,syncShadowState(){},withPreparedWorldMatrices:(_s,render)=>render(),scene:{},renderer:{},renderWorld(){},preparedMatrices:false,performance:{now:()=>context.last},counter:0,frames:[],uiClock:0,$:()=>element,world,drawMap(){},requestAnimationFrame(){},fail:e=>{throw e;}};
+ const controlSteps=[],steps=[],control={update:(first,second)=>steps.push(typeof first==="number"?first:second)},element={open:false},context={softwareReview75:null,visualDelta,rafCPU42:null,shadowDepth:new WorldShadowDepth(new THREE.Scene()),seatingUI:{update(){}},running:true,document:{visibilityState:'visible'},last:0,preparing:false,renderReviewHold:false,gpuExtension:false,gpuPassProfile:null,controls:{update:dt=>controlSteps.push(dt)},terrain:control,structures:{...control,lodgeStream:{needs:()=>false}},ecology,water,pasture:control,doors:control,settlements:{...control,groupRooms42:null},preparedGuestGroup42:false,roomLightingSyncs:0,syncRoomLighting42(){context.roomLightingSyncs++;},preparationRequests:0,async prepareDestination(){context.preparing=true;context.preparationRequests++;},environment:env,camera,syncShadowState(){},withPreparedWorldMatrices:(_s,render)=>render(),scene:{},renderer:{},renderWorld(){},preparedMatrices:false,performance:{now:()=>context.last},counter:0,frames:[],uiClock:0,$:()=>element,world,drawMap(){},requestAnimationFrame(){},fail:e=>{throw e;}};
  const frame=vm.runInNewContext('('+frameSource+')',context);
  return {frame,context,ecology,water,env,steps,controlSteps,roots,grassShader,geometry,dispose(){env.shadowAtlas40.dispose();ecology.reachBankCover39.dispose();context.shadowDepth.dispose();water.dispose();submission.dispose();field.dispose();rootWind.dispose();geometry.dispose();source.dispose();material.dispose();grass.dispose();}};
 }
@@ -106,4 +106,22 @@ test('actual RAF diagnostic closes on normal draw, preparation early return and 
   f.context.document.visibilityState='visible';f.context.structures.lodgeStream.needs=()=>true;f.frame(300);assert.equal(p.snapshot().samples,2);assert.equal(p.active,null);
   f.context.structures.lodgeStream.needs=()=>false;f.context.preparing=false;f.context.renderWorld=()=>{throw Error('actual draw failed');};assert.throws(()=>f.frame(400),/actual draw failed/);assert.equal(p.snapshot().samples,3);assert.equal(p.active,null);
  }finally{p.dispose();f.dispose();}
+});
+
+
+test('QA static and finite steps use the original frame/update/reflection owners, never wall-time catchup',async()=>{
+ const f=await systems(),records=[];let delta=0,reflections=0;
+ f.context.water.renderReflection=()=>{reflections++;};
+ f.context.reviewSignature75=()=>({generation:8,view:'test'});
+ f.context.softwareReview75={closed:false,beginFrame:()=>({delta}),endFrame:(token,record)=>{records.push({token,record});return Promise.resolve();}};
+ try{f.frame(60000);near(f.env.elapsed,0);near(f.ecology.uniforms.uWindTime.value,0);assert.equal(reflections,1);assert.equal(records[0].record.submitted,true);assert.equal(records[0].record.signature.scope,'world-and-reflection');
+  delta=1/60;f.frame(120000);near(f.env.elapsed,1/60);near(f.controlSteps.at(-1),1/60);assert.equal(reflections,2);assert.equal(f.context.frames.length,0,'finite QA never contributes FPS samples');
+  f.context.softwareReview75.beginFrame=()=>null;f.frame(180000);near(f.env.elapsed,1/60);assert.equal(reflections,2);
+ }finally{f.dispose();}
+});
+
+test('QA preparation transition releases reservation and records no submitted frame without altering owner updates',async()=>{
+ const f=await systems(),records=[];f.context.softwareReview75={closed:false,beginFrame:()=>({delta:1/60}),endFrame:(token,record)=>{records.push(record);return Promise.resolve();}};
+ try{f.context.settlements.groupRooms42=[{}];f.frame(60000);assert.equal(f.context.preparationRequests,1);assert.equal(records[0].submitted,false);near(f.env.elapsed,1/60);assert.equal(f.context.shadowDepth.sharedScope,null);}
+ finally{f.dispose();}
 });

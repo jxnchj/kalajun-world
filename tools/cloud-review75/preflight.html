@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cloud75 WebGL preflight</title>
+<style>body{font:16px/1.45 system-ui;margin:24px;background:#182028;color:#e6edf3}h1{font-size:24px}pre{white-space:pre-wrap;background:#111820;padding:18px}canvas{width:320px;height:200px;border:1px solid #91a5b7}</style>
+<h1>Cloud75 WebGL preflight — no world rendered</h1>
+<p>Isolated context-capability check; not a performance benchmark or art acceptance.</p>
+<canvas id="probe" width="1280" height="800"></canvas><pre id="result">Checking WebGL2…</pre>
+<script>
+const canvas=document.querySelector('#probe'),out=document.querySelector('#result');
+const report={scope:'cloud isolated WebGL2 preflight; no world assets or production source changes',url:location.href,userAgent:navigator.userAgent,viewport:{innerWidth,innerHeight,devicePixelRatio},canvas:{width:canvas.width,height:canvas.height},events:[]};
+const show=()=>{out.textContent=JSON.stringify(report,null,2);};
+canvas.addEventListener('webglcontextlost',()=>{report.events.push('webglcontextlost');show();});
+canvas.addEventListener('webglcontextcreationerror',e=>{report.events.push({creationError:e.statusMessage});show();});
+try{
+ const gl=canvas.getContext('webgl2',{alpha:false,depth:true,stencil:false,powerPreference:'high-performance',antialias:false});
+ report.webgl2=!!gl;
+ if(gl){
+  const extensions=gl.getSupportedExtensions()||[];const debug=gl.getExtension('WEBGL_debug_renderer_info');
+  report.vendor=gl.getParameter(gl.VENDOR);report.renderer=gl.getParameter(gl.RENDERER);report.version=gl.getParameter(gl.VERSION);report.shadingLanguage=gl.getParameter(gl.SHADING_LANGUAGE_VERSION);
+  report.unmaskedVendor=debug?gl.getParameter(debug.UNMASKED_VENDOR_WEBGL):null;report.unmaskedRenderer=debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):null;
+  report.contextAttributes=gl.getContextAttributes();report.drawingBuffer={width:gl.drawingBufferWidth,height:gl.drawingBufferHeight};
+  report.extensions={clipControl:!!gl.getExtension('EXT_clip_control'),colorBufferFloat:!!gl.getExtension('EXT_color_buffer_float'),floatBlend:!!gl.getExtension('EXT_float_blend'),timerQuery:!!gl.getExtension('EXT_disjoint_timer_query_webgl2'),parallelShaderCompile:!!gl.getExtension('KHR_parallel_shader_compile'),loseContext:!!gl.getExtension('WEBGL_lose_context')};
+  report.limits={maxTextureSize:gl.getParameter(gl.MAX_TEXTURE_SIZE),maxRenderbufferSize:gl.getParameter(gl.MAX_RENDERBUFFER_SIZE),maxSamples:gl.getParameter(gl.MAX_SAMPLES),maxTextureImageUnits:gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS),maxCombinedTextureImageUnits:gl.getParameter(gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS),maxVertexTextureImageUnits:gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS),maxDrawBuffers:gl.getParameter(gl.MAX_DRAW_BUFFERS),maxColorAttachments:gl.getParameter(gl.MAX_COLOR_ATTACHMENTS)};
+  report.msaa={rgba16fSamples:Array.from(gl.getInternalformatParameter(gl.RENDERBUFFER,gl.RGBA16F,gl.SAMPLES)),depth32fSamples:Array.from(gl.getInternalformatParameter(gl.RENDERBUFFER,gl.DEPTH_COMPONENT32F,gl.SAMPLES))};
+  const fb=gl.createFramebuffer(),tex=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,tex);gl.texStorage2D(gl.TEXTURE_2D,1,gl.RGBA16F,4,4);gl.bindFramebuffer(gl.FRAMEBUFFER,fb);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,tex,0);const status=gl.checkFramebufferStatus(gl.FRAMEBUFFER);report.floatFramebuffer={status,complete:status===gl.FRAMEBUFFER_COMPLETE};gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.deleteFramebuffer(fb);gl.deleteTexture(tex);
+  gl.clearColor(.125,.25,.5,1);gl.clear(gl.COLOR_BUFFER_BIT);const pixel=new Uint8Array(4);gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,pixel);report.clearReadback=Array.from(pixel);report.glError=gl.getError();report.contextLost=gl.isContextLost();report.allExtensions=extensions;
+ }
+ report.complete=true;
+}catch(e){report.error=String(e.stack||e);report.complete=false;}
+show();
+</script></html>

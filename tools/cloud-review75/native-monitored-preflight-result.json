@@ -1,0 +1,83 @@
+{
+  "scope": "Actual native cloud lightweight WebGL2 preflight and owned monitor cleanup; no world attempted",
+  "verified_utc": "2026-10-29T06:13:36Z",
+  "preflight_url": "http://127.0.0.1:5175/webgl-preflight.html",
+  "native_server_root": "backups/cloud75-baseline",
+  "monitor_source_sha256_at_launch": "0e3915f70fbaabac9d243e1f04b5854d8ce72498606884d4619a0267a87ad740",
+  "monitor_evidence_directory": "backups/cloud75-baseline/native-owned-preflight-01",
+  "root_identity": {
+    "pgid": 792,
+    "pid": 792,
+    "ppid": 791,
+    "rss_kib": 0,
+    "sid": 792,
+    "start_ticks": 288036,
+    "state": "R",
+    "uid": 1000
+  },
+  "launch_flags": [
+    "--user-data-dir=<fresh-owned-run>/profile",
+    "--use-gl=angle",
+    "--use-angle=swiftshader",
+    "--gpu-watchdog-timeout-seconds=180",
+    "--force-device-scale-factor=1",
+    "--window-size=1288,891",
+    "--new-window"
+  ],
+  "outer_seconds": 300.0,
+  "cleanup_seconds": 10.0,
+  "rss_cap_kib": 2097152,
+  "minimum_prestart_mem_available_bytes": 4500000000,
+  "actual_prestart_mem_available_bytes": 7000735744,
+  "sample_count": 80,
+  "peak_sampled_owned_rss_kib": 801804,
+  "max_simultaneous_observed_processes": 12,
+  "viewport_visible_after_settle_resize_and_reload": {
+    "innerWidth": 1280,
+    "innerHeight": 800,
+    "devicePixelRatio": 1,
+    "canvas": [
+      1280,
+      800
+    ],
+    "outerWindow": [
+      1288,
+      891
+    ]
+  },
+  "viewport_caveat": "Desktop initially normalizes fresh window to1188x848; initial DOM snapshot may be stale. Resize through normal native UI before world, reload preflight, and verify settled exact1280x800/DPR1. Do not resize during softwareReview75 run.",
+  "webgl_visible": {
+    "webgl2": true,
+    "events": [],
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "EXT_clip_control": true,
+    "EXT_color_buffer_float": true,
+    "EXT_float_blend": true,
+    "EXT_disjoint_timer_query_webgl2": true,
+    "KHR_parallel_shader_compile": false,
+    "maxTextureSize": 8192,
+    "maxRenderbufferSize": 8192,
+    "maxSamples": 4
+  },
+  "cleanup": {
+    "method": "Ctrl+C in monitor-owning native Terminal; monitor pidfd-verified SIGTERM targets only observed owned identities",
+    "reason": "cancelled",
+    "root_returncode": 0,
+    "remaining_live_observed_owned": [],
+    "unknown_owned": [],
+    "signal_failures": [],
+    "native_window_closed": true,
+    "terminal_prompt_returned": true,
+    "original_default_browser_untouched": true
+  },
+  "limitations": [
+    "Ownership covers the fresh root process group plus descendants observed while ancestry was verifiable.",
+    "A child that detaches/reparents before observation can escape attribution. Unobserved detached processes are not proven absent.",
+    "RSS is a sampled sum (shared pages can be counted repeatedly); this is not a cgroup hard cap and between-poll peaks can be missed.",
+    "PID start ticks and pidfds prevent signaling a replacement PID. Inaccessible or ambiguous identities are not signaled.",
+    "Monotonic deadlines bound monitor waits; OS scheduling stalls or blocked kernel/filesystem operations cannot be bounded by Python.",
+    "SIGKILL or interpreter/host failure can prevent cleanup; keep the monitor Terminal alive and cancel with Ctrl+C or the CANCEL file.",
+    "No claim of browser sandbox audit, scene completion, GPU completion, or visual/performance acceptance follows from this process log."
+  ],
+  "full_world_option_not_tested": "--disable-gpu-compositing optional compositor-only selector is separately source-verified; was NOT used in this preflight. No scene, fence, quality, performance or sandbox acceptance follows from this test."
+}

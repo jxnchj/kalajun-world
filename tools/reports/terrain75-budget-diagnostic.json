@@ -1,0 +1,695 @@
+{
+  "schemaVersion": 1,
+  "status": "unresolved-existing-terrain-budget-failure",
+  "baseline": "8ea4753192ac8941954c8af3696a766da7adc72f",
+  "dateUtc": "2026-10-29",
+  "productionChangesMadeByDiagnostic": false,
+  "testSource": "web/src/v2/terrain.test.js:196",
+  "originalFailingAssertion": "web/src/v2/terrain.test.js:199:10: assert.equal(result.ready, true)",
+  "originalPreservedFailure": {
+    "source": "backups/cloud75-resource-isolation/results/terrain-isolated.tap",
+    "testDurationMs": 2902.925297,
+    "actual": false,
+    "expected": true
+  },
+  "case": {
+    "worldSize": 81920,
+    "camera": {
+      "x": -1980,
+      "z": 3420,
+      "altitude": 2
+    },
+    "maxMs": 2500,
+    "waitFor": "all (default)",
+    "normalBudgetAndQualityUnchanged": true
+  },
+  "diagnostic": {
+    "command": "node --import ./backups/cloud75-terrain-diagnostic/bootstrap.mjs --test --test-name-pattern '^prepareView resolves the initial near surface' backups/cloud75-terrain-diagnostic/diagnostic.test.mjs",
+    "nodeVersion": "v24.22.1",
+    "result": {
+      "ready": false,
+      "nearReady": false,
+      "reason": "budget",
+      "elapsedMs": 2504.050768,
+      "iterations": 356,
+      "queuedTiles": 220,
+      "nearQueuedTiles": 104,
+      "visibleTiles": 199,
+      "minSpacing": 0.3125
+    },
+    "morphingGroups": 0,
+    "rowWorkerPresent": false,
+    "workerPending": 0,
+    "initialBuildMs": 1056.3616469999997,
+    "updateTotalMs": 2237.9521229999964,
+    "phases": {
+      "_buildRow": {
+        "calls": 5940,
+        "totalMs": 1309.2438809999721,
+        "maxMs": 40.577816000000894
+      },
+      "_finish": {
+        "calls": 180,
+        "totalMs": 406.15862900000866,
+        "maxMs": 37.383702000000085
+      },
+      "_measure": {
+        "calls": 356,
+        "totalMs": 57.363753999996334,
+        "maxMs": 14.522032999999283
+      },
+      "_sortQueue": {
+        "calls": 76,
+        "totalMs": 10.714364999998907,
+        "maxMs": 2.2355569999999716
+      },
+      "_plan": {
+        "calls": 2925,
+        "totalMs": 99.95156400002998,
+        "maxMs": 6.584946000000855
+      },
+      "_advanceMorphs": {
+        "calls": 356,
+        "totalMs": 0.9930680000197754,
+        "maxMs": 0.38334499999928084
+      }
+    },
+    "queueByDepth": {
+      "1": 44,
+      "2": 12,
+      "3": 12,
+      "4": 12,
+      "5": 8,
+      "6": 16,
+      "7": 12,
+      "8": 28,
+      "9": 48,
+      "10": 28
+    },
+    "lastProgress": [
+      {
+        "ready": false,
+        "nearReady": false,
+        "reason": "preparing",
+        "elapsedMs": 2427.234198000001,
+        "iterations": 348,
+        "queuedTiles": 223,
+        "nearQueuedTiles": 107,
+        "visibleTiles": 196,
+        "minSpacing": 0.3125
+      },
+      {
+        "ready": false,
+        "nearReady": false,
+        "reason": "preparing",
+        "elapsedMs": 2442.1191289999997,
+        "iterations": 351,
+        "queuedTiles": 222,
+        "nearQueuedTiles": 106,
+        "visibleTiles": 196,
+        "minSpacing": 0.3125
+      },
+      {
+        "ready": false,
+        "nearReady": false,
+        "reason": "preparing",
+        "elapsedMs": 2457.6608210000004,
+        "iterations": 354,
+        "queuedTiles": 221,
+        "nearQueuedTiles": 105,
+        "visibleTiles": 196,
+        "minSpacing": 0.3125
+      },
+      {
+        "ready": false,
+        "nearReady": false,
+        "reason": "preparing",
+        "elapsedMs": 2502.174384000001,
+        "iterations": 356,
+        "queuedTiles": 220,
+        "nearQueuedTiles": 104,
+        "visibleTiles": 199,
+        "minSpacing": 0.3125
+      },
+      {
+        "ready": false,
+        "nearReady": false,
+        "reason": "budget",
+        "elapsedMs": 2504.050768,
+        "iterations": 356,
+        "queuedTiles": 220,
+        "nearQueuedTiles": 104,
+        "visibleTiles": 199,
+        "minSpacing": 0.3125
+      }
+    ],
+    "limitations": [
+      "The diagnostic copies the test and wraps six terrain methods plus update with wall-clock measurements; wrapper overhead can reduce work completed within the unchanged 2500 ms budget.",
+      "The isolated target has different warmup and allocation history than the full terrain file; its throughput is not an apples-to-apples benchmark of the previously logged failure.",
+      "No clocks were mocked, budget increased, quality reduced, worker injected, or live runtime/test source edited.",
+      "The instrumented result demonstrates the reason and unfinished work in this run; it does not establish the precise queue state of earlier uninstrumented failures."
+    ]
+  },
+  "dependencyAudit": {
+    "baseline": "8ea4753192ac8941954c8af3696a766da7adc72f",
+    "closureCounts": {
+      "test": 52,
+      "actualTerrain": 25
+    },
+    "rows": [
+      {
+        "path": "web/node_modules/three/build/three.core.js",
+        "actualTerrain": true,
+        "currentGitBlob": "0a1d6cb9ef3cabc97a50bd02394c85e8d1c513c2",
+        "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6",
+        "kind": "external",
+        "baselineGitBlob": null,
+        "equalBytes": null
+      },
+      {
+        "path": "web/node_modules/three/build/three.module.js",
+        "actualTerrain": true,
+        "currentGitBlob": "c52087acfabae80efabb8cc05e3a1d96e35a1426",
+        "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea",
+        "kind": "external",
+        "baselineGitBlob": null,
+        "equalBytes": null
+      },
+      {
+        "path": "web/node_modules/three/examples/jsm/csm/CSM.js",
+        "actualTerrain": false,
+        "currentGitBlob": "d2615c124570c5a30cb11a54d01ee871659db643",
+        "sha256": "ad3364f5e9201083d303872ddb7bcbc56096283be6d46a222da83a1629338d22",
+        "kind": "external",
+        "baselineGitBlob": null,
+        "equalBytes": null
+      },
+      {
+        "path": "web/node_modules/three/examples/jsm/csm/CSMFrustum.js",
+        "actualTerrain": false,
+        "currentGitBlob": "a4b6f7507589b2bff58c88adba472ab35fb2bf71",
+        "sha256": "3a86e523921a69159c2a5b6aa0269527d7b99875ceea9a2a6b71ac8e0fbdd408",
+        "kind": "external",
+        "baselineGitBlob": null,
+        "equalBytes": null
+      },
+      {
+        "path": "web/node_modules/three/examples/jsm/csm/CSMShader.js",
+        "actualTerrain": false,
+        "currentGitBlob": "297b196ec581be8449bf3b5ee620723995a575f7",
+        "sha256": "9dfe9b052f75607919afb05f0109cdb1cba54138552cbec574052be26105bae2",
+        "kind": "external",
+        "baselineGitBlob": null,
+        "equalBytes": null
+      },
+      {
+        "path": "web/node_modules/three/examples/jsm/objects/Sky.js",
+        "actualTerrain": false,
+        "currentGitBlob": "fcb405581b58e8594d3ed52045dc866bb087c9a5",
+        "sha256": "34121b60a3bd9adc004a5a637f6135e9d2b72757eeb9e476ae1988fe2db6a9fb",
+        "kind": "external",
+        "baselineGitBlob": null,
+        "equalBytes": null
+      },
+      {
+        "path": "web/src/sun.js",
+        "actualTerrain": false,
+        "currentGitBlob": "9408d522c081bbfdd549dd45c90b965c44cdd32d",
+        "sha256": "2239c9e4c4223589658b74728d0ed8a780825e8dfe2514fa3074092922666377",
+        "kind": "tracked",
+        "baselineGitBlob": "9408d522c081bbfdd549dd45c90b965c44cdd32d",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/aerial-perspective.js",
+        "actualTerrain": false,
+        "currentGitBlob": "a1c6e1dbe51f84b445dafb1ba18e88ab49775274",
+        "sha256": "77ce0f3c445aca034421ec6fc8dc7e4fa608845e539d14fa1aefde10d2175b23",
+        "kind": "tracked",
+        "baselineGitBlob": "a1c6e1dbe51f84b445dafb1ba18e88ab49775274",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/close-shadow-overlap.js",
+        "actualTerrain": false,
+        "currentGitBlob": "cb7a9f190b473e19e35ef7c79080fc1f116ae2a3",
+        "sha256": "d8f3afc0098ae3c30e27337bd600f430e5fdbc850d1bacb5c3be7a6b205b4a41",
+        "kind": "tracked",
+        "baselineGitBlob": "cb7a9f190b473e19e35ef7c79080fc1f116ae2a3",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/close-solar-shadow.js",
+        "actualTerrain": false,
+        "currentGitBlob": "1823648c12fe3711a35a6c165d3f18edf5cb3527",
+        "sha256": "05c2887a3d23d66666737a80386a31791ed82019b0115c412406d2ffeff748de",
+        "kind": "tracked",
+        "baselineGitBlob": "1823648c12fe3711a35a6c165d3f18edf5cb3527",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/cloud-cache.js",
+        "actualTerrain": false,
+        "currentGitBlob": "b9e276ded60f7239e15d06f7937d5a4f4aa21bdb",
+        "sha256": "00d92219b624b55febcd7213c7300bfb39e38a261d6a863cc3b755559f6935b0",
+        "kind": "tracked",
+        "baselineGitBlob": "b9e276ded60f7239e15d06f7937d5a4f4aa21bdb",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/cloud-field.js",
+        "actualTerrain": false,
+        "currentGitBlob": "c3e9d0b1e36758a93176ac94cc17110390d2e28a",
+        "sha256": "58a584d30f11a87c76d9a761f25e4d003e54fdebd58402b24694f84b3eb047a6",
+        "kind": "tracked",
+        "baselineGitBlob": "c3e9d0b1e36758a93176ac94cc17110390d2e28a",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/csm-backlit-skip.js",
+        "actualTerrain": false,
+        "currentGitBlob": "ac8ad7d10131cbc8567255f6be78e8bc14259a02",
+        "sha256": "18f3b1cba8f9321137bef38107f275ee930835daf05361e1a5f97147f8ded51c",
+        "kind": "tracked",
+        "baselineGitBlob": "ac8ad7d10131cbc8567255f6be78e8bc14259a02",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/csm-physical.js",
+        "actualTerrain": false,
+        "currentGitBlob": "77181c39c4d8ea913653d79c74c09e2c12ba43e6",
+        "sha256": "c688d8d9e0cb808817d8f1f91bbf03e101fa2edf5f64c8a14e8eaf4095e87582",
+        "kind": "tracked",
+        "baselineGitBlob": "77181c39c4d8ea913653d79c74c09e2c12ba43e6",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/csm-zero-fade.js",
+        "actualTerrain": false,
+        "currentGitBlob": "778f2ffb99fe15221d90457af6c1be461c093062",
+        "sha256": "abbb4afea7acc3f6883afe827ec609ce4bbf83990de24006b4d1f254888125c9",
+        "kind": "tracked",
+        "baselineGitBlob": "778f2ffb99fe15221d90457af6c1be461c093062",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/depth-mode.js",
+        "actualTerrain": false,
+        "currentGitBlob": "329982db5d6cc91f74ed3e51bfe01e34e397d647",
+        "sha256": "1800180891b56c14eb9bea22c17cb9a073ad7b5a594783a91931a5cb9d9b02d3",
+        "kind": "tracked",
+        "baselineGitBlob": "329982db5d6cc91f74ed3e51bfe01e34e397d647",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/environment.js",
+        "actualTerrain": false,
+        "currentGitBlob": "9053c2f30dbade3fec7e65804b2883007632c723",
+        "sha256": "6335aad5b37bdab25692169909e4ec8185f0e5510164ab737e3ac165db53423f",
+        "kind": "tracked",
+        "baselineGitBlob": "9053c2f30dbade3fec7e65804b2883007632c723",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/forest-reach-surface41.js",
+        "actualTerrain": true,
+        "currentGitBlob": "cfd8c9128c78a0c66fe047a1395734048c78a7dc",
+        "sha256": "0d8f494b972ef4399a31618b2539cc546fe5dbc31241c42ef2470a2bc8ea1e89",
+        "kind": "tracked",
+        "baselineGitBlob": "cfd8c9128c78a0c66fe047a1395734048c78a7dc",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/forest-reach39-source.js",
+        "actualTerrain": true,
+        "currentGitBlob": "57a1193ae28730ab8b244bdea526a18c6c33c46b",
+        "sha256": "816fc7a91b2023e3a0cd5086996291168f10e485d72150b5f74f6bf96c43864a",
+        "kind": "tracked",
+        "baselineGitBlob": "57a1193ae28730ab8b244bdea526a18c6c33c46b",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/generated/forest-reach-surface41.json",
+        "actualTerrain": true,
+        "currentGitBlob": "fc2c4a0ff1c10fcde867533442135533dc77a173",
+        "sha256": "0cc610c054bcb114874140dcd58af9178c21386ea97569a68e6cb4db0b798510",
+        "kind": "tracked",
+        "baselineGitBlob": "fc2c4a0ff1c10fcde867533442135533dc77a173",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/meadow-connected-field41.js",
+        "actualTerrain": true,
+        "currentGitBlob": "237d86d8e246d607f074b7442d752c6e330a8401",
+        "sha256": "ea7bed81345a1bebfee91c04bcb4156afa31b89b9fe824086c4e0d3439765733",
+        "kind": "tracked",
+        "baselineGitBlob": "237d86d8e246d607f074b7442d752c6e330a8401",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/meadow-relief.js",
+        "actualTerrain": true,
+        "currentGitBlob": "53a1e4f6cf8ac1926bc099d72a564d91114c828c",
+        "sha256": "9ab2904c09029765251b54355654e7bfbda813e91c60010ca7a830d6925dde01",
+        "kind": "tracked",
+        "baselineGitBlob": "53a1e4f6cf8ac1926bc099d72a564d91114c828c",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/meadow-scattered-canopy.js",
+        "actualTerrain": true,
+        "currentGitBlob": "e3e66b3748256123f68c3b9267a64582bbde6497",
+        "sha256": "5bc8e85e48000a4c71dd51dd92b79382e017f505df0067ef5197e27e78144598",
+        "kind": "tracked",
+        "baselineGitBlob": "e3e66b3748256123f68c3b9267a64582bbde6497",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/meadow-surface.js",
+        "actualTerrain": true,
+        "currentGitBlob": "7b77a88f68538b19c050f2bc48613edd89d7359c",
+        "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb",
+        "kind": "tracked",
+        "baselineGitBlob": "7b77a88f68538b19c050f2bc48613edd89d7359c",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/near-shadow-detail.js",
+        "actualTerrain": false,
+        "currentGitBlob": "4f14d6fce8b1c329eafb3acbd5d603f22bf42932",
+        "sha256": "e11a3c41f36baa9ecac4af61782eeed38cdfbe46d5f110fed9a6e32c2fdfde54",
+        "kind": "tracked",
+        "baselineGitBlob": "4f14d6fce8b1c329eafb3acbd5d603f22bf42932",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/preparation-yield.js",
+        "actualTerrain": true,
+        "currentGitBlob": "e9c7503188bbb8f372fd8521982ec091d8d24376",
+        "sha256": "f3cd677431abff6c54e73b7477e0d83738fc000ef09391e0a5341ac638c48a07",
+        "kind": "tracked",
+        "baselineGitBlob": "e9c7503188bbb8f372fd8521982ec091d8d24376",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/reach-bank-design50.js",
+        "actualTerrain": true,
+        "currentGitBlob": "0387a56f8fed6f6c0d4db7bbb4c3e13fb75704db",
+        "sha256": "b602eb4941ae88cc021cebd774e83170d7136edcdab2654b632bd70c8b6c8620",
+        "kind": "tracked",
+        "baselineGitBlob": "0387a56f8fed6f6c0d4db7bbb4c3e13fb75704db",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/reach-facies44.js",
+        "actualTerrain": true,
+        "currentGitBlob": "b1e8937529942fb37df6bd1455b7616d255f1490",
+        "sha256": "c445c8fed9f82ce0b695b74559b75bf00c8e72b756e891b21ad4ae8faed96c97",
+        "kind": "tracked",
+        "baselineGitBlob": "b1e8937529942fb37df6bd1455b7616d255f1490",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/reach-root-face50.js",
+        "actualTerrain": true,
+        "currentGitBlob": "8c1ac098e76aba7409f344c6125c2cd9afa397ab",
+        "sha256": "37d2103104fcd9c3334273d543dbb438851207c976365062ee98da340ec03ba6",
+        "kind": "tracked",
+        "baselineGitBlob": "8c1ac098e76aba7409f344c6125c2cd9afa397ab",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/room-shadow.js",
+        "actualTerrain": true,
+        "currentGitBlob": "8c4750fccc7a289eddd5ffb66bfb7d459cc88e6f",
+        "sha256": "63fd065cf63c1bbd0b5a5376a0e10564b3b08d337945bc8cca07ce8015f2e97c",
+        "kind": "tracked",
+        "baselineGitBlob": "8c4750fccc7a289eddd5ffb66bfb7d459cc88e6f",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/shadow-atlas40.js",
+        "actualTerrain": false,
+        "currentGitBlob": "b6cef5d26484860e7cd2adbf931b9d04f9343234",
+        "sha256": "6f89e265ce42d46fbfbcea416c750b3022112cf1b991dfb639a5269d81b4213d",
+        "kind": "tracked",
+        "baselineGitBlob": "b6cef5d26484860e7cd2adbf931b9d04f9343234",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/shadow-program-family52.js",
+        "actualTerrain": true,
+        "currentGitBlob": "51d6c9b15f4f7a3650a4c2f06c20691f554fcead",
+        "sha256": "0b95585e52603e97f0b85042b03e10db8089259ceaf24b4754334292d7406e2f",
+        "kind": "tracked",
+        "baselineGitBlob": "51d6c9b15f4f7a3650a4c2f06c20691f554fcead",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/shadow-receiver-bias.js",
+        "actualTerrain": false,
+        "currentGitBlob": "84067f3fa3f2998475bd60b6278288598e8193ec",
+        "sha256": "90b96857a93cf2b08d9b0a53f09ce4a3f5300949cda06be4d5d5b525d7e27f60",
+        "kind": "tracked",
+        "baselineGitBlob": "84067f3fa3f2998475bd60b6278288598e8193ec",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/shadow-receiver-footprint.js",
+        "actualTerrain": false,
+        "currentGitBlob": "d4c8a0a0f68d3799998f8b985f192162ed15a89f",
+        "sha256": "52e64d42869d6ab838918454b015131da6b0a69e8c534e5f65e92a851a8b3925",
+        "kind": "tracked",
+        "baselineGitBlob": "d4c8a0a0f68d3799998f8b985f192162ed15a89f",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/shared-orm-sampler.js",
+        "actualTerrain": false,
+        "currentGitBlob": "086e76237f776737965037f92afd5907c7febbfd",
+        "sha256": "7e3f0a8ce5daa0aea9b27c30b3dac06b67200ca9aee0a5a6ec45a5d1cb734fe8",
+        "kind": "tracked",
+        "baselineGitBlob": "086e76237f776737965037f92afd5907c7febbfd",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/shore-material.js",
+        "actualTerrain": true,
+        "currentGitBlob": "7f23f76871e4b03ee9aef071cf3fd2fd1140f0c6",
+        "sha256": "8b9cd3fa80774c497395840f74e57d19dd7ab2d63cd80562ed7580c6dbef5887",
+        "kind": "tracked",
+        "baselineGitBlob": "7f23f76871e4b03ee9aef071cf3fd2fd1140f0c6",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/sun-shadow-casters.js",
+        "actualTerrain": false,
+        "currentGitBlob": "e3e93917a6e0eed7b419c5382fc498e52d2e1225",
+        "sha256": "6031005d65a93d89ca5dd798842975295de90373a7d3c9f1f70b11b7e341efa8",
+        "kind": "tracked",
+        "baselineGitBlob": "e3e93917a6e0eed7b419c5382fc498e52d2e1225",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/sun-shadow-receivers.js",
+        "actualTerrain": false,
+        "currentGitBlob": "70e0d4cae82907ad32b6d2fd021309ec3b1cd017",
+        "sha256": "0a7e039a39a76cc2973407067181cb80fe855583b74117278556db0df99d891b",
+        "kind": "tracked",
+        "baselineGitBlob": "70e0d4cae82907ad32b6d2fd021309ec3b1cd017",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/sun-shadow-scheduler.js",
+        "actualTerrain": false,
+        "currentGitBlob": "539e3887c1e906c0a7d743cda9198fb6343b6404",
+        "sha256": "289baa1c7808a352b073473947d8618595b6fb24a1669df2a096d33ba8d3f711",
+        "kind": "tracked",
+        "baselineGitBlob": "539e3887c1e906c0a7d743cda9198fb6343b6404",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/surface-transition.js",
+        "actualTerrain": true,
+        "currentGitBlob": "1968eaa85062549956c3c8962c63aab0eadb120d",
+        "sha256": "f64646063dd3defd54acb882b5fea4e022bc7247be8d8d62a62b620bfa547aa3",
+        "kind": "tracked",
+        "baselineGitBlob": "1968eaa85062549956c3c8962c63aab0eadb120d",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/terrain-forest-scan.js",
+        "actualTerrain": true,
+        "currentGitBlob": "5c9ab02bac4a80f43639ddc1989cb036d2aa93d8",
+        "sha256": "a1ecff7c636664ff117fb7003f15d2383d1d11ed5ce8ee55bb58952c1371f706",
+        "kind": "tracked",
+        "baselineGitBlob": "5c9ab02bac4a80f43639ddc1989cb036d2aa93d8",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/terrain-grass-projection.js",
+        "actualTerrain": true,
+        "currentGitBlob": "2a8a8289f09258ca3ac1defb74567a49b709d562",
+        "sha256": "8042730c3979a4d9694ef72c357544aa1d651c5e893558516acb13358338a04d",
+        "kind": "tracked",
+        "baselineGitBlob": "2a8a8289f09258ca3ac1defb74567a49b709d562",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/terrain-material.js",
+        "actualTerrain": true,
+        "currentGitBlob": "1873cdcb3b152e1a30f8129b3567e836b78cc5e0",
+        "sha256": "e35e750b01ffc86c868568be629d03f1b8cca6b722e94fc554a1565594b21e49",
+        "kind": "tracked",
+        "baselineGitBlob": "1873cdcb3b152e1a30f8129b3567e836b78cc5e0",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/terrain-sample-cache.js",
+        "actualTerrain": true,
+        "currentGitBlob": "3e61a4010357a2f4d7a27c84a66600e06866a6f2",
+        "sha256": "2ea393a330313405f73277fa29bf2bc95ae00082790b55ad7939e694a4c91e6e",
+        "kind": "tracked",
+        "baselineGitBlob": "3e61a4010357a2f4d7a27c84a66600e06866a6f2",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/terrain-shadow-domain.js",
+        "actualTerrain": true,
+        "currentGitBlob": "0f493dc79eb90a500ec2f5569b47d2c80663794b",
+        "sha256": "da6931c1655649a054726880844e4b485f1eef19df3417007bc58f1f816eaacc",
+        "kind": "tracked",
+        "baselineGitBlob": "0f493dc79eb90a500ec2f5569b47d2c80663794b",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/terrain-sibling-batches.js",
+        "actualTerrain": true,
+        "currentGitBlob": "1b18a5c6cfa1f03965b581df2962a591c87bb613",
+        "sha256": "1ac3df824623fb6bdfce093e85dc2aeb9b51141be7bc04aa7867e27ac3abb67d",
+        "kind": "tracked",
+        "baselineGitBlob": "1b18a5c6cfa1f03965b581df2962a591c87bb613",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/terrain-tile-cache.js",
+        "actualTerrain": true,
+        "currentGitBlob": "26e18b5f7735fcfc07987c466a535c9fd884caff",
+        "sha256": "65693db05845d5415e34c6291613a555760fe3076005940d0deec6d43a76b894",
+        "kind": "tracked",
+        "baselineGitBlob": "26e18b5f7735fcfc07987c466a535c9fd884caff",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/terrain.js",
+        "actualTerrain": true,
+        "currentGitBlob": "b624cff4d51e7bdc94980c7c503330eb27c2dcec",
+        "sha256": "0508088493b8c51739a8c0b978cf655e4e75b6a4f28c083e4c16f9163924ad3e",
+        "kind": "tracked",
+        "baselineGitBlob": "b624cff4d51e7bdc94980c7c503330eb27c2dcec",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/terrain.test.js",
+        "actualTerrain": false,
+        "currentGitBlob": "b2f5c6353bbd23f287c5440a32cb9d3c4edd9aee",
+        "sha256": "47e8cea82f048206c451568f596c9052666fb45177eb0c899e4dfea8fa3ac8e2",
+        "kind": "tracked",
+        "baselineGitBlob": "b2f5c6353bbd23f287c5440a32cb9d3c4edd9aee",
+        "equalBytes": true
+      },
+      {
+        "path": "web/src/v2/visual-time.js",
+        "actualTerrain": false,
+        "currentGitBlob": "2be021fd191ef2d08d38f5d808333575b88a39f1",
+        "sha256": "5c9c16b756b695c80283ad47941b415d309cc4e5c185fb3546772221e9728419",
+        "kind": "tracked",
+        "baselineGitBlob": "2be021fd191ef2d08d38f5d808333575b88a39f1",
+        "equalBytes": true
+      },
+      {
+        "url": "node:assert/strict",
+        "kind": "builtin",
+        "actualTerrain": false
+      },
+      {
+        "url": "node:test",
+        "kind": "builtin",
+        "actualTerrain": false
+      },
+      {
+        "path": "web/package.json",
+        "kind": "packageMetadata",
+        "currentGitBlob": "a62459b59738314cb696134e32d2f92750a2c28a",
+        "baselineGitBlob": "a62459b59738314cb696134e32d2f92750a2c28a",
+        "equalBytes": true
+      },
+      {
+        "path": "web/package-lock.json",
+        "kind": "packageMetadata",
+        "currentGitBlob": "720e3c1be3f58b29545ab1133ac1a810bac945c5",
+        "baselineGitBlob": "720e3c1be3f58b29545ab1133ac1a810bac945c5",
+        "equalBytes": true
+      }
+    ],
+    "dynamicOrFetchCandidates": [
+      {
+        "path": "web/node_modules/three/build/three.core.js",
+        "line": 45119,
+        "text": "fetch( req )"
+      },
+      {
+        "path": "web/node_modules/three/build/three.core.js",
+        "line": 50358,
+        "text": "warn( 'ImageBitmapLoader: fetch() not supported.' );"
+      },
+      {
+        "path": "web/node_modules/three/build/three.core.js",
+        "line": 50468,
+        "text": "const promise = fetch( url, fetchOptions ).then( function ( res ) {"
+      },
+      {
+        "path": "web/src/v2/environment.js",
+        "line": 109,
+        "text": "const {exportShadowDepth}=await import(\"./shadow-depth-diagnostic.js\");return exportShadowDepth(this.renderer,this.csm,options);"
+      }
+    ],
+    "threePackageProof": {
+      "name": "three",
+      "lock": {
+        "version": "0.186.1",
+        "resolved": "https://registry.npmjs.org/three/-/three-0.186.1.tgz",
+        "integrity": "sha512-blFeqb49wRCSGUGj7gtpfnSGHy2lwDk94RhUmS1c/hTby70kvChbWpkJ4Pm1390LqzzvTmzgXKHPEafJwCb8jA==",
+        "license": "MIT"
+      },
+      "historicalInstalledByteProofAvailable": false
+    },
+    "excluded": {
+      "main.js": true,
+      "terrain-row-worker-client.js": true,
+      "software-review75.js": true,
+      "software-review-policy75.js": true
+    },
+    "dormantDynamicImport": {
+      "path": "web/src/v2/shadow-depth-diagnostic.js",
+      "importedBy": "web/src/v2/environment.js:109",
+      "executedInDiagnostic": false,
+      "currentGitBlob": "d50cb0373a5385e79962218074ae9333655b1899",
+      "baselineGitBlob": "d50cb0373a5385e79962218074ae9333655b1899",
+      "equalBytes": true,
+      "dependencies": [
+        "three"
+      ],
+      "note": "The only local dynamic import in the resolved closure; only called by exportShadowDepth. Its Three dependency is already in the audited closure."
+    }
+  },
+  "conclusions": [
+    "The preserved uninstrumented failure is the initial ready assertion, before relocation and disposed assertions.",
+    "The instrumented exact prepareView call returned reason=budget with 220 queued tiles, including 104 near tiles, and zero morphs. Generation had not finished despite reaching minimum spacing in some visible tiles.",
+    "All 44 Git-tracked files in the executed test closure, all 23 tracked actualTerrain closure files, the sole dormant local dynamic dependency, and both package metadata files are byte-identical to baseline.",
+    "The optional software review path and changed worker-client/main entrypoints are not imported by this test. No direct softwareReview75 runtime effect is evidenced.",
+    "The six installed Three modules have no Git baseline blobs. Current hashes and unchanged version/integrity lock are evidence of resolution, not proof of historical installed bytes.",
+    "Existing source CPU generation exceeds the real time budget in this diagnostic. The reason for pass/fail timing variability remains unresolved; neither a production regression nor an environmental cause is proven."
+  ],
+  "nextStep": "Preserve the original failing result and budget unchanged. No terrain optimization or performance rerun is part of this checkpoint. A future narrow test-only assertion message could include the returned result for direct uninstrumented failure evidence."
+}

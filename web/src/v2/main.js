@@ -1,3 +1,4 @@
+import {createSoftwareReview75,installSoftwareReviewUI75} from "./software-review75.js";
 import {ShadowWindowRuntime42} from './shadow-window-runtime42.js';
 import { RafCPUProfile42 } from "./raf-cpu-profile42.js";
 import {installLoadSpikeTrace42} from './load-spike-trace42.js';
@@ -56,6 +57,7 @@ import { SettlementRuntime } from "./settlements.js";
 import { worldViewpoints, initialViewpoint } from "./viewpoints.js";
 const $=s=>document.querySelector(s);
 const errors=[];
+let softwareReview75=null,cancelSoftwareReview75=()=>{};
 const bootStarted=performance.now(),loadTimings={phases:{},totalMs:null,moduleStartedMs:bootStarted,navigationToFirstFrameSubmittedMs:null};
 const measureLoad=async(name,work)=>{
   const start=performance.now(),phase={startMs:start-bootStarted,elapsedMs:null,status:"running"};
@@ -77,13 +79,18 @@ const measureLoad=async(name,work)=>{
 };
 // Read during the loading overlay as well as after the first complete frame.
 window.kalajunLoading={getSnapshot:()=>structuredClone(loadTimings)};
-function fail(error){const message=error?.stack||error?.message||String(error);errors.push(message);$("#error").hidden=false;$("#error").textContent="新版加载或运行遇到问题：\n"+message;$("#loading").hidden=true;console.error(error);}
+function fail(error){softwareReview75?.abort(error);const message=error?.stack||error?.message||String(error);errors.push(message);$("#error").hidden=false;$("#error").textContent="新版加载或运行遇到问题：\n"+message;$("#loading").hidden=true;console.error(error);}
 window.addEventListener("error",e=>{if(e.error)fail(e.error);});
 window.addEventListener("unhandledrejection",e=>fail(e.reason));
 const progress=value=>{$("#load-message").textContent=typeof value==="string"?value:value?.stage==="structures"?"读取聚落资产 "+value.loaded+" / "+value.total:value?.message||"准备地形与布局资料…";};
 try {
   const {canvas,context,reversedDepth,stats:contextStats}=createWorldContext($("#world"));
   loadTimings.context=contextStats;
+  softwareReview75=createSoftwareReview75({gl:context,canvas,onAbort:()=>cancelSoftwareReview75(),beforeFence:async()=>{while(localShadowWindow42.controller?.pending)await localShadowWindow42.controller.pending;}});
+  if(softwareReview75){const info=context.getExtension("WEBGL_debug_renderer_info");softwareReview75.backend={renderer:context.getParameter(info?.UNMASKED_RENDERER_WEBGL??context.RENDERER),vendor:context.getParameter(info?.UNMASKED_VENDOR_WEBGL??context.VENDOR),context:contextStats};}
+  const reviewSignature75=()=>({generation:viewGeneration,view:selectedView,position:camera.position.toArray(),yaw:controls.yaw,pitch:controls.pitch,time:environment.minutes,search:location.search,viewport:{width:canvas.width,height:canvas.height,pixelRatio:renderer.getPixelRatio()}});
+  const removeSoftwareReviewUI75=installSoftwareReviewUI75(softwareReview75,{getSnapshot:()=>window.kalajunV2?.getSnapshot()??{loadTimings:structuredClone(loadTimings),softwareReview75:softwareReview75.snapshot()}});
+  if(softwareReview75)addEventListener("pagehide",()=>{softwareReview75.dispose();removeSoftwareReviewUI75();},{once:true});
   const renderer=new THREE.WebGLRenderer({canvas,context,antialias:true,reversedDepthBuffer:reversedDepth,logarithmicDepthBuffer:!reversedDepth,powerPreference:"high-performance"});
   renderer.debug.onShaderError=(gl,program,vertex,fragment)=>{
     window.kalajunShaderError={program:gl.getProgramInfoLog(program),vertex:gl.getShaderSource(vertex),fragment:gl.getShaderSource(fragment)};
@@ -101,6 +108,7 @@ try {
   camera._reversedDepth=reversedDepth;camera.updateProjectionMatrix();
   const opaqueDepthOrder=new OpaqueDepthOrder(renderer,camera);
   const renderWorld=(scene,renderCamera,colorViewsPrepared=false)=>opaqueDepthOrder.run(renderCamera,()=>{
+    softwareReview75?.assertOpen();
     if(meadowViews.enabled&&!colorViewsPrepared)syncColorVisibility41();
     if(meadowRootWind.enabled)meadowRootWind.update(renderer);
     if(meadowClusterWind.enabled)meadowClusterWind.update(renderer);
@@ -113,6 +121,7 @@ try {
   const {requested:terrainWorkerRequested,compatible:terrainWorkerCompatible}=terrainRowWorkerPolicy(location.search);
   let terrainWorkerInputs;
   const world=await measureLoad("worldData",()=>loadWorldData({onProgress:progress,onSourceInputs:terrainWorkerRequested&&terrainWorkerCompatible?inputs=>{terrainWorkerInputs=inputs;}:undefined}));
+  softwareReview75?.assertOpen();
   const settlements=new SettlementRuntime(world),pasture=new WorldPasture(world),doors=new WorldDoors();settlements.setDoorOpenness(id=>doors.openness(id),id=>doors.angles(id));scene.add(settlements.group);
   const controls=new WorldControls(camera,canvas,world);
   controls.floorAt=(x,z)=>settlements.floorHeightAt(x,z);
@@ -185,6 +194,7 @@ try {
   environment.register(terrain.materials||[terrain.material]);
   const grassShadowCoverage41=new GrassShadowWorld41(renderer,scene,camera,terrain,environment,{ecology});
   const localShadowWindow42=new ShadowWindowRuntime42({world,renderer,environment,camera,terrain,ecology,renderNative:()=>renderWorld(scene,camera)},{enabled:localShadowWindow72Enabled(location.search)});
+  if(softwareReview75)cancelSoftwareReview75=()=>{viewGeneration++;terrain.cancelPreparation();cancelLodgeRetry?.();localShadowWindow42.dispose();};
   progress("读取选定聚落与植物资产…");
   assetsReady??=startAssets();
   const assetJoin=Promise.all([measureLoad("terrainSurfaces",()=>terrain.loadSurfaces()),assetsReady]);
@@ -194,6 +204,7 @@ try {
   cancelEarlyPreparation=()=>{farTerrainIdle.stop("destination");terrain.cancelPreparation();};
   try{await Promise.all([assetJoin,earlyTerrain]);}
   finally{await farTerrainIdle.stop("assets-settled");}
+  softwareReview75?.assertOpen();
   if(farTerrainIdle.stats.error)throw farTerrainIdle.stats.error;
   loadTimings.farTerrainIdle=farTerrainIdle.stats;
   let reachDesign69Owner=null,reachDesign69Assets=null;
@@ -221,6 +232,7 @@ try {
   settlements.registerMaterials(structures.materials);
   const paths=new WorldPaths(world);
   await measureLoad("pathSurfaces",()=>paths.loadSurfaces());
+  softwareReview75?.assertOpen();
   scene.add(structures.group,ecology.group,paths.group,water.group,pasture.group,doors.group,rootMat.group);environment.register([...structures.materials,...ecology.materials,...meadowCluster.materials,...paths.materials,...water.materials,...pasture.materials,...rootMat.materials]);
   $("#photo-save").addEventListener("click",()=>{
     renderWorld(scene,camera);
@@ -273,7 +285,7 @@ try {
   map.addEventListener("click",e=>{const r=map.getBoundingClientRect();go({name:"自由探索",x:((e.clientX-r.left)/r.width-.5)*span,z:((e.clientY-r.top)/r.height-.5)*span,above:180,yaw:345,pitch:-20});});
   controls.onMove=()=>{selectedView="free";$("#place-name").textContent="沿着山野，自由探索";document.querySelectorAll("#places button[aria-pressed=true]").forEach(b=>b.setAttribute("aria-pressed","false"));};
   const resize=()=>{renderer.setSize(innerWidth,innerHeight,false);worldFrame?.setSize(canvas.width,canvas.height);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();environment.csm.updateFrustums();};
-  addEventListener("resize",resize);
+  addEventListener("resize",softwareReview75?()=>fail(Error("Software QA requires a fixed viewport; resize invalidated this run. Reload at the target size.")):resize);
   resize(); // Loading may have outlasted a window resize before this listener existed.
   progress("准备第一眼的光与山色…");
   let preparing=false,lastPreparation=null,renderReviewHold=false;
@@ -295,6 +307,9 @@ try {
     environment.shadowReceiverCameras=mirror?[mirror]:[];
   };
   const yieldToInput=()=>new Promise(resolve=>setTimeout(resolve,0));
+  // Preserve the native prewarm owner and target restoration. Gate BEFORE each
+  // complete prewarm group, including the previous group's async compilation.
+  const yieldBeforeShadow75=softwareReview75?async()=>{await softwareReview75.drain("shadow-prewarm");await yieldToInput();}:yieldToInput;
   const awaitLodgeInterior=async(generation)=>{
     while(generation===viewGeneration&&structures.lodgeStream.needs(camera.position,camera)){
       progress("正在准备公共楼内装…");
@@ -312,12 +327,16 @@ try {
     }
   };
   const prepareScene=async(maxMs=6000,generation=viewGeneration)=>{
+    softwareReview75?.assertOpen();
     await awaitLodgeInterior(generation);if(generation!==viewGeneration)return null;
     const terrainStart=performance.now();
-    const prepared=await terrain.prepareView(camera,{maxMs,waitFor:"near",nearRadius:160,onProgress:p=>{if(generation===viewGeneration)progress("准备脚下的草坡与地基 · "+p.visibleTiles+" 个地形分块");}});
+    const prepared=await terrain.prepareView(camera,{maxMs:softwareReview75?210000:maxMs,waitFor:softwareReview75?"all":"near",nearRadius:160,onProgress:p=>{if(generation===viewGeneration)progress("准备脚下的草坡与地基 · "+p.visibleTiles+" 个地形分块");}});
+    softwareReview75?.assertOpen();
+    if(softwareReview75&&generation===viewGeneration&&!prepared.ready)throw Error("Software QA full terrain preparation did not settle: "+prepared.reason);
     const terrainPrepareMs=performance.now()-terrainStart,ecologyStart=performance.now();
     const ecologyPreparation=await prepareEcologyQueues({ecology,water,camera,isCurrent:()=>generation===viewGeneration,yieldToInput,
       staticPreparation:params.get("ecologyPreparation")!=="frame"});
+    softwareReview75?.assertOpen();
     if(!ecologyPreparation)return null;
     const ecologyQueuesMs=performance.now()-ecologyStart;
     const {iterations:ecologyIterations}=ecologyPreparation;
@@ -327,6 +346,7 @@ try {
     settlements.update(camera,0,roomSun);
     const roomIndirectStart=performance.now();
     await settlements.prepareLighting();
+    softwareReview75?.assertOpen();
     const roomIndirectPrepareMs=performance.now()-roomIndirectStart;
     if(generation!==viewGeneration)return null;
     settlements.update(camera,0,roomSun);syncRoomLighting42();preparedGuestGroup42=Boolean(settlements.groupRooms42);
@@ -334,6 +354,7 @@ try {
   };
   let lastShaderPreparation=null;
   const compileDestination=()=>{
+    softwareReview75?.assertOpen();
     ecology.gpuBrushes?.prepareNeedleShapes?.(renderer,{budgetMs:2,maxForms:1});
     if(params.get("refractionPreparation")!=="0")water.prepareRefraction(renderer,camera,worldFrame?.target);
     scene.updateMatrixWorld(true);camera.updateMatrixWorld(true);roomShadowAtlas42.prepare(scene,camera);
@@ -364,10 +385,12 @@ try {
     } catch(error) {for(const work of pending)Promise.resolve(work).catch(()=>{});throw error;}
   };
   structures.lodgeStream.finalize=async(stage)=>{
+    softwareReview75?.assertOpen();
     structures.installLodgeInterior(stage);
     settlements.registerMaterials(structures.materials);environment.register(structures.materials);
     const field=settlements.indirect.field;
     await field.prepareLodge();await field.lodgeDoor.prepare(field.lodgeKey);
+    softwareReview75?.assertOpen();
     // Compile with all newly installed material hooks and full scene lights.
     structures.update(camera,0);syncShadowState();environment.forceShadowUpdate=true;environment.update(0);water.reflection.lastCapture=-Infinity;await compileLodgeStreamMaterials(renderer,scene,camera,structures,worldFrame?.target);await compileDestination();
     collision.invalidateStructure(structures.lodgeStream.entity.id);
@@ -386,12 +409,13 @@ try {
   let initialPreparation;
   for(;;){
     const generation=viewGeneration;
+    if(softwareReview75){await softwareReview75.drain("initial-generation-owner");if(generation!==viewGeneration)continue;}
     initialPreparation=await measureLoad("initialScene",()=>prepareScene(6000,generation));
     if(generation!==viewGeneration)continue;
     structures.update(camera,0);
     await measureLoad("initialShaders",compileDestination);
     if(generation!==viewGeneration)continue;
-    if(localShadowWindow42.enabled)await measureLoad("localShadowWindow42",()=>localShadowWindow42.prepare({yieldToInput,isCurrent:()=>generation===viewGeneration}));
+    if(localShadowWindow42.enabled)await measureLoad("localShadowWindow42",()=>localShadowWindow42.prepare({yieldToInput:yieldBeforeShadow75,isCurrent:()=>generation===viewGeneration}));
     if(generation===viewGeneration)break;
   }
   cancelEarlyPreparation=null;
@@ -435,28 +459,46 @@ try {
   if(shadowStaticProfile39.enabled)gpuPassProfile.maxPending=192;
   let last=performance.now(),counter=0,uiClock=0,frames=[],running=true;
   const startup=performance.now();
+  let initialReviewPending75=Boolean(softwareReview75),reviewDestinationTail75=Promise.resolve();
   prepareDestination=async()=>{
+    if(initialReviewPending75)return; // Initial QA loop revalidates this destination after every await.
     const generation=viewGeneration;preparing=true;$("#loading").hidden=false;$("#loading").classList.remove("done");
+    let releaseReviewDestination75,ownsReviewDestination75=false,reviewDestinationSettled75=false;
+    const previousReviewDestination75=reviewDestinationTail75;
+    if(softwareReview75)reviewDestinationTail75=new Promise(resolve=>{releaseReviewDestination75=resolve;});
+    try{
+    if(softwareReview75){await previousReviewDestination75;if(generation!==viewGeneration)return;await softwareReview75.waitForIdle();if(generation!==viewGeneration)return;softwareReview75.preparing();ownsReviewDestination75=true;}
     terrain.cancelPreparation();
     const start=performance.now();
     const prepared=await prepareScene(4000,generation);
     if(generation!==viewGeneration)return;
     await compileDestination();
     if(generation!==viewGeneration)return;
-    if(localShadowWindow42.enabled)await localShadowWindow42.prepare({yieldToInput,isCurrent:()=>generation===viewGeneration});
+    if(localShadowWindow42.enabled)await localShadowWindow42.prepare({yieldToInput:yieldBeforeShadow75,isCurrent:()=>generation===viewGeneration});
     if(generation!==viewGeneration)return;
+    if(softwareReview75){await softwareReview75.drain("destination-ready");reviewDestinationSettled75=true;if(generation!==viewGeneration)return;softwareReview75.destinationReady();}
     lastPreparation={...prepared,totalMs:performance.now()-start,generation,view:selectedView};
     preparing=false;frames=[];last=performance.now();$("#loading").classList.add("done");
     setTimeout(()=>{if(generation===viewGeneration)$("#loading").hidden=true;},900);
+    }catch(error){softwareReview75?.abort(error);throw error;}
+    finally{
+      // Stale/cancelled preparation can have issued native prewarm/refraction.
+      // Drain even an early return before handing its whole owner to a new view.
+      try{if(ownsReviewDestination75&&!reviewDestinationSettled75&&!softwareReview75.closed)await softwareReview75.drain("destination-owner-release");}
+      finally{releaseReviewDestination75?.();}
+    }
   };
   document.addEventListener("visibilitychange",()=>{frames=[];last=performance.now();});
   function frame(now){
-    if(!running)return;
+    if(!running||softwareReview75?.closed)return;
     // A hidden world has no visible pixels to update. Keep all resident detail
     // and resume the same scene; do not compete with another visible world tab.
     if(document.visibilityState!=="visible"||renderReviewHold){last=now;requestAnimationFrame(frame);return;}
+    const reviewStep75=softwareReview75?.beginFrame({paused:preparing});
+    if(softwareReview75&&!reviewStep75){last=now;requestAnimationFrame(frame);return;}
+    let reviewSubmitted75=false,reviewError75=null;
     rafCPU42?.begin();
-    const realDt=visualDelta((now-last)/1000),dt=Math.min(realDt,.05);last=now;
+    const realDt=softwareReview75?reviewStep75.delta:visualDelta((now-last)/1000),dt=Math.min(realDt,.05);last=now;
     try{
       // Destination preparation owns streaming while the overlay is visible;
       // duplicate work and GPU passes must not delay input or the next destination.
@@ -487,10 +529,10 @@ try {
         withPreparedWorldMatrices(scene,()=>renderWorld(scene,camera,true),preparedMatrices);
         });
         water.renderReflection(renderer,scene,camera,{now:performance.now()/1000,lightingRevision:environment.minutes});
-        gpuFrameFailed=false;
+        gpuFrameFailed=false;reviewSubmitted75=true;
         } finally {gpuPassProfile?.endFrame({failed:gpuFrameFailed});if(gpuQuery){gpuContext.endQuery(gpuExtension.TIME_ELAPSED_EXT);gpuQueries.push(gpuQuery);}}
       }
-      if(counter++>30&&realDt>0&&!preparing&&document.visibilityState==="visible")frames.push(realDt*1000);
+      if(!softwareReview75&&counter++>30&&realDt>0&&!preparing&&document.visibilityState==="visible")frames.push(realDt*1000);
       if(frames.length>300)frames.shift();
       uiClock+=realDt;
       if(uiClock>.5){
@@ -506,21 +548,49 @@ try {
         drawMap();
       }
       requestAnimationFrame(frame);
-    }catch(e){running=false;fail(e);}
-    finally{rafCPU42?.end();}
+    }catch(e){running=false;reviewError75=e;fail(e);}
+    finally{
+      rafCPU42?.end();
+      // The fence is after world, reflection, query closure and CPU-profile owner.
+      if(softwareReview75)softwareReview75.endFrame(reviewStep75,{submitted:reviewSubmitted75,error:reviewError75,signature:reviewSubmitted75?{...reviewSignature75(),scope:"world-and-reflection"}:null}).catch(e=>{running=false;if(!reviewError75)fail(e);});
+    }
   }
   const firstFrameGeneration=viewGeneration;
+  let initialReviewGeneration75=firstFrameGeneration;
   const preparedPrograms=new Set(renderer.info.programs);
-  await measureLoad("firstFrame",()=>renderWorld(scene,camera));
-  loadTimings.firstFrameNewPrograms=renderer.info.programs.filter(p=>!preparedPrograms.has(p)).map(p=>({id:p.id,name:p.name}));loadTimings.totalMs=performance.now()-bootStarted;loadTimings.navigationToFirstFrameSubmittedMs=performance.now();$("#loading").classList.add("done");setTimeout(()=>{if(viewGeneration===firstFrameGeneration)$("#loading").hidden=true;},900);requestAnimationFrame(frame);
+  if(softwareReview75){
+    for(;;){
+      await softwareReview75.drain("initial-preparation");
+      if(initialReviewGeneration75!==viewGeneration){
+        initialReviewGeneration75=viewGeneration;softwareReview75.preparing();
+        initialPreparation=await measureLoad("initialScene",()=>prepareScene(6000,initialReviewGeneration75));
+        if(initialReviewGeneration75!==viewGeneration)continue;
+        structures.update(camera,0);await measureLoad("initialShaders",compileDestination);
+        if(initialReviewGeneration75!==viewGeneration)continue;
+        if(localShadowWindow42.enabled)await measureLoad("localShadowWindow42",()=>localShadowWindow42.prepare({yieldToInput:yieldBeforeShadow75,isCurrent:()=>initialReviewGeneration75===viewGeneration}));
+        if(initialReviewGeneration75!==viewGeneration)continue;
+        softwareReview75.destinationReady();
+        // Recheck after draining the final prewarm/async owner before drawing.
+        await softwareReview75.drain("initial-reprepared");
+        if(initialReviewGeneration75!==viewGeneration)continue;
+      }
+      await measureLoad("firstFrame",()=>renderWorld(scene,camera));
+      loadTimings.navigationToFirstFrameSubmittedMs=performance.now();
+      await softwareReview75.completeInitial({...reviewSignature75(),scope:"original-first-main-draw"});
+      if(initialReviewGeneration75===viewGeneration)break;
+    }
+    loadTimings.navigationToFirstFrameGPUCompletedMs=performance.now();initialReviewPending75=false;
+  }else await measureLoad("firstFrame",()=>renderWorld(scene,camera));
+  loadTimings.firstFrameNewPrograms=renderer.info.programs.filter(p=>!preparedPrograms.has(p)).map(p=>({id:p.id,name:p.name}));loadTimings.totalMs=performance.now()-bootStarted;loadTimings.navigationToFirstFrameSubmittedMs??=performance.now();$("#loading").classList.add("done");setTimeout(()=>{if(viewGeneration===(softwareReview75?initialReviewGeneration75:firstFrameGeneration))$("#loading").hidden=true;},900);requestAnimationFrame(frame);
   // Read-only diagnostics used by the local acceptance page and manual inspection.
   // Persist derived geometry only after the complete first scene has had a
   // paint opportunity. It never adds network payload or delays first-frame readiness.
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     ecology.persistCanopyCache?.().catch(error=>console.warn("[spruce-canopy] background cache write:",error));
   }));
-  window.kalajunV2={getSnapshot:()=>({version:"route-continuity-38-candidate",loadTimings:structuredClone(loadTimings),assetTransfers:params.get("profile")==="1"?performance.getEntriesByType("resource").filter(r=>r.name.startsWith(location.origin)&&/\/(assets|data)\//.test(r.name)).map(r=>({path:new URL(r.name).pathname,transferBytes:r.transferSize,encodedBytes:r.encodedBodySize,decodedBytes:r.decodedBodySize,durationMs:r.duration})):undefined,depthMode:reversedDepth?"reversed-float32":"logarithmic",frameTarget:worldFrame?.stats??null,treePhotoPrepass:{...treePhotoPrepass.stats},ready:running,visibility:document.visibilityState,viewport:{width:canvas.width,height:canvas.height,pixelRatio:renderer.getPixelRatio()},uptimeMs:performance.now()-startup,position:camera.position.toArray(),view:selectedView,yaw:controls.yaw,pitch:controls.pitch,time:environment.minutes,initialPreparation,lastPreparation,lastShaderPreparation,preparing,gpuPasses:gpuPassProfile?.snapshot()??null,gpu:{scope:"render-world-and-reflection",available:Boolean(gpuExtension),samples:gpuSamples.length,meanMs:gpuSamples.reduce((n,x)=>n+x,0)/Math.max(1,gpuSamples.length),maxMs:Math.max(0,...gpuSamples)},rafCPU42:rafCPU42?.snapshot()??null,cpu:Object.fromEntries(Object.entries(cpuSamples).map(([name,a])=>[name,{scope:"per-call",samples:a.length,meanMs:a.reduce((n,x)=>n+x,0)/Math.max(1,a.length),maxMs:Math.max(0,...a)}])),sceneMatrixCache:sceneMatrixCache?{...sceneMatrixCache.stats}:null,cloudCache:{...environment.cloudCache.stats},shadows:environment.shadowScheduler.stats,nearShadowDetail:environment.nearShadowDetail,localShadowWindow42:structuredClone(localShadowWindow42.stats),grassShadowCoverage41:{...grassShadowCoverage41.stats},shadowAtlas40:{...environment.shadowAtlas40.stats},shadowReceivers:environment.shadowReceivers.stats,shadowCasters:{...environment.shadowCasters.stats,counts:environment.shadowCasters.result.counts},sunElevation:environment.elevation,lighting:{profile:environment.lightingProfile,sunIntensity:environment.csm.lights[0].intensity,exposure:renderer.toneMappingExposure,bounce:environment.bounce.intensity,environment:scene.environmentIntensity,cloudCoverage:environment.clouds.uCloudCoverage.value,cloudDensity:environment.clouds.uCloudDensity.value},frames:[...frames],render:{...renderer.info.render},terrain:{...terrain.stats},structures:{...structures.stats},ecology:{...ecology.stats},paths:{...paths.stats},water:{...water.stats},pasture:{...pasture.stats},rootMatTrial:structuredClone(rootMat.stats),reachDesign69:reachDesign69Owner?structuredClone(reachDesign69Owner.stats):null,reachDesign73:reachDesign73Owner?structuredClone(reachDesign73Owner.stats):null,doors:{...doors.stats},collision:{...collision.stats},movement:controls.mode,seating:{...seating.stats},controlTiming:{...controls.stats},errors:[...errors],entities:world.entities.length,roomLight:{...settlements.indirect.field.solar.stats},roomSkyBounce:{...settlements.indirect.field.stats},roomContact:{...settlements.indirect.contact.stats},guestRoomGroup42:{...settlements.guestGroup42.stats},roomShadowAtlas42:{...roomShadowAtlas42.stats},rooms:settlements.viewpoints.length}),world};
-  if(import.meta.env.DEV||params.get("profile")==="1"||params.get("debug")==="1") window.kalajunV2.debug={setReviewHold:value=>{const previous=renderReviewHold;renderReviewHold=Boolean(value);return previous;},localShadowWindow42,roomShadowAtlas42,gpuPassProfile,shadowStaticProfile39,grassShadowCoverage41,meadowViews,meadowRootWind,meadowCluster,meadowClusterWind,renderer,worldFrame,treePhotoPrepass,sceneMatrixCache,renderFrozenWorld:()=>renderWorld(scene,camera),scene,camera,environment,terrain,structures,ecology,controls,seating,settlements,water,pasture,doors,collision,paths,places,rootMat,reachDesign69Owner,reachDesign73Owner};
+  window.kalajunV2={getSnapshot:()=>({version:"route-continuity-38-candidate",softwareReview75:softwareReview75?.snapshot()??null,viewGeneration,loadTimings:structuredClone(loadTimings),assetTransfers:params.get("profile")==="1"?performance.getEntriesByType("resource").filter(r=>r.name.startsWith(location.origin)&&/\/(assets|data)\//.test(r.name)).map(r=>({path:new URL(r.name).pathname,transferBytes:r.transferSize,encodedBytes:r.encodedBodySize,decodedBytes:r.decodedBodySize,durationMs:r.duration})):undefined,depthMode:reversedDepth?"reversed-float32":"logarithmic",frameTarget:worldFrame?.stats??null,treePhotoPrepass:{...treePhotoPrepass.stats},ready:running&&(!softwareReview75||!softwareReview75.closed),visibility:document.visibilityState,viewport:{width:canvas.width,height:canvas.height,pixelRatio:renderer.getPixelRatio()},uptimeMs:performance.now()-startup,position:camera.position.toArray(),view:selectedView,yaw:controls.yaw,pitch:controls.pitch,time:environment.minutes,initialPreparation,lastPreparation,lastShaderPreparation,preparing,gpuPasses:gpuPassProfile?.snapshot()??null,gpu:{scope:"render-world-and-reflection",available:Boolean(gpuExtension),samples:gpuSamples.length,meanMs:gpuSamples.reduce((n,x)=>n+x,0)/Math.max(1,gpuSamples.length),maxMs:Math.max(0,...gpuSamples)},rafCPU42:rafCPU42?.snapshot()??null,cpu:Object.fromEntries(Object.entries(cpuSamples).map(([name,a])=>[name,{scope:"per-call",samples:a.length,meanMs:a.reduce((n,x)=>n+x,0)/Math.max(1,a.length),maxMs:Math.max(0,...a)}])),sceneMatrixCache:sceneMatrixCache?{...sceneMatrixCache.stats}:null,cloudCache:{...environment.cloudCache.stats},shadows:environment.shadowScheduler.stats,nearShadowDetail:environment.nearShadowDetail,localShadowWindow42:structuredClone(localShadowWindow42.stats),grassShadowCoverage41:{...grassShadowCoverage41.stats},shadowAtlas40:{...environment.shadowAtlas40.stats},shadowReceivers:environment.shadowReceivers.stats,shadowCasters:{...environment.shadowCasters.stats,counts:environment.shadowCasters.result.counts},sunElevation:environment.elevation,lighting:{profile:environment.lightingProfile,sunIntensity:environment.csm.lights[0].intensity,exposure:renderer.toneMappingExposure,bounce:environment.bounce.intensity,environment:scene.environmentIntensity,cloudCoverage:environment.clouds.uCloudCoverage.value,cloudDensity:environment.clouds.uCloudDensity.value},frames:[...frames],render:{...renderer.info.render},terrain:{...terrain.stats},structures:{...structures.stats},ecology:{...ecology.stats},paths:{...paths.stats},water:{...water.stats},pasture:{...pasture.stats},rootMatTrial:structuredClone(rootMat.stats),reachDesign69:reachDesign69Owner?structuredClone(reachDesign69Owner.stats):null,reachDesign73:reachDesign73Owner?structuredClone(reachDesign73Owner.stats):null,doors:{...doors.stats},collision:{...collision.stats},movement:controls.mode,seating:{...seating.stats},controlTiming:{...controls.stats},errors:[...errors],entities:world.entities.length,roomLight:{...settlements.indirect.field.solar.stats},roomSkyBounce:{...settlements.indirect.field.stats},roomContact:{...settlements.indirect.contact.stats},guestRoomGroup42:{...settlements.guestGroup42.stats},roomShadowAtlas42:{...roomShadowAtlas42.stats},rooms:settlements.viewpoints.length}),world};
+  softwareReview75?.emit();
+  if(import.meta.env.DEV||params.get("profile")==="1"||params.get("debug")==="1") window.kalajunV2.debug={setReviewHold:value=>{const previous=renderReviewHold;renderReviewHold=Boolean(value);return previous;},localShadowWindow42,roomShadowAtlas42,gpuPassProfile,shadowStaticProfile39,grassShadowCoverage41,meadowViews,meadowRootWind,meadowCluster,meadowClusterWind,renderer,worldFrame,treePhotoPrepass,sceneMatrixCache,renderFrozenWorld:()=>{if(softwareReview75)throw Error("Use the visible Software QA single-step controls; direct draws bypass GPU backpressure");return renderWorld(scene,camera);},scene,camera,environment,terrain,structures,ecology,controls,seating,settlements,water,pasture,doors,collision,paths,places,rootMat,reachDesign69Owner,reachDesign73Owner};
   addEventListener("pagehide",()=>{running=false;reachDesign73Owner?.dispose();reachDesign73Assets?.dispose();reachDesign69Owner?.dispose();reachDesign69Assets?.dispose();localShadowWindow42.dispose();roomShadowAtlas42.dispose();meadowClusterWind.dispose();meadowCluster.dispose();meadowRootWind.dispose();meadowViews.dispose();grassShadowCoverage41.dispose();shadowStaticProfile39.dispose();gpuPassProfile?.dispose();treePhotoPrepass.dispose();structureMatrix41?.dispose();sceneMatrixCache?.dispose();gpuQueries.forEach(q=>gpuContext.deleteQuery(q));seatingUI.dispose();controls.dispose();terrain.dispose();collision.dispose();doors.dispose();structures.dispose();ecology.dispose();paths.dispose();water.dispose();pasture.dispose();rootMat.dispose();settlements.dispose();shadowDepth.dispose();environment.dispose();worldFrame?.dispose();shadowIndexRenderer?.dispose();renderer.dispose();},{once:true});
 }catch(e){fail(e);}
 function smooth(a,b,x){const t=Math.min(1,Math.max(0,(x-a)/(b-a)));return t*t*(3-2*t);}

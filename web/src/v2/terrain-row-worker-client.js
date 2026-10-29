@@ -1,3 +1,4 @@
+import {softwareReviewPolicy75} from "./software-review-policy75.js";
 import {localShadowWindow72ParameterValid} from './local-shadow-policy72.js';
 import {terrainRowInput} from './terrain-row-kernel.js';
 // Worker never owns queue order, activation or GPU upload policy. Inputs are
@@ -71,6 +72,8 @@ export function terrainRowWorkerPolicy(search='') {
  if(!localShadowWindow72ParameterValid(search))safe.delete('localShadowWindow42');
  const contact74=params.getAll('boardwalkContactIndex74');
  if(contact74.every(v=>v==='0'||v==='1')&&new Set(contact74).size<=1)safe.add('boardwalkContactIndex74');
+ const review75=softwareReviewPolicy75(search);
+ if(review75.valid){safe.add('softwareReview75');safe.add('softwareReviewInputGap75');}
  const requested=params.get('terrainWorker38')!=='0';
  const compatible=[...params.keys()].every(k=>safe.has(k));
  return {requested,compatible,enabled:requested&&compatible};

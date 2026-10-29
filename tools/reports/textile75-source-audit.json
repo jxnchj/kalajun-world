@@ -1,0 +1,851 @@
+{
+  "auditedAtUTC": "2026-10-29T06:07:46.837060+00:00",
+  "scope": "Read-only source/GLB audit; no Blender or runtime render; writes this evidence JSON only",
+  "method": {
+    "uvDegenerate": "abs(cross2(uv1-uv0,uv2-uv0)) < 1e-12",
+    "nearVerticalSide": "abs(unit geometric normal in glTF +Y-up) < 0.3",
+    "areaPercent": "geometric triangle-area weighted",
+    "foldedLeafSamples": "Known unchanged soft27 source-order top grids: [0:551], [1470:2021], each 19x29; paired bottoms offset551. Export order spot-checked against source lattice."
+  },
+  "files": [
+    {
+      "path": "web/public/assets/v2/house_a_lived.glb",
+      "bytes": 11122824,
+      "sha256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2"
+    },
+    {
+      "path": "web/public/assets/v2/house-textiles62/geometry.glb",
+      "bytes": 1565836,
+      "sha256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854"
+    },
+    {
+      "path": "assets/src/v2/pastoral/textiles62/house-a-textiles62.glb",
+      "bytes": 1565836,
+      "sha256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854"
+    },
+    {
+      "path": "assets/src/v2/pastoral/textiles62/house-a-textiles62.blend",
+      "bytes": 6475571,
+      "sha256": "c1a1e09f4fca922a94544c10f3f48a41ceb29ca50be4bac945bfeefb72113397"
+    },
+    {
+      "path": "web/public/assets/v2/house-textiles62/manifest.json",
+      "bytes": 4152,
+      "sha256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a"
+    },
+    {
+      "path": "tools/blender/v2_house_textiles62.py",
+      "bytes": 13678,
+      "sha256": "90779ee5e24361d300ff683836e62172480ba443efc69bbd94539a76c0fec83e"
+    },
+    {
+      "path": "tools/blender/v2_soft_goods.py",
+      "bytes": 8133,
+      "sha256": "9cc980ed4dc9f2c3f37a3aa9c5a5a48de36b8df4063fa019b77f3ab211ea1ffd"
+    },
+    {
+      "path": "docs/previews/v2-route-craft-38/house-textiles74-candidate-whole-room-0.png",
+      "bytes": 1921974,
+      "sha256": "efac4a314eff71f8727c970ff3bc3a72d7acedd6731d4ce93d506f2147a0fc70"
+    },
+    {
+      "path": "docs/previews/v2-route-craft-38/house-textiles74-candidate-whole-room-0.json",
+      "bytes": 104827,
+      "sha256": "c16e688743e4da6860d48a05045284324e8ff0acf6010f56ef59ca4b14d2375f"
+    }
+  ],
+  "geometry": {
+    "web/public/assets/v2/house_a_lived.glb": [
+      {
+        "name": "pastoral_house_bed_foot",
+        "vertices": 2802,
+        "triangles": 5600,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 2016,
+        "uvDegenerateGeometricAreaPercent": 3.117077810630377,
+        "nearVerticalSideTriangles": 927,
+        "nearVerticalUVdegenerateTriangles": 927,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -3.2149999141693115,
+            0.4465578496456146,
+            -0.6899999976158142
+          ],
+          [
+            -0.7850000262260437,
+            0.6310621500015259,
+            -0.23000000417232513
+          ]
+        ]
+      },
+      {
+        "name": "pastoral_house_bed_quilt",
+        "vertices": 6834,
+        "triangles": 13664,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 2912,
+        "uvDegenerateGeometricAreaPercent": 2.018805641330115,
+        "nearVerticalSideTriangles": 480,
+        "nearVerticalUVdegenerateTriangles": 480,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -3.200000047683716,
+            0.44350001215934753,
+            -1.9550000429153442
+          ],
+          [
+            -0.800000011920929,
+            0.6426181793212891,
+            -0.2849999964237213
+          ]
+        ]
+      },
+      {
+        "name": "pastoral_house_bench_felt",
+        "vertices": 598,
+        "triangles": 776,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 104,
+        "uvDegenerateGeometricAreaPercent": 4.210466065270277,
+        "nearVerticalSideTriangles": 104,
+        "nearVerticalUVdegenerateTriangles": 104,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -2.799999952316284,
+            0.46431511640548706,
+            1.8539061546325684
+          ],
+          [
+            -1.399999976158142,
+            0.5169845223426819,
+            2.3059616088867188
+          ]
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_folded0",
+        "vertices": 2940,
+        "triangles": 5872,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1840,
+        "uvDegenerateGeometricAreaPercent": 13.43379204168618,
+        "nearVerticalSideTriangles": 368,
+        "nearVerticalUVdegenerateTriangles": 368,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -0.41999998688697815,
+            -0.04749999940395355,
+            -0.27000001072883606
+          ],
+          [
+            0.41999998688697815,
+            0.04749999940395355,
+            0.27000001072883606
+          ]
+        ],
+        "leaves": [
+          {
+            "leaf": 0,
+            "topHeightRangeMM": 3.3144813496619463,
+            "frontCenterThicknessMM": 43.450365075841546,
+            "topCenterMinusCornerMM": 0.3952605475205928
+          },
+          {
+            "leaf": 1,
+            "topHeightRangeMM": 3.314480185508728,
+            "frontCenterThicknessMM": 43.45036577433348,
+            "topCenterMinusCornerMM": 0.395260751247406
+          }
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_folded1",
+        "vertices": 2940,
+        "triangles": 5872,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1840,
+        "uvDegenerateGeometricAreaPercent": 13.435228480957907,
+        "nearVerticalSideTriangles": 368,
+        "nearVerticalUVdegenerateTriangles": 368,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -0.41999998688697815,
+            -0.04749999940395355,
+            -0.27000001072883606
+          ],
+          [
+            0.41999998688697815,
+            0.04749999940395355,
+            0.27000001072883606
+          ]
+        ],
+        "leaves": [
+          {
+            "leaf": 0,
+            "topHeightRangeMM": 3.002094163093716,
+            "frontCenterThicknessMM": 43.45632414333522,
+            "topCenterMinusCornerMM": 2.2141337976790965
+          },
+          {
+            "leaf": 1,
+            "topHeightRangeMM": 3.0020959675312042,
+            "frontCenterThicknessMM": 43.45632693730295,
+            "topCenterMinusCornerMM": 2.2141337394714355
+          }
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_folded2",
+        "vertices": 2940,
+        "triangles": 5872,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1840,
+        "uvDegenerateGeometricAreaPercent": 13.454048181017873,
+        "nearVerticalSideTriangles": 368,
+        "nearVerticalUVdegenerateTriangles": 368,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -0.41999998688697815,
+            -0.04749999940395355,
+            -0.27000001072883606
+          ],
+          [
+            0.41999998688697815,
+            0.04749999940395355,
+            0.27000001072883606
+          ]
+        ],
+        "leaves": [
+          {
+            "leaf": 0,
+            "topHeightRangeMM": 3.1481050682486966,
+            "frontCenterThicknessMM": 43.53291844017804,
+            "topCenterMinusCornerMM": 0.40941202314570546
+          },
+          {
+            "leaf": 1,
+            "topHeightRangeMM": 3.1481049954891205,
+            "frontCenterThicknessMM": 43.53291750885546,
+            "topCenterMinusCornerMM": 0.4094131290912628
+          }
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_folded3",
+        "vertices": 2940,
+        "triangles": 5872,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1840,
+        "uvDegenerateGeometricAreaPercent": 13.434969545678387,
+        "nearVerticalSideTriangles": 368,
+        "nearVerticalUVdegenerateTriangles": 368,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -0.41999998688697815,
+            -0.04749999940395355,
+            -0.27000001072883606
+          ],
+          [
+            0.41999998688697815,
+            0.04749999940395355,
+            0.27000001072883606
+          ]
+        ],
+        "leaves": [
+          {
+            "leaf": 0,
+            "topHeightRangeMM": 3.340007271617651,
+            "frontCenterThicknessMM": 43.45527000259608,
+            "topCenterMinusCornerMM": 0.6158854812383652
+          },
+          {
+            "leaf": 1,
+            "topHeightRangeMM": 3.340005874633789,
+            "frontCenterThicknessMM": 43.455267790704966,
+            "topCenterMinusCornerMM": 0.6158836185932159
+          }
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_topcover",
+        "vertices": 598,
+        "triangles": 776,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 104,
+        "uvDegenerateGeometricAreaPercent": 3.8159143309362755,
+        "nearVerticalSideTriangles": 56,
+        "nearVerticalUVdegenerateTriangles": 56,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            0.47999998927116394,
+            1.0459694862365723,
+            -2.2907421588897705
+          ],
+          [
+            1.4199999570846558,
+            1.1284500360488892,
+            -1.66933274269104
+          ]
+        ]
+      },
+      {
+        "name": "pastoral_house_felt_mattress",
+        "vertices": 2178,
+        "triangles": 4352,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 256,
+        "uvDegenerateGeometricAreaPercent": 3.670428730838014,
+        "nearVerticalSideTriangles": 256,
+        "nearVerticalUVdegenerateTriangles": 256,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -1.190000057220459,
+            -0.06499999761581421,
+            -0.8500000238418579
+          ],
+          [
+            1.190000057220459,
+            0.06499999761581421,
+            0.8500000238418579
+          ]
+        ]
+      }
+    ],
+    "web/public/assets/v2/house-textiles62/geometry.glb": [
+      {
+        "name": "pastoral_house_bed_foot",
+        "vertices": 3091,
+        "triangles": 5600,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1728,
+        "uvDegenerateGeometricAreaPercent": 1.3937938158115226,
+        "nearVerticalSideTriangles": 916,
+        "nearVerticalUVdegenerateTriangles": 628,
+        "nearVerticalUVdegenerateAreaPercent": 33.3191504161149,
+        "localBounds": [
+          [
+            -3.2149999141693115,
+            0.50469970703125,
+            -0.6899999976158142
+          ],
+          [
+            -0.7850000262260437,
+            0.6169419288635254,
+            -0.23000000417232513
+          ]
+        ]
+      },
+      {
+        "name": "pastoral_house_bed_quilt",
+        "vertices": 7251,
+        "triangles": 13664,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 2496,
+        "uvDegenerateGeometricAreaPercent": 0.6597014597452439,
+        "nearVerticalSideTriangles": 416,
+        "nearVerticalUVdegenerateTriangles": 0,
+        "nearVerticalUVdegenerateAreaPercent": 0.0,
+        "localBounds": [
+          [
+            -3.200000047683716,
+            0.49599963426589966,
+            -1.9550000429153442
+          ],
+          [
+            -0.800000011920929,
+            0.6114250421524048,
+            -0.2849999666213989
+          ]
+        ]
+      },
+      {
+        "name": "pastoral_house_bench_felt",
+        "vertices": 3147,
+        "triangles": 5744,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1632,
+        "uvDegenerateGeometricAreaPercent": 1.0460563281915776,
+        "nearVerticalSideTriangles": 628,
+        "nearVerticalUVdegenerateTriangles": 356,
+        "nearVerticalUVdegenerateAreaPercent": 7.814084470657563,
+        "localBounds": [
+          [
+            -2.799999952316284,
+            0.4399856925010681,
+            1.8550000190734863
+          ],
+          [
+            -1.399999976158142,
+            0.517715334892273,
+            2.305000066757202
+          ]
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_folded0",
+        "vertices": 2940,
+        "triangles": 5872,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1840,
+        "uvDegenerateGeometricAreaPercent": 13.433792700671399,
+        "nearVerticalSideTriangles": 368,
+        "nearVerticalUVdegenerateTriangles": 368,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -0.42000001668930054,
+            -0.05930006504058838,
+            -0.26999998092651367
+          ],
+          [
+            0.42000001668930054,
+            0.03569996356964111,
+            0.26999998092651367
+          ]
+        ],
+        "leaves": [
+          {
+            "leaf": 0,
+            "topHeightRangeMM": 3.3144354820251465,
+            "frontCenterThicknessMM": 43.450355529785156,
+            "topCenterMinusCornerMM": 0.39523839950561523
+          },
+          {
+            "leaf": 1,
+            "topHeightRangeMM": 3.314495086669922,
+            "frontCenterThicknessMM": 43.450355529785156,
+            "topCenterMinusCornerMM": 0.39523839950561523
+          }
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_folded1",
+        "vertices": 2940,
+        "triangles": 5872,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1840,
+        "uvDegenerateGeometricAreaPercent": 13.435225977680835,
+        "nearVerticalSideTriangles": 368,
+        "nearVerticalUVdegenerateTriangles": 368,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -0.41999995708465576,
+            -0.0691990852355957,
+            -0.26999998092651367
+          ],
+          [
+            0.41999995708465576,
+            0.02580094337463379,
+            0.26999998092651367
+          ]
+        ],
+        "leaves": [
+          {
+            "leaf": 0,
+            "topHeightRangeMM": 3.0021071434020996,
+            "frontCenterThicknessMM": 43.456315994262695,
+            "topCenterMinusCornerMM": 2.2141337394714355
+          },
+          {
+            "leaf": 1,
+            "topHeightRangeMM": 3.0021071434020996,
+            "frontCenterThicknessMM": 43.456315994262695,
+            "topCenterMinusCornerMM": 2.2141337394714355
+          }
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_folded2",
+        "vertices": 2940,
+        "triangles": 5872,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1840,
+        "uvDegenerateGeometricAreaPercent": 13.454048806329807,
+        "nearVerticalSideTriangles": 368,
+        "nearVerticalUVdegenerateTriangles": 368,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -0.42000001668930054,
+            -0.0789957046508789,
+            -0.26999998092651367
+          ],
+          [
+            0.42000001668930054,
+            0.016004323959350586,
+            0.26999998092651367
+          ]
+        ],
+        "leaves": [
+          {
+            "leaf": 0,
+            "topHeightRangeMM": 3.1480789184570312,
+            "frontCenterThicknessMM": 43.53290796279907,
+            "topCenterMinusCornerMM": 0.4094243049621582
+          },
+          {
+            "leaf": 1,
+            "topHeightRangeMM": 3.1481385231018066,
+            "frontCenterThicknessMM": 43.53290796279907,
+            "topCenterMinusCornerMM": 0.4094243049621582
+          }
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_folded3",
+        "vertices": 2940,
+        "triangles": 5872,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1840,
+        "uvDegenerateGeometricAreaPercent": 13.43496717351116,
+        "nearVerticalSideTriangles": 368,
+        "nearVerticalUVdegenerateTriangles": 368,
+        "nearVerticalUVdegenerateAreaPercent": 100.0,
+        "localBounds": [
+          [
+            -0.41999995708465576,
+            -0.08959341049194336,
+            -0.26999998092651367
+          ],
+          [
+            0.41999995708465576,
+            0.005406618118286133,
+            0.26999998092651367
+          ]
+        ],
+        "leaves": [
+          {
+            "leaf": 0,
+            "topHeightRangeMM": 3.340005874633789,
+            "frontCenterThicknessMM": 43.455302715301514,
+            "topCenterMinusCornerMM": 0.6158351898193359
+          },
+          {
+            "leaf": 1,
+            "topHeightRangeMM": 3.340005874633789,
+            "frontCenterThicknessMM": 43.45524311065674,
+            "topCenterMinusCornerMM": 0.6158351898193359
+          }
+        ]
+      },
+      {
+        "name": "pastoral_house_chest_topcover",
+        "vertices": 2103,
+        "triangles": 3800,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 1200,
+        "uvDegenerateGeometricAreaPercent": 1.1379451428783136,
+        "nearVerticalSideTriangles": 200,
+        "nearVerticalUVdegenerateTriangles": 0,
+        "nearVerticalUVdegenerateAreaPercent": 0.0,
+        "localBounds": [
+          [
+            0.47999998927116394,
+            1.0110995769500732,
+            -2.2899999618530273
+          ],
+          [
+            1.4199999570846558,
+            1.0469584465026855,
+            -1.6699999570846558
+          ]
+        ]
+      },
+      {
+        "name": "pastoral_house_felt_mattress",
+        "vertices": 4971,
+        "triangles": 9264,
+        "zeroGeometricAreaTriangles": 0,
+        "uvDegenerateTriangles": 2016,
+        "uvDegenerateGeometricAreaPercent": 0.42280964431120893,
+        "nearVerticalSideTriangles": 336,
+        "nearVerticalUVdegenerateTriangles": 0,
+        "nearVerticalUVdegenerateAreaPercent": 0.0,
+        "localBounds": [
+          [
+            -1.190000057220459,
+            -0.04899999499320984,
+            -0.8500000238418579
+          ],
+          [
+            1.190000057220459,
+            0.06400001049041748,
+            0.8499999046325684
+          ]
+        ]
+      }
+    ]
+  },
+  "sourceMaterialMaps": [
+    {
+      "name": "v2_pastoral_blue",
+      "normalScale": 0.47999998927116394,
+      "metallicFactor": 0,
+      "extensions": {},
+      "maps": {
+        "normal": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            0.4588235294117647,
+            0.4549019607843137,
+            0.996078431372549
+          ],
+          "channelMax": [
+            0.5411764705882353,
+            0.5450980392156862,
+            1.0
+          ],
+          "channelMean": [
+            0.499994928696575,
+            0.5000075545965637,
+            0.9987333559525102
+          ]
+        },
+        "metallicRoughness": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            1.0,
+            0.9176470588235294,
+            1.0
+          ],
+          "channelMax": [
+            1.0,
+            0.984313725490196,
+            1.0
+          ],
+          "channelMean": [
+            1.0,
+            0.9499994315382063,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "name": "v2_pastoral_red",
+      "normalScale": 0.47999998927116394,
+      "metallicFactor": 0,
+      "extensions": {},
+      "maps": {
+        "normal": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            0.4588235294117647,
+            0.4549019607843137,
+            0.996078431372549
+          ],
+          "channelMax": [
+            0.5411764705882353,
+            0.5411764705882353,
+            1.0
+          ],
+          "channelMean": [
+            0.49999784581801565,
+            0.5000004487879104,
+            0.998732652851446
+          ]
+        },
+        "metallicRoughness": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            1.0,
+            0.9176470588235294,
+            1.0
+          ],
+          "channelMax": [
+            1.0,
+            0.984313725490196,
+            1.0
+          ],
+          "channelMean": [
+            1.0,
+            0.949998788275703,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "name": "v2_pastoral_wool",
+      "normalScale": 0.5199999809265137,
+      "metallicFactor": 0,
+      "extensions": {},
+      "maps": {
+        "normal": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            0.4549019607843137,
+            0.45098039215686275,
+            0.996078431372549
+          ],
+          "channelMax": [
+            0.5450980392156862,
+            0.5490196078431373,
+            1.0
+          ],
+          "channelMean": [
+            0.4999974718280817,
+            0.5000018699496456,
+            0.9987330567605681
+          ]
+        },
+        "metallicRoughness": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            1.0,
+            0.9411764705882353,
+            1.0
+          ],
+          "channelMax": [
+            1.0,
+            0.984313725490196,
+            1.0
+          ],
+          "channelMean": [
+            1.0,
+            0.9698554394323194,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "name": "v2_pastoral_gold",
+      "normalScale": 0.47999998927116394,
+      "metallicFactor": 0,
+      "extensions": {},
+      "maps": {
+        "normal": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            0.4588235294117647,
+            0.4588235294117647,
+            0.996078431372549
+          ],
+          "channelMax": [
+            0.5411764705882353,
+            0.5411764705882353,
+            1.0
+          ],
+          "channelMean": [
+            0.50000430836397,
+            0.4999981599695777,
+            0.9987291074269292
+          ]
+        },
+        "metallicRoughness": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            1.0,
+            0.9098039215686274,
+            1.0
+          ],
+          "channelMax": [
+            1.0,
+            0.9764705882352941,
+            1.0
+          ],
+          "channelMean": [
+            1.0,
+            0.9399976842543958,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "name": "v2_pastoral_linen",
+      "normalScale": 0.47999998927116394,
+      "metallicFactor": 0,
+      "extensions": {},
+      "maps": {
+        "normal": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            0.4588235294117647,
+            0.4549019607843137,
+            0.996078431372549
+          ],
+          "channelMax": [
+            0.5411764705882353,
+            0.5450980392156862,
+            1.0
+          ],
+          "channelMean": [
+            0.4999995512120873,
+            0.49999824972714774,
+            0.9987360038012002
+          ]
+        },
+        "metallicRoughness": {
+          "dimensions": [
+            512,
+            512,
+            3
+          ],
+          "channelMin": [
+            1.0,
+            0.9098039215686274,
+            1.0
+          ],
+          "channelMax": [
+            1.0,
+            0.9725490196078431,
+            1.0
+          ],
+          "channelMean": [
+            1.0,
+            0.9399969661936767,
+            1.0
+          ]
+        }
+      }
+    }
+  ]
+}

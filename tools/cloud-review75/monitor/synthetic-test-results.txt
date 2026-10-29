@@ -1,0 +1,28 @@
+test_bad_url_never_creates_profile_or_reaches_executable (test_native_owned_monitor.MinimalLauncherTests.test_bad_url_never_creates_profile_or_reaches_executable) ... ok
+test_reused_symlink_and_dotdot_paths_are_rejected (test_native_owned_monitor.MinimalLauncherTests.test_reused_symlink_and_dotdot_paths_are_rejected) ... ok
+test_valid_loopback_keeps_exact_minimal_flags (test_native_owned_monitor.MinimalLauncherTests.test_valid_loopback_keeps_exact_minimal_flags) ... ok
+test_group_and_detached_observed_descendant (test_native_owned_monitor.OwnershipTests.test_group_and_detached_observed_descendant) ... ok
+test_pidfd_mismatch_never_signals (test_native_owned_monitor.OwnershipTests.test_pidfd_mismatch_never_signals) ... ok
+test_reused_group_no_anchor_not_adopted (test_native_owned_monitor.OwnershipTests.test_reused_group_no_anchor_not_adopted) ... ok
+test_revalidation_failure_fail_closed (test_native_owned_monitor.OwnershipTests.test_revalidation_failure_fail_closed) ... ok
+test_wrong_uid_and_older_birth_not_adopted (test_native_owned_monitor.OwnershipTests.test_wrong_uid_and_older_birth_not_adopted) ... ok
+test_zombie_root_can_anchor_unreaped_group (test_native_owned_monitor.OwnershipTests.test_zombie_root_can_anchor_unreaped_group) ... ok
+test_cmdline_raw_nul_and_flattened (test_native_owned_monitor.ParsingTests.test_cmdline_raw_nul_and_flattened) ... ok
+test_exact_browser_flags (test_native_owned_monitor.ParsingTests.test_exact_browser_flags) ... ok
+test_fresh_path_no_reuse (test_native_owned_monitor.ParsingTests.test_fresh_path_no_reuse) ... ok
+test_full_world_cpu_compositing_adds_only_one_flag (test_native_owned_monitor.ParsingTests.test_full_world_cpu_compositing_adds_only_one_flag) ... ok
+test_full_world_cpu_compositing_parser_is_explicit_opt_in (test_native_owned_monitor.ParsingTests.test_full_world_cpu_compositing_parser_is_explicit_opt_in) ... ok
+test_loopback (test_native_owned_monitor.ParsingTests.test_loopback) ... ok
+test_memory_units (test_native_owned_monitor.ParsingTests.test_memory_units) ... ok
+test_roots_are_checkout_relative_or_tmp (test_native_owned_monitor.ParsingTests.test_roots_are_checkout_relative_or_tmp) ... ok
+test_stat_rejects_short (test_native_owned_monitor.ParsingTests.test_stat_rejects_short) ... ok
+test_stat_tricky_comm (test_native_owned_monitor.ParsingTests.test_stat_tricky_comm) ... ok
+test_window (test_native_owned_monitor.ParsingTests.test_window) ... ok
+test_cancel_escalates_term_ignoring_child (test_native_owned_monitor.SyntheticProcessTests.test_cancel_escalates_term_ignoring_child) ... ok
+test_deadline (test_native_owned_monitor.SyntheticProcessTests.test_deadline) ... ok
+test_rss_cap_cleans_only_owned_tree (test_native_owned_monitor.SyntheticProcessTests.test_rss_cap_cleans_only_owned_tree) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 2.861s
+
+OK

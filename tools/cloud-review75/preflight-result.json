@@ -1,0 +1,29 @@
+{
+  "observedUTC": "2026-10-29T05:43:41Z",
+  "scope": "Native cloud Chromium isolated SwANGLE preflight, not world or performance acceptance",
+  "launchArguments": ["--user-data-dir=<new-task-owned-profile>", "--use-gl=angle", "--use-angle=swiftshader", "--new-window", "<loopback-http-preflight-url>"],
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+  "webgl2": true,
+  "events": [],
+  "vendor": "WebKit",
+  "renderer": "WebKit WebGL",
+  "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+  "unmaskedVendor": "Google Inc. (Google)",
+  "unmaskedRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "viewportAtScriptStart": {"innerWidth":1042,"innerHeight":825,"devicePixelRatio":1},
+  "drawingBuffer": {"width":1280,"height":800},
+  "contextAttributes": {"alpha":false,"antialias":false,"depth":true,"desynchronized":false,"failIfMajorPerformanceCaveat":false,"powerPreference":"high-performance","premultipliedAlpha":true,"preserveDrawingBuffer":false,"stencil":false,"xrCompatible":false},
+  "extensions": {"clipControl":true,"colorBufferFloat":true,"floatBlend":true,"timerQuery":true,"parallelShaderCompile":false,"loseContext":true},
+  "limits": {"maxTextureSize":8192,"maxRenderbufferSize":8192,"maxSamples":4,"maxTextureImageUnits":32,"maxCombinedTextureImageUnits":64,"maxVertexTextureImageUnits":32,"maxDrawBuffers":8,"maxColorAttachments":8},
+  "msaa": {"rgba16fSamples":[4],"depth32fSamples":[4]},
+  "floatFramebuffer": {"status":36053,"complete":true},
+  "clearReadback": [32,64,128,255],
+  "glError":0,
+  "contextLost":false,
+  "limitations": [
+    "Preflight creates one simple context, float framebuffer and clear/readback only.",
+    "No world scene, shader workload, loading ABBA, GI acceptance or shadow acceptance attempted.",
+    "The launcher does not change sandbox switches; an independent sandbox-layer status audit was not performed.",
+    "No unsafe SwiftShader fallback, GPU blocklist override, remote debugging, or watchdog-disabling flag was used."
+  ]
+}
