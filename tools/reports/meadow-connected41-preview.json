@@ -1,0 +1,75 @@
+{
+  "scope": "Actual DEM community and landform sampled at2m over384m; pigment only, no lighting, no perspective, not browser acceptance",
+  "panels": [
+    {
+      "id": "meadow",
+      "pattern": "v24",
+      "path": "tools/reports/meadow41-meadow-v24.rgb",
+      "size": 192,
+      "metres": 384
+    },
+    {
+      "id": "meadow",
+      "pattern": "v41",
+      "path": "tools/reports/meadow41-meadow-v41.rgb",
+      "size": 192,
+      "metres": 384
+    },
+    {
+      "id": "west",
+      "pattern": "v24",
+      "path": "tools/reports/meadow41-west-v24.rgb",
+      "size": 192,
+      "metres": 384
+    },
+    {
+      "id": "west",
+      "pattern": "v41",
+      "path": "tools/reports/meadow41-west-v41.rgb",
+      "size": 192,
+      "metres": 384
+    }
+  ],
+  "report": [
+    {
+      "id": "meadow",
+      "pattern": "v24",
+      "mean": 0.4776589015765069,
+      "sd": 0.2218020171066949,
+      "twoMetreMAD": 0.02062494431148577,
+      "components": 23,
+      "smallComponents": 8,
+      "largestAreaSquareMetres": 29736
+    },
+    {
+      "id": "meadow",
+      "pattern": "v41",
+      "mean": 0.5034563083011635,
+      "sd": 0.2209473324694086,
+      "twoMetreMAD": 0.02538942777943901,
+      "components": 19,
+      "smallComponents": 4,
+      "largestAreaSquareMetres": 35652
+    },
+    {
+      "id": "west",
+      "pattern": "v24",
+      "mean": 0.49621154772407317,
+      "sd": 0.23730860724124042,
+      "twoMetreMAD": 0.021421923595603593,
+      "components": 15,
+      "smallComponents": 4,
+      "largestAreaSquareMetres": 28764
+    },
+    {
+      "id": "west",
+      "pattern": "v41",
+      "mean": 0.49426943546351104,
+      "sd": 0.25189279822256844,
+      "twoMetreMAD": 0.024674274989331144,
+      "components": 14,
+      "smallComponents": 2,
+      "largestAreaSquareMetres": 57832
+    }
+  ]
+}

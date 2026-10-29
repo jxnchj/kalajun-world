@@ -36,7 +36,7 @@ function view(objects, name) {
 // temporary attachment to the scene. Kickoffs are synchronous so the caller
 // can overlap this promise with colour compilation while restoring its HDR
 // target immediately, just like compileVisibleWorld.
-export function compileShadowWorld(renderer, scene, camera, { shadowDepth, lights = [] } = {}) {
+export function compileShadowWorld(renderer, scene, camera, { shadowDepth, lights = [], prepareDepthMaterial, projectedSpots = false } = {}) {
   const input = view([], "world-shadow-precompile-selection");
   const stats = input.userData.compileShadowSelection = { objects: 0, variants: 0, skippedUnsupported: 0, reason: "prepared" };
   const skip = reason => {
@@ -52,7 +52,7 @@ export function compileShadowWorld(renderer, scene, camera, { shadowDepth, light
   // owns a short target binding scope and restores it before awaiting.
   const target = renderer.getRenderTarget?.();
   if (!target || target.isXRRenderTarget === true) return skip("requires-offscreen-shadow-compile-target");
-  if (!lights.length || lights.some(light => !light.isDirectionalLight)) return skip("requires-directional-shadow-lights");
+  if (!lights.length || lights.some(light => !light.isDirectionalLight && !(projectedSpots && light.isSpotLight && !light.map))) return skip("requires-directional-shadow-lights");
   // Public compile does not enter Three's private clipping.beginShadows(). Do
   // not guess a different clipping variant on a path this world does not use.
   if (renderer.localClippingEnabled || renderer.clippingPlanes?.length) return skip("unsupported-shadow-clipping");
@@ -60,7 +60,7 @@ export function compileShadowWorld(renderer, scene, camera, { shadowDepth, light
   shadowDepth.prepare();
   const visibleLights = new Set(); scene.traverseVisible(object => { if (object.isLight) visibleLights.add(object); });
   const activeLights = lights.filter(light => visibleLights.has(light) && light.layers.test(camera.layers) && light.castShadow);
-  if (!activeLights.length) return skip("no-active-directional-shadows");
+  if (!activeLights.length) return skip("no-active-projected-shadows");
   const frustums = activeLights.map(light => { light.shadow.updateMatrices(light, camera); return light.shadow.getFrustum(); });
   const batches = [], byDepth = new Map();
   scene.traverseVisible(object => {
@@ -70,7 +70,7 @@ export function compileShadowWorld(renderer, scene, camera, { shadowDepth, light
     const depth = object.customDepthMaterial;
     if (!depth?.isMeshDepthMaterial || depth.transparent) { stats.skippedUnsupported++; return; }
     stats.objects++;
-    let variants = byDepth.get(depth); if (!variants) { variants = []; byDepth.set(depth, variants); }
+    let variants = byDepth.get(depth); if (!variants) { prepareDepthMaterial?.(depth); variants = []; byDepth.set(depth, variants); }
     for (const material of materials) {
       const state = shadowDepthState(material);
       // Query the real owner before creating compile proxies. Never replay a

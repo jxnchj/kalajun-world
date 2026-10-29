@@ -1,0 +1,10 @@
+import * as T from 'three';
+// This maps solar visibility on ONE explicit receiver surface. Per-sample depth
+// makes overlapping opaque casters a Boolean union before the color resolve.
+export function coverageUnion41(receiverDepth,casters){let covered=0;for(let i=0;i<receiverDepth.length;i++)if(casters.some(depth=>depth[i]<receiverDepth[i]))covered++;return 1-covered/receiverDepth.length;}
+export function installGroundCoverage41(material,{texture,matrix,enabled}){
+ const previous=material.onBeforeCompile,key=material.customProgramCacheKey();material.onBeforeCompile=(shader,renderer)=>{previous.call(material,shader,renderer);Object.assign(shader.uniforms,{uGroundCoverage41:texture,uGroundCoverageMatrix41:matrix,uGroundCoverageEnabled41:enabled});shader.vertexShader='uniform mat4 uGroundCoverageMatrix41; varying vec4 vGroundCoverage41;\n'+shader.vertexShader;shader.vertexShader=shader.vertexShader.replace('#include <project_vertex>','#include <project_vertex>\nvGroundCoverage41=uGroundCoverageMatrix41*modelMatrix*vec4(transformed,1.);');
+ const chunk=T.ShaderChunk.lights_fragment_begin,needle='getDirectionalLightInfo( directionalLight, directLight );';if(!chunk.includes(needle))throw Error('Three directional lighting contract changed');const replacement=needle+`
+if(uGroundCoverageEnabled41>.5){vec3 p=vGroundCoverage41.xyz/vGroundCoverage41.w;bool inside=p.x>=0.&&p.x<=1.&&p.y>=0.&&p.y<=1.;if(inside)directLight.color*=texture2D(uGroundCoverage41,p.xy).r;}`;shader.fragmentShader='uniform sampler2D uGroundCoverage41; uniform float uGroundCoverageEnabled41; varying vec4 vGroundCoverage41;\n'+shader.fragmentShader.replace('#include <lights_fragment_begin>',chunk.replace(needle,replacement));};material.customProgramCacheKey=()=>key+'-explicit-ground-coverage41';return material;
+}
+export function createCoverageTarget41(size,samples){return new T.WebGLRenderTarget(size,size,{samples,depthBuffer:true,stencilBuffer:false,minFilter:T.LinearFilter,magFilter:T.LinearFilter,generateMipmaps:false,type:T.UnsignedByteType,colorSpace:T.NoColorSpace});}

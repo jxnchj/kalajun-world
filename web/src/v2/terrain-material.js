@@ -1,3 +1,5 @@
+import {installReachFacies44} from './reach-facies44.js';
+import {installReachSurface41,reachSurface41Enabled} from './forest-reach-surface41.js';
 import { TERRAIN_GRASS_PROJECTION, TERRAIN_GRASS_PROJECTION_GLSL } from './terrain-grass-projection.js';
 import * as THREE from "three";
 import { forestScanMean, FOREST_SCAN_GLSL } from "./terrain-forest-scan.js";
@@ -594,31 +596,33 @@ terrainGradient *= 1.0 - smoothstep(0.25, 1.7, terrainFootprint);
 export function createTerrainMaterial() {
   const textures = makeTextures();
   const referenceUniforms={terrainReferencesReady:{value:0},terrainScanColors:{value:null},terrainScanNormals:{value:null},terrainScanMean:{value:[new THREE.Vector3(),new THREE.Vector3()]}};
+  const reachScan=reachSurface41Enabled();
   const loadReferences=async()=>{
     // Arrays preserve each original 1K image and its independent mip borders.
     // Two fragment samplers leave room for all 3 portal + 3 CSM shadow maps
     // on WebGL2's guaranteed 16-unit fragment limit. No atlas-edge bleed.
     const loader=new THREE.ImageLoader();
-    const names=["forest_ground_04_diff","leafy_grass_diff","forest_ground_04_nor_gl","leafy_grass_nor_gl"];
-    const images=await Promise.all(names.map(name=>loader.loadAsync("./assets/v2/ground/"+name+"_1k.jpg")));
+    const colors=["./assets/v2/ground/forest_ground_04_diff_1k.jpg","./assets/v2/ground/leafy_grass_diff_1k.jpg"],normals=["./assets/v2/ground/forest_ground_04_nor_gl_1k.jpg","./assets/v2/ground/leafy_grass_nor_gl_1k.jpg"];
+    if(reachScan){colors.push("./assets/v2/riverbed/river_small_rocks_diff_1k.jpg");normals.push("./assets/v2/riverbed/river_small_rocks_normal_rough_1k.png");}
+    const layers=colors.length,images=await Promise.all([...colors,...normals].map(url=>loader.loadAsync(url)));
     const width=images[0].width,height=images[0].height;
     if(images.some(image=>image.width!==width||image.height!==height))throw new Error("Ground scan layers must share dimensions");
     const canvas=document.createElement("canvas");canvas.width=width;canvas.height=height;
     const context=canvas.getContext("2d",{willReadFrequently:true});
     if(!context)throw new Error("Cannot decode ground surface pixels");
     for(let group=0;group<2;group++){
-      const data=new Uint8Array(width*height*4*2);
-      for(let layer=0;layer<2;layer++){
-        context.clearRect(0,0,width,height);context.drawImage(images[group*2+layer],0,0);
+      const data=new Uint8Array(width*height*4*layers);
+      for(let layer=0;layer<layers;layer++){
+        context.clearRect(0,0,width,height);context.drawImage(images[group*layers+layer],0,0);
         const pixels=context.getImageData(0,0,width,height).data,rowBytes=width*4;
-        if(group===0)referenceUniforms.terrainScanMean.value[layer].fromArray(forestScanMean(pixels));
+        if(group===0&&layer<2)referenceUniforms.terrainScanMean.value[layer].fromArray(forestScanMean(pixels));
         // DataArrayTexture uploads typed rows without TextureLoader's image
         // flip. Keep the original OpenGL normal-map orientation with its colour.
         for(let row=0;row<height;row++) data.set(
           pixels.subarray((height-1-row)*rowBytes,(height-row)*rowBytes),
           layer*width*height*4+row*rowBytes);
       }
-      const texture=new THREE.DataArrayTexture(data,width,height,2);
+      const texture=new THREE.DataArrayTexture(data,width,height,layers);
       texture.name=group?"Forest normal scans":"Forest colour scans";
       texture.colorSpace=group?THREE.NoColorSpace:THREE.SRGBColorSpace;
       texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.minFilter=THREE.LinearMipmapLinearFilter;texture.magFilter=THREE.LinearFilter;
@@ -721,5 +725,7 @@ vec3 terrainPerturbed = normalize(terrainN - terrainGradient + terrainN * dot(te
 normal = normalize(mat3(viewMatrix) * terrainPerturbed);
 `);
   };
+  installReachSurface41(material);
+  if(material.userData.reachSurface41==='root-organic-facies-v5'&&new URLSearchParams(globalThis.location?.search||'').get('reachFacies44')!=='0')installReachFacies44(material,{enabled:true});
   return { material, textures, loadReferences };
 }

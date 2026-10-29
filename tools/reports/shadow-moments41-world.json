@@ -1,0 +1,78 @@
+{
+  "status": "compiled-and-observed; not accepted",
+  "view": "river-forest",
+  "time": 870,
+  "staticPreview": "/dist-v2/moments41/shadow-moments-world41.html",
+  "candidate": {
+    "size": 2048,
+    "samples": 4,
+    "format": "RGBA16F",
+    "windowSize": 512,
+    "windowMeters": 29.939072864729717,
+    "referenceResidualMeters": 9.201889952237252e-07,
+    "referenceCPUms": [
+      20.3,
+      18.5,
+      15.5
+    ],
+    "depthMaterialVariants": 88,
+    "extraCasterPasses": 0,
+    "attachmentBytes": 251658240
+  },
+  "ABBA": {
+    "warmupFramesPerGroup": 150,
+    "samplesEach": 60,
+    "totalMs": [
+      43.76427951666666,
+      46.42306793333332,
+      46.968095800000015,
+      44.46528435
+    ],
+    "mainShadowMs": [
+      10.943768216666664,
+      11.322830066666668,
+      11.4585794,
+      10.768745983333334
+    ],
+    "mainColorMs": [
+      24.741961316666668,
+      25.07639328333333,
+      25.302240483333325,
+      24.83110018333333
+    ],
+    "reflectionColorMs": [
+      6.838985183333334,
+      6.311342183333335,
+      6.578022733333332,
+      7.6696789500000015
+    ],
+    "outputIncludingCandidateResolveMs": [
+      1.2395648,
+      3.7125024,
+      3.6292531833333337,
+      1.1957592333333331
+    ],
+    "callsSnapshot": [
+      2006,
+      2023,
+      2023,
+      2021
+    ],
+    "trianglesSnapshot": [
+      35772057,
+      35811405,
+      35811405,
+      35806617
+    ],
+    "disjoint": 0,
+    "errors": 0
+  },
+  "limitations": [
+    "Independent full world candidate, not production benchmark or adoption",
+    "First baseline and final baseline draw counts differed slightly; no claim of precise speedup",
+    "Terrain visual screenshot inspected inline, not saved image",
+    "Full temporal, near leaf/roof self-shadow resolution, moving window and indoor regression not yet completed",
+    "Candidate remains slower; output resolve adds about 2.4ms",
+    "Reflection zero-update overwrote stats nearCalls; fixed after this capture without changing rendering"
+  ]
+}

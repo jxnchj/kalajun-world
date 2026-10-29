@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-27",
+  "browser": "Chrome real WebGL2, temporary tab 1839973300",
+  "scope": "49 original meadow roots, 245 triangles per source tuft, actual DEM; independent ground-only prototype, NOT integrated world acceptance",
+  "viewport": [
+    1453,
+    814
+  ],
+  "lightTexelMeters": 0.026961972881461706,
+  "target": [
+    600,
+    600
+  ],
+  "samples": 4,
+  "timeStart": 4,
+  "timeStep": 0.016666666666666666,
+  "framesPerMode": 48,
+  "errors": [],
+  "fixedTime4Histogram": {
+    "0": 4334,
+    "64": 2175,
+    "128": 6067,
+    "191": 6767,
+    "255": 340657
+  },
+  "occlusionGPU": {
+    "duplicateCasterDifferenceChannels": 0,
+    "buried100mCasterDifferenceChannels": 0
+  },
+  "temporalSummary": {
+    "one": {
+      "areaMin": 10683,
+      "areaMax": 10747,
+      "areaMean": 10707,
+      "meanFrameDelta": 105.31914893617021,
+      "meanLargeJumps": 105.31914893617021,
+      "meanSquaredDelta": 105.31914893617021,
+      "meanFractionalPixels": 0
+    },
+    "coverage": {
+      "areaMin": 10655.99999999985,
+      "areaMax": 10695.30980392146,
+      "areaMean": 10677.431862744963,
+      "meanFrameDelta": 106.0306216103463,
+      "meanLargeJumps": 0.02127659574468085,
+      "meanSquaredDelta": 27.13700328024387,
+      "meanFractionalPixels": 14966.291666666666
+    }
+  },
+  "limits": [
+    "Metrics compare one-sample receiver mask versus four-sample receiver mask at same light texel pitch, not native PCF framebuffer error.",
+    "GPU timings observed during concurrent main work/readbacks are not performance acceptance.",
+    "Raw rows remain reproducible by runTemporal(); report archives returned summary only.",
+    "Native PCF and coverage screenshots inspected in browser but image-file export was not verified."
+  ]
+}

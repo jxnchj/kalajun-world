@@ -1,3 +1,4 @@
+import {createLegacyTerrainMaterial} from './fixtures/legacy-terrain-material.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
@@ -47,7 +48,7 @@ test('shipped organic GLSL agrees with CPU across wetness, clearance, distance a
  for(const f1 of [0,.2,1])for(const o of [0,.6,1])for(const face of [0,.4,1])near(f.shoreForestSurfaceCover(f1,o,face),shoreForestSurfaceCover(f1,o,face));
 });
 test('one live A/B restores v29 and continuity retains existing scan reads, detail and distance limits',()=>{
- const r=createTerrainMaterial(),m=r.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
+ const r=createLegacyTerrainMaterial(),m=r.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
  try{
   m.onBeforeCompile(s);const f=s.fragmentShader,key=m.customProgramCacheKey(),version=m.version;
   assert.strictEqual(s.uniforms.terrainOrganicContinuity,m.userData.terrainOrganicContinuity);

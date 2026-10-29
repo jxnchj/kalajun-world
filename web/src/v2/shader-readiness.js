@@ -32,6 +32,7 @@ export function compilePreparedWorld(renderer,input,camera,scene,{scheduler=cloc
  }catch(error){stats.status='failed';stats.elapsedMs=scheduler.now()-start;throw error;}
  return new Promise((resolve,reject)=>{
   let timer=null,settled=false,lastProgress=scheduler.now(),recovering=false,texturesMayRun=false;
+  const unreadyRounds=new Map();
   const finish=error=>{
    if(settled)return;settled=true;if(timer!==null){scheduler.clear(timer);timer=null;}
    if(error)textures?.fail();
@@ -41,12 +42,18 @@ export function compilePreparedWorld(renderer,input,camera,scene,{scheduler=cloc
   const verify=(program,stalled)=>{
    if(!program?.program)throw new Error('Shader program was disposed before link verification.');
    if(gl.isContextLost())throw new Error('WebGL context lost during shader preparation.');
-   const at=scheduler.now();let linked;
+   const at=scheduler.now(),noProgressMs=at-lastProgress;let linked;
    try{linked=gl.getProgramParameter(program.program,gl.LINK_STATUS);}
-   finally{const duration=scheduler.now()-at;stats.probes++;stats.stalledProbes+=stalled?1:0;stats.probeTotalMs+=duration;stats.maxProbeMs=Math.max(stats.maxProbeMs,duration);}
+   finally{const duration=scheduler.now()-at;stats.probes++;stats.stalledProbes+=stalled?1:0;stats.probeTotalMs+=duration;stats.maxProbeMs=Math.max(stats.maxProbeMs,duration);
+    if(stalled){
+     const records=stats.stalledPrograms??=[];
+     if(records.length===16){records.shift();stats.stalledProgramsDropped=(stats.stalledProgramsDropped||0)+1;}
+     records.push({id:program.id,name:String(program.name||'unnamed').slice(0,160),noProgressMs,unreadyRounds:unreadyRounds.get(program)||0,linkStatusMs:duration,result:linked===true?'linked':linked===false?'failed':'query-threw'});
+    }
+   }
    if(gl.isContextLost())throw new Error('WebGL context lost during shader link confirmation.');
    if(linked!==true)throw linkFailure(gl,program);
-   programs.delete(program);stats.verifiedPrograms++;lastProgress=scheduler.now();
+   programs.delete(program);unreadyRounds.delete(program);stats.verifiedPrograms++;lastProgress=scheduler.now();
   };
   const check=()=>{
    timer=null;if(settled)return;
@@ -55,6 +62,7 @@ export function compilePreparedWorld(renderer,input,camera,scene,{scheduler=cloc
     for(const program of programs){
      if(!program?.program)throw new Error('Shader program was disposed before link verification.');
      if(program.isReady())verify(program,false);
+     else unreadyRounds.set(program,(unreadyRounds.get(program)||0)+1);
     }
     if(programs.size&&scheduler.now()-lastProgress>=STALL_MS)recovering=true;
     // A stalled extension status is not a failed link. Confirm at most ONE

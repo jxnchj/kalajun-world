@@ -1,0 +1,49 @@
+{
+  "asset": "gravelly_sand",
+  "author": "Dario Barresi",
+  "source": "https://polyhaven.com/a/gravelly_sand",
+  "license": "CC0-1.0",
+  "licenseURL": "https://polyhaven.com/license",
+  "legalcode": "https://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "checked": "2026-10-29",
+  "officialInfoURL": "https://api.polyhaven.com/info/gravelly_sand",
+  "officialDimensionsMillimetres": [
+    2480.0000190734863,
+    2480.0000190734863
+  ],
+  "dimensionEvidence": "Official info read via web tool; direct Python API and CC legalcode.txt returned HTTP403, not bypassed. License identification saved with links. Asset page rounds width to 2.5m.",
+  "metres": 2.4800000190734863,
+  "resolution": [
+    1024,
+    1024
+  ],
+  "sourceFiles": {
+    "gravelly_sand_diff_1k.jpg": {
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravelly_sand/gravelly_sand_diff_1k.jpg",
+      "bytes": 1062525,
+      "sha256": "bc1624594ce807f04eaa023f6f9df93ffefd20904570cd46ca302b954ef80eec"
+    },
+    "gravelly_sand_nor_gl_1k.jpg": {
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravelly_sand/gravelly_sand_nor_gl_1k.jpg",
+      "bytes": 1387739,
+      "sha256": "7ccb08525d46520a6d00262f4f73483b3569cc6cbc2908da069f033290d1c2f8"
+    },
+    "gravelly_sand_rough_1k.jpg": {
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravelly_sand/gravelly_sand_rough_1k.jpg",
+      "bytes": 419895,
+      "sha256": "57188f62c17950f96a5f2b8ce11bc9776e2b5bff8eff5c903402d89553ba3654"
+    }
+  },
+  "runtimeFiles": {
+    "gravelly_sand_diff_1k.jpg": {
+      "bytes": 1062525,
+      "sha256": "bc1624594ce807f04eaa023f6f9df93ffefd20904570cd46ca302b954ef80eec"
+    },
+    "gravelly_sand_normal_rough_1k.png": {
+      "bytes": 3233191,
+      "sha256": "f9cd908654651e9c5523ae44187af0efb4a1d16330af54e9dac53e6b0315f727"
+    }
+  },
+  "packing": "Source decoded OpenGL normal RGB unchanged; decoded roughness red copied to alpha. No artistic colour, normal, roughness, resize or sharpness alteration.",
+  "visualReview": "Original albedo personally inspected against sandy_gravel_02 and local dirt_floor/grass_path_2. Mineral sand/fine grit, sparse small stones and tiny twig debris; no obvious footprints or grass clumps. Photographed material is an analogue, not a Kalajun site sediment scan."
+}

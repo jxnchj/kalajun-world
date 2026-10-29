@@ -1,3 +1,4 @@
+import {NearShadowAtlas40} from './shadow-atlas40.js';
 import {BoardwalkPlantContact39} from './boardwalk-plant-contact39.js';
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -142,7 +143,7 @@ test('actual complete flower assets retain all source IDs and replay on yard rev
 test('actual standard PBR yard hooks compose with world CSM/cloud/aerial hooks and never cast opaque fade shadows',async()=>{
  const {CSM}=await import('three/addons/csm/CSM.js'),{WorldEnvironment}=await import('./environment.js'),{createCloudUniforms}=await import('./cloud-field.js'),{createAerialUniforms}=await import('./aerial-perspective.js');
  const camera=new THREE.PerspectiveCamera(60,1,.1,5000),scene=new THREE.Scene(),csm=new CSM({camera,parent:scene,cascades:3,maxFar:500});
- const paths=new WorldPaths(actual()),material=paths.group.children.find(m=>m.userData.kind==='household-yard').material,environment={csm,camera,clouds:createCloudUniforms(),aerial:createAerialUniforms(new THREE.Vector3(0,1,0)),registered:new Set()};
+ const paths=new WorldPaths(actual()),material=paths.group.children.find(m=>m.userData.kind==='household-yard').material,environment={csm,camera,shadowAtlas40:new NearShadowAtlas40({shadowMap:{}},csm),clouds:createCloudUniforms(),aerial:createAerialUniforms(new THREE.Vector3(0,1,0)),registered:new Set()};
  try{
   WorldEnvironment.prototype.register.call(environment,[material]);const shader={uniforms:THREE.UniformsUtils.clone(THREE.ShaderLib.standard.uniforms),vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};material.onBeforeCompile(shader,{});
   assert.equal(material.defines.USE_CSM,1);assert.equal(material.defines.CSM_CASCADES,3);assert.ok(shader.uniforms.CSM_cascades);assert.ok(shader.uniforms.uWorldCSMView);assert.match(material.customProgramCacheKey(),/yard-wear-35-world-aerial-physical-v3/);
@@ -150,5 +151,5 @@ test('actual standard PBR yard hooks compose with world CSM/cloud/aerial hooks a
   for(const marker of ['coverage*=vYardCoverage','material.multiScatteringCompensation','vCloudWorld','uAerial'])assert.ok(shader.fragmentShader.includes(marker),marker);
   assert.ok(shader.fragmentShader.indexOf('coverage*=vYardCoverage')<shader.fragmentShader.indexOf('if(coverage<=screenNoise)discard'));
   for(const mesh of paths.group.children.filter(m=>m.userData.kind==='household-yard')){assert.equal(mesh.castShadow,false,'ground decoration may receive but must not cast solid silhouettes at discarded edges');assert.equal(mesh.receiveShadow,true);assert.equal(mesh.material.isMeshStandardMaterial,true);}
- }finally{csm.dispose();csm.remove();paths.dispose();}
+ }finally{environment.shadowAtlas40.dispose();csm.dispose();csm.remove();paths.dispose();}
 });

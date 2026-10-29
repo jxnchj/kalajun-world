@@ -1,0 +1,146 @@
+{
+  "condition": "same build Chrome1280x800 DPR1 forest time870; HTTP cache disabled, IndexedDB unchanged; A/B/B/A. B2 duplicate debug=1 has unchanged parameter values. No concurrent heavy jobs.",
+  "rows": [
+    {
+      "name": "a1",
+      "firstMs": 21448.30000001192,
+      "coverMs": 39472.30000001192,
+      "settledMs": 82010.80000001192,
+      "frameMeanMs": 124.20569105691058,
+      "frameP95Ms": 166.70000000000437,
+      "grassRootsMs": 4347.400000035763,
+      "ecologyQueuesMs": 10187.20000000298,
+      "cache": {
+        "enabled": false,
+        "status": "bypass",
+        "reason": "disabled",
+        "ready": false,
+        "tiles": 0,
+        "roots": 0,
+        "hits": 0,
+        "misses": 0,
+        "cachedRoots": 0,
+        "proceduralRoots": 0,
+        "elapsedMs": 0
+      },
+      "workerReady": true,
+      "errors": []
+    },
+    {
+      "name": "b1",
+      "firstMs": 17175.20000000298,
+      "coverMs": 34371.20000000298,
+      "settledMs": 76560.5,
+      "frameMeanMs": 122.04725050916497,
+      "frameP95Ms": 166.59999999999854,
+      "grassRootsMs": 1223.5,
+      "ecologyQueuesMs": 6137.20000000298,
+      "cache": {
+        "enabled": true,
+        "status": "ready",
+        "reason": null,
+        "ready": true,
+        "tiles": 111,
+        "roots": 45402,
+        "hits": 54,
+        "misses": 0,
+        "cachedRoots": 19319,
+        "proceduralRoots": 84,
+        "elapsedMs": 37.20000000298023,
+        "prefetchStartedMs": 1541.7000000029802,
+        "rawBytes": 10363932,
+        "responseBytes": 10363932,
+        "prefetchMs": 6292,
+        "decodeMs": 115.79999999701977
+      },
+      "workerReady": true,
+      "errors": []
+    },
+    {
+      "name": "b2",
+      "firstMs": 17074.19999998808,
+      "coverMs": 29957.59999999404,
+      "settledMs": 66916.29999999702,
+      "frameMeanMs": 101.78947368421053,
+      "frameP95Ms": 141.89999999999418,
+      "grassRootsMs": 1219.0000000149012,
+      "ecologyQueuesMs": 6042.5,
+      "cache": {
+        "enabled": true,
+        "status": "ready",
+        "reason": null,
+        "ready": true,
+        "tiles": 111,
+        "roots": 45402,
+        "hits": 54,
+        "misses": 0,
+        "cachedRoots": 19319,
+        "proceduralRoots": 84,
+        "elapsedMs": 38.79999999701977,
+        "prefetchStartedMs": 1504.5999999940395,
+        "rawBytes": 10363932,
+        "responseBytes": 10363932,
+        "prefetchMs": 6280.5999999940395,
+        "decodeMs": 117.3999999910593
+      },
+      "workerReady": true,
+      "errors": []
+    },
+    {
+      "name": "a2",
+      "firstMs": 19932.60000000894,
+      "coverMs": 36427.60000000894,
+      "settledMs": 79434.5,
+      "frameMeanMs": 122.68404907975459,
+      "frameP95Ms": 159.5,
+      "grassRootsMs": 4003.7000000178814,
+      "ecologyQueuesMs": 9109.79999999702,
+      "cache": {
+        "enabled": false,
+        "status": "bypass",
+        "reason": "disabled",
+        "ready": false,
+        "tiles": 0,
+        "roots": 0,
+        "hits": 0,
+        "misses": 0,
+        "cachedRoots": 0,
+        "proceduralRoots": 0,
+        "elapsedMs": 0
+      },
+      "workerReady": true,
+      "errors": []
+    }
+  ],
+  "equivalence": {
+    "tiles": 54,
+    "roots": 19403,
+    "wet": 84,
+    "allTilesEqual": true,
+    "baseEqual": true,
+    "fields": "full root records, near/middle instance matrices, all vertex attributes/index, wet meshes, basal pool",
+    "source": "meadow-cache42-live-source.json",
+    "cached": "meadow-cache42-live-cached.json"
+  },
+  "decision": "Adopted and actual default-entry verified for initial river-forest browser route only. Other entries keep original no-download path; meadowRootCache=0 restores source.",
+  "excluded": "meadow-cache42-cold-invalid used a disabled terrain worker due to a whitelist bug, not comparable; preserved as diagnostic evidence.",
+  "defaultAcceptance": {
+    "firstMs": 17448.80000001192,
+    "settledMs": 78187,
+    "tilesEqual": true,
+    "baseEqual": true,
+    "cacheHits": 54,
+    "errors": [],
+    "tests": "1541/1541 prior to later independent OFF candidate edits",
+    "build": "/tmp/kalajun42-cache-adopt-build.log"
+  },
+  "imageEvidence": {
+    "validDefault": "meadow-cache42-adopted-visual.png",
+    "excludedBlackExports": [
+      "meadow-cache42-live-source.png",
+      "meadow-cache42-live-cached.png",
+      "meadow-cache42-live-adopted.png"
+    ],
+    "reason": "Asynchronous toDataURL after buffer clear; not used for image equality. Full actual buffer digests in corresponding JSON remain valid. New default image rendered and captured synchronously."
+  }
+}

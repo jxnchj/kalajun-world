@@ -1,0 +1,14 @@
+export async function captureRenderCost42(app,{frames=120,name='forest42-render-cost'}={}){
+ const d=app.debug,r=d.renderer,gl=r.getContext(),undo=[],direct={},objects={},driver={},shadow={ms:0,calls:0},intervals=[];let inShadow=0,last=null;const previousHold=d.setReviewHold(false);
+ const add=(map,key,ms)=>{const v=map[key]??={ms:0,calls:0};v.ms+=ms;v.calls++};
+ function wrap(o,k,hook){const f=o[k],desc=Object.getOwnPropertyDescriptor(o,k);if(typeof f!=='function')return;const h=function(...args){return hook.call(this,f,args)};o[k]=h;undo.push(()=>{if(o[k]===h){if(desc)Object.defineProperty(o,k,desc);else delete o[k]}})}
+ try{
+ wrap(r.shadowMap,'render',function(f,args){const t=performance.now();inShadow++;try{return f.apply(this,args)}finally{inShadow--;shadow.ms+=performance.now()-t;shadow.calls++}});
+ wrap(r,'renderBufferDirect',function(f,args){const t=performance.now(),o=args[4],pass=inShadow?'shadow':args[0]===d.camera?'main':'other';if(o&&!objects[o.id]){const parents=[];for(let p=o.parent;p;p=p.parent)parents.push(p.name||p.type);objects[o.id]={name:o.name,type:o.type,parents,geometry:o.geometry?.id,material:args[3]?.name,materialType:args[3]?.type,transparent:args[3]?.transparent,side:args[3]?.side,forceSinglePass:args[3]?.forceSinglePass,position:o.matrixWorld.elements.slice(12,15)}}try{return f.apply(this,args)}finally{add(direct,pass+'|'+o?.id+'|'+(o?.name||o?.type||'unnamed')+'|'+args[3]?.type,performance.now()-t)}});
+ for(const key of ['drawElements','drawElementsInstanced','drawArrays','drawArraysInstanced','bufferData','bufferSubData','getProgramParameter','getShaderParameter','getUniformLocation','useProgram','bindVertexArray','uniformMatrix4fv','uniformMatrix3fv','uniform1f','uniform1i','uniform1fv','uniform2fv','uniform3fv','uniform4fv','texImage2D','texSubImage2D'])wrap(gl,key,function(f,args){const t=performance.now();try{return f.apply(this,args)}finally{add(driver,key,performance.now()-t)}});
+ d.setReviewHold(false);for(let n=0;n<frames;n++){const t=await new Promise(resolve=>requestAnimationFrame(resolve));if(last!==null)intervals.push(t-last);last=t;}
+ }finally{try{for(let n=undo.length-1;n>=0;n--)undo[n]();}finally{d.setReviewHold(previousHold);}}
+ const byPass={};for(const [key,v]of Object.entries(direct)){const p=key.split('|')[0],b=byPass[p]??={ms:0,calls:0};b.ms+=v.ms;b.calls+=v.calls}
+ const snapshot={scope:'Instrumented actual renderBufferDirect and selected GL calls; nested times overlap, not a performance comparison',frames,intervals,shadow,byPass,driver,objects,topDirect:Object.entries(direct).sort((a,b)=>b[1].ms-a[1].ms).slice(0,40),world:app.getSnapshot()};
+ const response=await fetch('/__review38/evidence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,snapshot})});if(!response.ok)throw Error('save '+response.status);return {shadow,byPass,driver,topDirect:snapshot.topDirect.slice(0,12)};
+}

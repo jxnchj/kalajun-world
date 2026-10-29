@@ -9,7 +9,7 @@ export function forestRootCacheEligibility(search,mode){
 }
 export class ForestRootCache{
  constructor(world,{mode='v15',search=globalThis.location?.search||'',fetchImpl=(...args)=>globalThis.fetch(...args),loadCode=()=>import('virtual:forest-root-binding').then(m=>m.default)}={}){
-  this.world=world;this.fetch=fetchImpl;this.loadCode=loadCode;this.reason=forestRootCacheEligibility(search,mode);this.ready=false;this.disposed=false;this.tiles=new Map();
+  this.world=world;this.cache69=Boolean(world.hydrology?.forestReach39?.stats.design69);this.cache73=Boolean(world?.hydrology?.forestReach39?.stats.design73);this.manifestURL=this.cache73?'./data/v2/reach-design73/forest-roots-38.json':this.cache69?'./data/v2/reach-design69/forest-roots-38.json':'./data/v2/forest-roots-38.json';this.fetch=fetchImpl;this.loadCode=loadCode;this.reason=forestRootCacheEligibility(search,mode);this.ready=false;this.disposed=false;this.tiles=new Map();
   this.stats={enabled:!this.reason,ready:false,status:this.reason?'bypass':'pending',reason:this.reason,tiles:0,trees:0,hits:0,outside:0,records:0,responseBytes:0,rawBytes:0,elapsedMs:0};
  }
  async prepare({signal}={}){
@@ -17,7 +17,7 @@ export class ForestRootCache{
   const start=performance.now();
   this.pending=(async()=>{
    if(typeof this.world.getForestRootInputHashes!=='function')throw new Error('World has no exact input binding');
-   const [response,code,inputs]=await Promise.all([this.fetch('./data/v2/forest-roots-38.json',{signal}),this.loadCode(),this.world.getForestRootInputHashes()]);
+   const [response,code,inputs]=await Promise.all([this.fetch(this.manifestURL,{signal}),this.loadCode(),this.world.getForestRootInputHashes()]);
    if(!response.ok)throw new Error('Forest root manifest HTTP '+response.status);
    const manifest=await response.json();
    if(manifest.version!==FOREST_ROOT_BUNDLE_VERSION||manifest.code.signature!==code.signature)throw new Error('Forest root algorithm/source signature changed');

@@ -1,0 +1,123 @@
+{
+  "scope": "Same actual49roots/245face tufts/DEM/wind; 17x17 CPU light-ray DEM reference, local moments per texel, four receiver fetches; isolated evidence only",
+  "referenceMaxResidualMeters": 8.636422156815815e-06,
+  "native": {
+    "areaMean": 43040.77687909779,
+    "meanDelta": 639.8485607008696,
+    "meanSquaredDelta": 117.98063821607069,
+    "meanLargeJumps": 0
+  },
+  "floatOffset0": {
+    "areaMean": 42682.88700982567,
+    "meanDelta": 631.540008343745,
+    "meanSquaredDelta": 68.94760967549432,
+    "meanLargeJumps": 0
+  },
+  "floatOffset16": {
+    "areaMean": 42668.0275327015,
+    "meanDelta": 631.503212348751,
+    "meanSquaredDelta": 68.9481695256338,
+    "meanLargeJumps": 0
+  },
+  "halfScaledOffset16": {
+    "areaMean": 43034.96004904144,
+    "meanDelta": 707.2489778889679,
+    "meanSquaredDelta": 73.02163488675156,
+    "meanLargeJumps": 0
+  },
+  "halfRoofCore": {
+    "valid": 25,
+    "nativeMinMax": [
+      0,
+      0
+    ],
+    "candidateMinMax": [
+      0,
+      0
+    ]
+  },
+  "halfTreeCore": {
+    "valid": 23,
+    "nativeMinMax": [
+      0,
+      0
+    ],
+    "candidateMinMax": [
+      0,
+      0
+    ]
+  },
+  "largeTargetCostFirst": {
+    "candidateTarget": [
+      2048,
+      2048,
+      4,
+      "RGBA16F"
+    ],
+    "nativeTarget": [
+      4096,
+      4096,
+      0,
+      "RGBA8"
+    ],
+    "lightSpanMeters": 110.43624092246715,
+    "ABBA_totalMs": [
+      2.157661566666666,
+      5.868740766666667,
+      5.836099333333334,
+      1.856729583333333
+    ],
+    "resolveCandidateMs": [
+      2.4437759333333338,
+      2.4471322000000004
+    ],
+    "samplesEach": 60,
+    "disjoint": 0,
+    "limitation": "First native comparison still executed unused moment output in depth shader; corrected to truly original depth material for next run. Small scene cannot prove full world throughput."
+  },
+  "attachmentEstimateMiB": {
+    "native4096": 128,
+    "half2048msaa4ColorDepthAndResolved": 240,
+    "incrementIfNativeNearestReplaced": 112,
+    "notAnOsMeasuredVramCounter": true
+  },
+  "WEBGL_multisampled_render_to_texture": false,
+  "next": "Partial color resolve with full native depth retained; same-source edge/detail checks; production integration still off",
+  "partialResolve512": {
+    "nativeDepthMaterial": "original unchanged native custom depth material",
+    "candidateColorResolve": [
+      512,
+      512
+    ],
+    "depthResolve": "full2048",
+    "ABBA_totalMs": [
+      1.979851,
+      4.380056,
+      3.782253,
+      2.016586
+    ],
+    "candidateShadowMs": [
+      1.2362,
+      1.20217
+    ],
+    "candidateResolveMs": [
+      1.50343,
+      1.29855
+    ],
+    "candidateColorMs": [
+      1.64042,
+      1.28153
+    ],
+    "nativeShadowMs": [
+      0.94786,
+      0.96166
+    ],
+    "nativeColorMs": [
+      1.03199,
+      1.05492
+    ],
+    "samplesEach": 60,
+    "disjoint": 0,
+    "scope": "small scene only, not full forest; still slower than native"
+  }
+}

@@ -14,22 +14,27 @@ export function estimateGpuPacketBytes(records){
  const firstExtra=records.findIndex(r=>r.variationKey!==undefined),retained=firstExtra<0?records.length:firstExtra,shared=retained!==records.length;
  return records.length*(288*(shared?13:16)*4+117*12*4)+retained*1440*2*4+(shared?16*1440*2*4+records.length*2:0);
 }
-export function createGpuPacketBuilder({signal,workerFactory,maxInFlight=1}={}){
+export function createGpuPacketBuilder({signal,workerFactory,maxInFlight=1,now=()=>performance.now(),compactWrites=new URLSearchParams(globalThis.location?.search||'').get('needlePacketWrites41')==='1'}={}){
  const factory=workerFactory===undefined?(typeof Worker!=='undefined'?()=>new Worker(new URL('./spruce-gpu-worker.js',import.meta.url),{type:'module'}):null):workerFactory;
- let worker,closed=false,id=0;const active=new Map(),limit=maxInFlight===2?2:1;
+ let worker,closed=false,id=0;const active=new Map(),packetTimings=new WeakMap(),limit=maxInFlight===2?2:1;
  const stop=()=>{if(closed)return;closed=true;worker?.terminate();signal?.removeEventListener('abort',cancel);};
  const fail=error=>{const pending=[...active.values()];active.clear();stop();for(const task of pending)task.reject(error);};
  const cancel=()=>fail(new DOMException('GPU spruce loading aborted','AbortError'));
  if(signal?.aborted)closed=true;else signal?.addEventListener('abort',cancel,{once:true});
- return{async build(records,packing=false){
+ return{compactWrites,getTiming:packet=>packetTimings.get(packet)||null,async build(records,packing=false){
   abort(signal);if(closed)throw new Error('GPU spruce builder closed');if(active.size>=limit)throw new Error('Concurrent GPU spruce build exceeds bounded queue');
-  if(!factory){const p=buildBrushPacket(records);return packing?precomputeBrushPacket(p):p;}
+  if(!factory){const start=now(),p=buildBrushPacket(records,{compactWrites}),generated=now(),result=packing?precomputeBrushPacket(p):p,end=now();packetTimings.set(result,Object.freeze({source:'main',generateMs:generated-start,packingMs:end-generated,roundTripMs:end-start,nonComputeWaitMs:0}));return result;}
   if(!worker){
    try{worker=factory();}catch(error){fail(error);throw error;}
-   worker.onmessage=({data})=>{const task=active.get(data.id);if(!task)return;if(data.error){fail(new Error(data.error));return;}active.delete(data.id);task.resolve(data.packet);};
+   worker.onmessage=({data})=>{const task=active.get(data.id);if(!task)return;if(data.error){fail(new Error(data.error));return;}active.delete(data.id);
+    const roundTripMs=Math.max(0,now()-task.started),t=data.timing;
+    // Durations use each realm's own monotonic clock. Do not subtract worker
+    // timestamps from window timestamps or relabel queue/message wait as CPU.
+    if(t&&Number.isFinite(t.generateMs)&&t.generateMs>=0&&Number.isFinite(t.packingMs)&&t.packingMs>=0)packetTimings.set(data.packet,Object.freeze({source:'worker',generateMs:t.generateMs,packingMs:t.packingMs,roundTripMs,nonComputeWaitMs:Math.max(0,roundTripMs-t.generateMs-t.packingMs)}));
+    task.resolve(data.packet);};
    worker.onerror=e=>fail(new Error(e.message||'GPU spruce worker message failed'));worker.onmessageerror=worker.onerror;
   }
-  return new Promise((resolve,reject)=>{const task={id:id++,resolve,reject};active.set(task.id,task);try{worker.postMessage({id:task.id,records,packing});}catch(error){fail(error);}});
+  return new Promise((resolve,reject)=>{const task={id:id++,resolve,reject,started:now()};active.set(task.id,task);try{worker.postMessage({id:task.id,records,packing,compactWrites});}catch(error){fail(error);}});
  },dispose(){if(active.size)cancel();else stop();}};
 }
 // The worker starts before independent shell tessellation. Keep both results
@@ -112,7 +117,7 @@ export async function loadGpuSpruceRecipe(hi,url='./assets/v2/schrenk-spruce-nee
   }});
   templateMs=performance.now()-preparationStarted;Object.assign(timings,queueStats);
   scene.traverse(o=>{if(o.isMesh){if(!materials.has(o.material)){const m=o.material.clone();m.userData.spruceBranchDetails=branches;materials.set(o.material,m);const association=hi.parser?.associations.get(o.material);if(association)hi.parser.associations.set(m,association);}o.material=materials.get(o.material);}});
-  Object.assign(timings,{preparationMode:overlap?'overlap-worker-shell':'serial-worker-shell',formPreparationMs:templateMs,templateBuildMs:Math.max(0,templateMs-setupMs),geometrySetupMs:setupMs,parameterPackingMs:packets.reduce((n,p)=>n+(p.packingMs||0),0)});onPhase?.('templateBuildMs',timings.templateBuildMs);onPhase?.('geometrySetupMs',setupMs);
+  Object.assign(timings,{packetWritesMode:builder.compactWrites?'direct':'legacy',preparationMode:overlap?'overlap-worker-shell':'serial-worker-shell',formPreparationMs:templateMs,templateBuildMs:Math.max(0,templateMs-setupMs),geometrySetupMs:setupMs,parameterPackingMs:packets.reduce((n,p)=>n+(p.packingMs||0),0)});onPhase?.('templateBuildMs',timings.templateBuildMs);onPhase?.('geometrySetupMs',setupMs);
   return{...hi,scene,scenes:[scene],gpuPackets:packets,userData:{representation:'GPU shared 1596-triangle brush; station/needle/twig parameter tables',recipeRevision:recipe.revision,responseBodyBytes:prepared.transportBytes,recipeJSONBytes:json.length,generatedFrondBytes:0,crown:crown?(volume?'twisted-branch-volume-v13':'curved-open-crown-v1'):'source',branchDetail:branches?(lazyBranches?'lazy-spatial-brushes-v12':'spatial-brushes-v12'):'none',potentialShortSprays:packets.reduce((n,p)=>n+(p.drawGroups||[]).filter(g=>g.extra).reduce((a,g)=>a+g.count,0),0),parameterBytes:packets.reduce((n,p)=>n+p.bytes,0),brushes:packets.reduce((n,p)=>n+p.brushes,0),needles:packets.reduce((n,p)=>n+p.brushes*1440,0),timings,buildMs:performance.now()-started}};
  }catch(e){for(const g of owned)g.dispose();for(const m of materials.values())m.dispose();throw e;}finally{builder.dispose();}
 }

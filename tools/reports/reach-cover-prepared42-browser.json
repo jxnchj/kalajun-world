@@ -1,0 +1,57 @@
+{
+  "scope": "HTTP cache disabled; IndexedDB unchanged; same build/time870/1280x800/DPR1; actual navigation timings; first-frame submitted is not GPU-present timestamp",
+  "rows": [
+    {
+      "run": "b1",
+      "firstFrameMs": 19010.70000000298,
+      "coverReadyMs": 31427.40000000596,
+      "settledMs": 73717.90000000596,
+      "buildWorkMs": 1254.100000038743,
+      "roots": 521,
+      "triangles": 240232,
+      "pending": 0,
+      "q": 0,
+      "m": 0,
+      "errors": []
+    },
+    {
+      "run": "a1",
+      "firstFrameMs": 18913.59999999404,
+      "coverReadyMs": 116282.09999999404,
+      "settledMs": 123386.59999999404,
+      "buildWorkMs": 29855.39999988675,
+      "roots": 521,
+      "triangles": 240232,
+      "pending": 0,
+      "q": 0,
+      "m": 0,
+      "errors": []
+    },
+    {
+      "run": "b2",
+      "firstFrameMs": 18931.69999998808,
+      "coverReadyMs": 31409.69999998808,
+      "settledMs": 75533.89999999106,
+      "buildWorkMs": 1214.2000000178814,
+      "roots": 521,
+      "triangles": 240232,
+      "pending": 0,
+      "q": 0,
+      "m": 0,
+      "errors": []
+    },
+    {
+      "run": "a2",
+      "firstFrameMs": 20817.59999999404,
+      "coverReadyMs": 130714.5,
+      "settledMs": 143570.5,
+      "buildWorkMs": 36063.29999999702,
+      "roots": 521,
+      "triangles": 240232,
+      "pending": 0,
+      "q": 0,
+      "m": 0,
+      "errors": []
+    }
+  ]
+}

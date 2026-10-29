@@ -56,7 +56,7 @@ function snapshot(root){
 for(const [name,x,z] of [['forest-creek',-3611.9813305250705,4805.371282289286],['meadow-route',-2216.832094723869,3361.4050159480757],['central-meadow',0,0],['valley-wet-bank',-140.8,2892]]){
  test('grass early rejection keeps every actual '+name+' root/field/wet leaf byte',()=>{
   // This frozen pre-optimization fixture predates the accepted bank geometry.
-  const original=actualMeadowEcology({forestBankCurvature38:false}),candidate=actualMeadowEcology({forestBankCurvature38:false});original._grassAt=legacyGrassAt;
+  const original=actualMeadowEcology({forestReach39:false,forestBankCurvature38:false}),candidate=actualMeadowEcology({forestReach39:false,forestBankCurvature38:false});original._grassAt=legacyGrassAt;
   const oldCount=instrument(original),newCount=instrument(candidate);let roots=0,wet=0,slots=0;
   try{
    const tx=Math.floor(x/MEADOW.tile),tz=Math.floor(z/MEADOW.tile);

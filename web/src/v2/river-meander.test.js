@@ -55,7 +55,7 @@ test("junction locks and protected terrain cannot be overridden to force a bend"
 });
 function actual(riverMeanders=false,forestBankCurvature38=true){
  const root=new URL("../../public/",import.meta.url),j=n=>JSON.parse(readFileSync(new URL(n,root))),b=n=>new Uint8Array(gunzipSync(readFileSync(new URL(n,root)))),meta=j("data/scene.json"),lc={width:1,data:new Uint8Array([255,128,0,255])};
- return createWorldData({forestBankCurvature38,meta,objects:j("data/objects.json"),detailMeta:j("data/detail.json"),manifest:j("world-v2/manifest.json"),streamData:j("data/streams.json"),coreHeights:decodeHeightBytes(b("data/core_height.bin.gz"),meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(b("data/far_height.bin.gz"),meta.far.n,meta.height_scale),detailBytes:b("data/detail.bin.gz"),coreLandcover:lc,farLandcover:lc,riverMeanders});
+ return createWorldData({forestReach39:false,forestBankCurvature38,meta,objects:j("data/objects.json"),detailMeta:j("data/detail.json"),manifest:j("world-v2/manifest.json"),streamData:j("data/streams.json"),coreHeights:decodeHeightBytes(b("data/core_height.bin.gz"),meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(b("data/far_height.bin.gz"),meta.far.n,meta.height_scale),detailBytes:b("data/detail.bin.gz"),coreLandcover:lc,farLandcover:lc,riverMeanders});
 }
 for(const profile of ["v19","v22"])test(profile+" actual forest bend restores retired bed, occupies new terrain and retains junctions and foundations",t=>{
  // These v19/v22 construction fixtures validate the pre-curvature section.

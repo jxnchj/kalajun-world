@@ -1,0 +1,16 @@
+{
+  "backup": "tools/reports/backups/structure63-1793210669162",
+  "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+  "binBeforeSHA256": "a61c01b5eae22fb4aa6f0a41c898e21f4567f3be4397d40998a798b2142ef2ee",
+  "binAfterSHA256": "a61c01b5eae22fb4aa6f0a41c898e21f4567f3be4397d40998a798b2142ef2ee",
+  "binBytes": 11645696,
+  "rawBeforeBytes": 11712888,
+  "rawAfterBytes": 11712888,
+  "jsonDifferences": [
+    {
+      "path": ".scenes.0.extras.preparedStructure.signature",
+      "before": "f08d673f34aa523cd745838c79ca1e7fce34be8594cbb016f4059e33781e2e35",
+      "after": "a1133eb3048d0eaa8fe86949c6b56830b705b3a41e7fb843f9b7d106ce7d651c"
+    }
+  ]
+}

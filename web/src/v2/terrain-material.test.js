@@ -1,3 +1,4 @@
+import {createLegacyTerrainMaterial} from './fixtures/legacy-terrain-material.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import * as THREE from "three";
@@ -6,7 +7,7 @@ import { createTerrainMaterial, terrainBankExposure, terrainFragmentBedCoverage 
 const dispose=result=>{result.material.dispose();Object.values(result.textures).forEach(texture=>texture.dispose());};
 
 test("forest surface packs needle, humus and moss detail once in a bounded linear texture",()=>{
-  const first=createTerrainMaterial(),second=createTerrainMaterial(),texture=first.textures.packed;
+  const first=createLegacyTerrainMaterial(),second=createLegacyTerrainMaterial(),texture=first.textures.packed;
   assert.deepEqual(Object.keys(first.textures),["packed"]);
   assert.equal(texture.image.width,512);assert.equal(texture.image.height,512);
   assert.equal(texture.image.depth,4);assert.equal(texture.image.data.byteLength,4*1024*1024);
@@ -27,7 +28,7 @@ test("forest surface packs needle, humus and moss detail once in a bounded linea
 });
 
 test("forest ground and meadow canopy use fixed world patches and respect snow and river masks",()=>{
-  const result=createTerrainMaterial();
+  const result=createLegacyTerrainMaterial();
   const shader={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
   result.material.onBeforeCompile(shader);
   assert.equal(shader.uniforms.terrainPackedFields.value,result.textures.packed);
@@ -64,7 +65,7 @@ test("damp living shoulders recover terrain cover without hiding the wet bed or 
   assert.ok(terrainBankExposure(1,0,.05,.1,.1)>.95,"open sediment pockets remain");
   let previous=1;
   for(let p=0;p<=1;p+=.005){const value=terrainBankExposure(1,0,.05,p,p);assert.ok(value<=previous+1e-12);assert.ok(previous-value<.02);previous=value;}
-  const result=createTerrainMaterial(),shader={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
+  const result=createLegacyTerrainMaterial(),shader={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
   result.material.onBeforeCompile(shader);
   assert.match(shader.fragmentShader,/terrainBankLiving=.*terrainRiverBed/);
   assert.match(shader.fragmentShader,/terrainBank\*=1\.-terrainBankLiving\*\.92/);
@@ -84,11 +85,33 @@ test("fragment bank coverage cannot smear riverbed up a dry triangle and keeps i
     assert.equal(terrainFragmentBedCoverage(interpolatedCoverage,clearance,"v24"),interpolatedCoverage);
   }
   assert.ok(rejected>200,"meaningful formerly smeared bed area is removed from elevated ground");
-  const result=createTerrainMaterial(),shader={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
+  const result=createLegacyTerrainMaterial(),shader={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
   result.material.onBeforeCompile(shader);
   assert.match(shader.vertexShader,/attribute vec4 terrainHydrology/);
   assert.match(shader.fragmentShader,/terrainPhysicalBed=vTerrainHydrology.y\*\(1\.-smoothstep\(\.02,\.12,vTerrainHydrology.w\)\)/);
   assert.match(shader.fragmentShader,/shoreZones\(terrainWetness,terrainPhysicalBed,/);
   assert.equal((shader.fragmentShader.match(/uniform (?:highp )?sampler2D(?:Array)? terrain\w+;/g)||[]).length,3,"no new sampler or shore atlas");
   dispose(result);
+});
+
+
+test('adopted reach material adds only two explicit sediment scan reads and preserves bounded full PBR and snow guards',()=>{
+ const previous=globalThis.location,had=Object.hasOwn(globalThis,'location');let result;
+ try{
+  globalThis.location={search:''};result=createTerrainMaterial();
+  const shader={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};result.material.onBeforeCompile(shader);
+  const f=shader.fragmentShader;
+  assert.equal((f.match(/textureGrad\(terrainScan/g)||[]).length,6,'four forest helper reads plus exactly two local sediment reads');
+  assert.equal((f.match(/texture\(terrainScan/g)||[]).length,4,'legacy forest branch still exact');
+  assert.equal((f.match(/uniform (?:highp )?sampler2D(?:Array)? terrain\w+;/g)||[]).length,3,'sediment reuses existing arrays, no sampler added');
+  assert.match(f,/if\(reachBed41>0\.&&terrainReferencesReady>\.5\)/);
+  assert.match(f,/textureGrad\(terrainScanColors,vec3\(scanUV41,2\.\),terrainXZDX\/2\.9,terrainXZDY\/2\.9\)/);
+  assert.match(f,/textureGrad\(terrainScanNormals,vec3\(scanUV41,2\.\),terrainXZDX\/2\.9,terrainXZDY\/2\.9\)/);
+  assert.match(f,/reachDomain41=reachExtent41.*\(1\.-terrainSnow\)/);
+  assert.match(f,/smoothstep\(19\.,22\.,length\(reachLocal41\)\)/,'local reach extent remains bounded');
+  assert.match(f,/terrainLayeredColor=mix\(terrainLayeredColor,reachBedColor41,reachBed41\)/);
+  assert.match(f,/reachGradient41=reachScanSlope41/);
+  assert.match(f,/reachScanRough41=mix\(scanNormalRough41.a,\.94,silt41\)/);
+  assert.equal((f.match(/terrainNoise\(/g)||[]).length,6,'exactly one extra local facies sample');
+ }finally{if(result)dispose(result);if(had)globalThis.location=previous;else delete globalThis.location;}
 });

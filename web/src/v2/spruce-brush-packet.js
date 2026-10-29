@@ -3,29 +3,33 @@ export const BRUSH_LAYOUT=Object.freeze({stations:288,needles:1440,woodVertices:
 const xyz=v=>[v[0],v[2],-v[1]];
 // CPU stores one station frame per FIVE needles and one vertex per shared twig
 // ring. No expanded needle positions, normals, wind or UV arrays are allocated.
-export function buildBrushPacket(records){
+export function buildBrushPacket(records,{compactWrites=false}={}){
  const originalBrushes=records.findIndex(r=>r.variationKey!==undefined),retained=originalBrushes<0?records.length:originalBrushes;
  const frameStride=retained===records.length?16:13,frames=new Float32Array(records.length*288*frameStride),variations=new Float32Array(retained*1440*2),wood=new Float32Array(records.length*117*12);
  const sharedVariations=retained===records.length?null:new Float32Array(16*1440*2),variationKeys=sharedVariations?new Int16Array(records.map(r=>r.variationKey??-1)):null,seenVariations=new Set();
  let topology=null;
  records.forEach((record,brush)=>{
-  let f=0,n=0,w=0;const corners=[];
+  if(compactWrites&&record.variationKey!==undefined&&(!Number.isInteger(record.variationKey)||record.variationKey<0||record.variationKey>=16))throw new RangeError('Invalid shared needle variation key');
+  let f=0,n=0,w=0,cornerCount=0;const corners=!compactWrites||!topology?[]:null;
   generateBrush(record,null,{
    frame(q,t,l,u){let o=(brush*288+f++)*frameStride;
     frames[o++]=q.p[0];frames[o++]=q.p[2];frames[o++]=-q.p[1];frames[o++]=q.ao;
     frames[o++]=t[0];frames[o++]=t[2];frames[o++]=-t[1];frames[o++]=q.w[0];
     frames[o++]=l[0];frames[o++]=l[2];frames[o++]=-l[1];frames[o++]=q.w[1];
     if(frameStride===16){frames[o++]=u[0];frames[o++]=u[2];frames[o++]=-u[1];}frames[o]=q.w[2];},
-   needle(angle,length){const i=n++;if(record.variationKey===undefined)variations.set([angle,length],(brush*1440+i)*2);else if(!seenVariations.has(record.variationKey))sharedVariations.set([angle,length],(record.variationKey*1440+i)*2);},
+   needle(angle,length){const i=n++;
+    if(compactWrites){const target=record.variationKey===undefined?variations:!seenVariations.has(record.variationKey)?sharedVariations:null;if(target){const offset=((record.variationKey===undefined?brush:record.variationKey)*1440+i)*2;target[offset]=angle;target[offset+1]=length;}}
+    else if(record.variationKey===undefined)variations.set([angle,length],(brush*1440+i)*2);else if(!seenVariations.has(record.variationKey))sharedVariations.set([angle,length],(record.variationKey*1440+i)*2);
+   },
    wood(p,normal,wind,ao){let o=(brush*117+w++)*12;
     wood[o++]=p[0];wood[o++]=p[1];wood[o++]=p[2];wood[o++]=ao;
     wood[o++]=normal[0];wood[o++]=normal[1];wood[o++]=normal[2];
     wood[o++]=wind[0];wood[o++]=wind[1];wood[o++]=wind[2];wood[o++]=0;wood[o]=0;},
-   corner(index,uv){corners.push([index,...uv]);}
+   corner(index,uv){if(compactWrites&&uv.length!==2)throw new Error('Spruce twig UV width changed');if(corners)corners.push([index,...uv]);else{const previous=topology[cornerCount];if(!previous||index!==previous[0]||uv[0]!==previous[1]||uv[1]!==previous[2])throw new Error('Spruce twig template is not shared');}cornerCount++;}
   });
   if(record.variationKey!==undefined)seenVariations.add(record.variationKey);
-  if(f!==288||n!==1440||w!==117||corners.length!==468)throw new Error('Spruce compact brush topology changed');
-  if(!topology)topology=corners;else for(let i=0;i<468;i++)if(corners[i].some((v,k)=>v!==topology[i][k]))throw new Error('Spruce twig template is not shared');
+  if(f!==288||n!==1440||w!==117||cornerCount!==468)throw new Error('Spruce compact brush topology changed');
+  if(!topology)topology=corners;else if(corners)for(let i=0;i<468;i++)if(corners[i].some((v,k)=>v!==topology[i][k]))throw new Error('Spruce twig template is not shared');
  });
  return{frames,frameStride,variations,wood,topology,originalBrushes:retained,sharedVariations,variationKeys,brushes:records.length,bytes:frames.byteLength+variations.byteLength+wood.byteLength+(sharedVariations?.byteLength||0)+(variationKeys?.byteLength||0)};
 }

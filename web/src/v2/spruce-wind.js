@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import {TreeWindAtlas44} from './tree-wind-atlas44.js';
 
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const smooth=x=>{x=clamp(x);return x*x*(3-2*x);};
@@ -26,6 +27,47 @@ export function treeRootWind(field,root,time,out=new Float32Array(5)){
   // Match the normalized float32 matrix columns consumed by the previous shader.
   const c=F(Math.cos(root.rot)*root.s),s=F(Math.sin(root.rot)*root.s),len=Math.hypot(c,s);
   out[0]=(dx*c-dz*s)/len;out[1]=(dx*s+dz*c)/len;out[2]=f[0];out[3]=f[1];out[4]=f[2]-.5;return out;
+}
+// Candidate only: exact CPU arithmetic, with stable addresses/rotation and scratch
+// arrays retained per root object. Every input scalar is read again on every call.
+export class TreeRootWindExactReuse42 {
+  constructor(){this.records=new WeakMap();}
+  sample(field,root,time){
+    let r=this.records.get(root);
+    if(!r){r={out:new Float32Array(5),f:new Float32Array(4),distant:new Float64Array(4)};this.records.set(root,r);}
+    const x=F(root.x),z=F(root.z),ox=F(field.origin.x),oz=F(field.origin.y),span=F(field.span),n=field.resolution;
+    if(!r.ready||!Object.is(x,r.x)||!Object.is(z,r.z)||!Object.is(ox,r.ox)||!Object.is(oz,r.oz)||!Object.is(span,r.span)||n!==r.n){
+      Object.assign(r,{x,z,ox,oz,span,n,ready:true});
+      const u=F(F(x-ox)/span),v=F(F(z-oz)/span);
+      r.edge=Math.min(u,v,F(1-u),F(1-v));r.blend=smooth(r.edge/.08);
+      const px=u*n-.5,pz=v*n-.5,ix=Math.floor(px),iz=Math.floor(pz);
+      r.fx=px-ix;r.fz=pz-iz;
+      const x0=clamp(ix,0,n-1),x1=clamp(ix+1,0,n-1),z0=clamp(iz,0,n-1),z1=clamp(iz+1,0,n-1);
+      r.a=(z0*n+x0)*4;r.b=(z0*n+x1)*4;r.c=(z1*n+x0)*4;r.d=(z1*n+x1)*4;
+    }
+    if(!r.rotationReady||!Object.is(root.rot,r.rot)||!Object.is(root.s,r.scale)){
+      r.rot=root.rot;r.scale=root.s;r.rotationReady=true;
+      r.cos=F(Math.cos(root.rot)*root.s);r.sin=F(Math.sin(root.rot)*root.s);r.len=Math.hypot(r.cos,r.sin);
+    }
+    time=F(time);
+    const phase=F(F(F(x*.023)+F(z*.017))-F(time*.4)),distant=r.distant,f=r.f;
+    distant[0]=.38+.12*Math.sin(phase);distant[1]=.38+.12*Math.sin(F(phase+.168));distant[2]=.5+.25*Math.sin(F(phase*.7));distant[3]=.5;
+    if(r.edge<=0)f.set(distant);
+    else {
+      const t=F(field.uniforms.uWindFieldBlend.value),previous=field.previous.image.data,current=field.current.image.data;
+      const {a,b,c,d,fx,fz,blend}=r;
+      for(let k=0;k<4;k++){
+        const lo=((previous[a+k]*(1-fx)+previous[b+k]*fx)*(1-fz)+(previous[c+k]*(1-fx)+previous[d+k]*fx)*fz)/255;
+        const hi=((current[a+k]*(1-fx)+current[b+k]*fx)*(1-fz)+(current[c+k]*(1-fx)+current[d+k]*fx)*fz)/255;
+        f[k]=distant[k]*(1-blend)+(lo*(1-t)+hi*t)*blend;
+      }
+    }
+    const turn=(f[3]-.5)*.5;let dx=.82-.36*turn,dz=.36+.82*turn;
+    const length=Math.hypot(dx,dz);dx/=length;dz/=length;
+    const out=r.out,c=r.cos,s=r.sin,len=r.len;
+    out[0]=(dx*c-dz*s)/len;out[1]=(dx*s+dz*c)/len;out[2]=f[0];out[3]=f[1];out[4]=f[2]-.5;return out;
+  }
+  clear(){this.records=new WeakMap();}
 }
 // Geometry containers share static vertices with their source, and the three
 // mesh parts of a spatial root group also share ONE per-instance force buffer.
@@ -58,11 +100,18 @@ export function disposeTreeWindGeometry(g){
   g.setIndex(null);g.morphAttributes={};g.userData.treeWindReleased=true;g.dispose();
 }
 export class SpruceRootWind {
-  constructor(){
+  constructor({atlas44=false,atlasOptions}={}){
     this.cache=new Map();this.allocations=new Map();this.groups=[];
+    this.atlas44=atlas44?new TreeWindAtlas44(atlasOptions):null;
+    this.exactReuse42=new TreeRootWindExactReuse42();
     this.lastTime=NaN;this.lastRevision=-1;this.lastTreeRevision=-1;
     this.layoutRevision=0;this.lastLayoutRevision=-1;
-    this.stats={roots:0,partInstances:0,bytes:0,batches:0,cpuMs:0};
+    this.stats={roots:0,partInstances:0,bytes:0,batches:0,cpuMs:0,exactReuse42:true};
+  }
+  setExactReuse42(enabled){
+    if(Boolean(this.exactReuse42)===Boolean(enabled))return;
+    this.exactReuse42?.clear();this.exactReuse42=enabled?new TreeRootWindExactReuse42():null;
+    this.lastTime=NaN;this.stats.exactReuse42=Boolean(enabled);
   }
   createGeometry(source,capacity,key){
     let allocation=this.allocations.get(key);
@@ -92,20 +141,21 @@ export class SpruceRootWind {
     const start=performance.now();
     // Membership changes are rare. Validate all part orders then; do not scan the
     // same three prefixes or issue three identical GPU updates on every frame.
-    if(changed)this.groups=this.collectGroups(batches);
+    if(changed){this.groups=this.collectGroups(batches);this.atlas44?.syncLayout(batches,this.groups);}
     this.cache.clear();let partInstances=0,bytes=0,count=0;
     for(const {buffer,records,parts}of this.groups){
       if(!records.length)continue;
       for(let i=0;i<records.length;i++){
         const root=records[i];let force=this.cache.get(root.id);
-        if(!force){force=treeRootWind(field,root,time);this.cache.set(root.id,force);}
+        if(!force){force=this.exactReuse42?this.exactReuse42.sample(field,root,time):treeRootWind(field,root,time);this.cache.set(root.id,force);}
         buffer.array.set(force,i*5);
       }
       buffer.clearUpdateRanges();buffer.addUpdateRange(0,records.length*5);buffer.needsUpdate=true;
       partInstances+=records.length*parts;bytes+=records.length*20;count++;
     }
+    this.atlas44?.publish(this.cache);
     this.lastTime=time;this.lastRevision=field.revisions;this.lastTreeRevision=treeRevision;this.lastLayoutRevision=this.layoutRevision;
     Object.assign(this.stats,{roots:this.cache.size,partInstances,bytes,batches:count,cpuMs:performance.now()-start});return true;
   }
-  dispose(){this.cache.clear();this.groups=[];this.allocations.clear();}
+  dispose(){this.atlas44?.dispose();this.cache.clear();this.groups=[];this.allocations.clear();this.exactReuse42?.clear();this.exactReuse42=null;}
 }

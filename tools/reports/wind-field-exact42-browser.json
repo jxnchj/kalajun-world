@@ -1,0 +1,84 @@
+{
+  "scope": "Actual browser CPU fill microbenchmark on scene-owned grid; no overall FPS claim",
+  "origin": [
+    -384,
+    2688
+  ],
+  "differentBytes": 0,
+  "iterations": 50,
+  "rows": [
+    {
+      "enabled": false,
+      "fillMs": 1.052
+    },
+    {
+      "enabled": true,
+      "fillMs": 0.452
+    },
+    {
+      "enabled": true,
+      "fillMs": 0.442
+    },
+    {
+      "enabled": false,
+      "fillMs": 0.812
+    }
+  ],
+  "dynamicABBA": [
+    {
+      "run": "a1",
+      "enabled": false,
+      "frameMeanMs": 105.07083333333334,
+      "p95Ms": 133.5,
+      "refreshMeanMs": 5.567256638170344,
+      "refreshes": 113,
+      "ecologyMeanMs": 8.305833333482346,
+      "gpuMeanMs": 33.25233558333333,
+      "errors": []
+    },
+    {
+      "run": "b1",
+      "enabled": true,
+      "frameMeanMs": 103.33416666666648,
+      "p95Ms": 125.29999999998836,
+      "refreshMeanMs": 3.390825685831385,
+      "refreshes": 109,
+      "ecologyMeanMs": 6.01666666517655,
+      "gpuMeanMs": 33.73974466666667,
+      "errors": []
+    },
+    {
+      "run": "b2",
+      "enabled": true,
+      "frameMeanMs": 102.8475000000001,
+      "p95Ms": 133.29999999998836,
+      "refreshMeanMs": 3.4163793107045106,
+      "refreshes": 116,
+      "ecologyMeanMs": 6.328333333383004,
+      "gpuMeanMs": 33.02002248333333,
+      "errors": []
+    },
+    {
+      "run": "a2",
+      "enabled": false,
+      "frameMeanMs": 81.52833333333352,
+      "p95Ms": 108.59999999997672,
+      "refreshMeanMs": 4.732989691581922,
+      "refreshes": 97,
+      "ecologyMeanMs": 6.590833334128062,
+      "gpuMeanMs": 32.07126261666667,
+      "errors": []
+    }
+  ],
+  "decision": "Adopt exact grid for byte-identical local refresh savings. Overall frame benefit NOT established: final original-path run drifted to 81.53ms vs first105.07ms; candidate103.33/102.85ms. No FPS claim.",
+  "hardware": {
+    "renderer": "ANGLE Metal Apple M4 Pro",
+    "viewport": [
+      1280,
+      800
+    ],
+    "dpr": 1,
+    "time": 870,
+    "view": "river-forest"
+  }
+}

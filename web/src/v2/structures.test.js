@@ -1,3 +1,4 @@
+// Historical original-source comparison: timber48 stays explicitly off here; default48 is covered by collision/door/household tests.
 // Original-source comparison explicitly retains original timber; default timber is exercised by actual endpoint and household physics tests.
 // Original-source geometry budget fixture; new default source has a separate actual-load/physics contract.
 import test from "node:test";
@@ -27,7 +28,7 @@ const cameraAt = (x,y,z) => {
 async function load(entities,options={}) {
   const poses = new Map(entities.map(e => [e.id,{x:e.x,y:2200,z:e.z,rot:e.rot,scale:e.scale}]));
   const world = {entities,surface:{buildingPose:e=>poses.get(e.id)}};
-  const structures = new WorldStructures(world,{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,...options}), sourceCounts = new Map();
+  const structures = new WorldStructures(world,{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,houseTimber48:false,...options}), sourceCounts = new Map();
   structures.loadAsset = async url => {
     const gltf = await new GLTFLoader().parseAsync(await bytes(url), "");
     let count = 0;

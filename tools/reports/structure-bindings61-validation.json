@@ -1,0 +1,96 @@
+{
+  "scope": "Frozen furniture58 + GI61 source dependency check; only actual mismatch regenerated",
+  "generator": "node tools/build-structure-prepared-v38.mjs",
+  "backup": "backups/structure-bindings61/",
+  "originalAssetSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+  "structure": {
+    "before": "285877c37c12c2fbca1689e12c0de46aa61d495b5eaddd65b3581cea1c55b0b8",
+    "after": "f08d673f34aa523cd745838c79ca1e7fce34be8594cbb016f4059e33781e2e35",
+    "oldBytes": 11712888,
+    "bytes": 11712888,
+    "binBytes": 11645696,
+    "allBinaryBytesEqual": true,
+    "allJSONExceptSignatureEqual": true,
+    "defaultFurniture58": "OFF"
+  },
+  "checks": [
+    {
+      "name": "forest",
+      "path": "web/public/data/v2/forest-roots-38.json",
+      "signature": "d4a841e26ad8a3bc91f734f16baa4357803466d3d10bef706453cc6f4762b1ec",
+      "match": true
+    },
+    {
+      "name": "meadow",
+      "path": "web/public/data/v2/meadow-roots-38.json",
+      "signature": "1bb604aa39feb9184f0cbb32098e12e8617c2b027c3bd979b05edd878ab2a794",
+      "match": true
+    },
+    {
+      "name": "reach",
+      "path": "web/public/data/v2/reach-cover-prepared42.json",
+      "signature": "04edc0ee596ad89e7dee65d02df0811de6772ea0a670b4ed565efd792e052351",
+      "match": true
+    },
+    {
+      "name": "terrain-priority",
+      "path": "web/public/data/v2/terrain-prepared42/river-forest.json",
+      "signature": "29833a2d6b88bb2d1a70d7974c0572b8bc4b5ae536f5bb6c542ea31df19bd769",
+      "match": true
+    },
+    {
+      "name": "terrain-demand",
+      "path": "web/public/data/v2/terrain-demand42/river-forest.json",
+      "signature": "29833a2d6b88bb2d1a70d7974c0572b8bc4b5ae536f5bb6c542ea31df19bd769",
+      "match": true
+    },
+    {
+      "name": "terrain-full",
+      "path": "tools/candidates/terrain-prepared42/river-forest.json",
+      "signature": "29833a2d6b88bb2d1a70d7974c0572b8bc4b5ae536f5bb6c542ea31df19bd769",
+      "match": true
+    },
+    {
+      "name": "structure",
+      "path": "web/public/data/v2/structure-prepared-38.json",
+      "signature": "f08d673f34aa523cd745838c79ca1e7fce34be8594cbb016f4059e33781e2e35",
+      "match": true
+    }
+  ],
+  "gi": [
+    {
+      "kind": "terrain",
+      "match": true
+    },
+    {
+      "kind": "aperture",
+      "match": true
+    },
+    {
+      "kind": "ground",
+      "match": true
+    },
+    {
+      "kind": "ground-bounce",
+      "match": true
+    }
+  ],
+  "meadowReference": {
+    "roots": 54,
+    "sourcesCurrent": true
+  },
+  "shadowProgramFamily52SHA256": "0b95585e52603e97f0b85042b03e10db8089259ceaf24b4754334292d7406e2f",
+  "tests": {
+    "log": "tools/reports/structure-bindings61-tests.log",
+    "total": 12,
+    "passed": 12
+  },
+  "notRegenerated": [
+    "forest",
+    "meadow",
+    "reach",
+    "terrain full/priority/demand",
+    "all four room exterior GI",
+    "8m meadow reference"
+  ]
+}

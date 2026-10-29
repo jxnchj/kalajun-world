@@ -1,0 +1,83 @@
+{
+  "scope": "Diagnostic positive ground sightlines only, not a conservative occlusion cull; no leaf-height inflation in this check",
+  "angleStepDegrees": 1,
+  "distanceStepMeters": 4,
+  "distanceLimit": 3600,
+  "rows": [
+    {
+      "move": -60,
+      "position": [
+        -7051.458980337503,
+        2260.7619444707852,
+        2727.0633909777093
+      ],
+      "farthestVisibleGround": 3600,
+      "openRays": 6
+    },
+    {
+      "move": -50,
+      "position": [
+        -7054.549150281253,
+        2264.23595984662,
+        2717.552825814758
+      ],
+      "farthestVisibleGround": 3600,
+      "openRays": 6
+    },
+    {
+      "move": -40,
+      "position": [
+        -7057.639320225002,
+        2267.502501482118,
+        2708.042260651806
+      ],
+      "farthestVisibleGround": 3600,
+      "openRays": 6
+    },
+    {
+      "move": -30,
+      "position": [
+        -7060.729490168752,
+        2270.6459992774244,
+        2698.5316954888544
+      ],
+      "farthestVisibleGround": 3600,
+      "openRays": 7
+    },
+    {
+      "move": -20,
+      "position": [
+        -7063.819660112501,
+        2273.8909860091494,
+        2689.021130325903
+      ],
+      "farthestVisibleGround": 3600,
+      "openRays": 7
+    },
+    {
+      "move": -10,
+      "position": [
+        -7066.909830056251,
+        2277.5454942303822,
+        2679.5105651629515
+      ],
+      "farthestVisibleGround": 3600,
+      "openRays": 7
+    },
+    {
+      "move": 0,
+      "position": [
+        -7070,
+        2281.7250366210938,
+        2670
+      ],
+      "farthestVisibleGround": 3600,
+      "openRays": 6
+    }
+  ],
+  "farTiles": 475,
+  "farRoots": 348825,
+  "farTriangles": 15697125,
+  "nearTiles": 34,
+  "nearRoots": 25601
+}

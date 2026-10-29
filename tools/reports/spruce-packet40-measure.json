@@ -1,0 +1,2542 @@
+{
+  "scope": "all lazy branch groups; not the 35-group browser view",
+  "groups": 276,
+  "total": {
+    "brushes": 8457,
+    "bytes": 225035778,
+    "gzipBytes": 186011800,
+    "buildMs": 3097.121218,
+    "inflateMs": 574.2377990000007
+  },
+  "rows": [
+    {
+      "key": "0:0",
+      "form": "column",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 83597,
+      "buildMs": 6.152999999999992,
+      "inflateMs": 0.3203749999999985
+    },
+    {
+      "key": "0:1",
+      "form": "column",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 84081,
+      "buildMs": 3.3865830000000017,
+      "inflateMs": 0.3074580000000111
+    },
+    {
+      "key": "0:2",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783674,
+      "buildMs": 18.12308300000001,
+      "inflateMs": 2.5057079999999985
+    },
+    {
+      "key": "0:3",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783016,
+      "buildMs": 16.315958999999992,
+      "inflateMs": 2.4244999999999948
+    },
+    {
+      "key": "0:4",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772694,
+      "buildMs": 17.629041,
+      "inflateMs": 2.4092919999999935
+    },
+    {
+      "key": "0:5",
+      "form": "column",
+      "brushes": 27,
+      "bytes": 740358,
+      "gzipBytes": 628444,
+      "buildMs": 11.309791999999987,
+      "inflateMs": 2.0036249999999995
+    },
+    {
+      "key": "0:6",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 770766,
+      "buildMs": 17.632416999999975,
+      "inflateMs": 2.417874999999981
+    },
+    {
+      "key": "0:7",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781770,
+      "buildMs": 15.88816700000001,
+      "inflateMs": 2.3774590000000444
+    },
+    {
+      "key": "0:8",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781391,
+      "buildMs": 18.492624999999975,
+      "inflateMs": 2.482125000000053
+    },
+    {
+      "key": "0:9",
+      "form": "column",
+      "brushes": 33,
+      "bytes": 863922,
+      "gzipBytes": 732763,
+      "buildMs": 14.15833299999997,
+      "inflateMs": 2.263500000000022
+    },
+    {
+      "key": "0:10",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781951,
+      "buildMs": 13.579416999999978,
+      "inflateMs": 2.4327499999999986
+    },
+    {
+      "key": "0:11",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783106,
+      "buildMs": 13.156292000000008,
+      "inflateMs": 2.3330419999999776
+    },
+    {
+      "key": "0:12",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 751813,
+      "buildMs": 12.141124999999988,
+      "inflateMs": 2.3190419999999676
+    },
+    {
+      "key": "0:13",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782512,
+      "buildMs": 12.532542000000035,
+      "inflateMs": 2.363708000000031
+    },
+    {
+      "key": "0:14",
+      "form": "column",
+      "brushes": 24,
+      "bytes": 678576,
+      "gzipBytes": 567152,
+      "buildMs": 12.558583999999996,
+      "inflateMs": 1.7563329999999837
+    },
+    {
+      "key": "0:15",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782223,
+      "buildMs": 14.265458000000024,
+      "inflateMs": 2.4093749999999545
+    },
+    {
+      "key": "0:16",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782301,
+      "buildMs": 13.122625000000085,
+      "inflateMs": 2.427250000000072
+    },
+    {
+      "key": "0:17",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 760274,
+      "buildMs": 13.87337500000001,
+      "inflateMs": 2.488125000000082
+    },
+    {
+      "key": "0:18",
+      "form": "column",
+      "brushes": 24,
+      "bytes": 678576,
+      "gzipBytes": 535854,
+      "buildMs": 9.65316699999994,
+      "inflateMs": 1.7008339999999862
+    },
+    {
+      "key": "0:19",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783036,
+      "buildMs": 14.25995899999998,
+      "inflateMs": 2.3647079999999505
+    },
+    {
+      "key": "0:20",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782391,
+      "buildMs": 13.539457999999968,
+      "inflateMs": 2.4517090000000508
+    },
+    {
+      "key": "0:21",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781810,
+      "buildMs": 13.100665999999933,
+      "inflateMs": 2.5257500000000164
+    },
+    {
+      "key": "0:22",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 762304,
+      "buildMs": 12.389291999999955,
+      "inflateMs": 2.4063750000000255
+    },
+    {
+      "key": "0:23",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781715,
+      "buildMs": 12.904250000000047,
+      "inflateMs": 2.4523340000000644
+    },
+    {
+      "key": "0:24",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782585,
+      "buildMs": 12.782000000000039,
+      "inflateMs": 2.5532080000000406
+    },
+    {
+      "key": "0:25",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782787,
+      "buildMs": 15.966916999999967,
+      "inflateMs": 2.3836659999999483
+    },
+    {
+      "key": "0:26",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782304,
+      "buildMs": 13.195040999999947,
+      "inflateMs": 2.4033339999999725
+    },
+    {
+      "key": "0:27",
+      "form": "column",
+      "brushes": 27,
+      "bytes": 740358,
+      "gzipBytes": 628344,
+      "buildMs": 10.026208999999994,
+      "inflateMs": 1.9737079999999878
+    },
+    {
+      "key": "0:28",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781889,
+      "buildMs": 13.489207999999962,
+      "inflateMs": 2.3379999999999654
+    },
+    {
+      "key": "0:29",
+      "form": "column",
+      "brushes": 15,
+      "bytes": 493230,
+      "gzipBytes": 392412,
+      "buildMs": 5.886833999999908,
+      "inflateMs": 1.252207999999996
+    },
+    {
+      "key": "0:30",
+      "form": "column",
+      "brushes": 9,
+      "bytes": 369666,
+      "gzipBytes": 237008,
+      "buildMs": 3.2465839999999844,
+      "inflateMs": 0.7297499999999673
+    },
+    {
+      "key": "0:31",
+      "form": "column",
+      "brushes": 6,
+      "bytes": 307884,
+      "gzipBytes": 167161,
+      "buildMs": 2.195750000000089,
+      "inflateMs": 0.5679169999999658
+    },
+    {
+      "key": "0:32",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 771782,
+      "buildMs": 13.325874999999996,
+      "inflateMs": 2.350332999999978
+    },
+    {
+      "key": "0:33",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779597,
+      "buildMs": 13.105040999999915,
+      "inflateMs": 2.397459000000026
+    },
+    {
+      "key": "0:34",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780203,
+      "buildMs": 12.901250000000005,
+      "inflateMs": 2.3474170000001777
+    },
+    {
+      "key": "0:35",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782008,
+      "buildMs": 12.995458000000099,
+      "inflateMs": 2.3687090000000808
+    },
+    {
+      "key": "0:36",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779648,
+      "buildMs": 12.18466699999999,
+      "inflateMs": 2.384416999999985
+    },
+    {
+      "key": "0:37",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779769,
+      "buildMs": 12.792584000000033,
+      "inflateMs": 2.477957999999944
+    },
+    {
+      "key": "0:38",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 778003,
+      "buildMs": 13.077999999999975,
+      "inflateMs": 2.400875000000042
+    },
+    {
+      "key": "0:39",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781458,
+      "buildMs": 12.32895899999994,
+      "inflateMs": 2.4691660000000866
+    },
+    {
+      "key": "0:40",
+      "form": "column",
+      "brushes": 9,
+      "bytes": 369666,
+      "gzipBytes": 237977,
+      "buildMs": 3.8272910000000593,
+      "inflateMs": 0.7374999999999545
+    },
+    {
+      "key": "0:41",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782901,
+      "buildMs": 12.726666000000023,
+      "inflateMs": 2.4441669999998794
+    },
+    {
+      "key": "0:42",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772272,
+      "buildMs": 12.25712499999986,
+      "inflateMs": 2.4642919999998867
+    },
+    {
+      "key": "0:43",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782156,
+      "buildMs": 12.682291999999961,
+      "inflateMs": 2.4849579999997786
+    },
+    {
+      "key": "0:44",
+      "form": "column",
+      "brushes": 30,
+      "bytes": 802140,
+      "gzipBytes": 659440,
+      "buildMs": 10.551583000000164,
+      "inflateMs": 2.51820900000007
+    },
+    {
+      "key": "0:45",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779522,
+      "buildMs": 13.166875000000118,
+      "inflateMs": 2.476374999999962
+    },
+    {
+      "key": "0:46",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780902,
+      "buildMs": 13.624791000000187,
+      "inflateMs": 2.349292000000105
+    },
+    {
+      "key": "0:47",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780622,
+      "buildMs": 13.123167000000194,
+      "inflateMs": 2.4921250000002146
+    },
+    {
+      "key": "0:48",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 758905,
+      "buildMs": 12.643207999999959,
+      "inflateMs": 2.2869580000001406
+    },
+    {
+      "key": "0:49",
+      "form": "column",
+      "brushes": 6,
+      "bytes": 307884,
+      "gzipBytes": 166472,
+      "buildMs": 2.3580409999999574,
+      "inflateMs": 0.512958000000026
+    },
+    {
+      "key": "0:50",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781649,
+      "buildMs": 13.15195800000015,
+      "inflateMs": 2.3577080000000024
+    },
+    {
+      "key": "0:51",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780824,
+      "buildMs": 13.033999999999878,
+      "inflateMs": 2.312624999999798
+    },
+    {
+      "key": "0:52",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783868,
+      "buildMs": 13.044417000000067,
+      "inflateMs": 2.304292000000032
+    },
+    {
+      "key": "0:53",
+      "form": "column",
+      "brushes": 30,
+      "bytes": 802140,
+      "gzipBytes": 679924,
+      "buildMs": 10.931332999999995,
+      "inflateMs": 2.1275419999999485
+    },
+    {
+      "key": "0:54",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781164,
+      "buildMs": 12.828125,
+      "inflateMs": 2.585792000000083
+    },
+    {
+      "key": "0:55",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782035,
+      "buildMs": 12.977583999999979,
+      "inflateMs": 2.4097090000000208
+    },
+    {
+      "key": "0:56",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 770732,
+      "buildMs": 19.62520799999993,
+      "inflateMs": 2.413833000000068
+    },
+    {
+      "key": "0:57",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 770643,
+      "buildMs": 15.90625,
+      "inflateMs": 2.518333999999868
+    },
+    {
+      "key": "0:58",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779450,
+      "buildMs": 13.955208999999968,
+      "inflateMs": 2.4303749999999127
+    },
+    {
+      "key": "0:59",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 778952,
+      "buildMs": 12.319334000000026,
+      "inflateMs": 2.405166999999892
+    },
+    {
+      "key": "0:60",
+      "form": "column",
+      "brushes": 21,
+      "bytes": 616794,
+      "gzipBytes": 502675,
+      "buildMs": 7.813333000000057,
+      "inflateMs": 1.6163339999998243
+    },
+    {
+      "key": "0:61",
+      "form": "column",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779767,
+      "buildMs": 12.279583999999886,
+      "inflateMs": 2.298915999999963
+    },
+    {
+      "key": "0:62",
+      "form": "column",
+      "brushes": 30,
+      "bytes": 802140,
+      "gzipBytes": 676963,
+      "buildMs": 10.537874999999985,
+      "inflateMs": 2.0443330000000515
+    },
+    {
+      "key": "1:256",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782631,
+      "buildMs": 15.676582999999937,
+      "inflateMs": 2.357666999999992
+    },
+    {
+      "key": "1:257",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783625,
+      "buildMs": 14.69420799999989,
+      "inflateMs": 2.4241250000000036
+    },
+    {
+      "key": "1:258",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782502,
+      "buildMs": 15.318083999999999,
+      "inflateMs": 2.345291999999972
+    },
+    {
+      "key": "1:259",
+      "form": "edge",
+      "brushes": 24,
+      "bytes": 678576,
+      "gzipBytes": 568840,
+      "buildMs": 9.63975000000005,
+      "inflateMs": 1.7448750000000928
+    },
+    {
+      "key": "1:260",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772030,
+      "buildMs": 14.795875000000024,
+      "inflateMs": 2.3569170000000668
+    },
+    {
+      "key": "1:261",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783232,
+      "buildMs": 12.281917000000021,
+      "inflateMs": 2.4466670000001614
+    },
+    {
+      "key": "1:262",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781868,
+      "buildMs": 14.361457999999857,
+      "inflateMs": 2.2972500000000764
+    },
+    {
+      "key": "1:263",
+      "form": "edge",
+      "brushes": 24,
+      "bytes": 678576,
+      "gzipBytes": 558418,
+      "buildMs": 8.295583999999963,
+      "inflateMs": 1.64325000000008
+    },
+    {
+      "key": "1:264",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772826,
+      "buildMs": 12.57691600000021,
+      "inflateMs": 2.2936249999997926
+    },
+    {
+      "key": "1:265",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 784722,
+      "buildMs": 12.218457999999828,
+      "inflateMs": 2.365124999999807
+    },
+    {
+      "key": "1:266",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 763444,
+      "buildMs": 13.972833000000264,
+      "inflateMs": 2.4055419999999685
+    },
+    {
+      "key": "1:267",
+      "form": "edge",
+      "brushes": 30,
+      "bytes": 802140,
+      "gzipBytes": 660966,
+      "buildMs": 13.77475000000004,
+      "inflateMs": 2.0842079999997623
+    },
+    {
+      "key": "1:268",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 771301,
+      "buildMs": 12.928334000000177,
+      "inflateMs": 2.319166000000223
+    },
+    {
+      "key": "1:269",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772425,
+      "buildMs": 12.614999999999782,
+      "inflateMs": 2.393083999999817
+    },
+    {
+      "key": "1:270",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772292,
+      "buildMs": 13.09458399999994,
+      "inflateMs": 2.360707999999704
+    },
+    {
+      "key": "1:271",
+      "form": "edge",
+      "brushes": 33,
+      "bytes": 863922,
+      "gzipBytes": 731807,
+      "buildMs": 12.30475000000024,
+      "inflateMs": 2.1959999999999127
+    },
+    {
+      "key": "1:272",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 785272,
+      "buildMs": 12.476791999999932,
+      "inflateMs": 2.4610419999999067
+    },
+    {
+      "key": "1:273",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783338,
+      "buildMs": 12.893833000000086,
+      "inflateMs": 2.3290000000001783
+    },
+    {
+      "key": "1:274",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 784518,
+      "buildMs": 12.964834000000337,
+      "inflateMs": 2.435667000000194
+    },
+    {
+      "key": "1:275",
+      "form": "edge",
+      "brushes": 21,
+      "bytes": 616794,
+      "gzipBytes": 506619,
+      "buildMs": 7.088249999999789,
+      "inflateMs": 1.5714579999998932
+    },
+    {
+      "key": "1:276",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783514,
+      "buildMs": 13.052999999999884,
+      "inflateMs": 2.2993749999996
+    },
+    {
+      "key": "1:277",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783581,
+      "buildMs": 12.890000000000327,
+      "inflateMs": 2.5407920000002377
+    },
+    {
+      "key": "1:278",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783400,
+      "buildMs": 12.948417000000063,
+      "inflateMs": 2.3310409999999138
+    },
+    {
+      "key": "1:279",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783012,
+      "buildMs": 13.02429200000006,
+      "inflateMs": 2.4813329999997222
+    },
+    {
+      "key": "1:280",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783294,
+      "buildMs": 12.02883299999985,
+      "inflateMs": 2.523916999999983
+    },
+    {
+      "key": "1:281",
+      "form": "edge",
+      "brushes": 15,
+      "bytes": 493230,
+      "gzipBytes": 382953,
+      "buildMs": 6.288375000000087,
+      "inflateMs": 1.1736250000003565
+    },
+    {
+      "key": "1:282",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783837,
+      "buildMs": 12.961291999999958,
+      "inflateMs": 3.3054160000001502
+    },
+    {
+      "key": "1:283",
+      "form": "edge",
+      "brushes": 18,
+      "bytes": 555012,
+      "gzipBytes": 475226,
+      "buildMs": 6.583834000000024,
+      "inflateMs": 1.5247079999999187
+    },
+    {
+      "key": "1:284",
+      "form": "edge",
+      "brushes": 12,
+      "bytes": 431448,
+      "gzipBytes": 280036,
+      "buildMs": 4.050999999999931,
+      "inflateMs": 0.9484999999999673
+    },
+    {
+      "key": "1:285",
+      "form": "edge",
+      "brushes": 12,
+      "bytes": 431448,
+      "gzipBytes": 284821,
+      "buildMs": 4.181540999999925,
+      "inflateMs": 0.9046250000001237
+    },
+    {
+      "key": "1:286",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772710,
+      "buildMs": 12.619666999999936,
+      "inflateMs": 2.3299169999995684
+    },
+    {
+      "key": "1:287",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781299,
+      "buildMs": 12.884041000000252,
+      "inflateMs": 2.492207999999664
+    },
+    {
+      "key": "1:288",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780838,
+      "buildMs": 12.924499999999625,
+      "inflateMs": 2.4198750000000473
+    },
+    {
+      "key": "1:289",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 766643,
+      "buildMs": 12.98154199999999,
+      "inflateMs": 2.346125000000029
+    },
+    {
+      "key": "1:290",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 777903,
+      "buildMs": 12.883125000000291,
+      "inflateMs": 2.416458000000148
+    },
+    {
+      "key": "1:291",
+      "form": "edge",
+      "brushes": 27,
+      "bytes": 740358,
+      "gzipBytes": 606554,
+      "buildMs": 10.308583999999883,
+      "inflateMs": 1.7989579999998568
+    },
+    {
+      "key": "1:292",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779629,
+      "buildMs": 12.784250000000156,
+      "inflateMs": 2.3111250000001746
+    },
+    {
+      "key": "1:293",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 759676,
+      "buildMs": 12.431875000000218,
+      "inflateMs": 2.317833999999948
+    },
+    {
+      "key": "1:294",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 773080,
+      "buildMs": 12.70870799999966,
+      "inflateMs": 2.498458000000028
+    },
+    {
+      "key": "1:295",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 778407,
+      "buildMs": 12.62933299999986,
+      "inflateMs": 2.426083999999719
+    },
+    {
+      "key": "1:296",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 776036,
+      "buildMs": 13.28366700000015,
+      "inflateMs": 2.371458000000075
+    },
+    {
+      "key": "1:297",
+      "form": "edge",
+      "brushes": 6,
+      "bytes": 307884,
+      "gzipBytes": 145470,
+      "buildMs": 2.0327080000001843,
+      "inflateMs": 0.5364159999999174
+    },
+    {
+      "key": "1:298",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 767361,
+      "buildMs": 12.93033400000013,
+      "inflateMs": 2.291167000000314
+    },
+    {
+      "key": "1:299",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781438,
+      "buildMs": 12.8784169999999,
+      "inflateMs": 2.3843339999998534
+    },
+    {
+      "key": "1:300",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779829,
+      "buildMs": 13.144166999999925,
+      "inflateMs": 2.338999999999942
+    },
+    {
+      "key": "1:301",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779402,
+      "buildMs": 12.54404199999999,
+      "inflateMs": 2.402292000000216
+    },
+    {
+      "key": "1:302",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 776540,
+      "buildMs": 12.995125000000371,
+      "inflateMs": 2.3057920000001104
+    },
+    {
+      "key": "1:303",
+      "form": "edge",
+      "brushes": 24,
+      "bytes": 678576,
+      "gzipBytes": 557334,
+      "buildMs": 8.792625000000044,
+      "inflateMs": 1.815375000000131
+    },
+    {
+      "key": "1:304",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 776566,
+      "buildMs": 12.590291999999863,
+      "inflateMs": 2.3637079999998605
+    },
+    {
+      "key": "1:305",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 778149,
+      "buildMs": 12.377958999999919,
+      "inflateMs": 2.4665829999999005
+    },
+    {
+      "key": "1:306",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 776021,
+      "buildMs": 13.448041999999987,
+      "inflateMs": 2.3680420000000595
+    },
+    {
+      "key": "1:307",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 773748,
+      "buildMs": 12.844624999999724,
+      "inflateMs": 2.3532500000001164
+    },
+    {
+      "key": "1:308",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 758887,
+      "buildMs": 13.218374999999924,
+      "inflateMs": 2.3105420000001686
+    },
+    {
+      "key": "1:309",
+      "form": "edge",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 83745,
+      "buildMs": 1.1251250000000255,
+      "inflateMs": 0.2684169999997721
+    },
+    {
+      "key": "1:310",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779903,
+      "buildMs": 12.585083999999824,
+      "inflateMs": 2.341667000000143
+    },
+    {
+      "key": "1:311",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780049,
+      "buildMs": 12.467333000000053,
+      "inflateMs": 2.375250000000051
+    },
+    {
+      "key": "1:312",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 776797,
+      "buildMs": 12.925624999999854,
+      "inflateMs": 2.345166000000063
+    },
+    {
+      "key": "1:313",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783190,
+      "buildMs": 12.875708000000031,
+      "inflateMs": 2.3646670000002814
+    },
+    {
+      "key": "1:314",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779402,
+      "buildMs": 13.041249999999764,
+      "inflateMs": 2.328708000000006
+    },
+    {
+      "key": "1:315",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779410,
+      "buildMs": 12.820750000000317,
+      "inflateMs": 2.332666999999674
+    },
+    {
+      "key": "1:316",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 776565,
+      "buildMs": 12.073167000000012,
+      "inflateMs": 2.337582999999995
+    },
+    {
+      "key": "1:317",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 769820,
+      "buildMs": 12.880125000000135,
+      "inflateMs": 2.317207999999937
+    },
+    {
+      "key": "1:318",
+      "form": "edge",
+      "brushes": 33,
+      "bytes": 863922,
+      "gzipBytes": 723526,
+      "buildMs": 11.974125000000186,
+      "inflateMs": 2.2607920000000377
+    },
+    {
+      "key": "1:319",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 777491,
+      "buildMs": 12.882207999999991,
+      "inflateMs": 2.4434590000000753
+    },
+    {
+      "key": "1:320",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779650,
+      "buildMs": 12.647165999999743,
+      "inflateMs": 2.3724160000001575
+    },
+    {
+      "key": "1:321",
+      "form": "edge",
+      "brushes": 12,
+      "bytes": 431448,
+      "gzipBytes": 328941,
+      "buildMs": 4.183208999999806,
+      "inflateMs": 0.9794170000000122
+    },
+    {
+      "key": "1:322",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 778605,
+      "buildMs": 12.555041999999958,
+      "inflateMs": 2.3222499999997126
+    },
+    {
+      "key": "1:323",
+      "form": "edge",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 777711,
+      "buildMs": 12.3315419999999,
+      "inflateMs": 2.4015410000001793
+    },
+    {
+      "key": "1:324",
+      "form": "edge",
+      "brushes": 15,
+      "bytes": 493230,
+      "gzipBytes": 410649,
+      "buildMs": 6.1496250000000146,
+      "inflateMs": 1.2357500000002801
+    },
+    {
+      "key": "2:512",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782735,
+      "buildMs": 13.564417000000049,
+      "inflateMs": 2.4754589999997734
+    },
+    {
+      "key": "2:513",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783980,
+      "buildMs": 14.490250000000287,
+      "inflateMs": 2.313083000000006
+    },
+    {
+      "key": "2:514",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783292,
+      "buildMs": 12.526332999999795,
+      "inflateMs": 2.3615420000000995
+    },
+    {
+      "key": "2:515",
+      "form": "old",
+      "brushes": 9,
+      "bytes": 369666,
+      "gzipBytes": 239158,
+      "buildMs": 3.3630000000002838,
+      "inflateMs": 0.7465000000001965
+    },
+    {
+      "key": "2:516",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781324,
+      "buildMs": 17.015625,
+      "inflateMs": 2.3746249999999236
+    },
+    {
+      "key": "2:517",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783731,
+      "buildMs": 13.827583000000232,
+      "inflateMs": 2.477374999999938
+    },
+    {
+      "key": "2:518",
+      "form": "old",
+      "brushes": 15,
+      "bytes": 493230,
+      "gzipBytes": 381999,
+      "buildMs": 5.803332999999839,
+      "inflateMs": 1.1613749999996799
+    },
+    {
+      "key": "2:519",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 784585,
+      "buildMs": 12.962417000000187,
+      "inflateMs": 2.497292000000016
+    },
+    {
+      "key": "2:520",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783037,
+      "buildMs": 12.687625000000025,
+      "inflateMs": 2.4893339999998716
+    },
+    {
+      "key": "2:521",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 773610,
+      "buildMs": 12.782208000000082,
+      "inflateMs": 2.3491250000001855
+    },
+    {
+      "key": "2:522",
+      "form": "old",
+      "brushes": 12,
+      "bytes": 431448,
+      "gzipBytes": 311263,
+      "buildMs": 4.562249999999949,
+      "inflateMs": 0.9485409999997501
+    },
+    {
+      "key": "2:523",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782484,
+      "buildMs": 12.860499999999774,
+      "inflateMs": 2.3392909999997755
+    },
+    {
+      "key": "2:524",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772345,
+      "buildMs": 13.118375000000015,
+      "inflateMs": 2.3206249999998363
+    },
+    {
+      "key": "2:525",
+      "form": "old",
+      "brushes": 24,
+      "bytes": 678576,
+      "gzipBytes": 577683,
+      "buildMs": 8.427916000000096,
+      "inflateMs": 1.7014580000000024
+    },
+    {
+      "key": "2:526",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781650,
+      "buildMs": 13.513500000000022,
+      "inflateMs": 2.407749999999851
+    },
+    {
+      "key": "2:527",
+      "form": "old",
+      "brushes": 18,
+      "bytes": 555012,
+      "gzipBytes": 432607,
+      "buildMs": 6.481582999999773,
+      "inflateMs": 1.444416999999703
+    },
+    {
+      "key": "2:528",
+      "form": "old",
+      "brushes": 21,
+      "bytes": 616794,
+      "gzipBytes": 525165,
+      "buildMs": 7.974291999999878,
+      "inflateMs": 1.578125
+    },
+    {
+      "key": "2:529",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781273,
+      "buildMs": 13.809334000000035,
+      "inflateMs": 2.4995419999995647
+    },
+    {
+      "key": "2:530",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782632,
+      "buildMs": 12.881457999999839,
+      "inflateMs": 2.423208999999588
+    },
+    {
+      "key": "2:531",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782358,
+      "buildMs": 12.143291000000318,
+      "inflateMs": 2.419082999999773
+    },
+    {
+      "key": "2:532",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782805,
+      "buildMs": 12.386375000000044,
+      "inflateMs": 2.361041000000114
+    },
+    {
+      "key": "2:533",
+      "form": "old",
+      "brushes": 6,
+      "bytes": 307884,
+      "gzipBytes": 166335,
+      "buildMs": 2.222958999999719,
+      "inflateMs": 0.5224159999997937
+    },
+    {
+      "key": "2:534",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 770032,
+      "buildMs": 12.526625000000422,
+      "inflateMs": 2.5513339999997697
+    },
+    {
+      "key": "2:535",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781986,
+      "buildMs": 12.976999999999862,
+      "inflateMs": 2.487666999999419
+    },
+    {
+      "key": "2:536",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780293,
+      "buildMs": 12.865458000000217,
+      "inflateMs": 2.3272500000002765
+    },
+    {
+      "key": "2:537",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780835,
+      "buildMs": 12.57170799999949,
+      "inflateMs": 2.3151660000003176
+    },
+    {
+      "key": "2:538",
+      "form": "old",
+      "brushes": 12,
+      "bytes": 431448,
+      "gzipBytes": 299231,
+      "buildMs": 4.5822079999998095,
+      "inflateMs": 0.9532920000001468
+    },
+    {
+      "key": "2:539",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782638,
+      "buildMs": 13.120291999999608,
+      "inflateMs": 2.5432499999997162
+    },
+    {
+      "key": "2:540",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 771300,
+      "buildMs": 12.077332999999271,
+      "inflateMs": 2.3261660000007396
+    },
+    {
+      "key": "2:541",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780017,
+      "buildMs": 12.956374999999753,
+      "inflateMs": 2.4901249999993524
+    },
+    {
+      "key": "2:542",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782527,
+      "buildMs": 12.61700000000019,
+      "inflateMs": 2.402375000000575
+    },
+    {
+      "key": "2:543",
+      "form": "old",
+      "brushes": 15,
+      "bytes": 493230,
+      "gzipBytes": 382506,
+      "buildMs": 5.529333999999835,
+      "inflateMs": 1.3306249999995998
+    },
+    {
+      "key": "2:544",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781528,
+      "buildMs": 12.792292000000089,
+      "inflateMs": 2.35254199999963
+    },
+    {
+      "key": "2:545",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779543,
+      "buildMs": 13.147167000000081,
+      "inflateMs": 2.559957999999824
+    },
+    {
+      "key": "2:546",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779887,
+      "buildMs": 13.183541000000332,
+      "inflateMs": 2.312417000000096
+    },
+    {
+      "key": "2:547",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781301,
+      "buildMs": 11.969874999999774,
+      "inflateMs": 2.457416000000194
+    },
+    {
+      "key": "2:548",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 770921,
+      "buildMs": 12.89941699999963,
+      "inflateMs": 2.3465419999993173
+    },
+    {
+      "key": "2:549",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780911,
+      "buildMs": 12.535166000000572,
+      "inflateMs": 2.5002919999997175
+    },
+    {
+      "key": "2:550",
+      "form": "old",
+      "brushes": 15,
+      "bytes": 493230,
+      "gzipBytes": 393071,
+      "buildMs": 5.316459000000577,
+      "inflateMs": 1.1644580000001952
+    },
+    {
+      "key": "2:551",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779761,
+      "buildMs": 12.215500000000247,
+      "inflateMs": 2.332916999999725
+    },
+    {
+      "key": "2:552",
+      "form": "old",
+      "brushes": 30,
+      "bytes": 802140,
+      "gzipBytes": 676966,
+      "buildMs": 11.700541999999587,
+      "inflateMs": 2.1756670000004306
+    },
+    {
+      "key": "2:553",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 778222,
+      "buildMs": 12.872542000000067,
+      "inflateMs": 2.356999999999971
+    },
+    {
+      "key": "2:554",
+      "form": "old",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779801,
+      "buildMs": 12.214249999999993,
+      "inflateMs": 2.395625000000109
+    },
+    {
+      "key": "2:555",
+      "form": "old",
+      "brushes": 6,
+      "bytes": 307884,
+      "gzipBytes": 155436,
+      "buildMs": 2.874416999999994,
+      "inflateMs": 0.4809589999995296
+    },
+    {
+      "key": "3:768",
+      "form": "pencil",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 83323,
+      "buildMs": 1.064292000000023,
+      "inflateMs": 0.2745409999997719
+    },
+    {
+      "key": "3:769",
+      "form": "pencil",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 83426,
+      "buildMs": 1.056666000000405,
+      "inflateMs": 0.2836669999996957
+    },
+    {
+      "key": "3:770",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782097,
+      "buildMs": 12.975999999999658,
+      "inflateMs": 2.451000000000022
+    },
+    {
+      "key": "3:771",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 773074,
+      "buildMs": 12.358750000000327,
+      "inflateMs": 2.282000000000153
+    },
+    {
+      "key": "3:772",
+      "form": "pencil",
+      "brushes": 30,
+      "bytes": 802140,
+      "gzipBytes": 639411,
+      "buildMs": 10.50579099999959,
+      "inflateMs": 1.9586660000004485
+    },
+    {
+      "key": "3:773",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772008,
+      "buildMs": 12.658792000000176,
+      "inflateMs": 2.3823750000001382
+    },
+    {
+      "key": "3:774",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781127,
+      "buildMs": 13.220957999999882,
+      "inflateMs": 2.3250000000007276
+    },
+    {
+      "key": "3:775",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781729,
+      "buildMs": 12.764124999999694,
+      "inflateMs": 2.4753749999999854
+    },
+    {
+      "key": "3:776",
+      "form": "pencil",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 83855,
+      "buildMs": 1.1322920000002341,
+      "inflateMs": 0.26912500000071304
+    },
+    {
+      "key": "3:777",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783236,
+      "buildMs": 12.893291999999747,
+      "inflateMs": 2.357833000000028
+    },
+    {
+      "key": "3:778",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 772347,
+      "buildMs": 12.546833000000333,
+      "inflateMs": 2.373833999999988
+    },
+    {
+      "key": "3:779",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781924,
+      "buildMs": 12.929292000000714,
+      "inflateMs": 2.487250000000131
+    },
+    {
+      "key": "3:780",
+      "form": "pencil",
+      "brushes": 24,
+      "bytes": 678576,
+      "gzipBytes": 557885,
+      "buildMs": 9.03833300000042,
+      "inflateMs": 1.6836249999996653
+    },
+    {
+      "key": "3:781",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783402,
+      "buildMs": 12.332875000000058,
+      "inflateMs": 2.4198749999995925
+    },
+    {
+      "key": "3:782",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783679,
+      "buildMs": 12.98133400000006,
+      "inflateMs": 2.3106250000000728
+    },
+    {
+      "key": "3:783",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781561,
+      "buildMs": 12.273208999999952,
+      "inflateMs": 2.3818750000000364
+    },
+    {
+      "key": "3:784",
+      "form": "pencil",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 83915,
+      "buildMs": 1.7582500000007713,
+      "inflateMs": 0.2837920000001759
+    },
+    {
+      "key": "3:785",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781627,
+      "buildMs": 12.295791999999892,
+      "inflateMs": 2.330124999999498
+    },
+    {
+      "key": "3:786",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782155,
+      "buildMs": 12.928750000000036,
+      "inflateMs": 2.488541000000623
+    },
+    {
+      "key": "3:787",
+      "form": "pencil",
+      "brushes": 9,
+      "bytes": 369666,
+      "gzipBytes": 246827,
+      "buildMs": 3.296374999999898,
+      "inflateMs": 0.7470830000002024
+    },
+    {
+      "key": "3:788",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782340,
+      "buildMs": 12.578125,
+      "inflateMs": 2.501792000000023
+    },
+    {
+      "key": "3:789",
+      "form": "pencil",
+      "brushes": 21,
+      "bytes": 616794,
+      "gzipBytes": 525656,
+      "buildMs": 7.40637500000048,
+      "inflateMs": 1.608499999999367
+    },
+    {
+      "key": "3:790",
+      "form": "pencil",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 83657,
+      "buildMs": 1.175416000000041,
+      "inflateMs": 0.2693330000001879
+    },
+    {
+      "key": "3:791",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783639,
+      "buildMs": 12.359667000000627,
+      "inflateMs": 2.475666999999703
+    },
+    {
+      "key": "3:792",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782265,
+      "buildMs": 12.411458999999923,
+      "inflateMs": 2.358541999999943
+    },
+    {
+      "key": "3:793",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 784035,
+      "buildMs": 12.859040999999706,
+      "inflateMs": 2.466457999999875
+    },
+    {
+      "key": "3:794",
+      "form": "pencil",
+      "brushes": 9,
+      "bytes": 369666,
+      "gzipBytes": 247699,
+      "buildMs": 3.191208999999617,
+      "inflateMs": 0.7743750000008731
+    },
+    {
+      "key": "3:795",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 770214,
+      "buildMs": 12.515875000000051,
+      "inflateMs": 2.3456249999999272
+    },
+    {
+      "key": "3:796",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 759596,
+      "buildMs": 12.628582999999708,
+      "inflateMs": 2.3704999999999927
+    },
+    {
+      "key": "3:797",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 769107,
+      "buildMs": 12.61608299999989,
+      "inflateMs": 2.2832079999998314
+    },
+    {
+      "key": "3:798",
+      "form": "pencil",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 83875,
+      "buildMs": 1.2254590000002281,
+      "inflateMs": 0.29020800000034797
+    },
+    {
+      "key": "3:799",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781423,
+      "buildMs": 12.799332999999933,
+      "inflateMs": 2.5369169999994483
+    },
+    {
+      "key": "3:800",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782999,
+      "buildMs": 11.924208000000363,
+      "inflateMs": 2.3466660000003685
+    },
+    {
+      "key": "3:801",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 773147,
+      "buildMs": 12.827040999999554,
+      "inflateMs": 2.5802910000002157
+    },
+    {
+      "key": "3:802",
+      "form": "pencil",
+      "brushes": 18,
+      "bytes": 555012,
+      "gzipBytes": 443472,
+      "buildMs": 7.102208999999675,
+      "inflateMs": 1.4573749999999563
+    },
+    {
+      "key": "3:803",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780440,
+      "buildMs": 13.259416999999303,
+      "inflateMs": 2.338042000000314
+    },
+    {
+      "key": "3:804",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781522,
+      "buildMs": 12.78570800000034,
+      "inflateMs": 2.546417000000474
+    },
+    {
+      "key": "3:805",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782002,
+      "buildMs": 12.776208000000224,
+      "inflateMs": 2.309291999999914
+    },
+    {
+      "key": "3:806",
+      "form": "pencil",
+      "brushes": 21,
+      "bytes": 616794,
+      "gzipBytes": 504884,
+      "buildMs": 7.3440419999997175,
+      "inflateMs": 1.544792000000598
+    },
+    {
+      "key": "3:807",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 778559,
+      "buildMs": 12.998709000000417,
+      "inflateMs": 2.423999999999978
+    },
+    {
+      "key": "3:808",
+      "form": "pencil",
+      "brushes": 21,
+      "bytes": 616794,
+      "gzipBytes": 524578,
+      "buildMs": 7.545416999999361,
+      "inflateMs": 1.6978330000001733
+    },
+    {
+      "key": "3:809",
+      "form": "pencil",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780759,
+      "buildMs": 13.059167000000343,
+      "inflateMs": 2.3274170000004233
+    },
+    {
+      "key": "3:810",
+      "form": "pencil",
+      "brushes": 33,
+      "bytes": 863922,
+      "gzipBytes": 729776,
+      "buildMs": 11.255333000000064,
+      "inflateMs": 2.3011670000005324
+    },
+    {
+      "key": "4:1024",
+      "form": "young",
+      "brushes": 15,
+      "bytes": 493230,
+      "gzipBytes": 391873,
+      "buildMs": 5.382125000000087,
+      "inflateMs": 1.2687919999998485
+    },
+    {
+      "key": "4:1025",
+      "form": "young",
+      "brushes": 18,
+      "bytes": 555012,
+      "gzipBytes": 446924,
+      "buildMs": 7.514084000000366,
+      "inflateMs": 1.4934579999999187
+    },
+    {
+      "key": "4:1026",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783318,
+      "buildMs": 13.324290999999903,
+      "inflateMs": 2.3222080000005008
+    },
+    {
+      "key": "4:1027",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782593,
+      "buildMs": 14.510000000000218,
+      "inflateMs": 2.4209170000003724
+    },
+    {
+      "key": "4:1028",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783328,
+      "buildMs": 12.684041999999863,
+      "inflateMs": 2.3591669999996157
+    },
+    {
+      "key": "4:1029",
+      "form": "young",
+      "brushes": 9,
+      "bytes": 369666,
+      "gzipBytes": 228446,
+      "buildMs": 3.083499999999731,
+      "inflateMs": 0.6942920000001322
+    },
+    {
+      "key": "4:1030",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783024,
+      "buildMs": 12.761499999999614,
+      "inflateMs": 2.5012919999999212
+    },
+    {
+      "key": "4:1031",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782469,
+      "buildMs": 12.50695799999994,
+      "inflateMs": 2.3325840000006792
+    },
+    {
+      "key": "4:1032",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782925,
+      "buildMs": 11.709374999999454,
+      "inflateMs": 2.3083749999996144
+    },
+    {
+      "key": "4:1033",
+      "form": "young",
+      "brushes": 21,
+      "bytes": 616794,
+      "gzipBytes": 528526,
+      "buildMs": 7.574083000000428,
+      "inflateMs": 1.5898749999996653
+    },
+    {
+      "key": "4:1034",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783451,
+      "buildMs": 12.686875000000327,
+      "inflateMs": 2.34204199999931
+    },
+    {
+      "key": "4:1035",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782306,
+      "buildMs": 13.027291999999761,
+      "inflateMs": 2.322167000000263
+    },
+    {
+      "key": "4:1036",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781785,
+      "buildMs": 12.441541999999572,
+      "inflateMs": 2.4069999999992433
+    },
+    {
+      "key": "4:1037",
+      "form": "young",
+      "brushes": 3,
+      "bytes": 246102,
+      "gzipBytes": 83716,
+      "buildMs": 1.061916999999994,
+      "inflateMs": 0.2997079999995549
+    },
+    {
+      "key": "4:1038",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 770861,
+      "buildMs": 12.835791999999856,
+      "inflateMs": 2.275916999999936
+    },
+    {
+      "key": "4:1039",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 760839,
+      "buildMs": 12.208040999999866,
+      "inflateMs": 2.3685000000004948
+    },
+    {
+      "key": "4:1040",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 771030,
+      "buildMs": 12.486125000000357,
+      "inflateMs": 2.333708000000115
+    },
+    {
+      "key": "4:1041",
+      "form": "young",
+      "brushes": 15,
+      "bytes": 493230,
+      "gzipBytes": 382057,
+      "buildMs": 5.225916999999754,
+      "inflateMs": 1.1323329999995622
+    },
+    {
+      "key": "4:1042",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780954,
+      "buildMs": 12.471708000000035,
+      "inflateMs": 2.393167000000176
+    },
+    {
+      "key": "4:1043",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783273,
+      "buildMs": 12.595499999999447,
+      "inflateMs": 2.40612499999952
+    },
+    {
+      "key": "4:1044",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782154,
+      "buildMs": 13.025625000000218,
+      "inflateMs": 2.377665999999408
+    },
+    {
+      "key": "4:1045",
+      "form": "young",
+      "brushes": 12,
+      "bytes": 431448,
+      "gzipBytes": 279442,
+      "buildMs": 4.041374999999789,
+      "inflateMs": 0.836207999999715
+    },
+    {
+      "key": "4:1046",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783476,
+      "buildMs": 12.83312500000011,
+      "inflateMs": 2.322957999999744
+    },
+    {
+      "key": "4:1047",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782368,
+      "buildMs": 12.17633300000034,
+      "inflateMs": 2.4127920000000813
+    },
+    {
+      "key": "4:1048",
+      "form": "young",
+      "brushes": 30,
+      "bytes": 802140,
+      "gzipBytes": 679884,
+      "buildMs": 10.590791999999965,
+      "inflateMs": 2.0714590000006865
+    },
+    {
+      "key": "4:1049",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781640,
+      "buildMs": 12.415417000000161,
+      "inflateMs": 2.490791000000172
+    },
+    {
+      "key": "4:1050",
+      "form": "young",
+      "brushes": 33,
+      "bytes": 863922,
+      "gzipBytes": 730093,
+      "buildMs": 11.580292000000554,
+      "inflateMs": 2.2100000000000364
+    },
+    {
+      "key": "4:1051",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 783078,
+      "buildMs": 12.36541699999998,
+      "inflateMs": 2.3702500000008513
+    },
+    {
+      "key": "4:1052",
+      "form": "young",
+      "brushes": 9,
+      "bytes": 369666,
+      "gzipBytes": 247398,
+      "buildMs": 3.9494999999997162,
+      "inflateMs": 0.7890000000006694
+    },
+    {
+      "key": "4:1053",
+      "form": "young",
+      "brushes": 21,
+      "bytes": 616794,
+      "gzipBytes": 478507,
+      "buildMs": 7.032500000000255,
+      "inflateMs": 1.6283339999999953
+    },
+    {
+      "key": "4:1054",
+      "form": "young",
+      "brushes": 9,
+      "bytes": 369666,
+      "gzipBytes": 233538,
+      "buildMs": 3.358499999999367,
+      "inflateMs": 0.7384579999998095
+    },
+    {
+      "key": "4:1055",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781209,
+      "buildMs": 12.900042000000212,
+      "inflateMs": 2.3100000000004
+    },
+    {
+      "key": "4:1056",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782092,
+      "buildMs": 12.658832999999504,
+      "inflateMs": 2.452874999999949
+    },
+    {
+      "key": "4:1057",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780457,
+      "buildMs": 12.602499999999964,
+      "inflateMs": 2.338416999999936
+    },
+    {
+      "key": "4:1058",
+      "form": "young",
+      "brushes": 24,
+      "bytes": 678576,
+      "gzipBytes": 546327,
+      "buildMs": 8.46991700000035,
+      "inflateMs": 1.6747079999995549
+    },
+    {
+      "key": "4:1059",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779330,
+      "buildMs": 12.732708000000457,
+      "inflateMs": 2.3942919999999503
+    },
+    {
+      "key": "4:1060",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779425,
+      "buildMs": 12.920541999999841,
+      "inflateMs": 2.34479200000078
+    },
+    {
+      "key": "4:1061",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779879,
+      "buildMs": 12.173166000000492,
+      "inflateMs": 2.3187090000001263
+    },
+    {
+      "key": "4:1062",
+      "form": "young",
+      "brushes": 18,
+      "bytes": 555012,
+      "gzipBytes": 454739,
+      "buildMs": 5.979374999999891,
+      "inflateMs": 1.3789170000000013
+    },
+    {
+      "key": "4:1063",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 771197,
+      "buildMs": 12.573333000000275,
+      "inflateMs": 2.268000000000029
+    },
+    {
+      "key": "4:1064",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782601,
+      "buildMs": 12.1381250000004,
+      "inflateMs": 2.297417000000678
+    },
+    {
+      "key": "4:1065",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781659,
+      "buildMs": 12.443708999999217,
+      "inflateMs": 2.432459000000563
+    },
+    {
+      "key": "4:1066",
+      "form": "young",
+      "brushes": 15,
+      "bytes": 493230,
+      "gzipBytes": 362432,
+      "buildMs": 5.5355829999998605,
+      "inflateMs": 1.1457080000000133
+    },
+    {
+      "key": "4:1067",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 780448,
+      "buildMs": 13.015957999999955,
+      "inflateMs": 2.3446249999997235
+    },
+    {
+      "key": "4:1068",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 769743,
+      "buildMs": 12.336084000000483,
+      "inflateMs": 2.28191599999991
+    },
+    {
+      "key": "4:1069",
+      "form": "young",
+      "brushes": 33,
+      "bytes": 863922,
+      "gzipBytes": 706989,
+      "buildMs": 11.819292000000132,
+      "inflateMs": 2.131999999999607
+    },
+    {
+      "key": "4:1070",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781581,
+      "buildMs": 13.042790999999852,
+      "inflateMs": 2.406082999999853
+    },
+    {
+      "key": "4:1071",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782462,
+      "buildMs": 12.361792000000605,
+      "inflateMs": 2.348167000000103
+    },
+    {
+      "key": "4:1072",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 782726,
+      "buildMs": 13.171041999999943,
+      "inflateMs": 2.3489159999999174
+    },
+    {
+      "key": "4:1073",
+      "form": "young",
+      "brushes": 18,
+      "bytes": 555012,
+      "gzipBytes": 443753,
+      "buildMs": 6.112208000000464,
+      "inflateMs": 1.361124999999447
+    },
+    {
+      "key": "4:1074",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779884,
+      "buildMs": 12.445165999999517,
+      "inflateMs": 2.330334000000221
+    },
+    {
+      "key": "4:1075",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 781062,
+      "buildMs": 12.660957999999482,
+      "inflateMs": 2.373916000000463
+    },
+    {
+      "key": "4:1076",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 760500,
+      "buildMs": 12.137708999999631,
+      "inflateMs": 2.260874999999942
+    },
+    {
+      "key": "4:1077",
+      "form": "young",
+      "brushes": 18,
+      "bytes": 555012,
+      "gzipBytes": 432784,
+      "buildMs": 6.854624999999942,
+      "inflateMs": 1.2979999999997744
+    },
+    {
+      "key": "4:1078",
+      "form": "young",
+      "brushes": 27,
+      "bytes": 740358,
+      "gzipBytes": 626802,
+      "buildMs": 8.93816599999991,
+      "inflateMs": 1.8912909999999101
+    },
+    {
+      "key": "4:1079",
+      "form": "young",
+      "brushes": 36,
+      "bytes": 925704,
+      "gzipBytes": 779240,
+      "buildMs": 13.49383299999954,
+      "inflateMs": 2.3493340000004537
+    },
+    {
+      "key": "4:1080",
+      "form": "young",
+      "brushes": 24,
+      "bytes": 678576,
+      "gzipBytes": 575452,
+      "buildMs": 8.771708000000217,
+      "inflateMs": 1.7513749999998254
+    }
+  ],
+  "actualForestSubset": {
+    "keys": [
+      "1:256",
+      "1:257",
+      "1:258",
+      "1:259",
+      "1:266",
+      "1:267",
+      "1:284",
+      "1:286",
+      "1:287",
+      "1:288",
+      "1:289",
+      "1:290",
+      "1:291",
+      "1:300",
+      "1:301",
+      "1:302",
+      "1:303",
+      "3:768",
+      "3:769",
+      "3:770",
+      "3:771",
+      "3:772",
+      "3:773",
+      "3:774",
+      "3:775",
+      "3:776",
+      "3:790",
+      "3:791",
+      "3:792",
+      "3:793",
+      "3:794",
+      "3:795",
+      "3:796",
+      "3:797",
+      "3:798"
+    ],
+    "groups": 35,
+    "brushes": 999,
+    "bytes": 27024606,
+    "gzipBytes": 21845233,
+    "buildMs": 367.9250840000002,
+    "inflateMs": 67.31187400000181
+  }
+}

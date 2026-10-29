@@ -1,0 +1,127 @@
+{
+  "candidate": "connected-pointbars69-1",
+  "defaultEnabled": false,
+  "runtimeSourceFrozen": true,
+  "browserShaderCompile": "not yet verified for 69",
+  "visualAdoption": "pending parent same-view QA",
+  "targetedTests": {
+    "pass": 76,
+    "fail": 0,
+    "log": "tools/reports/reach-design69-targeted-tests.log"
+  },
+  "morphology": {
+    "lengthM": 36,
+    "units": 3,
+    "maxRiseM": 0.09228656846244121,
+    "maxFallM": 0.1948806682976283,
+    "maxShoreRetreatM": 0.22929245360044062,
+    "minimumWaterWidthM": 0.687539989049911,
+    "sampledPreviouslyWetNewlyExposedM2": 2.9187500000000246,
+    "sourceCenterlineAndLevelUnchanged": true,
+    "endpointsUnchanged": true,
+    "newDisconnectedDryIslands": 0,
+    "addedOuterDepressionsComparedWithOriginalDEM": 0
+  },
+  "fixedBankCover": {
+    "version": "reach-design69-validation-1",
+    "candidate": "connected-pointbars69-1",
+    "scope": "actual terrain-row-kernel Float32 positions/index, settled 0.15625m tiles; browser still required",
+    "sourcePreparedSHA256": "9e62e8d16168db6be5b669e5e79d395b74eac384b76685a4d76724796916d877",
+    "roots": 521,
+    "groups": 11069,
+    "triangles": 240232,
+    "actualTiles": 15,
+    "changedRootY": 145,
+    "changedGroups": 11069,
+    "maxY": 0.07167908979363347,
+    "maxFootGap": 0.015205867563963693,
+    "maxAnalyticTriangleDelta": 0.0143565755720374,
+    "stoneTransformsExactlyEqual": 5,
+    "fixedIDsAndXZ": true,
+    "failures": [],
+    "elapsedMs": 2134.5036250000003
+  },
+  "peripheralGrass": {
+    "oldTotal": 45486,
+    "newTotal": 45486,
+    "lost": 0,
+    "gained": 0,
+    "unchangedOrdinaryXZ": 45397,
+    "ordinaryYChanged": 0,
+    "proceduralChecked": 89,
+    "actualTiles": 22,
+    "errors": [],
+    "allMoved": {
+      "count": 44,
+      "maxHorizontalM": 0.8830731456745027,
+      "maxVerticalM": 0.03126055705570252,
+      "maxFootGapM": 0.026441294146934524,
+      "maxAdditionalSeatDeltaM": 0.003141099891763588
+    },
+    "sameWetMoved": {
+      "count": 37,
+      "maxHorizontalM": 0.37429178263669877,
+      "maxVerticalM": 0.020008432881695626,
+      "maxFootGapM": 0.026441294146934524,
+      "maxAdditionalSeatDeltaM": 0.003141099891763588
+    },
+    "classification": {
+      "count": 7,
+      "maxHorizontalM": 0.8830731456745027,
+      "maxVerticalM": 0.03126055705570252,
+      "maxFootGapM": 0.021975901255245844,
+      "maxAdditionalSeatDeltaM": 0.0013550776948250132
+    },
+    "classificationDirection": {
+      "ordinaryToWet": 5,
+      "wetToOrdinary": 2
+    },
+    "ordinaryRootBurialM": [
+      0.03494886083126403,
+      0.035002355470624025
+    ]
+  },
+  "waterGeometry": {
+    "baselineEachRepresentation": {
+      "vertices": 21737,
+      "triangles": 41530,
+      "bytes": 2422880
+    },
+    "candidateEachRepresentation": {
+      "vertices": 23091,
+      "triangles": 44238,
+      "bytes": 2574528
+    },
+    "deltaEachRepresentation": {
+      "vertices": 1354,
+      "triangles": 2708,
+      "bytes": 151648
+    },
+    "newDraws": 0
+  },
+  "candidatePayloads": {
+    "meadow-roots-38.json": 9652,
+    "reach-cover.json.gz": 615806,
+    "forest-roots-38.bin.gz": 3101781,
+    "reach-cover.json": 10911,
+    "meadow-roots-38.bin.gz": 4005607,
+    "forest-roots-38.json": 22763
+  },
+  "defaultRegeneration": {
+    "steps": 11,
+    "complete": true,
+    "allNonBindingPayloadsUnchanged": true,
+    "report": "tools/reports/reach-design69-default-regeneration.json"
+  },
+  "costBoundary": {
+    "terrain": "candidate uses formal live terrain Worker; default prepared rows deliberately unavailable; real startup not measured",
+    "material": "same two private scan arrays as 66; no extra samplers/draws; two added fine-scan textureGrad fetches; 10 source-section projections near reach",
+    "gpu": "not measured"
+  },
+  "limits": [
+    "69 GLSL has not yet compiled in a real browser; string tests are not shader acceptance",
+    "Whole bend material/landform appearance pending whole-bend, pool-cross, root-mat views",
+    "Underlying underwater material/air-water light transport remains existing approximation",
+    "No production ecology/root placement hook added; surrounding procedural wet roots retain original placement rules"
+  ]
+}

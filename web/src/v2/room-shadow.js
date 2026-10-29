@@ -1,3 +1,4 @@
+import {uniformOnlyProgramOrigin52} from './shadow-program-family52.js';
 import {terrainShadowDepthAssigned} from './terrain-shadow-domain.js';
 import { MeshDepthMaterial, BasicDepthPacking } from "three";
 
@@ -10,6 +11,10 @@ export function isStandardProjectedDepth(depth){
 }
 export function useProjectedShadowDepth(depth){
   if(patched.has(depth))return depth;
+  // A certified twig clone invokes its already-projected source hook and only
+  // replaces uniforms. Wrapping it again changes the program key unnecessarily.
+  const inherited=uniformOnlyProgramOrigin52(depth);
+  if(inherited&&patched.has(inherited)){patched.add(depth);return depth;}
   const previous=depth.onBeforeCompile,previousKey=depth.customProgramCacheKey();
   depth.onBeforeCompile=(shader,renderer)=>{
     previous.call(depth,shader,renderer);

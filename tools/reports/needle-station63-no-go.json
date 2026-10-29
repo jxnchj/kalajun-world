@@ -1,0 +1,332 @@
+{
+  "schema": 1,
+  "candidate": "needle-station-wind62",
+  "review": "needle-station63",
+  "date": "2026-10-29",
+  "decision": "NO-GO",
+  "reason": "No measured GPU benefit in the controlled ABBA sequence; neither the numeric oracle nor the same-frame world image was bitwise identical. The integration has been withdrawn; no density, geometry, LOD, or wind reduction was adopted.",
+  "evidence": {
+    "abba": "docs/previews/v2-route-craft-38/needle-station63-abba.json",
+    "world": "docs/previews/v2-route-craft-38/needle-station63-world-on.json",
+    "numeric": "docs/previews/v2-route-craft-38/needle-station63-gpu-oracle-first.json"
+  },
+  "measurement": {
+    "scope": "one visible tab; original renderer GPU timer includes bake plus world/reflection; natural wind, same pose, ABBA; no geometry/LOD/density changes",
+    "warmFrames": 120,
+    "sampleFramesPerRecord": 360,
+    "records": [
+      {
+        "label": "A1",
+        "enabled": false,
+        "meanMs": 60.46388888888889,
+        "gpuMeanMs": 32.97166381666667
+      },
+      {
+        "label": "B1",
+        "enabled": true,
+        "meanMs": 60.9033333333332,
+        "gpuMeanMs": 33.067829741666664
+      },
+      {
+        "label": "B2",
+        "enabled": true,
+        "meanMs": 61.479166666666664,
+        "gpuMeanMs": 33.23538940000001
+      },
+      {
+        "label": "A2",
+        "enabled": false,
+        "meanMs": 61.03999999999974,
+        "gpuMeanMs": 33.01975391666667
+      }
+    ],
+    "averages": {
+      "gpuMs": {
+        "off": 32.995708866666675,
+        "on": 33.15160957083334,
+        "delta": 0.1559007041666618,
+        "percent": 0.47248781590554234
+      },
+      "rafMs": {
+        "off": 60.75194444444432,
+        "on": 61.19124999999993,
+        "delta": 0.4393055555556131,
+        "percent": 0.7231135720394022
+      }
+    },
+    "interpretation": "The mean enabled GPU time is 0.1559007041666618 ms higher (+0.4725%). This is not a demonstrated speedup; this small difference is not a claim of statistically significant slowdown."
+  },
+  "worldImage": {
+    "scope": "same wind and camera; force original CSM and eligible reflection per variant; same compiled shader cache branch enabled/disabled",
+    "difference": {
+      "components": 172,
+      "pixels": 86,
+      "max": 41,
+      "sum": 1040
+    },
+    "restoredDifference": {
+      "components": 0,
+      "pixels": 0,
+      "max": 0,
+      "sum": 0
+    },
+    "reflectionCaptured": [
+      true,
+      true,
+      true
+    ],
+    "note": "This is a composite world image comparison with refreshed original CSM and eligible reflection, not separate pixel-level proofs for every shadow or reflection attachment."
+  },
+  "numeric": {
+    "bitwiseEqual": false,
+    "batches": [
+      {
+        "name": "gpu-needle-41:-38,50:spruce:-302:400",
+        "stations": 512,
+        "vertices": 7680,
+        "bitMismatches": 6247,
+        "maxAbs": 1.1920928955078125e-7
+      },
+      {
+        "name": "gpu-needle-38:-38,49:spruce:-301:399",
+        "stations": 512,
+        "vertices": 7680,
+        "bitMismatches": 8896,
+        "maxAbs": 1.1920928955078125e-7
+      }
+    ],
+    "firstSamples": [
+      {
+        "attachment": 0,
+        "vertex": 0,
+        "component": 1,
+        "original": -0.004331835079938173,
+        "cached": -0.004331834614276886,
+        "batch": "gpu-needle-41:-38,50:spruce:-302:400",
+        "absoluteError": 4.656612873077393e-10,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 1,
+        "component": 1,
+        "original": -0.004332262556999922,
+        "cached": -0.004332263022661209,
+        "batch": "gpu-needle-41:-38,50:spruce:-302:400",
+        "absoluteError": 4.656612873077393e-10,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 3,
+        "component": 0,
+        "original": 0.041949037462472916,
+        "cached": 0.041949041187763214,
+        "batch": "gpu-needle-41:-38,50:spruce:-302:400",
+        "absoluteError": 3.725290298461914e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 4,
+        "component": 0,
+        "original": 0.04193468764424324,
+        "cached": 0.04193469136953354,
+        "batch": "gpu-needle-41:-38,50:spruce:-302:400",
+        "absoluteError": 3.725290298461914e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 6,
+        "component": 1,
+        "original": -0.004332667216658592,
+        "cached": -0.004332666750997305,
+        "batch": "gpu-needle-41:-38,50:spruce:-302:400",
+        "absoluteError": 4.656612873077393e-10,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 8,
+        "component": 0,
+        "original": 0.04213769733905792,
+        "cached": 0.04213770106434822,
+        "batch": "gpu-needle-41:-38,50:spruce:-302:400",
+        "absoluteError": 3.725290298461914e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 10,
+        "component": 1,
+        "original": -0.0043321833945810795,
+        "cached": -0.004332182928919792,
+        "batch": "gpu-needle-41:-38,50:spruce:-302:400",
+        "absoluteError": 4.656612873077393e-10,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 11,
+        "component": 0,
+        "original": 0.04222681745886803,
+        "cached": 0.04222681373357773,
+        "batch": "gpu-needle-41:-38,50:spruce:-302:400",
+        "absoluteError": 3.725290298461914e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 0,
+        "component": 0,
+        "original": -0.029980219900608063,
+        "cached": -0.029980218037962914,
+        "batch": "gpu-needle-38:-38,49:spruce:-301:399",
+        "absoluteError": 1.862645149230957e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 0,
+        "component": 1,
+        "original": 0.08904572576284409,
+        "cached": 0.08904571831226349,
+        "batch": "gpu-needle-38:-38,49:spruce:-301:399",
+        "absoluteError": 7.450580596923828e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 1,
+        "component": 0,
+        "original": -0.029989710077643394,
+        "cached": -0.029989708214998245,
+        "batch": "gpu-needle-38:-38,49:spruce:-301:399",
+        "absoluteError": 1.862645149230957e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 1,
+        "component": 1,
+        "original": 0.08907395601272583,
+        "cached": 0.08907394856214523,
+        "batch": "gpu-needle-38:-38,49:spruce:-301:399",
+        "absoluteError": 7.450580596923828e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 2,
+        "component": 0,
+        "original": -0.029861290007829666,
+        "cached": -0.029861291870474815,
+        "batch": "gpu-needle-38:-38,49:spruce:-301:399",
+        "absoluteError": 1.862645149230957e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 2,
+        "component": 1,
+        "original": 0.08869196474552155,
+        "cached": 0.08869197219610214,
+        "batch": "gpu-needle-38:-38,49:spruce:-301:399",
+        "absoluteError": 7.450580596923828e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 3,
+        "component": 0,
+        "original": -0.029988395050168037,
+        "cached": -0.029988393187522888,
+        "batch": "gpu-needle-38:-38,49:spruce:-301:399",
+        "absoluteError": 1.862645149230957e-9,
+        "ulpDistance": 1
+      },
+      {
+        "attachment": 0,
+        "vertex": 4,
+        "component": 0,
+        "original": -0.02998153120279312,
+        "cached": -0.02998153306543827,
+        "batch": "gpu-needle-38:-38,49:spruce:-301:399",
+        "absoluteError": 1.862645149230957e-9,
+        "ulpDistance": 1
+      }
+    ],
+    "interpretation": "All 16 recorded first mismatches are offset x/z components and exactly one Float32 ULP. The aggregate mismatch counts cover offset and bent normal attachments; the retained first-sample data does not split all errors by attachment or prove every error is one ULP. The maximum recorded absolute difference per batch is 1.1920928955078125e-7. A Float32 materialization boundary or separate-program compiler reassociation/FMA is plausible, not proven; no driver assembly was inspected. This native RGBA32F path is not half-float quantization."
+  },
+  "cost": {
+    "selectedBatches": 2,
+    "totalStations": 88992,
+    "coefficientLogicalBytes": 1423872,
+    "rgba32fPaddedAttachmentBytes": 1441792,
+    "privatePointVertexBytes": 24,
+    "bakeDrawsPerChangedFrame": 2
+  },
+  "withdrawal": {
+    "backup": "backups/needle-station63-no-go",
+    "edited": [
+      {
+        "path": "web/src/v2/main.js",
+        "sha256": "59999495bd332cb008806ed6aa0b2cd55c6d82890c42a05f61a609e8af6d90d3"
+      },
+      {
+        "path": "web/src/v2/opaque-depth-order.test.js",
+        "sha256": "823c7924dddf4f6f795cf7462f53e89cc89d9002a76849692b48e21ce544e32c"
+      },
+      {
+        "path": "web/src/v2/terrain-row-worker-client.js",
+        "sha256": "2b91bcfbb518d2dd211cf5942821bc9ef71d341e11e4fd37f127e947af85d49a"
+      },
+      {
+        "path": "web/src/v2/terrain-row-worker-client.test.js",
+        "sha256": "8d1a53f962a797b54a9ff4aea31f988bfd6f1dc3dbfb4fbd575ddfcb2a2f6788"
+      }
+    ],
+    "removed": [
+      "main import/constructor/renderWorld prepare/snapshot/debug/dispose",
+      "opaque-depth-order test candidate dependencies and station event; original scope/order assertions retained",
+      "terrain Worker candidate-only flag allowlist and its candidate-only test"
+    ],
+    "retained": [
+      {
+        "path": "web/src/v2/needle-station-wind-cache62.js",
+        "sha256": "d3fc0282089098ac85bec48197b5b43d5c7121edc012ab93260211b93d5ed7e3"
+      },
+      {
+        "path": "web/src/v2/needle-station-wind-cache62.test.js",
+        "sha256": "5c5d3ff15b2c221acfd7a7ab7792b959df1afbcf47936e483f9b12653ada6145"
+      },
+      {
+        "path": "web/src/v2/grass-shadow-world41.js",
+        "sha256": "868594487b4a49d0f2a29d6d9f2632e1eccf0cdb3f4eb4f5efc401fd12466800"
+      },
+      {
+        "path": "tools/reports/needle-station-wind62-validation.json",
+        "sha256": "c56f9d086f7df8c32bb8b4a68a9238f7632bdc80272bd1c825b272808c823896"
+      },
+      {
+        "path": "tools/reports/needle-station-wind62.md",
+        "sha256": "a5eec382de7a94c19b721f05c5cf4d872b95ed49dd4ddf2a015f194fc45f6a35"
+      }
+    ],
+    "coverageCondition": "grass-shadow-world41.js candidate-flag derived-valid isolation is intentionally retained unchanged; with no candidate integration it has no default effect.",
+    "otherWork": "Furniture, textiles, shadow templates, preparation bindings, and all other application changes were not altered. Existing build artifacts were not rebuilt or deleted."
+  },
+  "verification": {
+    "syntax": "node --check web/src/v2/main.js",
+    "command": "node --test web/src/v2/opaque-depth-order.test.js web/src/v2/terrain-row-worker-client.test.js web/src/v2/needle-station-wind-cache62.test.js web/src/v2/grass-shadow-world41.test.js",
+    "log": "tools/reports/needle-station63-no-go-tests.log",
+    "tests": 55,
+    "pass": 55,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 177.130041,
+    "fullSuiteRun": false,
+    "appBuildRun": false
+  }
+}

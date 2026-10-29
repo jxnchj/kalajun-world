@@ -1,0 +1,64 @@
+{
+  "steps": [
+    {
+      "label": "forest69",
+      "ms": 1434.192541,
+      "log": "tools/candidates/reach-design73/forest69.log"
+    },
+    {
+      "label": "meadow69",
+      "ms": 5524.780417,
+      "log": "tools/candidates/reach-design73/meadow69.log"
+    },
+    {
+      "label": "cover69",
+      "ms": 3531.0364170000003,
+      "log": "tools/candidates/reach-design73/cover69.log"
+    },
+    {
+      "label": "forest73",
+      "ms": 1314.4787079999987,
+      "log": "tools/candidates/reach-design73/forest73.log"
+    },
+    {
+      "label": "meadow73",
+      "ms": 6492.662417,
+      "log": "tools/candidates/reach-design73/meadow73.log"
+    },
+    {
+      "label": "cover73",
+      "ms": 6110.027000000002,
+      "log": "tools/candidates/reach-design73/cover73.log"
+    }
+  ],
+  "old69Unchanged": [
+    {
+      "file": "forest-roots-38.json",
+      "payloadSame": true
+    },
+    {
+      "file": "forest-roots-38.bin.gz",
+      "payloadSame": true,
+      "sha256": "0542c87d08af95038ceae2b2d85461c6253c596ca6a8a31a2c7cae35c3e1723d"
+    },
+    {
+      "file": "meadow-roots-38.json",
+      "payloadSame": true
+    },
+    {
+      "file": "meadow-roots-38.bin.gz",
+      "payloadSame": true,
+      "sha256": "cf245053f521f3ae5ffd344d71176392eb239db0e5f21e0d8dc729862febd927"
+    },
+    {
+      "file": "reach-cover.json",
+      "payloadSame": true
+    },
+    {
+      "file": "reach-cover.json.gz",
+      "payloadSame": true,
+      "sha256": "9d6e2a5a2eb6bd83c78c635eb27c33adc1e226d7f0b243a1625df1c0e038efed"
+    }
+  ],
+  "complete": true
+}

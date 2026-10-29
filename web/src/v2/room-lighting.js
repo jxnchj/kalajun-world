@@ -172,6 +172,12 @@ export class RoomIndirectLight {
     this.materials=new WeakSet();this.key=null;this.matrix=new THREE.Matrix4();
     this.field.stats.finiteAperture={enabled:this.uniforms.uRoomFiniteAperture.value>0,model:"hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",extraTextureSamples:0,extraGeometry:0,edgeIntegral:this.uniforms.uRoomApertureEdges.value>0};
   }
+  shaderSource(){
+    return this.openingCapacity===3?ROOM_BOUNCE_GLSL:ROOM_BOUNCE_GLSL
+          .replace(/(uRoom(?:Openings|OpeningLocal|Inward|OpeningU|OpeningV))\[3\]/g,'$1['+this.openingCapacity+']')
+          .replace('i<3;i++','i<'+this.openingCapacity+';i++')
+          .replace('apertureVisibility[i]','(i<3?apertureVisibility[min(i,2)]:extraApertureVisibility[clamp(i-3,0,2)])');
+  }
   register(materials){
     for(const material of materials){
       if(this.materials.has(material)||!material.isMeshStandardMaterial)continue;
@@ -187,10 +193,7 @@ vec4 roomWorldVertex=vec4(transformed,1.0);
 roomWorldVertex=instanceMatrix*roomWorldVertex;
 #endif
 vRoomWorldPosition=(modelMatrix*roomWorldVertex).xyz;`);
-        const roomGLSL=this.openingCapacity===3?ROOM_BOUNCE_GLSL:ROOM_BOUNCE_GLSL
-          .replace(/(uRoom(?:Openings|OpeningLocal|Inward|OpeningU|OpeningV))\[3\]/g,'$1['+this.openingCapacity+']')
-          .replace('i<3;i++','i<'+this.openingCapacity+';i++')
-          .replace('apertureVisibility[i]','(i<3?apertureVisibility[min(i,2)]:extraApertureVisibility[clamp(i-3,0,2)])');
+        const roomGLSL=this.shaderSource();
         shader.fragmentShader=roomGLSL+shader.fragmentShader;
         // Contact stays separate from daylight: night-time IBL needs the same
         // static furniture occlusion. Never multiply direct sun or real lamps.

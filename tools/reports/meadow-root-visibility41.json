@@ -1,0 +1,161 @@
+[
+  {
+    "spec": {
+      "id": "river-forest",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10
+    },
+    "rows": [
+      {
+        "range": 78,
+        "residentRoots": 19357,
+        "tileDraws": 18,
+        "tileSubmittedRoots": 6175,
+        "rootDraws": 18,
+        "rootSubmittedRoots": 4201,
+        "boundaryTiles": 12,
+        "boundaryRoots": 4054,
+        "visibilityMs": 0.17595700000060788,
+        "trianglesExact": 189045,
+        "trianglesOriginal": 426075,
+        "rootReduction": 0.31967611336032387,
+        "fieldUploadBytes": 470512
+      },
+      {
+        "range": 140,
+        "residentRoots": 50372,
+        "tileDraws": 40,
+        "tileSubmittedRoots": 13697,
+        "rootDraws": 40,
+        "rootSubmittedRoots": 10404,
+        "boundaryTiles": 19,
+        "boundaryRoots": 6500,
+        "visibilityMs": 0.33649799999989227,
+        "trianglesExact": 468180,
+        "trianglesOriginal": 945093,
+        "rootReduction": 0.2404176096955538,
+        "fieldUploadBytes": 1165248
+      },
+      {
+        "range": 200,
+        "residentRoots": 95915,
+        "tileDraws": 71,
+        "tileSubmittedRoots": 24768,
+        "rootDraws": 71,
+        "rootSubmittedRoots": 20624,
+        "boundaryTiles": 26,
+        "boundaryRoots": 8966,
+        "visibilityMs": 0.5261209999980565,
+        "trianglesExact": 928080,
+        "trianglesOriginal": 1708992,
+        "rootReduction": 0.16731266149870805,
+        "fieldUploadBytes": 2309888
+      },
+      {
+        "range": 320,
+        "residentRoots": 250285,
+        "tileDraws": 156,
+        "tileSubmittedRoots": 70334,
+        "rootDraws": 156,
+        "rootSubmittedRoots": 62824,
+        "boundaryTiles": 41,
+        "boundaryRoots": 16277,
+        "visibilityMs": 1.6407100000012633,
+        "trianglesExact": 2827080,
+        "trianglesOriginal": 4853046,
+        "rootReduction": 0.10677623908778111,
+        "fieldUploadBytes": 7036288
+      }
+    ],
+    "sourceMs": 2043.9089770000003,
+    "boundsMs": 44.97032900000272,
+    "totalMs": 2094.139292,
+    "scope": "Real source roots and camera; conservative whole-leaf wind AABBs; CPU proposal only. Main view only (reflection union increases submissions). No terrain occlusion, no density reduction, no GPU claim."
+  },
+  {
+    "spec": {
+      "id": "meadow-baseline",
+      "position": [
+        -1911.6746320544553,
+        2133.699873785899,
+        3396.603433350617
+      ],
+      "target": [
+        -1972.53,
+        2121.8634538710935,
+        3395.88
+      ]
+    },
+    "rows": [
+      {
+        "range": 78,
+        "residentRoots": 37947,
+        "tileDraws": 20,
+        "tileSubmittedRoots": 12623,
+        "rootDraws": 18,
+        "rootSubmittedRoots": 7726,
+        "boundaryTiles": 13,
+        "boundaryRoots": 8566,
+        "visibilityMs": 0.22116799999957948,
+        "trianglesExact": 347670,
+        "trianglesOriginal": 870987,
+        "rootReduction": 0.3879426443793076,
+        "fieldUploadBytes": 865312
+      },
+      {
+        "range": 140,
+        "residentRoots": 95489,
+        "tileDraws": 41,
+        "tileSubmittedRoots": 24223,
+        "rootDraws": 39,
+        "rootSubmittedRoots": 17277,
+        "boundaryTiles": 21,
+        "boundaryRoots": 13507,
+        "visibilityMs": 0.36512299999958486,
+        "trianglesExact": 777465,
+        "trianglesOriginal": 1671387,
+        "rootReduction": 0.2867522602485242,
+        "fieldUploadBytes": 1935024
+      },
+      {
+        "range": 200,
+        "residentRoots": 183715,
+        "tileDraws": 72,
+        "tileSubmittedRoots": 41486,
+        "rootDraws": 70,
+        "rootSubmittedRoots": 31675,
+        "boundaryTiles": 29,
+        "boundaryRoots": 19239,
+        "visibilityMs": 0.5397039999920707,
+        "trianglesExact": 1425375,
+        "trianglesOriginal": 2862534,
+        "rootReduction": 0.23648941811695512,
+        "fieldUploadBytes": 3547600
+      },
+      {
+        "range": 320,
+        "residentRoots": 434513,
+        "tileDraws": 159,
+        "tileSubmittedRoots": 86818,
+        "rootDraws": 156,
+        "rootSubmittedRoots": 71497,
+        "boundaryTiles": 46,
+        "boundaryRoots": 31715,
+        "visibilityMs": 1.0999939999915114,
+        "trianglesExact": 3217365,
+        "trianglesOriginal": 5990442,
+        "rootReduction": 0.17647262088506988,
+        "fieldUploadBytes": 8007664
+      }
+    ],
+    "sourceMs": 3000.9306160000037,
+    "boundsMs": 72.60762299999624,
+    "totalMs": 3080.813208,
+    "scope": "Real source roots and camera; conservative whole-leaf wind AABBs; CPU proposal only. Main view only (reflection union increases submissions). No terrain occlusion, no density reduction, no GPU claim."
+  }
+]

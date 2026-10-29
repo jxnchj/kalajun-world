@@ -1,0 +1,125 @@
+{
+  "scope": "Same-page dynamic comparisons at 1280x800 DPR1 time870. Movement is identical deterministic +/-1m and +/-4degree path. No density decrease. Candidate still default OFF.",
+  "rows": [
+    {
+      "group": "pool-perf",
+      "run": "a1",
+      "frameMs": 43.85729927007308,
+      "gpuMs": 38.93508628333332,
+      "submissionCPU": null,
+      "uploadMean": null,
+      "roots": 210243,
+      "errors": []
+    },
+    {
+      "group": "pool-perf",
+      "run": "b1",
+      "frameMs": 36.60151975683889,
+      "gpuMs": 21.570991816666666,
+      "submissionCPU": null,
+      "uploadMean": null,
+      "roots": 210243,
+      "errors": []
+    },
+    {
+      "group": "pool-perf",
+      "run": "b2",
+      "frameMs": 35.651479289940774,
+      "gpuMs": 21.289393949999997,
+      "submissionCPU": null,
+      "uploadMean": null,
+      "roots": 210243,
+      "errors": []
+    },
+    {
+      "group": "pool-perf",
+      "run": "a2",
+      "frameMs": 45.9931297709923,
+      "gpuMs": 38.87914533333333,
+      "submissionCPU": null,
+      "uploadMean": null,
+      "roots": 210243,
+      "errors": []
+    },
+    {
+      "group": "move",
+      "run": "a1",
+      "frameMs": 83.56482758620706,
+      "gpuMs": 22.12016065000001,
+      "submissionCPU": 26.837241379556986,
+      "uploadMean": 10719350.068965517,
+      "roots": 220700,
+      "errors": []
+    },
+    {
+      "group": "move",
+      "run": "b1",
+      "frameMs": 63.50526315789474,
+      "gpuMs": 21.850660599999994,
+      "submissionCPU": 15.591052632347534,
+      "uploadMean": 41717.642105263156,
+      "roots": 220700,
+      "errors": []
+    },
+    {
+      "group": "move",
+      "run": "b2",
+      "frameMs": 59.48719211822643,
+      "gpuMs": 21.988302966666662,
+      "submissionCPU": 15.133990147797933,
+      "uploadMean": 39084.68965517241,
+      "roots": 220700,
+      "errors": []
+    },
+    {
+      "group": "move",
+      "run": "a2",
+      "frameMs": 75.05403726708082,
+      "gpuMs": 21.890541916666677,
+      "submissionCPU": 24.243478261258293,
+      "uploadMean": 10712002.086956521,
+      "roots": 220700,
+      "errors": []
+    },
+    {
+      "group": "block-move",
+      "run": "a1",
+      "frameMs": 68.60852272727293,
+      "gpuMs": 22.536030050000004,
+      "submissionCPU": 17.06761363622817,
+      "uploadMean": 45109.90909090909,
+      "roots": 220700,
+      "errors": []
+    },
+    {
+      "group": "block-move",
+      "run": "b1",
+      "frameMs": 54.66000000000005,
+      "gpuMs": 22.38016066666667,
+      "submissionCPU": 9.1427272726189,
+      "uploadMean": 36010.03636363636,
+      "roots": 220700,
+      "errors": []
+    },
+    {
+      "group": "block-move",
+      "run": "b2",
+      "frameMs": 61.1289340101524,
+      "gpuMs": 22.594363400000006,
+      "submissionCPU": 9.394923857701611,
+      "uploadMean": 39929.98984771573,
+      "roots": 220700,
+      "errors": []
+    },
+    {
+      "group": "block-move",
+      "run": "a2",
+      "frameMs": 63.577248677248555,
+      "gpuMs": 22.31673556666667,
+      "submissionCPU": 16.261375661722568,
+      "uploadMean": 41863.11111111111,
+      "roots": 220700,
+      "errors": []
+    }
+  ]
+}

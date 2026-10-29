@@ -1,6 +1,6 @@
 {
   "version": "structure-prepared-38",
-  "signature": "35376e0c4065a50d333bcc39ebf5263c2da7c9442f107e24764a78fa15bff70c",
+  "signature": "5e18bda9e030b3530c42f93d0bb9da0fabbd08485c492799e247571213c36943",
   "sources": [
     {
       "path": "src/v2/guest-living-definition.js",
@@ -44,7 +44,23 @@
     },
     {
       "path": "src/v2/structures.js",
-      "sha256": "fd9c3b29355f57903b8dba767d04b4d505fc7aca76fbb477ae14ebc5f1b46fd6"
+      "sha256": "726827f95126082510c08b033fe6c9eec733dbf449bfab49ec24088305ce5292"
+    },
+    {
+      "path": "src/v2/house-timber48.js",
+      "sha256": "fec5028e60071a77dd75e9954f7df468b39e55e62f9b6a21ce81b76bf7f8163c"
+    },
+    {
+      "path": "src/v2/house-furniture-timber58.js",
+      "sha256": "80b323a2f8c4b83264e57d612762bf77f816656a6d5aee88d26018c7423059bc"
+    },
+    {
+      "path": "src/v2/house-textiles62.js",
+      "sha256": "3b6a45c7ca6f3b401847ad2884f20238fccc48319e57ab8a102e21d31a761fe3"
+    },
+    {
+      "path": "src/v2/house-timber-textures48.js",
+      "sha256": "406acd16ffc9b2878bc7aa7b226e95f3ea109452f4a31250914ee69da76ebf06"
     },
     {
       "path": "src/v2/lodge-interior-wood.js",
@@ -124,7 +140,7 @@
     },
     {
       "path": "src/v2/doors.js",
-      "sha256": "8f7295cc22dfc99dc03f618982894e6dd086262778cdd815d7490d56a07c8ac8"
+      "sha256": "b86bd105a8e017bcc26d622b5bcd090fc826e7dd1ec74c892ffe676068f68df9"
     },
     {
       "path": "src/v2/boardwalk-endpoints.js",
@@ -132,7 +148,7 @@
     },
     {
       "path": "src/v2/boardwalk-timber.js",
-      "sha256": "2881fd25d41085c1641c916c8cd07551df7f021169530c82bdf25e11380677a2"
+      "sha256": "8bdf2a1d208bf2ea9f0669dabba592d8749334f95c9c5d37c24c9d1938ed2fb4"
     },
     {
       "path": "src/v2/threshold-stones.js",
@@ -172,9 +188,9 @@
       "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
       "url": "assets/v2/prepared/house_a-38.glb.gz",
       "rawBytes": 11712888,
-      "rawSHA256": "e1a73a504e53afab72a8cd4fa0a6858a05c2c93bc06d34c7b42f5603b6f8bb98",
-      "gzipBytes": 6013589,
-      "gzipSHA256": "71e2b1b2bc09fc83dc66b046a8561892cbee21f722bb256fbe0e6796ebed6dd9"
+      "rawSHA256": "153b7a21756ff7e6ff7b51d010a4bdf0236f38ff6ea66c8ced0f552bd367ab2e",
+      "gzipBytes": 6013602,
+      "gzipSHA256": "2d8e36047f5a7618a4ddfc6c2d09cad65fbb83823aac0bfee80c52e6f12889fb"
     }
   }
 }

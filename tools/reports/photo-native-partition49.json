@@ -1,0 +1,1207 @@
+{
+  "scope": "Offline actual current world roots, original GLB volume/attribute layout, complete existing wind boxes, original native predicates including actual CSM receiver domains and mirrored range. Near mode12/needle station path excluded and unchanged. No browser performance gain claimed.",
+  "pose": {
+    "url": "http://127.0.0.1:5174/dist-v2/v2.html?view=river-forest&time=870&debug=1",
+    "q": 0,
+    "m": 0,
+    "viewport": [
+      1280,
+      800
+    ],
+    "dpr": 1,
+    "pose": [
+      -3611.851169467755,
+      2329.157270885741,
+      4805.483400316967
+    ],
+    "yaw": -29.88794104541604,
+    "pitch": -10,
+    "time": 870,
+    "treeActive": 3213,
+    "treeBatches": 450,
+    "frame": 1637
+  },
+  "parts": [
+    {
+      "part": 0,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 4824,
+      "records": 27,
+      "active": 15,
+      "identity": "56f69ecfedfa585e25e59c6a8c2eda388eb7345615e0f3ed0de6e131914a478b"
+    },
+    {
+      "part": 1,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 27,
+      "active": 15,
+      "identity": "56f69ecfedfa585e25e59c6a8c2eda388eb7345615e0f3ed0de6e131914a478b"
+    },
+    {
+      "part": 2,
+      "mode": 5,
+      "alpha": 0.44999998807907104,
+      "triangles": 22536,
+      "records": 27,
+      "active": 15,
+      "identity": "56f69ecfedfa585e25e59c6a8c2eda388eb7345615e0f3ed0de6e131914a478b"
+    },
+    {
+      "part": 3,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 5064,
+      "records": 26,
+      "active": 13,
+      "identity": "ce51fa1f6571df40efdf803bdc2ed00e528aaef5c7d9d47282912630d0fd453e"
+    },
+    {
+      "part": 4,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 26,
+      "active": 13,
+      "identity": "ce51fa1f6571df40efdf803bdc2ed00e528aaef5c7d9d47282912630d0fd453e"
+    },
+    {
+      "part": 5,
+      "mode": 5,
+      "alpha": 0.44999998807907104,
+      "triangles": 23168,
+      "records": 26,
+      "active": 13,
+      "identity": "ce51fa1f6571df40efdf803bdc2ed00e528aaef5c7d9d47282912630d0fd453e"
+    },
+    {
+      "part": 6,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 3560,
+      "records": 23,
+      "active": 13,
+      "identity": "d51b4ef4d389e24aa86cce449c4a88c0f9c577bda7499617d9f81b29890705a1"
+    },
+    {
+      "part": 7,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 23,
+      "active": 13,
+      "identity": "d51b4ef4d389e24aa86cce449c4a88c0f9c577bda7499617d9f81b29890705a1"
+    },
+    {
+      "part": 8,
+      "mode": 5,
+      "alpha": 0.44999998807907104,
+      "triangles": 16124,
+      "records": 23,
+      "active": 13,
+      "identity": "d51b4ef4d389e24aa86cce449c4a88c0f9c577bda7499617d9f81b29890705a1"
+    },
+    {
+      "part": 9,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 3752,
+      "records": 29,
+      "active": 16,
+      "identity": "2363aaa49cac7100eb3284dcf5af9a5728cae7c0bc7697e90fffa9f68fb082c3"
+    },
+    {
+      "part": 10,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 29,
+      "active": 16,
+      "identity": "2363aaa49cac7100eb3284dcf5af9a5728cae7c0bc7697e90fffa9f68fb082c3"
+    },
+    {
+      "part": 11,
+      "mode": 5,
+      "alpha": 0.44999998807907104,
+      "triangles": 15536,
+      "records": 29,
+      "active": 16,
+      "identity": "2363aaa49cac7100eb3284dcf5af9a5728cae7c0bc7697e90fffa9f68fb082c3"
+    },
+    {
+      "part": 12,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 3936,
+      "records": 26,
+      "active": 21,
+      "identity": "7123a01fa3c54e884c4f88f4e10aa34ebdbdf6a8fa74089a7ed04a58600d5d26"
+    },
+    {
+      "part": 13,
+      "mode": 5,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 26,
+      "active": 21,
+      "identity": "7123a01fa3c54e884c4f88f4e10aa34ebdbdf6a8fa74089a7ed04a58600d5d26"
+    },
+    {
+      "part": 14,
+      "mode": 5,
+      "alpha": 0.44999998807907104,
+      "triangles": 17758,
+      "records": 26,
+      "active": 21,
+      "identity": "7123a01fa3c54e884c4f88f4e10aa34ebdbdf6a8fa74089a7ed04a58600d5d26"
+    },
+    {
+      "part": 15,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 1254,
+      "records": 244,
+      "active": 213,
+      "identity": "f7972468ef4df14fa9d44ba02a54534bcd866c418659d54c370be79b08897e1a"
+    },
+    {
+      "part": 16,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 244,
+      "active": 213,
+      "identity": "f7972468ef4df14fa9d44ba02a54534bcd866c418659d54c370be79b08897e1a"
+    },
+    {
+      "part": 17,
+      "mode": 1,
+      "alpha": 0.44999998807907104,
+      "triangles": 18144,
+      "records": 244,
+      "active": 213,
+      "identity": "f7972468ef4df14fa9d44ba02a54534bcd866c418659d54c370be79b08897e1a"
+    },
+    {
+      "part": 18,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 1314,
+      "records": 234,
+      "active": 198,
+      "identity": "fcb2f05a67708bf4ada9f16f6457d3e8f524725c7151aa77a0a01de68a5ba7e6"
+    },
+    {
+      "part": 19,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 234,
+      "active": 198,
+      "identity": "fcb2f05a67708bf4ada9f16f6457d3e8f524725c7151aa77a0a01de68a5ba7e6"
+    },
+    {
+      "part": 20,
+      "mode": 1,
+      "alpha": 0.44999998807907104,
+      "triangles": 18720,
+      "records": 234,
+      "active": 198,
+      "identity": "fcb2f05a67708bf4ada9f16f6457d3e8f524725c7151aa77a0a01de68a5ba7e6"
+    },
+    {
+      "part": 21,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 998,
+      "records": 226,
+      "active": 195,
+      "identity": "020cc045ae7851fe7f28ea770abe8b8e68be86fb4d5d3dab14557ba2fc03a300"
+    },
+    {
+      "part": 22,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 226,
+      "active": 195,
+      "identity": "020cc045ae7851fe7f28ea770abe8b8e68be86fb4d5d3dab14557ba2fc03a300"
+    },
+    {
+      "part": 23,
+      "mode": 1,
+      "alpha": 0.44999998807907104,
+      "triangles": 13032,
+      "records": 226,
+      "active": 195,
+      "identity": "020cc045ae7851fe7f28ea770abe8b8e68be86fb4d5d3dab14557ba2fc03a300"
+    },
+    {
+      "part": 24,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 1046,
+      "records": 223,
+      "active": 193,
+      "identity": "047bb587defb82c56f7089ce92206c21912cb815969617f985908e50ec982279"
+    },
+    {
+      "part": 25,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 223,
+      "active": 193,
+      "identity": "047bb587defb82c56f7089ce92206c21912cb815969617f985908e50ec982279"
+    },
+    {
+      "part": 26,
+      "mode": 1,
+      "alpha": 0.44999998807907104,
+      "triangles": 12576,
+      "records": 223,
+      "active": 193,
+      "identity": "047bb587defb82c56f7089ce92206c21912cb815969617f985908e50ec982279"
+    },
+    {
+      "part": 27,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 1032,
+      "records": 230,
+      "active": 188,
+      "identity": "a91a4723e50df807540ff9f751787700c0d65b0845f3afd60286ccacd60220f0"
+    },
+    {
+      "part": 28,
+      "mode": 1,
+      "alpha": 0,
+      "triangles": 120,
+      "records": 230,
+      "active": 188,
+      "identity": "a91a4723e50df807540ff9f751787700c0d65b0845f3afd60286ccacd60220f0"
+    },
+    {
+      "part": 29,
+      "mode": 1,
+      "alpha": 0.44999998807907104,
+      "triangles": 14340,
+      "records": 230,
+      "active": 188,
+      "identity": "a91a4723e50df807540ff9f751787700c0d65b0845f3afd60286ccacd60220f0"
+    }
+  ],
+  "sourceRootIds": "7e3394c6f624d040832b703359727485e3473873039e61df4cab3d136b72f671",
+  "nearUnchanged": {
+    "residentInstances": 54,
+    "activeInstances": 18
+  },
+  "models": [
+    {
+      "photoMetres": 96,
+      "highOnly": false,
+      "unchangedSolidMetres": 96,
+      "residentPhotoBatches": 168,
+      "residentSolidBatches": 336,
+      "residentCapacity": 32256,
+      "activePartInstances": 3195,
+      "matrixCapacityBytes": 2064384,
+      "windGroups": 168,
+      "activeWindGroups": 146,
+      "windCapacityBytes": 215040,
+      "windUploadBytes": 21300,
+      "staticGeometryShared": true,
+      "rows": [
+        {
+          "pass": "main.color",
+          "families": {
+            "tree-solid": {
+              "draws": 104,
+              "triangles": 696368,
+              "instances": 791
+            },
+            "photo-5": {
+              "draws": 12,
+              "triangles": 1217456,
+              "instances": 66
+            },
+            "photo-1": {
+              "draws": 40,
+              "triangles": 5020284,
+              "instances": 327
+            }
+          },
+          "keptRootChecks": 701
+        },
+        {
+          "pass": "reflection.color",
+          "families": {
+            "tree-solid": {
+              "draws": 98,
+              "triangles": 689830,
+              "instances": 781
+            },
+            "photo-5": {
+              "draws": 12,
+              "triangles": 1217456,
+              "instances": 66
+            },
+            "photo-1": {
+              "draws": 37,
+              "triangles": 4938060,
+              "instances": 322
+            }
+          },
+          "keptRootChecks": 649
+        },
+        {
+          "pass": "main.shadow0",
+          "families": {
+            "tree-solid": {
+              "draws": 70,
+              "triangles": 590148,
+              "instances": 570
+            },
+            "photo-5": {
+              "draws": 15,
+              "triangles": 1420912,
+              "instances": 75
+            },
+            "photo-1": {
+              "draws": 22,
+              "triangles": 3398808,
+              "instances": 220
+            }
+          },
+          "keptRootChecks": 175
+        },
+        {
+          "pass": "main.shadow1",
+          "families": {
+            "tree-solid": {
+              "draws": 103,
+              "triangles": 702230,
+              "instances": 871
+            },
+            "photo-5": {
+              "draws": 10,
+              "triangles": 863284,
+              "instances": 46
+            },
+            "photo-1": {
+              "draws": 44,
+              "triangles": 6263100,
+              "instances": 402
+            }
+          },
+          "keptRootChecks": 799
+        },
+        {
+          "pass": "main.shadow2",
+          "families": {
+            "tree-solid": {
+              "draws": 83,
+              "triangles": 456938,
+              "instances": 700
+            },
+            "photo-5": {
+              "draws": 0,
+              "triangles": 0,
+              "instances": 0
+            },
+            "photo-1": {
+              "draws": 43,
+              "triangles": 5674164,
+              "instances": 364
+            }
+          },
+          "keptRootChecks": 673
+        }
+      ]
+    },
+    {
+      "photoMetres": 48,
+      "highOnly": false,
+      "unchangedSolidMetres": 96,
+      "residentPhotoBatches": 492,
+      "residentSolidBatches": 336,
+      "residentCapacity": 52992,
+      "activePartInstances": 3195,
+      "matrixCapacityBytes": 3391488,
+      "windGroups": 660,
+      "activeWindGroups": 562,
+      "windCapacityBytes": 844800,
+      "windUploadBytes": 42600,
+      "staticGeometryShared": true,
+      "rows": [
+        {
+          "pass": "main.color",
+          "families": {
+            "tree-solid": {
+              "draws": 104,
+              "triangles": 696368,
+              "instances": 791
+            },
+            "photo-5": {
+              "draws": 13,
+              "triangles": 681384,
+              "instances": 34
+            },
+            "photo-1": {
+              "draws": 96,
+              "triangles": 4065156,
+              "instances": 261
+            }
+          },
+          "keptRootChecks": 701
+        },
+        {
+          "pass": "reflection.color",
+          "families": {
+            "tree-solid": {
+              "draws": 98,
+              "triangles": 689830,
+              "instances": 781
+            },
+            "photo-5": {
+              "draws": 15,
+              "triangles": 821796,
+              "instances": 43
+            },
+            "photo-1": {
+              "draws": 89,
+              "triangles": 3935532,
+              "instances": 253
+            }
+          },
+          "keptRootChecks": 649
+        },
+        {
+          "pass": "main.shadow0",
+          "families": {
+            "tree-solid": {
+              "draws": 70,
+              "triangles": 590148,
+              "instances": 570
+            },
+            "photo-5": {
+              "draws": 17,
+              "triangles": 890036,
+              "instances": 46
+            },
+            "photo-1": {
+              "draws": 23,
+              "triangles": 1153956,
+              "instances": 70
+            }
+          },
+          "keptRootChecks": 175
+        },
+        {
+          "pass": "main.shadow1",
+          "families": {
+            "tree-solid": {
+              "draws": 103,
+              "triangles": 702230,
+              "instances": 871
+            },
+            "photo-5": {
+              "draws": 13,
+              "triangles": 705684,
+              "instances": 37
+            },
+            "photo-1": {
+              "draws": 109,
+              "triangles": 4844772,
+              "instances": 312
+            }
+          },
+          "keptRootChecks": 799
+        },
+        {
+          "pass": "main.shadow2",
+          "families": {
+            "tree-solid": {
+              "draws": 83,
+              "triangles": 456938,
+              "instances": 700
+            },
+            "photo-5": {
+              "draws": 0,
+              "triangles": 0,
+              "instances": 0
+            },
+            "photo-1": {
+              "draws": 100,
+              "triangles": 4030848,
+              "instances": 264
+            }
+          },
+          "keptRootChecks": 673
+        }
+      ]
+    },
+    {
+      "photoMetres": 32,
+      "highOnly": false,
+      "unchangedSolidMetres": 96,
+      "residentPhotoBatches": 814,
+      "residentSolidBatches": 336,
+      "residentCapacity": 73600,
+      "activePartInstances": 3195,
+      "matrixCapacityBytes": 4710400,
+      "windGroups": 982,
+      "activeWindGroups": 821,
+      "windCapacityBytes": 1256960,
+      "windUploadBytes": 42600,
+      "staticGeometryShared": true,
+      "rows": [
+        {
+          "pass": "main.color",
+          "families": {
+            "tree-solid": {
+              "draws": 104,
+              "triangles": 696368,
+              "instances": 791
+            },
+            "photo-5": {
+              "draws": 17,
+              "triangles": 588712,
+              "instances": 30
+            },
+            "photo-1": {
+              "draws": 145,
+              "triangles": 3505620,
+              "instances": 225
+            }
+          },
+          "keptRootChecks": 701
+        },
+        {
+          "pass": "reflection.color",
+          "families": {
+            "tree-solid": {
+              "draws": 98,
+              "triangles": 689830,
+              "instances": 781
+            },
+            "photo-5": {
+              "draws": 18,
+              "triangles": 604836,
+              "instances": 31
+            },
+            "photo-1": {
+              "draws": 136,
+              "triangles": 3343044,
+              "instances": 214
+            }
+          },
+          "keptRootChecks": 649
+        },
+        {
+          "pass": "main.shadow0",
+          "families": {
+            "tree-solid": {
+              "draws": 70,
+              "triangles": 590148,
+              "instances": 570
+            },
+            "photo-5": {
+              "draws": 22,
+              "triangles": 789188,
+              "instances": 40
+            },
+            "photo-1": {
+              "draws": 22,
+              "triangles": 581280,
+              "instances": 35
+            }
+          },
+          "keptRootChecks": 175
+        },
+        {
+          "pass": "main.shadow1",
+          "families": {
+            "tree-solid": {
+              "draws": 103,
+              "triangles": 702230,
+              "instances": 871
+            },
+            "photo-5": {
+              "draws": 15,
+              "triangles": 494240,
+              "instances": 24
+            },
+            "photo-1": {
+              "draws": 175,
+              "triangles": 4258392,
+              "instances": 275
+            }
+          },
+          "keptRootChecks": 799
+        },
+        {
+          "pass": "main.shadow2",
+          "families": {
+            "tree-solid": {
+              "draws": 83,
+              "triangles": 456938,
+              "instances": 700
+            },
+            "photo-5": {
+              "draws": 0,
+              "triangles": 0,
+              "instances": 0
+            },
+            "photo-1": {
+              "draws": 156,
+              "triangles": 3685020,
+              "instances": 241
+            }
+          },
+          "keptRootChecks": 673
+        }
+      ]
+    },
+    {
+      "photoMetres": 48,
+      "highOnly": true,
+      "unchangedSolidMetres": 96,
+      "residentPhotoBatches": 198,
+      "residentSolidBatches": 336,
+      "residentCapacity": 34176,
+      "activePartInstances": 3195,
+      "matrixCapacityBytes": 2187264,
+      "windGroups": 224,
+      "activeWindGroups": 179,
+      "windCapacityBytes": 286720,
+      "windUploadBytes": 22860,
+      "staticGeometryShared": true,
+      "rows": [
+        {
+          "pass": "main.color",
+          "families": {
+            "tree-solid": {
+              "draws": 104,
+              "triangles": 696368,
+              "instances": 791
+            },
+            "photo-5": {
+              "draws": 13,
+              "triangles": 681384,
+              "instances": 34
+            },
+            "photo-1": {
+              "draws": 40,
+              "triangles": 5020284,
+              "instances": 327
+            }
+          },
+          "keptRootChecks": 701
+        },
+        {
+          "pass": "reflection.color",
+          "families": {
+            "tree-solid": {
+              "draws": 98,
+              "triangles": 689830,
+              "instances": 781
+            },
+            "photo-5": {
+              "draws": 15,
+              "triangles": 821796,
+              "instances": 43
+            },
+            "photo-1": {
+              "draws": 37,
+              "triangles": 4938060,
+              "instances": 322
+            }
+          },
+          "keptRootChecks": 649
+        },
+        {
+          "pass": "main.shadow0",
+          "families": {
+            "tree-solid": {
+              "draws": 70,
+              "triangles": 590148,
+              "instances": 570
+            },
+            "photo-5": {
+              "draws": 17,
+              "triangles": 890036,
+              "instances": 46
+            },
+            "photo-1": {
+              "draws": 22,
+              "triangles": 3398808,
+              "instances": 220
+            }
+          },
+          "keptRootChecks": 175
+        },
+        {
+          "pass": "main.shadow1",
+          "families": {
+            "tree-solid": {
+              "draws": 103,
+              "triangles": 702230,
+              "instances": 871
+            },
+            "photo-5": {
+              "draws": 13,
+              "triangles": 705684,
+              "instances": 37
+            },
+            "photo-1": {
+              "draws": 44,
+              "triangles": 6263100,
+              "instances": 402
+            }
+          },
+          "keptRootChecks": 799
+        },
+        {
+          "pass": "main.shadow2",
+          "families": {
+            "tree-solid": {
+              "draws": 83,
+              "triangles": 456938,
+              "instances": 700
+            },
+            "photo-5": {
+              "draws": 0,
+              "triangles": 0,
+              "instances": 0
+            },
+            "photo-1": {
+              "draws": 43,
+              "triangles": 5674164,
+              "instances": 364
+            }
+          },
+          "keptRootChecks": 673
+        }
+      ]
+    },
+    {
+      "photoMetres": 32,
+      "highOnly": true,
+      "unchangedSolidMetres": 96,
+      "residentPhotoBatches": 225,
+      "residentSolidBatches": 336,
+      "residentCapacity": 35904,
+      "activePartInstances": 3195,
+      "matrixCapacityBytes": 2297856,
+      "windGroups": 251,
+      "activeWindGroups": 193,
+      "windCapacityBytes": 321280,
+      "windUploadBytes": 22860,
+      "staticGeometryShared": true,
+      "rows": [
+        {
+          "pass": "main.color",
+          "families": {
+            "tree-solid": {
+              "draws": 104,
+              "triangles": 696368,
+              "instances": 791
+            },
+            "photo-5": {
+              "draws": 17,
+              "triangles": 588712,
+              "instances": 30
+            },
+            "photo-1": {
+              "draws": 40,
+              "triangles": 5020284,
+              "instances": 327
+            }
+          },
+          "keptRootChecks": 701
+        },
+        {
+          "pass": "reflection.color",
+          "families": {
+            "tree-solid": {
+              "draws": 98,
+              "triangles": 689830,
+              "instances": 781
+            },
+            "photo-5": {
+              "draws": 18,
+              "triangles": 604836,
+              "instances": 31
+            },
+            "photo-1": {
+              "draws": 37,
+              "triangles": 4938060,
+              "instances": 322
+            }
+          },
+          "keptRootChecks": 649
+        },
+        {
+          "pass": "main.shadow0",
+          "families": {
+            "tree-solid": {
+              "draws": 70,
+              "triangles": 590148,
+              "instances": 570
+            },
+            "photo-5": {
+              "draws": 22,
+              "triangles": 789188,
+              "instances": 40
+            },
+            "photo-1": {
+              "draws": 22,
+              "triangles": 3398808,
+              "instances": 220
+            }
+          },
+          "keptRootChecks": 175
+        },
+        {
+          "pass": "main.shadow1",
+          "families": {
+            "tree-solid": {
+              "draws": 103,
+              "triangles": 702230,
+              "instances": 871
+            },
+            "photo-5": {
+              "draws": 15,
+              "triangles": 494240,
+              "instances": 24
+            },
+            "photo-1": {
+              "draws": 44,
+              "triangles": 6263100,
+              "instances": 402
+            }
+          },
+          "keptRootChecks": 799
+        },
+        {
+          "pass": "main.shadow2",
+          "families": {
+            "tree-solid": {
+              "draws": 83,
+              "triangles": 456938,
+              "instances": 700
+            },
+            "photo-5": {
+              "draws": 0,
+              "triangles": 0,
+              "instances": 0
+            },
+            "photo-1": {
+              "draws": 43,
+              "triangles": 5674164,
+              "instances": 364
+            }
+          },
+          "keptRootChecks": 673
+        }
+      ]
+    }
+  ],
+  "baselineMatches": [
+    {
+      "key": "main.color.tree-solid",
+      "expected": {
+        "draws": 109,
+        "triangles": 714296,
+        "instances": 798
+      },
+      "actual": {
+        "draws": 104,
+        "triangles": 696368,
+        "instances": 791
+      },
+      "equal": false
+    },
+    {
+      "key": "main.color.photo-5",
+      "expected": {
+        "draws": 12,
+        "triangles": 1217456,
+        "instances": 66
+      },
+      "actual": {
+        "draws": 12,
+        "triangles": 1217456,
+        "instances": 66
+      },
+      "equal": true
+    },
+    {
+      "key": "main.color.photo-1",
+      "expected": {
+        "draws": 40,
+        "triangles": 5020284,
+        "instances": 327
+      },
+      "actual": {
+        "draws": 40,
+        "triangles": 5020284,
+        "instances": 327
+      },
+      "equal": true
+    },
+    {
+      "key": "reflection.color.tree-solid",
+      "expected": {
+        "draws": 103,
+        "triangles": 707758,
+        "instances": 788
+      },
+      "actual": {
+        "draws": 98,
+        "triangles": 689830,
+        "instances": 781
+      },
+      "equal": false
+    },
+    {
+      "key": "reflection.color.photo-5",
+      "expected": {
+        "draws": 12,
+        "triangles": 1217456,
+        "instances": 66
+      },
+      "actual": {
+        "draws": 12,
+        "triangles": 1217456,
+        "instances": 66
+      },
+      "equal": true
+    },
+    {
+      "key": "reflection.color.photo-1",
+      "expected": {
+        "draws": 37,
+        "triangles": 4938060,
+        "instances": 322
+      },
+      "actual": {
+        "draws": 37,
+        "triangles": 4938060,
+        "instances": 322
+      },
+      "equal": true
+    },
+    {
+      "key": "main.shadow0.tree-solid",
+      "expected": {
+        "draws": 76,
+        "triangles": 608676,
+        "instances": 578
+      },
+      "actual": {
+        "draws": 70,
+        "triangles": 590148,
+        "instances": 570
+      },
+      "equal": false
+    },
+    {
+      "key": "main.shadow0.photo-5",
+      "expected": {
+        "draws": 15,
+        "triangles": 1420912,
+        "instances": 75
+      },
+      "actual": {
+        "draws": 15,
+        "triangles": 1420912,
+        "instances": 75
+      },
+      "equal": true
+    },
+    {
+      "key": "main.shadow0.photo-1",
+      "expected": {
+        "draws": 22,
+        "triangles": 3398808,
+        "instances": 220
+      },
+      "actual": {
+        "draws": 22,
+        "triangles": 3398808,
+        "instances": 220
+      },
+      "equal": true
+    },
+    {
+      "key": "main.shadow1.tree-solid",
+      "expected": {
+        "draws": 103,
+        "triangles": 702230,
+        "instances": 871
+      },
+      "actual": {
+        "draws": 103,
+        "triangles": 702230,
+        "instances": 871
+      },
+      "equal": true
+    },
+    {
+      "key": "main.shadow1.photo-5",
+      "expected": {
+        "draws": 10,
+        "triangles": 863284,
+        "instances": 46
+      },
+      "actual": {
+        "draws": 10,
+        "triangles": 863284,
+        "instances": 46
+      },
+      "equal": true
+    },
+    {
+      "key": "main.shadow1.photo-1",
+      "expected": {
+        "draws": 44,
+        "triangles": 6263100,
+        "instances": 402
+      },
+      "actual": {
+        "draws": 44,
+        "triangles": 6263100,
+        "instances": 402
+      },
+      "equal": true
+    },
+    {
+      "key": "main.shadow2.tree-solid",
+      "expected": {
+        "draws": 83,
+        "triangles": 456938,
+        "instances": 700
+      },
+      "actual": {
+        "draws": 83,
+        "triangles": 456938,
+        "instances": 700
+      },
+      "equal": true
+    },
+    {
+      "key": "main.shadow2.photo-5",
+      "expected": {
+        "draws": 0,
+        "triangles": 0,
+        "instances": 0
+      },
+      "actual": {
+        "draws": 0,
+        "triangles": 0,
+        "instances": 0
+      },
+      "equal": true
+    },
+    {
+      "key": "main.shadow2.photo-1",
+      "expected": {
+        "draws": 43,
+        "triangles": 5674164,
+        "instances": 364
+      },
+      "actual": {
+        "draws": 43,
+        "triangles": 5674164,
+        "instances": 364
+      },
+      "equal": true
+    }
+  ],
+  "allPhotoBaselineMatches": true,
+  "shadow": {
+    "mode": "resolution",
+    "requested": "auto",
+    "reason": null,
+    "splits": [
+      60,
+      180,
+      500
+    ],
+    "mapSizes": [
+      4096,
+      2048,
+      2048
+    ],
+    "cascades": 3,
+    "maxFar": 500,
+    "shadowMapSize": 2048,
+    "atlas40": false,
+    "shadowSamplers": 3,
+    "fragmentSamplers": 16,
+    "maxTextures": 16,
+    "maxTextureSize": 16384,
+    "shadowPixels": 25165824,
+    "extraShadowPixels": 12582912,
+    "extraDepthBytesLowerBound": 50331648
+  },
+  "receivers": {
+    "enabled": true,
+    "active": true,
+    "cascadeActive": true,
+    "projectionActive": true,
+    "projectionBuilds": 6,
+    "cameras": 2,
+    "planes": [
+      2,
+      3
+    ],
+    "tests": 29202,
+    "culled": 18616,
+    "cascades": [
+      {
+        "tests": 2703,
+        "culled": 1274,
+        "margin": 0.08361047415802961,
+        "depthRange": [
+          0,
+          60.86955
+        ],
+        "planes": [
+          14,
+          19
+        ]
+      },
+      {
+        "tests": 9896,
+        "culled": 4904,
+        "margin": 0.6283816164541348,
+        "depthRange": [
+          59.07045,
+          188.00594999999998
+        ],
+        "planes": [
+          14,
+          19
+        ]
+      },
+      {
+        "tests": 16603,
+        "culled": 12438,
+        "margin": 1.6108414943933527,
+        "depthRange": [
+          171.81405,
+          null
+        ],
+        "planes": [
+          10,
+          15
+        ]
+      }
+    ]
+  }
+}

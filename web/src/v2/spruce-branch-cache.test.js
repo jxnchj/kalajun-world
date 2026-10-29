@@ -32,3 +32,31 @@ test('two-slot retry stays bounded and obsolete queued groups are never dispatch
  assert.equal(failures,2);assert.equal(jobs.length,1);assert.equal(jobs[0].k,'wanted');assert.ok(cache.stats.peakActiveBuilds<=2);assert.throws(()=>cache.begin(),/broken 2/);
  jobs[0].resolve({bytes:1});await tick();cache.dispose();
 });
+
+test('stage durations aggregate only successful publications and retain original buildMs definition',async()=>{
+ let time=0,attempt=0;const jobs=[],timing={source:'worker',generateMs:3,packingMs:1,roundTripMs:12,nonComputeWaitMs:8,mainPrepareMs:5};
+ const cache=new SpruceBranchCache({now:()=>time,build:()=>{attempt++;if(attempt===1){time=7;return Promise.reject(Error('retry'));}return new Promise(resolve=>jobs.push(resolve));},disposeValue(){}});
+ cache.begin();cache.request('a',{});cache.end();await tick();assert.equal(cache.stats.retries,1);assert.equal(cache.stats.preparationSamples,0);
+ time=30;jobs[0]({bytes:1,preparationTiming:timing});await tick();assert.equal(cache.stats.buildMs,23);assert.equal(cache.stats.packetRoundTripMs,12);assert.equal(cache.stats.packetGenerateMs,3);assert.equal(cache.stats.packetPackingMs,1);assert.equal(cache.stats.packetNonComputeWaitMs,8);assert.equal(cache.stats.packetMainPrepareMs,5);assert.equal(cache.stats.preparationSamples,1);assert.equal(cache.stats.workerPreparationSamples,1);
+ cache.begin();cache.request('late',{});cache.end();await tick();cache.dispose();time=100;jobs[1]({bytes:1,preparationTiming:timing});await tick();assert.equal(cache.stats.preparationSamples,1);assert.equal(cache.stats.buildMs,23);
+});
+
+test('immediate candidate posts before caller work while default retains microtask dispatch',async()=>{
+ for(const immediateDispatch of[undefined,false,true]){let time=0;const calls=[],jobs=[],cache=new SpruceBranchCache({immediateDispatch,now:()=>time,concurrency:2,maxInFlightBytes:8,estimateBytes:d=>d.bytes,build:(d,k)=>{calls.push(k);return new Promise(resolve=>jobs.push(resolve));},disposeValue(){}});
+  cache.begin();cache.request('a',{bytes:4},0);cache.request('b',{bytes:4},1);cache.request('c',{bytes:4},2);cache.end();assert.equal(calls.length,immediateDispatch?2:0);assert.equal(cache.stats.activeBuilds,2);assert.equal(cache.stats.inFlightParameterBytes,8);
+  time=100;await Promise.resolve();assert.deepEqual(calls,['a','b']);jobs[0]({bytes:4});jobs[1]({bytes:4});await tick();assert.deepEqual(calls,['a','b','c']);jobs[2]({bytes:4});await tick();assert.equal(cache.stats.builtGroups,3);assert.equal(cache.stats.buildDispatchWaitMs,immediateDispatch?0:200);assert.equal(cache.stats.dispatchMode,immediateDispatch?'immediate':'microtask');assert.ok(cache.stats.peakActiveBuilds<=2);cache.dispose();
+ }
+});
+test('immediate candidate converts synchronous failure to bounded retry and explicit retry still works',async()=>{
+ let attempts=0,fail=true;const cache=new SpruceBranchCache({immediateDispatch:true,build:()=>{attempts++;if(fail)throw Error('sync failed');return{bytes:7};},disposeValue(){}});
+ cache.begin();cache.request('a',{});assert.doesNotThrow(()=>cache.end());await tick();await tick();assert.equal(attempts,2);assert.equal(cache.stats.builtGroups,0);assert.equal(cache.stats.retries,1);assert.equal(cache.stats.activeBuilds,0);assert.throws(()=>cache.begin(),/sync failed/);
+ fail=false;cache.request('a',{});cache.retry();await tick();assert.equal(attempts,3);assert.equal(cache.stats.builtGroups,1);assert.equal(cache.stats.residentBytes,7);cache.dispose();
+});
+test('immediate candidate synchronous disposal stops second dispatch and disposes first result once',async()=>{
+ let calls=0,freed=0,cache;cache=new SpruceBranchCache({immediateDispatch:true,concurrency:2,estimateBytes:()=>4,build:()=>{calls++;cache.dispose();return{bytes:4};},disposeValue:()=>freed++});
+ cache.begin();cache.request('a',{},0);cache.request('b',{},1);cache.end();assert.equal(calls,1);await tick();assert.equal(freed,1);assert.equal(cache.stats.builtGroups,0);assert.equal(cache.stats.preparationSamples,0);assert.equal(cache.stats.activeBuilds,0);assert.equal(cache.stats.inFlightParameterBytes,0);cache.dispose();assert.equal(freed,1);
+});
+test('immediate candidate preserves oversized serialization and disposes asynchronous pending replies',async()=>{
+ const jobs=[],freed=[],cache=new SpruceBranchCache({immediateDispatch:true,concurrency:2,maxInFlightBytes:8,estimateBytes:d=>d.bytes,build:(d,k)=>new Promise(resolve=>jobs.push({k,resolve})),disposeValue:(v,k)=>freed.push(k)});
+ cache.begin();cache.request('large',{bytes:12},0);cache.request('small',{bytes:4},1);cache.end();assert.deepEqual(jobs.map(j=>j.k),['large']);jobs[0].resolve({bytes:12});await tick();assert.deepEqual(jobs.map(j=>j.k),['large','small']);cache.dispose();jobs[1].resolve({bytes:4});await tick();assert.deepEqual(freed,['large','small']);assert.equal(cache.stats.builtGroups,1);assert.equal(cache.stats.activeBuilds,0);
+});

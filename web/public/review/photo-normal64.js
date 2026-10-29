@@ -1,0 +1,23 @@
+const next=()=>new Promise(r=>requestAnimationFrame(r));
+export async function benchmarkPhoto64(app,candidate,{name='photo-normal64-abba',warm=120,samples=360}={}){
+ if(!/^[\w-]+$/.test(name))throw Error('Invalid name');
+ const d=app.debug,c=candidate,initial=app.getSnapshot(),records=[];
+ if(initial.preparing||initial.terrain.queuedTiles||initial.errors.length)throw Error('Require settled world');
+ if(!initial.gpu.available)throw Error('Require original profile=1 GPU timer');
+ if(initial.viewport.width!==1280||initial.viewport.height!==800||initial.viewport.pixelRatio!==1)throw Error('Require1280x800 DPR1');
+ const pose=JSON.stringify([initial.position,initial.yaw,initial.pitch,initial.time]);
+ const check=()=>{const s=app.getSnapshot();if(document.visibilityState!=='visible'||s.errors.length||s.preparing||s.terrain.queuedTiles||JSON.stringify([s.position,s.yaw,s.pitch,s.time])!==pose)throw Error('World/visibility/input changed; benchmark invalid');return s;};
+ const old=c.stats.enabled;d.setReviewHold(false);
+ const progress={phase:'starting',records};window.photo64Progress=progress;
+ try{
+  for(const [label,enabled]of [['A1',false],['B1',true],['B2',true],['A2',false]]){
+   progress.phase=label+'-warm';c.setEnabled(enabled);
+   for(let i=0;i<warm;i++){await next();if(i%60===0)check();}
+   progress.phase=label+'-sample';let last=await next();const intervals=[],gpuWindows=[];
+   for(let i=0;i<samples;i++){const now=await next();intervals.push(now-last);last=now;if((i+1)%60===0){const s=check();gpuWindows.push(s.gpu.meanMs);if(enabled&&(!c.stats.enabled||c.stats.materials<1))throw Error('Candidate scope differs');}}
+   const sorted=[...intervals].sort((a,b)=>a-b),snapshot=check();records.push({label,enabled,intervals,gpuWindows,meanMs:intervals.reduce((a,b)=>a+b,0)/intervals.length,p95:sorted[Math.ceil(sorted.length*.95)-1],gpuMeanMs:gpuWindows.reduce((a,b)=>a+b,0)/gpuWindows.length,candidate:{...c.stats},snapshot});
+  }
+  progress.phase='complete';const result={scope:'one visible tab; original renderer GPU timer includes world/reflection; only zero-contribution mode1 normal calculations removed; natural wind, same pose, ABBA; no geometry/LOD/density changes',warm,samples,records};
+  const r=await fetch('/__review38/evidence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,snapshot:result})});if(!r.ok)throw Error('Save failed');return result;
+ }catch(e){progress.phase='failed';progress.error=String(e.stack);throw e;}finally{c.setEnabled(old);d.setReviewHold(false);}
+}

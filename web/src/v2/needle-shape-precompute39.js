@@ -45,14 +45,17 @@ export function bakeNeedleShape39(renderer,form,{branches=form.stationGeometry.h
  const target=new THREE.WebGLRenderTarget(layout.width,layout.height,{count:2,type:THREE.FloatType,format:THREE.RGBAFormat,minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter,generateMipmaps:false,depthBuffer:false,stencilBuffer:false});
  target.textures.forEach((t,i)=>{t.name='needle-local-shape39-'+i;t.colorSpace=THREE.NoColorSpace;});
  const material=new THREE.RawShaderMaterial({glslVersion:THREE.GLSL3,vertexShader:needleShapeBakeVertex39(branches),fragmentShader:FRAGMENT,depthTest:false,depthWrite:false,blending:THREE.NoBlending,toneMapped:false,uniforms:{uShapeSize:{value:new THREE.Vector2(layout.width,layout.height)},uBranchVariation:{value:variation},uBranchOriginalBrushes:{value:form.material?.userData.spruceBranchOriginalBrushes??form.tables?.originalBrushes??0}}});
- const scene=new THREE.Scene(),camera=new THREE.Camera(),points=new THREE.Points(geometry,material);points.frustumCulled=false;scene.add(points);
+ const scene=new THREE.Scene(),camera=new THREE.OrthographicCamera(-1,1,1,-1,.1,1),points=new THREE.Points(geometry,material);points.frustumCulled=false;scene.add(points);
  const state={target:renderer.getRenderTarget(),face:renderer.getActiveCubeFace(),mip:renderer.getActiveMipmapLevel(),auto:renderer.autoClear,color:renderer.getClearColor(new THREE.Color()),alpha:renderer.getClearAlpha(),xr:renderer.xr.enabled,viewport:renderer.getViewport(new THREE.Vector4()),scissor:renderer.getScissor(new THREE.Vector4()),scissorTest:renderer.getScissorTest()};
- const started=performance.now();let success=false;
+ const started=performance.now();let success=false,shaderFailed=false;
+ const debug=renderer.debug,oldCheck=debug?.checkShaderErrors,oldError=debug?.onShaderError;
+ if(debug){debug.checkShaderErrors=true;debug.onShaderError=(...args)=>{shaderFailed=true;oldError?.(...args);};}
  try{
-  renderer.xr.enabled=false;renderer.autoClear=false;renderer.setRenderTarget(target);renderer.setScissorTest(false);renderer.setClearColor(0,0);renderer.clear(true,false,false);renderer.render(scene,camera);success=true;
+  renderer.xr.enabled=false;renderer.autoClear=false;renderer.setRenderTarget(target);renderer.setScissorTest(false);renderer.setClearColor(0,0);renderer.clear(true,false,false);renderer.render(scene,camera);if(shaderFailed)throw Error('Needle shape GPU bake shader failed');success=true;
   return{target,layout,branches,source,stats:{...layout,submissionMs:performance.now()-started,gpuMs:null},dispose(){target.dispose();}};
  }finally{
-  renderer.setClearColor(state.color,state.alpha);renderer.setViewport(state.viewport);renderer.setScissor(state.scissor);renderer.setScissorTest(state.scissorTest);renderer.setRenderTarget(state.target,state.face,state.mip);renderer.autoClear=state.auto;renderer.xr.enabled=state.xr;
+  if(debug){debug.checkShaderErrors=oldCheck;debug.onShaderError=oldError;}
+  renderer.setRenderTarget(state.target,state.face,state.mip);renderer.setClearColor(state.color,state.alpha);renderer.setViewport(state.viewport);renderer.setScissor(state.scissor);renderer.setScissorTest(state.scissorTest);renderer.autoClear=state.auto;renderer.xr.enabled=state.xr;
   for(const name of borrowed)geometry.deleteAttribute(name);geometry.dispose();material.dispose();scene.clear();if(!success)target.dispose();
  }
 }

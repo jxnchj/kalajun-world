@@ -11,7 +11,7 @@ import {forestRootCacheEligibility} from './forest-root-cache.js';
 import {MeadowRootCache} from './meadow-root-cache.js';
 const base=new URL('../../public/',import.meta.url);
 async function load(path){const b=fs.readFileSync(new URL(path,base)),loader=new GLTFLoader();loader.register(()=>({name:'no-image-test',loadTexture:()=>Promise.resolve(new T.Texture())}));return(await loader.parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'')).scene;}
-const before=actualMeadowEcology({forestRootedShoulder38:false,forestBankCurvature38:false}),after=actualMeadowEcology({forestRootedShoulder38:true,forestBankCurvature38:false});
+const before=actualMeadowEcology({forestReach39:false,forestRootedShoulder38:false,forestBankCurvature38:false}),after=actualMeadowEcology({forestReach39:false,forestRootedShoulder38:true,forestBankCurvature38:false});
 test.after(()=>{before.dispose();after.dispose();});
 test('actual forest candidate retains all water/road/building interfaces, has no new raw-submerged dam, and reconnects at reach ends',()=>{
  const a=before.world,b=after.world,view=a.hydrology.viewpoints.find(v=>v.id==='river-forest'),anchor=a.hydrology.segments.find(s=>s.id===view.segmentId);let raised=0,under=0;

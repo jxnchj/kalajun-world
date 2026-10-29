@@ -23,12 +23,17 @@ test('local subscriptions restore descriptors and reject replacement depth input
 test('actual WorldTerrain attach, activate, morph, merge, cache restore and dispose publish without changing geometry',async t=>{
  const {WorldTerrain}=await import('./terrain.js');const saved=globalThis.location;let terrain;
  const height=(x,z)=>2100+.03*x-.02*z+Math.sin(x/17),world={meta:{far:{size:2560}},surface:{pads:[],heightAt:height,geographicHeightAt:height,normalAt(x,z,e=2){const dx=height(x-e,z)-height(x+e,z),dz=height(x,z-e)-height(x,z+e),n=Math.hypot(dx,2*e,dz);return{x:dx/n,y:2*e/n,z:dz/n};}},landcoverAt:()=>({r:.4,g:.2,b:0,a:1})};
- try{globalThis.location={search:'?terrainShadowDomain38=1'};terrain=new WorldTerrain(world);}finally{globalThis.location=saved;}
+ try{globalThis.location={search:'?terrainShadowDomain38=1&terrainBatches=0'};terrain=new WorldTerrain(world);}finally{globalThis.location=saved;}
  const f=fixture();f.domain.dispose();f.scene.remove(f.group);f.scene.add(terrain.group);f.camera.position.set(0,2102,0);f.camera.updateMatrixWorld();for(const l of f.lights){l.position.set(0,2120,0);l.target.position.set(0,2100,0);}terrain._camera.copy(f.camera.position);terrain._frustum.setFromProjectionMatrix(new T.Matrix4().multiplyMatrices(f.camera.projectionMatrix,f.camera.matrixWorldInverse));const domain=terrain.shadowDomain;
  const build=node=>{const job=node.job||terrain._job(node);while(job.row<=32)terrain._buildRow(job);terrain._finish(job);};
  const snapshot=g=>({index:Array.from(g.index.array),attributes:Object.fromEntries(Object.entries(g.attributes).map(([k,a])=>[k,Array.from(a.array)]))});
  try{
   f.check();f.check();assert.equal(f.fast.stats.terrainDomainHits,1);
+  // The adopted submission owner is intentionally incompatible with this
+  // opt-in source-only domain: fall back to exact live capture, never reuse it.
+  terrain.submissionBatches.enabled=true;terrain.submissionBatches.boundedBuild42=true;
+  assert.equal(domain.eligible(),false);f.check();assert.equal(f.fast.stats.terrainDomainHits,0);
+  terrain.submissionBatches.enabled=false;f.check();f.check();assert.equal(f.fast.stats.terrainDomainHits,1);
   const parent=terrain._node(-10,-10,20,4,null);build(parent);parent.mesh.visible=true;const original=snapshot(parent.mesh.geometry);f.check();assert.equal(f.fast.stats.terrainDomainHits,0);
   parent.wantsSplit=true;terrain._refine(parent);for(const child of parent.children)build(child);f.check();assert.equal(f.fast.stats.terrainDomainHits,0);assert.equal(parent.mesh.visible,false);assert.ok(parent.children.every(n=>n.mesh.visible));
   terrain._morphWeight(parent,.5);f.check();assert.equal(f.fast.stats.terrainDomainHits,0);assert.deepEqual(snapshot(parent.mesh.geometry),original);

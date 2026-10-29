@@ -1,0 +1,60 @@
+{
+  "status": "rejected: actual diagnostic confirms zero CDF application; receiver-plane correction offline only, pending browser validation",
+  "sourceMeshCounts": [
+    6579
+  ],
+  "calls": [
+    2678
+  ],
+  "triangles": [
+    55205073
+  ],
+  "frames": 24,
+  "allGeometryStable": true,
+  "candidate": {
+    "enabled": true,
+    "ready": true,
+    "scope": "original nearest caster pass only; terrain receivers use moments; other receivers keep native PCF",
+    "size": 2048,
+    "samples": 4,
+    "format": "RGBA8",
+    "encoding": "cdf",
+    "range": 64,
+    "windowSize": 512,
+    "referenceScope": "local receiver window",
+    "attachmentBytes": 167772160,
+    "sourceGeometryCopies": 0,
+    "extraCasterPasses": 0,
+    "referenceCPUms": 18,
+    "referenceRebuilds": 3,
+    "nearCalls": 394,
+    "nearTriangles": 10849025,
+    "error": null,
+    "referenceResidual": 3.1778135962667875e-06,
+    "pitchMeters": 0.05847475168892523,
+    "windowMeters": 29.939072864729717,
+    "rect": {
+      "x": 1104,
+      "y": 368,
+      "w": 512,
+      "h": 512
+    }
+  },
+  "applicationDiagnostic": {
+    "evidence": "docs/previews/v2-route-craft-38/cdf41-short-application.json",
+    "ground": 1808376,
+    "applied": 0,
+    "full": 0,
+    "toneMapping": "temporarily disabled only for diagnostic then restored",
+    "conclusion": "Earlier apparent retained leaf shadows do not prove CDF quality because native fallback was used."
+  },
+  "nextCorrection": {
+    "evidence": "tools/reports/shadow-ground-cdf41-reference.json",
+    "centerEligible": 217,
+    "originalAllFourEligible": 0,
+    "receiverPlaneAllFourEligible": 217,
+    "sampleCount": 289,
+    "bandMeters": 0.006,
+    "browserValidated": false
+  }
+}

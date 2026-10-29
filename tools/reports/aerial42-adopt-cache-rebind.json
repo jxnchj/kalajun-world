@@ -1,0 +1,75 @@
+{
+  "binary": [
+    {
+      "path": "web/public/data/v2/meadow-roots-38.bin.gz",
+      "compressedBytes": 4005730,
+      "decodedBytes": 10363932,
+      "allBytesUnchanged": true
+    },
+    {
+      "path": "web/public/data/v2/reach-cover-prepared42.json.gz",
+      "compressedBytes": 485353,
+      "decodedBytes": 2067069,
+      "allBytesUnchanged": true
+    }
+  ],
+  "references": [
+    {
+      "path": "web/public/assets/v2/meadow-reference-v38/source.json.gz",
+      "roots": 54,
+      "allPayloadExceptSourcesUnchanged": true,
+      "changedSources": [
+        "web/src/v2/ecology.js"
+      ]
+    },
+    {
+      "path": "web/public/assets/v2/meadow-distance-baseline38/meadow.json.gz",
+      "roots": 54,
+      "allPayloadExceptSourcesUnchanged": true,
+      "changedSources": [
+        "web/src/v2/ecology.js"
+      ]
+    },
+    {
+      "path": "web/public/assets/v2/meadow-distance-baseline38/west.json.gz",
+      "roots": 80,
+      "allPayloadExceptSourcesUnchanged": true,
+      "changedSources": [
+        "web/src/v2/ecology.js"
+      ]
+    },
+    {
+      "path": "web/public/assets/v2/meadow-cluster42/meadow.json.gz",
+      "roots": 458,
+      "allPayloadExceptSourcesUnchanged": true,
+      "changedSources": [
+        "web/src/v2/ecology.js"
+      ]
+    },
+    {
+      "path": "web/public/assets/v2/meadow-cluster42/west.json.gz",
+      "roots": 770,
+      "allPayloadExceptSourcesUnchanged": true,
+      "changedSources": [
+        "web/src/v2/ecology.js"
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "name": "forest-roots-38",
+      "current": true,
+      "regenerated": false
+    },
+    {
+      "name": "meadow-roots-38",
+      "current": true,
+      "regenerated": true
+    },
+    {
+      "name": "reach-cover-prepared42",
+      "current": true,
+      "regenerated": true
+    }
+  ]
+}

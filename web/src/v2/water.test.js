@@ -85,7 +85,10 @@ test("water incrementally builds stable nearby chunks and disposes owned resourc
   for(let i=0;i<20;i++)water.update(camera,.016);
   assert.equal(water.stats.pending,0);assert.ok(water.stats.waterChunks>0);assert.ok(water.stats.overviewTriangles>0);
   const first=water.active.keys().next().value,item=water.active.get(first);water.update(camera,.016);assert.equal(water.active.get(first),item);
-  let disposals=0;water.materials.forEach(m=>m.addEventListener("dispose",()=>disposals++));water.dispose();assert.equal(disposals,5);assert.equal(water.group.children.length,0);assert.equal(water.active.size,0);
+  assert.equal(water.materials.length,6);assert.equal(water.materials.filter(m=>m.name==="shore-asset42-moss-rock05").length,1);
+  const disposed=new Map(water.materials.map(m=>[m,0]));assert.equal(disposed.size,6);
+  for(const m of water.materials)m.addEventListener("dispose",()=>disposed.set(m,disposed.get(m)+1));
+  water.dispose();assert.deepEqual([...disposed.values()],[1,1,1,1,1,1]);assert.equal(water.group.children.length,0);assert.equal(water.active.size,0);
 });
 test("travel phase follows the complete immutable profile, not chunk order or runtime age",()=>{
   const nodes=[
@@ -213,7 +216,8 @@ test("representative shore hierarchy retains original major roots, avoids paired
 });
 
 test("default forest bend retains original major roots and shares the new water, bed and ecological mask",t=>{
-  const w=actual(),old=actual(false),view=w.hydrology.viewpoints.find(v=>v.id==="river-forest");
+  actual(); // This regression isolates the original meander design before authored 39/41 shallow bars.
+  const w=createWorldData({...actualInput,forestReach39:false}),old=actual(false),view=w.hydrology.viewpoints.find(v=>v.id==="river-forest");
   assert.ok(w.hydrology.stats.meanders.nodes>0);assert.equal(old.hydrology.stats.meanders.reason,"disabled");
   const records=world=>createShoreStones(world,world.hydrology.nearSegments(view.x,view.z,120)).filter(r=>r.sourceAnchor);
   const before=records(old),after=new Map(records(w).map(r=>[r.id,r]));assert.equal(after.size,before.length);
@@ -225,7 +229,7 @@ test("default forest bend retains original major roots and shares the new water,
   }
   let checked=0;
   for(const s of w.hydrology.segments.filter(s=>s.meander))for(const t of [0,.25,.5,.75,1]){
-    const n=riverSectionAt(s,t);
+    const n=w.hydrology.forestReach39?.waterSectionAt(s,t)??riverSectionAt(s,t);
     for(const side of [-.8,0,.8]){
       const p=riverCrossPoint(n,side),h=w.hydrology.sampleAt(p.x,p.z);
       assert.ok(h.insideWater);near(h.waterLevel,n.level,.0001);
@@ -238,7 +242,7 @@ test("default forest bend retains original major roots and shares the new water,
 test("actual water vertices remain above the shared bed at every supplied stream viewpoint",()=>{
   const w=actual();
   for(const p of w.hydrology.viewpoints){
-    const g=createWaterGeometry(w.hydrology.nearSegments(p.x,p.z,200),{detail:true}),pos=g.attributes.position;
+    const g=createWaterGeometry(w.hydrology.nearSegments(p.x,p.z,200),{detail:true,reach:w.hydrology.forestReach39}),pos=g.attributes.position;
     for(let i=0;i<pos.count;i++){
       const x=pos.getX(i),z=pos.getZ(i),y=pos.getY(i),bed=w.surface.heightAt(x,z);
       assert.ok(bed-y<.015,p.id+" submerged vertex "+i);

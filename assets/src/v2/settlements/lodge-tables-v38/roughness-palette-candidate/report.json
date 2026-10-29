@@ -1,0 +1,33 @@
+{
+  "operation": "one lossless 256-entry palette PNG candidate only; production immutable",
+  "sourceGLB": "web/public/assets/v2/gh_lanchuan_lodge_tables38.glb",
+  "sourceSHA256": "853f5690686eceaa85f00b2df0705343e55b6aea4286f599e07ee121dd170687",
+  "imageIndex": 15,
+  "textureIndex": 17,
+  "sourceImageName": "oak_veneer_01_rough_2k",
+  "size": [
+    2048,
+    2048
+  ],
+  "pixels": 4194304,
+  "sourceBytes": 5246713,
+  "candidateBytes": 3810292,
+  "savedBytes": 1436421,
+  "savedPercent": 27.377540948018307,
+  "sourceGzipBytes": 5248319,
+  "candidateGzipBytes": 3811378,
+  "sourceImageSHA256": "4752845506dad4c482fc61244571cb7906281014d469c81bafee4d0c93d862e6",
+  "candidateImageSHA256": "9a1f846a4557e8b4aa8e80022b8b8046da0ba1e7e7d689aeea2ff4c6b30d56ad",
+  "decodedRGBSHA256": "806d3cdfa7c4b5591fd9d3bdd005e1c9aa61bf5611373b52f54755e88c65c0be",
+  "completePixelRGBEqual": true,
+  "paletteEntries": 256,
+  "mapping": "index G maps to RGB(255,G,255); no quantization/dithering/resampling",
+  "greenExtrema": [
+    3,
+    254
+  ],
+  "distinctGreenValues": 249,
+  "originalGLBUnchanged": true,
+  "seconds": 0.339921000006143,
+  "limits": "No GLB/Blend/GI/default/bundle changed. GPU image upload still expands to same RGB/RGBA dimensions. Network reduction estimate is isolated image gzip, not measured total launch."
+}

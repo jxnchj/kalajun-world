@@ -1,0 +1,106 @@
+{
+  "scope": "Destination admission and cancellation for existing exact meadow root cache; no plant or geometry changes",
+  "runtimeFiles": [
+    "web/src/v2/meadow-root-cache.js",
+    "web/src/v2/ecology.js"
+  ],
+  "generator": "tools/build-meadow-root-cache-v38.mjs now imports the same two anchors instead of duplicating them",
+  "activation": {
+    "automatic": "browser enters either prepared anchor within 96 m with visible meadow",
+    "initialForestPrefetch": "unchanged",
+    "outside": "no request, pending owned transaction cancelled",
+    "return": "verified payload reused; failed or cancelled attempt may retry once per re-entry",
+    "explicitOff": "meadowRootCache=0",
+    "failedValidation": "visible fallback/lastError, original generator, no per-frame retry"
+  },
+  "validation": {
+    "tests": 24,
+    "passed": 24,
+    "log": "tools/reports/destination-cache58-tests.log",
+    "actualData": "source DEM/hydrology/habitat, real 111-tile binary and canonical source hash",
+    "requestSequence": "initial valley update: 0 requests; actual updateMeadow forest transition: manifest then gzip, late completed roots feed remaining cells",
+    "forestRoots": 19403,
+    "forestTiles": 54,
+    "matricesFieldsAndRootRecordsExactlyEqual": true,
+    "cancelStaleDisposeRetryCovered": true
+  },
+  "regenerated": [
+    {
+      "asset": "web/public/data/v2/meadow-roots-38.bin.gz",
+      "bytes": 4005715,
+      "sha256": "031a0d2c9e599275b27aecd059c68cf591920f4a14991a966a16cebb9195f71e",
+      "payloadExactlyEqual": true,
+      "manifestExceptCodeEqual": true,
+      "oldCodeSignature": "cccf4bcc88fdc02d0337ebad6e06f95eaca77963397241320501c45e8c9079f8",
+      "codeSignature": "1bb604aa39feb9184f0cbb32098e12e8617c2b027c3bd979b05edd878ab2a794"
+    },
+    {
+      "asset": "web/public/data/v2/reach-cover-prepared42.json.gz",
+      "bytes": 615243,
+      "sha256": "9e62e8d16168db6be5b669e5e79d395b74eac384b76685a4d76724796916d877",
+      "payloadExactlyEqual": true,
+      "manifestExceptCodeEqual": true,
+      "oldCodeSignature": "8d7670b32c020ec463acb1524780e1da5c03eac17d67986d5426c9180c7cc2c7",
+      "codeSignature": "04edc0ee596ad89e7dee65d02df0811de6772ea0a670b4ed565efd792e052351"
+    }
+  ],
+  "backup": "backups/destination-cache58-20261029",
+  "limitations": [
+    "No browser load-time improvement claimed from Node tests. Root thread performs actual cold-load and destination-switch measurements.",
+    "A late cache download does not replace roots already generated. It benefits subsequent source tiles only.",
+    "The finite 111-tile package covers two prepared destinations, not the entire world.",
+    "This changes admission/lifetime only; original full code/input/transport/payload verification remains."
+  ],
+  "referenceCompletion60": {
+    "command": "node tools/export-meadow-patch-v38.mjs",
+    "backup": "backups/destination-cache58-reference60/",
+    "roots": 54,
+    "rootRecordsExactlyEqual": true,
+    "nearMiddleAllAttributesAndIndicesExactlyEqual": true,
+    "groundPayloadExactlyEqual": true,
+    "everyNonSourceFieldExactlyEqual": true,
+    "oldGzipBytes": 79731,
+    "gzipBytes": 79727,
+    "rawBytes": 254554,
+    "oldSourceSHA256": "ee582ece31a19335e5a078bb145587d5f87fbc4afede17031520e88a1063cb69",
+    "sourceSHA256": "85ae9ae0dadc06d70eeb79eb4860c56b0c5e8aebb470a999fc8cd9301767e8d5",
+    "oldSources": [
+      {
+        "path": "web/src/v2/ecology.js",
+        "sha256": "eb14abd0c1ef88b67ad5eb533aa2b427fd68d7fb8552cfae74f89acba12a464b"
+      },
+      {
+        "path": "web/src/v2/meadow-surface.js",
+        "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+      },
+      {
+        "path": "web/src/v2/grass-root-field.js",
+        "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+      }
+    ],
+    "sources": [
+      {
+        "path": "web/src/v2/ecology.js",
+        "sha256": "01e8b12191e70376be0cf32126d23211fc13d0456b900c382ae3ad613d551a36"
+      },
+      {
+        "path": "web/src/v2/meadow-surface.js",
+        "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+      },
+      {
+        "path": "web/src/v2/grass-root-field.js",
+        "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+      }
+    ],
+    "tests": {
+      "passed": 5,
+      "total": 5,
+      "log": "tools/reports/destination-cache58-reference60-tests.log"
+    }
+  },
+  "signatureClosure": [
+    "node tools/build-meadow-root-cache-v38.mjs",
+    "node tools/build-reach-cover-prepared42.mjs",
+    "node tools/export-meadow-patch-v38.mjs"
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "scope": "CPU feasibility only, no GPU or visual acceptance. Ground disagreement outside retained narrow depth band must use unchanged native visibility; no clipping the real depth samples to fake acceptance.",
+  "rows": [
+    {
+      "case": "quarter-grass",
+      "groundError": 0,
+      "expected": 0.75,
+      "v": 0.7490196078431373,
+      "values": [
+        0.7490196078431373,
+        0.7490196078431373,
+        0.7490196078431373,
+        0.7490196078431373
+      ],
+      "fallback": false
+    },
+    {
+      "case": "quarter-grass",
+      "groundError": 0.003,
+      "expected": 0.75,
+      "v": 0.7490196078431373,
+      "values": [
+        0.7490196078431373,
+        0.7490196078431373,
+        0.7490196078431373,
+        0
+      ],
+      "fallback": false
+    },
+    {
+      "case": "quarter-grass",
+      "groundError": -0.003,
+      "expected": 0.75,
+      "v": 0.7490196078431373,
+      "values": [
+        0.7490196078431373,
+        0.7490196078431373,
+        0.7490196078431373,
+        0.7490196078431373
+      ],
+      "fallback": false
+    },
+    {
+      "case": "quarter-grass",
+      "groundError": 0.01,
+      "expected": 0.75,
+      "fallback": true
+    },
+    {
+      "case": "quarter-grass",
+      "groundError": -0.01,
+      "expected": 0.75,
+      "fallback": true
+    },
+    {
+      "case": "two-leaf-ground",
+      "groundError": 0,
+      "expected": 0.5,
+      "v": 0.5019607843137255,
+      "values": [
+        0.5019607843137255,
+        0.5019607843137255,
+        0.5019607843137255,
+        0.5019607843137255
+      ],
+      "fallback": false
+    },
+    {
+      "case": "two-leaf-ground",
+      "groundError": 0.003,
+      "expected": 0.5,
+      "v": 0.5019607843137255,
+      "values": [
+        0.5019607843137255,
+        0.5019607843137255,
+        0.5019607843137255,
+        0
+      ],
+      "fallback": false
+    },
+    {
+      "case": "two-leaf-ground",
+      "groundError": -0.003,
+      "expected": 0.5,
+      "v": 0.5019607843137255,
+      "values": [
+        0.5019607843137255,
+        0.5019607843137255,
+        0.5019607843137255,
+        0.5019607843137255
+      ],
+      "fallback": false
+    },
+    {
+      "case": "two-leaf-ground",
+      "groundError": 0.01,
+      "expected": 0.5,
+      "fallback": true
+    },
+    {
+      "case": "two-leaf-ground",
+      "groundError": -0.01,
+      "expected": 0.5,
+      "fallback": true
+    },
+    {
+      "case": "three-leaf-ground",
+      "groundError": 0,
+      "expected": 0.25,
+      "v": 0.25098039215686274,
+      "values": [
+        0.25098039215686274,
+        0.25098039215686274,
+        0.25098039215686274,
+        0.25098039215686274
+      ],
+      "fallback": false
+    },
+    {
+      "case": "three-leaf-ground",
+      "groundError": 0.003,
+      "expected": 0.25,
+      "v": 0.25098039215686274,
+      "values": [
+        0.25098039215686274,
+        0.25098039215686274,
+        0.25098039215686274,
+        0
+      ],
+      "fallback": false
+    },
+    {
+      "case": "three-leaf-ground",
+      "groundError": -0.003,
+      "expected": 0.25,
+      "v": 0.25098039215686274,
+      "values": [
+        0.25098039215686274,
+        0.25098039215686274,
+        0.25098039215686274,
+        0.25098039215686274
+      ],
+      "fallback": false
+    },
+    {
+      "case": "three-leaf-ground",
+      "groundError": 0.01,
+      "expected": 0.25,
+      "fallback": true
+    },
+    {
+      "case": "three-leaf-ground",
+      "groundError": -0.01,
+      "expected": 0.25,
+      "fallback": true
+    },
+    {
+      "case": "four-leaf-blocked",
+      "groundError": 0,
+      "expected": 0,
+      "v": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "fallback": false
+    },
+    {
+      "case": "four-leaf-blocked",
+      "groundError": 0.003,
+      "expected": 0,
+      "v": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "fallback": false
+    },
+    {
+      "case": "four-leaf-blocked",
+      "groundError": -0.003,
+      "expected": 0,
+      "v": 0,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "fallback": false
+    },
+    {
+      "case": "four-leaf-blocked",
+      "groundError": 0.01,
+      "expected": 0,
+      "fallback": true
+    },
+    {
+      "case": "four-leaf-blocked",
+      "groundError": -0.01,
+      "expected": 0,
+      "fallback": true
+    },
+    {
+      "case": "very-close-depth-transition",
+      "groundError": 0,
+      "expected": 0.5,
+      "v": 0.5,
+      "values": [
+        0.7490196078431373,
+        0.7490196078431373,
+        0.25098039215686274,
+        0.25098039215686274
+      ],
+      "fallback": false
+    },
+    {
+      "case": "very-close-depth-transition",
+      "groundError": 0.003,
+      "expected": 0.5,
+      "v": 0.5637254901960784,
+      "values": [
+        0.7490196078431373,
+        0.5019607843137255,
+        0.25098039215686274,
+        0
+      ],
+      "fallback": false
+    },
+    {
+      "case": "very-close-depth-transition",
+      "groundError": -0.003,
+      "expected": 0.5,
+      "v": 0.6245098039215686,
+      "values": [
+        0.7490196078431373,
+        0.7490196078431373,
+        0.7490196078431373,
+        0.25098039215686274
+      ],
+      "fallback": false
+    },
+    {
+      "case": "very-close-depth-transition",
+      "groundError": 0.01,
+      "expected": 0.5,
+      "fallback": true
+    },
+    {
+      "case": "very-close-depth-transition",
+      "groundError": -0.01,
+      "expected": 0.5,
+      "fallback": true
+    }
+  ]
+}

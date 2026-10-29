@@ -1,0 +1,47 @@
+{
+  "command": "node tools/export-meadow-patch-v38.mjs",
+  "backup": "backups/destination-cache58-reference60/",
+  "roots": 54,
+  "rootRecordsExactlyEqual": true,
+  "nearMiddleAllAttributesAndIndicesExactlyEqual": true,
+  "groundPayloadExactlyEqual": true,
+  "everyNonSourceFieldExactlyEqual": true,
+  "oldGzipBytes": 79731,
+  "gzipBytes": 79727,
+  "rawBytes": 254554,
+  "oldSourceSHA256": "ee582ece31a19335e5a078bb145587d5f87fbc4afede17031520e88a1063cb69",
+  "sourceSHA256": "85ae9ae0dadc06d70eeb79eb4860c56b0c5e8aebb470a999fc8cd9301767e8d5",
+  "oldSources": [
+    {
+      "path": "web/src/v2/ecology.js",
+      "sha256": "eb14abd0c1ef88b67ad5eb533aa2b427fd68d7fb8552cfae74f89acba12a464b"
+    },
+    {
+      "path": "web/src/v2/meadow-surface.js",
+      "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+    },
+    {
+      "path": "web/src/v2/grass-root-field.js",
+      "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+    }
+  ],
+  "sources": [
+    {
+      "path": "web/src/v2/ecology.js",
+      "sha256": "01e8b12191e70376be0cf32126d23211fc13d0456b900c382ae3ad613d551a36"
+    },
+    {
+      "path": "web/src/v2/meadow-surface.js",
+      "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+    },
+    {
+      "path": "web/src/v2/grass-root-field.js",
+      "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+    }
+  ],
+  "tests": {
+    "passed": 5,
+    "total": 5,
+    "log": "tools/reports/destination-cache58-reference60-tests.log"
+  }
+}

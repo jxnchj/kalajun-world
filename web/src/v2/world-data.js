@@ -1,3 +1,5 @@
+import {reachDesign73Option,REACH_DESIGN73_REVISION} from './reach-design73.js';
+import {reachDesign69Option,REACH_DESIGN69_REVISION} from './reach-design69.js';
 import {forestRootInputHashes} from './forest-root-inputs.js';
 import { sampleMonotoneHeight, createAuthoredHeightProtection } from "./terrain-height-interpolation.js";
 import {settlementAssetFor} from "./settlement-assets.js";
@@ -208,7 +210,10 @@ function placeEntities(entities, assets, rawHeight) {
   }
   return {pads,heightAt};
 }
-export function createWorldData({meta,objects,coreHeights,farHeights,detailMeta,detailBytes,coreLandcover,farLandcover,manifest,streamData={lines:[]},riverMeanders,forestReach39=new URLSearchParams(globalThis.location?.search||"").get("forestReach39")==="1",forestBankCurvature38=new URLSearchParams(globalThis.location?.search||"").get("forestBankCurvature38")!=="0",forestRootedShoulder38=new URLSearchParams(globalThis.location?.search||"").get("forestRootedShoulder38")==="1",demInterpolation=new URLSearchParams(globalThis.location?.search||"").get("demInterpolation")==="monotone"?"monotone":"bilinear",landcoverSampling=new URLSearchParams(globalThis.location?.search||"").get("landcoverSampling")==="scalar"?"scalar":"rgba"}) {
+export function createWorldData({reachDesign73=reachDesign73Option(),reachDesign69=reachDesign69Option(),meta,objects,coreHeights,farHeights,detailMeta,detailBytes,coreLandcover,farLandcover,manifest,streamData={lines:[]},riverMeanders,forestReach39=(new URLSearchParams(globalThis.location?.search||"").has("forestReach39")?new URLSearchParams(globalThis.location?.search||"").get("forestReach39")==="1":"auto"),forestBankCurvature38=new URLSearchParams(globalThis.location?.search||"").get("forestBankCurvature38")!=="0",forestRootedShoulder38=new URLSearchParams(globalThis.location?.search||"").get("forestRootedShoulder38")==="1",demInterpolation=new URLSearchParams(globalThis.location?.search||"").get("demInterpolation")==="monotone"?"monotone":"bilinear",landcoverSampling=new URLSearchParams(globalThis.location?.search||"").get("landcoverSampling")==="scalar"?"scalar":"rgba"}) {
+  if(reachDesign73!==null&&reachDesign73!=='bend')throw Error('Invalid explicit reachDesign73');
+  if(reachDesign73&&reachDesign69)throw Error('Reach candidates are mutually exclusive');
+  if(reachDesign69!==null&&reachDesign69!=='bend')throw Error('Invalid explicit reachDesign69');
   const metadata=deepFreeze(structuredClone(meta)), source=deepFreeze(structuredClone(objects));
   const core=makeRaster(coreHeights,{...meta.core}),far=makeRaster(farHeights,{...meta.far});
   const detail=makeRaster(detailBytes,{n:detailMeta.size,res:detailMeta.res,x0:detailMeta.origin[0],z0:detailMeta.origin[1],channels:4});
@@ -238,7 +243,9 @@ export function createWorldData({meta,objects,coreHeights,farHeights,detailMeta,
       c.r=clamp(c.r/255,0,1);c.g=clamp(c.g/255,0,1);c.b=clamp(c.b/255,0,1);c.a=clamp(c.a/255,0,1);return c;
     };
   const rawHeight=(x,z)=>geographicHeightAt(x,z)+detailAt(x,z);
-  const hydrology=createHydrology({streamData,heightAt:rawHeight,entities,assetMetadata:manifest.assetMetadata,objects:source,riverMeanders,forestRootedShoulder38,forestBankCurvature38,forestReach39,landcoverAt});
+  const hydrology=createHydrology({streamData,heightAt:rawHeight,entities,assetMetadata:manifest.assetMetadata,objects:source,riverMeanders,forestRootedShoulder38,forestBankCurvature38,forestReach39,reachDesign69,reachDesign73,landcoverAt});
+  // Authored reach defaults only onto its validated source; explicit true remains strict.
+  forestReach39=Boolean(hydrology.forestReach39);
   const channelHeight=(x,z)=>hydrology.bedHeightAt(x,z,rawHeight(x,z));
   const placed=placeEntities(entities,manifest.assetMetadata,channelHeight);
   const byId=new Map(entities.map(e=>[e.id,e]));
@@ -250,7 +257,7 @@ export function createWorldData({meta,objects,coreHeights,farHeights,detailMeta,
     pads:deepFreeze(placed.pads),heightPolicy:"DEM + authored detail + bounded cut-only river beds + analytical cut-only building pads; no exaggeration or earth curvature",
   };
   let rootInputHashes;
-  const getForestRootInputHashes=()=>rootInputHashes??=(forestRootInputHashes({meta:metadata,objects:source,assetMetadata:manifest.assetMetadata,detailMeta,streamData,coreHeights,farHeights,detailBytes,coreLandcover:coreLandcover.data,farLandcover:farLandcover.data,options:{...(forestReach39?{forestReach39:true}:{}),...(forestBankCurvature38?{forestBankCurvature38:true}:{}),...(forestRootedShoulder38?{forestRootedShoulder38:true}:{}),demInterpolation,landcoverSampling,riverMeanders:riverMeanders??'default',valleyLandform:Boolean(hydrology.stats.valleyDeposits?.nodes),valleyMeanders:Boolean(hydrology.stats.valleyMeanders?.nodes),valleySection:Boolean(hydrology.stats.valleyDeposits?.sectionProfile)}}));
+  const getForestRootInputHashes=()=>rootInputHashes??=(forestRootInputHashes({meta:metadata,objects:source,assetMetadata:manifest.assetMetadata,detailMeta,streamData,coreHeights,farHeights,detailBytes,coreLandcover:coreLandcover.data,farLandcover:farLandcover.data,options:{...(reachDesign73?{reachDesign73,reachDesign73Revision:REACH_DESIGN73_REVISION}:{}),...(reachDesign69?{reachDesign69,reachDesign69Revision:REACH_DESIGN69_REVISION}:{}),...(hydrology.forestReach39?.stats.design50?{reachBankDesign50:hydrology.forestReach39.stats.design50}:{}),...(hydrology.forestReach39?.stats.profile48?{reachBankProfile48:hydrology.forestReach39.stats.profile48}:{}),...(forestReach39?{forestReach39:true,...(hydrology.forestReach39?.stats.form41?{forestReachForm41:true,forestReachForm41Revision:hydrology.forestReach39.stats.form41Revision??"initial"}:{})}:{}),...(forestBankCurvature38?{forestBankCurvature38:true}:{}),...(forestRootedShoulder38?{forestRootedShoulder38:true}:{}),demInterpolation,landcoverSampling,riverMeanders:riverMeanders??'default',valleyLandform:Boolean(hydrology.stats.valleyDeposits?.nodes),valleyMeanders:Boolean(hydrology.stats.valleyMeanders?.nodes),valleySection:Boolean(hydrology.stats.valleyDeposits?.sectionProfile)}}));
   const bounds=deepFreeze({minX:-meta.far.size/2,maxX:meta.far.size/2,minZ:-meta.far.size/2,maxZ:meta.far.size/2,core:{minX:-meta.core.size/2,maxX:meta.core.size/2,minZ:-meta.core.size/2,maxZ:meta.core.size/2}});
   const world={getForestRootInputHashes,meta:metadata,objects:source,manifest:deepFreeze(structuredClone(manifest)),entities:deepFreeze(entities),surface,hydrology,bounds,chunkAt,...coordinateFrame(meta.origin_utm),assetBase:"./assets/",
     landcoverAt,
@@ -286,7 +293,8 @@ export async function loadWorldData({onProgress,onSourceInputs}={}) {
     json("./data/scene.json","世界坐标"),json("./data/objects.json","地物目录"),json("./world-v2/manifest.json","数据来源"),
     json("./data/detail.json","局部地表"),binary("./data/core_height.bin.gz","核心高程"),binary("./data/far_height.bin.gz","远景高程"),
     binary("./data/detail.bin.gz","局部地表解码"),image("./data/core_landcover.png","核心地类"),image("./data/far_landcover.png","远景地类"),json("./data/streams.json","原始河网")]);
-  const inputs={meta,objects,manifest,detailMeta,detailBytes,coreHeights:decodeHeightBytes(cb,meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(fb,meta.far.n,meta.height_scale),coreLandcover,farLandcover,streamData};
+  const variant69=reachDesign69Option(),variant73=reachDesign73Option();
+  const inputs={...(variant73?{reachDesign73:variant73}:{}),...(variant69?{reachDesign69:variant69}:{}),meta,objects,manifest,detailMeta,detailBytes,coreHeights:decodeHeightBytes(cb,meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(fb,meta.far.n,meta.height_scale),coreLandcover,farLandcover,streamData};
   const world=createWorldData(inputs);
   onSourceInputs?.(inputs);
   onProgress?.({stage:"地表与地基就绪",completed:total,total,ratio:1});return world;

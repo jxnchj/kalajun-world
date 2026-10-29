@@ -1,0 +1,52 @@
+[
+  {
+    "patch": "meadow",
+    "roots": 458,
+    "size": 24,
+    "decodedBytes": 1407281,
+    "transportBytes": 447119,
+    "sources": [
+      {
+        "path": "web/src/v2/ecology.js",
+        "sha256": "46d71fb684f9776e89bbb664c414e597f76c086071e73adbd6504782909950c0"
+      },
+      {
+        "path": "web/src/v2/meadow-surface.js",
+        "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+      },
+      {
+        "path": "web/src/v2/grass-root-field.js",
+        "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+      },
+      {
+        "path": "web/src/v2/pasture-plant-contact41.js",
+        "sha256": "b7bc7ddde9fc6928dfad157606768c5a549f3049f9ddf1abead5b9b4a5601d7f"
+      }
+    ]
+  },
+  {
+    "patch": "west",
+    "roots": 770,
+    "size": 24,
+    "decodedBytes": 1523060,
+    "transportBytes": 503114,
+    "sources": [
+      {
+        "path": "web/src/v2/ecology.js",
+        "sha256": "46d71fb684f9776e89bbb664c414e597f76c086071e73adbd6504782909950c0"
+      },
+      {
+        "path": "web/src/v2/meadow-surface.js",
+        "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+      },
+      {
+        "path": "web/src/v2/grass-root-field.js",
+        "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+      },
+      {
+        "path": "web/src/v2/pasture-plant-contact41.js",
+        "sha256": "b7bc7ddde9fc6928dfad157606768c5a549f3049f9ddf1abead5b9b4a5601d7f"
+      }
+    ]
+  }
+]

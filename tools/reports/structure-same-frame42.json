@@ -1,0 +1,29 @@
+{
+  "scope": "4000 pure-translation native/manual leaves, two propagations per synchronous frame, same arithmetic41 baseline. Worst-case best eligibility for reuse, not browser whole-frame timing.",
+  "samples": [
+    {
+      "enabled": false,
+      "msPerFrame": 0.20536332999999998
+    },
+    {
+      "enabled": true,
+      "msPerFrame": 0.497795415
+    },
+    {
+      "enabled": true,
+      "msPerFrame": 0.49531458500000014
+    },
+    {
+      "enabled": false,
+      "msPerFrame": 0.16402479499999997
+    }
+  ],
+  "stats": {
+    "enabled": false,
+    "scopes": 460,
+    "checks": 3680000,
+    "reused": 1840000,
+    "captured": 1840000,
+    "scopeMs": 0.4689589999999839
+  }
+}

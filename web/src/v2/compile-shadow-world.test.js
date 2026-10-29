@@ -198,3 +198,17 @@ test("owned-policy compile failure restores fields and invalid contracts reject 
   handle.dispose();f.shadowDepth.dispose();depth.dispose();object.geometry.dispose();object.material.dispose();
  }
 });
+
+test('optional depth setup runs on the actual shared material before shader warming, once per material',async()=>{
+ const f=fixture(),a=mesh('prepared-a'),b=mesh('prepared-b');f.scene.add(a,b);f.scene.updateMatrixWorld(true);f.shadowDepth.prepare();
+ b.customDepthMaterial=a.customDepthMaterial;const seen=[];
+ const original=f.renderer.compile;f.renderer.compile=function(...args){assert.ok(seen.includes(a.customDepthMaterial));return original.apply(this,args);};
+ await compileShadowWorld(f.renderer,f.scene,f.camera,{shadowDepth:f.shadowDepth,lights:[f.light],prepareDepthMaterial:m=>{assert.equal(f.calls.length,0);seen.push(m);}});
+ assert.equal(new Set(seen).size,seen.length);assert.ok(seen.includes(a.customDepthMaterial));
+});
+
+test("explicit untextured room spots warm the same custom depth variants at night without rendering",async()=>{
+ const f=fixture(),spot=new THREE.SpotLight();spot.position.set(0,5,0);spot.target.position.set(0,0,0);spot.castShadow=true;spot.shadow.camera.near=.04;spot.distance=10;f.scene.add(spot,spot.target);f.light.visible=false;const object=mesh('room-night');f.scene.add(object);f.scene.updateMatrixWorld(true);let prepared=0;
+ const result=await compileShadowWorld(f.renderer,f.scene,f.camera,{shadowDepth:f.shadowDepth,lights:[spot],projectedSpots:true,prepareDepthMaterial:()=>prepared++});assert.equal(result.userData.compileShadowSelection.reason,'prepared');assert.equal(prepared,1);assert.ok(f.calls.length>0);
+ spot.map=new THREE.Texture();const refused=await compileShadowWorld(f.renderer,f.scene,f.camera,{shadowDepth:f.shadowDepth,lights:[spot],projectedSpots:true});assert.equal(refused.userData.compileReadiness.status,'skipped');
+});

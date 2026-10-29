@@ -6,3 +6,66 @@ test('morphs, partial visibility and active child refinement stay on original ge
 });
 test('streaming and attribute edits invalidate only submission copies and restore authoritative visibility before LOD',()=>{const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,maxBuildMs:100});b.update(f.nodes);const old=[...b.records.values()][0];assert.equal(b.stats.savedDraws,3);assert.ok(f.p.children.every(n=>!n.mesh.visible));b.restore();assert.ok(f.p.children.every(n=>n.mesh.visible));f.p.children[0].mesh.geometry.attributes.terrainCover.setX(0,.4);f.p.children[0].mesh.geometry.attributes.terrainCover.needsUpdate=true;b.update(f.nodes);assert.notEqual([...b.records.values()][0],old);b.restore();f.p.children[0].dead=true;b.update(f.nodes);assert.equal(b.records.size,0);assert.ok(f.p.children.every(n=>n.mesh.visible));b.dispose();assert.equal(f.group.children.length,4);});
 test('runtime disable restores original submission without removing any tile',()=>{const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,maxBuildMs:100});b.update(f.nodes);b.restore();b.enabled=false;b.update(f.nodes);assert.equal(b.stats.groups,0);assert.ok(f.p.children.every(n=>n.mesh.visible));assert.ok([...b.records.values()].every(r=>!r.mesh.visible));b.dispose();});
+test('fast stable-frame path detects index-array, attribute-layout, material, parent and boundary changes immediately',()=>{
+ const cases=[f=>{const a=f.p.children[0].mesh.geometry.index;a.array=a.array.slice();},f=>{f.p.children[0].mesh.geometry.attributes.terrainCover.itemSize=2;},f=>{const material=new T.MeshStandardMaterial();for(const n of f.p.children)n.mesh.material=material;},f=>{f.p.x+=2;},f=>{f.p.size+=2;},f=>{f.p.children[0].mesh.geometry.boundingSphere=new T.Sphere(new T.Vector3(),99);},f=>{for(const n of f.p.children)n.mesh.frustumCulled=false;},f=>{f.p.children[0].mesh.position.y+=1;}];
+ for(const change of cases){const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,maxBuildMs:100});b.update(f.nodes);const old=b.records.get(f.p);b.restore();b.update(f.nodes);assert.equal(b.records.get(f.p),old);b.restore();change(f);b.update(f.nodes);assert.notEqual(b.records.get(f.p),old);b.dispose();}
+});
+test('unsupported transforms, hooks, invalid indices and attribute layouts fall back to all original tiles',()=>{
+ const changes=[m=>{m.matrixAutoUpdate=false;m.matrix.makeTranslation(900,0,0);},m=>{m.matrixWorldAutoUpdate=false;},m=>{m.updateMatrix=function(){this.matrix.makeScale(2,2,2);};},m=>{m.onBeforeRender=()=>{};},m=>{m.onBeforeShadow=()=>{};},m=>{m.pivot=new T.Vector3(2,0,0);},m=>{m.geometry.index.array=new Uint16Array([65535,1,2]);m.geometry.index.count=3;},m=>{m.geometry.attributes.terrainCover=new T.BufferAttribute(new Float32Array(3),3);},m=>{m.geometry.attributes.position.normalized=true;}];
+ for(const change of changes){const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,maxBuildMs:100});b.update(f.nodes);b.restore();change(f.p.children[0].mesh);b.update(f.nodes);assert.equal(b.records.size,0);assert.ok(f.p.children.every(n=>n.mesh.visible));b.dispose();}
+});
+test('zero morph sources require finite authored targets and all nonzero weights immediately revert',()=>{
+ const f=fixture(),m=f.p.children[0].mesh,g=m.geometry,target=g.attributes.position.clone();g.morphAttributes.position=[target];m.morphTargetInfluences=[0];g.morphTargetsRelative=false;const b=new TerrainSiblingBatches(f.group,{enabled:true,maxBuildMs:100});b.update(f.nodes);assert.equal(b.stats.groups,1);b.restore();m.morphTargetInfluences[0]=.001;b.update(f.nodes);assert.equal(b.stats.groups,0);b.restore();m.morphTargetInfluences[0]=0;b.update(f.nodes);assert.equal(b.stats.groups,1);b.restore();target.setX(0,NaN);target.needsUpdate=true;b.update(f.nodes);assert.equal(b.stats.groups,0);assert.ok(m.visible);b.dispose();
+});
+test('custom source bounds are conservatively contained by the merged submission',()=>{const f=fixture(),g=f.p.children[0].mesh.geometry;g.boundingSphere=new T.Sphere(new T.Vector3(),100);g.boundingBox=new T.Box3(new T.Vector3(-100,-100,-100),new T.Vector3(100,100,100));const r=mergeTerrainSiblings(f.p);assert.ok(r.mesh.geometry.boundingSphere.radius>=100);assert.ok(r.mesh.geometry.boundingBox.min.x<=-100);assert.ok(r.mesh.geometry.boundingBox.max.y>=100);});
+
+test('real lazy projected-shadow preparation preserves batches and shared depth; shader edits still fall back',async()=>{
+ const {WorldShadowDepth}=await import('./room-shadow.js');const f=fixture(),scene=new T.Scene();scene.add(f.group);const depth=new WorldShadowDepth(scene),b=new TerrainSiblingBatches(f.group,{enabled:true,maxBuildMs:100});
+ try{b.update(f.nodes);scene.updateMatrixWorld(true);depth.prepare();for(let i=0;i<8;i++){b.restore();b.update(f.nodes);scene.updateMatrixWorld(true);depth.prepare();assert.equal(b.stats.groups,1);assert.equal(b.records.get(f.p).mesh.customDepthMaterial,f.p.children[0].mesh.customDepthMaterial);}const shared=f.p.children[0].mesh.customDepthMaterial;assert.ok(shared);const old=b.records.get(f.p);b.restore();shared.needsUpdate=true;b.update(f.nodes);assert.notEqual(b.records.get(f.p),old);assert.equal(b.stats.groups,1);b.restore();shared.onBeforeCompile=()=>{};b.update(f.nodes);assert.equal(b.stats.groups,0);assert.ok(f.p.children.every(n=>n.mesh.visible));}finally{b.dispose();depth.dispose();}
+});
+test('unknown or different depth contracts cannot be merged',async()=>{const{createStructureDepth}=await import('./room-shadow.js');for(const mode of['unknown','different']){const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,maxBuildMs:100}),shared=createStructureDepth(f.p.children[0].mesh.material);for(const n of f.p.children)n.mesh.customDepthMaterial=shared;f.p.children[1].mesh.customDepthMaterial=mode==='unknown'?new T.MeshDepthMaterial():createStructureDepth(f.p.children[1].mesh.material);b.update(f.nodes);assert.equal(b.stats.groups,0);b.dispose();}});
+
+test('bounded build candidate rejects later incomplete siblings before touching child zero attributes',()=>{
+ for(const [reason,change]of [['child-hidden',n=>n.mesh.visible=false],['child-split',n=>n.split=true],['child-transition',n=>n.transition={}],['child-mesh-missing',n=>n.mesh=null],['mesh-children',n=>n.mesh.add(new T.Object3D())]]){
+  const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,boundedBuild42:true});change(f.p.children[3]);
+  Object.defineProperty(f.p.children[0].mesh.geometry,'attributes',{get(){throw Error('Deep validation must not run on incomplete siblings');}});
+  b.update(f.nodes);assert.equal(b.stats.fullChecks,0);assert.equal(b.stats.cheapReasons[reason],1);assert.equal(b.records.size,0);b.dispose();
+ }
+});
+test('construction-only budget escapes validation starvation while bounding actual construction, leaving old mode intact',()=>{
+ const descriptor=Object.getOwnPropertyDescriptor(globalThis,'performance');
+ try{for(const boundedBuild42 of [false,true]){
+  const a=fixture(),c=fixture();for(const n of c.nodes)a.group.add(n.mesh);const nodes=new Set([...a.nodes,...c.nodes]);
+  const before=[...nodes].map(n=>Array.from(n.mesh.geometry.attributes.position.array));let clock=0;
+  Object.defineProperty(globalThis,'performance',{configurable:true,value:{now:()=>clock+=10}});
+  const b=new TerrainSiblingBatches(a.group,{enabled:true,maxBuildMs:2,boundedBuild42});b.update(nodes);
+  assert.equal(b.stats.groups,boundedBuild42?1:0);assert.equal(b.stats.budgetDeferred,boundedBuild42?1:2);
+  assert.equal(b.stats.constructionMs,boundedBuild42?10:0);assert.equal(b.stats.fullChecks,2);
+  assert.deepEqual([...nodes].map(n=>Array.from(n.mesh.geometry.attributes.position.array)),before);
+  if(boundedBuild42){b.restore();b.update(nodes);assert.equal(b.stats.fastGroups,1);assert.equal(b.stats.groups,2);assert.equal(b.stats.rebuilds,1);}
+  b.dispose();assert.ok([...nodes].every(n=>n.mesh.visible));
+ }}finally{Object.defineProperty(globalThis,'performance',descriptor);}
+});
+test('bounded candidate preserves deep rejection and immediate invalidation for changed morphs and attribute layout',()=>{
+ const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,maxBuildMs:100,boundedBuild42:true});b.update(f.nodes);assert.equal(b.stats.groups,1);b.restore();
+ f.p.children[3].mesh.morphTargetInfluences=[.1];b.update(f.nodes);assert.equal(b.stats.deepRejected,1);assert.equal(b.records.size,0);assert.ok(f.p.children.every(n=>n.mesh.visible));
+ f.p.children[3].mesh.morphTargetInfluences=[0];f.p.children[3].mesh.geometry.attributes.terrainCover.itemSize=2;b.update(f.nodes);assert.equal(b.stats.deepRejected,1);assert.equal(b.records.size,0);b.dispose();
+});
+test('bounded reflection uses original tiles and restores the main submission even if render throws',()=>{
+ for(const fail of [false,true]){const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,boundedBuild42:true,maxBuildMs:100});b.update(f.nodes);const r=b.records.get(f.p),hook=f.group.userData.prepareWaterReflection42;assert.equal(typeof hook,'function');
+  const restore=hook();try{assert.equal(r.mesh.visible,false);assert.ok(r.sources.every(m=>m.visible));if(fail)throw Error('reflection render');}catch(e){assert.equal(e.message,'reflection render');}finally{restore();}
+  assert.equal(r.mesh.visible,true);assert.ok(r.sources.every(m=>!m.visible));b.dispose();assert.equal(f.group.userData.prepareWaterReflection42,undefined);assert.ok(r.sources.every(m=>m.visible));
+ }
+});
+test('resident geometry audit checks every source component and detects geometry, primitive and material divergence',async()=>{const{auditTerrainBatchGeometry42}=await import('../../public/review/terrain-batch-audit42.js');const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,maxBuildMs:100}),app={terrain:{submissionBatches:b}};b.update(f.nodes);let a=auditTerrainBatchGeometry42(app);assert.equal(a.groups,1);assert.equal(a.vertices,36);for(const key of ['positionDifferent','attributeDifferent','indexDifferent','materialDifferent','drawStateDifferent'])assert.equal(a[key],0,key);const mesh=b.records.get(f.p).mesh;mesh.geometry.attributes.position.array[0]+=.25;mesh.geometry.attributes.normal.array[0]=99;mesh.geometry.index.array[0]=22;mesh.material=new T.MeshStandardMaterial();a=auditTerrainBatchGeometry42(app);assert.equal(a.positionDifferent,1);assert.equal(a.maxWorldPositionError,.25);assert.equal(a.attributeDifferent,1);assert.equal(a.indexDifferent,1);assert.equal(a.materialDifferent,4);b.dispose();});
+test('default terrain policy adopts bounded batches and explicit zero preserves original worker-compatible path',async()=>{
+ const{terrainSiblingBatchPolicy42}=await import('./terrain-sibling-batches.js'),{terrainRowWorkerPolicy}=await import('./terrain-row-worker-client.js');
+ for(const search of ['', '?view=forest','?terrainBatches=1']){assert.deepEqual(terrainSiblingBatchPolicy42(search),{enabled:true,boundedBuild42:true});assert.equal(terrainRowWorkerPolicy(search).enabled,true);}
+ assert.deepEqual(terrainSiblingBatchPolicy42('?terrainBatches=0'),{enabled:false,boundedBuild42:false});assert.equal(terrainRowWorkerPolicy('?terrainBatches=0').enabled,true);
+ const fs=await import('node:fs/promises'),source=await fs.readFile(new URL('./terrain.js',import.meta.url),'utf8');assert.match(source,/new TerrainSiblingBatches\(this.group,terrainSiblingBatchPolicy42\(globalThis.location\?\.search\|\|""\)\)/);
+});
+test('bounded runtime exit frees copied geometry and hook, keeps original tiles/materials and can reenter',()=>{
+ const f=fixture(),b=new TerrainSiblingBatches(f.group,{enabled:true,boundedBuild42:true,maxBuildMs:100});let frees=0,materialFrees=0;f.p.children[0].mesh.material.addEventListener('dispose',()=>materialFrees++);b.update(f.nodes);b.records.get(f.p).mesh.geometry.addEventListener('dispose',()=>frees++);
+ b.enabled=false;b.update(f.nodes);assert.equal(b.records.size,0);assert.equal(b.bytes,0);assert.equal(frees,1);assert.equal(materialFrees,0);assert.equal(f.group.userData.prepareWaterReflection42,undefined);assert.ok(f.p.children.every(n=>n.mesh.visible));
+ b.enabled=true;b.update(f.nodes);assert.equal(b.stats.groups,1);assert.equal(typeof f.group.userData.prepareWaterReflection42,'function');b.restore();f.p.children[3].transition={};b.update(f.nodes);assert.equal(b.records.size,0);assert.ok(f.p.children.every(n=>n.mesh.visible));b.dispose();assert.equal(f.group.children.length,4);
+});

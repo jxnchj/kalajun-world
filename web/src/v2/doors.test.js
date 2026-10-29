@@ -1,3 +1,5 @@
+import {houseTimberNodeOptions48,houseFurnitureNodeOptions58,installHouseTimberNodeCanvas48,assertDefaultHouseTimber48,assertDefaultHouseFurniture58} from './test-support/house-timber48-node.js';
+installHouseTimberNodeCanvas48();
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
@@ -53,8 +55,8 @@ test("door disposal never destroys source/shared material or texture ownership",
 
 test("real structures integration preserves static plus moving triangles, shared AO materials and ownership",async()=>{
  const objects=JSON.parse(await readFile(new URL("../../public/data/objects.json",import.meta.url))),manifest=JSON.parse(await readFile(new URL("../../public/world-v2/manifest.json",import.meta.url))),entities=createEntities(objects,manifest.assetMetadata).filter(e=>e.assetId==="house_a"||e.assetId==="yurt");
- const world={entities,surface:{buildingPose:e=>({...pose,x:e.x,z:e.z})}},doors=new WorldDoors(),counts=new Map(),structures=new WorldStructures(world,{doors,loadAsset:async url=>{const id=url.includes("house_a")?"house_a":"yurt",gltf=await asset(id);let count=0;gltf.scene.traverse(n=>{if(n.isMesh)count+=tri(n.geometry);});counts.set(id,count);return gltf;}});
- await structures.load();assert.equal(doors.stats.entries,185);assert.equal(doors.stats.leaves,257);assert.equal(structures.stats.triangles+doors.stats.triangles,entities.reduce((sum,e)=>sum+counts.get(e.assetId),0));
+ const world={entities,surface:{buildingPose:e=>({...pose,x:e.x,z:e.z})}},doors=new WorldDoors(),counts=new Map(),structures=new WorldStructures(world,{houseTimber48Options:houseTimberNodeOptions48,houseFurniture58Options:houseFurnitureNodeOptions58,doors,loadAsset:async url=>{const id=url.includes("house_a")?"house_a":"yurt",gltf=await asset(id);let count=0;gltf.scene.traverse(n=>{if(n.isMesh)count+=tri(n.geometry);});counts.set(id,count);return gltf;}});
+ await structures.load();assertDefaultHouseTimber48(structures);assertDefaultHouseFurniture58(structures);assert.equal(doors.stats.entries,185);assert.equal(doors.stats.leaves,257);assert.equal(structures.stats.triangles+doors.stats.triangles,entities.reduce((sum,e)=>sum+counts.get(e.assetId),0));
  for(const mesh of doors.group.children){assert.ok(structures.materials.includes(mesh.material));assert.equal(mesh.material.vertexColors,false);assert.equal(mesh.material.userData.legacyVertexAOPreserved,true);assert.ok(mesh.geometry.attributes.assetOcclusion);assert.ok(mesh.geometry.attributes.uv);assert.ok(mesh.customDepthMaterial);}
  const bounds=doors.group.children.map(m=>m.boundingBox.getSize(new THREE.Vector3()));assert.ok(bounds.every(s=>s.x<4110&&s.z<4110));
  const camera=new THREE.PerspectiveCamera(60,1453/839,.1,200000);camera.position.set(-3611.9813305250705,2329.161214161885,4805.371282289286);camera.rotation.set(-10*Math.PI/180,30.90412352938094*Math.PI/180,0,"YXZ");camera.updateMatrixWorld();doors.update(camera,0);

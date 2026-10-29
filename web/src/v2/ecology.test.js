@@ -46,7 +46,7 @@ test("negative-world tiles own each plant once and replay stable IDs and matrice
 });
 
 test("meadow streaming is bounded, preserves resident buffers and fills nearest tiles first",()=>{
-  const ecology=new WorldEcology(world()),cam=camera();
+  const ecology=new WorldEcology(world(),{meadowAerialContinuity42:false}),cam=camera();
   ecology.updateMeadow(cam);
   assert.ok(ecology.stats.grassBuiltThisFrame>=1&&ecology.stats.grassBuiltThisFrame<=2);
   const key=[...ecology.grassTiles.keys()][0],tile=ecology.grassTiles.get(key),mesh=tile.meshes[0],buffer=mesh.instanceMatrix.array,copy=buffer.slice();

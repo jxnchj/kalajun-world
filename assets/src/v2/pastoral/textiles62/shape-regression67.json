@@ -1,0 +1,58 @@
+[
+  {
+    "name": "pastoral_house_chest_folded0",
+    "maxAdjacentDisplacementJump": [
+      0.0,
+      [
+        2938,
+        2939
+      ]
+    ],
+    "over20mmEdges": 0,
+    "leafInteriorSamples": 535,
+    "minInternalLeafGap": 0.0009469985961914062,
+    "leafCrossingSamples": 0
+  },
+  {
+    "name": "pastoral_house_chest_folded1",
+    "maxAdjacentDisplacementJump": [
+      0.0,
+      [
+        2938,
+        2939
+      ]
+    ],
+    "over20mmEdges": 0,
+    "leafInteriorSamples": 535,
+    "minInternalLeafGap": 0.0009475946426391602,
+    "leafCrossingSamples": 0
+  },
+  {
+    "name": "pastoral_house_chest_folded2",
+    "maxAdjacentDisplacementJump": [
+      0.0,
+      [
+        2938,
+        2939
+      ]
+    ],
+    "over20mmEdges": 0,
+    "leafInteriorSamples": 535,
+    "minInternalLeafGap": 0.0009490251541137695,
+    "leafCrossingSamples": 0
+  },
+  {
+    "name": "pastoral_house_chest_folded3",
+    "maxAdjacentDisplacementJump": [
+      0.0,
+      [
+        2938,
+        2939
+      ]
+    ],
+    "over20mmEdges": 0,
+    "leafInteriorSamples": 535,
+    "minInternalLeafGap": 0.0009473562240600586,
+    "leafCrossingSamples": 0
+  }
+]

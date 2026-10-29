@@ -14,23 +14,23 @@
       0.9979771899355432,
       0.0609956378322729
     ],
-    "sha256": "def93194878f328d919aaff24d3da2a01874a2471f2251c48b78fa21769dc257",
+    "sha256": "29e85231f71d8cc935bb95bfa7f9d8f9de6eef2b21f97fdde2664a91428d7450",
     "sources": [
       {
         "path": "web/src/v2/ecology.js",
-        "sha256": "28dac4b09986cafa4e665f679e385b742b0a5ed1e76e275680cc5244533b1aae"
+        "sha256": "46d71fb684f9776e89bbb664c414e597f76c086071e73adbd6504782909950c0"
       },
       {
         "path": "web/src/v2/terrain.js",
-        "sha256": "471beb69bb043de0e6cb1f049af9815667962ec19445f1f0e5e133224e192b51"
+        "sha256": "7eca34595123bfdd512a1f626e290b3dc725c08d05af94e7c3d5dee9cc0f5c13"
       },
       {
         "path": "web/src/v2/terrain-material.js",
-        "sha256": "05c674a3518b6026d40406a91befd1b641fadf409a0fd59cc96f6b5570a89972"
+        "sha256": "a01b6bc2eca3d829b2b25e83dda6ba7da26806d2f9558ab5e613f60ed2e96d66"
       },
       {
         "path": "web/src/v2/meadow-surface.js",
-        "sha256": "65a2b374bb00105f0ddf524cde97821c5477112f87becc62c4d37c332538c3e7"
+        "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
       },
       {
         "path": "web/src/v2/grass-root-field.js",
@@ -53,23 +53,23 @@
       0.8308977860372004,
       0.22018994185894386
     ],
-    "sha256": "06ee16379536182a751c085154e1378773e80fb6fa2f90b58bce77de3b790c5f",
+    "sha256": "4c91889360b678c5def431e3902e732b87251fd65cf3fd01e49004565d2ff154",
     "sources": [
       {
         "path": "web/src/v2/ecology.js",
-        "sha256": "28dac4b09986cafa4e665f679e385b742b0a5ed1e76e275680cc5244533b1aae"
+        "sha256": "46d71fb684f9776e89bbb664c414e597f76c086071e73adbd6504782909950c0"
       },
       {
         "path": "web/src/v2/terrain.js",
-        "sha256": "471beb69bb043de0e6cb1f049af9815667962ec19445f1f0e5e133224e192b51"
+        "sha256": "7eca34595123bfdd512a1f626e290b3dc725c08d05af94e7c3d5dee9cc0f5c13"
       },
       {
         "path": "web/src/v2/terrain-material.js",
-        "sha256": "05c674a3518b6026d40406a91befd1b641fadf409a0fd59cc96f6b5570a89972"
+        "sha256": "a01b6bc2eca3d829b2b25e83dda6ba7da26806d2f9558ab5e613f60ed2e96d66"
       },
       {
         "path": "web/src/v2/meadow-surface.js",
-        "sha256": "65a2b374bb00105f0ddf524cde97821c5477112f87becc62c4d37c332538c3e7"
+        "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
       },
       {
         "path": "web/src/v2/grass-root-field.js",

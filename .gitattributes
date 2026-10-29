@@ -3,3 +3,5 @@
 *.bin filter=lfs diff=lfs merge=lfs -text
 *.tif filter=lfs diff=lfs merge=lfs -text
 *.blend filter=lfs diff=lfs merge=lfs -text
+*.pack filter=lfs diff=lfs merge=lfs -text
+web/src/v2/house-textiles-gi73-data/*.js filter=lfs diff=lfs merge=lfs -text

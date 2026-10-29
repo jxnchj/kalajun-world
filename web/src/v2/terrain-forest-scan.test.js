@@ -1,3 +1,4 @@
+import {createLegacyTerrainMaterial} from './fixtures/legacy-terrain-material.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import * as THREE from "three";
@@ -52,7 +53,7 @@ test("crossfade conserves independent fine variance instead of smoothing away th
   assert.match(FOREST_SCAN_GLSL,/inverseTurn\*\(-nb.xy\/max\(\.35,nb.z\)\)\*1.037/);
 });
 test("forest continuity is one live A/B uniform and retains exact original four-sample branch",()=>{
-  const result=createTerrainMaterial(),m=result.material,s=compile(m),key=m.customProgramCacheKey(),version=m.version;
+  const result=createLegacyTerrainMaterial(),m=result.material,s=compile(m),key=m.customProgramCacheKey(),version=m.version;
   assert.equal(s.uniforms.terrainForestContinuity,m.userData.terrainForestContinuity);
   setTerrainForestContinuity(m,false);assert.equal(s.uniforms.terrainForestContinuity.value,0);
   setTerrainForestContinuity(m,true);assert.equal(s.uniforms.terrainForestContinuity.value,1);
@@ -70,7 +71,7 @@ test("forest continuity is one live A/B uniform and retains exact original four-
   dispose(result);
 });
 test("all new forest reads use explicit world derivatives calculated outside material branches",()=>{
-  const result=createTerrainMaterial(),f=compile(result.material).fragmentShader;
+  const result=createLegacyTerrainMaterial(),f=compile(result.material).fragmentShader;
   assert.ok(f.indexOf("terrainXZDX=dFdx")<f.indexOf("if(terrainForestContinuity<.5"));
   const helper=f.slice(f.indexOf("void terrainForestScan("),f.indexOf("float terrainRockFraction("));
   assert.doesNotMatch(helper,/dFdx|dFdy|texture\(/);

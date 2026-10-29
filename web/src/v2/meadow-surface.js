@@ -1,3 +1,4 @@
+import { createConnectedMeadowField41 } from './meadow-connected-field41.js';
 import { scatteredCanopyField } from "./meadow-scattered-canopy.js";
 import * as THREE from "three";
 import { sampleMeadowDirectionalPosition } from "./meadow-relief.js";
@@ -15,7 +16,7 @@ export const MEADOW_PALETTE = Object.freeze({
 // Reload-only A/B keeps immutable CPU grass-root samples and the terrain
 // texture on the same source. A live texture swap would leave cached roots stale.
 const requestedPattern=new URLSearchParams(globalThis.location?.search||"").get("meadowPattern");
-export const MEADOW_PATTERN=["v14","v15","v19","v21","v23","v38"].includes(requestedPattern)?requestedPattern:"v24";
+export const MEADOW_PATTERN=["v14","v15","v19","v21","v23","v38","v41"].includes(requestedPattern)?requestedPattern:"v24";
 // Reload-only: CPU root caches and every ground/grass shader select together.
 export const MEADOW_ROTATION=new URLSearchParams(globalThis.location?.search||"").get("meadowRotation")==="v17"?"v17":"continuous";
 const patternPixels=new Map();
@@ -132,9 +133,9 @@ function meadowRadialPixels(hierarchy=false,connected=false,elongated=false,cohe
 }
 
 export function meadowFieldPixels(pattern=MEADOW_PATTERN) {
-  if(pattern!=="v14"&&pattern!=="v15"&&pattern!=="v19"&&pattern!=="v21"&&pattern!=="v23"&&pattern!=="v24"&&pattern!=="v38")throw new TypeError("Unknown meadow pattern");
+  if(pattern!=="v14"&&pattern!=="v15"&&pattern!=="v19"&&pattern!=="v21"&&pattern!=="v23"&&pattern!=="v24"&&pattern!=="v38"&&pattern!=="v41")throw new TypeError("Unknown meadow pattern");
   let pixels=patternPixels.get(pattern);
-  if(!pixels){pixels=pattern==="v14"?meadowV14Pixels():meadowRadialPixels(["v19","v21","v23","v24","v38"].includes(pattern),["v21","v23","v24","v38"].includes(pattern),["v23","v24","v38"].includes(pattern),pattern==="v24"||pattern==="v38",pattern==="v38");patternPixels.set(pattern,pixels);}
+  if(!pixels){pixels=pattern==="v41"?createConnectedMeadowField41(meadowFieldPixels("v24")):pattern==="v14"?meadowV14Pixels():meadowRadialPixels(["v19","v21","v23","v24","v38"].includes(pattern),["v21","v23","v24","v38"].includes(pattern),["v23","v24","v38"].includes(pattern),pattern==="v24"||pattern==="v38",pattern==="v38");patternPixels.set(pattern,pixels);}
   return pixels;
 }
 // CPU reference uses exactly WebGL repeat/bilinear texel-centre semantics.

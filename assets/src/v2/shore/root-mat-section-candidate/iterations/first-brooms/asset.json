@@ -1,0 +1,70 @@
+{
+  "status": "independent OFF candidate, not runtime fitted/adopted",
+  "blend": "assets/src/v2/shore/root-mat-section-candidate/root-mat-section.blend",
+  "glb": "assets/src/v2/shore/root-mat-section-candidate/exports/root-mat-section.glb",
+  "sourceSHA256": "46bcee60ed106abb10c36f7b84935020dc8cae0cd357c0242af7b9dc7636d70f",
+  "glbBytes": 432432,
+  "triangles": 15400,
+  "vertices": 9198,
+  "materialBatches": 2,
+  "rootPaths": 107,
+  "roles": {
+    "fine": 49,
+    "crown": 5,
+    "surface-fibre": 18,
+    "primary": 35
+  },
+  "boundsBlenderMeters": {
+    "min": [
+      -0.2532826364040375,
+      0.004484322387725115,
+      -0.2219545543193817
+    ],
+    "max": [
+      0.27182409167289734,
+      0.2553084194660187,
+      -0.0034889669623225927
+    ],
+    "size": [
+      0.5251067280769348,
+      0.25082409707829356,
+      0.21846558735705912
+    ]
+  },
+  "axes": "Blender X along-bank, Y toward-water, Z up; glTF (x,y,z)=(Blender x,z,-y)",
+  "origin": "local soil top at patch centre",
+  "diameterMeters": {
+    "minTip": 3.234427150273978e-05,
+    "maxBase": 0.0035573062934373483
+  },
+  "previewFaceContact": {
+    "controlPoints": 511,
+    "buriedControlPoints": 267,
+    "maximumCentrelineProtrusionMeters": 0.006888141538795189
+  },
+  "material": "2 opaque, nonmetallic Principled PBR materials; roughness .88/.91; no images, no AO encoded as RGB, no alpha cards",
+  "usage": "Candidate only. Place sparingly within bank50 middle-root-lobe; deform/fix actual mesh to heightAt and real side slope, with starts and tips buried. Do not tile entire bank. Preview soil and scale are not exported.",
+  "target": {
+    "feature": "middle-root-lobe",
+    "offset": 1.5,
+    "halfPatchLength": 0.275,
+    "outsideWaterEdge": [
+      0.06,
+      0.32
+    ],
+    "existingPlantRoots": 521,
+    "alongXZ": [
+      -0.0135559060371,
+      -0.9999081144843
+    ],
+    "towardWaterXZ": [
+      -0.9999081144843,
+      0.0135559060371
+    ]
+  },
+  "limitations": [
+    "Root morphology is hand-designed from general fibrous growth, not a species or site scan.",
+    "Representative soil face is not the exact runtime bank. No placement/contact/visibility adoption claim.",
+    "No micro root hairs: fine terminal roots below about a tenth millimetre are not intended for sustained distant rendering."
+  ]
+}

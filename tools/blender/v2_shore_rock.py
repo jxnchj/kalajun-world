@@ -24,14 +24,19 @@ hi=Vector([max(v.co[i] for v in m.vertices) for i in range(3)])
 centre=(lo+hi)/2
 horizontal=max((hi.x-lo.x)/2,(hi.y-lo.y)/2)
 height=(hi.z-lo.z)/2
+source_normals=[n.vector.copy() for n in m.corner_normals]
 for v in m.vertices:v.co=Vector(((v.co.x-centre.x)/horizontal,(v.co.y-centre.y)/horizontal,(v.co.z-centre.z)/height))
+# Direct coordinate edits must also transform imported custom split normals.
+# The normalization scale is diag(1/horizontal,1/horizontal,1/height).
+export_normals=[Vector((n.x*horizontal,n.y*horizontal,n.z*height)).normalized() for n in source_normals]
+m.normals_split_custom_set(export_normals)
 m.update();m.calc_loop_triangles()
 # Exact same indexed shell is used for visible rocks and swept vegetation contact.
 positions=[];normals=[];uv=[];indices=[];lookup={}
 uvs=m.uv_layers.active.data
 for tri in m.loop_triangles:
  for vi,li in zip(tri.vertices,tri.loops):
-  p=m.vertices[vi].co;n=m.corner_normals[li].vector;t=uvs[li].uv
+  p=m.vertices[vi].co;n=export_normals[li];t=uvs[li].uv
   key=tuple(round(v,6) for v in (p.x,p.z,-p.y,n.x,n.z,-n.y,t.x,1-t.y))
   if key not in lookup:
    lookup[key]=len(positions)//3;positions.extend(key[:3]);normals.extend(key[3:6]);uv.extend(key[6:])

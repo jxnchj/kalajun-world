@@ -1,3 +1,4 @@
+import {applyShoreAssetReview42} from './shore-asset-review42-state.js';
 import * as THREE from "three";
 import { mergeVertices, toCreasedNormals } from "three/addons/utils/BufferGeometryUtils.js";
 import { shoreScan } from "./shore-rock-data.js";
@@ -76,7 +77,7 @@ export function createShoreStones(world,segments){
       records.push(r);
     }
   }
-  return records;
+  return applyShoreAssetReview42(records);
 }
 // A welded low-cost river pebble: smooth normals across the original triangle seams,
 // but asymmetric erosion preserves a stone silhouette rather than a perfect sphere.
@@ -116,6 +117,7 @@ export function createShoreRockGeometry(){
 
 // This exact transform is used by both the renderer and plant contact geometry.
 export function shoreStoneMatrix(record,target=new THREE.Matrix4()){
+ if(record.shoreAsset42){const original=shoreStoneMatrix({...record,shoreAsset42:null});const p=new THREE.Vector3(),q=new THREE.Quaternion(),s=new THREE.Vector3();original.decompose(p,q,s);const scale=Math.min(Math.abs(s.x),Math.abs(s.z));target.compose(p,q,new THREE.Vector3(scale,scale,scale));record.shoreAsset42.originalGeometry??=createShoreRockGeometry();const oldLow=record.shoreAsset42.originalGeometry.boundingBox.clone().applyMatrix4(original).min.y,newLow=record.shoreAsset42.geometry.boundingBox.clone().applyMatrix4(target).min.y;target.elements[13]+=oldLow-newLow;return target;}
  const p=record,q=new THREE.Quaternion().setFromEuler(new THREE.Euler(.12*random(p.id,2),p.rot,.18*random(p.id,3)));
  return target.compose(new THREE.Vector3(p.x,p.y,p.z),q,new THREE.Vector3(p.scale*p.sx,p.scale*p.sy,p.scale*p.sz));
 }

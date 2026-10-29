@@ -1,0 +1,4285 @@
+{
+  "runtime": {
+    "version": "route-continuity-38-candidate",
+    "loadTimings": {
+      "phases": {
+        "worldData": {
+          "startMs": 16.299999952316284,
+          "elapsedMs": 423.60000002384186,
+          "status": "complete"
+        },
+        "terrainCoarse": {
+          "startMs": 748.5999999642372,
+          "elapsedMs": 512,
+          "status": "complete"
+        },
+        "terrainPrefetch": {
+          "startMs": 1316.0999999642372,
+          "elapsedMs": 1435.5,
+          "status": "complete"
+        },
+        "structures": {
+          "startMs": 1346.8999999761581,
+          "elapsedMs": 4885.600000023842,
+          "status": "complete"
+        },
+        "ecologyAssets": {
+          "startMs": 1348.199999988079,
+          "elapsedMs": 3890.199999988079,
+          "status": "complete"
+        },
+        "waterAssets": {
+          "startMs": 1349.2999999523163,
+          "elapsedMs": 2710.400000035763,
+          "status": "complete"
+        },
+        "pastureAssets": {
+          "startMs": 1349.5999999642372,
+          "elapsedMs": 2879.5,
+          "status": "complete"
+        },
+        "terrainSurfaces": {
+          "startMs": 1349.8999999761581,
+          "elapsedMs": 2794.699999988079,
+          "status": "complete"
+        },
+        "householdLiving": {
+          "startMs": 6232.599999964237,
+          "elapsedMs": 75.90000003576279,
+          "status": "complete"
+        },
+        "pathSurfaces": {
+          "startMs": 6416.099999964237,
+          "elapsedMs": 11.900000035762787,
+          "status": "complete"
+        },
+        "initialScene": {
+          "startMs": 6476.699999988079,
+          "elapsedMs": 11852.399999976158,
+          "status": "complete"
+        },
+        "initialShaders": {
+          "startMs": 18334,
+          "elapsedMs": 219.79999995231628,
+          "status": "complete"
+        },
+        "localShadowWindow42": {
+          "startMs": 18553.799999952316,
+          "elapsedMs": 1270.800000011921,
+          "status": "complete"
+        },
+        "firstFrame": {
+          "startMs": 19824.799999952316,
+          "elapsedMs": 39.5,
+          "status": "complete",
+          "awaitTailMs": 0,
+          "syncMs": 39.5
+        }
+      },
+      "totalMs": 19864.5,
+      "moduleStartedMs": 349,
+      "navigationToFirstFrameSubmittedMs": 20213.5,
+      "context": {
+        "screenAntialias": false,
+        "requestedScreenAntialias": false,
+        "worldTargetSamples": 4,
+        "probeEligible": true,
+        "fallback": false
+      },
+      "farTerrainIdle": {
+        "enabled": false,
+        "slices": 0,
+        "workMs": 0,
+        "reason": "disabled",
+        "error": null,
+        "last": null
+      },
+      "firstFrameNewPrograms": []
+    },
+    "depthMode": "reversed-float32",
+    "frameTarget": {
+      "enabled": true,
+      "frames": 36953,
+      "width": 1280,
+      "height": 800,
+      "samples": 4,
+      "colorFormat": "RGBA16F",
+      "packedHDRCapability": null,
+      "depthFormat": "DEPTH_COMPONENT32F",
+      "scene": {
+        "calls": 800,
+        "triangles": 7287256,
+        "points": 0,
+        "lines": 0
+      },
+      "output": {
+        "calls": 1,
+        "triangles": 1,
+        "points": 0,
+        "lines": 0
+      },
+      "total": {
+        "calls": 801,
+        "triangles": 7287257,
+        "points": 0,
+        "lines": 0
+      },
+      "estimatedAttachmentBytes": 61440000,
+      "msaaDiscard38": false,
+      "msaaDiscardReason": "disabled",
+      "outputNoClear38": false
+    },
+    "treePhotoPrepass": {
+      "enabled": false,
+      "active": false,
+      "batches": 0,
+      "instances": 0,
+      "syncs": 0,
+      "frames": 0,
+      "error": null
+    },
+    "ready": true,
+    "visibility": "visible",
+    "viewport": {
+      "width": 1280,
+      "height": 800,
+      "pixelRatio": 1
+    },
+    "uptimeMs": 1172613.0999999642,
+    "position": [
+      -1681.871764831153,
+      2117.0911993685627,
+      3651.5870300688757
+    ],
+    "view": "household-2",
+    "yaw": 0.06413160999692456,
+    "pitch": -15.706869159661075,
+    "time": 870,
+    "initialPreparation": {
+      "ready": false,
+      "nearReady": true,
+      "reason": "near-ready",
+      "elapsedMs": 220.5,
+      "iterations": 17,
+      "queuedTiles": 204,
+      "nearQueuedTiles": 0,
+      "visibleTiles": 415,
+      "minSpacing": 0.3125,
+      "terrainPrepareMs": 220.80000001192093,
+      "ecologyQueuesMs": 8652,
+      "roomIndirectPrepareMs": 80.59999996423721,
+      "ecologyPrepareMs": 8783.199999988079,
+      "ecologyIterations": 90,
+      "ecologyPreparation": {
+        "mode": "static-queues",
+        "iterations": 90,
+        "pending": 45,
+        "waterPending": 0,
+        "timings": {
+          "farTiles": {
+            "calls": 90,
+            "totalMs": 870.1000003814697,
+            "maxMs": 37.60000002384186
+          },
+          "nearTrees": {
+            "calls": 1,
+            "totalMs": 2.899999976158142,
+            "maxMs": 2.899999976158142
+          },
+          "activeTrees": {
+            "calls": 91,
+            "totalMs": 0.6000000238418579,
+            "maxMs": 0.19999998807907104
+          },
+          "treeDynamics": {
+            "calls": 2,
+            "totalMs": 1.600000023841858,
+            "maxMs": 1.600000023841858
+          },
+          "meadow": {
+            "calls": 90,
+            "totalMs": 7297.699999690056,
+            "maxMs": 1909.5
+          },
+          "grassRoots": {
+            "calls": 56,
+            "totalMs": 6116.599999964237,
+            "maxMs": 1881.5
+          },
+          "grassMeshes": {
+            "calls": 77,
+            "totalMs": 591.2999997138977,
+            "maxMs": 27.5
+          },
+          "wetMeshes": {
+            "calls": 56,
+            "totalMs": 0.10000002384185791,
+            "maxMs": 0.10000002384185791
+          },
+          "flowers": {
+            "calls": 21,
+            "totalMs": 211.09999978542328,
+            "maxMs": 54.80000001192093
+          },
+          "nearFlowerPool": {
+            "calls": 90,
+            "totalMs": 3.6000000834465027,
+            "maxMs": 0.3999999761581421
+          },
+          "basalPool": {
+            "calls": 90,
+            "totalMs": 161.5,
+            "maxMs": 8
+          },
+          "windField": {
+            "calls": 90,
+            "totalMs": 101.29999995231628,
+            "maxMs": 63.69999998807907
+          },
+          "forestFloor": {
+            "calls": 90,
+            "totalMs": 47.000000178813934,
+            "maxMs": 4.799999952316284
+          },
+          "water": {
+            "calls": 90,
+            "totalMs": 146.6000000834465,
+            "maxMs": 18.19999998807907
+          }
+        }
+      }
+    },
+    "lastPreparation": {
+      "ready": false,
+      "nearReady": true,
+      "reason": "near-ready",
+      "elapsedMs": 1679.5999999642372,
+      "iterations": 129,
+      "queuedTiles": 67,
+      "nearQueuedTiles": 0,
+      "visibleTiles": 1147,
+      "minSpacing": 0.3125,
+      "terrainPrepareMs": 1679.9000000357628,
+      "ecologyQueuesMs": 1444.5999999642372,
+      "roomIndirectPrepareMs": 44.89999997615814,
+      "ecologyPrepareMs": 1525.199999988079,
+      "ecologyIterations": 29,
+      "ecologyPreparation": {
+        "mode": "static-queues",
+        "iterations": 29,
+        "pending": 0,
+        "waterPending": 0,
+        "timings": {
+          "farTiles": {
+            "calls": 0,
+            "totalMs": 0,
+            "maxMs": 0
+          },
+          "nearTrees": {
+            "calls": 1,
+            "totalMs": 1.800000011920929,
+            "maxMs": 1.800000011920929
+          },
+          "activeTrees": {
+            "calls": 30,
+            "totalMs": 0.10000002384185791,
+            "maxMs": 0.10000002384185791
+          },
+          "treeDynamics": {
+            "calls": 2,
+            "totalMs": 0.09999996423721313,
+            "maxMs": 0.09999996423721313
+          },
+          "meadow": {
+            "calls": 29,
+            "totalMs": 1127.7000000476837,
+            "maxMs": 164.0999999642372
+          },
+          "grassRoots": {
+            "calls": 21,
+            "totalMs": 366.30000001192093,
+            "maxMs": 61.69999998807907
+          },
+          "grassMeshes": {
+            "calls": 33,
+            "totalMs": 366.39999997615814,
+            "maxMs": 132
+          },
+          "wetMeshes": {
+            "calls": 21,
+            "totalMs": 0.09999996423721313,
+            "maxMs": 0.09999996423721313
+          },
+          "flowers": {
+            "calls": 16,
+            "totalMs": 113.70000010728836,
+            "maxMs": 19.19999998807907
+          },
+          "nearFlowerPool": {
+            "calls": 29,
+            "totalMs": 4.900000095367432,
+            "maxMs": 0.699999988079071
+          },
+          "basalPool": {
+            "calls": 29,
+            "totalMs": 117.1000000834465,
+            "maxMs": 14.600000023841858
+          },
+          "windField": {
+            "calls": 29,
+            "totalMs": 15.099999904632568,
+            "maxMs": 4.699999988079071
+          },
+          "forestFloor": {
+            "calls": 29,
+            "totalMs": 232.8999999165535,
+            "maxMs": 57
+          },
+          "water": {
+            "calls": 29,
+            "totalMs": 13.099999845027924,
+            "maxMs": 7
+          }
+        }
+      },
+      "totalMs": 3759.600000023842,
+      "generation": 4,
+      "view": "household-2"
+    },
+    "lastShaderPreparation": {
+      "elapsedMs": 73.80000001192093,
+      "probes": 83,
+      "maxProbeMs": 0.10000002384185791,
+      "probeTotalMs": 0.10000002384185791,
+      "programCount": 83,
+      "verifiedPrograms": 83,
+      "stalledProbes": 0,
+      "status": "complete",
+      "objects": 767,
+      "cameras": 1,
+      "mode": "color-shadow-output",
+      "color": {
+        "elapsedMs": 25.5,
+        "probes": 83,
+        "maxProbeMs": 0.10000002384185791,
+        "probeTotalMs": 0.10000002384185791,
+        "programCount": 83,
+        "verifiedPrograms": 83,
+        "stalledProbes": 0,
+        "status": "complete"
+      },
+      "depth": {
+        "compileShadowSelection": {
+          "objects": 499,
+          "variants": 113,
+          "skippedUnsupported": 0,
+          "reason": "prepared"
+        },
+        "compileReadiness": {
+          "elapsedMs": 23.600000023841858,
+          "probes": 20,
+          "maxProbeMs": 0.10000002384185791,
+          "probeTotalMs": 0.10000002384185791,
+          "programCount": 20,
+          "verifiedPrograms": 20,
+          "stalledProbes": 0,
+          "status": "complete"
+        }
+      },
+      "output": {
+        "elapsedMs": 0.2999999523162842,
+        "probes": 1,
+        "maxProbeMs": 0,
+        "probeTotalMs": 0,
+        "programCount": 1,
+        "verifiedPrograms": 1,
+        "stalledProbes": 0,
+        "status": "complete"
+      }
+    },
+    "preparing": false,
+    "gpuPasses": null,
+    "gpu": {
+      "scope": "render-world-and-reflection",
+      "available": false,
+      "samples": 0,
+      "meanMs": 0,
+      "maxMs": 0
+    },
+    "rafCPU42": null,
+    "cpu": {},
+    "sceneMatrixCache": null,
+    "cloudCache": {
+      "enabled": true,
+      "array": true,
+      "attachmentBytes": 16777216,
+      "renders": 2342,
+      "rebases": 7,
+      "size": 2048,
+      "texelMetres": 4
+    },
+    "shadows": {
+      "requested": 91317,
+      "reused": 19485,
+      "cascades": [
+        {
+          "updates": 36934,
+          "reused": 0,
+          "intervalMs": 6.470873491550809
+        },
+        {
+          "updates": 27937,
+          "reused": 8997,
+          "intervalMs": 38.8294597063361
+        },
+        {
+          "updates": 26446,
+          "reused": 10488,
+          "intervalMs": 107.8908603474615
+        }
+      ]
+    },
+    "nearShadowDetail": {
+      "mode": "resolution",
+      "requested": "auto",
+      "reason": null,
+      "splits": [
+        60,
+        180,
+        500
+      ],
+      "mapSizes": [
+        4096,
+        2048,
+        2048
+      ],
+      "cascades": 3,
+      "maxFar": 500,
+      "shadowMapSize": 2048,
+      "atlas40": false,
+      "shadowSamplers": 3,
+      "fragmentSamplers": 16,
+      "maxTextures": 16,
+      "maxTextureSize": 16384,
+      "shadowPixels": 25165824,
+      "extraShadowPixels": 12582912,
+      "extraDepthBytesLowerBound": 50331648
+    },
+    "localShadowWindow42": {
+      "enabled": true,
+      "ready": true,
+      "phase": "ready",
+      "preparations": 4,
+      "last": {
+        "status": "ready",
+        "nativePassMs": [
+          31,
+          86.39999997615814,
+          82.90000003576279
+        ],
+        "totalMs": 449.10000002384186,
+        "localDraw": {
+          "atMs": 1155278.5,
+          "cameraMs": 0,
+          "planesMs": 0.2999999523162842,
+          "activeMaterials": 24,
+          "cachedMaterials": 89,
+          "unpreparedMaterials": [],
+          "viewSyncMs": 0.10000002384185791,
+          "programsBefore": 149,
+          "referenceMs": 1.0999999642372131,
+          "maskDrawMs": 12,
+          "restoreMs": 0,
+          "totalMs": 13.599999964237213,
+          "programsAfter": 149
+        },
+        "compileWallMs": 36.299999952316284
+      }
+    },
+    "grassShadowCoverage41": {
+      "enabled": false,
+      "ready": false,
+      "reason": "default-off",
+      "samples": 4,
+      "size": 768,
+      "extraTerrainSamplers": 2,
+      "frames": 0,
+      "casters": 0,
+      "terrainDraws": 0,
+      "instances": 0,
+      "drawCalls": 0,
+      "triangles": 0,
+      "cpuMs": 0,
+      "sourceGeometryCopies": 0
+    },
+    "shadowAtlas40": {
+      "enabled": false,
+      "cascades": 0,
+      "samplers": 0,
+      "width": 0,
+      "height": 0,
+      "depthBytes": 0,
+      "colourBytes": 0,
+      "reason": "default-off"
+    },
+    "shadowReceivers": {
+      "enabled": true,
+      "active": true,
+      "cascadeActive": true,
+      "projectionActive": true,
+      "projectionBuilds": 39,
+      "cameras": 1,
+      "planes": [
+        2
+      ],
+      "tests": 98,
+      "culled": 69,
+      "cascades": [
+        {
+          "tests": 18,
+          "culled": 5,
+          "margin": 0.08361047415802961,
+          "depthRange": [
+            0,
+            60.86955
+          ],
+          "planes": [
+            14
+          ]
+        },
+        {
+          "tests": 40,
+          "culled": 24,
+          "margin": 0.6283816164541348,
+          "depthRange": [
+            59.07045,
+            188.00594999999998
+          ],
+          "planes": [
+            14
+          ]
+        },
+        {
+          "tests": 40,
+          "culled": 40,
+          "margin": 1.6108414943933527,
+          "depthRange": [
+            171.81405,
+            null
+          ],
+          "planes": [
+            10
+          ]
+        }
+      ]
+    },
+    "shadowCasters": {
+      "frames": 36934,
+      "lastMs": 14.600000023841858,
+      "meanMs": 3.7653110954869273,
+      "visited": 6696,
+      "candidates": 720,
+      "frustumTests": 1440,
+      "objectScans": 525,
+      "geometryScans": 416,
+      "materialScans": 209,
+      "attributeScans": 1693,
+      "attributeReuses": 30,
+      "phases": null,
+      "skippedCascades": [
+        true,
+        false,
+        false
+      ],
+      "entryReuse": true,
+      "entryCreates": 0,
+      "terrainDepthCapture": true,
+      "terrainDepthScans": 242,
+      "surfaceAttributesSkipped": 1954,
+      "attributeCache": true,
+      "compactCapture": true,
+      "directAttributeCapture": true,
+      "terrainDomainHits": 0,
+      "terrainDomainMisses": 0,
+      "terrainDomainCascadeHits": 0,
+      "terrainDomainCascadeMisses": 0,
+      "counts": [
+        181,
+        295,
+        517
+      ]
+    },
+    "sunElevation": 66.62517354526419,
+    "lighting": {
+      "profile": "v15",
+      "sunIntensity": 4.8,
+      "exposure": 0.85,
+      "bounce": 0.48,
+      "environment": 1,
+      "cloudCoverage": 0.36,
+      "cloudDensity": 0.5
+    },
+    "frames": [
+      53.39999999990687,
+      93.39999999990687,
+      25.5,
+      107.70000000018626,
+      93.29999999981374,
+      26.700000000186265,
+      93.39999999990687,
+      93.30000000004657,
+      26.5999999998603,
+      106.70000000018626,
+      79.0999999998603,
+      41,
+      93.30000000004657,
+      79.89999999990687,
+      26.800000000046566,
+      93.30000000004657,
+      119.89999999990687,
+      26.800000000046566,
+      79.30000000004657,
+      93.89999999990687,
+      26.700000000186265,
+      93.39999999990687,
+      93.30000000004657,
+      26.699999999953434,
+      106.69999999995343,
+      106.30000000004657,
+      40.300000000046566,
+      93.30000000004657,
+      80,
+      40.0999999998603,
+      93.30000000004657,
+      119.19999999995343,
+      14.199999999953434,
+      106.60000000009313,
+      66.19999999995343,
+      27.100000000093132,
+      93.39999999990687,
+      93.30000000004657,
+      13.399999999906868,
+      93.20000000018626,
+      93.0999999998603,
+      26.9000000001397,
+      93.5,
+      93.0999999998603,
+      26.699999999953434,
+      26.800000000046566,
+      93.30000000004657,
+      93.39999999990687,
+      26.600000000093132,
+      93.30000000004657,
+      93.30000000004657,
+      26.799999999813735,
+      80,
+      106.60000000009313,
+      26.699999999953434,
+      93.30000000004657,
+      92.69999999995343,
+      14,
+      93.30000000004657,
+      106.69999999995343,
+      26.600000000093132,
+      93.39999999990687,
+      93.30000000004657,
+      173.39999999990687,
+      26.600000000093132,
+      80,
+      93.39999999990687,
+      26.700000000186265,
+      79.89999999990687,
+      80,
+      26.699999999953434,
+      93.30000000004657,
+      173.39999999990687,
+      26.600000000093132,
+      106.69999999995343,
+      93.30000000004657,
+      26.699999999953434,
+      93.4000000001397,
+      80,
+      25.899999999906868,
+      94,
+      92.69999999995343,
+      27.4000000001397,
+      93.29999999981374,
+      80,
+      26.700000000186265,
+      106.5999999998603,
+      79.9000000001397,
+      26.799999999813735,
+      106.70000000018626,
+      79.89999999990687,
+      40,
+      80.10000000009313,
+      80,
+      26.5999999998603,
+      106.69999999995343,
+      80,
+      26.700000000186265,
+      93.29999999981374,
+      92.70000000018626,
+      40.5999999998603,
+      66.10000000009313,
+      93.89999999990687,
+      26.699999999953434,
+      80,
+      93.30000000004657,
+      13.400000000139698,
+      93.29999999981374,
+      106.60000000009313,
+      13.399999999906868,
+      93.30000000004657,
+      93.4000000001397,
+      13.299999999813735,
+      93.4000000001397,
+      93.30000000004657,
+      26.699999999953434,
+      80,
+      106.5999999998603,
+      13.400000000139698,
+      93.30000000004657,
+      93.39999999990687,
+      26.600000000093132,
+      106.69999999995343,
+      93.30000000004657,
+      26.699999999953434,
+      93.30000000004657,
+      93.29999999981374,
+      26.700000000186265,
+      93.39999999990687,
+      93.19999999995343,
+      26.800000000046566,
+      120,
+      79.10000000009313,
+      27.5,
+      80,
+      93.39999999990687,
+      26.600000000093132,
+      93.39999999990687,
+      93.30000000004657,
+      13.300000000046566,
+      80,
+      93.39999999990687,
+      26.600000000093132,
+      93.29999999981374,
+      80.10000000009313,
+      26.600000000093132,
+      93.39999999990687,
+      93.30000000004657,
+      13.300000000046566,
+      93.39999999990687,
+      93.30000000004657,
+      40,
+      93.39999999990687,
+      93.30000000004657,
+      13.300000000046566,
+      93.30000000004657,
+      106.69999999995343,
+      13.399999999906868,
+      106.69999999995343,
+      106.60000000009313,
+      13.300000000046566,
+      93.39999999990687,
+      80,
+      25.699999999953434,
+      94.30000000004657,
+      93.30000000004657,
+      13.300000000046566,
+      106.69999999995343,
+      93.30000000004657,
+      26.699999999953434,
+      93.39999999990687,
+      119.9000000001397,
+      13.399999999906868,
+      106.60000000009313,
+      106.69999999995343,
+      13.300000000046566,
+      40,
+      93.39999999990687,
+      93.30000000004657,
+      26.699999999953434,
+      93.4000000001397,
+      92.5999999998603,
+      27.300000000046566,
+      106.69999999995343,
+      80,
+      26.699999999953434,
+      93.30000000004657,
+      80,
+      13.400000000139698,
+      80,
+      79.89999999990687,
+      26.699999999953434,
+      106.69999999995343,
+      79.9000000001397,
+      26.699999999953434,
+      93.39999999990687,
+      79.10000000009313,
+      26.899999999906868,
+      94,
+      93,
+      26.9000000001397,
+      93.39999999990687,
+      93.30000000004657,
+      13.399999999906868,
+      79.9000000001397,
+      93.39999999990687,
+      13.300000000046566,
+      93.39999999990687,
+      80,
+      26.600000000093132,
+      93.39999999990687,
+      93.30000000004657,
+      26.699999999953434,
+      53.300000000046566,
+      93.4000000001397,
+      26.699999999953434,
+      79.89999999990687,
+      80,
+      26.699999999953434,
+      93.4000000001397,
+      106.5999999998603,
+      26.700000000186265,
+      93.29999999981374,
+      93.4000000001397,
+      26.5999999998603,
+      106.70000000018626,
+      80,
+      26.699999999953434,
+      106.5999999998603,
+      106.4000000001397,
+      26.899999999906868,
+      93.4000000001397,
+      80,
+      26.5999999998603,
+      93.4000000001397,
+      93.29999999981374,
+      26.700000000186265,
+      93.29999999981374,
+      93.30000000004657,
+      26.699999999953434,
+      93.4000000001397,
+      106.5999999998603,
+      26.700000000186265,
+      93.29999999981374,
+      80,
+      26.700000000186265,
+      93.39999999990687,
+      119.89999999990687,
+      26.800000000046566,
+      93.30000000004657,
+      93.30000000004657,
+      26.0999999998603,
+      120.60000000009313,
+      79.89999999990687,
+      26.700000000186265,
+      106.69999999995343,
+      79.89999999990687,
+      25.9000000001397,
+      80.89999999990687,
+      93.30000000004657,
+      26.699999999953434,
+      106.60000000009313,
+      80.0999999998603,
+      26.600000000093132,
+      93.30000000004657,
+      106.69999999995343,
+      26.699999999953434,
+      79.89999999990687,
+      93.4000000001397,
+      13.300000000046566,
+      106.69999999995343,
+      92.39999999990687,
+      14.300000000046566,
+      93.30000000004657,
+      106.19999999995343,
+      27.100000000093132,
+      80.0999999998603,
+      106.60000000009313,
+      26.699999999953434,
+      93.39999999990687,
+      93.20000000018626,
+      26.699999999953434,
+      80.0999999998603,
+      79.5,
+      27.100000000093132,
+      106.69999999995343,
+      93.30000000004657,
+      13.300000000046566,
+      106.69999999995343,
+      93.19999999995343,
+      26.800000000046566,
+      93.30000000004657,
+      92.5,
+      27.5999999998603,
+      119.9000000001397,
+      80,
+      26.699999999953434,
+      93.39999999990687,
+      106.60000000009313,
+      26.600000000093132
+    ],
+    "render": {
+      "frame": 151322,
+      "calls": 1822,
+      "triangles": 17872117,
+      "points": 0,
+      "lines": 0
+    },
+    "terrain": {
+      "visibleTiles": 1216,
+      "residentTiles": 1600,
+      "queuedTiles": 0,
+      "triangles": 2801664,
+      "morphingGroups": 0,
+      "minSpacing": 0.3125,
+      "maxSpacing": 320,
+      "shadowDomain": null,
+      "submissionBatches": {
+        "enabled": true,
+        "groups": 233,
+        "sourceTiles": 932,
+        "savedDraws": 699,
+        "bytes": 137485296,
+        "buildMs": 2.199999988079071,
+        "fastGroups": 233,
+        "fullChecks": 0,
+        "rebuilds": 0,
+        "retired": 0,
+        "parents": 335,
+        "boundedBuild42": true,
+        "constructionMs": 0,
+        "budgetDeferred": 0,
+        "deepRejected": 0,
+        "cheapReasons": {
+          "child-hidden": 102
+        }
+      },
+      "buildMs": 0,
+      "initialBuildMs": 320.4000000357628,
+      "generatedTiles": 2980,
+      "maxDepth": 13,
+      "sampleCache": {
+        "entries": 65536,
+        "bytes": 7405568,
+        "heightHits": 12543,
+        "heightMisses": 853377,
+        "vertexHits": 12416,
+        "vertexMisses": 430080,
+        "parentVertexHits": 134674
+      },
+      "tileCache": {
+        "bytes": 66973732,
+        "maxBytes": 67108864,
+        "tiles": 413,
+        "hits": 12,
+        "misses": 2980,
+        "evictions": 827
+      },
+      "restoredTiles": 12,
+      "nearQueuedTiles": 0,
+      "workerReadyWindow42": {
+        "frames": 37950,
+        "totalFinished": 2928,
+        "totalExtraFinished": 0,
+        "maxReadyPrefix": 4,
+        "enabled": false,
+        "readyPrefix": 0,
+        "finished": 0,
+        "workerFinished": 0,
+        "extraFinished": 0
+      },
+      "rowWorker": {
+        "ready": true,
+        "pending": 0,
+        "completed": 2450,
+        "discarded": 0,
+        "computeMs": 27432.900000154972,
+        "error": null,
+        "initMs": 2859.5
+      }
+    },
+    "structures": {
+      "status": "ready",
+      "entities": 364,
+      "assets": 18,
+      "assetsLoaded": 18,
+      "batches": 3515,
+      "instances": 6607,
+      "triangles": 26476741,
+      "upgradedRooms": 188,
+      "visibleBatches": 430,
+      "visibleTriangles": 1434162,
+      "shadowBatches": 215,
+      "materials": 185,
+      "errors": [],
+      "culledDetailInstances": 3738,
+      "lowLODInstances": 381,
+      "activeTriangles": 5819334,
+      "lodTemplates": 16,
+      "materialKeyComputations": 309,
+      "materialSourceReuses": 1135,
+      "distanceTests": 365,
+      "assetPreparation": {
+        "mode": "cooperative",
+        "assets": {
+          "barn": {
+            "loadMs": 2830.2999999523163,
+            "prepareMs": 24.200000047683716,
+            "yieldWaitMs": 10.300000011920929,
+            "checkpoints": 2,
+            "loadStartMs": 1696.5,
+            "loadEndMs": 4526.799999952316,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 1699.199999988079,
+                "endMs": 4526.799999952316,
+                "phases": {
+                  "fetch": {
+                    "startMs": 1699.199999988079,
+                    "endMs": 3101.699999988079,
+                    "elapsedMs": 1402.5
+                  },
+                  "body": {
+                    "startMs": 3101.699999988079,
+                    "endMs": 3151,
+                    "elapsedMs": 49.30000001192093
+                  },
+                  "decode": {
+                    "startMs": 3151,
+                    "endMs": 3151,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 3151,
+                    "endMs": 4526.799999952316,
+                    "elapsedMs": 1375.7999999523163
+                  }
+                }
+              },
+              "responseBytes": 1492204,
+              "rawBytes": 1492204,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 13.900000035762787
+          },
+          "house_b": {
+            "loadMs": 2864.300000011921,
+            "prepareMs": 50.09999996423721,
+            "yieldWaitMs": 19.90000009536743,
+            "checkpoints": 3,
+            "loadStartMs": 1697.199999988079,
+            "loadEndMs": 4561.5,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 1699.199999988079,
+                "endMs": 4561.5,
+                "phases": {
+                  "fetch": {
+                    "startMs": 1699.199999988079,
+                    "endMs": 3101.699999988079,
+                    "elapsedMs": 1402.5
+                  },
+                  "body": {
+                    "startMs": 3101.699999988079,
+                    "endMs": 3187.399999976158,
+                    "elapsedMs": 85.69999998807907
+                  },
+                  "decode": {
+                    "startMs": 3187.399999976158,
+                    "endMs": 3187.399999976158,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 3187.399999976158,
+                    "endMs": 4561.5,
+                    "elapsedMs": 1374.1000000238419
+                  }
+                }
+              },
+              "responseBytes": 4536340,
+              "rawBytes": 4536340,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 30.19999986886978
+          },
+          "cabin_small": {
+            "loadMs": 2864.399999976158,
+            "prepareMs": 759.6999999880791,
+            "yieldWaitMs": 168.5999999642372,
+            "checkpoints": 4,
+            "loadStartMs": 1697.199999988079,
+            "loadEndMs": 4561.599999964237,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 1699.2999999523163,
+                "endMs": 4561.5,
+                "phases": {
+                  "fetch": {
+                    "startMs": 1699.2999999523163,
+                    "endMs": 3101.7999999523163,
+                    "elapsedMs": 1402.5
+                  },
+                  "body": {
+                    "startMs": 3101.7999999523163,
+                    "endMs": 3193.399999976158,
+                    "elapsedMs": 91.60000002384186
+                  },
+                  "decode": {
+                    "startMs": 3193.399999976158,
+                    "endMs": 3193.5,
+                    "elapsedMs": 0.10000002384185791
+                  },
+                  "parse": {
+                    "startMs": 3193.5,
+                    "endMs": 4561.5,
+                    "elapsedMs": 1368
+                  }
+                }
+              },
+              "responseBytes": 4585816,
+              "rawBytes": 4585816,
+              "parseBufferCopiedBytes": 0
+            },
+            "cabinWindowGlass": {
+              "windows": 6,
+              "triangles": 72,
+              "sourceSHA256": "949072066eaa4afc88f4689be2e2f394a8c4e444c1045bc87e7c6b1d6df096c4"
+            },
+            "cabinTimber": {
+              "active": true,
+              "sourceOriginalCase": "cabin_small.glb",
+              "sourceSHA256": "949072066eaa4afc88f4689be2e2f394a8c4e444c1045bc87e7c6b1d6df096c4",
+              "entityId": "cabins:-1999.5,3372.6:0f598bcbed84e01b",
+              "components": 5,
+              "textureBytes": 9228572,
+              "endTreatment": "Original separate cabin_small_logend node and its radial UV retained byte-identically; no veneer on cut ends."
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 591.1000000238419
+          },
+          "house_a": {
+            "loadMs": 2868,
+            "prepareMs": 751.5,
+            "yieldWaitMs": 134.69999998807907,
+            "checkpoints": 16,
+            "loadStartMs": 1696.5999999642372,
+            "loadEndMs": 4564.599999964237,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 1696.699999988079,
+                "endMs": 4564.599999964237,
+                "phases": {
+                  "fetch": {
+                    "startMs": 1696.699999988079,
+                    "endMs": 3101.599999964237,
+                    "elapsedMs": 1404.8999999761581
+                  },
+                  "body": {
+                    "startMs": 3101.699999988079,
+                    "endMs": 4494,
+                    "elapsedMs": 1392.300000011921
+                  },
+                  "decode": {
+                    "startMs": 4494,
+                    "endMs": 4494,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 4494,
+                    "endMs": 4564.599999964237,
+                    "elapsedMs": 70.59999996423721
+                  }
+                }
+              },
+              "responseBytes": 11122824,
+              "rawBytes": 11122824,
+              "parseBufferCopiedBytes": 0
+            },
+            "houseTextiles62": {
+              "enabled": true,
+              "scope": "house_a asset family",
+              "nodes": 9,
+              "triangles": 61560,
+              "texturesAdded": 0,
+              "materialsBorrowed": true,
+              "originalGLBChanged": false
+            },
+            "houseTimber48": {
+              "enabled": true,
+              "entityId": "cabins:-1743,3612:30f9adc9fb584805",
+              "nodes": 159,
+              "vertices": 69295,
+              "interior": "planed normal .07, roughness .44-.66; original mean colour",
+              "exterior": "rough normal .23, roughness .70-.95",
+              "preparedMode": "source-reprepare when combined"
+            },
+            "houseFurniture58": {
+              "enabled": true,
+              "entityId": "cabins:-1743,3612:30f9adc9fb584805",
+              "nodes": 6,
+              "vertices": 10800,
+              "borrowedTextures": true,
+              "sourceGeometryChanged": false
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": true,
+              "version": "timber-continuity-38",
+              "samples": 256,
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2"
+            },
+            "stoneOcclusion": {
+              "active": true,
+              "version": "stone-occlusion-38",
+              "stones": 48
+            },
+            "cpuMs": 616.8000000119209
+          },
+          "lodge24": {
+            "loadMs": 306.4000000357628,
+            "prepareMs": 97.59999996423721,
+            "yieldWaitMs": 35.60000002384186,
+            "checkpoints": 4,
+            "loadStartMs": 4551.099999964237,
+            "loadEndMs": 4857.5,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 4551.199999988079,
+                "endMs": 4857.5,
+                "phases": {
+                  "fetch": {
+                    "startMs": 4551.199999988079,
+                    "endMs": 4578.399999976158,
+                    "elapsedMs": 27.19999998807907
+                  },
+                  "body": {
+                    "startMs": 4578.5,
+                    "endMs": 4851.199999988079,
+                    "elapsedMs": 272.69999998807907
+                  },
+                  "decode": {
+                    "startMs": 4851.199999988079,
+                    "endMs": 4851.199999988079,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 4851.199999988079,
+                    "endMs": 4857.5,
+                    "elapsedMs": 6.300000011920929
+                  }
+                }
+              },
+              "responseBytes": 7567504,
+              "rawBytes": 7567504,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 61.999999940395355
+          },
+          "gh_fj_hut": {
+            "loadMs": 258.4000000357628,
+            "prepareMs": 92,
+            "yieldWaitMs": 31.19999998807907,
+            "checkpoints": 3,
+            "loadStartMs": 4611.599999964237,
+            "loadEndMs": 4870,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 4611.599999964237,
+                "endMs": 4870,
+                "phases": {
+                  "fetch": {
+                    "startMs": 4611.599999964237,
+                    "endMs": 4632.599999964237,
+                    "elapsedMs": 21
+                  },
+                  "body": {
+                    "startMs": 4632.599999964237,
+                    "endMs": 4868.899999976158,
+                    "elapsedMs": 236.30000001192093
+                  },
+                  "decode": {
+                    "startMs": 4868.899999976158,
+                    "endMs": 4868.899999976158,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 4868.899999976158,
+                    "endMs": 4870,
+                    "elapsedMs": 1.100000023841858
+                  }
+                }
+              },
+              "responseBytes": 1498000,
+              "rawBytes": 1498000,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 60.80000001192093
+          },
+          "gh_fj_lodge": {
+            "loadMs": 54.19999998807907,
+            "prepareMs": 75.90000003576279,
+            "yieldWaitMs": 49.69999998807907,
+            "checkpoints": 3,
+            "loadStartMs": 4962.099999964237,
+            "loadEndMs": 5016.299999952316,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 4962.199999988079,
+                "endMs": 5016.299999952316,
+                "phases": {
+                  "fetch": {
+                    "startMs": 4962.199999988079,
+                    "endMs": 5002.199999988079,
+                    "elapsedMs": 40
+                  },
+                  "body": {
+                    "startMs": 5002.199999988079,
+                    "endMs": 5014.099999964237,
+                    "elapsedMs": 11.899999976158142
+                  },
+                  "decode": {
+                    "startMs": 5014.099999964237,
+                    "endMs": 5014.099999964237,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 5014.099999964237,
+                    "endMs": 5016.299999952316,
+                    "elapsedMs": 2.199999988079071
+                  }
+                }
+              },
+              "responseBytes": 4397296,
+              "rawBytes": 4397296,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 26.200000047683716
+          },
+          "gh_fj_shed": {
+            "loadMs": 77.30000001192093,
+            "prepareMs": 242.30000001192093,
+            "yieldWaitMs": 198.30000007152557,
+            "checkpoints": 3,
+            "loadStartMs": 4962.099999964237,
+            "loadEndMs": 5039.399999976158,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 4962.299999952316,
+                "endMs": 5039.399999976158,
+                "phases": {
+                  "fetch": {
+                    "startMs": 4962.299999952316,
+                    "endMs": 5002.099999964237,
+                    "elapsedMs": 39.80000001192093
+                  },
+                  "body": {
+                    "startMs": 5002.099999964237,
+                    "endMs": 5036.299999952316,
+                    "elapsedMs": 34.19999998807907
+                  },
+                  "decode": {
+                    "startMs": 5036.299999952316,
+                    "endMs": 5036.299999952316,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 5036.299999952316,
+                    "endMs": 5039.399999976158,
+                    "elapsedMs": 3.100000023841858
+                  }
+                }
+              },
+              "responseBytes": 7175012,
+              "rawBytes": 7175012,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 43.999999940395355
+          },
+          "gh_tl_wing": {
+            "loadMs": 16.600000023841858,
+            "prepareMs": 4.800000011920929,
+            "yieldWaitMs": 2,
+            "checkpoints": 1,
+            "loadStartMs": 5321.299999952316,
+            "loadEndMs": 5337.899999976158,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 5321.299999952316,
+                "endMs": 5337.899999976158,
+                "phases": {
+                  "fetch": {
+                    "startMs": 5321.299999952316,
+                    "endMs": 5331.299999952316,
+                    "elapsedMs": 10
+                  },
+                  "body": {
+                    "startMs": 5331.299999952316,
+                    "endMs": 5336.199999988079,
+                    "elapsedMs": 4.900000035762787
+                  },
+                  "decode": {
+                    "startMs": 5336.199999988079,
+                    "endMs": 5336.199999988079,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 5336.299999952316,
+                    "endMs": 5337.899999976158,
+                    "elapsedMs": 1.600000023841858
+                  }
+                }
+              },
+              "responseBytes": 2198936,
+              "rawBytes": 2198936,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 2.800000011920929
+          },
+          "gh_tl_main": {
+            "loadMs": 45.700000047683716,
+            "prepareMs": 158.0999999642372,
+            "yieldWaitMs": 153.89999997615814,
+            "checkpoints": 1,
+            "loadStartMs": 5342.799999952316,
+            "loadEndMs": 5388.5,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 5342.799999952316,
+                "endMs": 5388.5,
+                "phases": {
+                  "fetch": {
+                    "startMs": 5342.799999952316,
+                    "endMs": 5372.5,
+                    "elapsedMs": 29.700000047683716
+                  },
+                  "body": {
+                    "startMs": 5372.5,
+                    "endMs": 5381.199999988079,
+                    "elapsedMs": 8.699999988079071
+                  },
+                  "decode": {
+                    "startMs": 5381.199999988079,
+                    "endMs": 5381.199999988079,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 5381.199999988079,
+                    "endMs": 5388.5,
+                    "elapsedMs": 7.300000011920929
+                  }
+                }
+              },
+              "responseBytes": 1948984,
+              "rawBytes": 1948984,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 4.199999988079071
+          },
+          "gh_lanchuan_lodge": {
+            "loadMs": 251.10000002384186,
+            "prepareMs": 601.8999999761581,
+            "yieldWaitMs": 128.29999989271164,
+            "checkpoints": 17,
+            "loadStartMs": 5293.099999964237,
+            "loadEndMs": 5544.199999988079,
+            "lodgeTables": {
+              "sourceSHA256": "853f5690686eceaa85f00b2df0705343e55b6aea4286f599e07ee121dd170687"
+            },
+            "lodgeChairs": {},
+            "lodgeStream": {
+              "kind": "shell",
+              "responseBytes": 4283024
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 473.6000000834465
+          },
+          "gh_qk_cabin": {
+            "loadMs": 83.40000003576279,
+            "prepareMs": 592.8999999761581,
+            "yieldWaitMs": 116.8999999165535,
+            "checkpoints": 16,
+            "loadStartMs": 5546.599999964237,
+            "loadEndMs": 5630,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 5546.599999964237,
+                "endMs": 5630,
+                "phases": {
+                  "fetch": {
+                    "startMs": 5546.599999964237,
+                    "endMs": 5596.599999964237,
+                    "elapsedMs": 50
+                  },
+                  "body": {
+                    "startMs": 5596.599999964237,
+                    "endMs": 5627.899999976158,
+                    "elapsedMs": 31.30000001192093
+                  },
+                  "decode": {
+                    "startMs": 5627.899999976158,
+                    "endMs": 5627.899999976158,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 5628,
+                    "endMs": 5630,
+                    "elapsedMs": 2
+                  }
+                }
+              },
+              "responseBytes": 3189276,
+              "rawBytes": 3189276,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 476.00000005960464
+          },
+          "gh_lanchuan": {
+            "loadMs": 574.8000000119209,
+            "prepareMs": 530.5,
+            "yieldWaitMs": 87.00000005960464,
+            "checkpoints": 17,
+            "loadStartMs": 5117.799999952316,
+            "loadEndMs": 5692.599999964237,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 5117.799999952316,
+                "endMs": 5692.599999964237,
+                "phases": {
+                  "fetch": {
+                    "startMs": 5117.899999976158,
+                    "endMs": 5293.699999988079,
+                    "elapsedMs": 175.80000001192093
+                  },
+                  "body": {
+                    "startMs": 5293.699999988079,
+                    "endMs": 5391,
+                    "elapsedMs": 97.30000001192093
+                  },
+                  "decode": {
+                    "startMs": 5391,
+                    "endMs": 5391,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 5391,
+                    "endMs": 5692.599999964237,
+                    "elapsedMs": 301.5999999642372
+                  }
+                }
+              },
+              "responseBytes": 17060928,
+              "rawBytes": 17060928,
+              "parseBufferCopiedBytes": 0
+            },
+            "guestLiving": {
+              "active": true,
+              "sourceSHA256": "9c1c5e5e2dc464fe61adfa6b3f5ee55f90a180bf9bebc097586b9b9f579e35c1",
+              "responseBytes": 17060928,
+              "rawBytes": 17060928,
+              "encoding": "gzip"
+            },
+            "guestVanity": {},
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 443.49999994039536
+          },
+          "gh_qk_long": {
+            "loadMs": 63.80000001192093,
+            "prepareMs": 136.89999997615814,
+            "yieldWaitMs": 72,
+            "checkpoints": 6,
+            "loadStartMs": 6185.399999976158,
+            "loadEndMs": 6249.199999988079,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 6185.5,
+                "endMs": 6249.199999988079,
+                "phases": {
+                  "fetch": {
+                    "startMs": 6185.599999964237,
+                    "endMs": 6218.199999988079,
+                    "elapsedMs": 32.60000002384186
+                  },
+                  "body": {
+                    "startMs": 6218.199999988079,
+                    "endMs": 6247.199999988079,
+                    "elapsedMs": 29
+                  },
+                  "decode": {
+                    "startMs": 6247.199999988079,
+                    "endMs": 6247.199999988079,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 6247.199999988079,
+                    "endMs": 6249.199999988079,
+                    "elapsedMs": 2
+                  }
+                }
+              },
+              "responseBytes": 4039464,
+              "rawBytes": 4039464,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 64.89999997615814
+          },
+          "swing": {
+            "loadMs": 33.30000001192093,
+            "prepareMs": 122.30000001192093,
+            "yieldWaitMs": 64.5,
+            "checkpoints": 5,
+            "loadStartMs": 6230.599999964237,
+            "loadEndMs": 6263.899999976158,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 6230.699999988079,
+                "endMs": 6263.899999976158,
+                "phases": {
+                  "fetch": {
+                    "startMs": 6230.699999988079,
+                    "endMs": 6247.199999988079,
+                    "elapsedMs": 16.5
+                  },
+                  "body": {
+                    "startMs": 6247.199999988079,
+                    "endMs": 6261.699999988079,
+                    "elapsedMs": 14.5
+                  },
+                  "decode": {
+                    "startMs": 6261.699999988079,
+                    "endMs": 6261.699999988079,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 6261.699999988079,
+                    "endMs": 6263.899999976158,
+                    "elapsedMs": 2.199999988079071
+                  }
+                }
+              },
+              "responseBytes": 377072,
+              "rawBytes": 377072,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 57.80000001192093
+          },
+          "haystack": {
+            "loadMs": 85.60000002384186,
+            "prepareMs": 82.69999998807907,
+            "yieldWaitMs": 51.700000047683716,
+            "checkpoints": 3,
+            "loadStartMs": 6217.899999976158,
+            "loadEndMs": 6303.5,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 6218,
+                "endMs": 6303.5,
+                "phases": {
+                  "fetch": {
+                    "startMs": 6218,
+                    "endMs": 6221.599999964237,
+                    "elapsedMs": 3.599999964237213
+                  },
+                  "body": {
+                    "startMs": 6221.599999964237,
+                    "endMs": 6245,
+                    "elapsedMs": 23.400000035762787
+                  },
+                  "decode": {
+                    "startMs": 6245,
+                    "endMs": 6245,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 6245,
+                    "endMs": 6303.5,
+                    "elapsedMs": 58.5
+                  }
+                }
+              },
+              "responseBytes": 591860,
+              "rawBytes": 591860,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 30.999999940395355
+          },
+          "yurt": {
+            "loadMs": 93.09999996423721,
+            "prepareMs": 10.800000011920929,
+            "yieldWaitMs": 0.5,
+            "checkpoints": 1,
+            "loadStartMs": 6298,
+            "loadEndMs": 6391.099999964237,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 6302.199999988079,
+                "endMs": 6391.099999964237,
+                "phases": {
+                  "fetch": {
+                    "startMs": 6302.199999988079,
+                    "endMs": 6310.099999964237,
+                    "elapsedMs": 7.899999976158142
+                  },
+                  "body": {
+                    "startMs": 6310.099999964237,
+                    "endMs": 6350.199999988079,
+                    "elapsedMs": 40.10000002384186
+                  },
+                  "decode": {
+                    "startMs": 6350.199999988079,
+                    "endMs": 6350.199999988079,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 6350.199999988079,
+                    "endMs": 6391.099999964237,
+                    "elapsedMs": 40.89999997615814
+                  }
+                }
+              },
+              "responseBytes": 7935268,
+              "rawBytes": 7935268,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 10.300000011920929
+          },
+          "yurt_deck": {
+            "loadMs": 35.39999997615814,
+            "prepareMs": 40.40000003576279,
+            "yieldWaitMs": 1.399999976158142,
+            "checkpoints": 2,
+            "loadStartMs": 6386.199999988079,
+            "loadEndMs": 6421.599999964237,
+            "transport": {
+              "encoding": "gzip",
+              "timing": {
+                "startMs": 6386.199999988079,
+                "endMs": 6421.599999964237,
+                "phases": {
+                  "fetch": {
+                    "startMs": 6386.199999988079,
+                    "endMs": 6389.799999952316,
+                    "elapsedMs": 3.599999964237213
+                  },
+                  "body": {
+                    "startMs": 6389.799999952316,
+                    "endMs": 6403.199999988079,
+                    "elapsedMs": 13.400000035762787
+                  },
+                  "decode": {
+                    "startMs": 6403.199999988079,
+                    "endMs": 6403.199999988079,
+                    "elapsedMs": 0
+                  },
+                  "parse": {
+                    "startMs": 6403.299999952316,
+                    "endMs": 6421.599999964237,
+                    "elapsedMs": 18.30000001192093
+                  }
+                }
+              },
+              "responseBytes": 3399696,
+              "rawBytes": 3399696,
+              "parseBufferCopiedBytes": 0
+            },
+            "lodgeWood": {
+              "active": false
+            },
+            "timberContinuity": {
+              "active": false
+            },
+            "stoneOcclusion": {
+              "active": false
+            },
+            "cpuMs": 39.000000059604645
+          }
+        },
+        "scheduler": {
+          "enabled": true,
+          "budgetMs": 8,
+          "yields": 46,
+          "maxOverrunMs": 3716.400000035763
+        }
+      },
+      "selectionCache": {
+        "enabled": false,
+        "hits": 0,
+        "misses": 0,
+        "checks": 0,
+        "lastCheckMs": 0,
+        "values": 0
+      },
+      "preparedAssets": {
+        "enabled": false,
+        "assets": {},
+        "prepared": 0,
+        "fallbacks": 0
+      },
+      "lodgeInteriorStream": {
+        "enabled": true,
+        "status": "ready",
+        "attempts": 1,
+        "error": null,
+        "requiredRange": 400
+      },
+      "textureReuse": {
+        "enabled": true,
+        "requests": 191,
+        "uniqueImages": 70,
+        "reusedImages": 121,
+        "encodedBytes": 28371961,
+        "reusedEncodedBytes": 21085080,
+        "hashWaitMs": 542.7000006437302
+      },
+      "matrixArithmetic41": {
+        "enabled": true,
+        "calls": 73900,
+        "fastLeaves": 259610668,
+        "autoLeaves": 0,
+        "fallbackLeaves": 147798
+      },
+      "houseTextiles62": {
+        "enabled": true,
+        "scope": "house_a asset family",
+        "nodes": 9,
+        "triangles": 61560,
+        "texturesAdded": 0,
+        "materialsBorrowed": true,
+        "originalGLBChanged": false
+      },
+      "houseFurniture58": {
+        "enabled": true,
+        "entityId": "cabins:-1743,3612:30f9adc9fb584805",
+        "nodes": 6,
+        "vertices": 10800,
+        "borrowedTextures": true,
+        "sourceGeometryChanged": false
+      },
+      "householdLiving": {
+        "version": "household-living-32",
+        "status": "ready",
+        "households": 113,
+        "styleCounts": [
+          40,
+          28,
+          45
+        ],
+        "sourceTriangles": 35272,
+        "instanceTriangles": 1340252,
+        "batches": 460,
+        "newMaterials": 0,
+        "newTextures": 0,
+        "visibleBatches": 105,
+        "visibleTriangles": 248268,
+        "loadMs": 13.700000047683716,
+        "prepareMs": 44.89999997615814
+      },
+      "householdEntrySteps": {
+        "version": "household-entry-tea-34",
+        "mode": "editable",
+        "shadowMode": "standard",
+        "status": "ready",
+        "checked": 3,
+        "households": 1,
+        "courses": 4,
+        "triangles": 2752,
+        "drawMeshes": 1,
+        "newMaterials": 0,
+        "newTextures": 0,
+        "sites": [
+          {
+            "entityId": "cabins:-1972,3678:784f73bf0ba94d17",
+            "existingTreadGap": 0.6283095268841499,
+            "courses": 4,
+            "groundRise": 0.16041539603373156
+          },
+          {
+            "entityId": "cabins:-1743,3612:30f9adc9fb584805",
+            "existingTreadGap": 0.12500000000005457,
+            "courses": 0,
+            "groundRise": 0.12500000000005457
+          },
+          {
+            "entityId": "cabins:-1683,3643:fb877ed9142d2f85",
+            "existingTreadGap": 0.12500000000005457,
+            "courses": 0,
+            "groundRise": 0.12500000000005457
+          }
+        ],
+        "loadMs": 13.700000047683716,
+        "geometryRevision": "front-bevel-17p111mm"
+      },
+      "revision": 2431,
+      "selectionBuffers": true,
+      "selectionSignatureBuilds": 0
+    },
+    "ecology": {
+      "trees": 44804,
+      "treeChunks": 138,
+      "grassTufts": 50151,
+      "grassChunks": 70,
+      "flowerPlants": 2148,
+      "pending": 0,
+      "grassPending": 0,
+      "grassBuiltThisFrame": 0,
+      "flowerNearPlants": 438,
+      "basalGrassTufts": 3686,
+      "treeWindAtlas44": {
+        "enabled": false
+      },
+      "meadowExactIndex41": {
+        "enabled": false,
+        "lods": [
+          {
+            "sourceTriangles": 245,
+            "triangles": 245
+          },
+          {
+            "sourceTriangles": 69,
+            "triangles": 69
+          }
+        ]
+      },
+      "shadowVertexReuse": {
+        "enabled": false,
+        "parts": 0,
+        "beforeVertices": 0,
+        "afterVertices": 0,
+        "remappedVertices": 0,
+        "triangles": 0,
+        "bytes": 0,
+        "buildMs": 0,
+        "uploads": 0,
+        "liveBuffers": 0,
+        "draws": 0
+      },
+      "treeViews": {
+        "enabled": false,
+        "batches": 0,
+        "bytes": 0,
+        "viewGeometries": 0,
+        "queries": 0,
+        "tested": 0,
+        "selected": 0,
+        "rejected": 0,
+        "draws": 0,
+        "drawnInstances": 0
+      },
+      "forestLayout": {
+        "mode": "v15",
+        "priorityFirst": true,
+        "skippedLowerPriority": 185657,
+        "maxShift": 18,
+        "minSpacing": 2.6,
+        "proposals": 45210,
+        "resolved": 44804,
+        "moved": 44699,
+        "conflictFallbacks": 19,
+        "habitatFallbacks": 86,
+        "cachedCells": 141803,
+        "cachedTiles": 165,
+        "fieldNodes": 2063,
+        "demSamples": 10315,
+        "coverSamples": 137727
+      },
+      "meadowRootCache": {
+        "enabled": true,
+        "active": false,
+        "status": "dormant",
+        "reason": null,
+        "ready": false,
+        "tiles": 0,
+        "roots": 0,
+        "hits": 0,
+        "misses": 0,
+        "cachedRoots": 0,
+        "proceduralRoots": 0,
+        "elapsedMs": 0,
+        "activations": 0,
+        "cancellations": 0,
+        "attempts": 0,
+        "lastError": null,
+        "area": -1
+      },
+      "forestRootCache": {
+        "enabled": false,
+        "ready": false,
+        "status": "bypass",
+        "reason": "disabled",
+        "tiles": 0,
+        "trees": 0,
+        "hits": 0,
+        "outside": 0,
+        "records": 0,
+        "responseBytes": 0,
+        "rawBytes": 0,
+        "elapsedMs": 0
+      },
+      "meadowVisible41": {
+        "enabled": false,
+        "tiles": 0,
+        "roots": 0,
+        "submitted": 0,
+        "boundaryTiles": 0,
+        "uploads": 0,
+        "uploadBytes": 0,
+        "updateMs": 0,
+        "cpuBytes": 0
+      },
+      "meadowRootWind41": {
+        "enabled": false,
+        "roots": 0,
+        "meshes": 0,
+        "textureBytes": 0,
+        "inputBytes": 0,
+        "rootSlotBytes": 0,
+        "rebuilds": 0,
+        "updates": 0,
+        "updateMs": 0,
+        "submittedRoots": 0,
+        "scope": "Cache render cost must be included in whole-frame GPU measurement."
+      },
+      "meadowCluster42": {
+        "enabled": false,
+        "ready": false,
+        "tiles": 0,
+        "roots": 0,
+        "pending": 0,
+        "buildMs": 0,
+        "sourceTriangles": 45,
+        "reducedTriangles": 39,
+        "radius": 320,
+        "scope": "Experimental finite route extension, not a completed far-world solution.",
+        "submission": {
+          "enabled": false,
+          "availableRoots": 0,
+          "visibleRoots": 0,
+          "layerRoots": [
+            0,
+            0
+          ],
+          "draws": 0,
+          "capacityBytes": 0,
+          "retainedOwnerBytes": 0,
+          "boundsBytes": 0,
+          "uploadBytes": 0,
+          "uploads": 0,
+          "rebuilds": 0,
+          "updateMs": 0,
+          "packMs": 0,
+          "cacheHits": 0
+        },
+        "submissionMode": "original"
+      },
+      "meadowClusterWind42": {
+        "enabled": false,
+        "roots": 0,
+        "capacity": 0,
+        "textureBytes": 0,
+        "positionBytes": 0,
+        "indexUploadBytes": 0,
+        "positionUploadBytes": 0,
+        "updates": 0,
+        "rebuilds": 0,
+        "updateMs": 0
+      },
+      "earlyTreeTextures": {
+        "enabled": false,
+        "status": "disabled"
+      },
+      "spruceSharedImages": {
+        "enabled": true,
+        "reason": null,
+        "status": "active",
+        "imageRequests": 3,
+        "imageDecodes": 3,
+        "sharedSourceSlots": 2,
+        "imageResponseBytes": 2044647,
+        "glbResponseBytes": 9438908,
+        "imageDecodeMs": 149.0999999642372,
+        "byLod": {
+          "mid": {
+            "status": "shared",
+            "elapsedMs": 1520.1000000238419
+          },
+          "hi": {
+            "status": "shared",
+            "elapsedMs": 1529
+          }
+        },
+        "previousBytes": 9267198,
+        "replacementBytes": 7545533,
+        "savedBytes": 1721665,
+        "savedPercent": 18.578053474200075
+      },
+      "assetLoads": {
+        "mode": "dependency-parallel",
+        "phases": {
+          "hi": {
+            "queuedMs": 0,
+            "startMs": 1,
+            "elapsedMs": 1529.300000011921,
+            "status": "complete"
+          },
+          "mid": {
+            "queuedMs": 0,
+            "startMs": 1.300000011920929,
+            "elapsedMs": 1520.1000000238419,
+            "status": "complete"
+          },
+          "local": {
+            "queuedMs": 0,
+            "startMs": 1.300000011920929,
+            "elapsedMs": 1497,
+            "status": "complete"
+          },
+          "core": {
+            "queuedMs": 0,
+            "startMs": 1.4000000357627869,
+            "elapsedMs": 2830.699999988079,
+            "status": "complete"
+          },
+          "flowerModule": {
+            "queuedMs": 0,
+            "startMs": 1.4000000357627869,
+            "elapsedMs": 1520.199999988079,
+            "status": "complete"
+          },
+          "far": {
+            "queuedMs": 0,
+            "startMs": 1.9000000357627869,
+            "elapsedMs": 3149.699999988079,
+            "status": "complete"
+          },
+          "needle": {
+            "queuedMs": 0,
+            "startMs": 1530.300000011921,
+            "elapsedMs": 2319,
+            "status": "complete"
+          },
+          "flowerLOD": {
+            "queuedMs": 0,
+            "startMs": 1521.6000000238419,
+            "elapsedMs": 1393.699999988079,
+            "status": "complete"
+          },
+          "flowerNear": {
+            "queuedMs": 0,
+            "startMs": 1521.800000011921,
+            "elapsedMs": 1393.1000000238419,
+            "status": "complete"
+          }
+        },
+        "postSourceMs": 39.69999998807907
+      },
+      "canopyPreparation": {
+        "enabled": true,
+        "status": "active",
+        "prefetch": true,
+        "prefetchStartedMs": 364.89999997615814,
+        "mode": "local",
+        "localStatus": "hit",
+        "networkBytes": 0,
+        "decodedBytes": 18244324,
+        "usedParts": [
+          "near:column_frond",
+          "near:edge_frond",
+          "near:old_frond",
+          "near:pencil_frond",
+          "near:young_frond",
+          "hi:column_frond",
+          "hi:edge_frond",
+          "hi:old_frond",
+          "hi:pencil_frond",
+          "hi:young_frond",
+          "mid:column_frond",
+          "mid:edge_frond",
+          "mid:old_frond",
+          "mid:pencil_frond",
+          "mid:young_frond"
+        ],
+        "boundBytes": 18244324,
+        "bindMs": 0.7000000476837158,
+        "sourceVerifyMs": 4.5,
+        "localBytes": 18244324,
+        "localReadMs": 59.89999997615814,
+        "localSchedulerDelayMs": 0,
+        "localWaitBudgetMs": 0,
+        "prefetchLeadMs": 1332.8999999761581,
+        "persistStatus": "not-needed"
+      },
+      "needleTextureReuse": {
+        "reusedSlots": 0,
+        "releasedTextures": 0,
+        "closedImages": 0,
+        "duplicateEmbeddedBytes": 0,
+        "avoidedTextureRGBABytes": 0
+      },
+      "needlePayload": {
+        "representation": "GPU shared five-needle station + shared 156-triangle twig geometry; v11 needles use 0 vertex texture fetches; v12 uses 1 shared variation fetch and 5 station attributes",
+        "recipeRevision": "spruce-brush-recipe-v1",
+        "responseBodyBytes": 1905748,
+        "recipeJSONBytes": 1905748,
+        "generatedFrondBytes": 0,
+        "crown": "twisted-branch-volume-v13",
+        "branchDetail": "lazy-spatial-brushes-v12",
+        "potentialShortSprays": 8457,
+        "parameterBytes": 37627902,
+        "brushes": 1143,
+        "needles": 1645920,
+        "timings": {
+          "fetchMs": 1448.699999988079,
+          "decodeMs": 2.600000023841858,
+          "recipeValidateMs": 1.199999988079071,
+          "recipePrefetched": true,
+          "recipeWaitMs": 0,
+          "validateMs": 2.199999988079071,
+          "canopyVerifyMs": 2.800000011920929,
+          "canopyMode": "precomputed-indexed",
+          "formQueue": 2,
+          "maxInFlightParameterBytes": 25165824,
+          "peakQueuedForms": 2,
+          "peakInFlightParameterBytes": 20296048,
+          "packetWritesMode": "legacy",
+          "preparationMode": "overlap-worker-shell",
+          "formPreparationMs": 2313,
+          "templateBuildMs": 2308.2999998927116,
+          "geometrySetupMs": 4.700000107288361,
+          "parameterPackingMs": 0
+        },
+        "buildMs": 2318.599999964237,
+        "gpuMode": "stations",
+        "gpuTableBytes": 37796080,
+        "templateBytes": 290880,
+        "needleTemplateTriangles": 5,
+        "twigTemplateTriangles": 156
+      },
+      "treeGeometryReuse": {
+        "reusedGeometries": 10,
+        "vertexBytesSaved": 1259280,
+        "indexBytesSaved": 130416
+      },
+      "spruceVolume": {
+        "enabled": true,
+        "forms": {
+          "hi:column_frond": {
+            "indexing": {
+              "beforeVertices": 67608,
+              "afterVertices": 29412,
+              "beforeTriangles": 22536,
+              "afterTriangles": 22536,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 135216
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1512,
+            "sourceTriangles": 13752,
+            "triangles": 22536,
+            "maxShift": 0.30932987793582706,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          },
+          "hi:edge_frond": {
+            "indexing": {
+              "beforeVertices": 69504,
+              "afterVertices": 30304,
+              "beforeTriangles": 23168,
+              "afterTriangles": 23168,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 139008
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1560,
+            "sourceTriangles": 14272,
+            "triangles": 23168,
+            "maxShift": 0.29538986230246445,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          },
+          "hi:old_frond": {
+            "indexing": {
+              "beforeVertices": 48372,
+              "afterVertices": 21094,
+              "beforeTriangles": 16124,
+              "afterTriangles": 16124,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 96744
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1086,
+            "sourceTriangles": 9940,
+            "triangles": 16124,
+            "maxShift": 0.299419873663861,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          },
+          "hi:pencil_frond": {
+            "indexing": {
+              "beforeVertices": 46608,
+              "afterVertices": 20344,
+              "beforeTriangles": 15536,
+              "afterTriangles": 15536,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 93216
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1048,
+            "sourceTriangles": 9616,
+            "triangles": 15536,
+            "maxShift": 0.25712553266314797,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          },
+          "hi:young_frond": {
+            "indexing": {
+              "beforeVertices": 53274,
+              "afterVertices": 23219,
+              "beforeTriangles": 17758,
+              "afterTriangles": 17758,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 106548
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1195,
+            "sourceTriangles": 10922,
+            "triangles": 17758,
+            "maxShift": 0.3003122555386119,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          },
+          "mid:column_frond": {
+            "indexing": {
+              "beforeVertices": 54432,
+              "afterVertices": 21168,
+              "beforeTriangles": 18144,
+              "afterTriangles": 18144,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 108864
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1512,
+            "sourceTriangles": 6048,
+            "triangles": 18144,
+            "maxShift": 0.30938015180300554,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          },
+          "mid:edge_frond": {
+            "indexing": {
+              "beforeVertices": 56160,
+              "afterVertices": 21840,
+              "beforeTriangles": 18720,
+              "afterTriangles": 18720,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 112320
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1560,
+            "sourceTriangles": 6240,
+            "triangles": 18720,
+            "maxShift": 0.2992350322672327,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          },
+          "mid:old_frond": {
+            "indexing": {
+              "beforeVertices": 39096,
+              "afterVertices": 15204,
+              "beforeTriangles": 13032,
+              "afterTriangles": 13032,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 78192
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1086,
+            "sourceTriangles": 4344,
+            "triangles": 13032,
+            "maxShift": 0.31023484549103353,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          },
+          "mid:pencil_frond": {
+            "indexing": {
+              "beforeVertices": 37728,
+              "afterVertices": 14672,
+              "beforeTriangles": 12576,
+              "afterTriangles": 12576,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 75456
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1048,
+            "sourceTriangles": 4192,
+            "triangles": 12576,
+            "maxShift": 0.25699492887785563,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          },
+          "mid:young_frond": {
+            "indexing": {
+              "beforeVertices": 43020,
+              "afterVertices": 16730,
+              "beforeTriangles": 14340,
+              "afterTriangles": 14340,
+              "coplanarTrianglesRemoved": 0,
+              "maximumMergeAttributeError": {
+                "position": 0,
+                "normal": 0,
+                "uv": 0,
+                "_plant_wind": 0,
+                "_crown_occlusion": 0
+              },
+              "indexBytes": 86040
+            },
+            "gpuBrushShell": false,
+            "crownRevision": "twisted-branch-volume-v13",
+            "clusters": 1195,
+            "sourceTriangles": 4780,
+            "triangles": 14340,
+            "maxShift": 0.300415170255186,
+            "coverage": "same complete UV triangles, partitioned once; zero additional alpha overlap"
+          }
+        },
+        "addedTriangles": 87828,
+        "geometryBytes": 11302980
+      },
+      "farTrees": {
+        "representation": "same-source 5×8×3 upright normal-lit impostor",
+        "manifestMs": 0.30000001192092896,
+        "manifestMode": "bundled",
+        "transportMode": "v27",
+        "farLossless38": true,
+        "albedoRestoreMs": 108.19999998807907,
+        "payloadVerificationMs": 38,
+        "rgbaRestoreMs": 175.19999998807907,
+        "fetchMs": 2935.5,
+        "decodeMs": 175.19999998807907,
+        "textureSetupMs": 0.3999999761581421,
+        "encodedBytes": 17214211,
+        "responseBodyBytes": 41287680,
+        "decodedBytes": 47185920,
+        "gpuTextureBytes": 62914560,
+        "applicationGzipDecodes": 0,
+        "byteScope": "two texture payloads; manifest excluded",
+        "resourceTiming": {
+          "entries": [
+            {
+              "kind": "albedo",
+              "startTime": 1700.8999999761581,
+              "duration": 2916.600000023842,
+              "transferSize": 8387506,
+              "encodedBodySize": 8387206,
+              "decodedBodySize": 23592960,
+              "deliveryType": ""
+            },
+            {
+              "kind": "normal",
+              "startTime": 1701,
+              "duration": 2912.2999999523163,
+              "transferSize": 8827305,
+              "encodedBodySize": 8827005,
+              "decodedBodySize": 17694720,
+              "deliveryType": ""
+            }
+          ],
+          "complete": true,
+          "transferSize": 17214811,
+          "encodedBodySize": 17214211,
+          "decodedBodySize": 41287680
+        },
+        "loadMs": 3149.5,
+        "templateTriangles": 8,
+        "forms": 5,
+        "azimuths": 8,
+        "elevations": 3
+      },
+      "habitatTransport": {
+        "local": {
+          "mode": "derived",
+          "revision": "v2-habitat-exact-v1",
+          "responseBytes": 4194304,
+          "decodedBytes": 4194304,
+          "dataBytes": 4194304,
+          "elapsedMs": 1496.8999999761581
+        },
+        "core": {
+          "mode": "derived",
+          "revision": "v2-habitat-exact-v1",
+          "responseBytes": 6553600,
+          "decodedBytes": 6553600,
+          "dataBytes": 6553600,
+          "elapsedMs": 2830.699999988079
+        }
+      },
+      "treeVertexLayout": {
+        "enabled": false,
+        "parts": 0,
+        "bytes": 0,
+        "buffersBefore": 0,
+        "buffersAfter": 0,
+        "prepareMs": 0
+      },
+      "windFieldUpdates": 11615,
+      "windFieldCPUms": 0.699999988079071,
+      "windSampling": {
+        "mode": "absolute-time-bracket-33",
+        "time": 1167.2649000008091,
+        "start": 1167.2,
+        "end": 1167.3,
+        "blend": 0.6490000080907521
+      },
+      "farTileBuild": {
+        "tiles": 138,
+        "rootsMs": 1269.5000004768372,
+        "batchesMs": 121.29999995231628
+      },
+      "treeBatchSize": 96,
+      "treeHighPhoto48": false,
+      "treeDrawBatches": 0,
+      "treeBatchInstances": 0,
+      "needleTreeRoots": 0,
+      "highTreeRoots": 0,
+      "midTreeRoots": 0,
+      "treeNeedleResidentInstances": 0,
+      "treeNeedleActiveInstances": 0,
+      "treeNeedleActiveRoots": 0,
+      "treeNeedleTriangles": 0,
+      "treeNeedleShellTriangles": 0,
+      "treeHighResidentInstances": 0,
+      "treeHighActiveInstances": 0,
+      "treeMidResidentInstances": 0,
+      "treeMidActiveInstances": 0,
+      "treeActiveInstances": 0,
+      "treeActiveBatches": 0,
+      "treeBatchRevision": 0,
+      "preparation": {
+        "iterations": 224,
+        "dynamicSyncs": 4,
+        "skippedDynamicSyncs": 220,
+        "finalSyncs": 4
+      },
+      "treeRootOrder": {
+        "enabled": false,
+        "updates": 0,
+        "sorts": 0,
+        "groups": 0,
+        "roots": 0,
+        "changedGroups": 0,
+        "matrixUploads": 0,
+        "windUploads": 0,
+        "cpuMs": 0
+      },
+      "needleGPU": {
+        "twigIndexed": false,
+        "twigTemplateVertices": 468,
+        "twigCornerIndices": 0,
+        "boundsMode": "packet-run-aabb",
+        "boundsBytes": 54864,
+        "boundsBuildMs": 27.69999998807907,
+        "representation": "GPU shared five-needle station + shared 156-triangle twig geometry; v11 needles use 0 vertex texture fetches; v12 uses 1 shared variation fetch and 5 station attributes",
+        "batches": 0,
+        "roots": 0,
+        "brushInstances": 0,
+        "triangles": 0,
+        "tableBytes": 37796080,
+        "templateBytes": 290880,
+        "needleShape": {
+          "installed": false,
+          "enabled": false,
+          "forms": 0,
+          "prepared": 0,
+          "pending": 0,
+          "attachmentBytes": 0,
+          "bakes": 0,
+          "submissionMs": 0,
+          "gpuMs": null,
+          "error": null
+        },
+        "branchCache": {
+          "pending": 0,
+          "residentBytes": 0,
+          "residentGroups": 0,
+          "builtGroups": 0,
+          "evictedGroups": 0,
+          "retries": 0,
+          "staleCompletions": 0,
+          "buildMs": 0,
+          "maxBuildMs": 0,
+          "dispatchMode": "immediate",
+          "buildDispatchWaitMs": 0,
+          "maxBuildDispatchWaitMs": 0,
+          "preparationSamples": 0,
+          "workerPreparationSamples": 0,
+          "packetGenerateMs": 0,
+          "packetPackingMs": 0,
+          "packetRoundTripMs": 0,
+          "packetNonComputeWaitMs": 0,
+          "packetMainPrepareMs": 0,
+          "maxPacketRoundTripMs": 0,
+          "maxPacketMainPrepareMs": 0,
+          "error": null,
+          "concurrency": 2,
+          "activeBuilds": 0,
+          "peakActiveBuilds": 0,
+          "inFlightParameterBytes": 0,
+          "peakInFlightParameterBytes": 0,
+          "maxInFlightParameterBytes": 8388608,
+          "requiredGroups": 0,
+          "preparedGroups": 0,
+          "overBudgetBytes": 0
+        },
+        "residentParameterBytes": 37796080,
+        "detailBrushInstances": 0,
+        "contributingDetailBrushInstances": 0,
+        "zeroFadeGapBrushInstances": 0,
+        "joinedGapMaximumBrushes": 6,
+        "potentialDetailBrushInstances": 0,
+        "twigPotentialVertexExecutions": 0,
+        "twigCornerSubmissions": 0
+      },
+      "treeRootWindRoots": 0,
+      "treeRootWindCPUms": 0,
+      "treeRootWindUploadBytes": 0,
+      "treeRootWindBatches": 0,
+      "meadowAerialContinuity42": {
+        "enabled": true,
+        "above": 2.4986222404686487,
+        "visible": true
+      },
+      "wetContactPending": 0,
+      "wetContactUpdated": 0,
+      "grassFieldSamples": 133108,
+      "grassFieldBytes": 1176256,
+      "grassLandformBytes": 1176256,
+      "grassCommunityBytes": 1176256,
+      "thresholdPlants": {
+        "enabled": true,
+        "entries": 185,
+        "moved": 443,
+        "unresolved": 0
+      },
+      "shorePlantsMoved": 14,
+      "shorePlantsUnresolved": 0,
+      "reachBankCover39": {
+        "enabled": true,
+        "built": false,
+        "pending": 0,
+        "sedges": 0,
+        "mats": 0,
+        "triangles": 0,
+        "prepared42": {
+          "enabled": true,
+          "status": "ready",
+          "ready": true,
+          "reason": null,
+          "responseBytes": 2819569,
+          "rawBytes": 2819569,
+          "elapsedMs": 3489.2000000476837
+        }
+      },
+      "forestShrubs": 0,
+      "forestFerns": 0,
+      "wetBankSedges": 18,
+      "forestDeadwood": 0,
+      "forestStones": 0,
+      "forestFloorTriangles": 2448,
+      "forestFloorPending": 0,
+      "forestFloorRevision": 497,
+      "forestFloorChunks": 105,
+      "forestFloorBuiltThisFrame": 0,
+      "forestFloorBatches": {
+        "enabled": false,
+        "blockSize": 48,
+        "batches": 0,
+        "residentInstances": 0,
+        "matrixUploads": 0,
+        "boundsRefreshes": 0,
+        "instanceMatrixBytes": 0,
+        "sourceInstanceMatrixBytes": 0
+      }
+    },
+    "paths": {
+      "households": 3,
+      "routes": 9,
+      "publicConnections": 1,
+      "length": 99.13509986907528,
+      "triangles": 2512,
+      "version": "household-yards-37",
+      "enabled": true,
+      "timber": {
+        "enabled": true,
+        "routes": 5,
+        "pieces": 1329,
+        "triangles": 144856,
+        "maxStep": 0.05524624209965623,
+        "materialsReady": true
+      }
+    },
+    "water": {
+      "sourceLines": 219,
+      "sourcePoints": 62637,
+      "sourceLength": 250008.97704743233,
+      "profileLength": 250178.413120804,
+      "enabledSegments": 60623,
+      "enabledLength": 242818.21562181172,
+      "unresolvedSegments": 1795,
+      "unresolvedLength": 7360.197498992289,
+      "reasons": {
+        "junction-level": 717,
+        "low-bank": 366,
+        "excessive-cut": 519,
+        "protected-building": 150,
+        "protected-road": 43
+      },
+      "connectedJunctions": 38,
+      "policy": "cut-only bed; downhill profile; protected roads/buildings; excessive cuts omitted; source network is not surveyed",
+      "naturalBanks": {
+        "reaches": 3,
+        "segments": 257,
+        "length": 1032.7714411259856,
+        "reachRadius": 180,
+        "policy": "designed representative shallows; forest reach footprint follows the physically validated bend; water levels and facilities retained"
+      },
+      "brookIncision": {
+        "nodes": 0,
+        "segments": 0,
+        "reason": "disabled"
+      },
+      "meanders": {
+        "lineId": "river-41711e76-99c57ca2",
+        "segments": 48,
+        "nodes": 45,
+        "maxOffset": 5.511215242013899,
+        "offsetRange": [
+          -5.511215242013899,
+          4.337161243063263
+        ],
+        "scale": 0.9,
+        "lengthDelta": 2.77042935935295,
+        "minLengthRatio": 0.8866954041483341,
+        "maxLengthRatio": 1.120701355388677,
+        "maxHeadingDeltaDegrees": 24.089514829760923,
+        "profile": "v22",
+        "retainedLandmarks": [
+          "spruce:-302:395",
+          "spruce:-302:400",
+          "spruce:-302:401"
+        ],
+        "requestedAmplitude": 6.4,
+        "reachRadius": 88,
+        "controlSpans": [
+          37.591027457099244,
+          36.29147535715265,
+          41.92038609517749,
+          45.75608090646574,
+          39.94492807027882,
+          44.14589143048988,
+          32.1178916997369,
+          42.44109288135542
+        ],
+        "checksPerSegment": 9,
+        "rejected": [
+          {
+            "scale": 1,
+            "reason": "low-water-edge"
+          }
+        ],
+        "policy": "representative metre-scale bend on actual terrain; shared new footprint; old bed restored; node levels, endpoints, junctions and facilities retained"
+      },
+      "brookMeanders": {
+        "nodes": 0,
+        "segments": 0,
+        "reason": "disabled"
+      },
+      "brookBendBanks": {
+        "nodes": 0,
+        "reason": "disabled-or-no-safe-structure"
+      },
+      "valleyMeanders": {
+        "lineId": "river-32d9cab5-5bea75bb",
+        "segments": 41,
+        "nodes": 35,
+        "maxOffset": 6.400000000000001,
+        "offsetRange": [
+          -6.400000000000001,
+          0
+        ],
+        "scale": 1,
+        "lengthDelta": 2.500550258588891,
+        "minLengthRatio": 0.93763861732315,
+        "maxLengthRatio": 1.1085699593093437,
+        "maxHeadingDeltaDegrees": 29.169526364339326,
+        "profile": "v38-valley",
+        "retainedLandmarks": [],
+        "requestedAmplitude": 6.4,
+        "reachRadius": 88,
+        "controlSpans": [
+          137.8874009278461,
+          181.78521910849486
+        ],
+        "checksPerSegment": 9,
+        "rejected": [],
+        "policy": "representative metre-scale bend on actual terrain; shared new footprint; old bed restored; node levels, endpoints, junctions and facilities retained"
+      },
+      "valleyDeposits": {
+        "nodes": 47,
+        "segments": 48,
+        "minWidth": 6.0593483676902995,
+        "maxWidth": 9.191049017060777,
+        "sectionProfile": true,
+        "policy": "existing wide reach sediment succession; inward bars with low physical sediment benches, bounded cut changes; centreline/levels and protected infrastructure retained"
+      },
+      "forestRootedShoulder38": false,
+      "forestBankCurvature38": true,
+      "forestReach39": true,
+      "forestReach39Source": {
+        "design50": null,
+        "profile48": null,
+        "form41": true,
+        "form41Revision": "asymmetric-root-banks-v3",
+        "sourceVersion": "forest-reach39-design-1",
+        "sourceTreeHash": "cf766602cf510d7adf1fda780bfb291810bef8ec6044d453839df63f16c3dbe4",
+        "giMatched": false,
+        "defaultEnabled": true
+      },
+      "waterChunks": 70,
+      "shoreStones": 151,
+      "gravelPebbles": 0,
+      "gravelTriangles": 0,
+      "gravelCapacity": 1400,
+      "wakePatches": 16,
+      "pending": 0,
+      "nearCoverage": 900,
+      "overviewTriangles": 162756,
+      "nearTriangles": 37640,
+      "buildMilliseconds": 0.09999996423721313,
+      "reflection": "PBR and local tangent-plane reflection, with bounded opaque color/depth refraction",
+      "localReflection": {
+        "supported": true,
+        "active": false,
+        "captures": 0,
+        "skipped": 36928,
+        "width": 0,
+        "height": 0,
+        "estimatedAttachmentBytes": 0,
+        "lastCalls": 0,
+        "lastTriangles": 0,
+        "lastCPUms": 0,
+        "reason": "no-visible-near-water",
+        "patch": null,
+        "preparedMatrices": true,
+        "depthOrder": {
+          "enabled": false,
+          "active": false,
+          "objects": 0,
+          "unknownGroups": 0,
+          "bucketsPerOctave": 0.5
+        }
+      },
+      "refraction": {
+        "enabled": false,
+        "captures": 0,
+        "failures": 0,
+        "width": 0,
+        "height": 0,
+        "attachmentBytes": 0,
+        "reason": "disabled"
+      }
+    },
+    "pasture": {
+      "ready": true,
+      "count": 12,
+      "planned": 12,
+      "triangles": 48000,
+      "source": "assets/sheep.glb",
+      "quality": "original lod0 with original normal/basecolor maps",
+      "anchorId": "yurts:-1551,3489:3337d4a3e634caaf",
+      "center": {
+        "x": -1543.1573191233526,
+        "z": 3424.4748703475375
+      },
+      "elapsed": 1049.7422900007823,
+      "states": {
+        "graze": 4,
+        "lie": 3,
+        "walk": 2,
+        "get_up": 1,
+        "look": 2
+      },
+      "life41": {
+        "enabled": true,
+        "ready": true,
+        "triangles": 6596,
+        "meshes": 4,
+        "transportBytes": 1033716,
+        "decodedBytes": 1033716,
+        "site": {
+          "x": -1556.1573191233526,
+          "y": 2092.779578072637,
+          "z": 3427.4748703475375,
+          "yaw": 0
+        },
+        "colliders": [
+          {
+            "id": "pasture-life41-trough",
+            "x": -1556.1573191233526,
+            "y": 2093.089578072637,
+            "z": 3427.4748703475375,
+            "hx": 1.29,
+            "hy": 0.24,
+            "hz": 0.34,
+            "yaw": 0
+          },
+          {
+            "id": "pasture-life41-rack",
+            "x": -1557.8873191233527,
+            "y": 2093.139578072637,
+            "z": 3428.4248703475373,
+            "hx": 0.41,
+            "hy": 0.38,
+            "hz": 0.31,
+            "yaw": 0
+          }
+        ],
+        "quality": "Blender source; browser contact and walking accepted; static contained water"
+      }
+    },
+    "rootMatTrial": {
+      "enabled": false,
+      "status": "off",
+      "meshes": 0,
+      "triangles": 0,
+      "responseBodyBytes": 0,
+      "fitMs": 0
+    },
+    "reachDesign69": null,
+    "reachDesign73": null,
+    "doors": {
+      "ready": true,
+      "entries": 191,
+      "leaves": 264,
+      "triangles": 15960,
+      "batches": 31,
+      "moving": 0,
+      "revision": 140,
+      "active": null,
+      "thresholdStones": {
+        "moved": 3,
+        "triangles": 240,
+        "assets": [
+          {
+            "assetId": "cabin_small",
+            "moved": 0,
+            "triangles": 0,
+            "stones": []
+          },
+          {
+            "assetId": "house_a",
+            "moved": 3,
+            "triangles": 240,
+            "stones": [
+              {
+                "triangles": 80,
+                "from": [
+                  -0.2264735847711563,
+                  -0.29983988404273987,
+                  2.1069207191467285
+                ],
+                "to": [
+                  -0.4731421905755997,
+                  -0.29983988404273987,
+                  2.1069207191467285
+                ],
+                "deltaX": -0.24666860580444336
+              },
+              {
+                "triangles": 80,
+                "from": [
+                  0.6036390066146851,
+                  -0.2005707323551178,
+                  2.2131142616271973
+                ],
+                "to": [
+                  -1.141068897843361,
+                  -0.2005707323551178,
+                  2.2131142616271973
+                ],
+                "deltaX": -1.744707904458046
+              },
+              {
+                "triangles": 80,
+                "from": [
+                  0.9407551288604736,
+                  -0.25662365555763245,
+                  2.06437611579895
+                ],
+                "to": [
+                  1.6549999999999998,
+                  -0.25662365555763245,
+                  2.06437611579895
+                ],
+                "deltaX": 0.7142448711395263
+              }
+            ]
+          },
+          {
+            "assetId": "gh_lanchuan_lodge",
+            "moved": 0,
+            "triangles": 0,
+            "stones": []
+          },
+          {
+            "assetId": "gh_lanchuan",
+            "moved": 0,
+            "triangles": 0,
+            "stones": []
+          },
+          {
+            "assetId": "yurt",
+            "moved": 0,
+            "triangles": 0,
+            "stones": []
+          },
+          {
+            "assetId": "yurt_deck",
+            "moved": 0,
+            "triangles": 0,
+            "stones": []
+          }
+        ]
+      },
+      "pending": 0,
+      "shadowBatches": 12
+    },
+    "collision": {
+      "ecologySolids41": {
+        "enabled": true,
+        "ready": false,
+        "active": 0,
+        "triangles": 0,
+        "queries": 0,
+        "syncs": 0,
+        "lastSyncMs": 0,
+        "preparationMs": 0,
+        "source": "same ecology.treeAt and full original high bark rooted component; LOD/wind independent"
+      },
+      "activePastureLife41": 0,
+      "status": "idle",
+      "mode": "flight",
+      "supportedAssets": [
+        "house_a",
+        "yurt",
+        "cabin_small",
+        "gh_lanchuan",
+        "gh_lanchuan_lodge",
+        "yurt_deck"
+      ],
+      "activeBuildings": 0,
+      "activeDoors": 0,
+      "activeShoreStones": 0,
+      "shoreTriangles": 0,
+      "triangles": 0,
+      "grounded": false,
+      "blockedDoors": 0,
+      "collisions": 0,
+      "errors": []
+    },
+    "movement": "flight",
+    "seating": {
+      "enabled": true,
+      "state": "idle",
+      "seat": null,
+      "blocked": null,
+      "sweeps": 0,
+      "model": "first-person seated upper-body capsule; no leg skeleton"
+    },
+    "controlTiming": {
+      "steps": 69781,
+      "lastSteps": 2,
+      "droppedSeconds": 0.5940100000001984,
+      "resets": 10,
+      "stepSeconds": 0.016666666666666666,
+      "maxCatchupSeconds": 0.25
+    },
+    "errors": [],
+    "entities": 364,
+    "roomLight": {
+      "updates": 148,
+      "lastCpuMs": 1.300000011920929,
+      "cacheBytes": 181440,
+      "cachedDirections": 12,
+      "uploadBytes": 10080,
+      "active": true,
+      "directionSamples": 4,
+      "loadedSecondRooms": 0,
+      "lastLoadMs": 0,
+      "solarBounceOrder": 2,
+      "secondBounceWeight": 1,
+      "model": "up to two static diffuse solar bounces; no external occluders"
+    },
+    "roomSkyBounce": {
+      "guestVanity": {
+        "loadedRooms": 0,
+        "keys": [],
+        "model": "source-bound two sky/solar/fixture orders; bathroom included; static low-frequency GI"
+      },
+      "legacyRooms": {
+        "requests": 5,
+        "loadedRooms": 5,
+        "failures": 0,
+        "loads": [
+          {
+            "key": "house_a",
+            "startMs": 287.2999999523163,
+            "endMs": 344,
+            "status": "complete"
+          },
+          {
+            "key": "yurt",
+            "startMs": 287.2999999523163,
+            "endMs": 343.7999999523163,
+            "status": "complete"
+          },
+          {
+            "key": "lanchuan-freedom-1",
+            "startMs": 287.2999999523163,
+            "endMs": 343.69999998807907,
+            "status": "complete"
+          },
+          {
+            "key": "lanchuan-freedom-2",
+            "startMs": 287.2999999523163,
+            "endMs": 343.69999998807907,
+            "status": "complete"
+          },
+          {
+            "key": "lanchuan-freedom-3",
+            "startMs": 287.2999999523163,
+            "endMs": 343.7999999523163,
+            "status": "complete"
+          }
+        ]
+      },
+      "lodgeDoor": {
+        "enabled": true,
+        "ready": true,
+        "active": false,
+        "pending": false,
+        "model": "actual glazed-door poses 0/0.875/1.75 rad; sky orders 0/1/2 and solar orders 1/2; adjacent-state interpolation, not full dynamic GI",
+        "extraSamplers": 0,
+        "extraTextureFetches": 0,
+        "delivery": {
+          "base": {
+            "status": "gzip-base",
+            "parseAndValidateMs": 11,
+            "responseBytes": 11799283,
+            "compressedBytes": 6633435,
+            "rawBytes": 11799283
+          },
+          "status": "delta",
+          "compressedBytes": 2793157,
+          "rawBytes": 26109396,
+          "responseBytes": 26109396,
+          "delivery": "http-decoded-body",
+          "decodeMs": 1553.300000011921,
+          "elapsedMs": 1686.699999988079,
+          "scheduler": {
+            "enabled": true,
+            "budgetMs": 8,
+            "yields": 123,
+            "maxOverrunMs": 58.5
+          }
+        },
+        "angle": null,
+        "bracket": null
+      },
+      "lodgeCross": {
+        "enabled": true,
+        "ready": false,
+        "pending": false,
+        "model": "eleven east exterior sources through original passage and furniture; sky orders 0/1/2, solar orders 1/2; static original closed glazed door"
+      },
+      "lodge": {
+        "enabled": true,
+        "tables": true,
+        "chairs": true,
+        "furniture": true,
+        "key": "gh_lanchuan_lodge-tables-whole",
+        "sourceSHA256": "853f5690686eceaa85f00b2df0705343e55b6aea4286f599e07ee121dd170687",
+        "ready": true,
+        "pending": false,
+        "model": "source-bound detailed tables/reception/tea table; independently rebaked complete three-pose sky/solar transport and contact"
+      },
+      "household": {
+        "key": "house_a-living-2",
+        "pending": false,
+        "bundleReady": true,
+        "closedReady": true,
+        "ready": true,
+        "loadedStyles": 3
+      },
+      "exteriorTerrain": {
+        "enabled": false,
+        "active": false,
+        "pending": false,
+        "ready": false,
+        "model": "one entity: upper sky plus terrain sky reflection; one/two internal diffuse bounces; original solar remains; direct terrain sky/solar return plus terrain solar followed by one/two internal bounces; finite static transport, not complete dynamic GI"
+      },
+      "doorAngles": {
+        "ready": true,
+        "active": true,
+        "pending": false,
+        "model": "source-bound single/dual leaf pose lattice; two static diffuse orders, no new GPU texture",
+        "degrees": [
+          102.00002236585782
+        ],
+        "enabled": true,
+        "key": "house_a-living-2",
+        "weights": [
+          {
+            "degrees": [
+              102
+            ],
+            "weight": 1
+          }
+        ]
+      },
+      "guestDoors41": {
+        "enabled": true,
+        "active": false,
+        "ready": false,
+        "pending": false,
+        "key": null,
+        "model": "source-bound 0/51/102 degree guest door, sky/solar/fixture two diffuse orders; static finite interpolation",
+        "extraGPUTextures": 0,
+        "degree": null,
+        "bracket": null
+      },
+      "doors": {
+        "loadedRooms": 3,
+        "pending": false,
+        "active": true,
+        "bypassedBy": null,
+        "openness": 1,
+        "apertureFraction": 0,
+        "model": "two baked original-door endpoints; intermediate angles interpolate source transport, not full dynamic GI"
+      },
+      "aperture": {
+        "active": true,
+        "field": "house_a-living-2",
+        "cacheBytes": 2835,
+        "extraTextureBytes": 0,
+        "extraSamples": 0,
+        "model": "static opaque aperture visibility at existing probe resolution; diffuse sky only"
+      },
+      "active": true,
+      "skyBounceOrder": 2,
+      "merges": 3,
+      "lastMergeMs": 0.7000000476837158,
+      "secondBounceBytes": 30240,
+      "compositeBytes": 30240,
+      "fixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 1,
+        "model": "static diffuse reflection order 1 of existing guest fixtures; unit source scale"
+      },
+      "secondFixtures": {
+        "loadedRooms": 0,
+        "cacheBytes": 0,
+        "lastLoadMs": 0,
+        "lastComposeMs": 0,
+        "active": false,
+        "lights": 0,
+        "bounceOrder": 2,
+        "model": "static diffuse reflection order 2 of existing guest fixtures; unit source scale"
+      },
+      "model": "up to two static sky/solar/fixture bounces; not complete GI",
+      "finiteAperture": {
+        "enabled": true,
+        "model": "hemisphere-clipped finite rectangle sky integral; 8-sided roof crown; existing baked visibility",
+        "extraTextureSamples": 0,
+        "extraGeometry": 0,
+        "edgeIntegral": true
+      },
+      "legacyOpeningPrefetch": {
+        "enabled": false,
+        "requests": 0,
+        "pending": 0,
+        "completed": 0,
+        "failures": 0,
+        "errors": []
+      },
+      "viewSelection": {
+        "roomId": "cabins:-1683,3643:fb877ed9142d2f85",
+        "reason": "visible-opening",
+        "visibleRooms": 1,
+        "openingKind": "window",
+        "distance": 5.519284373901856
+      },
+      "terrainSun": {
+        "enabled": true,
+        "active": false,
+        "blockedRays": 0,
+        "rays": 27,
+        "heightSamples": 1350,
+        "updates": 7,
+        "lastCpuMs": 5.900000035762787,
+        "partial": false,
+        "model": "all sampled sun-facing apertures blocked by terrain; partial sun-facing occlusion unresolved",
+        "apertures": [
+          {
+            "rays": 9,
+            "blocked": 0,
+            "kind": "door",
+            "sunFacing": true,
+            "facingCosine": 0.32830979825031587
+          },
+          {
+            "rays": 9,
+            "blocked": 0,
+            "kind": "window",
+            "sunFacing": true,
+            "facingCosine": 0.32830979825031587
+          },
+          {
+            "rays": 9,
+            "blocked": 0,
+            "kind": "window",
+            "sunFacing": false,
+            "facingCosine": -0.32830979825031587
+          }
+        ],
+        "sunFacingApertures": 2,
+        "allApertureSamplesBlocked": false,
+        "minHitDistance": null,
+        "maxHitDistance": null,
+        "excludedNearMeters": 16.209750300709516
+      }
+    },
+    "roomContact": {
+      "upperContact": {
+        "enabled": true,
+        "active": false,
+        "key": null,
+        "atlasTextureBytes": 0,
+        "atlasExtraBytes": 0,
+        "model": "actual source vertex AO residual; shared floor RG atlas, no separate texture"
+      },
+      "active": true,
+      "field": "house_a-living-2",
+      "textureBytes": 303030,
+      "textures": 3,
+      "model": "missing short-range floor contact visibility; no direct light baked",
+      "filter": "receiver-plane-bilinear",
+      "samplesPerEligibleFragment": 4
+    },
+    "guestRoomGroup42": {
+      "enabled": true,
+      "active": false,
+      "rooms": [],
+      "textureBytes": 0,
+      "model": "three source-bound finite-door fields; lossless shared SH/contact atlases; one room receiver per fragment"
+    },
+    "roomShadowAtlas42": {
+      "enabled": true,
+      "active": false,
+      "samplers": 0,
+      "width": 0,
+      "height": 0,
+      "shadowLights": 0,
+      "reason": "inactive"
+    },
+    "rooms": 17
+  },
+  "gi": {
+    "key": "house_a-living-2",
+    "time": 870,
+    "visibility": "visible",
+    "cloth": {
+      "enabled": true,
+      "scope": "house_a asset family",
+      "nodes": 9,
+      "triangles": 61560,
+      "texturesAdded": 0,
+      "materialsBorrowed": true,
+      "originalGLBChanged": false
+    },
+    "open": {
+      "sky": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      },
+      "secondSky": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      },
+      "solar": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      },
+      "secondSolar": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      },
+      "apertures": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      },
+      "contact": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      }
+    },
+    "solar": {
+      "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+      "derivedGeometry": {
+        "kind": "house-textiles62",
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+        "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+        "nodes": [
+          "pastoral_house_felt_mattress",
+          "pastoral_house_bed_quilt",
+          "pastoral_house_bed_foot",
+          "pastoral_house_chest_folded0",
+          "pastoral_house_chest_folded1",
+          "pastoral_house_chest_folded2",
+          "pastoral_house_chest_folded3",
+          "pastoral_house_chest_topcover",
+          "pastoral_house_bench_felt"
+        ]
+      }
+    },
+    "secondSolar": {
+      "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+      "derivedGeometry": {
+        "kind": "house-textiles62",
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+        "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+        "nodes": [
+          "pastoral_house_felt_mattress",
+          "pastoral_house_bed_quilt",
+          "pastoral_house_bed_foot",
+          "pastoral_house_chest_folded0",
+          "pastoral_house_chest_folded1",
+          "pastoral_house_chest_folded2",
+          "pastoral_house_chest_folded3",
+          "pastoral_house_chest_topcover",
+          "pastoral_house_bench_felt"
+        ]
+      }
+    },
+    "contact": {
+      "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+      "derivedGeometry": {
+        "kind": "house-textiles62",
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+        "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+        "nodes": [
+          "pastoral_house_felt_mattress",
+          "pastoral_house_bed_quilt",
+          "pastoral_house_bed_foot",
+          "pastoral_house_chest_folded0",
+          "pastoral_house_chest_folded1",
+          "pastoral_house_chest_folded2",
+          "pastoral_house_chest_folded3",
+          "pastoral_house_chest_topcover",
+          "pastoral_house_bench_felt"
+        ]
+      }
+    },
+    "closed": {
+      "sky": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      },
+      "secondSky": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      },
+      "solar": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      },
+      "secondSolar": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      },
+      "apertures": {
+        "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+        "derivedGeometry": {
+          "kind": "house-textiles62",
+          "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+          "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+          "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+          "nodes": [
+            "pastoral_house_felt_mattress",
+            "pastoral_house_bed_quilt",
+            "pastoral_house_bed_foot",
+            "pastoral_house_chest_folded0",
+            "pastoral_house_chest_folded1",
+            "pastoral_house_chest_folded2",
+            "pastoral_house_chest_folded3",
+            "pastoral_house_chest_topcover",
+            "pastoral_house_bench_felt"
+          ]
+        }
+      }
+    },
+    "angles": [
+      {
+        "degree": "30",
+        "fields": {
+          "sky": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "secondSky": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "solar": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "secondSolar": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "apertures": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "degree": "90",
+        "fields": {
+          "sky": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "secondSky": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "solar": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "secondSolar": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "apertures": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "degree": "60",
+        "fields": {
+          "sky": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "secondSky": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "solar": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "secondSolar": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          },
+          "apertures": {
+            "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+            "derivedGeometry": {
+              "kind": "house-textiles62",
+              "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+              "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+              "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+              "nodes": [
+                "pastoral_house_felt_mattress",
+                "pastoral_house_bed_quilt",
+                "pastoral_house_bed_foot",
+                "pastoral_house_chest_folded0",
+                "pastoral_house_chest_folded1",
+                "pastoral_house_chest_folded2",
+                "pastoral_house_chest_folded3",
+                "pastoral_house_chest_topcover",
+                "pastoral_house_bench_felt"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "doorFraction": 1,
+    "doorStats": null,
+    "household": {
+      "key": "house_a-living-2",
+      "pending": false,
+      "bundleReady": true,
+      "closedReady": true,
+      "ready": true,
+      "loadedStyles": 3
+    },
+    "angleStats": {
+      "enabled": true,
+      "ready": true,
+      "active": true,
+      "pending": false,
+      "key": "house_a-living-2",
+      "model": "source-bound single/dual leaf pose lattice; two static diffuse orders, no new GPU texture",
+      "degrees": [
+        102.00002236585782
+      ],
+      "weights": [
+        {
+          "degrees": [
+            102
+          ],
+          "weight": 1
+        }
+      ]
+    },
+    "bracket": null,
+    "weights": [
+      {
+        "degrees": [
+          102
+        ],
+        "weight": 1
+      }
+    ],
+    "errors": [],
+    "sourceSummary": {
+      "records": 29,
+      "geometryHashes": [
+        "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854"
+      ],
+      "allDerived": true,
+      "model": "nine-mesh textile geometry included in finite baked door-state GI; not arbitrary dynamic GI"
+    }
+  }
+}

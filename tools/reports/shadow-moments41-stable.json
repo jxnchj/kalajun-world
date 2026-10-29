@@ -1,0 +1,27 @@
+{
+  "scope": "Isolated original 49 roots, full245-face tuft, actual DEM/wind; same slope and roof/tree witnesses; not production acceptance",
+  "representation": "signed centered raw four moments; variance-normalized Cholesky; quantization-relative point-mass handling; native normalBias=.008 and depthBias=-.000002 preserved",
+  "format": "RGBA32F",
+  "shadowRangeMeters": 64,
+  "samples": 4,
+  "shaderErrors": [],
+  "sameGrid600": {
+    "native": {"areaMean":43040.77687909779,"meanDelta":639.8485607008696,"meanSquaredDelta":117.98063821607069,"meanLargeJumps":0},
+    "moments": {"areaMean":40062.67238563203,"meanDelta":724.898372966164,"meanSquaredDelta":82.13667116575436,"meanLargeJumps":0},
+    "gpuABBAms": [0.8990400000000001,0.9443027166666663,1.444119466666667,1.0158996666666669],
+    "gpuSamplesEach":60,
+    "gpuDisjoint":0,
+    "gpuLimitation":"Small-scene measurements fluctuate; no claim of world throughput gain"
+  },
+  "equalSamples300vs600": {
+    "native": {"areaMean":43040.77687909779,"meanDelta":639.8485607008696,"meanSquaredDelta":117.98063821607069,"meanLargeJumps":0},
+    "moments": {"areaMean":39175.753431393205,"meanDelta":678.495369211467,"meanSquaredDelta":71.30126416190512,"meanLargeJumps":0},
+    "gpuBench":"No completed result captured; must rerun, cannot claim pass",
+    "roofCore":{"visibleGroundPixels":25,"nativeSolarVisibilityMinMax":[0,0],"momentSolarVisibilityMinMax":[0,0],"world":[-1.392357550757283,0.027632503822286658,-1.1625233629390308]},
+    "treeCore":{"visibleGroundPixels":23,"nativeSolarVisibilityMinMax":[0,0],"momentSolarVisibilityMinMax":[0,0],"world":[0.07120975787148887,0.0267973918726212,-1.9036999002393538]}
+  },
+  "actualMotion":"48 instants 4 through 4.783333333333333, at 1/60 seconds; linear ground-only visibility, non-ground green sentinel excluded; all meshes remain casters",
+  "quality":"Full-ground numerical stipple gone; roof/tree core remains occluded; shadow area changes -6.9%/-9.0% require deeper edge/detail assessment, not yet accepted",
+  "next":"half-format fidelity, depth-range/large-slope stability, completed cost, alias/edge detail, production-nearest substitution feasibility",
+  "cleanup":"Tab1839973336 closed before root formal terrain A/B"
+}

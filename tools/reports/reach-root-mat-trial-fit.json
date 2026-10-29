@@ -1,0 +1,92 @@
+{
+  "fittedWorldBounds": {
+    "min": [
+      -3616.0046051986874,
+      2327.3430381724775,
+      4803.814911279681
+    ],
+    "max": [
+      -3615.797500590271,
+      2327.5020746374666,
+      4804.36055779815
+    ],
+    "size": [
+      0.2071046084165573,
+      0.15903646498918533,
+      0.5456465184688568
+    ]
+  },
+  "preservedCoverRecords": 521,
+  "status": "OFF opt-in trial; actual runtime surface fit verified, browser appearance not yet accepted",
+  "assetSHA256": "d01d877c46f18eafaec0fe918848b35585a87476a51b99dc603fa7c5cbe2ad7e",
+  "assetBytes": 426684,
+  "checkedVertices": 10374,
+  "maxClosestDistanceErrorMeters": 4.89850878870185e-9,
+  "maxRecomputedNormalUnitError": 4.9100835841642265e-8,
+  "minTriangleDoubleArea": 2.3398759653239466e-10,
+  "sourceBuriedRatio": 0.5458839406207827,
+  "fittedBuriedRatio": 0.5458839406207827,
+  "checkedTerminalTips": 101,
+  "maxTipSurfaceDistanceIncludingRadius": -0.0018002670695462981,
+  "minTipWaterClearance": 0.04670150113042837,
+  "minNeckCrestClearance": 0.04526787566283019,
+  "fit": {
+    "enabled": true,
+    "status": "ready",
+    "meshes": 2,
+    "triangles": 15204,
+    "responseBodyBytes": 426684,
+    "fitMs": 371.02266599999996,
+    "vertices": 10374,
+    "origin": [
+      -3615.902696917242,
+      2327.4290232965886,
+      4804.073757413628
+    ],
+    "parts": [
+      {
+        "vertices": 2972,
+        "triangles": 4456,
+        "sourceBuriedVertices": 2043,
+        "fittedBuriedVertices": 2043,
+        "maxOffsetError": 1.4842538270625069e-8,
+        "maxNormalDistanceError": 0.0000526313293343697,
+        "maxExposedDistance": 0.004067673013262366,
+        "minBuriedDistance": -0.013686850054577464,
+        "minWaterClearance": 0.048382866147676395,
+        "minCrownClearance": 0.044186969690144906,
+        "minTreeDistance": 6.555469884754508
+      },
+      {
+        "vertices": 7402,
+        "triangles": 10748,
+        "sourceBuriedVertices": 3620,
+        "fittedBuriedVertices": 3620,
+        "maxOffsetError": 1.4930115054711594e-8,
+        "maxNormalDistanceError": 0.000007347143152803409,
+        "maxExposedDistance": 0.003985887556688954,
+        "minBuriedDistance": -0.005000178787719009,
+        "minWaterClearance": 0.04672482884279816,
+        "minCrownClearance": 0.05122309608395881,
+        "minTreeDistance": 6.560119406267459
+      }
+    ],
+    "sourceBuriedVertices": 5663,
+    "fittedBuriedVertices": 5663,
+    "maxOffsetError": 1.4930115054711594e-8,
+    "maxNormalDistanceError": 0.0000526313293343697,
+    "maxExposedDistance": 0.004067673013262366,
+    "minWaterClearance": 0.04672482884279816,
+    "minCrownClearance": 0.044186969690144906,
+    "minTreeDistance": 6.555469884754508
+  },
+  "preservedCoverSourceUnchanged": true,
+  "preservedCoverSourceSHA256": "4fa8f6446c0b681723f89ae9037d1959106abbbcbbdb63d57d183ffe3d4ae3d0",
+  "sourceTreesAndEntitiesUnchanged": true,
+  "limitations": [
+    "Morphology is designed, not a measured local root system.",
+    "Source substrate is deformed into the actual bank: along-bank positions and signed normal offsets survive, source vertical scale follows the real bank.",
+    "15,204 triangles in 2 additional draws when opt-in; all source geometry remains, including buried segments.",
+    "No browser visibility, long-distance aliasing, or visual-adoption claim."
+  ]
+}

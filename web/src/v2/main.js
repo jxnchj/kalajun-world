@@ -1,6 +1,21 @@
+import {ShadowWindowRuntime42} from './shadow-window-runtime42.js';
+import { RafCPUProfile42 } from "./raf-cpu-profile42.js";
+import {installLoadSpikeTrace42} from './load-spike-trace42.js';
+import {TerrainPreparedCodecClient42} from './terrain-prepared-codec-client42.js';
+import {installTerrainRequestTrace42} from './terrain-request-trace42.js';
+import {RoomShadowAtlas42} from './room-shadow-atlas42.js';
+import {MeadowClusterWind42} from './meadow-cluster-wind42.js';
+import terrainPreparedCode42 from 'virtual:terrain-prepared42-binding';
+import {TerrainPreparedRows42,terrainPrepared42Enabled} from './terrain-prepared42.js';
+import {MeadowClusterRuntime42} from './meadow-cluster-runtime42.js';
+import {installStructureMatrixArithmetic41} from './structure-matrix-arithmetic41.js';
+import {MeadowRootWindRuntime41} from './meadow-root-wind-runtime41.js';
+import { MeadowMiddleVisibility41 } from './meadow-middle-visibility41.js';
+import { GrassShadowWorld41 } from './grass-shadow-world41.js';
 import {Seating39} from './seating39.js';
 import {installSeatingUI39} from './seating-ui39.js';
 import {TerrainRowWorkerClient,terrainRowWorkerPolicy} from './terrain-row-worker-client.js';
+import {TerrainWorkerRefill42,terrainWorkerRefillPolicy42} from './terrain-worker-refill42.js';
 import {startTerrainIdlePrefetch} from './terrain-idle-prefetch.js';
 import {assertLodgeCollisionCamera,compileLodgeStreamMaterials,lodgeInteriorStreamEnabled} from './lodge-interior-stream.js';
 import { GPUPassProfile } from "./gpu-pass-profile.js";
@@ -27,8 +42,10 @@ import { WorldWater } from "./water.js";
 import { WorldCollision, walkingViewpoints } from "./collision.js";
 import { WorldDoors } from "./doors.js";
 import { WorldPasture } from "./pasture.js";
+import {ReachRootMatTrial} from "./reach-root-mat-trial.js";
 import { WorldShadowDepth } from "./room-shadow.js";
 import { WorldFrame } from "./world-frame.js";
+import {localShadowWindow72Enabled} from "./local-shadow-policy72.js";
 import { TreePhotoPrepass } from "./tree-photo-prepass.js";
 import { withPreparedWorldMatrices } from "./prepared-world-matrices.js";
 import { compileVisibleWorld } from "./compile-visible-world.js";
@@ -43,7 +60,18 @@ const bootStarted=performance.now(),loadTimings={phases:{},totalMs:null,moduleSt
 const measureLoad=async(name,work)=>{
   const start=performance.now(),phase={startMs:start-bootStarted,elapsedMs:null,status:"running"};
   loadTimings.phases[name]=phase;
-  try{const value=await work();phase.status="complete";return value;}
+  try{
+    let pending;
+    if(name==="firstFrame"){
+      phase.awaitTailMs=0;
+      const workStart=performance.now();
+      try{pending=work();}finally{phase.syncMs=performance.now()-workStart;}
+      const tailStart=performance.now();
+      try{const value=await pending;phase.status="complete";return value;}
+      finally{phase.awaitTailMs=performance.now()-tailStart;}
+    }
+    const value=await work();phase.status="complete";return value;
+  }
   catch(error){phase.status="failed";throw error;}
   finally{phase.elapsedMs=performance.now()-start;}
 };
@@ -72,7 +100,12 @@ try {
   const sceneMatrixCache=sceneMatrixCacheMode==="parents"?installSceneMatrixCache(scene,{scope:"parents"}):sceneMatrixCacheMode==="1"?installSceneMatrixCache(scene):null;
   camera._reversedDepth=reversedDepth;camera.updateProjectionMatrix();
   const opaqueDepthOrder=new OpaqueDepthOrder(renderer,camera);
-  const renderWorld=(scene,renderCamera)=>opaqueDepthOrder.run(renderCamera,()=>{
+  const renderWorld=(scene,renderCamera,colorViewsPrepared=false)=>opaqueDepthOrder.run(renderCamera,()=>{
+    if(meadowViews.enabled&&!colorViewsPrepared)syncColorVisibility41();
+    if(meadowRootWind.enabled)meadowRootWind.update(renderer);
+    if(meadowClusterWind.enabled)meadowClusterWind.update(renderer);
+    roomShadowAtlas42.prepare(scene,renderCamera);
+    grassShadowCoverage41.render();
     water.prepareRefraction(renderer,renderCamera,worldFrame?.target);
     return treePhotoPrepass.run(renderCamera,()=>worldFrame?worldFrame.render(scene,renderCamera):renderer.render(scene,renderCamera));
   });
@@ -101,14 +134,21 @@ try {
   });
   const params=new URLSearchParams(location.search),preparedMatrices=params.get("preparedMatrices")!=="0",initialPlace=initialViewpoint(params,places);go(places[initialPlace],initialPlace);
   const structures=new WorldStructures(world,{doors,lodgeInteriorStream:lodgeInteriorStreamEnabled()}),ecology=new WorldEcology(world),water=new WorldWater(world);
+  const rootMat=new ReachRootMatTrial(world,{search:location.search});
+  const structureMatrix41=params.get('structureMatrixArithmetic41')!=='0'?installStructureMatrixArithmetic41(structures.group):null;
+  structures.stats.matrixArithmetic41=structureMatrix41?.stats??{enabled:false};
+  const meadowViews=new MeadowMiddleVisibility41(ecology);ecology.stats.meadowVisible41=meadowViews.stats;
+  const meadowRootWind=new MeadowRootWindRuntime41(ecology);ecology.stats.meadowRootWind41=meadowRootWind.stats;
+  const meadowCluster=new MeadowClusterRuntime42(ecology,{enabled:params.get("meadowCluster42")==="1"});ecology.stats.meadowCluster42=meadowCluster.stats;
+  const meadowClusterWind=new MeadowClusterWind42(meadowCluster,{enabled:params.get("meadowClusterWind42")==="1"});ecology.stats.meadowClusterWind42=meadowClusterWind.stats;
   const treePhotoPrepass=new TreePhotoPrepass(scene,ecology,camera,{enabled:params.get("treePhotoPrepass")==="1",getShaderRegistry:()=>environment.csm.shaders});
-  const startAssets=()=>Promise.all([measureLoad("structures",()=>structures.load({onProgress:progress})),measureLoad("ecologyAssets",()=>ecology.load({canopyLookup,textureRenderer:params.get("earlyTreeTextures")==="1"?renderer:null})),measureLoad("waterAssets",()=>water.load()),measureLoad("pastureAssets",()=>pasture.load())]);
+  const startAssets=()=>Promise.all([measureLoad("structures",()=>structures.load({onProgress:progress})),measureLoad("ecologyAssets",()=>ecology.load({canopyLookup,textureRenderer:params.get("earlyTreeTextures")==="1"?renderer:null})),measureLoad("waterAssets",()=>water.load()),measureLoad("pastureAssets",()=>pasture.load()),...(rootMat.enabled?[measureLoad("rootMatTrial",()=>rootMat.load())]:[])]);
   // Asset requests need world data, not the synchronous coarse terrain build.
   // Start their I/O before that work; retain the original promise/error for the
   // awaited join, while observing early rejection during terrain construction.
   let assetsReady=params.get("assetOverlap")==="1"?startAssets():null;
   assetsReady?.catch(()=>{});
-  const terrain=await measureLoad("terrainCoarse",()=>new WorldTerrain(world));scene.add(terrain.group);terrain.update(camera,0);
+  const terrain=await measureLoad("terrainCoarse",()=>new WorldTerrain(world));terrain.yieldInitializingRows42=params.get("terrainYield42")==="1";terrain.workerReadyWindow42=params.get("terrainWindow42")==="1";scene.add(terrain.group);terrain.update(camera,0);
   installMeadowDistanceCanopy(terrain.material,{enabled:params.get('meadowDistanceCanopy')==='1'});
   ecology.setTerrainSurfaceContact(createTerrainSurfaceContact(terrain));
   // World geometry depends on the selected camera and the loaded world data,
@@ -116,13 +156,35 @@ try {
   // prepareScene still revalidates the CURRENT destination and its full budget.
   const earlyTerrain=measureLoad("terrainPrefetch",()=>terrain.prepareView(camera,{maxMs:6000,waitFor:"near",nearRadius:160}));
   if(terrainWorkerInputs){
-    const client=new TerrainRowWorkerClient(terrainWorkerInputs);terrainWorkerInputs=null;
+    const refill42=params.get("terrainRefill42")==="1"?terrainWorkerRefillPolicy42(location.search):null;
+    const client=refill42?.enabled
+      ?new TerrainWorkerRefill42(terrainWorkerInputs,{queueProvider:()=>terrain.queue})
+      :new TerrainRowWorkerClient(terrainWorkerInputs,{limit:params.get("terrainWindow42")==="1"?4:2});
+    if(refill42?.reason){client.stats.refill42={enabled:false,reason:refill42.reason};console.warn(refill42.reason+'; refill disabled');}
+    terrainWorkerInputs=null;
     terrain.rowWorker=client;terrain.stats.rowWorker=client.stats;
+    if(terrainPrepared42Enabled(location.search)){
+      const prepared=new TerrainPreparedRows42(world,{fallback:client,codeBinding:terrainPreparedCode42,enabled:true,...(["all","adaptive"].includes(params.get("terrainPrepared42"))?{manifestURL:"./data/v2/terrain-demand42/river-forest.json",codec:new TerrainPreparedCodecClient42(),adaptive:params.get("terrainPrepared42")==="adaptive"}:{})});
+      terrain.rowWorker=prepared;terrain.stats.preparedRows42=prepared.stats;
+    }
   }else if(terrainWorkerRequested)terrain.stats.rowWorker={ready:false,error:'Incompatible terrain variant; original builder retained'};
+  if((params.get("terrainRequestTrace42")==="1"||params.get("loadSpikeTrace42")==="1")&&terrain.rowWorker)terrain.stats.requestTrace42=installTerrainRequestTrace42(terrain.rowWorker,{frameApp:()=>window.kalajunV2,spikeFactory:params.get("loadSpikeTrace42")==="1"?installLoadSpikeTrace42:null,phase:()=>Object.entries(loadTimings.phases).filter(([,p])=>p.status==="running").map(([name])=>name).join("+")||"interactive"});
   cancelEarlyPreparation=()=>terrain.cancelPreparation();
   const environment=new WorldEnvironment(renderer,scene,camera,world.meta);
+  const roomShadowAtlas42=new RoomShadowAtlas42(renderer,settlements.lights,{enabled:settlements.guestGroup42.enabled});
+  let preparedGuestGroup42=false;
+  const syncRoomLighting42=()=>roomShadowAtlas42.setActive(Boolean(settlements.groupRooms42));
+  // Use the existing material registration boundary, including streamed lodge
+  // materials. Lookup/depth/output RawShaderMaterials never receive spot light.
+  const registerEnvironment42=environment.register.bind(environment);
+  environment.register=materials=>{
+    registerEnvironment42(materials);
+    if(roomShadowAtlas42.enabled)for(const material of materials)if(material&&(material.isMeshStandardMaterial||material.isMeshPhongMaterial||material.isMeshLambertMaterial||material.isMeshToonMaterial||material.isShadowMaterial||material.isShaderMaterial&&!material.isRawShaderMaterial&&material.lights))roomShadowAtlas42.installMaterial(material);
+  };
   environment.shadowCasters.depthPreparation=shadowDepth;
   environment.register(terrain.materials||[terrain.material]);
+  const grassShadowCoverage41=new GrassShadowWorld41(renderer,scene,camera,terrain,environment,{ecology});
+  const localShadowWindow42=new ShadowWindowRuntime42({world,renderer,environment,camera,terrain,ecology,renderNative:()=>renderWorld(scene,camera)},{enabled:localShadowWindow72Enabled(location.search)});
   progress("读取选定聚落与植物资产…");
   assetsReady??=startAssets();
   const assetJoin=Promise.all([measureLoad("terrainSurfaces",()=>terrain.loadSurfaces()),assetsReady]);
@@ -134,12 +196,32 @@ try {
   finally{await farTerrainIdle.stop("assets-settled");}
   if(farTerrainIdle.stats.error)throw farTerrainIdle.stats.error;
   loadTimings.farTerrainIdle=farTerrainIdle.stats;
+  let reachDesign69Owner=null,reachDesign69Assets=null;
+  if(world.hydrology.forestReach39?.stats.design69){
+    await measureLoad("reachDesign69",async()=>{
+      const m=await import('./reach-design69-material.js');
+      reachDesign69Assets=await m.loadReachDesign69Assets();
+      try{reachDesign69Owner=m.installReachDesign69Material(terrain.material,{world,assets:reachDesign69Assets,enabled:true});}
+      catch(error){reachDesign69Assets.dispose();reachDesign69Assets=null;throw error;}
+    });
+  }
+
+  let reachDesign73Owner=null,reachDesign73Assets=null;
+  if(world.hydrology.forestReach39?.stats.design73){
+    await measureLoad("reachDesign73",async()=>{
+      const m=await import('./reach-design73-material.js');
+      reachDesign73Assets=await m.loadReachDesign73Assets();
+      try{reachDesign73Owner=m.installReachDesign73Material(terrain.material,{world,assets:reachDesign73Assets,enabled:true});}
+      catch(error){reachDesign73Assets.dispose();reachDesign73Assets=null;throw error;}
+    });
+  }
+
   await measureLoad("householdLiving",()=>structures.loadHouseholdLiving());
-  const collision=new WorldCollision(world,{structures,doors});controls.setCollision(collision);const seating=new Seating39(world,controls,collision),seatingUI=installSeatingUI39(seating);doors.motionGuard=(leaf,next)=>collision.allowDoorMotion(leaf,next);
+  const collision=new WorldCollision(world,{structures,doors,ecology,pasture});controls.setCollision(collision);const seating=new Seating39(world,controls,collision),seatingUI=installSeatingUI39(seating);doors.motionGuard=(leaf,next)=>collision.allowDoorMotion(leaf,next);
   settlements.registerMaterials(structures.materials);
   const paths=new WorldPaths(world);
   await measureLoad("pathSurfaces",()=>paths.loadSurfaces());
-  scene.add(structures.group,ecology.group,paths.group,water.group,pasture.group,doors.group);environment.register([...structures.materials,...ecology.materials,...paths.materials,...water.materials,...pasture.materials]);
+  scene.add(structures.group,ecology.group,paths.group,water.group,pasture.group,doors.group,rootMat.group);environment.register([...structures.materials,...ecology.materials,...meadowCluster.materials,...paths.materials,...water.materials,...pasture.materials,...rootMat.materials]);
   $("#photo-save").addEventListener("click",()=>{
     renderWorld(scene,camera);
     const link=$("#photo-save");link.href=canvas.toDataURL("image/png");
@@ -196,13 +278,20 @@ try {
   progress("准备第一眼的光与山色…");
   let preparing=false,lastPreparation=null,renderReviewHold=false;
   let windOrigin="";
+  const syncColorVisibility41=()=>{
+    const patch=selectWaterReflectionPatch(water.hydrology,camera,water.reflection.patch);
+    const mirror=patch?createWaterReflectionCamera(camera,patch.plane):null;
+    if(meadowViews.enabled)meadowViews.update(mirror?[camera,mirror]:[camera]);
+    return mirror;
+  };
   const syncShadowState=()=>{
     const origin=ecology.windField.origin.toArray().join(",");
     environment.forceShadowUpdate=origin!==windOrigin;windOrigin=origin;
     // Shadows must serve both the visible world and the next eligible reflection.
+    if(!environment.shadowReceivers.enabled&&!meadowViews.enabled&&!meadowCluster.enabled){environment.shadowReceiverCameras=[];return;}
+    const mirror=syncColorVisibility41();
+    if(meadowCluster.enabled)meadowCluster.update(camera,{reflectionCamera:mirror,height:canvas.height});
     if(!environment.shadowReceivers.enabled){environment.shadowReceiverCameras=[];return;}
-    const patch=selectWaterReflectionPatch(water.hydrology,camera,water.reflection.patch);
-    const mirror=patch?createWaterReflectionCamera(camera,patch.plane):null;
     environment.shadowReceiverCameras=mirror?[mirror]:[];
   };
   const yieldToInput=()=>new Promise(resolve=>setTimeout(resolve,0));
@@ -237,16 +326,17 @@ try {
     const roomSun={elevation:environment.elevation,sun:environment.sun,color:environment.csm.lights[0].color,intensity:environment.csm.lights[0].intensity,visibility:1};
     settlements.update(camera,0,roomSun);
     const roomIndirectStart=performance.now();
-    await settlements.indirect.field.prepare();
+    await settlements.prepareLighting();
     const roomIndirectPrepareMs=performance.now()-roomIndirectStart;
     if(generation!==viewGeneration)return null;
-    settlements.update(camera,0,roomSun);
+    settlements.update(camera,0,roomSun);syncRoomLighting42();preparedGuestGroup42=Boolean(settlements.groupRooms42);
     syncShadowState();environment.update(.016);return {...prepared,terrainPrepareMs,ecologyQueuesMs,roomIndirectPrepareMs,ecologyPrepareMs:performance.now()-ecologyStart,ecologyIterations,ecologyPreparation};
   };
   let lastShaderPreparation=null;
   const compileDestination=()=>{
+    ecology.gpuBrushes?.prepareNeedleShapes?.(renderer,{budgetMs:2,maxForms:1});
     if(params.get("refractionPreparation")!=="0")water.prepareRefraction(renderer,camera,worldFrame?.target);
-    scene.updateMatrixWorld(true);camera.updateMatrixWorld(true);
+    scene.updateMatrixWorld(true);camera.updateMatrixWorld(true);roomShadowAtlas42.prepare(scene,camera);
     const patch=selectWaterReflectionPatch(water.hydrology,camera,water.reflection.patch);
     const mirror=patch?createWaterReflectionCamera(camera,patch.plane):null;
     const options={additionalCameras:mirror?[mirror]:[],additionalObjectFilter:object=>{
@@ -261,7 +351,7 @@ try {
         const previous=renderer.getRenderTarget(),face=renderer.getActiveCubeFace(),level=renderer.getActiveMipmapLevel();
         try{
           if(worldFrame)renderer.setRenderTarget(worldFrame.target);
-          pending.push(compileShadowWorld(renderer,scene,camera,{shadowDepth,lights:environment.csm.lights}));
+          pending.push(compileShadowWorld(renderer,scene,camera,{shadowDepth,lights:roomShadowAtlas42.active?[...environment.csm.lights,...settlements.lights]:environment.csm.lights,projectedSpots:roomShadowAtlas42.active,prepareDepthMaterial:material=>{if(environment.shadowAtlas40.enabled)environment.shadowAtlas40.installDepthMaterial(material);if(roomShadowAtlas42.active)roomShadowAtlas42.installDepthMaterial(material);}}));
         }finally{renderer.setRenderTarget(previous,face,level);}
       }else pending.push(Promise.resolve(null));
       pending.push(fullPreparation&&worldFrame?worldFrame.compileOutputAsync():Promise.resolve(null));
@@ -300,10 +390,21 @@ try {
     if(generation!==viewGeneration)continue;
     structures.update(camera,0);
     await measureLoad("initialShaders",compileDestination);
+    if(generation!==viewGeneration)continue;
+    if(localShadowWindow42.enabled)await measureLoad("localShadowWindow42",()=>localShadowWindow42.prepare({yieldToInput,isCurrent:()=>generation===viewGeneration}));
     if(generation===viewGeneration)break;
   }
   cancelEarlyPreparation=null;
   const cpuSamples={},gpuSamples=[];
+  const rafCPU42=params.get("profile")==="1"?new RafCPUProfile42():null;
+  if(rafCPU42){
+    rafCPU42.wrap(worldFrame?.output,"render","output");
+    rafCPU42.wrap(water,"renderReflection","reflection");
+    rafCPU42.wrap(grassShadowCoverage41,"render","grass-shadow");
+    rafCPU42.wrap(meadowRootWind,"update","meadow-root-wind");
+    rafCPU42.wrap(meadowClusterWind,"update","meadow-cluster-wind");
+    addEventListener("pagehide",()=>rafCPU42.dispose(),{once:true});
+  }
   const gpuPassProfileEnabled=params.get("gpuPassProfile")==="1";
   const gpuContext=renderer.getContext(),gpuExtension=params.get("profile")==="1"&&!gpuPassProfileEnabled?gpuContext.getExtension("EXT_disjoint_timer_query_webgl2"):null;
   const gpuQueries=[];
@@ -322,7 +423,9 @@ try {
       object[method]=function(...args){
         const start=performance.now();
         try{return original.apply(this,args);}finally{
-          const a=cpuSamples[name];a.push(performance.now()-start);if(a.length>120)a.shift();
+          const elapsed=performance.now()-start;
+          const a=cpuSamples[name];a.push(elapsed);if(a.length>120)a.shift();
+          if(name==="render")rafCPU42.recordRender(elapsed,rafCPU42.scope??(args[0]===scene?(args[1]===camera?"world-main":"world-other-camera"):"other"));
         }
       };
     }
@@ -340,6 +443,8 @@ try {
     if(generation!==viewGeneration)return;
     await compileDestination();
     if(generation!==viewGeneration)return;
+    if(localShadowWindow42.enabled)await localShadowWindow42.prepare({yieldToInput,isCurrent:()=>generation===viewGeneration});
+    if(generation!==viewGeneration)return;
     lastPreparation={...prepared,totalMs:performance.now()-start,generation,view:selectedView};
     preparing=false;frames=[];last=performance.now();$("#loading").classList.add("done");
     setTimeout(()=>{if(generation===viewGeneration)$("#loading").hidden=true;},900);
@@ -350,6 +455,7 @@ try {
     // A hidden world has no visible pixels to update. Keep all resident detail
     // and resume the same scene; do not compete with another visible world tab.
     if(document.visibilityState!=="visible"||renderReviewHold){last=now;requestAnimationFrame(frame);return;}
+    rafCPU42?.begin();
     const realDt=visualDelta((now-last)/1000),dt=Math.min(realDt,.05);last=now;
     try{
       // Destination preparation owns streaming while the overlay is visible;
@@ -360,14 +466,25 @@ try {
         if(structures.lodgeStream.needs(camera.position,camera)){prepareDestination().catch(fail);requestAnimationFrame(frame);return;}
         controls.update(realDt);
         if(structures.lodgeStream.needs(camera.position,camera)){prepareDestination().catch(fail);requestAnimationFrame(frame);return;}
-        terrain.update(camera,dt);structures.update(camera,dt);ecology.update(camera,realDt);water.update(camera,realDt);pasture.update(camera,dt);doors.update(camera,dt);settlements.update(camera,dt,{elevation:environment.elevation,sun:environment.sun,color:environment.csm.lights[0].color,intensity:environment.csm.lights[0].intensity,visibility:1});syncShadowState();
+        terrain.update(camera,dt);structures.update(camera,dt);ecology.update(camera,realDt);water.update(camera,realDt);pasture.update(camera,dt);doors.update(camera,dt);settlements.update(camera,dt,{elevation:environment.elevation,sun:environment.sun,color:environment.csm.lights[0].color,intensity:environment.csm.lights[0].intensity,visibility:1});syncRoomLighting42();
+        // The first continuous approach/exit prepares the changed bounded light
+        // layout through the same destination compiler as a location selection.
+        // Lateral porch motion and turning retain the group and do not re-enter.
+        if(Boolean(settlements.groupRooms42)!==preparedGuestGroup42){
+          // Grass/water already consumed this visible interval. Keep cloud/sky
+          // phase aligned before pausing, under the same shadow-depth owner.
+          syncShadowState();shadowDepth.runPreparedMain(()=>environment.update(realDt),()=>{});
+          prepareDestination().catch(fail);requestAnimationFrame(frame);return;
+        }
+        syncShadowState();
+        ecology.gpuBrushes?.prepareNeedleShapes?.(renderer,{budgetMs:2,maxForms:1});
         shadowDepth.runPreparedMain(()=>environment.update(realDt),()=>{
         // Measure only render submission, after CPU world/streaming updates.
         gpuPassProfile?.beginFrame();
         if(gpuExtension){collectGPU();if(gpuQueries.length<8){gpuQuery=gpuContext.createQuery();gpuContext.beginQuery(gpuExtension.TIME_ELAPSED_EXT,gpuQuery);}}
         // The caster tracker just propagated every world transform. Reuse that
         // exact state for this main draw only; reflection keeps its own updates.
-        withPreparedWorldMatrices(scene,()=>renderWorld(scene,camera),preparedMatrices);
+        withPreparedWorldMatrices(scene,()=>renderWorld(scene,camera,true),preparedMatrices);
         });
         water.renderReflection(renderer,scene,camera,{now:performance.now()/1000,lightingRevision:environment.minutes});
         gpuFrameFailed=false;
@@ -390,6 +507,7 @@ try {
       }
       requestAnimationFrame(frame);
     }catch(e){running=false;fail(e);}
+    finally{rafCPU42?.end();}
   }
   const firstFrameGeneration=viewGeneration;
   const preparedPrograms=new Set(renderer.info.programs);
@@ -401,8 +519,8 @@ try {
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     ecology.persistCanopyCache?.().catch(error=>console.warn("[spruce-canopy] background cache write:",error));
   }));
-  window.kalajunV2={getSnapshot:()=>({version:"route-continuity-38-candidate",loadTimings:structuredClone(loadTimings),assetTransfers:params.get("profile")==="1"?performance.getEntriesByType("resource").filter(r=>r.name.startsWith(location.origin)&&/\/(assets|data)\//.test(r.name)).map(r=>({path:new URL(r.name).pathname,transferBytes:r.transferSize,encodedBytes:r.encodedBodySize,decodedBytes:r.decodedBodySize,durationMs:r.duration})):undefined,depthMode:reversedDepth?"reversed-float32":"logarithmic",frameTarget:worldFrame?.stats??null,treePhotoPrepass:{...treePhotoPrepass.stats},ready:running,visibility:document.visibilityState,viewport:{width:canvas.width,height:canvas.height,pixelRatio:renderer.getPixelRatio()},uptimeMs:performance.now()-startup,position:camera.position.toArray(),view:selectedView,yaw:controls.yaw,pitch:controls.pitch,time:environment.minutes,initialPreparation,lastPreparation,lastShaderPreparation,preparing,gpuPasses:gpuPassProfile?.snapshot()??null,gpu:{scope:"render-world-and-reflection",available:Boolean(gpuExtension),samples:gpuSamples.length,meanMs:gpuSamples.reduce((n,x)=>n+x,0)/Math.max(1,gpuSamples.length),maxMs:Math.max(0,...gpuSamples)},cpu:Object.fromEntries(Object.entries(cpuSamples).map(([name,a])=>[name,{samples:a.length,meanMs:a.reduce((n,x)=>n+x,0)/Math.max(1,a.length),maxMs:Math.max(0,...a)}])),sceneMatrixCache:sceneMatrixCache?{...sceneMatrixCache.stats}:null,cloudCache:{...environment.cloudCache.stats},shadows:environment.shadowScheduler.stats,nearShadowDetail:environment.nearShadowDetail,shadowReceivers:environment.shadowReceivers.stats,shadowCasters:{...environment.shadowCasters.stats,counts:environment.shadowCasters.result.counts},sunElevation:environment.elevation,lighting:{profile:environment.lightingProfile,sunIntensity:environment.csm.lights[0].intensity,exposure:renderer.toneMappingExposure,bounce:environment.bounce.intensity,environment:scene.environmentIntensity,cloudCoverage:environment.clouds.uCloudCoverage.value,cloudDensity:environment.clouds.uCloudDensity.value},frames:[...frames],render:{...renderer.info.render},terrain:{...terrain.stats},structures:{...structures.stats},ecology:{...ecology.stats},paths:{...paths.stats},water:{...water.stats},pasture:{...pasture.stats},doors:{...doors.stats},collision:{...collision.stats},movement:controls.mode,seating:{...seating.stats},controlTiming:{...controls.stats},errors:[...errors],entities:world.entities.length,roomLight:{...settlements.indirect.field.solar.stats},roomSkyBounce:{...settlements.indirect.field.stats},roomContact:{...settlements.indirect.contact.stats},rooms:settlements.viewpoints.length}),world};
-  if(import.meta.env.DEV||params.get("profile")==="1"||params.get("debug")==="1") window.kalajunV2.debug={setReviewHold:value=>{const previous=renderReviewHold;renderReviewHold=Boolean(value);return previous;},gpuPassProfile,shadowStaticProfile39,renderer,worldFrame,treePhotoPrepass,sceneMatrixCache,renderFrozenWorld:()=>renderWorld(scene,camera),scene,camera,environment,terrain,structures,ecology,controls,seating,settlements,water,pasture,doors,collision,paths,places};
-  addEventListener("pagehide",()=>{running=false;shadowStaticProfile39.dispose();gpuPassProfile?.dispose();treePhotoPrepass.dispose();sceneMatrixCache?.dispose();gpuQueries.forEach(q=>gpuContext.deleteQuery(q));seatingUI.dispose();controls.dispose();terrain.dispose();collision.dispose();doors.dispose();structures.dispose();ecology.dispose();paths.dispose();water.dispose();pasture.dispose();settlements.dispose();shadowDepth.dispose();environment.dispose();worldFrame?.dispose();shadowIndexRenderer?.dispose();renderer.dispose();},{once:true});
+  window.kalajunV2={getSnapshot:()=>({version:"route-continuity-38-candidate",loadTimings:structuredClone(loadTimings),assetTransfers:params.get("profile")==="1"?performance.getEntriesByType("resource").filter(r=>r.name.startsWith(location.origin)&&/\/(assets|data)\//.test(r.name)).map(r=>({path:new URL(r.name).pathname,transferBytes:r.transferSize,encodedBytes:r.encodedBodySize,decodedBytes:r.decodedBodySize,durationMs:r.duration})):undefined,depthMode:reversedDepth?"reversed-float32":"logarithmic",frameTarget:worldFrame?.stats??null,treePhotoPrepass:{...treePhotoPrepass.stats},ready:running,visibility:document.visibilityState,viewport:{width:canvas.width,height:canvas.height,pixelRatio:renderer.getPixelRatio()},uptimeMs:performance.now()-startup,position:camera.position.toArray(),view:selectedView,yaw:controls.yaw,pitch:controls.pitch,time:environment.minutes,initialPreparation,lastPreparation,lastShaderPreparation,preparing,gpuPasses:gpuPassProfile?.snapshot()??null,gpu:{scope:"render-world-and-reflection",available:Boolean(gpuExtension),samples:gpuSamples.length,meanMs:gpuSamples.reduce((n,x)=>n+x,0)/Math.max(1,gpuSamples.length),maxMs:Math.max(0,...gpuSamples)},rafCPU42:rafCPU42?.snapshot()??null,cpu:Object.fromEntries(Object.entries(cpuSamples).map(([name,a])=>[name,{scope:"per-call",samples:a.length,meanMs:a.reduce((n,x)=>n+x,0)/Math.max(1,a.length),maxMs:Math.max(0,...a)}])),sceneMatrixCache:sceneMatrixCache?{...sceneMatrixCache.stats}:null,cloudCache:{...environment.cloudCache.stats},shadows:environment.shadowScheduler.stats,nearShadowDetail:environment.nearShadowDetail,localShadowWindow42:structuredClone(localShadowWindow42.stats),grassShadowCoverage41:{...grassShadowCoverage41.stats},shadowAtlas40:{...environment.shadowAtlas40.stats},shadowReceivers:environment.shadowReceivers.stats,shadowCasters:{...environment.shadowCasters.stats,counts:environment.shadowCasters.result.counts},sunElevation:environment.elevation,lighting:{profile:environment.lightingProfile,sunIntensity:environment.csm.lights[0].intensity,exposure:renderer.toneMappingExposure,bounce:environment.bounce.intensity,environment:scene.environmentIntensity,cloudCoverage:environment.clouds.uCloudCoverage.value,cloudDensity:environment.clouds.uCloudDensity.value},frames:[...frames],render:{...renderer.info.render},terrain:{...terrain.stats},structures:{...structures.stats},ecology:{...ecology.stats},paths:{...paths.stats},water:{...water.stats},pasture:{...pasture.stats},rootMatTrial:structuredClone(rootMat.stats),reachDesign69:reachDesign69Owner?structuredClone(reachDesign69Owner.stats):null,reachDesign73:reachDesign73Owner?structuredClone(reachDesign73Owner.stats):null,doors:{...doors.stats},collision:{...collision.stats},movement:controls.mode,seating:{...seating.stats},controlTiming:{...controls.stats},errors:[...errors],entities:world.entities.length,roomLight:{...settlements.indirect.field.solar.stats},roomSkyBounce:{...settlements.indirect.field.stats},roomContact:{...settlements.indirect.contact.stats},guestRoomGroup42:{...settlements.guestGroup42.stats},roomShadowAtlas42:{...roomShadowAtlas42.stats},rooms:settlements.viewpoints.length}),world};
+  if(import.meta.env.DEV||params.get("profile")==="1"||params.get("debug")==="1") window.kalajunV2.debug={setReviewHold:value=>{const previous=renderReviewHold;renderReviewHold=Boolean(value);return previous;},localShadowWindow42,roomShadowAtlas42,gpuPassProfile,shadowStaticProfile39,grassShadowCoverage41,meadowViews,meadowRootWind,meadowCluster,meadowClusterWind,renderer,worldFrame,treePhotoPrepass,sceneMatrixCache,renderFrozenWorld:()=>renderWorld(scene,camera),scene,camera,environment,terrain,structures,ecology,controls,seating,settlements,water,pasture,doors,collision,paths,places,rootMat,reachDesign69Owner,reachDesign73Owner};
+  addEventListener("pagehide",()=>{running=false;reachDesign73Owner?.dispose();reachDesign73Assets?.dispose();reachDesign69Owner?.dispose();reachDesign69Assets?.dispose();localShadowWindow42.dispose();roomShadowAtlas42.dispose();meadowClusterWind.dispose();meadowCluster.dispose();meadowRootWind.dispose();meadowViews.dispose();grassShadowCoverage41.dispose();shadowStaticProfile39.dispose();gpuPassProfile?.dispose();treePhotoPrepass.dispose();structureMatrix41?.dispose();sceneMatrixCache?.dispose();gpuQueries.forEach(q=>gpuContext.deleteQuery(q));seatingUI.dispose();controls.dispose();terrain.dispose();collision.dispose();doors.dispose();structures.dispose();ecology.dispose();paths.dispose();water.dispose();pasture.dispose();rootMat.dispose();settlements.dispose();shadowDepth.dispose();environment.dispose();worldFrame?.dispose();shadowIndexRenderer?.dispose();renderer.dispose();},{once:true});
 }catch(e){fail(e);}
 function smooth(a,b,x){const t=Math.min(1,Math.max(0,(x-a)/(b-a)));return t*t*(3-2*t);}

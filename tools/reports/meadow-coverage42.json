@@ -1,0 +1,389 @@
+{
+  "scope": "CPU orthographic binary visible coverage against real 8m ground depth. Original roots/full middle leaves, zero wind. Stem occurrence conservatively bracketed none/all instead of pretending CPU hash equals GPU. Finite patch edges remain; not browser radiance acceptance.",
+  "rows": [
+    {
+      "patch": "meadow",
+      "elevation": 20,
+      "azimuth": 0,
+      "resolution": 128,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.09741622638778316,
+      "coverageUpper": 0.10139682999203879,
+      "poisson": 0.15462986845450355,
+      "predictionOutsideInterval": 0.05323303846246476
+    },
+    {
+      "patch": "meadow",
+      "elevation": 20,
+      "azimuth": 0,
+      "resolution": 256,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.09330390258906117,
+      "coverageUpper": 0.0992202058945921,
+      "poisson": 0.15462216062223355,
+      "predictionOutsideInterval": 0.05540195472764145
+    },
+    {
+      "patch": "meadow",
+      "elevation": 20,
+      "azimuth": 90,
+      "resolution": 128,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.08829261954261955,
+      "coverageUpper": 0.0971933471933472,
+      "poisson": 0.13358877564392446,
+      "predictionOutsideInterval": 0.036395428450577264
+    },
+    {
+      "patch": "meadow",
+      "elevation": 20,
+      "azimuth": 90,
+      "resolution": 256,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.09131804599194492,
+      "coverageUpper": 0.09735936078991815,
+      "poisson": 0.13357263419412446,
+      "predictionOutsideInterval": 0.03621327340420631
+    },
+    {
+      "patch": "meadow",
+      "elevation": 20,
+      "azimuth": 180,
+      "resolution": 128,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.10547442729600665,
+      "coverageUpper": 0.11101114263962904,
+      "poisson": 0.15512133066451572,
+      "predictionOutsideInterval": 0.044110188024886685
+    },
+    {
+      "patch": "meadow",
+      "elevation": 20,
+      "azimuth": 180,
+      "resolution": 256,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.10296204020900378,
+      "coverageUpper": 0.11034983909477837,
+      "poisson": 0.15511640263712478,
+      "predictionOutsideInterval": 0.04476656354234641
+    },
+    {
+      "patch": "meadow",
+      "elevation": 45,
+      "azimuth": 0,
+      "resolution": 128,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.07239375938377178,
+      "coverageUpper": 0.07415627651935505,
+      "poisson": 0.10959174213382916,
+      "predictionOutsideInterval": 0.03543546561447411
+    },
+    {
+      "patch": "meadow",
+      "elevation": 45,
+      "azimuth": 0,
+      "resolution": 256,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.07013202663323946,
+      "coverageUpper": 0.0725739495661517,
+      "poisson": 0.10933764004179003,
+      "predictionOutsideInterval": 0.036763690475638336
+    },
+    {
+      "patch": "meadow",
+      "elevation": 45,
+      "azimuth": 90,
+      "resolution": 128,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.06739674593241551,
+      "coverageUpper": 0.07121401752190237,
+      "poisson": 0.10349177663050879,
+      "predictionOutsideInterval": 0.03227775910860642
+    },
+    {
+      "patch": "meadow",
+      "elevation": 45,
+      "azimuth": 90,
+      "resolution": 256,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.06897630895377586,
+      "coverageUpper": 0.07135480236597502,
+      "poisson": 0.10351323260448697,
+      "predictionOutsideInterval": 0.03215843023851195
+    },
+    {
+      "patch": "meadow",
+      "elevation": 45,
+      "azimuth": 180,
+      "resolution": 128,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.0731274180249889,
+      "coverageUpper": 0.07503012621297647,
+      "poisson": 0.10992072950938225,
+      "predictionOutsideInterval": 0.03489060329640578
+    },
+    {
+      "patch": "meadow",
+      "elevation": 45,
+      "azimuth": 180,
+      "resolution": 256,
+      "roots": 54,
+      "normal": [
+        -0.017918162120897457,
+        0.9979771899355432,
+        0.0609956378322729
+      ],
+      "coverageLower": 0.07184422915312287,
+      "coverageUpper": 0.07453977515975074,
+      "poisson": 0.10992237291979434,
+      "predictionOutsideInterval": 0.0353825977600436
+    },
+    {
+      "patch": "west",
+      "elevation": 20,
+      "azimuth": 0,
+      "resolution": 128,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.069412129672716,
+      "coverageUpper": 0.07910656119125174,
+      "poisson": 0.11602255744276868,
+      "predictionOutsideInterval": 0.03691599625151694
+    },
+    {
+      "patch": "west",
+      "elevation": 20,
+      "azimuth": 0,
+      "resolution": 256,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.0725545322346098,
+      "coverageUpper": 0.08062045564711585,
+      "poisson": 0.11602467116586657,
+      "predictionOutsideInterval": 0.03540421551875071
+    },
+    {
+      "patch": "west",
+      "elevation": 20,
+      "azimuth": 90,
+      "resolution": 128,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.10163141993957704,
+      "coverageUpper": 0.11021148036253776,
+      "poisson": 0.1745960577364869,
+      "predictionOutsideInterval": 0.06438457737394913
+    },
+    {
+      "patch": "west",
+      "elevation": 20,
+      "azimuth": 90,
+      "resolution": 256,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.10132504301107724,
+      "coverageUpper": 0.11686939724125442,
+      "poisson": 0.17444785105452243,
+      "predictionOutsideInterval": 0.05757845381326801
+    },
+    {
+      "patch": "west",
+      "elevation": 20,
+      "azimuth": 180,
+      "resolution": 128,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.10542810580418704,
+      "coverageUpper": 0.10580418703773348,
+      "poisson": 0.381619551912341,
+      "predictionOutsideInterval": 0.2758153648746075
+    },
+    {
+      "patch": "west",
+      "elevation": 20,
+      "azimuth": 180,
+      "resolution": 256,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.10231478577253622,
+      "coverageUpper": 0.10256571105953202,
+      "poisson": 0.3818618938843614,
+      "predictionOutsideInterval": 0.2792961828248294
+    },
+    {
+      "patch": "west",
+      "elevation": 45,
+      "azimuth": 0,
+      "resolution": 128,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.06653397782200739,
+      "coverageUpper": 0.07214955928348024,
+      "poisson": 0.11452042286534603,
+      "predictionOutsideInterval": 0.042370863581865786
+    },
+    {
+      "patch": "west",
+      "elevation": 45,
+      "azimuth": 0,
+      "resolution": 256,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.0683449403069926,
+      "coverageUpper": 0.07321276293348493,
+      "poisson": 0.11448980913609086,
+      "predictionOutsideInterval": 0.04127704620260593
+    },
+    {
+      "patch": "west",
+      "elevation": 45,
+      "azimuth": 90,
+      "resolution": 128,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.08323510744401125,
+      "coverageUpper": 0.08767793997642578,
+      "poisson": 0.14378570397385249,
+      "predictionOutsideInterval": 0.0561077639974267
+    },
+    {
+      "patch": "west",
+      "elevation": 45,
+      "azimuth": 90,
+      "resolution": 256,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.08104308390022676,
+      "coverageUpper": 0.08975056689342403,
+      "poisson": 0.14383392540910978,
+      "predictionOutsideInterval": 0.05408335851568574
+    },
+    {
+      "patch": "west",
+      "elevation": 45,
+      "azimuth": 180,
+      "resolution": 128,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.2566718186501803,
+      "coverageUpper": 0.27284904688304995,
+      "poisson": 0.39956935910805436,
+      "predictionOutsideInterval": 0.1267203122250044
+    },
+    {
+      "patch": "west",
+      "elevation": 45,
+      "azimuth": 180,
+      "resolution": 256,
+      "roots": 80,
+      "normal": [
+        0.5110041669718884,
+        0.8308977860372004,
+        0.22018994185894386
+      ],
+      "coverageLower": 0.2668469860896445,
+      "coverageUpper": 0.28075734157650695,
+      "poisson": 0.39956935910805436,
+      "predictionOutsideInterval": 0.11881201753154741
+    }
+  ]
+}

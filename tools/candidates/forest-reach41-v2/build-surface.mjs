@@ -1,0 +1,4 @@
+import fs from 'node:fs/promises';import{actualForestWorld}from'../../benchmark_forest_exclusion_v38.mjs';import{REACH_SURFACE41_PATCHES}from'../../../web/src/v2/forest-reach-surface41.js';
+globalThis.location={search:'?forestReach39=1&forestReachForm41=1'};const w=actualForestWorld(undefined,'rgba',{forestReach39:true}),r=w.hydrology.forestReach39;
+const patches=REACH_SURFACE41_PATCHES.map(p=>{const d=r.origin+p.offset,s=w.hydrology.segments.find(s=>s.lineId===r.lineId&&s.a.distance<=d&&s.b.distance>=d),q=r.waterSectionAt(s,(d-s.a.distance)/(s.b.distance-s.a.distance)),half=p.side<0?q.left:q.right;return{offset:p.offset,side:p.side,along:p.along,across:p.across,kind:p.kind,x:q.x-q.fz*p.side*half*.85,z:q.z+q.fx*p.side*half*.85,fx:q.fx,fz:q.fz};});
+await fs.writeFile(new URL('../../../web/src/v2/generated/forest-reach-surface41.json',import.meta.url),JSON.stringify({formRevision:r.stats.form41Revision,patches}));console.log(patches);

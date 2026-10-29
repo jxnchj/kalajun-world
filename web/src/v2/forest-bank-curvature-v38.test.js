@@ -2,7 +2,7 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {actualForestWorld} from '../../../tools/benchmark_forest_exclusion_v38.mjs';
 import {riverSectionAt} from './river-section.js';
 import {createForestBankCurvature38,forestBankCurvatureHeight38} from './forest-bank-curvature-v38.js';
-const base=actualForestWorld(undefined,'rgba',{forestBankCurvature38:false}),candidate=actualForestWorld(undefined,'rgba'),h=base.hydrology,anchor=h.segments.find(s=>s.id===h.viewpoints.find(v=>v.id==='river-forest').segmentId);
+const base=actualForestWorld(undefined,'rgba',{forestReach39:false,forestBankCurvature38:false}),candidate=actualForestWorld(undefined,'rgba',{forestReach39:false}),h=base.hydrology,anchor=h.segments.find(s=>s.id===h.viewpoints.find(v=>v.id==='river-forest').segmentId);
 test('actual candidate leaves all source nodes water parameters and unrelated terrain exact',()=>{
  assert.deepEqual(candidate.hydrology.lines,base.hydrology.lines);assert.deepEqual(candidate.hydrology.segments,base.hydrology.segments);
  assert.equal(base.hydrology.stats.forestBankCurvature38,false);assert.equal(candidate.hydrology.stats.forestBankCurvature38,true);
@@ -45,5 +45,5 @@ test('real candidate seats complete original leaf footprints without compacting 
 });
 
 test('explicit URL zero selects original bank; default adopts only curvature geometry and leaf seating',()=>{
- const previous=globalThis.location;try{globalThis.location={search:'?forestBankCurvature38=0'};const original=actualForestWorld(undefined,'rgba');assert.equal(original.hydrology.stats.forestBankCurvature38,false);assert.equal(original.forestShoulderSourceWorld,undefined);}finally{globalThis.location=previous;}
+ const previous=globalThis.location;try{globalThis.location={search:'?forestBankCurvature38=0'};const original=actualForestWorld(undefined,'rgba',{forestReach39:false});assert.equal(original.hydrology.stats.forestBankCurvature38,false);assert.equal(original.forestShoulderSourceWorld,undefined);}finally{globalThis.location=previous;}
 });

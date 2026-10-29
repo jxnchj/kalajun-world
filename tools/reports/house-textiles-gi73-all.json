@@ -1,0 +1,52 @@
+{
+  "derivedGeometry": {
+    "kind": "house-textiles62",
+    "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+    "geometrySHA256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+    "manifestSHA256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a",
+    "nodes": [
+      "pastoral_house_felt_mattress",
+      "pastoral_house_bed_quilt",
+      "pastoral_house_bed_foot",
+      "pastoral_house_chest_folded0",
+      "pastoral_house_chest_folded1",
+      "pastoral_house_chest_folded2",
+      "pastoral_house_chest_folded3",
+      "pastoral_house_chest_topcover",
+      "pastoral_house_bench_felt"
+    ]
+  },
+  "protectedSources": {
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/assets/src/v2/pastoral/house_a-lived.blend": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/web/public/assets/v2/house_a_lived.glb": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/web/public/assets/v2/house-textiles62/geometry.glb": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854",
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/web/public/assets/v2/house-textiles62/manifest.json": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a"
+  },
+  "results": [
+    {
+      "key": "house_a",
+      "contactPayloadEqual": false,
+      "seconds": 105.00155720801558
+    },
+    {
+      "key": "house_a-living-0",
+      "contactPayloadEqual": false,
+      "seconds": 214.5061329579912
+    },
+    {
+      "key": "house_a-living-1",
+      "contactPayloadEqual": false,
+      "seconds": 320.0611986669828
+    },
+    {
+      "key": "house_a-living-2",
+      "contactPayloadEqual": false,
+      "seconds": 425.3978184579755
+    },
+    {
+      "key": "house_a-entry-tea-34",
+      "contactPayloadEqual": false,
+      "seconds": 527.5968832920189
+    }
+  ]
+}

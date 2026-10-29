@@ -36,3 +36,102 @@ test('explicit preparation yields message turns while worker queue head is pendi
   assert.equal(result.ready,true);assert.deepEqual(finished,[a]);assert.ok(result.iterations<100,'must wait rather than boosted continuation spin');assert.equal(t._activePreparation,0);c.dispose();
  }}finally{if(previous===undefined)delete globalThis.scheduler;else globalThis.scheduler=previous;}
 });
+
+test("render-only shadow and needle experiments keep the identical terrain worker source",()=>{
+ for(const key of ["nearShadowDetail","closeShadowOverlap","closeShadowFootprint","closeSolarShadow","closeSolarReuse","needleShape40","nearShadowAtlas40","needleBranchDispatch40","roomPastoralDoorAngles41","guestDoors41","pastureLife41","ecologyCollision41","needlePacketWrites41","meadowExact41","meadowVisible41","meadowRootWind41","meadowCluster42","meadowClusterPool42","grassShadowCoverage41","shadowCasterPhases","structureMatrixArithmetic41"]){
+  assert.equal(terrainRowWorkerPolicy("?"+key+"=1").enabled,true);
+  assert.equal(terrainRowWorkerPolicy("?"+key+"=1&forestReach39=1").enabled,false);
+ }
+});
+
+test('window4 consumes only completed ordered worker payloads, never a fifth tile',()=>{
+ const jobs=Array.from({length:5},job),{t,camera,finished}=scheduler(jobs.slice());t.workerReadyWindow42=true;
+ for(const j of jobs)j.workerPayload=payload(j);
+ t.update(camera,0);assert.deepEqual(finished,jobs.slice(0,4));assert.equal(t.queue[0],jobs[4]);
+ assert.equal(t.stats.workerReadyWindow42.readyPrefix,4);assert.equal(t.stats.workerReadyWindow42.finished,4);assert.equal(t.stats.workerReadyWindow42.extraFinished,2);
+ t.update(camera,0);assert.deepEqual(finished,jobs);assert.equal(t.stats.workerReadyWindow42.finished,1);
+});
+test('window4 preserves CPU/cache two-finish ceiling and never bypasses an unready head',()=>{
+ for(const mode of ['cpu','cached','pending','partial']){
+  const jobs=Array.from({length:4},job),{t,camera,finished}=scheduler(jobs.slice());t.workerReadyWindow42=true;
+  jobs[0].workerPayload=payload(jobs[0]);jobs[1].workerPayload=payload(jobs[1]);jobs[3].workerPayload=payload(jobs[3]);
+  if(mode==='cached'){jobs[2].cached={};jobs[2].row=33;}if(mode==='pending')jobs[2].workerPending=true;if(mode==='partial')jobs[2].workerPayload={...payload(jobs[2]),row:32};
+  t.update(camera,0);assert.deepEqual(finished,jobs.slice(0,2),mode);assert.equal(t.queue[0],jobs[2]);assert.equal(t.stats.workerReadyWindow42.readyPrefix,2);
+ }
+});
+test('window4 uses real client capacity4 and holds reversed replies until original queue head',()=>{
+ const jobs=Array.from({length:5},job),{c,w}=fixture({limit:4}),{t,camera,finished}=scheduler(jobs.slice());t.rowWorker=c;t.workerReadyWindow42=true;
+ try{w.send({type:'ready'});t.update(camera,0);assert.equal(c.pending.size,4);
+ for(let i=4;i>=2;i--)w.send({type:'result',id:i,payload:payload(jobs[i-1]),ms:1});t.update(camera,0);assert.equal(finished.length,0);
+ w.send({type:'result',id:1,payload:payload(jobs[0]),ms:1});t.update(camera,0);assert.deepEqual(finished,jobs.slice(0,4));assert.equal(t.queue[0],jobs[4]);
+ }finally{c.dispose();}
+});
+test('window4 keeps native four-sibling activation and original three-millisecond budget',()=>{
+ const jobs=Array.from({length:4},job),{t,camera}=scheduler(jobs.slice()),parent={mesh:{visible:true},wantsSplit:true,children:jobs.map(j=>j.node)};
+ t.workerReadyWindow42=true;t._canMorph=()=>false;t._plan=()=>{};
+ const visibility=[];t._finish=j=>{j.node.mesh={visible:false};t._activate(parent);visibility.push(parent.mesh.visible);};
+ for(const j of jobs)j.workerPayload=payload(j);t.update(camera,0);
+ assert.deepEqual(visibility,[true,true,true,false]);assert.ok(parent.children.every(c=>c.mesh.visible));
+ const slow=scheduler(Array.from({length:4},()=>{const j=job();j.workerPayload=payload(j);return j;}));slow.t.workerReadyWindow42=true;
+ slow.t._finish=j=>{slow.finished.push(j);const until=performance.now()+5;while(performance.now()<until){};};
+ slow.t.update(slow.camera,0);assert.equal(slow.finished.length,1,'3ms budget still stops work even with four completed payloads');
+});
+
+// Both caches validate source/world bindings and only replace vegetation root
+// generation. They never alter height, normal, water or terrain vertex inputs.
+test('exact vegetation root caches do not disable the unchanged terrain worker',()=>{
+ for(const key of ['meadowRootCache','forestRootCache'])for(const value of ['0','1']){
+  const search='?'+key+'='+value;
+  assert.equal(terrainRowWorkerPolicy(search).enabled,true);
+  assert.equal(terrainRowWorkerPolicy(search+'&terrainWorker38=0').enabled,false);
+  assert.equal(terrainRowWorkerPolicy(search+'&forestReach39=1').compatible,false);
+  assert.equal(terrainRowWorkerPolicy(search+'&futureSurfaceVariant=1').compatible,false);
+ }
+});
+
+test('bounded guest room lighting does not change worker terrain inputs',()=>{
+ for(const value of ['0','1']){const search='?guestRoomGroup42='+value;assert.equal(terrainRowWorkerPolicy(search).enabled,true);assert.equal(terrainRowWorkerPolicy(search+'&terrainWorker38=0').enabled,false);assert.equal(terrainRowWorkerPolicy(search+'&futureSurfaceVariant=1').compatible,false);}
+});
+
+test('exact wind-only flag preserves worker compatibility but never permits unknown surface variants',()=>{assert.equal(terrainRowWorkerPolicy('?windFieldExact42=1').enabled,true);assert.equal(terrainRowWorkerPolicy('?windFieldExact42=0').enabled,true);assert.equal(terrainRowWorkerPolicy('?windFieldExact42=1&unknownSurface42=1').compatible,false);});
+test('aerial visibility policy changes no terrain source and still rejects unknown spatial variants',()=>{assert.equal(terrainRowWorkerPolicy('?meadowAerialContinuity42=1').enabled,true);assert.equal(terrainRowWorkerPolicy('?meadowAerialContinuity42=0').enabled,true);assert.equal(terrainRowWorkerPolicy('?meadowAerialContinuity42=1&unknownSurface42=1').compatible,false);});
+test('single shore asset review preserves terrain worker and rejects unrelated terrain parameters',()=>{for(const value of ['0','1']){assert.equal(terrainRowWorkerPolicy('?shoreAsset42='+value).enabled,true);assert.equal(terrainRowWorkerPolicy('?shoreAsset42='+value+'&unknownTerrain=1').compatible,false);}});
+test('exact twig indexing preserves terrain Worker for both AB modes without permitting surface variants',()=>{for(const value of ['0','1']){const search='?view=river-forest&time=870&debug=1&profile=1&twigIndexed='+value;assert.deepEqual(terrainRowWorkerPolicy(search),{requested:true,compatible:true,enabled:true});assert.deepEqual(terrainRowWorkerPolicy(search+'&terrainWorker38=0'),{requested:false,compatible:true,enabled:false});assert.deepEqual(terrainRowWorkerPolicy(search+'&futureSurfaceVariant=1'),{requested:true,compatible:false,enabled:false});}});
+
+test('local shadow and tree-view render-only switches preserve terrain Worker without accepting unknown variants',()=>{for(const key of ['reachEnvelopeLazy46','localShadowWindow42','treeViewCull','treeViewPassShare42'])for(const value of ['0','1']){const search='?view=river-forest&'+key+'='+value;assert.deepEqual(terrainRowWorkerPolicy(search),{requested:true,compatible:true,enabled:true});assert.deepEqual(terrainRowWorkerPolicy(search+'&terrainWorker38=0'),{requested:false,compatible:true,enabled:false});assert.deepEqual(terrainRowWorkerPolicy(search+'&futureSurfaceVariant=1'),{requested:true,compatible:false,enabled:false});}});
+
+test('high-photo native partition is a strict binary render-only Worker parameter',()=>{
+ for(const value of ['0','1']){const search='?view=river-forest&treeHighPhoto48='+value;assert.deepEqual(terrainRowWorkerPolicy(search),{requested:true,compatible:true,enabled:true});assert.deepEqual(terrainRowWorkerPolicy(search+'&terrainWorker38=0'),{requested:false,compatible:true,enabled:false});assert.deepEqual(terrainRowWorkerPolicy(search+'&unknownSurface=1'),{requested:true,compatible:false,enabled:false});}
+ for(const value of ['', 'true', '2', '01'])assert.equal(terrainRowWorkerPolicy('?treeHighPhoto48='+value).compatible,false);
+ assert.equal(terrainRowWorkerPolicy('?treeHighPhoto48=1&treeHighPhoto48=invalid').compatible,false);
+});
+
+test('legacy room lazy accepts only explicit binary values without changing terrain policy',()=>{
+ for(const value of ['0','1']){const search='?view=river-forest&legacyRoomLazy='+value;assert.deepEqual(terrainRowWorkerPolicy(search),{requested:true,compatible:true,enabled:true});assert.deepEqual(terrainRowWorkerPolicy(search+'&terrainWorker38=0'),{requested:false,compatible:true,enabled:false});assert.deepEqual(terrainRowWorkerPolicy(search+'&futureSurfaceVariant=1'),{requested:true,compatible:false,enabled:false});}
+ for(const value of ['', 'true', '2', '01'])assert.deepEqual(terrainRowWorkerPolicy('?legacyRoomLazy='+value),{requested:true,compatible:false,enabled:false});
+ assert.deepEqual(terrainRowWorkerPolicy('?legacyRoomLazy=1&legacyRoomLazy=invalid'),{requested:true,compatible:false,enabled:false});
+});
+
+
+test('furniture material review keeps the terrain Worker while real or malformed variants remain rejected',()=>{
+ for(const value of ['0','1']){
+  const search='?view=pastoral-house_a-entry&time=870&debug=1&houseFurniture58='+value;
+  assert.deepEqual(terrainRowWorkerPolicy(search),{requested:true,compatible:true,enabled:true});
+  assert.equal(terrainRowWorkerPolicy(search+'&terrainWorker38=0').enabled,false);
+  assert.equal(terrainRowWorkerPolicy(search+'&forestReach39=1').compatible,false);
+  assert.equal(terrainRowWorkerPolicy(search+'&futureSurfaceVariant=1').compatible,false);
+ }
+ for(const value of ['', 'true', '2', '01'])assert.equal(terrainRowWorkerPolicy('?houseFurniture58='+value).compatible,false);
+ assert.equal(terrainRowWorkerPolicy('?houseFurniture58=1&houseFurniture58=invalid').compatible,false);
+});
+
+
+
+
+test('interior textile review leaves terrain input unchanged and still rejects unknown authored surfaces',()=>{
+ for(const value of ['0','1']){
+  assert.equal(terrainRowWorkerPolicy('?houseTextiles62='+value).enabled,true);
+  assert.equal(terrainRowWorkerPolicy('?houseTextiles62='+value+'&reachBankDesign50=root-pool').compatible,false);
+ }
+ for(const value of ['bad','','true','2'])assert.equal(terrainRowWorkerPolicy('?houseTextiles62='+value).compatible,false);
+});

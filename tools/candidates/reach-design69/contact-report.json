@@ -1,0 +1,19 @@
+{
+  "version": "reach-design69-validation-1",
+  "candidate": "connected-pointbars69-1",
+  "scope": "actual terrain-row-kernel Float32 positions/index, settled 0.15625m tiles; browser still required",
+  "sourcePreparedSHA256": "9e62e8d16168db6be5b669e5e79d395b74eac384b76685a4d76724796916d877",
+  "roots": 521,
+  "groups": 11069,
+  "triangles": 240232,
+  "actualTiles": 15,
+  "changedRootY": 145,
+  "changedGroups": 11069,
+  "maxY": 0.07167908979363347,
+  "maxFootGap": 0.015205867563963693,
+  "maxAnalyticTriangleDelta": 0.0143565755720374,
+  "stoneTransformsExactlyEqual": 5,
+  "fixedIDsAndXZ": true,
+  "failures": [],
+  "elapsedMs": 2184.277
+}

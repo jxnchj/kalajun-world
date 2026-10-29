@@ -1,0 +1,278 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "candidate": "reach-bed-facies64",
+  "status": "independent-default-OFF-awaiting-browser-art-review",
+  "files": [
+    {
+      "path": "web/src/v2/reach-bed-facies64.js",
+      "bytes": 8758,
+      "sha256": "25bfe0c54e565ed59bc9882d73ba408157fdd2b36dc80b43c427063d08aa71b2"
+    },
+    {
+      "path": "web/src/v2/reach-bed-facies64.test.js",
+      "bytes": 10341,
+      "sha256": "4cce408d8d2ba1b07f86f1aa81284f167dc80c1d10542e50f40923c524f6aaea"
+    }
+  ],
+  "baselines": [
+    {
+      "path": "web/src/v2/forest-reach-surface41.js",
+      "backup": "backups/reach-bed-facies64/forest-reach-surface41.js",
+      "sha256": "0d8f494b972ef4399a31618b2539cc546fe5dbc31241c42ef2470a2bc8ea1e89",
+      "unchanged": true
+    },
+    {
+      "path": "web/src/v2/reach-facies44.js",
+      "backup": "backups/reach-bed-facies64/reach-facies44.js",
+      "sha256": "c445c8fed9f82ce0b695b74559b75bf00c8e72b756e891b21ad4ae8faed96c97",
+      "unchanged": true
+    },
+    {
+      "path": "web/src/v2/terrain-material.js",
+      "backup": "backups/reach-bed-facies64/terrain-material.js",
+      "sha256": "e35e750b01ffc86c868568be629d03f1b8cca6b722e94fc554a1565594b21e49",
+      "unchanged": true
+    },
+    {
+      "path": "web/src/v2/generated/forest-reach-surface41.json",
+      "backup": "backups/reach-bed-facies64/forest-reach-surface41.json",
+      "sha256": "0cc610c054bcb114874140dcd58af9178c21386ea97569a68e6cb4db0b798510",
+      "unchanged": true
+    }
+  ],
+  "sourceBackup": "backups/reach-bed-facies64",
+  "scope": "Only the original 36 m representative reach. Material deposition associations follow the existing eight authored landforms; no surveyed sediment or hydraulic transport claim.",
+  "installation": {
+    "module": "./reach-bed-facies64.js",
+    "factory": "installReachBedFacies64(terrain.material, {enabled:false})",
+    "order": "After createTerrainMaterial has installed surface41 and adopted facies44; before initial shader compilation where possible.",
+    "methods": [
+      "setEnabled(boolean)",
+      "setDiagnostic(boolean)",
+      "dispose()"
+    ],
+    "off": "Dormant default leaves original hooks, cache key and shader text unchanged. First true installs the hook; later false is a same-program uniform A/B. dispose restores the previous hook/key if still owned.",
+    "diagnostic": "RGB = unchanged original substrate / fine mineral / fine organic share. Active only inside original reachBed and only while candidate is enabled.",
+    "mainWired": false,
+    "worker": "A new URL flag is currently unknown to the strict Worker policy. Root must either use the debug API for review or separately add only a strict binary render-only flag; this task did not modify that policy."
+  },
+  "material": {
+    "field": "Existing eight root/humus/sand/gravel anchors. Sand/humus footprints widen along their existing directions; coarse gravel core is protected. Physical clearance and actual shore distance restrict new material to water-side bed; a 6 cm horizontal blend returns to original at the water boundary.",
+    "weights": "One nonnegative, normalized vec3 controls original/fine mineral/fine organic colour, gradient and roughness.",
+    "grain": "Original 2.9 m coarse scan remains unchanged wherever exposed. New fine layers use existing filtered soil samples with their own normal and roughness. No scan downscaling, global blur, new light term, or colour-only tint over the old rock normal.",
+    "geometry": "No heights, root positions, scales, water width, independent stones, terrain vertex shader, or source contact data are changed."
+  },
+  "cost": {
+    "newTextureSamplers": 0,
+    "newTextureFetches": 0,
+    "newTextures": 0,
+    "newDrawCalls": 0,
+    "newGeometryBytes": 0,
+    "extraFieldEvaluation": "At most 8 oriented footprint evaluations per eligible water-bed fragment, plus scalar partition arithmetic; domain/disabled branches avoid this outside the reach. Not a measured GPU cost.",
+    "gpuMeasured": false
+  },
+  "verification": {
+    "tests": 5,
+    "pass": 5,
+    "fail": 0,
+    "skipped": 0,
+    "log": "tools/reports/reach-bed-facies64-tests.log",
+    "durationMs": 1333.999,
+    "checks": [
+      "Default OFF complete shader/hook/key equality; live uniform switch and exact dispose restoration.",
+      "Original facies44 exterior-bank recovery and source scan scale retained; vertex text, sampler count and texture-call count unchanged.",
+      "CPU and emitted GLSL scalar mixing formulas agree across 1452 combinations. This is host-side formula validation, not driver Float32/GLSL compilation.",
+      "Actual 923 section samples retain exact same-parameter water width/left/right/level and ground height.",
+      "521 prepared identities and source/prepared bytes unchanged. No plant geometry was rebuilt or simplified."
+    ],
+    "distribution": {
+      "scope": "CPU actual default49 71 stations x 13 transverse samples; meso fixed .5 for classification, not a rendered image or GPU measurement",
+      "samples": 923,
+      "dryUnchanged": 284,
+      "buckets": {
+        "inlet": {
+          "wet": 207,
+          "highFine": 49,
+          "coarse": 9,
+          "meanFine": 0.4193624482060567
+        },
+        "middle": {
+          "wet": 225,
+          "highFine": 14,
+          "coarse": 10,
+          "meanFine": 0.3057939220213731
+        },
+        "outlet": {
+          "wet": 207,
+          "highFine": 60,
+          "coarse": 7,
+          "meanFine": 0.43470686742095166
+        }
+      },
+      "selected": [
+        {
+          "kind": "root",
+          "offset": -13.2,
+          "sampledOffset": -13,
+          "acrossFraction": -0.75,
+          "clearance": -0.03550349626448224,
+          "shoreDistance": -0.09914306098650533,
+          "weights": [
+            0.43589167990809297,
+            0.32719530369844907,
+            0.236913016393458
+          ]
+        },
+        {
+          "kind": "humus",
+          "offset": -10.2,
+          "sampledOffset": -10,
+          "acrossFraction": 0.75,
+          "clearance": -0.04162893064903983,
+          "shoreDistance": -0.1985000284047157,
+          "weights": [
+            0.12450851316777534,
+            0.5603145515726238,
+            0.3151769352596009
+          ]
+        },
+        {
+          "kind": "sand",
+          "offset": -6.8,
+          "sampledOffset": -7,
+          "acrossFraction": 0.75,
+          "clearance": -0.0011704674188877107,
+          "shoreDistance": -0.052827183729105165,
+          "weights": [
+            0.0778791116910974,
+            0.9221208883089026,
+            0
+          ]
+        },
+        {
+          "kind": "gravel",
+          "offset": -3,
+          "sampledOffset": -3,
+          "acrossFraction": -0.95,
+          "clearance": -0.001265406764105137,
+          "shoreDistance": -0.049504918280091625,
+          "weights": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "root",
+          "offset": 1.5,
+          "sampledOffset": 1.5,
+          "acrossFraction": 0.75,
+          "clearance": -0.030009829023128987,
+          "shoreDistance": -0.04499999635710891,
+          "weights": [
+            0.6974084742311998,
+            0.17550308494590414,
+            0.12708844082289608
+          ]
+        },
+        {
+          "kind": "root",
+          "offset": 5.1,
+          "sampledOffset": 5,
+          "acrossFraction": -0.95,
+          "clearance": -0.005929716056925827,
+          "shoreDistance": -0.015566296779955358,
+          "weights": [
+            0.909152109652166,
+            0.052691776401743724,
+            0.03815611394609028
+          ]
+        },
+        {
+          "kind": "humus",
+          "offset": 8.4,
+          "sampledOffset": 8.5,
+          "acrossFraction": 0.75,
+          "clearance": -0.04721338487479443,
+          "shoreDistance": -0.19906900720504905,
+          "weights": [
+            0.13815470649968253,
+            0.5515809878402032,
+            0.31026430566011426
+          ]
+        },
+        {
+          "kind": "sand",
+          "offset": 13.2,
+          "sampledOffset": 13,
+          "acrossFraction": -0.95,
+          "clearance": -0.00021068903834020603,
+          "shoreDistance": -0.04053758699216903,
+          "weights": [
+            0.2774988139958945,
+            0.7225011860041055,
+            0
+          ]
+        }
+      ],
+      "sourceRootCount": 521,
+      "preparedRoots": 521,
+      "sourceSHA256": "4fa8f6446c0b681723f89ae9037d1959106abbbcbbdb63d57d183ffe3d4ae3d0",
+      "preparedSHA256": "9e62e8d16168db6be5b669e5e79d395b74eac384b76685a4d76724796916d877",
+      "elapsedMs": 177.33220899999992
+    }
+  },
+  "limitations": [
+    "No browser shader compilation, screenshots, GPU timing, or visual acceptance in this task.",
+    "CPU sample meso is fixed at .5; counts describe sampled classifications, not exact screen areas or current texture-dependent material coverage.",
+    "The new fine sediment appearance is a material design using existing sources, not a new scan or validated local sediment survey.",
+    "The known half-metre root-mat render-contact mismatch remains OFF and is not solved or hidden here.",
+    "Fine deposition may still need art adjustment in whole-bend/pool-cross; numerical coverage is not approval."
+  ],
+  "review": {
+    "viewport": {
+      "width": 1280,
+      "height": 800,
+      "pixelRatio": 1
+    },
+    "time": 870,
+    "views": [
+      {
+        "id": "whole-bend",
+        "position": [
+          -3618.613451214993,
+          2329.1348867802844,
+          4801.611106420018
+        ],
+        "yaw": 156.57083120044828,
+        "pitch": -19.615258339625512
+      },
+      {
+        "id": "pool-cross",
+        "position": [
+          -3615.042952009888,
+          2328.9339792115034,
+          4808.171080365821
+        ],
+        "yaw": -75.00270622544625,
+        "pitch": -35.49410676629518
+      },
+      {
+        "id": "root-mat",
+        "position": [
+          -3617.8525177268957,
+          2328.681789377489,
+          4804.100191430216
+        ],
+        "yaw": 89.2232800066879,
+        "pitch": -30.255864781470965
+      }
+    ],
+    "criteria": [
+      "Whole bend no longer reads as one continuous coarse gravel road, without substituting a continuous brown stripe.",
+      "Fine shelves and coarse exposure remain legible together at pool-cross, with original gravel scale and light response.",
+      "Original rooted top, exterior soil and all 521 contact-ready roots remain intact; OFF recovery matches the baseline."
+    ]
+  }
+}

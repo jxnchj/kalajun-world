@@ -98,3 +98,25 @@ test('independent recipe preparation validates data and honors transport failure
  await assert.rejects(loadGpuSpruceRecipeData('fixture',{signal:controller.signal,fetchImpl:()=>{throw Error('must not fetch');}}),e=>e.name==='AbortError');
  await assert.rejects(loadGpuSpruceRecipeData('fixture',{fetchImpl:async()=>({ok:true,arrayBuffer:async()=>new TextEncoder().encode('{}').buffer})}),/Unsupported/);
 });
+
+test('packet timing separates worker duration from realm-independent roundtrip without changing packet',async()=>{
+ let time=10;const worker=mock(),builder=createGpuPacketBuilder({workerFactory:()=>worker,maxInFlight:2,now:()=>time});
+ const a=builder.build([]);time=20;const b=builder.build([]),pa={id:'A'},pb={id:'B'};
+ time=100;worker.onmessage({data:{id:1,packet:pb,timing:{generateMs:12,packingMs:3}}});
+ time=120;worker.onmessage({data:{id:0,packet:pa,timing:{generateMs:20,packingMs:0}}});
+ assert.strictEqual(await a,pa);assert.strictEqual(await b,pb);assert.deepEqual(pa,{id:'A'});assert.deepEqual(pb,{id:'B'});
+ assert.deepEqual(builder.getTiming(pa),{source:'worker',generateMs:20,packingMs:0,roundTripMs:110,nonComputeWaitMs:90});
+ assert.deepEqual(builder.getTiming(pb),{source:'worker',generateMs:12,packingMs:3,roundTripMs:80,nonComputeWaitMs:65});
+ time=200;worker.onmessage({data:{id:0,packet:pa,timing:{generateMs:999,packingMs:0}}});assert.equal(builder.getTiming(pa).generateMs,20,'duplicate old ID does not alter the accepted timing');builder.dispose();
+});
+test('failed worker and late old reply cannot contaminate replacement builder timing',async()=>{
+ let time=0;const old=mock(),a=createGpuPacketBuilder({workerFactory:()=>old,now:()=>time}),pending=a.build([]);old.onerror({message:'failed'});await assert.rejects(pending,/failed/);
+ const fresh=mock(),b=createGpuPacketBuilder({workerFactory:()=>fresh,now:()=>time}),next=b.build([]),late={late:true},ok={ok:true};
+ time=50;old.onmessage({data:{id:0,packet:late,timing:{generateMs:40,packingMs:0}}});assert.equal(a.getTiming(late),null);assert.equal(b.getTiming(late),null);
+ fresh.onmessage({data:{id:0,packet:ok,timing:{generateMs:5,packingMs:1}}});assert.strictEqual(await next,ok);assert.equal(b.getTiming(ok).nonComputeWaitMs,44);b.dispose();
+});
+test('missing or corrupt timing leaves data publishable but does not fabricate a measured sample',async()=>{
+ for(const timing of[undefined,{generateMs:-1,packingMs:0},{generateMs:NaN,packingMs:0}]){
+  const worker=mock(),b=createGpuPacketBuilder({workerFactory:()=>worker}),p={},pending=b.build([]);worker.onmessage({data:{id:0,packet:p,timing}});assert.strictEqual(await pending,p);assert.equal(b.getTiming(p),null);b.dispose();
+ }
+});

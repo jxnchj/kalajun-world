@@ -1,0 +1,30 @@
+[
+  {
+    "mode": "native",
+    "frames": 24,
+    "stable": true,
+    "meshCounts": [
+      5690
+    ],
+    "calls": [
+      2270
+    ],
+    "triangles": [
+      54265041
+    ]
+  },
+  {
+    "mode": "moments",
+    "frames": 24,
+    "stable": true,
+    "meshCounts": [
+      5690
+    ],
+    "calls": [
+      2270
+    ],
+    "triangles": [
+      54265041
+    ]
+  }
+]

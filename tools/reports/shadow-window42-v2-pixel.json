@@ -1,0 +1,98 @@
+[
+  {
+    "frame": 0,
+    "changedPixels": 99828,
+    "max": 63,
+    "bounds": [
+      205,
+      353,
+      1280,
+      800
+    ],
+    "upper300Changed": 0
+  },
+  {
+    "frame": 1,
+    "changedPixels": 100729,
+    "max": 62,
+    "bounds": [
+      203,
+      353,
+      1280,
+      800
+    ],
+    "upper300Changed": 0
+  },
+  {
+    "frame": 2,
+    "changedPixels": 101504,
+    "max": 62,
+    "bounds": [
+      203,
+      353,
+      1280,
+      800
+    ],
+    "upper300Changed": 0
+  },
+  {
+    "frame": 3,
+    "changedPixels": 101944,
+    "max": 62,
+    "bounds": [
+      160,
+      353,
+      1280,
+      800
+    ],
+    "upper300Changed": 0
+  },
+  {
+    "frame": 4,
+    "changedPixels": 101299,
+    "max": 62,
+    "bounds": [
+      160,
+      353,
+      1280,
+      800
+    ],
+    "upper300Changed": 0
+  },
+  {
+    "frame": 5,
+    "changedPixels": 101817,
+    "max": 62,
+    "bounds": [
+      160,
+      353,
+      1280,
+      800
+    ],
+    "upper300Changed": 0
+  },
+  {
+    "frame": 6,
+    "changedPixels": 101472,
+    "max": 62,
+    "bounds": [
+      160,
+      353,
+      1280,
+      800
+    ],
+    "upper300Changed": 0
+  },
+  {
+    "frame": 7,
+    "changedPixels": 101982,
+    "max": 62,
+    "bounds": [
+      160,
+      353,
+      1280,
+      800
+    ],
+    "upper300Changed": 0
+  }
+]

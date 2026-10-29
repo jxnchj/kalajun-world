@@ -1,3 +1,6 @@
+import {EcologySolids41} from './ecology-solids41.js';
+import {pastureLife41Colliders} from './pasture-life41.js';
+import {GUEST_DOORS41,guestDoorViewpoints41} from './guest-doors41.js';
 import {seatPathClear39,useSeatBody39,placeSeatBody39} from './seating-collision39.js';
 import * as THREE from "three";
 import {BOARDWALK_ENDPOINTS} from "./boardwalk-endpoints.js";
@@ -23,10 +26,17 @@ export function collisionTriangles(parts,matrix=new THREE.Matrix4(),origin=new T
  return {vertices:new Float32Array(vertices),indices:new Uint32Array(indices)};
 }
 export class WorldCollision {
- constructor(world,{structures,doors}={}){
+ constructor(world,{structures,doors,ecology,pasture}={}){
   Object.assign(this,{world,structures,doors});this.boardwalks=boardwalkTimber(world);this.timber=new Map();this.timberGeometries=new Map();this.origin=new THREE.Vector3();this.near=new Map();this.dynamic=new Map();this.stones=new Map();this.enabled=false;this.generation=0;this.disposed=false;this.crouching=false;this.velocityY=0;
-  this.stats={status:"idle",mode:"flight",supportedAssets:[...SUPPORTED],activeBuildings:0,activeDoors:0,activeShoreStones:0,shoreTriangles:0,triangles:0,grounded:false,blockedDoors:0,collisions:0,errors:[]};
+  this.ecologySolids41=new EcologySolids41(ecology);
+  // Main awaits this same WorldPasture's asset load before installing collision.
+  // A regional collision world does not own a pasture merely because it contains a yurt.
+  if(pasture&&pasture.world!==world)throw new Error('Pasture collision owner belongs to another world');
+  if(pasture?.life41&&(!pasture.layout||!Number.isFinite(pasture.layout.x)||!Number.isFinite(pasture.layout.z)))throw new Error('Pasture collision owner has no validated layout');
+  this.pastureLife41=pasture?.life41?pastureLife41Colliders(world,pasture.layout):[];this.pastureBodies41=new Map();
+  this.stats={ecologySolids41:this.ecologySolids41.stats,activePastureLife41:0,status:"idle",mode:"flight",supportedAssets:[...SUPPORTED],activeBuildings:0,activeDoors:0,activeShoreStones:0,shoreTriangles:0,triangles:0,grounded:false,blockedDoors:0,collisions:0,errors:[]};
   const routeEntities=this.boardwalks.enabled?new Set(BOARDWALK_ENDPOINTS.flatMap(route=>[route.start,route.end]).filter(Boolean)):new Set();
+  if(doors?.guestDoors)routeEntities.add(GUEST_DOORS41.entityId);
   if(doors?.lodgeDoor)routeEntities.add(LODGE_DOOR.entityId);
   const routeAssets=new Set(world.entities.filter(e=>routeEntities.has(e.id)).map(e=>e.assetId));
   this.stats.supportedAssets=[...SUPPORTED,...routeAssets];
@@ -52,7 +62,10 @@ export class WorldCollision {
     const parts=this.structures.collisionPartsFor?.(entity)??this.structures._templates.get(entity.assetId+":");if(!parts)continue;const data=collisionTriangles(parts,matrixFor(pose),this.origin);if(!data.indices.length)continue;const c=this.physics.createCollider(this.R.ColliderDesc.trimesh(data.vertices,data.indices));this.near.set(entity.id,{c,triangles:data.indices.length/3});
    }else if(distance>48&&this.near.has(entity.id)){this.physics.removeCollider(this.near.get(entity.id).c,true);this.near.delete(entity.id);}}
   if(force||!this.groundCenter||Math.hypot(position.x-this.groundCenter.x,position.z-this.groundCenter.z)>8)this.updateGround(position);
-  this.syncTimber(position);this.syncShoreStones(position,force);this.syncDoors();this.stats.activeBuildings=this.near.size;this.stats.triangles=[...this.near.values()].reduce((s,v)=>s+v.triangles,0);
+  this.ecologySolids41.sync(this,position,force);this.syncPastureLife41(position);this.syncTimber(position);this.syncShoreStones(position,force);this.syncDoors();this.stats.activeBuildings=this.near.size;this.stats.triangles=[...this.near.values()].reduce((s,v)=>s+v.triangles,0);
+ }
+ syncPastureLife41(position){
+  for(const p of this.pastureLife41){const distance=Math.hypot(position.x-p.x,position.z-p.z),old=this.pastureBodies41.get(p.id);if(distance<32&&!old){const q=new THREE.Quaternion().setFromAxisAngle(UP,p.yaw),body=this.physics.createCollider(this.R.ColliderDesc.cuboid(p.hx,p.hy,p.hz).setTranslation(p.x-this.origin.x,p.y-this.origin.y,p.z-this.origin.z).setRotation(q));this.pastureBodies41.set(p.id,body);}else if(distance>48&&old){this.physics.removeCollider(old,true);this.pastureBodies41.delete(p.id);}}this.stats.activePastureLife41=this.pastureBodies41.size;
  }
  // Authoritative complete timber meshes, activated by distance only. Board
  // gaps remain real; capsule sweeps/autostep operate on the visible treads.
@@ -76,7 +89,7 @@ export class WorldCollision {
   for(const record of records){
    if(this.stones.has(record.id)||Math.hypot(record.x-position.x,record.z-position.z)>32)continue;
    this.stoneGeometry??=createShoreRockGeometry();
-   const data=collisionTriangles([{geometry:this.stoneGeometry}],shoreStoneMatrix(record),this.origin);
+   const data=collisionTriangles([{geometry:record.shoreAsset42?.geometry??this.stoneGeometry}],shoreStoneMatrix(record),this.origin);
    const c=this.physics.createCollider(this.R.ColliderDesc.trimesh(data.vertices,data.indices));
    this.stones.set(record.id,{c,record,triangles:data.indices.length/3});
   }
@@ -107,8 +120,8 @@ export class WorldCollision {
  useSeatBody39(position,body){return useSeatBody39(this,position,body);}
  placeSeatBody39(position,body){return placeSeatBody39(this,position,body);}
  invalidateStructure(id){const item=this.near.get(id);if(item){this.physics.removeCollider(item.c,true);this.near.delete(id);}}
- clearNearby(){if(!this.physics)return;for(const item of this.timber.values())this.physics.removeCollider(item.c,true);this.timber.clear();this.stats.activeBoardwalks=0;for(const v of this.near.values())this.physics.removeCollider(v.c,true);for(const v of this.dynamic.values())this.physics.removeCollider(v.c,true);for(const v of this.stones.values())this.physics.removeCollider(v.c,true);this.stones.clear();this.stoneCell=null;this.stats.activeShoreStones=0;this.stats.shoreTriangles=0;this.near.clear();this.dynamic.clear();if(this.ground)this.physics.removeCollider(this.ground,true);this.ground=null;this.groundCenter=null;this.stats.activeBuildings=0;this.stats.activeDoors=0;}
- dispose(){this.disposed=true;this.disable();for(const g of this.timberGeometries.values())g.dispose();this.timberGeometries.clear();this.stoneGeometry?.dispose();this.stoneGeometry=null;this.physics?.free();this.physics=null;this.stats.status="disposed";}
+ clearNearby(){if(!this.physics)return;this.ecologySolids41.clear(this);for(const body of this.pastureBodies41.values())this.physics.removeCollider(body,true);this.pastureBodies41.clear();this.stats.activePastureLife41=0;for(const item of this.timber.values())this.physics.removeCollider(item.c,true);this.timber.clear();this.stats.activeBoardwalks=0;for(const v of this.near.values())this.physics.removeCollider(v.c,true);for(const v of this.dynamic.values())this.physics.removeCollider(v.c,true);for(const v of this.stones.values())this.physics.removeCollider(v.c,true);this.stones.clear();this.stoneCell=null;this.stats.activeShoreStones=0;this.stats.shoreTriangles=0;this.near.clear();this.dynamic.clear();if(this.ground)this.physics.removeCollider(this.ground,true);this.ground=null;this.groundCenter=null;this.stats.activeBuildings=0;this.stats.activeDoors=0;}
+ dispose(){this.disposed=true;this.disable();this.ecologySolids41.dispose(this);for(const g of this.timberGeometries.values())g.dispose();this.timberGeometries.clear();this.stoneGeometry?.dispose();this.stoneGeometry=null;this.physics?.free();this.physics=null;this.stats.status="disposed";}
 }
 
 // Reachable menu entries for the same original thresholds used by walking QA.
@@ -134,5 +147,5 @@ export function walkingViewpoints(world){
   const x=q.x+c*lx*q.scale.x+s*lz*q.scale.z,z=q.z-s*lx*q.scale.x+c*lz*q.scale.z;
   viewpoints.push({id:"walk-household-tea",name:"饮茶石阶 · 步行入口",category:"牧居生活",x,z,y:world.surface.heightAt(x,z)+WALK_BODY.eye+.04,yaw:-q.rot*180/Math.PI,pitch:-7});
  }
- return [...viewpoints,...boardwalkViewpoints(world),...lodgeEntranceViewpoints(world)];
+ return [...viewpoints,...boardwalkViewpoints(world),...lodgeEntranceViewpoints(world),...guestDoorViewpoints41(world)];
 }

@@ -1,0 +1,378 @@
+{
+  "status": "KEEP_OFF_ART_NOT_ACCEPTED",
+  "scope": "只读图审；亲自查看72与73各三个0帧，共六张PNG，并核对对应侧车JSON。没有操作浏览器、GPU或更改生产源/资产。",
+  "overall": "73相较72在灰砾石渠壁、硬岸唇和岸草靠水关系上有明确局部净改善；整段仍主要读成连续棕砂路，尚不足以作为自然小溪采用。保持73默认关闭，不继续局部改岸。",
+  "views": [
+    {
+      "view": "whole-bend",
+      "improvement": "72的灰色粗砾沟面及其上叠加的窄棕脊明显退去；低矮岸草更靠近水缘。",
+      "remaining": "棕色细料现在连续占据近中景通带，边界仍像道路两侧；除远上游大石旁一小段蓝白水光，近景缺少一眼可辨的水面。宽窄/床形改变没有形成足够的视觉层次。"
+    },
+    {
+      "view": "pool-cross",
+      "improvement": "72占据大半横断面的灰砾陡面已消失，对岸变成较低、较平滑的有机土色坡带；粗岩不再被当作整个岸面。",
+      "remaining": "对岸主要读成平滑深橄榄色带，尚未清楚呈现短段侵蚀土层/根毡剖面；大面积细砂床同色同质，主流槽、细料趾部与湿岸很难区分。"
+    },
+    {
+      "view": "root-mat",
+      "improvement": "原较高硬岸唇明显降低，贴岸根毡与莎草更靠近水边，不再隔着大段灰岩坡。",
+      "remaining": "根毡下方仍是一整片棕砂通带，水缘只表现为细窄色差；下层湿土/浅水细料与清楚的水表面没有形成层次。"
+    }
+  ],
+  "roleInterpretation": {
+    "runtimeConfirmed": "73 owner确为rooted-low-banks73-1，四个角色已安装；材料替换和草落位在截图中可见。",
+    "visuallyConfirmed": [
+      "灰砾整坡退去",
+      "低岸/根毡靠水关系改善",
+      "细料替代粗岩可见"
+    ],
+    "notVisuallyEstablished": [
+      "短段侵蚀土岸的明确厚度与层次",
+      "主流槽/浅滩/湿岸可辨的整体分工",
+      "连贯可辨的透明溪水表面"
+    ],
+    "boundary": "角色实际生效不等于观者已经能读出全部地貌角色；不能据数值测试称为美术通过。"
+  },
+  "opticsBoundary": "72和73三机位均反射active、折射enabled、failures0。静帧不能证明水体缺失，也不能单独证明Fresnel/alpha错误；公式与混合诊断由stage3_gi负责。",
+  "comparisonLimits": "相机、尺寸1280x800、DPR1、time870相同；自然风相位和版本间阴影接线不是严格同帧像素AB，因此不把细小亮度或草影变化单独归因于73。此判断依据大尺度岸形、覆盖和材料分布。",
+  "integrationEvidence": "根线程报告GLSL实际编译成功；本审查直接复核六份侧车均q0、preparing=false、521根、contactFailures/notReady/errors为空。未自行执行GPU编译或采样。",
+  "evidence": [
+    {
+      "view": "whole-bend",
+      "records": [
+        {
+          "version": 72,
+          "json": "docs/previews/v2-route-craft-38/reach-design72-candidate-whole-bend-0.json",
+          "image": "docs/previews/v2-route-craft-38/reach-design72-candidate-whole-bend-0.png",
+          "pose": {
+            "name": "whole-bend",
+            "position": [
+              -3618.613451214993,
+              2329.1348867802844,
+              4801.611106420018
+            ],
+            "yaw": 156.57083120044828,
+            "pitch": -19.615258339625512
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 800,
+            "pixelRatio": 1
+          },
+          "time": 870,
+          "rootCount": 521,
+          "contactFailures": [],
+          "notReady": [],
+          "queuedTiles": 0,
+          "preparing": false,
+          "errors": [],
+          "owner": {
+            "revision": "connected-pointbars69-1",
+            "shapeUnits": 3,
+            "projectionSegments": 10,
+            "extraSamplers": 0,
+            "scan": {
+              "revision": "reach-bed-facies66-scan-2-signed-constants",
+              "privateTextureBytes": 33554432,
+              "extraSamplers": 0,
+              "extraDraws": 0
+            }
+          },
+          "reflection": {
+            "active": true,
+            "reason": "cached",
+            "patch": "river-41711e76-99c57ca2:862",
+            "captures": 206
+          },
+          "refraction": {
+            "enabled": true,
+            "reason": "opaque-color-depth",
+            "captures": 659,
+            "failures": 0
+          }
+        },
+        {
+          "version": 73,
+          "json": "docs/previews/v2-route-craft-38/reach-design73-candidate-whole-bend-0.json",
+          "image": "docs/previews/v2-route-craft-38/reach-design73-candidate-whole-bend-0.png",
+          "pose": {
+            "name": "whole-bend",
+            "position": [
+              -3618.613451214993,
+              2329.1348867802844,
+              4801.611106420018
+            ],
+            "yaw": 156.57083120044828,
+            "pitch": -19.615258339625512
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 800,
+            "pixelRatio": 1
+          },
+          "time": 870,
+          "rootCount": 521,
+          "contactFailures": [],
+          "notReady": [],
+          "queuedTiles": 0,
+          "preparing": false,
+          "errors": [],
+          "owner": {
+            "revision": "rooted-low-banks73-1",
+            "roles": [
+              "mineral-bed",
+              "fine-toe",
+              "cohesive-cut",
+              "rooted-low-bank"
+            ],
+            "projectionSegments": 10,
+            "extraSamplers": 0,
+            "scan": {
+              "revision": "reach-bed-facies66-scan-2-signed-constants",
+              "privateTextureBytes": 33554432,
+              "extraSamplers": 0,
+              "extraDraws": 0
+            }
+          },
+          "reflection": {
+            "active": true,
+            "reason": "cached",
+            "patch": "river-41711e76-99c57ca2:862",
+            "captures": 225
+          },
+          "refraction": {
+            "enabled": true,
+            "reason": "opaque-color-depth",
+            "captures": 675,
+            "failures": 0
+          }
+        }
+      ]
+    },
+    {
+      "view": "pool-cross",
+      "records": [
+        {
+          "version": 72,
+          "json": "docs/previews/v2-route-craft-38/reach-design72-candidate-pool-cross-0.json",
+          "image": "docs/previews/v2-route-craft-38/reach-design72-candidate-pool-cross-0.png",
+          "pose": {
+            "name": "pool-cross",
+            "position": [
+              -3615.042952009888,
+              2328.9339792115034,
+              4808.171080365821
+            ],
+            "yaw": -75.00270622544625,
+            "pitch": -35.49410676629518
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 800,
+            "pixelRatio": 1
+          },
+          "time": 870,
+          "rootCount": 521,
+          "contactFailures": [],
+          "notReady": [],
+          "queuedTiles": 0,
+          "preparing": false,
+          "errors": [],
+          "owner": {
+            "revision": "connected-pointbars69-1",
+            "shapeUnits": 3,
+            "projectionSegments": 10,
+            "extraSamplers": 0,
+            "scan": {
+              "revision": "reach-bed-facies66-scan-2-signed-constants",
+              "privateTextureBytes": 33554432,
+              "extraSamplers": 0,
+              "extraDraws": 0
+            }
+          },
+          "reflection": {
+            "active": true,
+            "reason": "cached",
+            "patch": "river-41711e76-99c57ca2:862",
+            "captures": 187
+          },
+          "refraction": {
+            "enabled": true,
+            "reason": "opaque-color-depth",
+            "captures": 597,
+            "failures": 0
+          }
+        },
+        {
+          "version": 73,
+          "json": "docs/previews/v2-route-craft-38/reach-design73-candidate-pool-cross-0.json",
+          "image": "docs/previews/v2-route-craft-38/reach-design73-candidate-pool-cross-0.png",
+          "pose": {
+            "name": "pool-cross",
+            "position": [
+              -3615.042952009888,
+              2328.9339792115034,
+              4808.171080365821
+            ],
+            "yaw": -75.00270622544625,
+            "pitch": -35.49410676629518
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 800,
+            "pixelRatio": 1
+          },
+          "time": 870,
+          "rootCount": 521,
+          "contactFailures": [],
+          "notReady": [],
+          "queuedTiles": 0,
+          "preparing": false,
+          "errors": [],
+          "owner": {
+            "revision": "rooted-low-banks73-1",
+            "roles": [
+              "mineral-bed",
+              "fine-toe",
+              "cohesive-cut",
+              "rooted-low-bank"
+            ],
+            "projectionSegments": 10,
+            "extraSamplers": 0,
+            "scan": {
+              "revision": "reach-bed-facies66-scan-2-signed-constants",
+              "privateTextureBytes": 33554432,
+              "extraSamplers": 0,
+              "extraDraws": 0
+            }
+          },
+          "reflection": {
+            "active": true,
+            "reason": "cached",
+            "patch": "river-41711e76-99c57ca2:862",
+            "captures": 207
+          },
+          "refraction": {
+            "enabled": true,
+            "reason": "opaque-color-depth",
+            "captures": 611,
+            "failures": 0
+          }
+        }
+      ]
+    },
+    {
+      "view": "root-mat",
+      "records": [
+        {
+          "version": 72,
+          "json": "docs/previews/v2-route-craft-38/reach-design72-candidate-root-mat-0.json",
+          "image": "docs/previews/v2-route-craft-38/reach-design72-candidate-root-mat-0.png",
+          "pose": {
+            "name": "root-mat",
+            "position": [
+              -3617.8525177268957,
+              2328.681789377489,
+              4804.100191430216
+            ],
+            "yaw": 89.2232800066879,
+            "pitch": -30.255864781470965
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 800,
+            "pixelRatio": 1
+          },
+          "time": 870,
+          "rootCount": 521,
+          "contactFailures": [],
+          "notReady": [],
+          "queuedTiles": 0,
+          "preparing": false,
+          "errors": [],
+          "owner": {
+            "revision": "connected-pointbars69-1",
+            "shapeUnits": 3,
+            "projectionSegments": 10,
+            "extraSamplers": 0,
+            "scan": {
+              "revision": "reach-bed-facies66-scan-2-signed-constants",
+              "privateTextureBytes": 33554432,
+              "extraSamplers": 0,
+              "extraDraws": 0
+            }
+          },
+          "reflection": {
+            "active": true,
+            "reason": "cached",
+            "patch": "river-41711e76-99c57ca2:862",
+            "captures": 165
+          },
+          "refraction": {
+            "enabled": true,
+            "reason": "opaque-color-depth",
+            "captures": 520,
+            "failures": 0
+          }
+        },
+        {
+          "version": 73,
+          "json": "docs/previews/v2-route-craft-38/reach-design73-candidate-root-mat-0.json",
+          "image": "docs/previews/v2-route-craft-38/reach-design73-candidate-root-mat-0.png",
+          "pose": {
+            "name": "root-mat",
+            "position": [
+              -3617.8525177268957,
+              2328.681789377489,
+              4804.100191430216
+            ],
+            "yaw": 89.2232800066879,
+            "pitch": -30.255864781470965
+          },
+          "viewport": {
+            "width": 1280,
+            "height": 800,
+            "pixelRatio": 1
+          },
+          "time": 870,
+          "rootCount": 521,
+          "contactFailures": [],
+          "notReady": [],
+          "queuedTiles": 0,
+          "preparing": false,
+          "errors": [],
+          "owner": {
+            "revision": "rooted-low-banks73-1",
+            "roles": [
+              "mineral-bed",
+              "fine-toe",
+              "cohesive-cut",
+              "rooted-low-bank"
+            ],
+            "projectionSegments": 10,
+            "extraSamplers": 0,
+            "scan": {
+              "revision": "reach-bed-facies66-scan-2-signed-constants",
+              "privateTextureBytes": 33554432,
+              "extraSamplers": 0,
+              "extraDraws": 0
+            }
+          },
+          "reflection": {
+            "active": true,
+            "reason": "cached",
+            "patch": "river-41711e76-99c57ca2:862",
+            "captures": 185
+          },
+          "refraction": {
+            "enabled": true,
+            "reason": "opaque-color-depth",
+            "captures": 536,
+            "failures": 0
+          }
+        }
+      ]
+    }
+  ],
+  "productionEdits": false
+}

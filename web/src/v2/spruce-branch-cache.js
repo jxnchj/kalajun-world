@@ -1,10 +1,10 @@
 // Bounded shared spatial-group cache. In-flight obsolete work may be reused;
 // disposed worlds never publish it. Failure is retried once, then propagated.
 export class SpruceBranchCache{
- constructor({build,disposeValue,maxBytes=64*1024*1024,now=()=>performance.now(),concurrency=1,maxInFlightBytes=8*1024*1024,estimateBytes=()=>0}){
-  this.build=build;this.disposeValue=disposeValue;this.maxBytes=maxBytes;this.now=now;this.concurrency=concurrency===2?2:1;this.maxInFlightBytes=maxInFlightBytes;this.estimateBytes=estimateBytes;
+ constructor({build,disposeValue,maxBytes=64*1024*1024,now=()=>performance.now(),concurrency=1,maxInFlightBytes=8*1024*1024,estimateBytes=()=>0,immediateDispatch=false}){
+  this.build=build;this.disposeValue=disposeValue;this.maxBytes=maxBytes;this.now=now;this.concurrency=concurrency===2?2:1;this.maxInFlightBytes=maxInFlightBytes;this.estimateBytes=estimateBytes;this.immediateDispatch=immediateDispatch===true;
   this.entries=new Map();this.wanted=new Set();this.closed=false;this.running=new Set();this.inFlightBytes=0;
-  this.stats={pending:0,residentBytes:0,residentGroups:0,builtGroups:0,evictedGroups:0,retries:0,staleCompletions:0,buildMs:0,maxBuildMs:0,error:null,concurrency:this.concurrency,activeBuilds:0,peakActiveBuilds:0,inFlightParameterBytes:0,peakInFlightParameterBytes:0,maxInFlightParameterBytes:maxInFlightBytes};
+  this.stats={pending:0,residentBytes:0,residentGroups:0,builtGroups:0,evictedGroups:0,retries:0,staleCompletions:0,buildMs:0,maxBuildMs:0,dispatchMode:this.immediateDispatch?'immediate':'microtask',buildDispatchWaitMs:0,maxBuildDispatchWaitMs:0,preparationSamples:0,workerPreparationSamples:0,packetGenerateMs:0,packetPackingMs:0,packetRoundTripMs:0,packetNonComputeWaitMs:0,packetMainPrepareMs:0,maxPacketRoundTripMs:0,maxPacketMainPrepareMs:0,error:null,concurrency:this.concurrency,activeBuilds:0,peakActiveBuilds:0,inFlightParameterBytes:0,peakInFlightParameterBytes:0,maxInFlightParameterBytes:maxInFlightBytes};
  }
  begin(){this.frame=(this.frame||0)+1;this.wanted.clear();if(this.stats.error)throw new Error(this.stats.error);}
  request(key,descriptor,priority=0){this.wanted.add(key);let e=this.entries.get(key);if(!e){e={key,descriptor,priority,state:'queued',attempts:0,requestedAt:this.now(),lastUsed:this.now(),value:null};this.entries.set(key,e);}e.priority=e.lastRequestedFrame===this.frame?Math.min(e.priority,priority):priority;e.lastRequestedFrame=this.frame;e.lastUsed=this.now();return e.state==='ready'?e:null;}
@@ -12,7 +12,7 @@ export class SpruceBranchCache{
  refresh(){this.stats.pending=[...this.entries.values()].filter(e=>e.state==='queued'||e.state==='building').length;this.stats.residentGroups=[...this.entries.values()].filter(e=>e.state==='ready').length;}
  pump(){
   if(this.closed)return;
-  while(this.running.size<this.concurrency){
+  while(!this.closed&&this.running.size<this.concurrency){
    const e=[...this.entries.values()].filter(e=>e.state==='queued'&&this.wanted.has(e.key)).sort((a,b)=>a.priority-b.priority)[0];if(!e)return;
    const bytes=Math.max(0,this.estimateBytes(e.descriptor)||0);
    // An individually large original group may still build, just as in serial
@@ -20,10 +20,21 @@ export class SpruceBranchCache{
    if(this.running.size&&this.inFlightBytes+bytes>this.maxInFlightBytes)return;
    e.state='building';e.attempts++;this.running.add(e);this.inFlightBytes+=bytes;
    Object.assign(this.stats,{activeBuilds:this.running.size,peakActiveBuilds:Math.max(this.stats.peakActiveBuilds,this.running.size),inFlightParameterBytes:this.inFlightBytes,peakInFlightParameterBytes:Math.max(this.stats.peakInFlightParameterBytes,this.inFlightBytes)});
-   const started=this.now();
-   Promise.resolve().then(()=>this.build(e.descriptor,e.key)).then(value=>{
+   const started=this.now();let dispatchWait=0;
+   const invoke=()=>{dispatchWait=Math.max(0,this.now()-started);return this.build(e.descriptor,e.key);};
+   // Review-only dispatch begins worker posting before the caller's remaining
+   // synchronous scene work. Reserve slots/bytes first; preserve async success
+   // publication and convert synchronous throws to the existing retry path.
+   let work;if(this.immediateDispatch){try{work=Promise.resolve(invoke());}catch(error){work=Promise.reject(error);}}else work=Promise.resolve().then(invoke);
+   work.then(value=>{
     if(this.closed){this.disposeValue(value,e.key);return;}
-    e.value=value;e.bytes=value.bytes;e.state='ready';e.builtAt=this.now();e.queueBuildWaitMs=e.builtAt-e.requestedAt;this.stats.firstGroupBuildWaitMs??=e.queueBuildWaitMs;this.stats.maxQueueBuildWaitMs=Math.max(this.stats.maxQueueBuildWaitMs||0,e.queueBuildWaitMs);this.stats.residentBytes+=e.bytes;this.stats.builtGroups++;
+    e.dispatchWaitMs=dispatchWait;this.stats.buildDispatchWaitMs+=dispatchWait;this.stats.maxBuildDispatchWaitMs=Math.max(this.stats.maxBuildDispatchWaitMs,dispatchWait);e.value=value;e.bytes=value.bytes;e.state='ready';e.builtAt=this.now();e.queueBuildWaitMs=e.builtAt-e.requestedAt;this.stats.firstGroupBuildWaitMs??=e.queueBuildWaitMs;this.stats.maxQueueBuildWaitMs=Math.max(this.stats.maxQueueBuildWaitMs||0,e.queueBuildWaitMs);this.stats.residentBytes+=e.bytes;this.stats.builtGroups++;
+    const timing=value.preparationTiming;
+    if(timing&&['generateMs','packingMs','roundTripMs','nonComputeWaitMs','mainPrepareMs'].every(k=>Number.isFinite(timing[k])&&timing[k]>=0)){
+     this.stats.preparationSamples++;if(timing.source==='worker')this.stats.workerPreparationSamples++;
+     for(const [target,key]of[['packetGenerateMs','generateMs'],['packetPackingMs','packingMs'],['packetRoundTripMs','roundTripMs'],['packetNonComputeWaitMs','nonComputeWaitMs'],['packetMainPrepareMs','mainPrepareMs']])this.stats[target]+=timing[key];
+     this.stats.maxPacketRoundTripMs=Math.max(this.stats.maxPacketRoundTripMs,timing.roundTripMs);this.stats.maxPacketMainPrepareMs=Math.max(this.stats.maxPacketMainPrepareMs,timing.mainPrepareMs);
+    }
     const ms=this.now()-started;this.stats.buildMs+=ms;this.stats.maxBuildMs=Math.max(this.stats.maxBuildMs,ms);if(!this.wanted.has(e.key))this.stats.staleCompletions++;
    },error=>{
     if(this.closed)return;e.error=String(error?.message||error);if(e.attempts<2){e.state='queued';this.stats.retries++;}else{e.state='failed';this.stats.error='Spruce branch group '+e.key+' failed: '+e.error;}

@@ -4,9 +4,11 @@ import {createHydrology} from './hydrology.js';import {riverSectionAt,riverCross
 import {createWaterGeometry,createWaterMaterial} from './water.js';
 import {brookGrassIntersectsWater} from './brook-shoulder-grass.js';
 import {FOREST_REACH39_SOURCE} from './forest-reach39-source.js';
+const originalLocation39=globalThis.location;globalThis.location={search:'?forestReachForm41=0'};
 const source=actualForestWorld(undefined,'rgba',{forestReach39:false}),candidate=actualForestWorld(undefined,'rgba',{forestReach39:true}),h=candidate.hydrology,reach=h.forestReach39,segments=h.segments.filter(reach.activeSegment);
+globalThis.location=originalLocation39;
 function section(offset){const distance=reach.origin+offset,s=segments.find(s=>s.a.distance<=distance&&s.b.distance>=distance);return{s,t:(distance-s.a.distance)/(s.b.distance-s.a.distance)};}
-test('opt-in keeps geographic source and old habitat query; default has no candidate',()=>{assert.equal(source.hydrology.forestReach39,null);assert.deepEqual(h.segments,source.hydrology.segments);assert.deepEqual(h.lines,source.hydrology.lines);assert.equal(reach.stats.giMatched,false);
+test('explicit legacy 39 keeps geographic source and old habitat query; whole-reach off removes it',()=>{assert.equal(source.hydrology.forestReach39,null);assert.deepEqual(h.segments,source.hydrology.segments);assert.deepEqual(h.lines,source.hydrology.lines);assert.equal(reach.stats.giMatched,false);
  for(const offset of [-17,-10,0,10,17]){const{s,t}=section(offset),q=riverSectionAt(s,t);for(const across of [-1.5,-.5,0,.5,1.5]){const p=riverCrossPoint(q,across);assert.deepEqual(h.reachSource.sampleAt(p.x,p.z),source.hydrology.sampleAt(p.x,p.z));}}
 });
 test('continuous first connected water intersection cannot manufacture the rejected outer-limit ear',()=>{let previous;for(let s=-11;s<=-8.5;s+=.125){const{ s:g,t}=section(s),q=reach.waterSectionAt(g,t);assert.ok(q.right<.51);if(previous)assert.ok(Math.abs(q.right-previous)<.002);previous=q.right;}
@@ -35,4 +37,19 @@ test('whole-world community retains identities scales counts; validated local mo
   for(let iz=398;iz<=403;iz++)for(let ix=-304;ix<=-298;ix++){const p=a.treeAt(ix,iz),q=b.treeAt(ix,iz);assert.equal(Boolean(p),Boolean(q));if(!p)continue;const{y:py,...pr}=p,{y:qy,...qr}=q;assert.deepEqual(pr,qr);assert.ok(Math.abs(qy-py-(candidate.surface.heightAt(p.x,p.z)-source.surface.heightAt(p.x,p.z)))<1e-8);trees++;}
   for(const [x,z]of [[0,0],[-1999,3373],[-2220,3363],[-3620,4770],[-3650,4835]])assert.equal(candidate.surface.heightAt(x,z),source.surface.heightAt(x,z));assert.ok(grass>400);assert.ok(trees>10);assert.ok(moved>=24,JSON.stringify(b.forestReachCommunity39?.stats));assert.ok(b.forestReachCommunity39.stats.bands.every(v=>v.moved>=2));assert.ok(b.forestReachCommunity39.stats.bands.reduce((n,v)=>n+v.afterWithin80cm-v.beforeWithin80cm,0)>0);assert.ok(moved<grass);t.diagnostic(JSON.stringify({sampledGrass:grass,sampledTrees:trees,sampledMoved:moved,layout:b.forestReachCommunity39.stats}));
  }finally{a.dispose();b.dispose();}
+});
+
+
+test('physical root shoulders are bounded asymmetric landforms with smooth release, not periodic shore strips',async()=>{
+ const {reachRootShoulderLift39:lift}=await import('./forest-reach39.js');
+ assert.equal(lift(-12.6,.37,1),0);assert.ok(Math.abs(lift(-12.6,.37,-1)-.055)<1e-12);
+ assert.ok(Math.abs(lift(1.8,.40,-1)-.075)<1e-12);
+ for(const side of [-1,1])for(let s=-18;s<=18;s+=.1){assert.equal(lift(s,0,side),0);assert.equal(lift(s,1,side),0);for(let t=0;t<=1;t+=.05)assert.ok(lift(s,t,side)>=0&&lift(s,t,side)<=.075000001);}
+ for(const s of [-14.8,-10.4,-6.7,-3.5,-1,4.6,8.1,12.3])for(const side of [-1,1])assert.ok(Math.abs(lift(s-1e-5,.4,side)-lift(s+1e-5,.4,side))<1e-7);
+ // The connected shoreline and physical depth are checked around each tongue,
+ // including its ends; roots and upper soil remain in the existing checks.
+ for(const offset of [-14.7,-12.6,-10.5,-6.6,-5.1,-3.6,-.9,1.8,4.5,8.2,10.2,12.2]){
+  const {s,t}=section(offset),q=reach.waterSectionAt(s,t);
+  for(let a=-.99;a<=.99;a+=.06){const p=riverCrossPoint(q,a);assert.ok(reach.heightAt(p.x,p.z)<=q.level+1e-6);}
+ }
 });

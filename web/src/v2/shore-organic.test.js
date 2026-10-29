@@ -1,3 +1,4 @@
+import {createLegacyTerrainMaterial} from './fixtures/legacy-terrain-material.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
@@ -37,7 +38,7 @@ test("actual shipped arithmetic agrees with CPU and reuses resolved rather than 
  assert.equal(surfaceTransitionStructure(.47,.7,1.3),surfaceTransitionStructure(.47,.1,1.3),"unresolved tufts cannot create distant organic speckle");
 });
 test("a single live cover controls mineral classification, organic colour, normal and roughness",()=>{
- const t=createTerrainMaterial(),m=t.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
+ const t=createLegacyTerrainMaterial(),m=t.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
  try{m.onBeforeCompile(s);assert.strictEqual(s.uniforms.terrainOrganicBank,m.userData.terrainOrganicBank);
   const version=m.version,key=m.customProgramCacheKey();m.userData.terrainOrganicBank.value=0;
   assert.equal(s.uniforms.terrainOrganicBank.value,0);assert.equal(m.version,version);assert.equal(m.customProgramCacheKey(),key);

@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-27",
+  "url": "http://127.0.0.1:5174/dist-v2/v2.html?view=river-forest&profile=1&grassShadowCoverage41=1&time=870",
+  "status": "real-world functional candidate; default OFF; not performance accepted",
+  "ready": true,
+  "errors": [],
+  "terrainSamplerUnits": 12,
+  "textureSamplerNames": [
+    "uCloudCacheArray",
+    "meadowSurfaceField",
+    "terrainPackedFields",
+    "terrainScanColors",
+    "terrainScanNormals",
+    "envMap",
+    "dfgLUT",
+    "directionalShadowMap[3]",
+    "uCoverageMask41",
+    "uCoverageGround41"
+  ],
+  "maskSize": [
+    768,
+    768
+  ],
+  "samples": 4,
+  "pitchMeters": 0.029237375844462614,
+  "spanMeters": 22.454304648547286,
+  "attachmentBytesLowerBound": 25952256,
+  "candidateSourceCasters": 616,
+  "candidateSourceInstances": 549321,
+  "grassSourceRoots": 6756,
+  "grassSubmittedRoots": 375,
+  "extraDrawCallsObserved": [
+    237,
+    239
+  ],
+  "extraTrianglesBeforeRootSelection": 7386167,
+  "extraTrianglesAfterRootSelection": [
+    6972899,
+    6977507
+  ],
+  "actualMaskHistogram": {
+    "0": 161812,
+    "64": 29204,
+    "128": 46466,
+    "191": 46875,
+    "255": 305467
+  },
+  "sceneIdentityRecordBeforeAfterEqual": true,
+  "frozenRestore": {
+    "targetPixels": 2660559,
+    "changedHalfChannelsOn": 992029,
+    "restoreDifferenceHalfChannels": 0
+  },
+  "performanceStatus": "No exclusive same-condition GPU timing taken; remaining ~6.97M geometry submissions are too expensive to adopt by this evidence.",
+  "visualStatus": "Same-time original CSM and replacement inspected in actual river-forest scene; grass/tree/rock projection retained. Full walking/window-boundary/multi-route acceptance still pending."
+}

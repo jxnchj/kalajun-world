@@ -1,3 +1,4 @@
+import {NearShadowAtlas40} from './shadow-atlas40.js';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {MeshStandardMaterial,MeshPhysicalMaterial,ShaderLib,ShaderChunk} from 'three';
 import {csmBacklitSkipEligible,installCSMBacklitSkip}from './csm-backlit-skip.js';
@@ -19,7 +20,8 @@ test('actual Standard irradiance dependency and final perturbed normal justify z
 });
 test('environment shares a live uniform across eligible materials without recompilation',async()=>{
  const {WorldEnvironment}=await import('./environment.js');
- const gate={value:1},env={registered:new Set(),csmBacklitSkip:gate,csm:{setupMaterial(){}},nearShadowDetail:{mode:'resolution'}};
+ const gate={value:1},env={registered:new Set(),csmBacklitSkip:gate,csm:{lights:[],setupMaterial(){}},nearShadowDetail:{mode:'resolution'}};
+ env.shadowAtlas40=new NearShadowAtlas40({shadowMap:{}},env.csm);
  const a=new MeshStandardMaterial(),b=new MeshStandardMaterial(),other=new MeshStandardMaterial();a.defines={ECO_ROOT_WIND:''};b.defines={ECO_ROOT_WIND:''};
  WorldEnvironment.prototype.register.call(env,[a,b,other]);
  assert.strictEqual(a.userData.csmBacklitSkip,gate);assert.strictEqual(b.userData.csmBacklitSkip,gate);assert.equal(other.userData.csmBacklitSkip,undefined);
@@ -27,5 +29,5 @@ test('environment shares a live uniform across eligible materials without recomp
  const shaders=[a,b].map(()=>{const shader={uniforms:{},fragmentShader:ShaderLib.standard.fragmentShader};installCSMPhysicalLighting(shader);installCSMBacklitSkip(shader,gate);return shader;});
  const sources=shaders.map(s=>s.fragmentShader);
  for(const value of [0,1,0,1]){env.csmBacklitSkip.value=value;for(const shader of shaders)assert.equal(shader.uniforms.uCSMBacklitSkip.value,value);assert.deepEqual([a.version,b.version],versions);assert.deepEqual([a.customProgramCacheKey(),b.customProgramCacheKey()],keys);assert.deepEqual(shaders.map(s=>s.fragmentShader),sources);}
- const off=new MeshStandardMaterial();off.defines={ECO_ROOT_WIND:''};WorldEnvironment.prototype.register.call({...env,registered:new Set(),csmBacklitSkip:null},[off]);assert.equal(off.userData.csmBacklitSkip,undefined);assert.doesNotMatch(off.customProgramCacheKey(),/backlit-skip/);
+ const off=new MeshStandardMaterial();off.defines={ECO_ROOT_WIND:''};WorldEnvironment.prototype.register.call({...env,registered:new Set(),csmBacklitSkip:null},[off]);assert.equal(off.userData.csmBacklitSkip,undefined);assert.doesNotMatch(off.customProgramCacheKey(),/backlit-skip/);env.shadowAtlas40.dispose();
 });

@@ -1,0 +1,9 @@
+// Read-only timing around existing production calls. No altered selection,
+// matrices, scheduling or material state. Install for a short steady-state sample.
+export function profileStructureUpdate41(owner,camera){
+ const totals={samples:0,total:0,matrices:0,camera:0,household:0,entry:0},restores=[];let active=false,closed=false;
+ const wrap=(object,key,bucket)=>{if(!object||typeof object[key]!=='function')return;const previous=object[key],own=Object.hasOwn(object,key);const hook=function(...args){if(!active)return previous.apply(this,args);const start=performance.now();try{return previous.apply(this,args);}finally{totals[bucket]+=performance.now()-start;}};object[key]=hook;restores.push(()=>{if(object[key]===hook){if(own)object[key]=previous;else delete object[key];}});};
+ wrap(owner.group,'updateMatrixWorld','matrices');wrap(camera,'updateMatrixWorld','camera');wrap(camera,'getWorldPosition','camera');wrap(owner.householdLiving,'update','household');wrap(owner.householdEntrySteps,'update','entry');
+ const previous=owner.update,own=Object.hasOwn(owner,'update');const update=function(...args){if(active)return previous.apply(this,args);const start=performance.now();active=true;try{return previous.apply(this,args);}finally{active=false;totals.samples++;totals.total+=performance.now()-start;}};owner.update=update;
+ return {snapshot(){const n=Math.max(1,totals.samples),result={samples:totals.samples};for(const key of['total','matrices','camera','household','entry'])result[key+'Ms']=totals[key]/n;result.selectionRemainderMs=result.totalMs-result.matricesMs-result.cameraMs-result.householdMs-result.entryMs;return result;},dispose(){if(closed)return;closed=true;if(owner.update===update){if(own)owner.update=previous;else delete owner.update;}for(const restore of restores)restore();}};
+}

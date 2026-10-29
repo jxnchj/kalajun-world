@@ -1,0 +1,96 @@
+{
+  "scope": "actual exported-source bottom grid against real supporting mesh, excluding outermost perimeter; positive=gap negative=penetration; slat air gaps and overhang are reported, not hidden",
+  "rows": [
+    {
+      "name": "felt_mattress",
+      "support": "sleep_platform",
+      "interiorSamples": 1645,
+      "unsupportedXY": 47,
+      "signedGapMin": 0.0009999871253967285,
+      "signedGapMax": 0.0013452470302581787,
+      "over2mm": 0,
+      "penetrationOver2mm": 0
+    },
+    {
+      "name": "bed_quilt",
+      "support": "felt_mattress",
+      "interiorSamples": 2585,
+      "unsupportedXY": 55,
+      "signedGapMin": 0.0009995102882385254,
+      "signedGapMax": 0.001000523567199707,
+      "over2mm": 0,
+      "penetrationOver2mm": 0
+    },
+    {
+      "name": "bed_foot",
+      "support": "bed_quilt",
+      "interiorSamples": 825,
+      "unsupportedXY": 57,
+      "signedGapMin": 0.000699460506439209,
+      "signedGapMax": 0.0007004141807556152,
+      "over2mm": 0,
+      "penetrationOver2mm": 0
+    },
+    {
+      "name": "chest_folded0",
+      "support": "chest_lid",
+      "interiorSamples": 459,
+      "unsupportedXY": 0,
+      "signedGapMin": 0.0006999969482421875,
+      "signedGapMax": 0.003699064254760742,
+      "over2mm": 140,
+      "penetrationOver2mm": 0
+    },
+    {
+      "name": "chest_folded1",
+      "support": "chest_folded0",
+      "interiorSamples": 459,
+      "unsupportedXY": 0,
+      "signedGapMin": 0.0008124709129333496,
+      "signedGapMax": 0.005957484245300293,
+      "over2mm": 325,
+      "penetrationOver2mm": 0
+    },
+    {
+      "name": "chest_folded2",
+      "support": "chest_folded1",
+      "interiorSamples": 459,
+      "unsupportedXY": 0,
+      "signedGapMin": 0.0007913708686828613,
+      "signedGapMax": 0.005610227584838867,
+      "over2mm": 308,
+      "penetrationOver2mm": 0
+    },
+    {
+      "name": "chest_folded3",
+      "support": "chest_folded2",
+      "interiorSamples": 459,
+      "unsupportedXY": 0,
+      "signedGapMin": 0.0007000565528869629,
+      "signedGapMax": 0.0039324164390563965,
+      "over2mm": 139,
+      "penetrationOver2mm": 0
+    },
+    {
+      "name": "chest_topcover",
+      "support": "chest_folded3",
+      "interiorSamples": 551,
+      "unsupportedXY": 0,
+      "signedGapMin": 0.0006999969482421875,
+      "signedGapMax": 0.0006999969482421875,
+      "over2mm": 0,
+      "penetrationOver2mm": 0
+    },
+    {
+      "name": "bench_felt",
+      "support": "window_bench",
+      "interiorSamples": 893,
+      "unsupportedXY": 0,
+      "signedGapMin": 0.000999748706817627,
+      "signedGapMax": 0.0010004639625549316,
+      "over2mm": 0,
+      "penetrationOver2mm": 0
+    }
+  ],
+  "elapsedSeconds": 0.0638511250144802
+}

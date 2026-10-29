@@ -1,3 +1,4 @@
+import {createLegacyTerrainMaterial} from './fixtures/legacy-terrain-material.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
@@ -48,7 +49,7 @@ test("scan distance split retains exact accepted near albedo and the same mean a
 });
 
 test("both continuity switches are live uniforms with no new terrain buffers or texture fetches",()=>{
- const t=createTerrainMaterial(),m=t.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
+ const t=createLegacyTerrainMaterial(),m=t.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
  try{
   m.onBeforeCompile(s);
   for(const name of ["terrainShoreRoots","terrainForestMeanContinuity"]){

@@ -9,10 +9,10 @@
   "floatFields": "Float64, no quantization",
   "rawBytes": 3903808,
   "gzipBytes": 3101781,
-  "rootGenerationMs": 334.59970799999996,
-  "decodeAndFullEqualityCheckMs": 39.56433300000003,
+  "rootGenerationMs": 367.312417,
+  "decodeAndFullEqualityCheckMs": 41.4861249999999,
   "code": {
-    "signature": "fd69cab641e81ffeb1bc188993c0841b79a6cda97efa296de4d87a658f7ebeca",
+    "signature": "ce3a7617216ab620b3607d388e0440c17eb89ba45206bb478f15a881ed3ca97e",
     "sources": [
       {
         "path": "src/v2/forest-root-source.js",
@@ -36,7 +36,7 @@
       },
       {
         "path": "src/v2/world-data.js",
-        "sha256": "5512f8d5afe0329c4f72701534f2a8f2c2c9022e18f209ba2410da78a4e2d98e"
+        "sha256": "40da3beff7dfff4cbc7319a75d87b141034a4f7315c8d87ad1ad6e8a205d5a6c"
       },
       {
         "path": "src/v2/terrain-height-interpolation.js",
@@ -44,7 +44,39 @@
       },
       {
         "path": "src/v2/hydrology.js",
-        "sha256": "a0d748bb113d5e19b01aea7c96bc44809bddfe1d892854d5b27c77d4d2c5a95e"
+        "sha256": "e84f59e51234513125c585783cfe5ee41de0655b61765ee3505ca709aa8824c3"
+      },
+      {
+        "path": "src/v2/forest-reach39.js",
+        "sha256": "540d21d10f90241fd1c80bd01e0e14a08f849e14aa5d11d9b4c040553d446462"
+      },
+      {
+        "path": "src/v2/forest-reach39-source.js",
+        "sha256": "816fc7a91b2023e3a0cd5086996291168f10e485d72150b5f74f6bf96c43864a"
+      },
+      {
+        "path": "src/v2/forest-reach-form41.js",
+        "sha256": "de11940c84526eda66ca36fe747ea54169d176ff9019c31ded5fe361130a87b9"
+      },
+      {
+        "path": "src/v2/reach-bank-profile48.js",
+        "sha256": "5de2e69765273f1371911421a5c14d35ea548d32e2e1e79a2ec3642f4ba8c082"
+      },
+      {
+        "path": "src/v2/reach-bank-design50.js",
+        "sha256": "b602eb4941ae88cc021cebd774e83170d7136edcdab2654b632bd70c8b6c8620"
+      },
+      {
+        "path": "src/v2/reach-design69.js",
+        "sha256": "6689914038161b5918d8ea28f807f555b1a7f4516e1c3758170c266a152719bf"
+      },
+      {
+        "path": "src/v2/reach-design73.js",
+        "sha256": "c17c23e17bcf8fb78861a044d48fb39ff6223c95e453a29341d313420271489a"
+      },
+      {
+        "path": "src/v2/forest-reach-form41-legacy.js",
+        "sha256": "e72424c3b9299aa0c4d31a26e1e8c301e3c054351a4ce0901b1d17a71901f834"
       },
       {
         "path": "src/v2/forest-bank-shoulder.js",
@@ -56,7 +88,7 @@
       },
       {
         "path": "src/v2/meadow-surface.js",
-        "sha256": "65a2b374bb00105f0ddf524cde97821c5477112f87becc62c4d37c332538c3e7"
+        "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
       },
       {
         "path": "src/v2/meadow-scattered-canopy.js",

@@ -1,3 +1,4 @@
+import {createLegacyTerrainMaterial} from './fixtures/legacy-terrain-material.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -43,7 +44,7 @@ test('shipped root horizon matches CPU and crosses physical edges continuously',
 function actual(){
  const root=new URL('../../public/',import.meta.url),j=n=>JSON.parse(readFileSync(new URL(n,root))),b=n=>new Uint8Array(gunzipSync(readFileSync(new URL(n,root)))),meta=j('data/scene.json'),lc={width:1,height:1,data:new Uint8Array([255,0,0,255])};
  // Frozen screenshot rays predate the curvature bank geometry; retain their original scene.
- return createWorldData({forestBankCurvature38:false,meta,objects:j('data/objects.json'),detailMeta:j('data/detail.json'),manifest:j('world-v2/manifest.json'),streamData:j('data/streams.json'),coreHeights:decodeHeightBytes(b('data/core_height.bin.gz'),meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(b('data/far_height.bin.gz'),meta.far.n,meta.height_scale),detailBytes:b('data/detail.bin.gz'),coreLandcover:lc,farLandcover:lc});
+ return createWorldData({forestReach39:false,forestBankCurvature38:false,meta,objects:j('data/objects.json'),detailMeta:j('data/detail.json'),manifest:j('world-v2/manifest.json'),streamData:j('data/streams.json'),coreHeights:decodeHeightBytes(b('data/core_height.bin.gz'),meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(b('data/far_height.bin.gz'),meta.far.n,meta.height_scale),detailBytes:b('data/detail.bin.gz'),coreLandcover:lc,farLandcover:lc});
 }
 test('real shoreline screenshot rays have rooted substrate despite a negative triangle clearance',t=>{
  const w=actual(),terrain=new WorldTerrain(w),node=terrain._node(-3620,4800,10,10,null),job=terrain._job(node);
@@ -67,7 +68,7 @@ test('real shoreline screenshot rays have rooted substrate despite a negative tr
  }finally{terrain.dispose();water.geometry.dispose();water.material.dispose();}
 });
 test('live v30 comparison affects the full existing surface chain without new texture work',()=>{
- const r=createTerrainMaterial(),m=r.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
+ const r=createLegacyTerrainMaterial(),m=r.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
  try{m.onBeforeCompile(s);const v=m.version,key=m.customProgramCacheKey();
   assert.strictEqual(s.uniforms.terrainRootHorizon,m.userData.terrainRootHorizon);
   m.userData.terrainRootHorizon.value=0;assert.equal(s.uniforms.terrainRootHorizon.value,0);assert.equal(m.version,v);assert.equal(m.customProgramCacheKey(),key);

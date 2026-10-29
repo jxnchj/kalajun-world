@@ -40,6 +40,7 @@ export function createPlantEnvelope(geometries,{wind=true}={}){
  return {slabs,radius};
 }
 export function createShoreStoneCollider(record,geometry){
+ geometry=record.shoreAsset42?.geometry??geometry;
  const matrix=shoreStoneMatrix(record),bins=new Map();addGeometrySlabs(bins,geometry,matrix);
  if(!geometry.boundingBox)geometry.computeBoundingBox();
  const slabs=finishSlabs(bins),box=geometry.boundingBox.clone().applyMatrix4(matrix);
@@ -61,7 +62,7 @@ function overlap2D(a,b,padding){
  }
  return true;
 }
-function placedSlabs(root,envelope){
+export function placedSlabs(root,envelope){
  const c=Math.cos(root.rot||0),s=Math.sin(root.rot||0),scale=root.s??1,sy=root.sy??scale;
  return envelope.slabs.map(b=>({lo:root.y+(b.lo-.55*b.sway*b.sway)*sy,hi:root.y+b.hi*sy,padding:b.sway*scale+.015,
   polygon:b.polygon.map(([x,z])=>[root.x+(c*x+s*z)*scale,root.z+(-s*x+c*z)*scale])}));
@@ -90,7 +91,7 @@ class ShoreStoneField{
    items=[];
    for(const r of records){
     let c=this.colliders.get(r.id);
-    const box=c?.box??this.geometry.boundingBox.clone().applyMatrix4(shoreStoneMatrix(r));
+    const box=c?.box??(r.shoreAsset42?.geometry??this.geometry).boundingBox.clone().applyMatrix4(shoreStoneMatrix(r));
     if(!touchesTile(box))continue;
     if(c){this.colliders.delete(r.id);this.stats.colliderHits++;}
     else {c=createShoreStoneCollider(r,this.geometry);this.stats.collidersBuilt++;}

@@ -1,0 +1,56 @@
+{
+  "scope": "Same build HTTP cache disabled, IndexedDB and driver caches unchanged; Apple M4 Pro Chrome 1280x800 DPR1 time870 river-forest; default exact wind. Original/refill/refill/original.",
+  "rows": [
+    {
+      "run": "a1",
+      "firstMs": 17745.20000001788,
+      "settledMs": 65727.70000001788,
+      "loadingFrameMeanMs": 98.2077079107505,
+      "loadingP95Ms": 141.70000000000437,
+      "refill": null,
+      "errors": []
+    },
+    {
+      "run": "b1",
+      "firstMs": 18349.90000000596,
+      "settledMs": 76818.40000000596,
+      "loadingFrameMeanMs": 120.63865030674847,
+      "loadingP95Ms": 158.40000000000146,
+      "refill": {
+        "enabled": true,
+        "events": 969,
+        "dispatched": 625,
+        "maxBuffered": 4,
+        "headWaits": 0,
+        "fullPrefixes": 1
+      },
+      "errors": []
+    },
+    {
+      "run": "b2",
+      "firstMs": 17868.29999998212,
+      "settledMs": 70638,
+      "loadingFrameMeanMs": 107.8983903420523,
+      "loadingP95Ms": 150.09999999999854,
+      "refill": {
+        "enabled": true,
+        "events": 974,
+        "dispatched": 688,
+        "maxBuffered": 4,
+        "headWaits": 1,
+        "fullPrefixes": 3
+      },
+      "errors": []
+    },
+    {
+      "run": "a2",
+      "firstMs": 18131.29999998212,
+      "settledMs": 79166,
+      "loadingFrameMeanMs": 124.8661257606491,
+      "loadingP95Ms": 158.40000000000146,
+      "refill": null,
+      "errors": []
+    }
+  ],
+  "decision": "Keep refill OFF: average tail original72.447s versus refill73.728s; individual system drift dominates. No demonstrated overall loading improvement. Original two finishes/3ms policy preserved."
+}

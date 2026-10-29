@@ -1,3 +1,5 @@
+import {houseTimberNodeOptions48,houseFurnitureNodeOptions58,installHouseTimberNodeCanvas48,assertDefaultHouseTimber48,assertDefaultHouseFurniture58} from './test-support/house-timber48-node.js';
+installHouseTimberNodeCanvas48();
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -15,7 +17,7 @@ const data=await readFile(new URL('assets/v2/household_living.glb',root));const 
 const objects=JSON.parse(await readFile(new URL('data/objects.json',root))),manifest=JSON.parse(await readFile(new URL('world-v2/manifest.json',root)));
 const entities=createEntities(objects,manifest.assetMetadata).filter(e=>e.assetId==='house_a');
 const world={entities,surface:{buildingPose:e=>({x:e.x,y:2100,z:e.z,rot:e.rot,scale:e.scale}),heightAt:()=>2099.65}};
-const structures=new WorldStructures(world,{loadAsset:parse});await structures.load();const originalTriangles=structures.stats.triangles,originalMaterials=[...structures.materials];await structures.loadHouseholdLiving({loadAsset:parse});const living=structures.householdLiving;
+const structures=new WorldStructures(world,{houseTimber48Options:houseTimberNodeOptions48,houseFurniture58Options:houseFurnitureNodeOptions58,loadAsset:parse});await structures.load();assertDefaultHouseTimber48(structures);assertDefaultHouseFurniture58(structures);const originalTriangles=structures.stats.triangles,originalMaterials=[...structures.materials];await structures.loadHouseholdLiving({loadAsset:parse});const living=structures.householdLiving;
 
 test('three Blender usage sets contain full geometry, AO and no duplicated images',()=>{
  assert.equal(doc.images?.length??0,0);assert.equal(doc.textures?.length??0,0);assert.equal(living.templates.size,3);assert.equal(doc.meshes.length,15);assert.equal(doc.buffers[0].byteLength+20+data.readUInt32LE(12)+8,data.length);
@@ -40,7 +42,7 @@ test('menu visits real households of all three usage types with valid camera pos
 test('all three complete usage sets preserve entry access and block their added furniture',async()=>{
  for(const style of [0,1,2]){
   const entity=entities.find(e=>householdStyle(e.id)===style),pose={x:0,y:0,z:0,rot:0,scale:{x:1,y:1,z:1}},w={entities:[entity],surface:{buildingPose:()=>pose,heightAt:()=>-.35}};
-  const doors=new WorldDoors(),s=new WorldStructures(w,{doors,loadAsset:parse});await s.load();await s.loadHouseholdLiving({loadAsset:parse});const c=new WorldCollision(w,{structures:s,doors});const p=new T.Vector3([-2.2,-1.75,-2.82][style],1.55,5.4);await c.enable(p);
+  const doors=new WorldDoors(),s=new WorldStructures(w,{houseTimber48Options:houseTimberNodeOptions48,houseFurniture58Options:houseFurnitureNodeOptions58,doors,loadAsset:parse});await s.load();assertDefaultHouseTimber48(s);assertDefaultHouseFurniture58(s);await s.loadHouseholdLiving({loadAsset:parse});const c=new WorldCollision(w,{structures:s,doors});const p=new T.Vector3([-2.2,-1.75,-2.82][style],1.55,5.4);await c.enable(p);
   for(let i=0;i<90;i++)c.move(p,new T.Vector3(0,0,-.025),1/30);
   assert.ok(p.z>4.50&&p.z<4.8,'added furniture blocks forward walking '+style+' '+p.toArray());assert.ok(c.stats.collisions>0);c.disable();
   p.set(1,1.55,5.4);await c.enable(p);for(let i=0;i<150;i++)c.move(p,new T.Vector3(0,0,-.025),1/30);assert.ok(p.z<2.8,'central path must remain passable '+style+' '+p.toArray());c.dispose();s.dispose();doors.dispose();

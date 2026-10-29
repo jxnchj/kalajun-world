@@ -1,0 +1,623 @@
+{
+  "scope": "Necessary unit-diffuse angular gate only: actual source faces/normals, inverse-transpose scale, DoubleSide and 14% seed heads. No mutual occlusion, pigment or specular; not a canopy BRDF or rendered acceptance.",
+  "limits": {
+    "rmse": 0.04,
+    "maxAbsolute": 0.08
+  },
+  "rows": [
+    {
+      "lod": "middle",
+      "sunElevation": 19.975,
+      "slope": 0,
+      "stats": {
+        "triangles": 45,
+        "weightedArea": 0.1757427572768766,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.48875264169603794,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.3416100925260401,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6272343735905411
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.26586981676666155
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.030169022346572465
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.5461629470910531
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.3180110662966091
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.13677416323151245
+        }
+      ],
+      "bestMinimaxConstant": 0.3287016979685568,
+      "minPossibleMaxError": 0.2985326756219843,
+      "bestMeanConstant": 0.3207035648871583,
+      "minPossibleRMSE": 0.21057358349374586
+    },
+    {
+      "lod": "middle",
+      "sunElevation": 19.975,
+      "slope": 20,
+      "stats": {
+        "triangles": 45,
+        "weightedArea": 0.1757427572768766,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.48875264169603794,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.32100848313271124,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6272343735905411
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.26586981676666155
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.030169022346572465
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.5461629470910531
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.3180110662966091
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.13677416323151245
+        }
+      ],
+      "bestMinimaxConstant": 0.3287016979685568,
+      "minPossibleMaxError": 0.2985326756219843,
+      "bestMeanConstant": 0.3207035648871583,
+      "minPossibleRMSE": 0.21057358349374586
+    },
+    {
+      "lod": "middle",
+      "sunElevation": 41.814,
+      "slope": 0,
+      "stats": {
+        "triangles": 45,
+        "weightedArea": 0.1757427572768766,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.48875264169603794,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.6667146044996215,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6560147534247528
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.36462701169787276
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.1339213144548769
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.6749874809252275
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.46756548253323826
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.2904181408032172
+        }
+      ],
+      "bestMinimaxConstant": 0.4044543976900522,
+      "minPossibleMaxError": 0.27053308323517533,
+      "bestMeanConstant": 0.43125569730653096,
+      "minPossibleRMSE": 0.1931849504360395
+    },
+    {
+      "lod": "middle",
+      "sunElevation": 41.814,
+      "slope": 20,
+      "stats": {
+        "triangles": 45,
+        "weightedArea": 0.1757427572768766,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.48875264169603794,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.6265067940184896,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6560147534247528
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.36462701169787276
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.1339213144548769
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.6749874809252275
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.46756548253323826
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.2904181408032172
+        }
+      ],
+      "bestMinimaxConstant": 0.4044543976900522,
+      "minPossibleMaxError": 0.27053308323517533,
+      "bestMeanConstant": 0.43125569730653096,
+      "minPossibleRMSE": 0.1931849504360395
+    },
+    {
+      "lod": "middle",
+      "sunElevation": 66.625,
+      "slope": 0,
+      "stats": {
+        "triangles": 45,
+        "weightedArea": 0.1757427572768766,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.48875264169603794,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.9179278267724427,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6087299879141232
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.46100893044909147
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.32290995610287015
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.7241255966213941
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.6124983362114141
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.5063975283438551
+        }
+      ],
+      "bestMinimaxConstant": 0.5235177763621321,
+      "minPossibleMaxError": 0.20060782025926197,
+      "bestMeanConstant": 0.5392783892737913,
+      "minPossibleRMSE": 0.12804669286403447
+    },
+    {
+      "lod": "middle",
+      "sunElevation": 66.625,
+      "slope": 20,
+      "stats": {
+        "triangles": 45,
+        "weightedArea": 0.1757427572768766,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.48875264169603794,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.8625700052321099,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6087299879141232
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.46100893044909147
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.32290995610287015
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.7241255966213941
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.6124983362114141
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.5063975283438551
+        }
+      ],
+      "bestMinimaxConstant": 0.5235177763621321,
+      "minPossibleMaxError": 0.20060782025926197,
+      "bestMeanConstant": 0.5392783892737913,
+      "minPossibleRMSE": 0.12804669286403447
+    },
+    {
+      "lod": "near",
+      "sunElevation": 19.975,
+      "slope": 0,
+      "stats": {
+        "triangles": 221,
+        "weightedArea": 0.1901837735105917,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.3772690405850877,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.3416100925260401,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6551252072721763
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.25666554310239187
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.028962518699159667
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.5838999812112464
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.3020256534906045
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.10923851928776387
+        }
+      ],
+      "bestMinimaxConstant": 0.34204386298566797,
+      "minPossibleMaxError": 0.3130813442865083,
+      "bestMeanConstant": 0.32265290384389045,
+      "minPossibleRMSE": 0.22926237701106847
+    },
+    {
+      "lod": "near",
+      "sunElevation": 19.975,
+      "slope": 20,
+      "stats": {
+        "triangles": 221,
+        "weightedArea": 0.1901837735105917,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.3772690405850877,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.32100848313271124,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6551252072721763
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.25666554310239187
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.028962518699159667
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.5838999812112464
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.3020256534906045
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.10923851928776387
+        }
+      ],
+      "bestMinimaxConstant": 0.34204386298566797,
+      "minPossibleMaxError": 0.3130813442865083,
+      "bestMeanConstant": 0.32265290384389045,
+      "minPossibleRMSE": 0.22926237701106847
+    },
+    {
+      "lod": "near",
+      "sunElevation": 41.814,
+      "slope": 0,
+      "stats": {
+        "triangles": 221,
+        "weightedArea": 0.1901837735105917,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.3772690405850877,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.6667146044996215,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6293513519054809
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.31209929841696493
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.09919047422792587
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.66239621919734
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.4162315776059523
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.2320936662990765
+        }
+      ],
+      "bestMinimaxConstant": 0.380793346712633,
+      "minPossibleMaxError": 0.28160287248470706,
+      "bestMeanConstant": 0.3918937646087901,
+      "minPossibleRMSE": 0.2031946756598615
+    },
+    {
+      "lod": "near",
+      "sunElevation": 41.814,
+      "slope": 20,
+      "stats": {
+        "triangles": 221,
+        "weightedArea": 0.1901837735105917,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.3772690405850877,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.6265067940184896,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.6293513519054809
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.31209929841696493
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.09919047422792587
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.66239621919734
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.4162315776059523
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.2320936662990765
+        }
+      ],
+      "bestMinimaxConstant": 0.380793346712633,
+      "minPossibleMaxError": 0.28160287248470706,
+      "bestMeanConstant": 0.3918937646087901,
+      "minPossibleRMSE": 0.2031946756598615
+    },
+    {
+      "lod": "near",
+      "sunElevation": 66.625,
+      "slope": 0,
+      "stats": {
+        "triangles": 221,
+        "weightedArea": 0.1901837735105917,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.3772690405850877,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.9179278267724427,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.5177493374571012
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.35883620104685215
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.22479750024901923
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.6482421342834829
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.5150300936706753
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.3984488518183528
+        }
+      ],
+      "bestMinimaxConstant": 0.43651981726625105,
+      "minPossibleMaxError": 0.21172231701723182,
+      "bestMeanConstant": 0.4438506864209139,
+      "minPossibleRMSE": 0.13513972416324424
+    },
+    {
+      "lod": "near",
+      "sunElevation": 66.625,
+      "slope": 20,
+      "stats": {
+        "triangles": 221,
+        "weightedArea": 0.1901837735105917,
+        "seedArea": 0.0014602644685126692,
+        "meanNormalY2": 0.3772690405850877,
+        "heightRatio": 0.955,
+        "rotations": 16,
+        "quadraturePerTriangle": 3
+      },
+      "groundResponse": 0.8625700052321099,
+      "directions": [
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 0,
+          "source": 0.5177493374571012
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 90,
+          "source": 0.35883620104685215
+        },
+        {
+          "viewElevation": 20,
+          "relativeAzimuth": 180,
+          "source": 0.22479750024901923
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 0,
+          "source": 0.6482421342834829
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 90,
+          "source": 0.5150300936706753
+        },
+        {
+          "viewElevation": 45,
+          "relativeAzimuth": 180,
+          "source": 0.3984488518183528
+        }
+      ],
+      "bestMinimaxConstant": 0.43651981726625105,
+      "minPossibleMaxError": 0.21172231701723182,
+      "bestMeanConstant": 0.4438506864209139,
+      "minPossibleRMSE": 0.13513972416324424
+    }
+  ],
+  "passed": false,
+  "decision": "Do not install a view-independent mean albedo/coverage replacement when this necessary source angular gate fails. Retain all roots/leaves and original ground."
+}

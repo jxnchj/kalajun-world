@@ -1,0 +1,16 @@
+import test from 'node:test';import assert from 'node:assert/strict';import * as T from 'three';import {readFile}from'node:fs/promises';import{GLTFLoader}from'three/addons/loaders/GLTFLoader.js';import{WorldStructures}from'./structures.js';import{WorldDoors}from'./doors.js';import{installStructureMatrixArithmetic41}from'./structure-matrix-arithmetic41.js';
+globalThis.self=globalThis;globalThis.createImageBitmap=async b=>({width:1,height:1,byteLength:b.size,close(){}});
+const loadAsset=async path=>{const b=await readFile(new URL('../../public/'+path.replace(/^\.\//,''),import.meta.url));return new GLTFLoader().parseAsync(b.buffer.slice(b.byteOffset,b.byteOffset+b.byteLength),'');};
+const world=entities=>({entities,surface:{buildingPose:e=>({...e,y:2200,scale:{x:1,y:1,z:1}})}});
+const options={loadAsset,preparedAssets:false,cooperativePreparation:false,guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false};
+function snapshot(s,doors){const meshes=[];s.group.traverse(o=>{if(o.isMesh)meshes.push({name:o.name,world:o.matrixWorld.elements.slice(),count:o.count,visible:o.visible,cast:o.castShadow,matrix:o.instanceMatrix?Array.from(o.instanceMatrix.array):null,bounds:o.boundingBox?.clone(),sphere:o.boundingSphere?.clone()});});return{meshes,doors:doors.group.children.map(o=>({world:o.matrixWorld.elements.slice(),matrix:o.instanceMatrix?Array.from(o.instanceMatrix.array):null})),stats:Object.fromEntries(['visibleBatches','visibleTriangles','shadowBatches','culledDetailInstances','lowLODInstances','activeTriangles'].map(k=>[k,s.stats[k]]))};}
+test('actual house doors, streamed lodge interior, camera/LOD and same-frame transform edits retain native output',async t=>{
+ const doors=new WorldDoors({document:null,eventTarget:null}),s=new WorldStructures(world([{id:'house',assetId:'house_a',x:20,z:20,rot:.32}]),{...options,doors}),stage=new WorldStructures(world([{id:'lodge',assetId:'gh_lanchuan_lodge',x:75,z:90,rot:-.44}]),{...options,lodgeStreamKind:'interior'}),camera=new T.PerspectiveCamera(60,1.6,.1,20000);let runtime;
+ const check=()=>{runtime?.dispose();runtime=null;s.update(camera,.016);doors.group.updateMatrixWorld(true);const expected=snapshot(s,doors);runtime=installStructureMatrixArithmetic41(s.group);s.update(camera,.016);doors.group.updateMatrixWorld(true);assert.deepEqual(snapshot(s,doors),expected);};
+ try{await s.load();camera.position.set(20,2202,24);camera.lookAt(20,2201,20);check();assert.ok(doors.leaves.length>0);for(const angle of[0,.52,1.05,1.75]){for(const leaf of doors.leaves){leaf.angle=angle;doors.writeLeaf(leaf);}check();}
+  await stage.load();const before=s.group.children.length;s.installLodgeInterior(stage);assert.ok(s.group.children.length>before);check();
+  for(const [x,z]of[[75,90],[235,235],[40000,40000],[20,20]]){camera.position.set(x,2202,z);camera.lookAt(20,2201,20);check();}
+  s.group.position.set(13,-4,9);s._batches[0].mesh.matrix.elements[12]+=3;s._batches[0].mesh.matrixWorld.elements[6]=777;check();
+  t.diagnostic(JSON.stringify({batches:s._batches.length,doors:doors.leaves.length,streamed:s.group.children.length-before,arithmetic:runtime.stats}));
+ }finally{runtime?.dispose();stage.dispose();s.dispose();doors.dispose();}
+});

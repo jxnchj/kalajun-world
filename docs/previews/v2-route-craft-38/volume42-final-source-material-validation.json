@@ -1,0 +1,88 @@
+{
+  "filesVerified": 152,
+  "groups": 76,
+  "observedClickToCompletionUpperMs": 7091,
+  "firstLastEvidenceWriteSpanMs": 2108.6,
+  "consoleErrorsWarnings": [],
+  "browserTabClosed": "1839973724",
+  "coverageRows": [
+    {
+      "distance": 320,
+      "elevation": 42,
+      "coverage": {
+        "geometry": 192.25490196078434,
+        "surface": 285.18823529411765,
+        "directed": 205.2901960784314,
+        "bare": 0.0
+      },
+      "ssaa": {
+        "2": 185.8137254901959,
+        "4": 187.7924019607863
+      },
+      "biasVersus4x": {
+        "geometry": 0.023762942235170392,
+        "surface": 0.5186356440217905,
+        "directed": 0.09317626237774457
+      }
+    },
+    {
+      "distance": 320,
+      "elevation": 10,
+      "coverage": {
+        "geometry": 154.9764705882353,
+        "surface": 176.67843137254903,
+        "directed": 143.5450980392157,
+        "bare": 0.0
+      },
+      "ssaa": {
+        "2": 146.5725490196079,
+        "4": 144.69166666666715
+      },
+      "biasVersus4x": {
+        "geometry": 0.07108083111145391,
+        "surface": 0.2210684653980195,
+        "directed": -0.007924220197786824
+      }
+    },
+    {
+      "distance": 480,
+      "elevation": 42,
+      "coverage": {
+        "geometry": 71.36078431372547,
+        "surface": 128.47058823529414,
+        "directed": 93.04313725490196,
+        "bare": 0.0
+      },
+      "ssaa": {
+        "2": 72.42156862745088,
+        "4": 74.09583333333327
+      },
+      "biasVersus4x": {
+        "geometry": -0.03691231877106638,
+        "surface": 0.7338436246117426,
+        "directed": 0.2557134871043407
+      }
+    },
+    {
+      "distance": 480,
+      "elevation": 10,
+      "coverage": {
+        "geometry": 57.501960784313724,
+        "surface": 79.71764705882353,
+        "directed": 64.80392156862746,
+        "bare": 0.0
+      },
+      "ssaa": {
+        "2": 62.992156862745105,
+        "4": 61.484068627450995
+      },
+      "biasVersus4x": {
+        "geometry": -0.06476649857487415,
+        "surface": 0.29655777241832904,
+        "directed": 0.05399533595104722
+      }
+    }
+  ],
+  "sourceMaterialComparison": "volume42-source-material-comparison.png",
+  "scope": "Actual sampled images, not production adoption or GPU benchmark"
+}

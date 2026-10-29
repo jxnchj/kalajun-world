@@ -1,0 +1,15 @@
+# 320m mean-material handoff: do not install scalar replacement
+
+2026-10-27. Actual same-phase 320/off/280 screenshots confirmed that the visible band follows the finite grass extent. No production source, root density, leaf geometry, terrain shader or global lighting was changed by this investigation.
+
+`node tools/measure-meadow-handoff42.mjs` reuses the existing complete near/middle source quadrature: actual triangle face visibility weights, interpolated source normals, inverse-transpose height .955, sixteen root rotations and fourteen-percent seed-head occurrence. It checks three actual summer sun elevations (19.975, 41.814, 66.625 degrees), flat/20-degree terrain and six view directions. Grass instances remain upright as in the source; slope changes the underlying ground normal, not by inventing a terrain-normal rotation of the plants.
+
+This is only a necessary unit-diffuse angular gate, not complete canopy radiance: it deliberately does not invent inter-leaf visibility, ground interception, pigment or specular. Existing five reference tests passed, including no source mutation and the previous rough-diffuse rejection.
+
+Even allowing a separate best scalar response for EACH sun and slope, the middle-source minimum possible worst errors are .299, .271 and .201 respectively (required <=.08); minimum possible RMSE .211, .193 and .128 (required <=.04). A genuine fixed average albedo or view-independent coverage factor has less fitting freedom. The near-source cases fail as well. Exact values and directions are in `meadow-handoff42-angular-gate.json`.
+
+Decision: do not create/install a scalar mean-color/roughness/coverage terrain candidate; it would repeat the failed angular assumption before reaching the picture. This gate is not a proof that every pigment/occlusion-aware representation must fail, and the unit response must never be applied to ground by division by N dot L.
+
+Smallest credible alternative: preserve directional information from the same leaf source in a bounded analytic normal/face quadrature (constant shader coefficients, no runtime texture), evaluated against both sun and view. Fit it first to the existing angular reference, including opposing views and the failed low-sun cases. Then use actual existing 8m patches to constrain visible projected occupancy/ground interception before any terrain installation; the required coverage is view-dependent and cannot be replaced by the G noise channel. Leaf BRDF contribution must enter direct reflected light explicitly, rather than changing terrain pigment or multiplying its N dot L. Retain all current roots/leaves; unresolved terrain receives only the complementary same-source response. A limited quadrature that cannot reproduce these tests should be rejected before runtime, rather than spawning a larger atlas or changing the world's light/color.
+
+No runtime installer exists because the authorized simple-mean branch failed its necessary precondition. 320m continuity remains unresolved; source regressions and this offline diagnostic are not visual acceptance.

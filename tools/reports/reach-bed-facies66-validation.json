@@ -1,0 +1,79 @@
+{
+  "revision": "reach-bed-facies66-scan-2-signed-constants",
+  "status": "browser-syntax-fix-awaiting-real-recompile",
+  "tests": {
+    "passed": 7,
+    "failed": 0,
+    "durationMs": 1490.378167
+  },
+  "images": {
+    "bytes": 4295716,
+    "width": 1024,
+    "height": 1024,
+    "physicalWidth": 2.4800000190734863
+  },
+  "cost": {
+    "additionalSamplers": 0,
+    "additionalDraws": 0,
+    "additionalGeometryBytes": 0,
+    "fineRegionAdditionalTextureFetches": 2,
+    "decodedPixels": 8388608,
+    "privateTextureBaseBytes": 33554432,
+    "privateTextureWithMipBytes": 44739232,
+    "borrowedOriginalTexturesRetained": true
+  },
+  "geometry": {
+    "sampleCount": 923,
+    "exactWaterAndGroundUnchanged": true,
+    "roots": 521,
+    "sourceSHA256": "4fa8f6446c0b681723f89ae9037d1959106abbbcbbdb63d57d183ffe3d4ae3d0",
+    "preparedSHA256": "9e62e8d16168db6be5b669e5e79d395b74eac384b76685a4d76724796916d877"
+  },
+  "buckets": {
+    "inlet": {
+      "n": 207,
+      "meanFine": 0.7139848737585068,
+      "fineAbove80": 136,
+      "coarseAbove90": 44
+    },
+    "middle": {
+      "n": 225,
+      "meanFine": 0.7611067112013604,
+      "fineAbove80": 159,
+      "coarseAbove90": 38
+    },
+    "outlet": {
+      "n": 207,
+      "meanFine": 0.7834657507774795,
+      "fineAbove80": 153,
+      "coarseAbove90": 34
+    }
+  },
+  "limitations": [
+    "Not browser or GPU accepted",
+    "No claim to surveyed sediment or hydraulic transport",
+    "Photographed fine source has sparse tiny twig debris",
+    "Private copied array overhead preserves reversible independent integration"
+  ],
+  "source": "assets/src/v2/riverbed/facies66/source.json",
+  "lib": {
+    "path": "web/dist-v2/reach-facies66/reach-facies66.js",
+    "bytes": 343637,
+    "sourceScalarSamplesEqual": 100,
+    "assetFilesEqual": 4,
+    "sharedSourceFilesUnchanged": 4,
+    "generatedGLSLMatchesSource": true
+  },
+  "frozenFiles": {
+    "web/src/v2/reach-bed-facies66.js": "94bf8fbc9cf513892579afd77ecd427c52ad49774e0ad7040a411567ccb5ba26",
+    "web/src/v2/reach-bed-facies66.test.js": "527434598373edb6611779f0d16de4f28aeecb4b3fd6d135d58b5f1befc1bd7c",
+    "tools/candidates/reach-bed-facies66/build.mjs": "c4c2d276446cd86fea64bc2e18f1e79ce307234f7d8e8cc66c7363be9aa197a2"
+  },
+  "browserFailure": {
+    "priorRevision": "reach-bed-facies66-scan-1",
+    "cause": "subtracting bare negative GLSL constants emitted decrement tokens",
+    "record": "backups/reach-bed-facies66/first-browser-failure/failure.json",
+    "fixed": "All generated numeric constants now parenthesized",
+    "actualBrowserRecompile": "not yet verified"
+  }
+}

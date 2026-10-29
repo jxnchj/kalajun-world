@@ -2,8 +2,8 @@ import test from 'node:test';import assert from 'node:assert/strict';import * as
 import {boardwalkTimber,timberGeometry} from './boardwalk-timber.js';import {WorldPaths} from './paths.js';import {WorldCollision,WALK_BODY,walkingViewpoints} from './collision.js';import {createWorldData,decodeHeightBytes} from './world-data.js';
 function actual(){const root=new URL('../../public/',import.meta.url),j=n=>JSON.parse(readFileSync(new URL(n,root))),b=n=>new Uint8Array(gunzipSync(readFileSync(new URL(n,root)))),meta=j('data/scene.json'),lc={width:1,height:1,data:new Uint8Array([255,128,0,255])};return createWorldData({meta,objects:j('data/objects.json'),detailMeta:j('data/detail.json'),manifest:j('world-v2/manifest.json'),streamData:j('data/streams.json'),coreHeights:decodeHeightBytes(b('data/core_height.bin.gz'),meta.core.n,meta.height_scale),farHeights:decodeHeightBytes(b('data/far_height.bin.gz'),meta.far.n,meta.height_scale),detailBytes:b('data/detail.bin.gz'),coreLandcover:lc,farLandcover:lc});}
 test('existing routes retain width and source lines; full Blender timber is shared by rendering and physics',async t=>{
- const saved=globalThis.location;globalThis.location={search:'?boardwalkTimber=1'};let world;try{world=actual();}finally{globalThis.location=saved;}
- globalThis.location={search:'?boardwalkTimber=1'};const layout=boardwalkTimber(world);globalThis.location=saved;
+ const saved=globalThis.location;globalThis.location={search:'?boardwalkTimber=1&route3Entry42=0'};let world;try{world=actual();}finally{globalThis.location=saved;}
+ globalThis.location={search:'?boardwalkTimber=1&route3Entry42=0'};const layout=boardwalkTimber(world);globalThis.location=saved;
  assert.equal(layout.routes.length,4);assert.ok(walkingViewpoints(world).some(v=>v.id==='walk-boardwalk-3'));assert.ok(walkingViewpoints(world).some(v=>v.id==='walk-boardwalk-2'));const r=layout.routes[3];assert.ok(Math.abs(r.length-33.833874079487444)<1e-9);assert.equal(r.width,1.4);assert.equal(r.rail,false);assert.equal(r.stairs,true);
  for(const route of layout.routes){assert.ok(route.maxStep<WALK_BODY.step-.025,JSON.stringify({route:route.id,maxStep:route.maxStep}));const original=world.objects.boardwalks[route.index];assert.deepEqual(route.sourcePoints,original.pts);if(route.index!==0)assert.deepEqual(route.points,original.pts);assert.equal(route.steps.length,route.points.slice(1).reduce((n,b,i)=>n+Math.ceil(Math.hypot(b[0]-route.points[i][0],b[1]-route.points[i][1])/.3),0),'same tread spacing across complete corrected route');}
  const paths=new WorldPaths(world),meshes=paths.group.children.filter(m=>m.userData.kind==='boardwalk-timber');assert.equal(meshes.length,3);assert.equal(meshes.reduce((n,m)=>n+m.count,0),layout.pieces);
@@ -20,7 +20,7 @@ test('existing routes retain width and source lines; full Blender timber is shar
 
 test('original two endpoint buildings support the continuous boardwalk route and real lodge floor',async t=>{
  const {WorldStructures}=await import('./structures.js'),{GLTFLoader}=await import('three/addons/loaders/GLTFLoader.js');
- const saved=globalThis.location;globalThis.location={search:'?boardwalkTimber=1'};const world=actual(),layout=boardwalkTimber(world);globalThis.location=saved;
+ const saved=globalThis.location;globalThis.location={search:'?boardwalkTimber=1&route3Entry42=0'};const world=actual(),layout=boardwalkTimber(world);globalThis.location=saved;
  const anchor=layout.routes[3].steps[0];
  const subset={...world,entities:world.entities.filter(e=>['gh_lanchuan','gh_lanchuan_lodge','house_a','yurt'].includes(e.assetId)&&Math.hypot(e.x-anchor.x,e.z-anchor.z)<70)};
  const {WorldDoors}=await import('./doors.js'),doors=new WorldDoors();

@@ -1,3 +1,4 @@
+// Historical original-source comparison: timber48 stays explicitly off here; default48 is covered by collision/door/household tests.
 // Original-source comparison explicitly retains original timber; default timber is exercised by actual endpoint and household physics tests.
 // Retained original-source comparison fixture; new default source is covered by lodge-furniture-loader.test.js.
 import {WorldDoors} from "./doors.js";
@@ -77,7 +78,7 @@ test('actual checked-in cabin meshes and two representative placement fixtures r
  globalThis.self=globalThis;globalThis.createImageBitmap=async blob=>({width:1,height:1,byteLength:blob.size,close(){}});
  const entities=[{id:'near',assetId:'cabin_small',x:20,z:20,rot:.32,scale:{x:1,y:1,z:1}},{id:'far',assetId:'cabin_small',x:235,z:235,rot:-.57,scale:{x:1.2,y:.9,z:.8}}];
  const load=async enabled=>{
-  const s=new WorldStructures({entities,surface:{buildingPose:e=>({...e,y:2200})}},{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,selectionCache:enabled,cooperativePreparation:false});
+  const s=new WorldStructures({entities,surface:{buildingPose:e=>({...e,y:2200})}},{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,houseTimber48:false,selectionCache:enabled,cooperativePreparation:false});
   s.loadAsset=async path=>{const bytes=await readFile(new URL('../../public/'+path.replace(/^\.\//,''),import.meta.url));return new GLTFLoader().parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');};
   await s.load();s.camera=new THREE.PerspectiveCamera(60,1.6,.1,200000);return s;
  };
@@ -98,7 +99,7 @@ test('current complete 364-entity/18-asset set retains native selection with sta
  const objects=await json('data/objects.json'),manifest=await json('world-v2/manifest.json'),entities=createEntities(objects,manifest.assetMetadata);
  assert.equal(entities.length,364);
  const doors=new WorldDoors({document:null,eventTarget:null});
- const s=new WorldStructures({entities,surface:{buildingPose:e=>({...e,y:2200})}},{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,doors,selectionCache:false,cooperativePreparation:false});
+ const s=new WorldStructures({entities,surface:{buildingPose:e=>({...e,y:2200})}},{guestVanity:false,lodgeFurniture:false,lodgeChairs:false,cabinTimber:false,houseTimber48:false,doors,selectionCache:false,cooperativePreparation:false});
  s.loadAsset=async path=>{const bytes=await readFile(new URL('../../public/'+path.replace(/^\.\//,''),import.meta.url));return new GLTFLoader().parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),'');};
  await s.load();const camera=new THREE.PerspectiveCamera(60,1.6,.1,200000);
  try {

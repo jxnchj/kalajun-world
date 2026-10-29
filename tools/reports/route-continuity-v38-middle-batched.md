@@ -1,6 +1,6 @@
 # v38 mode1 中距冠片原生 BatchedMesh 候选
 
-默认不创建、不启用。测试通过仅说明数据/生命周期/源码路径契约，实际浏览器像素与性能尚待验收。Three 原生 BatchedMesh 非实例 multiDraw 每树一个子 draw，多出的顶点纹理读取有可能比原 instancing 慢；不得据“draw 调用变少”声称整帧性能改善。
+当前结论（2026-10-27）：不采用，默认不创建、不启用；第42轮用新的整 RAF CPU 口径完成一次复查，仍无稳定净收益，结束本分支迭代。下述早期实现记录保留，最新实景证据见文末。Three 原生 BatchedMesh 非实例 multiDraw 每树一个子 draw，多出的顶点纹理读取有可能比原 instancing 慢；不得据“draw 调用变少”声称整帧性能改善。
 
 入口：`?middleTreeBatched=1` 创建并启用；同页运行 `systems.ecology.middleBatched.enabled.value = 0/1` 对照。无 WEBGL_multi_draw 时恢复原 InstancedMesh 路径；当次已排队绘制仍由 Three 自带逐 draw fallback 完成，不丢树。没有改 Three 核心或 GL 方法。
 
@@ -15,3 +15,18 @@
 文件：`web/src/v2/spruce-middle-batched.js`、对应测试；ecology 在 load/sync/dispose 接线。备份 `backups/route-continuity-v38/middle-batched/web/src/v2/ecology.js`。
 
 验证：新增 8 项加 spruce-wind/tree-view-batches 共 35 项通过，约 179ms。使用安装版原生 BatchedMesh 验证 geometry 数据、完整根集合、main/reflection/shadow drawID、真实 SunShadowCasters revision、全容量替换、原路径回退和独立资源释放；另外实际读取当前缓存全部五形态 mid 冠片，确认所有静态 attribute 数组逐值/类型一致、所有 index 一致。非真实 WebGL 编译/性能验收。
+
+
+## 第42轮一次复查：仍不采用
+
+旧 `middle-forest-{on-1,off-1,on-2,off-2}.json` 并非只有 GPU：各20秒真实帧间隔均值为31.48/38.26/49.92/180.07ms，但后两组出现1100/2862ms最大长停顿，不能据此证明可靠整体收益或整体退化。因此在新整 RAF 统计可用后，仅做这一次受控复查，不重写原候选。
+
+使用独立 review 小包在同一已加载世界挂接原 SpruceMiddleBatched，不新增启动参数、不关闭现有地形 Worker。完整978根、142个源批次→5形态批，冻结图0差。正式 ABBA（A原路径、B候选）结果：
+
+| 指标 | A1 | B1 | B2 | A2 |
+| --- | ---: | ---: | ---: | ---: |
+| 整帧 ms | 77.07 | 69.41 | 69.67 | 68.94 |
+| RAF 同步 CPU ms | 76.38 | 69.14 | 69.45 | 68.58 |
+| GPU ms | 22.23 | 23.28 | 23.72 | 21.84 |
+
+首A明显高于末A，末A与两次B同级；不能把两模式平均约4.7%的整帧差归为稳定候选收益。GPU依旧变慢。保持OFF，不再推进本分支；实际helper已dispose并恢复原提交对象。证据：`docs/previews/v2-route-craft-38/middle42-normal-abba.json`。图像等价与完整根数只证明本次正确性，不能替代性能采用依据。

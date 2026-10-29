@@ -1,3 +1,4 @@
+import {NearShadowAtlas40} from './shadow-atlas40.js';
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
@@ -71,7 +72,7 @@ test("bounded bounce keeps exact rotated room transforms and stops outside occup
 test("room irradiance composes with AO, actual CSM/cloud/air hooks, instancing and standard PBR",()=>{
  const material=new THREE.MeshStandardMaterial();installAssetOcclusion(material,{interiorBounce:.3});
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(),environment=Object.create(WorldEnvironment.prototype);
- environment.csm=new CSM({camera,parent:scene,cascades:3,maxFar:500});environment.registered=new Set();
+ environment.csm=new CSM({camera,parent:scene,cascades:3,maxFar:500});environment.registered=new Set();environment.shadowAtlas40=new NearShadowAtlas40({shadowMap:{}},environment.csm);
  environment.clouds=createCloudUniforms();environment.aerial=createAerialUniforms(new THREE.Vector3(0,1,0));environment.register([material]);
  const light=new RoomIndirectLight();light.register([material]);const hook=material.onBeforeCompile;light.register([material]);assert.equal(material.onBeforeCompile,hook);
  const shader={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};material.onBeforeCompile(shader,null);
@@ -92,7 +93,7 @@ test("room irradiance composes with AO, actual CSM/cloud/air hooks, instancing a
  assert.match(THREE.ShaderChunk.lights_physical_pars_fragment,/reflectedLight.indirectDiffuse \+= indirectDiffuse/,"the installed standard indirect BRDF supplies both diffuse and metallic energy");
  assert.equal((ROOM_BOUNCE_GLSL.match(/uniform highp sampler3D/g)||[]).length,1,"one static room field sampler");
  assert.doesNotMatch(shader.fragmentShader,/directDiffuse \+= room|outgoingLight \+= room/);
- environment.csm.dispose();environment.csm.remove();material.dispose();light.dispose();
+ environment.shadowAtlas40.dispose();environment.csm.dispose();environment.csm.remove();material.dispose();light.dispose();
 });
 
 test("window ambient can be enabled independently of portal spots and its excluded volume resets",()=>{

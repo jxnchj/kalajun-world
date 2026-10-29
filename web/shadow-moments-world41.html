@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="theme-color" content="#263c36"/><title>喀拉峻 · 山野之间</title></head>
+<body><canvas id="world" aria-label="喀拉峻三维世界"></canvas>
+<div id="loading" role="status"><span class="eyebrow">KALAJUN · QIONGKUSHTAI</span><h1>山野之间</h1><p>沿着山的起伏，回到草原。</p><div class="load-line"><i></i></div><small id="load-message">准备世界…</small></div>
+<header><div><span class="eyebrow">喀拉峻 · 琼库什台</span><h1>山野之间</h1><p id="place-name">草原与雪岭</p></div><a class="old-version" href="../" target="_blank" rel="noopener">旧版对照 ↗</a></header>
+<aside id="world-panel" aria-label="探索选项"><details open><summary>漫游草原</summary><nav id="places" aria-label="地点"></nav>
+<div class="time-row"><label for="time">光阴</label><output id="time-label" for="time"></output></div><input id="time" type="range" min="540" max="1305" value="870" step="1" aria-label="北京时间"/>
+<div id="time-presets"><button data-time="600">晨光</button><button data-time="870">正午</button><button data-time="1260">夕照</button></div>
+<button id="map-toggle" aria-expanded="false">展开全域地图 <span>↗</span></button><div id="map-wrap" hidden><canvas id="map" width="480" height="480" aria-label="世界地图，点击飞往相应位置"></canvas><p>北 ↑ · 核心区 20.48 km · 点击移动</p></div>
+<a id="photo-save" href="#" download="kalajun.png">保存画面 <span>↘</span></a>
+</details></aside>
+<footer><span class="stage">新版 · 山谷、溪流与居所</span><span class="help">拖动画面环视 · WASD 飞行 · Q / E 升降 · Shift 加速 · 滚轮调速</span><span id="readout"></span></footer>
+<details id="diagnostics"><summary>运行信息</summary><pre id="stats">正在准备…</pre><p>木屋、毡房可步行进出并开关门，溪岸大石支持实体阻挡；岚川客房、树干、其他野外石头与动物碰撞仍待接入。</p><p id="credits"></p></details>
+<div id="error" role="alert" hidden></div><script type="module" src="./src/v2/shadow-moments-world41-entry.js"></script></body></html>

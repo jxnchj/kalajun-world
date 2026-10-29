@@ -1,0 +1,232 @@
+{
+  "version": 62,
+  "scope": "house_a asset family, explicit OFF candidate",
+  "sourceHashes": {
+    "assets/src/v2/pastoral/house_a-lived-timber-38.blend": "f21d111cba501a8ba709b3521494ae9f2252d999796a7e7a1271c57af7b2fe46",
+    "web/public/assets/v2/house_a_lived.glb": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2"
+  },
+  "nodes": [
+    {
+      "name": "pastoral_house_felt_mattress",
+      "kind": "felt compressed on original slats",
+      "trianglesBefore": 4352,
+      "trianglesAfter": 9264,
+      "vertices": 4634,
+      "supportGapMax": 0.0,
+      "bboxMin": [
+        -3.190000057220459,
+        0.32999999999999996,
+        0.441
+      ],
+      "bboxMax": [
+        -0.81,
+        2.03,
+        0.554
+      ],
+      "materials": [
+        "v2_pastoral_wool"
+      ]
+    },
+    {
+      "name": "pastoral_house_bed_quilt",
+      "kind": "quilt follows compressed felt, rounded thin welt",
+      "trianglesBefore": 13664,
+      "trianglesAfter": 13664,
+      "vertices": 6834,
+      "supportGapMax": 0.0,
+      "bboxMin": [
+        -3.200000047683716,
+        0.2849999666213989,
+        0.49599964714050293
+      ],
+      "bboxMax": [
+        -0.8,
+        1.9550000429153442,
+        0.6114250240306716
+      ],
+      "materials": [
+        "v2_pastoral_blue"
+      ]
+    },
+    {
+      "name": "pastoral_house_bed_foot",
+      "kind": "runner rests on same quilt surface",
+      "trianglesBefore": 5600,
+      "trianglesAfter": 5600,
+      "vertices": 2802,
+      "supportGapMax": 0.0,
+      "bboxMin": [
+        -3.215,
+        0.23,
+        0.5046997100830078
+      ],
+      "bboxMax": [
+        -0.7849999999999999,
+        0.6900000000000001,
+        0.616941923389947
+      ],
+      "materials": [
+        "v2_pastoral_red"
+      ]
+    },
+    {
+      "name": "pastoral_house_chest_folded0",
+      "kind": "original two folded leaves/UV/double welts, rigid vertical settlement only",
+      "trianglesBefore": 5872,
+      "trianglesAfter": 5872,
+      "vertices": 2940,
+      "topologyUnchanged": true,
+      "uvUnchanged": true,
+      "xyUnchanged": true,
+      "verticalShiftRange": [
+        -0.011800047683715786,
+        -0.011800047683715786
+      ],
+      "bboxMin": [
+        0.5299999713897705,
+        1.7100000381469727,
+        0.6606999635696411
+      ],
+      "bboxMax": [
+        1.3700000047683716,
+        2.25,
+        0.7556999921798706
+      ],
+      "materials": [
+        "v2_pastoral_blue"
+      ]
+    },
+    {
+      "name": "pastoral_house_chest_folded1",
+      "kind": "original two folded leaves/UV/double welts, rigid vertical settlement only",
+      "trianglesBefore": 5872,
+      "trianglesAfter": 5872,
+      "vertices": 2940,
+      "topologyUnchanged": true,
+      "uvUnchanged": true,
+      "xyUnchanged": true,
+      "verticalShiftRange": [
+        -0.02169906787872311,
+        -0.02169906787872311
+      ],
+      "bboxMin": [
+        0.5186480283737183,
+        1.7100000381469727,
+        0.7558009028434753
+      ],
+      "bboxMax": [
+        1.3586479425430298,
+        2.25,
+        0.8508009314537048
+      ],
+      "materials": [
+        "v2_pastoral_gold"
+      ]
+    },
+    {
+      "name": "pastoral_house_chest_folded2",
+      "kind": "original two folded leaves/UV/double welts, rigid vertical settlement only",
+      "trianglesBefore": 5872,
+      "trianglesAfter": 5872,
+      "vertices": 2940,
+      "topologyUnchanged": true,
+      "uvUnchanged": true,
+      "xyUnchanged": true,
+      "verticalShiftRange": [
+        -0.031495687294006314,
+        -0.031495687294006314
+      ],
+      "bboxMin": [
+        0.5448403358459473,
+        1.7100000381469727,
+        0.8510043025016785
+      ],
+      "bboxMax": [
+        1.3848403692245483,
+        2.25,
+        0.946004331111908
+      ],
+      "materials": [
+        "v2_pastoral_red"
+      ]
+    },
+    {
+      "name": "pastoral_house_chest_folded3",
+      "kind": "original two folded leaves/UV/double welts, rigid vertical settlement only",
+      "trianglesBefore": 5872,
+      "trianglesAfter": 5872,
+      "vertices": 2940,
+      "topologyUnchanged": true,
+      "uvUnchanged": true,
+      "xyUnchanged": true,
+      "verticalShiftRange": [
+        -0.04209339313507077,
+        -0.04209339313507077
+      ],
+      "bboxMin": [
+        0.52195143699646,
+        1.7100000381469727,
+        0.9454065561294556
+      ],
+      "bboxMax": [
+        1.3619513511657715,
+        2.25,
+        1.040406584739685
+      ],
+      "materials": [
+        "v2_pastoral_linen"
+      ]
+    },
+    {
+      "name": "pastoral_house_chest_topcover",
+      "kind": "cover follows original folded upper leaf lattice",
+      "trianglesBefore": 776,
+      "trianglesAfter": 3800,
+      "vertices": 1902,
+      "supportGapMax": 0.0,
+      "bboxMin": [
+        0.47999998927116394,
+        1.6699999570846558,
+        1.011099583522128
+      ],
+      "bboxMax": [
+        1.42,
+        2.29,
+        1.0469584365915368
+      ],
+      "materials": [
+        "v2_pastoral_red"
+      ]
+    },
+    {
+      "name": "pastoral_house_bench_felt",
+      "kind": "felt seat contact with shallow paired compression",
+      "trianglesBefore": 776,
+      "trianglesAfter": 5744,
+      "vertices": 2874,
+      "supportGapMax": 0.0,
+      "bboxMin": [
+        -2.8,
+        -2.305000066757202,
+        0.4399856846625835
+      ],
+      "bboxMax": [
+        -1.399999976158142,
+        -1.855,
+        0.5177153261596625
+      ],
+      "materials": [
+        "v2_pastoral_wool"
+      ]
+    }
+  ],
+  "protectedMeshes": 258,
+  "originalsUnchanged": true,
+  "newTextures": 0,
+  "limitations": [
+    "No cloth dynamics",
+    "Contact AO recalculated, room GI not rebaked",
+    "Original motif images retained; UV projection on reshaped cloth requires real review",
+    "Simple surface support approximation outside folded-layer footprint requires real edge review"
+  ]
+}

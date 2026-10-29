@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "loader": "actual Three GLTFLoader.parseAsync",
+  "meshes": 2,
+  "materials": 2,
+  "vertices": 10374,
+  "triangles": 15204,
+  "glbBytes": 426684,
+  "sourceBytes": 146074,
+  "glbSHA256": "d01d877c46f18eafaec0fe918848b35585a87476a51b99dc603fa7c5cbe2ad7e",
+  "boundsThree": {
+    "min": [
+      -0.27845531702041626,
+      -0.22181999683380127,
+      -0.2548925280570984
+    ],
+    "max": [
+      0.25146621465682983,
+      -0.004872614052146673,
+      -0.0049104029312729836
+    ]
+  },
+  "minDoubleArea": 2.332755843713193e-10,
+  "minNormalLength": 0.999999918495979,
+  "maxNormalLength": 1.0000001324936858,
+  "representativeFace": {
+    "buriedVertices": 5663,
+    "exposedVertices": 4711,
+    "maxProtrusionMeters": 0.006317316735246693
+  },
+  "note": "These are export, dimensions and representative-substrate checks; no production terrain/contact/adoption claim.",
+  "editableSource": {
+    "reopenedWithBlender": true,
+    "bezierRootObjects": 105,
+    "roles": {
+      "crown": 4,
+      "primary": 35,
+      "fine": 48,
+      "surface-fibre": 18
+    },
+    "sharedSixSidedBevelProfiles": 1,
+    "previewSoilExported": false
+  }
+}

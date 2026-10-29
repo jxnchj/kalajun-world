@@ -1,0 +1,36 @@
+{
+  "scope": "Actual Chrome 120-second scripted flight 480m out and back; not physical walking. Frozen same-view original/pool-root-wind/restored comparison after streaming. Candidate remains off pending reflection and second-terrain review.",
+  "results": [
+    {
+      "mode": "optimized",
+      "differentPixels": 0,
+      "maxChannelDelta": 0,
+      "size": [
+        1280,
+        800
+      ]
+    },
+    {
+      "mode": "restored",
+      "differentPixels": 0,
+      "maxChannelDelta": 0,
+      "size": [
+        1280,
+        800
+      ]
+    }
+  ],
+  "nonBlackBaseline": true,
+  "failureBeforeFix": {
+    "differentPixels": 162682,
+    "maxChannelDelta": 142,
+    "cause": "Cached Three.js program resumed with uniforms from the previous disabled/reflection variant; root wind samplers missing."
+  },
+  "fix": "Stable on/off uniform bindings; original formula restored when disabled; persistent program reuse; retired root IDs reclaimed without changing live roots or fields.",
+  "evidence": [
+    "meadow42-long-travel-fixed.json",
+    "meadow42-fixed-return-original.json",
+    "meadow42-fixed-return-optimized.json",
+    "meadow42-fixed-return-restored.json"
+  ]
+}

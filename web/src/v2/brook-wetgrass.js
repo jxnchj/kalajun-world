@@ -65,21 +65,25 @@ export function forestCurvatureNeedsBladeSeat(world,root,sources){
  }
  return false;
 }
-export function createBrookWetBatch(records,kind,rootField){
+export function createBrookWetBatch(records,kind,rootField){const steps=createBrookWetBatchSteps45(records,kind,rootField);for(;;){const next=steps.next();if(next.done)return next.value;}}
+// Same assembly; only an explicitly supplied bounds accumulator enables yields.
+export function* createBrookWetBatchSteps45(records,kind,rootField,{bounds=null}={}){
  const parts=[];
  for(const root of records){
   const g=root.brookAsset.geometries[kind].clone(),p=g.attributes.position,c=Math.cos(root.rot),s=Math.sin(root.rot),n=p.count;
   const normals=g.attributes.normal;
   const roots=new Float32Array(n*3),heights=new Float32Array(n),scales=new Float32Array(n),drops=new Float32Array(n),field=new Float32Array(n*4),land=new Float32Array(n*4),community=new Float32Array(n*4);
+  g.setAttribute('aBrookRoot',new THREE.BufferAttribute(roots,3));g.setAttribute('aBrookHeight',new THREE.BufferAttribute(heights,1));g.setAttribute('aBrookScale',new THREE.BufferAttribute(scales,1));
+  g.setAttribute('aBrookDrop',new THREE.BufferAttribute(drops,1));
   for(let i=0;i<n;i++){
    const nx=normals.getX(i)/root.s,ny=normals.getY(i)/(root.sy??root.s),nz=normals.getZ(i)/root.s,nl=Math.hypot(nx,ny,nz)||1;
    normals.setXYZ(i,(c*nx+s*nz)/nl,ny/nl,(-s*nx+c*nz)/nl);
    const x=p.getX(i),y=p.getY(i),z=p.getZ(i);p.setXYZ(i,root.x+(c*x+s*z)*root.s,root.y+y*(root.sy??root.s),root.z+(-s*x+c*z)*root.s);
    roots.set([root.x,root.y,root.z],i*3);heights[i]=Math.max(.01,y*(root.sy??root.s));scales[i]=root.s;drops[i]=(root.sy??root.s)/(root.s*root.s);
    field.set(rootField.sample(root),i*4);land.set(rootField.sampleLandform(root),i*4);community.set(rootField.sampleCommunity(root),i*4);
+   if(bounds){bounds.add(g,i);if((i&63)===63)yield;}
   }
-  g.setAttribute('aBrookRoot',new THREE.BufferAttribute(roots,3));g.setAttribute('aBrookHeight',new THREE.BufferAttribute(heights,1));g.setAttribute('aBrookScale',new THREE.BufferAttribute(scales,1));
-  g.setAttribute('aBrookDrop',new THREE.BufferAttribute(drops,1));
+
   g.setAttribute('aMeadowRootField',new THREE.BufferAttribute(field,4));g.setAttribute('aMeadowLandform',new THREE.BufferAttribute(land,4));g.setAttribute('aMeadowCommunity',new THREE.BufferAttribute(community,4));
   parts.push(g);
  }

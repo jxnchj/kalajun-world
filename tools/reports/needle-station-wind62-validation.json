@@ -1,0 +1,78 @@
+{
+  "candidate": "needle-station-wind62",
+  "status": "default-OFF prototype; source frozen; browser GPU/image acceptance pending",
+  "changedFiles": [
+    {
+      "path": "web/src/v2/needle-station-wind-cache62.js",
+      "bytes": 24343,
+      "sha256": "d3fc0282089098ac85bec48197b5b43d5c7121edc012ab93260211b93d5ed7e3"
+    },
+    {
+      "path": "web/src/v2/needle-station-wind-cache62.test.js",
+      "bytes": 23005,
+      "sha256": "5c5d3ff15b2c221acfd7a7ab7792b959df1afbcf47936e483f9b12653ada6145"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-world41.js",
+      "bytes": 11886,
+      "sha256": "868594487b4a49d0f2a29d6d9f2632e1eccf0cdb3f4eb4f5efc401fd12466800"
+    }
+  ],
+  "backup": "backups/needle-station-wind62",
+  "scope": {
+    "maxMainVisibleStationBatches": 2,
+    "geometryOrRootDensityOrLODChanged": false,
+    "existingMainEdited": false,
+    "preparedBindingsAffected": false,
+    "defaultAllocationBytes": 0
+  },
+  "verification": {
+    "command": "node --test web/src/v2/needle-station-wind-cache62.test.js web/src/v2/grass-shadow-world41.test.js web/src/v2/shadow-window-coverage42.test.js web/src/v2/spruce-gpu-stations.test.js",
+    "passed": 37,
+    "failed": 0,
+    "durationMs": 155.972708,
+    "newCandidateTests": 17,
+    "float32SourceVertexCases": 9960,
+    "cpuOracleMeaning": "same operation ordering in a scalar Float32 model; not GPU compiler or sin equivalence",
+    "actualThreeLifecycle": "WebGLGeometries shared VBO dispose listeners verified; borrowed attributes survive candidate disposal and original geometry final release reaches zero",
+    "csmCadence": "8 time/root wind updates preserve false revisions; root matrix change invalidates",
+    "coverage": "real source/station/projected/coverage hooks isolate derived valid=0 while source valid=1; no other uniform reference changed"
+  },
+  "measuredCatalogueWorkload": {
+    "source": "docs/previews/v2-route-craft-38/gpu-runs49-forest.json result.baseline; submission catalogue, not proof all passes occur every frame",
+    "stationsPerSelectedBatch": [
+      42048,
+      46944
+    ],
+    "totalStations": 88992,
+    "originalVertexWindEvaluationsPerMainPass": 1334880,
+    "catalogueMainShadow0ReflectionEvaluations": 4004640,
+    "coefficientEvaluationsPerChangedSnapshot": 88992,
+    "coefficientLogicalBytes": 1423872,
+    "rgba32fPaddedAttachmentBytes": 1441792,
+    "privatePointVertexBytes": 24,
+    "extraBakeCallsPerChangedSnapshot": 2,
+    "extraCacheTexelFetchesPerRenderedVertex": 1,
+    "retainedEachVertex": "exact h clamp; A*h*h*.0014 left association; addition of B; unchanged ecoSlope and normal normalization",
+    "phase": "one coefficient per root x actual station, never per-brush phase",
+    "gpuBenefitMeasured": null
+  },
+  "gpuAcceptanceAPI": {
+    "prepare": "cache.prepare(renderer,ecology.gpuBrushes,camera,ecology.uniforms.uWindTime)",
+    "verify": "cache.verifyGPU(renderer,{maxStations:512}) or actual selected maximum for full sweep; requires prepare and observed draw",
+    "verifyCoverage": "both offsets and bent normals for all 15 vertices of each sampled station; native RGBA32F readback; explicit unwritten/nonfinite failure",
+    "toggle": "cache.setEnabled(false) restores original materials/callbacks and releases; true rebuilds independently",
+    "retry": "cache.retry() clears visible per-record errors; next prepare rebuilds/evaluates",
+    "dispose": "cache.dispose() before ecology/world teardown",
+    "statistics": "cache.stats; GPU timer must enclose prepare and all world rendering; renderer.info render counts are restored except monotonic frame epoch"
+  },
+  "limits": [
+    "No real GPU oracle, full-world zero-image test or GPU speedup has been performed by this subagent.",
+    "GPU compilers may fuse/reassociate across the RGBA32F materialization boundary; any actual readback/image difference must block adoption.",
+    "First observed draw stays on original formula; next prepare may allocate/evaluate. New shader variants require actual warmup.",
+    "Main and native CSM/reflection physical meshes may reuse only a matching snapshot. Private coverage views deliberately execute the original formula.",
+    "Projected depth wrapper is inherited and then explicitly re-applied idempotently: distinct program key and potential first compile, never a uniform-only family certificate.",
+    "Extra target writes, two submissions and per-vertex texture fetch may cost more than saved arithmetic; no runtime default promotion.",
+    "Frame edits follow Three needsUpdate; source/root/matrix/layout/time identities are checked, large immutable source arrays are not rescanned per draw."
+  ]
+}

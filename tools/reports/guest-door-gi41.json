@@ -1,0 +1,46 @@
+{
+  "protectedSources": {
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/assets/src/v2/settlements/guest-living39/lanchuan-living39.blend": "a1d99484eb8c35864e4517f912d51baa1f90197de3becf78a69aea3a3577920b",
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/web/public/assets/v2/gh_lanchuan_rooms_living39.glb": "9c1c5e5e2dc464fe61adfa6b3f5ee55f90a180bf9bebc097586b9b9f579e35c1"
+  },
+  "sourcesUnchanged": true,
+  "bakes": [
+    {
+      "room": 1,
+      "degrees": 0,
+      "bytes": 703669,
+      "seconds": 61.21513395900547
+    },
+    {
+      "room": 1,
+      "degrees": 51,
+      "bytes": 706273,
+      "seconds": 124.97403754199331
+    },
+    {
+      "room": 2,
+      "degrees": 0,
+      "bytes": 727273,
+      "seconds": 188.67301420899457
+    },
+    {
+      "room": 2,
+      "degrees": 51,
+      "bytes": 730781,
+      "seconds": 251.45114629200543
+    },
+    {
+      "room": 3,
+      "degrees": 0,
+      "bytes": 629840,
+      "seconds": 310.61329454199586
+    },
+    {
+      "room": 3,
+      "degrees": 51,
+      "bytes": 663443,
+      "seconds": 369.1197242089984
+    }
+  ],
+  "seconds": 369.33705416700104
+}

@@ -1,0 +1,10 @@
+{
+  "source": "assets/src/polyhaven/rock_moss_set_01/rock_moss_set_01_1k.gltf",
+  "object": "rock_moss_set_01_rock01",
+  "license": "CC0",
+  "normalization": "uniform only, centered; GLTF original tangent material and UV retained",
+  "triangles": 11000,
+  "vertices": 6079,
+  "production": false,
+  "adoptionRequirement": "Use this same shell and placement for visible geometry, collision and full-wind grass contact; no renderer-only replacement"
+}

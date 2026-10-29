@@ -1,9 +1,10 @@
+import {route3Entry42,route3Entry42Asset} from './route3-entry42.js';
 import * as THREE from 'three';
 import {BOARDWALK_ENDPOINTS,BOARDWALK_CABIN} from './boardwalk-endpoints.js';
 import kit from './generated/boardwalk-timber-38.json' with {type:'json'};
 const layouts=new WeakMap(),UP=new THREE.Vector3(0,1,0);
 export const boardwalkTimberEnabled=()=>new URLSearchParams(globalThis.location?.search||'').get('boardwalkTimber')!=='0';
-export function timberGeometry(kind){const p=kit.parts[kind],g=new THREE.BufferGeometry();for(const [name,n]of [['position',3],['normal',3],['uv',2]])g.setAttribute(name,new THREE.Float32BufferAttribute(p[name],n));const indices=[];for(const materialIndex of [0,1]){const start=indices.length;for(const group of p.groups||[])if(group.materialIndex===materialIndex)for(let i=group.start;i<group.start+group.count;i++)indices.push(i);if(indices.length>start)g.addGroup(start,indices.length-start,materialIndex);}if(indices.length)g.setIndex(indices);g.computeBoundingBox();g.computeBoundingSphere();return g;}
+export function timberGeometry(kind){const p=kit.parts[kind]??route3Entry42Asset.parts[kind],g=new THREE.BufferGeometry();for(const [name,n]of [['position',3],['normal',3],['uv',2]])g.setAttribute(name,new THREE.Float32BufferAttribute(p[name],n));const indices=[];for(const materialIndex of [0,1]){const start=indices.length;for(const group of p.groups||[])if(group.materialIndex===materialIndex)for(let i=group.start;i<group.start+group.count;i++)indices.push(i);if(indices.length>start)g.addGroup(start,indices.length-start,materialIndex);}if(indices.length)g.setIndex(indices);g.computeBoundingBox();g.computeBoundingSphere();return g;}
 function matrix(kind,position,size,rotation=new THREE.Quaternion()) {const unit=kit.parts[kind].size;return new THREE.Matrix4().compose(new THREE.Vector3(...position),rotation,new THREE.Vector3(...size.map((v,i)=>v/unit[i])));}
 // Correct only the audited cabin endpoint in derived geometry. The original
 // objects.json line remains available for comparison and provenance. cabin.py
@@ -53,14 +54,15 @@ export function boardwalkTimber(world){
   route.maxStep=Math.max(0,...route.steps.slice(1).map((s,i)=>Math.abs(s.top-route.steps[i].top)));
   route.triangles=route.pieces.reduce((n,p)=>n+kit.parts[p.kind].triangles,0);result.pieces+=route.pieces.length;result.triangles+=route.triangles;result.routes.push(route);
  }
+ const entry=enabled?route3Entry42(world):null;if(entry){result.routes.push(entry);result.pieces+=entry.pieces.length;result.triangles+=entry.triangles;}
  layouts.set(world,result);return result;
 }
 export function addBoardwalkTimber(group,world,material){
  const layout=boardwalkTimber(world),geometries=new Map();
- for(const kind of ['plank','bearer','post']){const records=layout.routes.flatMap(route=>route.pieces.filter(p=>p.kind===kind));if(!records.length)continue;const geometry=timberGeometry(kind);geometries.set(kind,geometry);
+ for(const kind of ['plank','bearer','post','rear-entry42']){const records=layout.routes.flatMap(route=>route.pieces.filter(p=>p.kind===kind));if(!records.length)continue;const geometry=timberGeometry(kind);geometries.set(kind,geometry);
   const offsets=new Float32Array(records.length*2);for(let i=0;i<records.length;i++){offsets[i*2]=(i*.61803398875)%1;offsets[i*2+1]=(i*.38196601125)%1;}geometry.setAttribute('aTimberOffset',new THREE.InstancedBufferAttribute(offsets,2));
   const mesh=new THREE.InstancedMesh(geometry,material,records.length);records.forEach((p,i)=>{mesh.setMatrixAt(i,p.matrix);const c=.76+.34*((i*137)%23)/22;mesh.setColorAt(i,new THREE.Color(c,c*.985,c*.96));});mesh.name='boardwalk-timber-'+kind;mesh.userData={kind:'boardwalk-timber',part:kind,sourceVersion:kit.version};mesh.castShadow=true;mesh.receiveShadow=true;mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingBox();mesh.computeBoundingSphere();group.add(mesh);
  }
  return layout;
 }
-export function boardwalkViewpoints(world){const layout=boardwalkTimber(world);return layout.routes.filter(r=>r.steps.length>2).map(r=>{const s=r.steps[2],a=r.steps[0],x=a.x-a.fx*1.2,z=a.z-a.fz*1.2;return{id:'walk-boardwalk-'+r.index,name:BOARDWALK_ENDPOINTS.find(e=>e.index===r.index)?.name??'原木步道 · 连续通行',category:'牧居生活',x,z,y:world.surface.heightAt(x,z)+1.7,yaw:Math.atan2(s.x-x,-(s.z-z))*180/Math.PI,pitch:-12};});}
+export function boardwalkViewpoints(world){const layout=boardwalkTimber(world);return layout.routes.filter(r=>r.viewpoint!==false&&r.steps.length>2).map(r=>{const s=r.steps[2],a=r.steps[0],x=a.x-a.fx*1.2,z=a.z-a.fz*1.2;return{id:'walk-boardwalk-'+r.index,name:BOARDWALK_ENDPOINTS.find(e=>e.index===r.index)?.name??'原木步道 · 连续通行',category:'牧居生活',x,z,y:world.surface.heightAt(x,z)+1.7,yaw:Math.atan2(s.x-x,-(s.z-z))*180/Math.PI,pitch:-12};});}

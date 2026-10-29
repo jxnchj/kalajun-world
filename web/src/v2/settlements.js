@@ -1,3 +1,6 @@
+import {createLegacyRoomOpeningPrefetch} from './legacy-room-loader.js';
+import {GuestRoomGroup42,guestRoomGroup42Enabled} from './guest-room-group42.js';
+import {GUEST_DOORS41} from './guest-doors41.js';
 import {lodgeTablesEnabled,LODGE_TABLES_ASSET} from './lodge-tables-definition.js';
 import {lodgeChairsEnabled,LODGE_CHAIRS_ASSET} from './lodge-chairs-definition.js';
 import {guestVanityRoomKey} from './guest-vanity-gi.js';
@@ -37,7 +40,7 @@ function location(world,pose,room,name,id,from,to) {
     yaw:Math.atan2(d.x,-d.z)*rad,pitch:Math.atan2(d.y,Math.hypot(d.x,d.z))*rad};
 }
 export class SettlementRuntime {
-  constructor(world) {
+  constructor(world,{guestGroup42=guestRoomGroup42Enabled()}={}) {
     this.world=world;this.lodgeTerrainSun=new RoomTerrainSun((x,z)=>world.surface.heightAt(x,z));this.terrainSun=new RoomTerrainSun((x,z)=>world.surface.heightAt(x,z),{enabled:new URLSearchParams(globalThis.location?.search||" ").get("roomTerrainSun")!=="0"});this.group=new THREE.Group();this.group.name="world-v2-settlement-lights";
     this.viewpoints=[];this.anchors=[];this.poses=[];this.guestRooms=[];
     for(const entity of world.entities.filter(e=>e.assetId==="gh_lanchuan")) {
@@ -93,13 +96,18 @@ export class SettlementRuntime {
     // it crossing partitions. These are not baked global-illumination probes.
     this.portalLights=this.lights; // The occupied room uses either fixtures or openings, never both pools.
     this.indirect=new RoomIndirectLight({openingCapacity:this.pastoralPoses.some(r=>r.asset===this.lodgeAsset)?6:3});
+    this.guestGroup42=new GuestRoomGroup42(this.indirect,{enabled:guestGroup42&&this.guestRooms.some(room=>room.pose.entityId===GUEST_DOORS41.entityId),createRoom:()=>new RoomIndirectLight({openingCapacity:this.indirect.openingCapacity})});
+    if(this.guestGroup42.enabled){for(let i=3;i<9;i++){const light=this.lights[0].clone();light.name="room-local-light-"+i;light.visible=false;light.target=light.target.clone();this.lights.push(light);this.group.add(light,light.target);}this.portalLights=this.lights.slice(0,3);}
     this.fixtureControls=new RoomFixtureControls(this.guestRooms);
     this._camera=new THREE.Vector3();
     this.roomViewSelection=new RoomViewSelection([...this.pastoralPoses,...this.guestRooms]);
+    this.legacyOpeningPrefetch=createLegacyRoomOpeningPrefetch(this.roomViewSelection.entries);
+    this.indirect.field.stats.legacyOpeningPrefetch=this.legacyOpeningPrefetch.stats;
     this.indirect.field.stats.viewSelection=this.roomViewSelection.stats;this.lightingRoom=null;
   }
   setDoorOpenness(provider,angles){this.doorOpenness=provider;this.doorAngles=angles;return this;}
-  registerMaterials(materials){this.indirect.register(materials);this.fixtureControls.register(materials);return this;}
+  registerMaterials(materials){this.indirect.register(materials);this.guestGroup42.register(materials,this.indirect.shaderSource());this.fixtureControls.register(materials);return this;}
+  async prepareLighting(){await Promise.all([this.indirect.field.prepare(),this.guestGroup42.prepare()]);}
   floorHeightAt(x,z) {
     for(const pose of this.poses) {
       const dx=x-pose.x,dz=z-pose.z,c=Math.cos(pose.rot),s=Math.sin(pose.rot);
@@ -120,6 +128,7 @@ export class SettlementRuntime {
     const sunElevationDegrees=typeof sunLighting==="number"?sunLighting:(sunLighting?.elevation??20);
     this.sunLighting=typeof sunLighting==="object"?sunLighting:null;
     camera.getWorldPosition(this._camera);
+    this.legacyOpeningPrefetch.update(this._camera);
     for(const light of this.lights)light.shadow.bias=shadowDepthBias(-.00008,camera.reversedDepth);
     let activeRoom=null,activePose=null;
     for(const pose of this.poses) {
@@ -138,7 +147,8 @@ export class SettlementRuntime {
     this.fixtureControls.setActive(this.activeGuestRoom);
     this.lightingRoom=this.roomViewSelection.select(camera,this._camera,occupiedPastoralRoom(this.pastoralPoses,this._camera)||this.activeGuestRoom);
     const litGuest=this.guestRooms.includes(this.lightingRoom)?this.lightingRoom:null;
-    const nearest=this.anchors.filter(a=>a.roomId===litGuest?.roomId&&a.entityId===litGuest?.pose.entityId).slice(0,3);
+    this.groupRooms42=this.guestGroup42.matches(litGuest)?this.guestRooms.filter(r=>r.pose===litGuest.pose):(!this.lightingRoom&&!this.activeGuestRoom&&!occupiedPastoralRoom(this.pastoralPoses,this._camera)&&this.guestGroup42.retains(this._camera,this.groupRooms42)?this.groupRooms42:null);
+    const nearest=this.anchors.filter(a=>a.entityId===(this.groupRooms42?.[0].pose.entityId??litGuest?.pose.entityId)&&(this.groupRooms42||a.roomId===litGuest?.roomId)).slice(0,this.groupRooms42?9:3);
     const night=1-THREE.MathUtils.smoothstep(sunElevationDegrees,-4,12);
     this.lights.forEach((light,i)=>{
       const anchor=nearest[i];
@@ -146,7 +156,7 @@ export class SettlementRuntime {
       light.color.set(0xffdfb3);light.distance=4.2;light.angle=Math.PI*.38;light.penumbra=.65;light.shadow.normalBias=.012;light.shadow.radius=1;
       // Authored lamp power is independent of visitor position; attenuation is
       // already evaluated physically from each light to the shaded surface.
-      light.intensity=anchor?anchor.intensity*this.fixtureControls.power(litGuest.id,night):0;
+      light.intensity=anchor?anchor.intensity*this.fixtureControls.power(anchor.entityId+":"+anchor.roomId,night):0;
       if(anchor){
         if(light.userData.anchor!==anchor.entityId+":"+anchor.roomId+":"+anchor.position.toArray().join(",")){
           light.position.copy(anchor.position);light.target.position.copy(anchor.target);
@@ -171,7 +181,8 @@ export class SettlementRuntime {
       this.indirect.field.lodgeCross.stats.terrainSun=this.lodgeTerrainSun.stats;
     }
     this.indirect.field.stats.terrainSun=this.terrainSun.stats;
-    this.indirect.setRoom(room,this.daylight,roomSun,pastoral?[]:this.lights,doorOpen);
+    this.indirect.setRoom(room,this.daylight,roomSun,pastoral?[]:this.lights.filter(l=>l.userData.anchor?.startsWith(room?.id+":")),doorOpen);
+    this.guestGroup42.update(this.groupRooms42,{daylight:this.daylight,sunLighting:this.sunLighting,lights:this.lights,doorOpenness:this.doorOpenness,doorAngles:this.doorAngles,terrainSun:this.terrainSun});
     if(!pastoral||pastoral.asset.portalSpots===false)return;
     this.portalLights.forEach((light,i)=>{
       const opening=pastoral?.asset.openings[i];
@@ -195,5 +206,5 @@ export class SettlementRuntime {
     });
     this.lastDoorOpen=doorOpen;this.lastDoorAngleSignature=doorAngleSignature;
   }
-  dispose(){this.fixtureControls.dispose();this.indirect.dispose();for(const light of this.lights)light.shadow.dispose();this.group.removeFromParent();this.group.clear();this.lights.length=0;}
+  dispose(){this.legacyOpeningPrefetch.dispose();this.fixtureControls.dispose();this.guestGroup42.dispose();this.indirect.dispose();for(const light of this.lights)light.shadow.dispose();this.group.removeFromParent();this.group.clear();this.lights.length=0;}
 }

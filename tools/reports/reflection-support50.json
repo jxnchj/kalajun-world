@@ -1,0 +1,547 @@
+{
+  "scope": "Offline current source root/bounds audit; no GPU, scene change or candidate. Photo1/5 and solids only, near needles and remaining whole-scene objects not reconstructed.",
+  "waterTarget": [
+    512,
+    320
+  ],
+  "roughnessOnlyMaxLod": 2.25,
+  "derivativeLodNotBounded": true,
+  "rows": [
+    {
+      "name": "origin",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -29.88794104541604,
+      "pitch": -10,
+      "patch": {
+        "id": "river-41711e76-99c57ca2:862",
+        "center": [
+          -3616.293326088988,
+          2327.3023133436345,
+          4802.203566998473
+        ],
+        "plane": [
+          3.7432861789044876e-15,
+          1,
+          3.3345045497475484e-14,
+          -2327.302313343781
+        ],
+        "radius": 26
+      },
+      "support": {
+        "queryRadius": 36.2728,
+        "segments": 20,
+        "acceptedSegments": 5,
+        "vertices": 110,
+        "positiveW": true,
+        "rectangle": [
+          0.30614626015544666,
+          0,
+          1,
+          0.5968784806665656
+        ],
+        "scope": "Conservative actual-water node prisms clipped to main view/patch with 2cm guard and |planeError|<=.162; retains +/-22cm distortion with 1mm extra and two target-pixel UV guard. Does not reject by opaque occlusion, dry depth or hydraulic normal, so these only enlarge the bound."
+      },
+      "base": {
+        "solid-5": {
+          "draws": 23,
+          "triangles": 280056,
+          "instances": 131
+        },
+        "photo-5": {
+          "draws": 12,
+          "triangles": 1217456,
+          "instances": 66
+        },
+        "solid-1": {
+          "draws": 75,
+          "triangles": 409774,
+          "instances": 650
+        },
+        "photo-1": {
+          "draws": 37,
+          "triangles": 4938060,
+          "instances": 322
+        }
+      },
+      "idealNoFilter": {
+        "solid-5": {
+          "draws": 23,
+          "triangles": 280056,
+          "instances": 131
+        },
+        "photo-5": {
+          "draws": 12,
+          "triangles": 1217456,
+          "instances": 66
+        },
+        "solid-1": {
+          "draws": 62,
+          "triangles": 384410,
+          "instances": 600
+        },
+        "photo-1": {
+          "draws": 31,
+          "triangles": 4654224,
+          "instances": 301
+        }
+      },
+      "mip8MayReadWhole": true,
+      "edgeUpper": 0.5,
+      "edgeGateAlwaysZero": false,
+      "completeFiltering": {
+        "solid-5": {
+          "draws": 23,
+          "triangles": 280056,
+          "instances": 131
+        },
+        "photo-5": {
+          "draws": 12,
+          "triangles": 1217456,
+          "instances": 66
+        },
+        "solid-1": {
+          "draws": 75,
+          "triangles": 409774,
+          "instances": 650
+        },
+        "photo-1": {
+          "draws": 37,
+          "triangles": 4938060,
+          "instances": 322
+        }
+      },
+      "filteringDecision": "Without a proved bound on derivative-selected LOD, preserve the full generated mip chain and complete original target. No native batch rejection is certified."
+    },
+    {
+      "name": "origin-turn--60",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -89.88794104541604,
+      "pitch": -10,
+      "patch": {
+        "id": "river-41711e76-99c57ca2:862",
+        "center": [
+          -3616.226198641444,
+          2327.302313343634,
+          4805.298880221167
+        ],
+        "plane": [
+          0.0001757436221216448,
+          0.9999964968551159,
+          -0.002641096680423643,
+          -2313.9673728548855
+        ],
+        "radius": 26
+      },
+      "support": {
+        "queryRadius": 36.2728,
+        "segments": 20,
+        "acceptedSegments": 7,
+        "vertices": 110,
+        "positiveW": true,
+        "rectangle": [
+          0,
+          0,
+          1,
+          0.5445633601603701
+        ],
+        "scope": "Conservative actual-water node prisms clipped to main view/patch with 2cm guard and |planeError|<=.162; retains +/-22cm distortion with 1mm extra and two target-pixel UV guard. Does not reject by opaque occlusion, dry depth or hydraulic normal, so these only enlarge the bound."
+      },
+      "base": {
+        "solid-5": {
+          "draws": 34,
+          "triangles": 306856,
+          "instances": 144
+        },
+        "photo-5": {
+          "draws": 17,
+          "triangles": 1335114,
+          "instances": 72
+        },
+        "solid-1": {
+          "draws": 86,
+          "triangles": 513288,
+          "instances": 787
+        },
+        "photo-1": {
+          "draws": 46,
+          "triangles": 6634104,
+          "instances": 428
+        }
+      },
+      "idealNoFilter": {
+        "solid-5": {
+          "draws": 34,
+          "triangles": 306856,
+          "instances": 144
+        },
+        "photo-5": {
+          "draws": 17,
+          "triangles": 1335114,
+          "instances": 72
+        },
+        "solid-1": {
+          "draws": 86,
+          "triangles": 513288,
+          "instances": 787
+        },
+        "photo-1": {
+          "draws": 46,
+          "triangles": 6634104,
+          "instances": 428
+        }
+      },
+      "mip8MayReadWhole": true,
+      "edgeUpper": 0.5,
+      "edgeGateAlwaysZero": false,
+      "completeFiltering": {
+        "solid-5": {
+          "draws": 34,
+          "triangles": 306856,
+          "instances": 144
+        },
+        "photo-5": {
+          "draws": 17,
+          "triangles": 1335114,
+          "instances": 72
+        },
+        "solid-1": {
+          "draws": 86,
+          "triangles": 513288,
+          "instances": 787
+        },
+        "photo-1": {
+          "draws": 46,
+          "triangles": 6634104,
+          "instances": 428
+        }
+      },
+      "filteringDecision": "Without a proved bound on derivative-selected LOD, preserve the full generated mip chain and complete original target. No native batch rejection is certified."
+    },
+    {
+      "name": "origin-turn--30",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": -59.88794104541604,
+      "pitch": -10,
+      "patch": {
+        "id": "river-41711e76-99c57ca2:862",
+        "center": [
+          -3616.293326088988,
+          2327.3023133436345,
+          4802.203566998473
+        ],
+        "plane": [
+          3.7432861789044876e-15,
+          1,
+          3.3345045497475484e-14,
+          -2327.302313343781
+        ],
+        "radius": 26
+      },
+      "support": {
+        "queryRadius": 36.2728,
+        "segments": 20,
+        "acceptedSegments": 5,
+        "vertices": 117,
+        "positiveW": true,
+        "rectangle": [
+          0,
+          0,
+          1,
+          0.5916014945355456
+        ],
+        "scope": "Conservative actual-water node prisms clipped to main view/patch with 2cm guard and |planeError|<=.162; retains +/-22cm distortion with 1mm extra and two target-pixel UV guard. Does not reject by opaque occlusion, dry depth or hydraulic normal, so these only enlarge the bound."
+      },
+      "base": {
+        "solid-5": {
+          "draws": 27,
+          "triangles": 294528,
+          "instances": 132
+        },
+        "photo-5": {
+          "draws": 14,
+          "triangles": 1285696,
+          "instances": 69
+        },
+        "solid-1": {
+          "draws": 81,
+          "triangles": 470526,
+          "instances": 733
+        },
+        "photo-1": {
+          "draws": 41,
+          "triangles": 5829036,
+          "instances": 374
+        }
+      },
+      "idealNoFilter": {
+        "solid-5": {
+          "draws": 27,
+          "triangles": 294528,
+          "instances": 132
+        },
+        "photo-5": {
+          "draws": 14,
+          "triangles": 1285696,
+          "instances": 69
+        },
+        "solid-1": {
+          "draws": 78,
+          "triangles": 467742,
+          "instances": 725
+        },
+        "photo-1": {
+          "draws": 40,
+          "triangles": 5800356,
+          "instances": 372
+        }
+      },
+      "mip8MayReadWhole": true,
+      "edgeUpper": 0.5,
+      "edgeGateAlwaysZero": false,
+      "completeFiltering": {
+        "solid-5": {
+          "draws": 27,
+          "triangles": 294528,
+          "instances": 132
+        },
+        "photo-5": {
+          "draws": 14,
+          "triangles": 1285696,
+          "instances": 69
+        },
+        "solid-1": {
+          "draws": 81,
+          "triangles": 470526,
+          "instances": 733
+        },
+        "photo-1": {
+          "draws": 41,
+          "triangles": 5829036,
+          "instances": 374
+        }
+      },
+      "filteringDecision": "Without a proved bound on derivative-selected LOD, preserve the full generated mip chain and complete original target. No native batch rejection is certified."
+    },
+    {
+      "name": "origin-turn-30",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": 0.11205895458396142,
+      "pitch": -10,
+      "patch": {
+        "id": "river-41711e76-99c57ca2:863",
+        "center": [
+          -3617.5389980700866,
+          2327.3023133436345,
+          4798.6874725463185
+        ],
+        "plane": [
+          -0.0047499804117740385,
+          0.999918499291204,
+          -0.011850420301160089,
+          -2287.429412491591
+        ],
+        "radius": 26
+      },
+      "support": {
+        "queryRadius": 36.2728,
+        "segments": 20,
+        "acceptedSegments": 5,
+        "vertices": 91,
+        "positiveW": true,
+        "rectangle": [
+          0.6429274266375293,
+          0,
+          1,
+          0.5843411858301837
+        ],
+        "scope": "Conservative actual-water node prisms clipped to main view/patch with 2cm guard and |planeError|<=.162; retains +/-22cm distortion with 1mm extra and two target-pixel UV guard. Does not reject by opaque occlusion, dry depth or hydraulic normal, so these only enlarge the bound."
+      },
+      "base": {
+        "solid-5": {
+          "draws": 16,
+          "triangles": 229704,
+          "instances": 112
+        },
+        "photo-5": {
+          "draws": 8,
+          "triangles": 991818,
+          "instances": 56
+        },
+        "solid-1": {
+          "draws": 84,
+          "triangles": 448332,
+          "instances": 710
+        },
+        "photo-1": {
+          "draws": 43,
+          "triangles": 5630844,
+          "instances": 361
+        }
+      },
+      "idealNoFilter": {
+        "solid-5": {
+          "draws": 16,
+          "triangles": 229704,
+          "instances": 112
+        },
+        "photo-5": {
+          "draws": 8,
+          "triangles": 991818,
+          "instances": 56
+        },
+        "solid-1": {
+          "draws": 43,
+          "triangles": 278610,
+          "instances": 432
+        },
+        "photo-1": {
+          "draws": 23,
+          "triangles": 3563340,
+          "instances": 226
+        }
+      },
+      "mip8MayReadWhole": false,
+      "edgeUpper": 0.35707257336247067,
+      "edgeGateAlwaysZero": false,
+      "completeFiltering": {
+        "solid-5": {
+          "draws": 16,
+          "triangles": 229704,
+          "instances": 112
+        },
+        "photo-5": {
+          "draws": 8,
+          "triangles": 991818,
+          "instances": 56
+        },
+        "solid-1": {
+          "draws": 84,
+          "triangles": 448332,
+          "instances": 710
+        },
+        "photo-1": {
+          "draws": 43,
+          "triangles": 5630844,
+          "instances": 361
+        }
+      },
+      "filteringDecision": "Without a proved bound on derivative-selected LOD, preserve the full generated mip chain and complete original target. No native batch rejection is certified."
+    },
+    {
+      "name": "origin-turn-60",
+      "position": [
+        -3611.851169467755,
+        2329.157270885741,
+        4805.483400316967
+      ],
+      "yaw": 30.11205895458396,
+      "pitch": -10,
+      "patch": {
+        "id": "river-41711e76-99c57ca2:875",
+        "center": [
+          -3622.521261646969,
+          2323.1274879993434,
+          4755.8370615151325
+        ],
+        "plane": [
+          0.0023870077635715285,
+          0.9990198223283139,
+          -0.044200642405296475,
+          -2101.992370637986
+        ],
+        "radius": 26
+      },
+      "support": {
+        "queryRadius": 36.2728,
+        "segments": 19,
+        "acceptedSegments": 1,
+        "vertices": 6,
+        "positiveW": true,
+        "rectangle": [
+          0.9912678915085071,
+          0.5210246993051605,
+          1,
+          0.5346562815728997
+        ],
+        "scope": "Conservative actual-water node prisms clipped to main view/patch with 2cm guard and |planeError|<=.162; retains +/-22cm distortion with 1mm extra and two target-pixel UV guard. Does not reject by opaque occlusion, dry depth or hydraulic normal, so these only enlarge the bound."
+      },
+      "base": {
+        "solid-5": {
+          "draws": 18,
+          "triangles": 260808,
+          "instances": 124
+        },
+        "photo-5": {
+          "draws": 9,
+          "triangles": 1130826,
+          "instances": 62
+        },
+        "solid-1": {
+          "draws": 83,
+          "triangles": 383344,
+          "instances": 608
+        },
+        "photo-1": {
+          "draws": 42,
+          "triangles": 4701708,
+          "instances": 307
+        }
+      },
+      "idealNoFilter": {
+        "solid-5": {
+          "draws": 8,
+          "triangles": 123240,
+          "instances": 46
+        },
+        "photo-5": {
+          "draws": 5,
+          "triangles": 705114,
+          "instances": 38
+        },
+        "solid-1": {
+          "draws": 27,
+          "triangles": 143004,
+          "instances": 223
+        },
+        "photo-1": {
+          "draws": 14,
+          "triangles": 1765296,
+          "instances": 114
+        }
+      },
+      "mip8MayReadWhole": false,
+      "edgeUpper": 0.008732108491492863,
+      "edgeGateAlwaysZero": true,
+      "completeFiltering": {},
+      "filteringDecision": "No receiver can pass the original .015+borderSupport gate, even ignoring its additional positive mip margin; this offline pose has no local reflection contribution. Not browser-verified."
+    },
+    {
+      "name": "actual-flight-end",
+      "position": [
+        -3689.0795388471156,
+        2311.836006170602,
+        4526.779127051337
+      ],
+      "yaw": -15.487941045416033,
+      "pitch": -8.400000000000006,
+      "patch": null,
+      "reason": "actual eligibility selects no visible near-water reflection"
+    }
+  ]
+}

@@ -144,7 +144,7 @@ export class LocalWaterReflection {
     if(!changed&&(age<WATER_REFLECTION_LIMITS.minInterval||(!moved&&age<WATER_REFLECTION_LIMITS.idleInterval))){this.stats.skipped++;this.stats.reason="cached";return false;}
     const mirror=createWaterReflectionCamera(camera,patch.plane);
     if(!mirror){this.uniforms.uRiverReflectionValid.value=0;this.stats.reason="unstable-oblique-plane";return false;}
-    const r=renderer,start=performance.now(),hidden=[];
+    const r=renderer,start=performance.now(),hidden=[],submissionRestores=[];
     const state={target:r.getRenderTarget(),face:r.getActiveCubeFace(),level:r.getActiveMipmapLevel(),viewport:r.getViewport(new THREE.Vector4()),currentViewport:r.getCurrentViewport?.(new THREE.Vector4()),scissor:r.getScissor(new THREE.Vector4()),scissorTest:r.getScissorTest(),
       color:r.getClearColor(new THREE.Color()),alpha:r.getClearAlpha(),autoClear:r.autoClear,autoClearColor:r.autoClearColor,autoClearDepth:r.autoClearDepth,autoClearStencil:r.autoClearStencil,
       xr:r.xr.enabled,shadowAuto:r.shadowMap.autoUpdate,shadowNeeds:r.shadowMap.needsUpdate,autoReset:r.info.autoReset,counters:Object.fromEntries(COUNTERS.map(k=>[k,r.info.render[k]]))};
@@ -155,6 +155,7 @@ export class LocalWaterReflection {
       scene.updateMatrixWorld();
       const sphere=new THREE.Sphere();
       scene.traverseVisible(object=>{
+        const restore=object.userData.prepareWaterReflection42?.();if(restore)submissionRestores.push(restore);
         if(!object.isMesh&&!object.isLine&&!object.isPoints)return;
         const materials=Array.isArray(object.material)?object.material:[object.material];
         let hide=materials.some(m=>this.waterMaterials.has(m)||m?.userData?.waterReflectionSurface);
@@ -187,6 +188,7 @@ export class LocalWaterReflection {
     }catch(error){this.uniforms.uRiverReflectionValid.value=0;this.stats.active=false;this.stats.reason="capture-failed";throw error;
     }finally{
       hidden.forEach(o=>{o.visible=true;});
+      for(let i=submissionRestores.length-1;i>=0;i--)submissionRestores[i]();
       r.xr.enabled=state.xr;r.shadowMap.autoUpdate=state.shadowAuto;r.shadowMap.needsUpdate=state.shadowNeeds;
       r.setClearColor(state.color,state.alpha);
       // Restore logical canvas policy first; binding the caller target then

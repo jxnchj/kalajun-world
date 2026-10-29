@@ -1,0 +1,96 @@
+{
+  "backup": "backups/contact74-binding-1793236647191",
+  "steps": [
+    {
+      "script": "tools/build-meadow-root-cache-v38.mjs",
+      "args": [],
+      "status": 0,
+      "log": "tools/reports/contact74-regen-0.log"
+    },
+    {
+      "script": "tools/build-reach-cover-prepared42.mjs",
+      "args": [],
+      "status": 0,
+      "log": "tools/reports/contact74-regen-1.log"
+    },
+    {
+      "script": "tools/build-meadow-root-cache-v38.mjs",
+      "args": [
+        "--reachDesign69=bend"
+      ],
+      "status": 0,
+      "log": "tools/reports/contact74-regen-2.log"
+    },
+    {
+      "script": "tools/build-reach-design69.mjs",
+      "args": [],
+      "status": 0,
+      "log": "tools/reports/contact74-regen-3.log"
+    },
+    {
+      "script": "tools/build-meadow-root-cache-v38.mjs",
+      "args": [
+        "--reachDesign73=bend"
+      ],
+      "status": 0,
+      "log": "tools/reports/contact74-regen-4.log"
+    },
+    {
+      "script": "tools/build-reach-design73.mjs",
+      "args": [],
+      "status": 0,
+      "log": "tools/reports/contact74-regen-5.log"
+    }
+  ],
+  "comparisons": [
+    {
+      "path": "web/public/data/v2/meadow-roots-38.json",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/meadow-roots-38.bin.gz",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-cover-prepared42.json",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-cover-prepared42.json.gz",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-design69/meadow-roots-38.json",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-design69/meadow-roots-38.bin.gz",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-design69/reach-cover.json",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-design69/reach-cover.json.gz",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-design73/meadow-roots-38.json",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-design73/meadow-roots-38.bin.gz",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-design73/reach-cover.json",
+      "payloadSame": true
+    },
+    {
+      "path": "web/public/data/v2/reach-design73/reach-cover.json.gz",
+      "payloadSame": true
+    }
+  ],
+  "complete": true
+}

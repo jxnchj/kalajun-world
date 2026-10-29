@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
 import {clone as cloneSkeleton} from "three/addons/utils/SkeletonUtils.js";
+import {pastureLife41Enabled,loadPastureLife41} from "./pasture-life41.js";
 import {SETTLEMENT_ASSETS} from "./settlement-assets.js";
 
 // First living-pasture migration: the original Blender-rigged sheep and authored
@@ -50,16 +51,16 @@ function disposeAsset(root){
  const images=new Set([...textures].map(t=>t.source?.data));for(const image of images)image?.close?.();
 }
 export class WorldPasture{
- constructor(world,{loader=new GLTFLoader()}={}){
+ constructor(world,{loader=new GLTFLoader(),life41=pastureLife41Enabled()}={}){
   this.world=world;this.loader=loader;this.layout=selectPasture(world);this.viewpoint=this.layout.viewpoint;
   this.group=new THREE.Group();this.group.name="world-pasture";this.materials=[];this.animals=[];this.disposed=false;this.elapsed=0;
   this.stats={ready:false,count:0,planned:PASTURE_SHEEP_COUNT,triangles:0,source:"assets/sheep.glb",quality:"original lod0 with original normal/basecolor maps",anchorId:this.layout.anchorId,center:{x:this.layout.x,z:this.layout.z},elapsed:0,states:{}};
-  this._normal=new THREE.Vector3();this._yaw=new THREE.Quaternion();
+  this.life41=life41;this.stats.life41={enabled:life41,ready:false};this._normal=new THREE.Vector3();this._yaw=new THREE.Quaternion();
  }
  load(){
   if(this.disposed)return Promise.reject(new Error("Pasture is disposed"));
   if(this._load)return this._load;
-  this._load=this.loader.loadAsync(this.world.assetBase+"sheep.glb").then(gltf=>{
+  this._load=this.loader.loadAsync(this.world.assetBase+"sheep.glb").then(async gltf=>{
    if(this.disposed){disposeAsset(gltf.scene);return this;}
    this.asset=gltf.scene;
    const source=gltf.scene.getObjectByName("lod0"),rig=gltf.scene.getObjectByName("rig");
@@ -85,6 +86,7 @@ export class WorldPasture{
     const action=actions.get(state);action.play();action.time=rand(index+1,9)*this.clips.get(state).duration;mixer.update(0);
     this.animals.push(animal);this.place(animal);
    });}finally{source.material=originalMaterial;for(const {o,parent} of removed)parent.add(o);}
+   if(this.life41){const service=await loadPastureLife41(this.world,this.layout,this.loader);if(this.disposed){disposeAsset(service.root);return this;}this.lifeAsset=service.root;this.lifeMaterials=service.materials;this.materials.push(...service.materials);this.group.add(service.root);this.stats.life41={enabled:true,...service.stats};}
    this.stats.ready=true;this.stats.count=this.animals.length;this.stats.triangles=(source.geometry.index?.count??source.geometry.attributes.position.count)/3*this.animals.length;this.update(null,0);return this;
   }).catch(error=>{this.stats.error=error.message;this.dispose();throw error;});
   return this._load;
@@ -136,6 +138,6 @@ export class WorldPasture{
  dispose(){
   if(this.disposed)return;this.disposed=true;
   for(const animal of this.animals){animal.mixer.stopAllAction();animal.mixer.uncacheRoot(animal.root);animal.mesh.skeleton.dispose();}
-  this.group.removeFromParent();this.group.clear();this.animals.length=0;this.materials.forEach(m=>m.dispose());disposeAsset(this.asset);this.materials.length=0;this.stats.ready=false;
+  this.group.removeFromParent();this.group.clear();this.animals.length=0;this.materials.forEach(m=>{if(!this.lifeMaterials?.includes(m))m.dispose();});disposeAsset(this.asset);disposeAsset(this.lifeAsset);this.materials.length=0;this.stats.ready=false;
  }
 }

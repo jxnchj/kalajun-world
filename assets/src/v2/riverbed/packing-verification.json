@@ -1,0 +1,6 @@
+{
+  "Diffuse": "official MD5 exact",
+  "nor_gl": "official MD5 exact",
+  "Rough": "official MD5 exact",
+  "packedPixels": "normal RGB and roughness alpha byte-exact"
+}

@@ -1,0 +1,11 @@
+{
+  "scope":"Same geometry, light, camera, wind48times; only moment storage depth origin changed. This is a representation-invariance test, not new terrain geometry.",
+  "native":{"areaMean":43040.77687909779,"meanDelta":639.8485607008696,"meanSquaredDelta":117.98063821607069,"meanLargeJumps":0},
+  "halfScaledOffset0":{"areaMean":38585.50326799151,"meanDelta":2701.1946599908456,"meanSquaredDelta":732.3606233280985,"meanLargeJumps":414.1489361702128},
+  "floatOffset4":{"areaMean":39898.45841505552,"meanDelta":3314.1743846460017,"meanSquaredDelta":418.1950254811465,"meanLargeJumps":11.680851063829786},
+  "floatOffset16":{"areaMean":40571.55759804991,"meanDelta":12039.381059662228,"meanSquaredDelta":5771.841910884693,"meanLargeJumps":3838.574468085106},
+  "halfOffset4Visual":"Conspicuous expanded dark grass blobs, rejected without claiming temporal acceptance",
+  "shaderErrors":[],
+  "decision":"Global depth origin raw moments rejected even with stable factorization. Continue actual DEM local reference per texel; no production adoption.",
+  "cleanup":"1839973344 closed; GPU handed to meadow"
+}

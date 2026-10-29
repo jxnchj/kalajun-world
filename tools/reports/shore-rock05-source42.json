@@ -1,0 +1,26 @@
+{
+  "input": "assets/src/v2/shore-candidate42/rock05.glb",
+  "sourceSHA256": "2a45c95c5908d7c1dd99b66800cd147aeb2aa84735563f7b521db103756a4f3e",
+  "binaryBytes": 372504,
+  "rawBytes": 497004,
+  "gzipBytes": 352970,
+  "textures": [
+    {
+      "path": "web/public/assets/v2/shore-candidate42/rock05-diff.jpg",
+      "bytes": 168099,
+      "sha256": "40cea65d8aa4ee73a93b04af19963834d061eee9779c3fc2c1cba76eef812ccc"
+    },
+    {
+      "path": "web/public/assets/v2/shore-candidate42/rock05-normal.jpg",
+      "bytes": 209975,
+      "sha256": "eb4aad3f207f1dc5b624d74ae240372171626a66912bd71adf7bd3e518181d6e"
+    },
+    {
+      "path": "web/public/assets/v2/shore-candidate42/rock05-rough.jpg",
+      "bytes": 82624,
+      "sha256": "4d6ec46623abd8e2cdb855f59c7ce31873ad61b36b60e4de579e9e776a497c6b"
+    }
+  ],
+  "textureBytes": 460698,
+  "geometryBitExact": true
+}

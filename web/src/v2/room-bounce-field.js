@@ -1,3 +1,4 @@
+import {GuestDoorGI41} from './guest-door-gi41.js';
 import {lodgeTablesEnabled,LODGE_TABLES_KEY,LODGE_TABLES_DOOR} from './lodge-tables-definition.js';
 import {lodgeChairsEnabled,LODGE_CHAIRS_KEY,LODGE_CHAIRS_DOOR} from './lodge-chairs-definition.js';
 import {isGuestVanityRoomKey,prepareGuestVanityRoom} from './guest-vanity-gi.js';
@@ -83,8 +84,8 @@ export class RoomBounceField{
     this.guestVanityBundles=new Map();this.guestVanityPending=new Map();this.guestVanityErrors=new Map();this.guestVanitySelection=null;
     this.legacyRoomPending=new Map();this.legacyRoomErrors=new Map();this.legacyRoomSelection=null;this.householdBundles=new Map();this.householdPending=new Map();this.householdErrors=new Map();this.disposed=false;
     this.cache=new Map();this.baseData=new Map();this.solar=new RoomSolarTransport();this.fixtures=new RoomFixtureTransport();this.secondFixtures=new RoomFixtureTransport({loaders:ROOM_SECOND_FIXTURE_LOADERS,bounceOrder:2});this.key=null;this.fixtureSignature=null;this.dayData=new Map();
-    this.exterior=new RoomExteriorTerrain();this.angleDoors=new RoomDoorAngles();this.doors=new RoomDoorTransport();this.doorFraction=1;this.apertureData=new Map();this.secondData=new Map();this.skyData=new Map();this.skyWeights=new Map();
-    this.stats={guestVanity:{loadedRooms:0,keys:[],model:"source-bound two sky/solar/fixture orders; bathroom included; static low-frequency GI"},legacyRooms:legacyRooms.stats,lodgeDoor:this.lodgeDoor.stats,lodgeCross:this.lodgeCross.stats,lodge:{enabled:this.lodgeEnabled,tables:this.lodgeTables,chairs:this.lodgeChairs,furniture:this.lodgeFurniture,key:this.lodgeKey,sourceSHA256:this.lodgeDoor.door.sourceSHA256,ready:false,pending:false,model:this.lodgeTables?"source-bound detailed tables/reception/tea table; independently rebaked complete three-pose sky/solar transport and contact":this.lodgeChairs?"whole connected lodge with 24 detailed woven chairs, retained sofas/laundry; independently rebaked three door poses and contact; static low-frequency transport":this.lodgeFurniture?"whole connected lodge with source-bound detailed sofas and laundry; freshly baked sky orders 0/1/2 and solar 1/2 at three real door poses; finite static transport":this.lodgeWhole?"whole connected lodge; original furniture and seventeen real exterior sources; sky orders 0/1/2 and solar 1/2 at three door poses; finite static transport":"six dining exterior apertures; static source furniture; two diffuse sky/solar orders; east hall contribution composed separately"},household:{key:null,pending:false,bundleReady:false,closedReady:false,ready:false,loadedStyles:0},exteriorTerrain:this.exterior.stats,doorAngles:this.angleDoors.stats,doors:this.doors.stats,aperture:{active:false,field:null,cacheBytes:0,extraTextureBytes:0,extraSamples:0,model:"static opaque aperture visibility at existing probe resolution; diffuse sky only"},active:false,skyBounceOrder:1,merges:0,lastMergeMs:0,secondBounceBytes:0,compositeBytes:0,
+    this.exterior=new RoomExteriorTerrain();this.angleDoors=new RoomDoorAngles();this.guestDoor=new GuestDoorGI41();this.doors=new RoomDoorTransport();this.doorFraction=1;this.apertureData=new Map();this.secondData=new Map();this.skyData=new Map();this.skyWeights=new Map();
+    this.stats={guestVanity:{loadedRooms:0,keys:[],model:"source-bound two sky/solar/fixture orders; bathroom included; static low-frequency GI"},legacyRooms:legacyRooms.stats,lodgeDoor:this.lodgeDoor.stats,lodgeCross:this.lodgeCross.stats,lodge:{enabled:this.lodgeEnabled,tables:this.lodgeTables,chairs:this.lodgeChairs,furniture:this.lodgeFurniture,key:this.lodgeKey,sourceSHA256:this.lodgeDoor.door.sourceSHA256,ready:false,pending:false,model:this.lodgeTables?"source-bound detailed tables/reception/tea table; independently rebaked complete three-pose sky/solar transport and contact":this.lodgeChairs?"whole connected lodge with 24 detailed woven chairs, retained sofas/laundry; independently rebaked three door poses and contact; static low-frequency transport":this.lodgeFurniture?"whole connected lodge with source-bound detailed sofas and laundry; freshly baked sky orders 0/1/2 and solar 1/2 at three real door poses; finite static transport":this.lodgeWhole?"whole connected lodge; original furniture and seventeen real exterior sources; sky orders 0/1/2 and solar 1/2 at three door poses; finite static transport":"six dining exterior apertures; static source furniture; two diffuse sky/solar orders; east hall contribution composed separately"},household:{key:null,pending:false,bundleReady:false,closedReady:false,ready:false,loadedStyles:0},exteriorTerrain:this.exterior.stats,doorAngles:this.angleDoors.stats,guestDoors41:this.guestDoor.stats,doors:this.doors.stats,aperture:{active:false,field:null,cacheBytes:0,extraTextureBytes:0,extraSamples:0,model:"static opaque aperture visibility at existing probe resolution; diffuse sky only"},active:false,skyBounceOrder:1,merges:0,lastMergeMs:0,secondBounceBytes:0,compositeBytes:0,
       fixtures:this.fixtures.stats,secondFixtures:this.secondFixtures.stats,model:"up to two static sky/solar/fixture bounces; not complete GI"};
     this.empty=new THREE.Data3DTexture(new Uint16Array(16),1,1,4);
     this.configure(this.empty);
@@ -219,8 +220,8 @@ export class RoomBounceField{
       compositeBytes:[...this.skyData.values()].reduce((n,v)=>n+v.byteLength,0)});
     return output;
   }
-  setDoorAngles(value){this.angleDoors.setState(value);this.lodgeDoor.setState(value);}
-  get doorAreaFraction(){return this.angleDoors.ready&&this.angleDoors.supports(this.key)?1:this.doorFraction;}
+  setDoorAngles(value){this.guestDoor.setState(value);this.angleDoors.setState(value);this.lodgeDoor.setState(value);}
+  get doorAreaFraction(){return this.guestDoor.supports(this.key)?1:this.angleDoors.ready&&this.angleDoors.supports(this.key)?1:this.doorFraction;}
   setDoorOpenness(value){this.doorFraction=doorApertureFraction(value);this.doors.stats.openness=value;}
   packApertures(output){
     const enabled=this.uniforms.uRoomApertureVisibility.value>0,source=ROOM_APERTURE_DATA[this.key];
@@ -241,7 +242,7 @@ export class RoomBounceField{
     // validity. Never use aperture occlusion to remove an indirect reflection.
     const closed=this.doors.fields.get(this.key)?.apertures;
     for(let opening=0;opening<3;opening++)for(let i=0;i<count;i++){
-      const offset=opening*count+i,value=this.lodgeDoor.aperture(offset)??this.angleDoors.aperture(this.doors,this.key,data,offset)??(closed?THREE.MathUtils.lerp(closed[offset],data[offset],this.doorFraction):data[offset]);
+      const offset=opening*count+i,value=this.guestDoor.aperture(this.key,data,offset)??this.lodgeDoor.aperture(offset)??this.angleDoors.aperture(this.doors,this.key,data,offset)??(closed?THREE.MathUtils.lerp(closed[offset],data[offset],this.doorFraction):data[offset]);
       output[(opening+1)*count*4+i*4+3]=THREE.DataUtils.toHalfFloat((this.exterior.aperture(this.key,offset,this.doorFraction)??value)/255);
     }
   }
@@ -256,7 +257,7 @@ export class RoomBounceField{
     const key=this.key;
     if(isHouseholdRoomKey(key)&&!this.householdBundles.has(key))return this.prepareHousehold(key).then(()=>this.key===key&&!this.disposed?this.prepare():undefined);
     const pending=Promise.all([
-      this.doors.prepare(this.key),this.angleDoors.prepare(this.key),this.exterior.prepare(this.key),this.lodgeCross.prepare(this.key),this.lodgeDoor.prepare(this.key),
+      this.guestDoor.prepare(this.key),this.doors.prepare(this.key),this.angleDoors.prepare(this.key),this.exterior.prepare(this.key),this.lodgeCross.prepare(this.key),this.lodgeDoor.prepare(this.key),
       this.uniforms.uRoomSunSecondBounce.value>0?this.solar.prepare(this.key):null,
       this.uniforms.uRoomFixtureBounce.value>0?this.fixtures.prepare(this.key):null,
       this.uniforms.uRoomFixtureBounce.value>0&&this.uniforms.uRoomFixtureSecondBounce.value>0?this.secondFixtures.prepare(this.key):null,
@@ -281,6 +282,8 @@ export class RoomBounceField{
     if(this.lodgeError&&this.key===this.lodgeKey)throw this.lodgeError;
     if(this.householdErrors.has(this.key))throw this.householdErrors.get(this.key);
     const texture=this.cache.get(this.key);if(!texture)return;
+    this.guestDoor.key=this.key;
+    if(this.guestDoor.supports(this.key)&&!this.guestDoor.rooms.get(this.key))this.guestDoor.prepare(this.key).catch(()=>{});
     const output=this.composeBuffers.get(this.key)??texture.image.data;
     if(this.angleDoors.error)throw this.angleDoors.error;
     if(this.exterior.target&&!this.exterior.ready)this.exterior.prepare(this.key).catch(()=>{});
@@ -295,7 +298,7 @@ export class RoomBounceField{
     // ratio prevents the field's finite numerical scale from creating skylight.
     const fieldScale=keepFixtures?Math.max(daylight,.08):daylight;
     this.uniforms.uRoomFieldDayScale.value=fieldScale;
-    const base=this.daylightBase(this.skyBase(),fieldScale>0?daylight/fieldScale:1),signature=state.signature+"|second:"+secondState.signature+"|"+fieldScale+"|"+daylight+"|lodgeDoor:"+this.lodgeDoor.enabled+","+this.lodgeDoor.ready+","+this.lodgeDoor.angle+"|cross:"+this.lodgeCross.enabled+","+this.lodgeCross.ready+","+(this.lodgeCross.lighting?.visibility??1)+"|aperture:"+this.uniforms.uRoomApertureVisibility.value+"|door:"+this.doorFraction+"|doorReady:"+this.doors.fields.has(this.key)+"|angle:"+this.angleDoors.angle+"|angleReady:"+this.angleDoors.ready+"|exterior:"+this.exterior.target+"|exteriorReady:"+this.exterior.ready+"|exteriorSource:"+(lighting?.intensity??0)+","+(lighting?.exteriorVisibility??lighting?.visibility??1)+","+this.exterior.ground.solarEnabled+","+this.exterior.groundBounce.enabled;
+    const base=this.daylightBase(this.skyBase(),fieldScale>0?daylight/fieldScale:1),signature=this.guestDoor.signature+"|"+state.signature+"|second:"+secondState.signature+"|"+fieldScale+"|"+daylight+"|lodgeDoor:"+this.lodgeDoor.enabled+","+this.lodgeDoor.ready+","+this.lodgeDoor.angle+"|cross:"+this.lodgeCross.enabled+","+this.lodgeCross.ready+","+(this.lodgeCross.lighting?.visibility??1)+"|aperture:"+this.uniforms.uRoomApertureVisibility.value+"|door:"+this.doorFraction+"|doorReady:"+this.doors.fields.has(this.key)+"|angle:"+this.angleDoors.angle+"|angleReady:"+this.angleDoors.ready+"|exterior:"+this.exterior.target+"|exteriorReady:"+this.exterior.ready+"|exteriorSource:"+(lighting?.intensity??0)+","+(lighting?.exteriorVisibility??lighting?.visibility??1)+","+this.exterior.ground.solarEnabled+","+this.exterior.groundBounce.enabled;
     if(signature!==this.fixtureSignature){this.solar.clear();this.fixtureSignature=signature;}
     if(this.solar.compose(this.key,base,output,this.uniforms.uRoomFieldNormalToLocal.value,lighting,fieldScale,this.uniforms.uRoomSunTransport.value,this.uniforms.uRoomSunSecondBounce.value)){
       // Replace only the daylight transport before fixture orders are added;
@@ -309,8 +312,9 @@ export class RoomBounceField{
       // order. Legacy house/yurt endpoints have no lodge field: applying them
       // afterward would zero this valid RGB buffer for a partly closed door.
       // Only bypass after successful composition; loading/error gates remain.
-      if(articulated){
-        Object.assign(this.doors.stats,{active:false,pending:false,bypassedBy:"lodge-articulated",apertureFraction:this.doorFraction});
+      const guestArticulated=this.guestDoor.compose(this.key,output,this.uniforms.uRoomFieldNormalToLocal.value,lighting,daylight,fieldScale,this.uniforms.uRoomSkySecondBounce.value,this.uniforms.uRoomSunTransport.value,this.uniforms.uRoomSunSecondBounce.value,fixtureContext,this.uniforms.uRoomFixtureBounce.value,this.uniforms.uRoomFixtureSecondBounce.value);
+      if(articulated||guestArticulated){
+        Object.assign(this.doors.stats,{active:false,pending:false,bypassedBy:guestArticulated?"guest-articulated":"lodge-articulated",apertureFraction:this.doorFraction});
         this.angleDoors.stats.active=false;
       }else if(!this.angleDoors.compose(this.doors,this.key,output,this.uniforms.uRoomFieldNormalToLocal.value,lighting,daylight,fieldScale,this.uniforms.uRoomSkySecondBounce.value,this.uniforms.uRoomSunTransport.value,this.uniforms.uRoomSunSecondBounce.value))this.doors.compose(this.key,output,this.uniforms.uRoomFieldNormalToLocal.value,lighting,daylight,fieldScale,this.uniforms.uRoomSkySecondBounce.value,this.uniforms.uRoomSunTransport.value,this.uniforms.uRoomSunSecondBounce.value,this.doorFraction);
       this.exterior.apply(this.key,output,this.doors,daylight,fieldScale,this.uniforms.uRoomSkySecondBounce.value,this.doorFraction,{lighting,normalToLocal:this.uniforms.uRoomFieldNormalToLocal.value,solarEnabled:this.uniforms.uRoomSunTransport.value,secondWeight:this.uniforms.uRoomSunSecondBounce.value});
@@ -325,11 +329,11 @@ export class RoomBounceField{
       texture.needsUpdate=true;
     }
   }
-  clear(){this.lodgeDoor.clearActive();Object.assign(this.stats.household,{key:null,pending:false,bundleReady:false,closedReady:false,ready:false});this.uniforms.uRoomFieldActive.value=0;this.solar.clear();this.fixtures.clear();this.secondFixtures.clear();this.fixtureSignature=null;this.key=null;this.stats.active=false;this.stats.aperture.active=false;this.stats.aperture.field=null;this.doors.clear();}
+  clear(){this.guestDoor.clearActive();this.angleDoors.clearActive();this.lodgeDoor.clearActive();Object.assign(this.stats.household,{key:null,pending:false,bundleReady:false,closedReady:false,ready:false});this.uniforms.uRoomFieldActive.value=0;this.solar.clear();this.fixtures.clear();this.secondFixtures.clear();this.fixtureSignature=null;this.key=null;this.stats.active=false;this.stats.aperture.active=false;this.stats.aperture.field=null;this.doors.clear();}
   dispose(){
     this.disposed=true;this.guestVanitySelection=null;this.guestVanityBundles.clear();this.guestVanityPending.clear();this.guestVanityErrors.clear();this.legacyRoomSelection=null;this.legacyRoomPending.clear();this.legacyRoomErrors.clear();this.clear();this.householdPending.clear();this.householdErrors.clear();this.householdBundles.clear();for(const texture of this.cache.values())texture.dispose();
     this.composeBuffers.clear();this.cache.clear();this.baseData.clear();this.secondData.clear();this.skyData.clear();this.skyWeights.clear();
     this.stats.secondBounceBytes=0;this.stats.compositeBytes=0;
-    this.dayData.clear();this.lodgeDoor.dispose();this.lodgeCross.dispose();this.exterior.dispose();this.angleDoors.dispose();this.doors.dispose();this.apertureData.clear();this.stats.aperture.cacheBytes=0;this.fixtures.dispose();this.secondFixtures.dispose();this.solar.dispose();this.empty.dispose();this.uniforms.uRoomBounceField.value=this.empty;
+    this.dayData.clear();this.guestDoor.dispose();this.lodgeDoor.dispose();this.lodgeCross.dispose();this.exterior.dispose();this.angleDoors.dispose();this.doors.dispose();this.apertureData.clear();this.stats.aperture.cacheBytes=0;this.fixtures.dispose();this.secondFixtures.dispose();this.solar.dispose();this.empty.dispose();this.uniforms.uRoomBounceField.value=this.empty;
   }
 }

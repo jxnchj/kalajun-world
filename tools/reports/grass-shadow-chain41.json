@@ -1,0 +1,262 @@
+{
+  "scope": "Offline actual source triangles under subtexel rigid translation; isolates raster phase, NOT actual wind animation or browser output",
+  "shaderParity": [
+    {
+      "name": "meadow",
+      "sameWindFunctions": true,
+      "sameUniformObjectIdentities": true,
+      "samePositionOperations": true
+    },
+    {
+      "name": "basal",
+      "sameWindFunctions": true,
+      "sameUniformObjectIdentities": true,
+      "samePositionOperations": true
+    }
+  ],
+  "defaultMode": "resolution",
+  "shadowPitchMeters": 0.026961972881461706,
+  "nearSchedulerIntervalMs": 6.470873491550809,
+  "fixedCameraSunMatricesIdenticalAcross120Updates": true,
+  "results": [
+    {
+      "name": "meadow",
+      "triangles": 216,
+      "phaseCount": 64,
+      "analyticTriangleAreaSum": 142.55116036835878,
+      "binarySampleSumRange": [
+        122,
+        157
+      ],
+      "intermittentlyMissingTriangles": 184,
+      "examples": [
+        {
+          "triangle": 0,
+          "projectedAreaTexels": 0.3261677697933484,
+          "zeroCoveragePhases": 35
+        },
+        {
+          "triangle": 1,
+          "projectedAreaTexels": 0.3389258572798058,
+          "zeroCoveragePhases": 36
+        },
+        {
+          "triangle": 4,
+          "projectedAreaTexels": 0.09209914860490724,
+          "zeroCoveragePhases": 58
+        },
+        {
+          "triangle": 6,
+          "projectedAreaTexels": 0.2180044827392621,
+          "zeroCoveragePhases": 52
+        },
+        {
+          "triangle": 7,
+          "projectedAreaTexels": 0.15072283456199534,
+          "zeroCoveragePhases": 54
+        },
+        {
+          "triangle": 8,
+          "projectedAreaTexels": 0.2647453223961529,
+          "zeroCoveragePhases": 51
+        },
+        {
+          "triangle": 10,
+          "projectedAreaTexels": 0.16515571471101403,
+          "zeroCoveragePhases": 54
+        },
+        {
+          "triangle": 11,
+          "projectedAreaTexels": 0.14313031622938432,
+          "zeroCoveragePhases": 52
+        }
+      ],
+      "counts": [
+        139,
+        138,
+        136,
+        137,
+        134,
+        137,
+        134,
+        131,
+        134,
+        134,
+        131,
+        130,
+        134,
+        135,
+        134,
+        143,
+        147,
+        148,
+        147,
+        150,
+        149,
+        148,
+        147,
+        150,
+        147,
+        146,
+        146,
+        149,
+        144,
+        147,
+        147,
+        148,
+        150,
+        146,
+        149,
+        150,
+        155,
+        150,
+        151,
+        152,
+        155,
+        157,
+        155,
+        153,
+        147,
+        140,
+        136,
+        138,
+        133,
+        130,
+        133,
+        126,
+        126,
+        127,
+        123,
+        122,
+        129,
+        126,
+        128,
+        128,
+        129,
+        130,
+        131,
+        134
+      ]
+    },
+    {
+      "name": "basal",
+      "triangles": 240,
+      "phaseCount": 64,
+      "analyticTriangleAreaSum": 287.6724728565551,
+      "binarySampleSumRange": [
+        271,
+        293
+      ],
+      "intermittentlyMissingTriangles": 166,
+      "examples": [
+        {
+          "triangle": 0,
+          "projectedAreaTexels": 0.4146631871511212,
+          "zeroCoveragePhases": 5
+        },
+        {
+          "triangle": 5,
+          "projectedAreaTexels": 0.25188296993091086,
+          "zeroCoveragePhases": 50
+        },
+        {
+          "triangle": 6,
+          "projectedAreaTexels": 1.1679715136125024,
+          "zeroCoveragePhases": 4
+        },
+        {
+          "triangle": 7,
+          "projectedAreaTexels": 0.8511700103411752,
+          "zeroCoveragePhases": 21
+        },
+        {
+          "triangle": 8,
+          "projectedAreaTexels": 2.67281597901001,
+          "zeroCoveragePhases": 9
+        },
+        {
+          "triangle": 9,
+          "projectedAreaTexels": 1.5715016377373763,
+          "zeroCoveragePhases": 34
+        },
+        {
+          "triangle": 11,
+          "projectedAreaTexels": 0.27044247858364034,
+          "zeroCoveragePhases": 50
+        },
+        {
+          "triangle": 13,
+          "projectedAreaTexels": 1.207919189476777,
+          "zeroCoveragePhases": 10
+        }
+      ],
+      "counts": [
+        282,
+        286,
+        285,
+        283,
+        276,
+        281,
+        279,
+        281,
+        288,
+        292,
+        284,
+        287,
+        291,
+        288,
+        285,
+        280,
+        281,
+        286,
+        287,
+        280,
+        279,
+        278,
+        284,
+        288,
+        290,
+        292,
+        289,
+        289,
+        289,
+        288,
+        284,
+        289,
+        291,
+        291,
+        289,
+        286,
+        288,
+        285,
+        287,
+        290,
+        289,
+        284,
+        291,
+        289,
+        291,
+        291,
+        290,
+        290,
+        284,
+        284,
+        286,
+        285,
+        293,
+        284,
+        281,
+        282,
+        276,
+        278,
+        281,
+        276,
+        277,
+        271,
+        272,
+        280
+      ]
+    }
+  ],
+  "interpretation": "Each analytic per-triangle area is invariant under translation. Binary center samples can disappear and reappear. Summed triangle areas/counts include overlapping triangles and are NOT total scene occlusion; PCF cannot recover absent raster fragments."
+}

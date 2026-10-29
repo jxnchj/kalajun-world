@@ -1,0 +1,24 @@
+{
+  "version": "reach-design73-contact-1",
+  "candidate": "rooted-low-banks73-1",
+  "scope": "actual terrain-row-kernel Float32 positions/index at .15625m; browser still required",
+  "sourcePreparedSHA256": "9e62e8d16168db6be5b669e5e79d395b74eac384b76685a4d76724796916d877",
+  "roots": 521,
+  "moved": 521,
+  "maxMove": 0.6827391659435832,
+  "maxY": 0.13801160254070055,
+  "maxAnalyticTriangleDelta": 0.0023653130074308137,
+  "maxFootGap": 0.005917409175708599,
+  "groups": 11069,
+  "triangles": 240232,
+  "actualTiles": 14,
+  "tries": {
+    "count": 585,
+    "analyticRejected": 0,
+    "renderedRejected": 0
+  },
+  "stoneTransformsExactlyEqual": 5,
+  "allOriginalIDsAndAppearance": true,
+  "failures": [],
+  "elapsedMs": 4613.524458
+}

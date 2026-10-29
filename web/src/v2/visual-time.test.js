@@ -1,3 +1,4 @@
+import {NearShadowAtlas40} from './shadow-atlas40.js';
 import {ReachBankCover39} from './forest-reach-cover39.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -36,9 +37,10 @@ async function systems(){
  const water=new WorldWater(world);await water.load({textures:false});water.renderReflection=()=>false;
  const env=Object.create(WorldEnvironment.prototype);
  Object.assign(env,{elapsed:0,camera,sky:{position:new THREE.Vector3(),material:{uniforms:{time:{value:0}}}},cloudOrigin:new THREE.Vector3(),clouds:createCloudUniforms(),cloudCache:{update(){}},csm:{update(){},lights:[{color:new THREE.Color(),intensity:1}]},sun:new THREE.Vector3(0,1,0),renderer:{shadowMap:{type:THREE.PCFShadowMap}},shadowReceivers:{update(){}},shadowCasters:{update:()=>({revisions:[]})},shadowScheduler:{setSceneState(){},update(){}},forceShadowUpdate:false,pendingEnv:false,lastEnvironmentTime:0,lastEnvironmentOrigin:camera.position.clone()});
- const controlSteps=[],steps=[],control={update:(first,second)=>steps.push(typeof first==="number"?first:second)},element={open:false},context={visualDelta,shadowDepth:new WorldShadowDepth(new THREE.Scene()),seatingUI:{update(){}},running:true,document:{visibilityState:'visible'},last:0,preparing:false,renderReviewHold:false,gpuExtension:false,gpuPassProfile:null,controls:{update:dt=>controlSteps.push(dt)},terrain:control,structures:{...control,lodgeStream:{needs:()=>false}},ecology,water,pasture:control,doors:control,settlements:control,environment:env,camera,syncShadowState(){},withPreparedWorldMatrices:(_s,render)=>render(),scene:{},renderer:{},renderWorld(){},preparedMatrices:false,performance:{now:()=>context.last},counter:0,frames:[],uiClock:0,$:()=>element,world,drawMap(){},requestAnimationFrame(){},fail:e=>{throw e;}};
+ env.shadowAtlas40=new NearShadowAtlas40(env.renderer,env.csm);
+ const controlSteps=[],steps=[],control={update:(first,second)=>steps.push(typeof first==="number"?first:second)},element={open:false},context={visualDelta,rafCPU42:null,shadowDepth:new WorldShadowDepth(new THREE.Scene()),seatingUI:{update(){}},running:true,document:{visibilityState:'visible'},last:0,preparing:false,renderReviewHold:false,gpuExtension:false,gpuPassProfile:null,controls:{update:dt=>controlSteps.push(dt)},terrain:control,structures:{...control,lodgeStream:{needs:()=>false}},ecology,water,pasture:control,doors:control,settlements:{...control,groupRooms42:null},preparedGuestGroup42:false,roomLightingSyncs:0,syncRoomLighting42(){context.roomLightingSyncs++;},preparationRequests:0,async prepareDestination(){context.preparing=true;context.preparationRequests++;},environment:env,camera,syncShadowState(){},withPreparedWorldMatrices:(_s,render)=>render(),scene:{},renderer:{},renderWorld(){},preparedMatrices:false,performance:{now:()=>context.last},counter:0,frames:[],uiClock:0,$:()=>element,world,drawMap(){},requestAnimationFrame(){},fail:e=>{throw e;}};
  const frame=vm.runInNewContext('('+frameSource+')',context);
- return {frame,context,ecology,water,env,steps,controlSteps,roots,grassShader,geometry,dispose(){ecology.reachBankCover39.dispose();context.shadowDepth.dispose();water.dispose();submission.dispose();field.dispose();rootWind.dispose();geometry.dispose();source.dispose();material.dispose();grass.dispose();}};
+ return {frame,context,ecology,water,env,steps,controlSteps,roots,grassShader,geometry,dispose(){env.shadowAtlas40.dispose();ecology.reachBankCover39.dispose();context.shadowDepth.dispose();water.dispose();submission.dispose();field.dispose();rootWind.dispose();geometry.dispose();source.dispose();material.dispose();grass.dispose();}};
 }
 function timestamps(total,step){const result=[];for(let t=step;t<total;t+=step)result.push(t);result.push(total);return result;}
 test('actual frame and grass/tree/water/cloud systems preserve elapsed phase at 60, 10, 2 fps and irregular cadence',async()=>{
@@ -83,4 +85,25 @@ test('actual frame does not advance hidden or preparation time or catch up the s
   f.context.preparing=false;f.frame(20016);
   near(f.ecology.uniforms.uWindTime.value,.132);near(f.water.uniforms.uWaterTime.value,.132);near(f.env.elapsed,.132);
  }finally{f.dispose();}
+});
+
+test('guest group mode transition prepares once and preserves grass/water/cloud elapsed phases',async()=>{
+ const f=await systems();
+ f.context.shadowDepth.sharedTraversal=true;const update=f.env.update.bind(f.env);f.env.update=dt=>{assert.ok(f.context.shadowDepth.sharedScope,'environment update retains actual depth preparation owner');return update(dt);};
+ try{f.frame(100);f.context.settlements.groupRooms42=[{}];f.frame(200);assert.equal(f.context.preparationRequests,1);assert.equal(f.context.preparing,true);assert.equal(f.context.shadowDepth.sharedScope,null);near(f.ecology.uniforms.uWindTime.value,.2);near(f.water.uniforms.uWaterTime.value,.2);near(f.env.elapsed,.2);
+  f.frame(1000);near(f.ecology.uniforms.uWindTime.value,.2);near(f.water.uniforms.uWaterTime.value,.2);near(f.env.elapsed,.2);
+  f.context.preparedGuestGroup42=true;f.context.preparing=false;f.frame(1100);near(f.ecology.uniforms.uWindTime.value,.3);near(f.water.uniforms.uWaterTime.value,.3);near(f.env.elapsed,.3);assert.equal(f.context.preparationRequests,1);
+  f.context.settlements.groupRooms42=null;f.frame(1200);assert.equal(f.context.preparationRequests,2);near(f.ecology.uniforms.uWindTime.value,.4);near(f.water.uniforms.uWaterTime.value,.4);near(f.env.elapsed,.4);
+ }finally{f.dispose();}
+});
+
+test('actual RAF diagnostic closes on normal draw, preparation early return and render exception, excludes hidden frames',async()=>{
+ const {RafCPUProfile42}=await import('./raf-cpu-profile42.js'),f=await systems();let clock=0;
+ const p=new RafCPUProfile42({now:()=>++clock});f.context.rafCPU42=p;
+ try{
+  f.frame(100);assert.equal(p.snapshot().samples,1);assert.equal(p.active,null);
+  f.context.document.visibilityState='hidden';f.frame(200);assert.equal(p.snapshot().samples,1);
+  f.context.document.visibilityState='visible';f.context.structures.lodgeStream.needs=()=>true;f.frame(300);assert.equal(p.snapshot().samples,2);assert.equal(p.active,null);
+  f.context.structures.lodgeStream.needs=()=>false;f.context.preparing=false;f.context.renderWorld=()=>{throw Error('actual draw failed');};assert.throws(()=>f.frame(400),/actual draw failed/);assert.equal(p.snapshot().samples,3);assert.equal(p.active,null);
+ }finally{p.dispose();f.dispose();}
 });

@@ -1,5 +1,5 @@
 import {createTerrainShadowDomain} from './terrain-shadow-domain.js';
-import {TerrainSiblingBatches} from "./terrain-sibling-batches.js";
+import {TerrainSiblingBatches,terrainSiblingBatchPolicy42} from "./terrain-sibling-batches.js";
 import {yieldWorldPreparation} from "./preparation-yield.js";
 import * as THREE from "three";
 import { createTerrainMaterial, terrainRockFraction, TERRAIN_SHORE_SAMPLING } from "./terrain-material.js";
@@ -98,7 +98,7 @@ export class WorldTerrain {
     if (!(this.size > 0) || !Number.isFinite(this.size)) throw new RangeError("Invalid terrain extent.");
     this.group = new THREE.Group();
     this.group.name = "WorldTerrainV2";
-    this.submissionBatches=new TerrainSiblingBatches(this.group,{enabled:new URLSearchParams(globalThis.location?.search||"").get("terrainBatches")==="1"});
+    this.submissionBatches=new TerrainSiblingBatches(this.group,terrainSiblingBatchPolicy42(globalThis.location?.search||""));
     const surfaceMaterial = createTerrainMaterial();
     this.textures = surfaceMaterial.textures;
     this.loadSurfaces = surfaceMaterial.loadReferences;
@@ -644,7 +644,7 @@ export class WorldTerrain {
   // Uses the normal geometry scheduler and full precision. Near readiness only
   // reports completion of requested detail around the destination; complete
   // world coverage remains visible while distant requested detail continues.
-  async prepareView(camera, { maxMs = 2500, onProgress, nearRadius = 160, waitFor = "all" } = {}) {
+  async prepareView(camera, { maxMs = 2500, onProgress, nearRadius = 160, waitFor = "all", yieldInitializingRows42 = this.yieldInitializingRows42 === true } = {}) {
     const token = ++this._prepareToken, start = now(), view = camera.clone();
     this._activePreparation = token;
     this._nearRadius = Math.max(20, Math.min(500, Number(nearRadius) || 160));
@@ -669,8 +669,13 @@ export class WorldTerrain {
         }
         nearReady = nearQuiet >= 3; ready = quiet >= 3;
         if (ready || (waitFor === "near" && nearReady)) break;
-        if (this.queue[0]?.workerPending) {
+        const initializingRows42 = yieldInitializingRows42 && this.rowWorker && !this.rowWorker.ready && !this.rowWorker.closed;
+        if (this.queue[0]?.workerPending || initializingRows42) {
+          if (initializingRows42) this.stats.initializationTaskYields42 = (this.stats.initializationTaskYields42 || 0) + 1;
           // scheduler.yield continuations can outrank worker message tasks.
+          // Initialization/network delivery also needs a real task turn. The
+          // candidate still executes the original update above on EVERY turn;
+          // a slow/failed worker never prevents local row generation.
           // Waiting for a result has no local work: yield a real event-loop turn
           // instead of spinning/replanning and starving result/error delivery.
           await new Promise(resolve => setTimeout(resolve, 0));
@@ -709,15 +714,28 @@ export class WorldTerrain {
     }
     const start = now();
     let uploads = 0;
-    while (this.queue.length && uploads < MAX_UPLOADS_PER_FRAME && now() - start < BUILD_BUDGET_MS) {
+    const readyWindow42 = this.workerReadyWindow42 === true;
+    const windowStats42 = this.stats.workerReadyWindow42 ??= { frames: 0, totalFinished: 0, totalExtraFinished: 0, maxReadyPrefix: 0 };
+    Object.assign(windowStats42, { enabled: readyWindow42, readyPrefix: 0, finished: 0, workerFinished: 0, extraFinished: 0 });
+    if (this._queueDirty) this._sortQueue();
+    // Bounded diagnostic: never scan the resident world or overtake a queue head.
+    for (const candidate of this.queue) {
+      if (candidate.node.dead || candidate.node.mesh) continue;
+      if (!candidate.workerPayload || candidate.workerPayload.row !== GRID + 1) break;
+      if (++windowStats42.readyPrefix === 4) break;
+    }
+    windowStats42.maxReadyPrefix = Math.max(windowStats42.maxReadyPrefix, windowStats42.readyPrefix);
+    while (this.queue.length && uploads < (readyWindow42 ? 4 : MAX_UPLOADS_PER_FRAME) && now() - start < BUILD_BUDGET_MS) {
       if (this._queueDirty) this._sortQueue();
       if (!this.queue.length) break;
       const job = this.queue[0];
       if (job.node.dead || job.node.mesh) { this.queue.shift(); continue; }
+      const completeWorker42 = job.workerPayload?.row === GRID + 1;
+      // Extra slots consume only complete worker output, never CPU rows/cache.
+      if (uploads >= MAX_UPLOADS_PER_FRAME && !completeWorker42) break;
       if(this.rowWorker?.ready){
-        // Submit only the next bounded jobs. Keep original queue order and the
-        // same per-frame upload ceiling; parents stay visible until all four
-        // children are uploaded. No extra hidden meshes or lower-detail proxy.
+        // Dispatch remains bounded by the client; parent activation still waits
+        // for all four children in the original _finish/_activate path.
         for(const candidate of this.queue){
           if(this.rowWorker.pending.size>=this.rowWorker.limit)break;
           if(!candidate.node.dead)this.rowWorker.enqueue(candidate);
@@ -726,8 +744,16 @@ export class WorldTerrain {
       if(job.workerPayload){Object.assign(job,job.workerPayload);delete job.workerPayload;}
       else if(job.workerPending)break;
       else this._buildRow(job);
-      if (job.row > GRID) { this.queue.shift(); this._finish(job); uploads++; }
+      if (job.row > GRID) {
+        this.queue.shift(); this._finish(job); uploads++;
+        if (completeWorker42) windowStats42.workerFinished++;
+      }
     }
+    windowStats42.frames++;
+    windowStats42.finished = uploads;
+    windowStats42.extraFinished = Math.max(0, uploads - MAX_UPLOADS_PER_FRAME);
+    windowStats42.totalFinished += uploads;
+    windowStats42.totalExtraFinished += windowStats42.extraFinished;
     this.stats.buildMs = now() - start;
     this._measure();
     this.submissionBatches.update(this.liveNodes);

@@ -8,7 +8,7 @@ import {WorldEcology,decodeHabitatMap,meadowGeometry,basalGrassGeometry} from ".
 import {forestFloorAt,createForestFloorGeometry} from "./forest-floor.js";
 import {WorldWater,createShoreRockMaterial} from "./water.js";
 import {createShoreStones,createShoreRockGeometry,createRiverPebbleGeometry,shoreStoneMatrix} from "./shore-stones.js";
-import {createPlantEnvelope,createShoreStoneCollider,plantIntersectsStone,getShoreStoneField,relocateShorePlant,releaseShoreStoneField} from "./shore-contact.js";
+import {createPlantGeometryCollider,createPlantEnvelope,createShoreStoneCollider,plantIntersectsStone,getShoreStoneField,relocateShorePlant,releaseShoreStoneField} from "./shore-contact.js";
 const root=new URL("../../public/",import.meta.url),json=n=>JSON.parse(readFileSync(new URL(n,root))),bin=n=>new Uint8Array(gunzipSync(readFileSync(new URL(n,root))));
 function rgbPNG(name){
  const file=readFileSync(new URL(name,root)),parts=[];let width,height;
@@ -52,12 +52,21 @@ function sameRootAndGeometry(actual,expected){
 test("rendered stone matrices match the shared tilted three-dimensional collider exactly",()=>{
  const w=actual(),view=w.hydrology.viewpoints.find(v=>v.id==="river-forest"),segments=w.hydrology.nearSegments(view.x,view.z,18),records=createShoreStones(w,segments),water=new WorldWater(w);
  const item=water.buildBucket({id:"test",segments,bounds:{minX:view.x-24,maxX:view.x+24,minZ:view.z-24,maxZ:view.z+24}});
- water.buildStones(item);assert.equal(item.rocks.count,records.length);
- for(let i=0;i<records.length;i++){
-  const expected=shoreStoneMatrix(records[i]).elements.map(Math.fround);
-  assert.deepEqual(Array.from(item.rocks.instanceMatrix.array.slice(i*16,i*16+16)),expected);
+ water.buildStones(item);const regular=records.filter(r=>!r.shoreAsset42),selected=records.filter(r=>r.shoreAsset42);
+ assert.equal((item.rocks?.count??0)+(item.assetStones42??[]).reduce((n,m)=>n+m.count,0),records.length);
+ assert.equal(item.rocks.count,regular.length);assert.equal(item.assetStones42.length,selected.length);assert.equal(selected.length,1);
+ for(const [record,mesh,i]of [...regular.map((r,i)=>[r,item.rocks,i]),...selected.map((r,i)=>[r,item.assetStones42[i],0])]){
+  const matrix=shoreStoneMatrix(record),expected=matrix.elements.map(Math.fround);
+  assert.deepEqual(Array.from(mesh.instanceMatrix.array.slice(i*16,i*16+16)),expected);
+  const collider=createShoreStoneCollider(record,mesh.geometry),rendered=createPlantGeometryCollider(mesh.geometry,matrix);
+  assert.deepEqual(collider.slabs,rendered.slabs);assert.deepEqual(collider.box,rendered.box);
+  if(record.shoreAsset42){assert.equal(mesh.geometry.index.count/3,16548);for(const name of ['position','normal','uv'])assert.deepEqual(mesh.geometry.attributes[name].array,record.shoreAsset42.geometry.attributes[name].array);assert.deepEqual(mesh.geometry.index.array,record.shoreAsset42.geometry.index.array);}
+  else assert.equal(mesh.geometry.index.count/3,1260);
  }
- const primary=records.find(r=>r.id==="river-41711e76-99c57ca2:862:1"),g=createShoreRockGeometry(),c=createShoreStoneCollider(primary,g);
+ // Keep the original tall-stone slab/overhead regression explicitly on its
+ // original geometry. The adopted shorter stone is verified above against
+ // every actual rendered slab, matrix, index and vertex without a height guess.
+ const primary={...records.find(r=>r.id==="river-41711e76-99c57ca2:862:1"),shoreAsset42:null},g=createShoreRockGeometry(),c=createShoreStoneCollider(primary,g);
  assert.ok(c.slabs.length>5);assert.equal(g.index.count/3,1260);
  const blade=new THREE.BoxGeometry(.04,.08,.04),envelope=createPlantEnvelope([blade],{wind:false});
  assert.equal(plantIntersectsStone({x:primary.x,y:primary.y,z:primary.z,s:1},envelope,c),true);

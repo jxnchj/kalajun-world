@@ -1,0 +1,49 @@
+{
+  "scope": "Dynamic same-page moving ABBA; includes cache GPU pass. Disabled cache updateMs is stale and not an active CPU measurement. Default remains OFF.",
+  "rows": [
+    {
+      "run": "a1",
+      "enabled": false,
+      "gpuMs": 21.883027300000002,
+      "frameMs": 60.03283582089541,
+      "cacheCpuMs": null,
+      "roots": 220700,
+      "q": 0,
+      "pending": 0,
+      "errors": []
+    },
+    {
+      "run": "b1",
+      "enabled": true,
+      "gpuMs": 21.034824549999996,
+      "frameMs": 57.076303317535434,
+      "cacheCpuMs": 1.178199052457561,
+      "roots": 220700,
+      "q": 0,
+      "pending": 0,
+      "errors": []
+    },
+    {
+      "run": "b2",
+      "enabled": true,
+      "gpuMs": 21.034859166666664,
+      "frameMs": 55.1243119266054,
+      "cacheCpuMs": 1.0701834861565074,
+      "roots": 220700,
+      "q": 0,
+      "pending": 0,
+      "errors": []
+    },
+    {
+      "run": "a2",
+      "enabled": false,
+      "gpuMs": 21.681467633333327,
+      "frameMs": 62.07835051546428,
+      "cacheCpuMs": null,
+      "roots": 220700,
+      "q": 0,
+      "pending": 0,
+      "errors": []
+    }
+  ]
+}

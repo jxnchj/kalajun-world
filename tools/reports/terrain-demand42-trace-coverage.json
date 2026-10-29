@@ -1,0 +1,29 @@
+{
+  "trace": "docs/previews/v2-route-craft-38/terrain42-actual-enqueue-trace.json",
+  "acceptedUnique": 974,
+  "covered": 974,
+  "miss": [],
+  "requestedShards": 244,
+  "requestedPayloadBytes": 40743800,
+  "downloadShardBytes": 40828873,
+  "phases": {
+    "initialScene": {
+      "count": 4,
+      "bytes": 208734
+    },
+    "interactive": {
+      "count": 970,
+      "bytes": 40535066
+    }
+  },
+  "manifestBytes": 622600,
+  "manifestPossibleHTTPGzipBytes": 131673,
+  "full": {
+    "selectedTiles": 1564,
+    "shards": 391,
+    "bytes": 61097210,
+    "rawBytes": 253624496,
+    "fullPackBytes": 65280568
+  },
+  "scope": "Historical real request-key coverage, not actual candidate network or speed acceptance"
+}

@@ -47,3 +47,23 @@ test('ready links still wait for texture upload; upload failure rejects and clea
   assert.equal(f.input.userData.compileReadiness.textures.status,fail?'failed':'complete');
  }
 });
+
+test('stalled evidence identifies programs, actual waits and failed queries without retaining shader source',async()=>{
+ const f=fixture({ready:()=>false,probeMs:12}),p=f.run();f.timer.advance(5000);await p;
+ assert.deepEqual(f.input.userData.compileReadiness.stalledPrograms,[{id:7,name:'tested-program',noProgressMs:5000,unreadyRounds:201,linkStatusMs:12,result:'linked'}]);
+ const g=fixture({ready:()=>false});g.gl.getProgramParameter=()=>{g.timer.block(9);throw Error('query failed');};
+ const rejected=assert.rejects(g.run(),/query failed/);g.timer.advance(5000);await rejected;
+ assert.equal(g.input.userData.compileReadiness.stalledPrograms[0].result,'query-threw');
+ assert.equal(g.input.userData.compileReadiness.stalledPrograms[0].linkStatusMs,9);assert.equal(g.timer.pending,0);
+});
+test('multi-program recovery evidence is bounded and retains per-program polling counts',async()=>{
+ const f=fixture({ready:()=>false,probeMs:2});f.renderer.compile=()=>{
+  const programs=Array.from({length:20},(_,id)=>({...f.program,id,program:{id},name:'x'.repeat(200)}));
+  f.states.set(f.material,{programs:new Map(programs.map(p=>[p.id,p]))});return new Set([f.material]);
+ };
+ const pending=f.run();f.timer.advance(6000);await pending;const s=f.input.userData.compileReadiness;
+ assert.equal(s.verifiedPrograms,20);assert.equal(s.stalledPrograms.length,16);assert.equal(s.stalledProgramsDropped,4);
+ assert.deepEqual(s.stalledPrograms.map(p=>p.id),Array.from({length:16},(_,i)=>i+4));
+ for(const p of s.stalledPrograms){assert.equal(p.name.length,160);assert.equal(p.noProgressMs,25);assert.equal(p.unreadyRounds,201+p.id);assert.equal(p.linkStatusMs,2);}
+ assert.equal(f.timer.pending,0);
+});

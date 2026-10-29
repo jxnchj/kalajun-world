@@ -1,0 +1,173 @@
+{
+  "protectedSources": {
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/assets/src/v2/pastoral/house_a-lived.blend": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2",
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/web/public/assets/v2/house_a_lived.glb": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/assets/src/v2/pastoral/household-living-32.blend": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4",
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/web/public/assets/v2/household_living.glb": "dacfbb06da69893c0e96501e84234c97fd71dddbcf575e9e004fb9b9a2f2d85a",
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/assets/src/v2/pastoral/yurt-lived.blend": "d6bf408d024cf9794ec091422185e200096d7a36b4d27501c8f9e3792b7f7924",
+    "/path/to/local-workspace/3D\u5580\u62c9\u5cfb/web/public/assets/v2/yurt_lived.glb": "3f1d7f403d14f95123dd11c8821d9d707ea09190bf04d9fc33da34f7818a5d41"
+  },
+  "sourcesUnchanged": true,
+  "bakes": [
+    {
+      "key": "house_a",
+      "degrees": [
+        30
+      ],
+      "bytes": 357270,
+      "seconds": 21.50718024998787
+    },
+    {
+      "key": "house_a",
+      "degrees": [
+        60
+      ],
+      "bytes": 377299,
+      "seconds": 42.13155404198915
+    },
+    {
+      "key": "house_a",
+      "degrees": [
+        90
+      ],
+      "bytes": 385464,
+      "seconds": 62.31931258300028
+    },
+    {
+      "key": "house_a-living-0",
+      "degrees": [
+        30
+      ],
+      "bytes": 358846,
+      "seconds": 82.24010979199375
+    },
+    {
+      "key": "house_a-living-0",
+      "degrees": [
+        60
+      ],
+      "bytes": 378878,
+      "seconds": 101.91265691698936
+    },
+    {
+      "key": "house_a-living-0",
+      "degrees": [
+        90
+      ],
+      "bytes": 387042,
+      "seconds": 121.57363695799722
+    },
+    {
+      "key": "house_a-living-1",
+      "degrees": [
+        30
+      ],
+      "bytes": 358844,
+      "seconds": 141.30564762499125
+    },
+    {
+      "key": "house_a-living-1",
+      "degrees": [
+        60
+      ],
+      "bytes": 378877,
+      "seconds": 160.61189245799324
+    },
+    {
+      "key": "house_a-living-1",
+      "degrees": [
+        90
+      ],
+      "bytes": 387044,
+      "seconds": 180.03210266699898
+    },
+    {
+      "key": "house_a-living-2",
+      "degrees": [
+        30
+      ],
+      "bytes": 358845,
+      "seconds": 199.7366482919897
+    },
+    {
+      "key": "house_a-living-2",
+      "degrees": [
+        60
+      ],
+      "bytes": 378879,
+      "seconds": 219.15279641699453
+    },
+    {
+      "key": "house_a-living-2",
+      "degrees": [
+        90
+      ],
+      "bytes": 387042,
+      "seconds": 238.80022941700008
+    },
+    {
+      "key": "yurt",
+      "degrees": [
+        0,
+        51
+      ],
+      "bytes": 397815,
+      "seconds": 252.09991779198754
+    },
+    {
+      "key": "yurt",
+      "degrees": [
+        0,
+        102
+      ],
+      "bytes": 422377,
+      "seconds": 264.6847787079896
+    },
+    {
+      "key": "yurt",
+      "degrees": [
+        51,
+        0
+      ],
+      "bytes": 396064,
+      "seconds": 277.3198855419905
+    },
+    {
+      "key": "yurt",
+      "degrees": [
+        51,
+        51
+      ],
+      "bytes": 407096,
+      "seconds": 290.0160827919899
+    },
+    {
+      "key": "yurt",
+      "degrees": [
+        51,
+        102
+      ],
+      "bytes": 417837,
+      "seconds": 303.3924648329994
+    },
+    {
+      "key": "yurt",
+      "degrees": [
+        102,
+        0
+      ],
+      "bytes": 420924,
+      "seconds": 316.7082327919925
+    },
+    {
+      "key": "yurt",
+      "degrees": [
+        102,
+        51
+      ],
+      "bytes": 418520,
+      "seconds": 329.51981379199424
+    }
+  ],
+  "seconds": 329.53570608299924
+}

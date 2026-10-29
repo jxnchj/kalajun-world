@@ -1,7 +1,8 @@
+import {selectTextileGI73} from './house-textiles-gi73.js';
 import * as THREE from 'three';
 import {ROOM_BOUNCE_DATA} from './room-bounce-registry.js';
 import {RoomSolarTransport} from './room-solar-transport.js';
-const LOADERS={house_a:()=>import('./room-closed-door-data/house_a.js').then(m=>m.default),yurt:()=>import('./room-closed-door-data/yurt.js').then(m=>m.default)};
+const LOADERS={house_a:()=>selectTextileGI73('house_a',()=>import('./room-closed-door-data/house_a.js').then(m=>m.default),{part:'closed'}),yurt:()=>import('./room-closed-door-data/yurt.js').then(m=>m.default)};
 const decode=f=>{const s=atob(f.data),a=new Uint16Array(s.length/2);for(let i=0;i<a.length;i++)a[i]=s.charCodeAt(i*2)|(s.charCodeAt(i*2+1)<<8);return a;};
 // Projection of a thin leaf across its original doorway, not linear angle gain.
 // doors.openness is clamped angle/(pi/2), keeping initial >90deg pose unchanged.
@@ -20,7 +21,7 @@ export class RoomDoorTransport{
   const pending=Promise.resolve().then(this.loaders[key]).then(data=>{
    if(this.disposed)return;
    const source=ROOM_BOUNCE_DATA[key];
-   for(const f of[data.sky,data.secondSky,data.solar,data.secondSolar,data.apertures])for(const prop of['sourceSHA256','blendSHA256','bounds','size','openings','validProbes'])
+   for(const f of[data.sky,data.secondSky,data.solar,data.secondSolar,data.apertures])for(const prop of['derivedGeometry','sourceSHA256','blendSHA256','bounds','size','openings','validProbes'])
     if(JSON.stringify(f[prop])!==JSON.stringify(source[prop]))throw new Error('Closed door source/grid differs: '+prop);
    const first=decode(data.sky),second=decode(data.secondSky);if(first.length!==second.length||first.length!==source.size.reduce((a,b)=>a*b,1)*16)throw new Error('Invalid closed room field');
    this.fields.set(key,{data,first,second,apertures:Uint8Array.from(atob(data.apertures.data),c=>c.charCodeAt(0))});

@@ -1,3 +1,5 @@
+import {PasturePlantContact41} from './pasture-plant-contact41.js';
+import {compactMeadowLeafIndex41} from './meadow-exact-index41.js';
 import {ReachBankCover39} from './forest-reach-cover39.js';
 import {createForestReachCommunity39} from './forest-reach-community39.js';
 import {brookGrassIntersectsWater} from './brook-shoulder-grass.js';
@@ -397,15 +399,17 @@ export function refreshPlantBounds(mesh,records,viewer,range,movementMargin=6) {
   return box;
 }
 export class WorldEcology {
-  constructor(world,{forestLayout=forestLayoutMode(),treeBatchSize=treeBatchSizeFromURL()}={}) {
+  constructor(world,{forestLayout=forestLayoutMode(),treeBatchSize=treeBatchSizeFromURL(),reachCoverPrepared,meadowAerialContinuity42=new URLSearchParams(globalThis.location?.search??"").get("meadowAerialContinuity42")!=="0",treeWindAtlas44=new URLSearchParams(globalThis.location?.search??'').get('treeWindAtlas44')==='1',treeHighPhoto48=new URLSearchParams(globalThis.location?.search??'').get('treeHighPhoto48')==='1'}={}) {
     if(![64,96].includes(treeBatchSize))throw new RangeError("Tree submission blocks must be 64 or 96 metres");
-    this.treeBatchSize=treeBatchSize;
+    if(treeHighPhoto48&&(treeBatchSize!==96||treeWindAtlas44||new URLSearchParams(globalThis.location?.search??'').get('treeViewCull')==='1'))throw new Error('High-photo 48m candidate requires native 96m tree batches');
+    if(treeWindAtlas44&&new URLSearchParams(globalThis.location?.search??'').get('treeViewPassShare42')==='1')throw new Error('Tree wind atlas and pass-share experiments are mutually exclusive');
+    this.treeBatchSize=treeBatchSize;this.treeHighPhoto48=Boolean(treeHighPhoto48);this.meadowAerialContinuity42=Boolean(meadowAerialContinuity42);
     this.treeRootOrder=new TreeRootOrder({enabled:new URLSearchParams(globalThis.location?.search||"").get("treeRootOrder")==="1"});
     this.treeWindCoefficientsStatic=new URLSearchParams(globalThis.location?.search||"").get("treeWindCoefficientsStatic")==="1";
     this.treeWindCoefficients={value:new URLSearchParams(globalThis.location?.search||"").get("treeWindCoefficients")==="1"?1:0};
     this.treeWindPhase={value:new THREE.Vector2(0,1)};
     this.shadowVertexReuse={value:new URLSearchParams(globalThis.location?.search||"").get("shadowVertexReuse")==="1"};
-    this.treeViewCull={value:new URLSearchParams(globalThis.location?.search||"").get("treeViewCull")==="1"?1:0};
+    this.treeViewCull={value:treeWindAtlas44||new URLSearchParams(globalThis.location?.search||"").get("treeViewCull")==="1"?1:0};
     this.treeWorldFrustum=!this.treeViewCull.value&&new URLSearchParams(globalThis.location?.search||"").get("treeFrustumCull")==="world";
     this.treeFrustumCull={value:this.treeWorldFrustum||new URLSearchParams(globalThis.location?.search||"").get("treeFrustumCull")==="1"?1:0};
     this.world=world;this.group=new THREE.Group();this.group.name="world-ecology";
@@ -413,13 +417,16 @@ export class WorldEcology {
     if(this.crownRootMask)this.group.addEventListener("added",()=>{let scene=this.group.parent;while(scene&&!scene.isScene)scene=scene.parent;if(scene)this.crownRootMask.attachScene(scene);});
     this.materials=[];this.tiles=new Map();this.queue=[];this.range=2200;
     this.last=new THREE.Vector2(Infinity,Infinity);this.nearLast=new THREE.Vector2(Infinity,Infinity);
-    this.windField=new MeadowWindField();this.treeRootWind=new SpruceRootWind();
+    this.windField=new MeadowWindField();this.treeRootWind=new SpruceRootWind({atlas44:treeWindAtlas44});
     this.uniforms={...this.windField.uniforms,uWindTime:{value:0},uWorldViewer:{value:new THREE.Vector3()},uPlantRange:{value:this.range}};
     this.farGeometry=farTreeGeometry();
     this.farMaterial=attachEcologyWind(new THREE.MeshStandardMaterial({vertexColors:true,roughness:.94,side:THREE.DoubleSide}),this.uniforms,0);
     installFarSpruceShape(this.farMaterial);this.materials.push(this.farMaterial);
     this.meadowSourceRange39=meadowSourceRange39();
     this.grassGeometries=[meadowGeometry(true),meadowGeometry(false)];
+    // Render-only candidate: wet assets, seating/envelopes and root caches keep
+    // their original source geometry. Only exact collapsed leaf tips are absent.
+    this.grassRenderGeometries41=new URLSearchParams(globalThis.location?.search||"").get("meadowExact41")==="1"?this.grassGeometries.map(g=>compactMeadowLeafIndex41(g).geometry):null;
     this.grassMaterials=[2,4].map(mode=>attachEcologyWind(new THREE.MeshStandardMaterial({vertexColors:true,roughness:.91,side:THREE.DoubleSide}),this.uniforms,mode,true));
     installMeadowSourceRange39(this.grassMaterials[1],this.meadowSourceRange39);
     this.grassRootField=new GrassRootField(this.world);this.meadowRootCache=new MeadowRootCache(this);this.uniforms.uGrassRootField={value:1};
@@ -436,6 +443,8 @@ export class WorldEcology {
     this.nearGroup=new THREE.Group();this.group.add(this.nearGroup);this.nearParts=[];this.nearTreeBatches=new Map();this.treeBatchRevision=0;
     this.flowerPools=[];this.flowerNearPools=[];this.flowerTiles=new Map();this.flowerRootsChanged=false;this.flowerNearAnchor="";
     this.stats={trees:0,treeChunks:0,grassTufts:0,grassChunks:0,flowerPlants:0,pending:0,grassPending:0,grassBuiltThisFrame:0,flowerNearPlants:0,basalGrassTufts:0};
+    this.stats.treeWindAtlas44=this.treeRootWind.atlas44?.stats??{enabled:false};
+    this.stats.meadowExactIndex41={enabled:!!this.grassRenderGeometries41,lods:this.grassGeometries.map((g,i)=>({sourceTriangles:g.index.count/3,triangles:(this.grassRenderGeometries41?.[i]??g).index.count/3}))};
     Object.defineProperty(this.stats,"shadowVertexReuse",{enumerable:true,get:()=>{
       const records=this.nearParts.map(p=>p.shadowIndex).filter(Boolean),total={enabled:!!this.shadowVertexReuse.value,parts:records.filter(r=>r.index).length};
       for(const key of ["beforeVertices","afterVertices","remappedVertices","triangles","bytes","buildMs","uploads","liveBuffers","draws"])total[key]=records.reduce((n,r)=>n+(r.stats[key]||0),0);
@@ -443,10 +452,11 @@ export class WorldEcology {
     }});
     Object.defineProperty(this.stats,"treeViews",{enumerable:true,get:()=>{
       const total={enabled:!!this.treeViewCull.value,batches:0,bytes:0,viewGeometries:0,queries:0,tested:0,selected:0,rejected:0,draws:0,drawnInstances:0};
+      if(this.treeRootWind.atlas44)Object.assign(total,{forceCopies:0,fullForceCopies:0,slotCopies:0,fullSlotCopies:0,matrixCopies:0,fullMatrixCopies:0});
       for(const b of this.nearTreeBatches.values())if(b.view){total.batches++;for(const k of Object.keys(total))if(k!=="enabled"&&k!=="batches")total[k]+=b.view.stats[k]||0;}
       return total;
     }});
-    this.thresholdPlants=new ThresholdPlantField(world);this.boardwalkPlantContact39=new BoardwalkPlantContact39(world);
+    this.thresholdPlants=new ThresholdPlantField(world);this.boardwalkPlantContact39=new BoardwalkPlantContact39(world);this.pasturePlantContact41=new PasturePlantContact41(world);this.pastureGrassEnvelope41=this.pasturePlantContact41.enabled?createPlantEnvelope([...this.grassGeometries,this.baseGrassGeometry]):this.shoreGrassEnvelope;
     Object.assign(this,createForestExclusionIndex(world));
     this.forestLayout=new ForestRootLayout(world,{mode:forestLayout,originalAt:(ix,iz)=>this.originalTreeAt(ix,iz),excluded:(x,z,pad)=>this.excluded(x,z,pad),random:cellRandom});
     this.stats.forestLayout=this.forestLayout.stats;
@@ -455,7 +465,7 @@ export class WorldEcology {
     this.transform=new THREE.Object3D();
     this.forestFloor=new ForestFloor(world,{excluded:(x,z,pad)=>this.excluded(x,z,pad,true),wind:(m,mode,herb)=>attachEcologyWind(m,this.uniforms,mode,herb),depth:(m,mode,herb)=>depthFor(m,this.uniforms,mode,herb),bounds:refreshPlantBounds});
     this.group.add(this.forestFloor.group);this.materials.push(...this.forestFloor.materials);
-    this.reachBankCover39=new ReachBankCover39(world,{rootField:this.grassRootField,excluded:(x,z,p)=>this.excluded(x,z,p,true),wind:(m,mode,herb)=>attachEcologyWind(m,this.uniforms,mode,herb),depth:(m,mode,herb)=>depthFor(m,this.uniforms,mode,herb)});this.group.add(this.reachBankCover39.group);this.materials.push(...this.reachBankCover39.materials);
+    this.reachBankCover39=new ReachBankCover39(world,{preparedEnabled:reachCoverPrepared,rootField:this.grassRootField,excluded:(x,z,p)=>this.excluded(x,z,p,true),wind:(m,mode,herb)=>attachEcologyWind(m,this.uniforms,mode,herb),depth:(m,mode,herb)=>depthFor(m,this.uniforms,mode,herb)});this.group.add(this.reachBankCover39.group);this.materials.push(...this.reachBankCover39.materials);
   }
   excluded(x,z,padding=2,allowWetBank=false) {return rootExcluded(this,x,z,padding,allowWetBank);}
   async load({canopyLookup=null,textureRenderer=null}={}) {
@@ -645,13 +655,16 @@ export class WorldEcology {
       const part=this.nearParts[partIndex],{variant,mode,mesh:template}=part;
       // Keep every resident identity and the original prefetch distances.
       const list=byVariant[variant].filter(t=>{const d=Math.hypot(t.x-p.x,t.z-p.z);return mode===TREE_NEEDLES.mode?d<TREE_NEEDLES.prefetch:mode===5?d<82:d>24;}).slice(0,template.instanceMatrix.count);
+      // Static native partition only. Middle crowns, bark/core and near needles
+      // keep their original blocks; no pass-specific instance/force copies.
+      const highPhoto48=this.treeHighPhoto48&&mode===5&&template.material.alphaTest>0,batchSize=highPhoto48?48:this.treeBatchSize,partition=highPhoto48?'photo48:':'';
       const chunks=new Map();
-      for(const root of list){const chunk=treeBatchKey(root.x,root.z,this.treeBatchSize);if(!chunks.has(chunk))chunks.set(chunk,[]);chunks.get(chunk).push(root);}
+      for(const root of list){const chunk=treeBatchKey(root.x,root.z,batchSize);if(!chunks.has(chunk))chunks.set(chunk,[]);chunks.get(chunk).push(root);}
       for(const [chunk,records]of chunks){
-        const key=partIndex+":"+chunk;wanted.add(key);let batch=this.nearTreeBatches.get(key);
+        const key=partIndex+":"+partition+chunk;wanted.add(key);let batch=this.nearTreeBatches.get(key);
         if(!batch){
           // The fixed-world block/resource stays resident; only its active prefix is drawn.
-          const capacity=Math.max(64,records.length),geometry=this.treeRootWind.createGeometry(template.geometry,capacity,mode+":"+variant+":"+chunk);
+          const capacity=Math.max(64,records.length),geometry=this.treeRootWind.createGeometry(template.geometry,capacity,mode+":"+variant+":"+partition+chunk);
           const mesh=new THREE.InstancedMesh(geometry,template.material,capacity);
           mesh.name="spruce-"+mode+"-"+variant+"-"+chunk+"-"+partIndex;mesh.count=0;mesh.visible=false;
           mesh.castShadow=true;mesh.receiveShadow=true;mesh.frustumCulled=true;
@@ -659,11 +672,15 @@ export class WorldEcology {
           if(mode===1||mode===5)(this.treeWorldFrustum?installTreeWorldFrustum:installTreeFrustumCull)(mesh,this.treeFrustumCull);
           // Foliage dominates submitted vertices. Keep cheap bark/core batches on
           // their existing path: compacting them costs more CPU than it saves.
-          const view=this.treeViewCull.value&&(mode===1||mode===5)&&template.material.alphaTest>0?installTreeViewBatch(mesh,{enabled:this.treeViewCull}):null;
+          let view=null;
+          if(this.treeViewCull.value&&(mode===1||mode===5)&&template.material.alphaTest>0){
+            const atlasBinding=this.treeRootWind.atlas44?.bind(mesh);
+            try{view=installTreeViewBatch(mesh,{enabled:this.treeViewCull,atlasBinding});}catch(error){atlasBinding?.release();throw error;}
+          }
           if(!view&&part.shadowIndex?.index)installTreeShadowIndex(mesh,part.shadowIndex,{enabled:this.shadowVertexReuse});
           if(this.crownRootMask&&!view&&(mode===1||mode===5)&&template.material.alphaTest>0)this.crownRootMask.add(mesh);
           this.nearGroup.add(view?.proxy||mesh);
-          batch={mesh,view,partIndex,variant,mode,chunk,records:[],ids:"",activeRecords:[],activeIndex:new Map()};
+          batch={mesh,view,partIndex,variant,mode,chunk,batchSize,records:[],ids:"",activeRecords:[],activeIndex:new Map()};
           this.nearTreeBatches.set(key,batch);this.treeBatchRevision++;
         }
         batch.ids=records.map(r=>r.id).join("|");batch.records=records;instanceCount+=records.length;
@@ -672,7 +689,7 @@ export class WorldEcology {
     for(const [key,batch]of this.nearTreeBatches)if(!wanted.has(key)){
       batch.view?.dispose();this.nearGroup.remove(batch.mesh);disposeTreeWindGeometry(batch.mesh.geometry);batch.mesh.dispose();this.nearTreeBatches.delete(key);this.treeBatchRevision++;
     }
-    Object.assign(this.stats,{treeBatchSize:this.treeBatchSize,treeDrawBatches:this.nearTreeBatches.size,treeBatchInstances:instanceCount,
+    Object.assign(this.stats,{treeBatchSize:this.treeBatchSize,treeHighPhoto48:this.treeHighPhoto48,treeDrawBatches:this.nearTreeBatches.size,treeBatchInstances:instanceCount,
       needleTreeRoots:byVariant.flat().filter(t=>Math.hypot(t.x-p.x,t.z-p.z)<TREE_NEEDLES.prefetch).length,
       highTreeRoots:byVariant.flat().filter(t=>Math.hypot(t.x-p.x,t.z-p.z)<82).length,
       midTreeRoots:byVariant.flat().filter(t=>Math.hypot(t.x-p.x,t.z-p.z)>24).length});
@@ -806,7 +823,7 @@ export class WorldEcology {
     }
     const shoreRoot=relocateShorePlant(this.world,root,this.shoreGrassEnvelope,suitable);
     const placed=this.thresholdPlants.relocate(shoreRoot,this.shoreGrassEnvelope,p=>suitable(p.x,p.z)&&!getShoreStoneField(this.world).intersects(p,this.shoreGrassEnvelope),root);
-    if(!brookShoulder)return this.boardwalkPlantContact39.relocate(placed,this.shoreGrassEnvelope,p=>suitable(p.x,p.z)&&!this.thresholdPlants.intersects(p,this.shoreGrassEnvelope)&&!getShoreStoneField(this.world).intersects(p,this.shoreGrassEnvelope));
+    if(!brookShoulder){const boardwalkRoot=this.boardwalkPlantContact39.relocate(placed,this.shoreGrassEnvelope,p=>suitable(p.x,p.z)&&!this.thresholdPlants.intersects(p,this.shoreGrassEnvelope)&&!getShoreStoneField(this.world).intersects(p,this.shoreGrassEnvelope));return this.pasturePlantContact41.relocate(boardwalkRoot,this.pastureGrassEnvelope41,p=>suitable(p.x,p.z)&&!this.thresholdPlants.intersects(p,this.shoreGrassEnvelope)&&!this.boardwalkPlantContact39.intersects(p,this.shoreGrassEnvelope)&&!getShoreStoneField(this.world).intersects(p,this.shoreGrassEnvelope));}
     const asset=createBrookWetAsset(this.world,placed,[this.grassGeometries[0],this.grassGeometries[1],this.baseGrassGeometry],{physicalOnly:this.riverValleyWet&&valleyShoulderSuitable(this.world,x,z)});
     return asset?{...placed,brookShoulder:true,brookAsset:asset}:null;
   }
@@ -830,7 +847,7 @@ export class WorldEcology {
   }
   addGrassMesh(tile,lod) {
     if(tile.meshes[lod]||!tile.regular.length)return;
-    const mesh=new THREE.InstancedMesh(createGrassFieldGeometry(this.grassGeometries[lod],tile.regular.length),this.grassMaterials[lod],tile.regular.length);
+    const mesh=new THREE.InstancedMesh(createGrassFieldGeometry(this.grassRenderGeometries41?.[lod]??this.grassGeometries[lod],tile.regular.length),this.grassMaterials[lod],tile.regular.length);
     mesh.onBeforeRender=mesh.onBeforeShadow=markGrassFieldRendered;
     tile.regular.forEach((p,i)=>{mesh.setMatrixAt(i,this.matrix(p));this.grassRootField.write(mesh.geometry.attributes.aMeadowRootField,i,p,mesh.geometry.attributes.aMeadowLandform,mesh.geometry.attributes.aMeadowCommunity);});mesh.instanceMatrix.needsUpdate=true;
     mesh.receiveShadow=true;mesh.castShadow=lod===0;
@@ -890,7 +907,8 @@ export class WorldEcology {
       // and do not extend this change to unrelated historical doorway layouts.
       const selected=(this.thresholdPlants.intersectsYard(shoreRecord,pool.shoreEnvelope)||this.thresholdPlants.intersectsLodge(shoreRecord,pool.shoreEnvelope)||this.thresholdPlants.intersectsGuest(shoreRecord,pool.shoreEnvelope))?this.thresholdPlants.relocate(shoreRecord,pool.shoreEnvelope,p=>suitable(p.x,p.z)&&!getShoreStoneField(this.world).intersects(p,pool.shoreEnvelope),source):shoreRecord;
       const boardwalkSelected=this.boardwalkPlantContact39.relocate(selected,pool.shoreEnvelope,p=>suitable(p.x,p.z)&&!this.thresholdPlants.intersects(p,pool.shoreEnvelope)&&!getShoreStoneField(this.world).intersects(p,pool.shoreEnvelope));
-      const record=seatForestShoulderRoot(this.world,boardwalkSelected);
+      const pastureSelected=this.pasturePlantContact41.relocate(boardwalkSelected,pool.shoreEnvelope,p=>suitable(p.x,p.z)&&!this.thresholdPlants.intersects(p,pool.shoreEnvelope)&&!this.boardwalkPlantContact39.intersects(p,pool.shoreEnvelope)&&!getShoreStoneField(this.world).intersects(p,pool.shoreEnvelope));
+      const record=seatForestShoulderRoot(this.world,pastureSelected);
       pool.records.push(record);pool.mesh.setMatrixAt(record.slot,this.matrix(record));pool.dirtyMin=Math.min(pool.dirtyMin,record.slot);pool.dirtyMax=Math.max(pool.dirtyMax,record.slot+1);records.push(record);
     }
     this.flowerTiles.set(key,records);this.flowerRootsChanged=true;this.shoreStatsDirty=true;
@@ -949,8 +967,11 @@ export class WorldEcology {
       }
     }
   }
+  setMeadowAerialContinuity42(value){this.meadowAerialContinuity42=Boolean(value);return this.meadowAerialContinuity42;}
   updateMeadow(camera,{deferPools=false}={}) {
-    const p=camera.position,above=p.y-this.world.surface.heightAt(p.x,p.z),visible=above<95;
+    const p=camera.position,above=p.y-this.world.surface.heightAt(p.x,p.z),visible=this.meadowAerialContinuity42||above<95;
+    this.stats.meadowAerialContinuity42={enabled:this.meadowAerialContinuity42,above,visible};
+    this.meadowRootCache.updateArea(p,{needed:visible,signal:this.treeLoadController?.signal});
     this.grassGroup.visible=visible;this.baseGrass.mesh.visible=visible;for(const pool of [...this.flowerPools,...this.flowerNearPools])pool.mesh.visible=visible;
     if(!visible){this.grassAnchor="";this.grassQueue=[];return;}
     const tx=Math.floor(p.x/MEADOW.tile),tz=Math.floor(p.z/MEADOW.tile),anchor=Math.floor(p.x/4)+","+Math.floor(p.z/4);
@@ -1056,7 +1077,7 @@ export class WorldEcology {
     for(const tile of this.tiles.values())disposeFarTreeBatch(tile.mesh);
     const depths=new Set([this.grassDepth,...this.nearParts.map(p=>p.mesh.customDepthMaterial)]);
     this.group.traverse(o=>{if(o.isInstancedMesh){disposeGrassFieldGeometry(o.geometry);o.dispose();}if(o.customDepthMaterial)depths.add(o.customDepthMaterial);});
-    depths.forEach(m=>m.dispose());this.farGeometry.dispose();this.grassGeometries.forEach(g=>g.dispose());this.baseGrassGeometry.dispose();
+    depths.forEach(m=>m.dispose());this.farGeometry.dispose();this.grassGeometries.forEach(g=>g.dispose());this.grassRenderGeometries41?.forEach(g=>g.dispose());this.baseGrassGeometry.dispose();
     this.nearParts.forEach(({mesh})=>mesh.dispose());
     for(const batch of this.nearTreeBatches.values()){batch.view?.dispose();disposeTreeWindGeometry(batch.mesh.geometry);if(batch.view)batch.mesh.dispose();}
     this.nearTreeBatches.clear();this.treeRootWind.dispose();

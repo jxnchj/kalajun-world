@@ -113,3 +113,15 @@ test('actual Three main, mirrored and CSM frustums use independent run bounds wi
  left[0].count=0;assert.equal(left[0].intersectsFrustum(frustum(camera)),false);left[0].count=576;
  runtime.dispose();disposeTreeWindGeometry(wg);source.dispose();f.material.dispose();f.twigMaterial.dispose();
 });
+
+
+test('adopted needle dispatcher defaults immediate; explicit URL zero and constructor override retain old path',()=>{
+ const previous=Object.getOwnPropertyDescriptor(globalThis,'location');
+ try{for(const [search,options,expected]of[['',{},'immediate'],['?needleBranchDispatch40=1',{},'immediate'],['?needleBranchDispatch40=0',{},'microtask'],['',{branchImmediateDispatch:false},'microtask'],['?needleBranchDispatch40=0',{branchImmediateDispatch:true},'immediate']]){
+  Object.defineProperty(globalThis,'location',{configurable:true,value:{search}});
+  const f=form();f.stationGeometry.userData.drawGroups=[{lazy:true,extra:true,start:0,count:2}];
+  const runtime=new SpruceGpuStationBrushes(Array(5).fill(f),createGpuBrushTemplate(packet.topology),options);
+  try{assert.equal(runtime.branchCache.stats.dispatchMode,expected);assert.equal(runtime.branchCache.concurrency,2);assert.equal(runtime.branchCache.maxInFlightBytes,8*1024*1024);assert.strictEqual(f.stationGeometry.attributes.aNeedleFrame0.data.array,packet.frames);}
+  finally{runtime.dispose();for(const key of ['material','depth','twigMaterial','twigDepth'])f[key].dispose();}
+ }}finally{if(previous)Object.defineProperty(globalThis,'location',previous);else delete globalThis.location;}
+});

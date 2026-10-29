@@ -1,0 +1,18 @@
+{
+  "generateMs": 2682.479167,
+  "restoreMs": 214.4072500000002,
+  "contactReady": 521,
+  "contactGroups": 11069,
+  "contactMs": 621.4694130000071,
+  "contactSource": "1d716c5c898a99763b255fa0878f74aea7bbe97666cbe239d7e9211e9fa700a7",
+  "roots": 521,
+  "moved": 7,
+  "sedges": 205,
+  "mats": 316,
+  "triangles": 240232,
+  "rawBytes": 2819569,
+  "gzipBytes": 615244,
+  "rootSeatEnvelopeAndEveryAttributeExactlyEqual": true,
+  "waterSafety": "original preservedReachCover41 accepted analytic and actual-rendered full wind envelopes; this artifact reconstructs exactly those seats/vertices",
+  "codeSignature": "f6bc54fc58dfe3c38f2c78640196d0ee0cb8d59fda7bc259e2d321c818086d1e"
+}

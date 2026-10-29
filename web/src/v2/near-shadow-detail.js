@@ -1,23 +1,34 @@
 import { Box3, Matrix4, Vector3 } from 'three';
 import { CSMFrustum } from 'three/addons/csm/CSMFrustum.js';
 import { directionalReceiverBias, receiverBiasMode } from './shadow-receiver-bias.js';
-// Actual maximum occupied-room material: base/normal/roughness/metalness (4),
+// Pastoral GLTF reference material: base/normal/roughness/metalness (4),
 // cloud cache (2), PMREM + DFG (2), room field + contact (2), portal shadows (3).
 // Roughness and metalness share an image but remain separate shader samplers.
+// Micro must also cover mixed lodge wood: five surface samplers + cloud array
+// (1), PMREM/DFG (2), room/contact (2), portal shadows (3) = 13 before CSM.
+// Shared ORM cannot collapse these independent wood textures.
 export const NEAR_SHADOW_SAMPLERS=Object.freeze({surface:4,cloud:2,pbr:2,indirect:2,spotShadow:3,withoutCSM:13});
 export function createNearShadowDetail(capabilities={},requested='auto'){
-  if(!['auto','close','cascade','resolution','legacy'].includes(requested))throw new RangeError('Unknown near-shadow detail mode');
+  if(!['auto','close','contact','micro','cascade','resolution','legacy'].includes(requested))throw new RangeError('Unknown near-shadow detail mode');
   const maxTextures=Number(capabilities.maxTextures)||16,maxTextureSize=Number(capabilities.maxTextureSize)||2048;
+  const occupiedSamplers=capabilities.cloudArraySampler?13:14,cascadeSamplers=occupiedSamplers+4;
+  // This capability is granted only by nearShadowAtlas40Capability, which also
+  // checks the explicit query, PCF renderer and the actual array-cloud mode.
+  const atlas40=['micro','contact'].includes(requested)&&capabilities.nearShadowAtlas40===true&&maxTextureSize>=(requested==='contact'?8192:12288)&&maxTextures>=16&&capabilities.cloudArraySampler===true;
+  const microSamplers=atlas40?16:18;
+  const contactSamplers=atlas40?16:cascadeSamplers;
   let mode=requested,reason=null;
-  if(mode==='auto')mode=maxTextures>=17?'cascade':maxTextureSize>=4096?'resolution':'legacy';
-  if(mode==='close'&&(maxTextures<16||maxTextureSize<4096||!capabilities.sharedOrmSampler)){mode=maxTextureSize>=4096?'resolution':'legacy';reason='Close cascade requires 4096 maps and verified shared ORM sampler support';}
-  if(mode==='cascade'&&maxTextures<17){mode=maxTextureSize>=4096?'resolution':'legacy';reason='Four CSM + occupied-room material needs 17 fragment samplers; hardware limit is '+maxTextures;}
+  if(mode==='contact'&&(maxTextures<contactSamplers||maxTextureSize<4096||!capabilities.sharedOrmSampler)){mode=maxTextureSize>=4096?'resolution':'legacy';reason='Contact cascade requires 4096 maps, verified shared ORM support and '+contactSamplers+' fragment samplers for mixed lodge wood';}
+  if(mode==='micro'&&(maxTextures<microSamplers||maxTextureSize<4096||!capabilities.sharedOrmSampler||!capabilities.cloudArraySampler)){mode=maxTextureSize>=4096?'resolution':'legacy';reason='Micro cascade requires 4096 maps, '+microSamplers+' fragment samplers, verified shared ORM and cloud array support';}
+  if(mode==='auto')mode=maxTextures>=cascadeSamplers?'cascade':maxTextureSize>=4096?'resolution':'legacy';
+  if(mode==='close'&&(maxTextures<cascadeSamplers||maxTextureSize<4096||!capabilities.sharedOrmSampler)){mode=maxTextureSize>=4096?'resolution':'legacy';reason='Close cascade requires 4096 maps, verified shared ORM support and '+ cascadeSamplers+' fragment samplers for mixed lodge wood';}
+  if(mode==='cascade'&&maxTextures<cascadeSamplers){mode=maxTextureSize>=4096?'resolution':'legacy';reason='Four CSM + mixed lodge wood needs '+cascadeSamplers+' fragment samplers; hardware limit is '+maxTextures;}
   if(mode==='resolution'&&maxTextureSize<4096){mode='legacy';reason='4096 shadow map exceeds hardware texture-size limit';}
-  const splits=Object.freeze(mode==='close'?[8,60,180,500]:mode==='cascade'?[20,60,180,500]:[60,180,500]);
-  const mapSizes=Object.freeze(splits.map((_,i)=>mode==='close'&&i<2||mode==='resolution'&&i===0?4096:2048));
+  const splits=Object.freeze(mode==='contact'?[4,60,180,500]:mode==='micro'?[4,8,60,180,500]:mode==='close'?[8,60,180,500]:mode==='cascade'?[20,60,180,500]:[60,180,500]);
+  const mapSizes=Object.freeze(splits.map((_,i)=>mode==='micro'&&i<3||['close','contact'].includes(mode)&&i<2||mode==='resolution'&&i===0?4096:2048));
   const shadowPixels=mapSizes.reduce((n,s)=>n+s*s,0),baselinePixels=3*2048*2048;
   return Object.freeze({mode,requested,reason,splits,mapSizes,cascades:splits.length,maxFar:500,shadowMapSize:2048,
-    fragmentSamplers:(mode==='close'?12:13)+splits.length,maxTextures,maxTextureSize,shadowPixels,extraShadowPixels:shadowPixels-baselinePixels,
+    atlas40:atlas40&&['micro','contact'].includes(mode),shadowSamplers:atlas40&&['micro','contact'].includes(mode)?3:splits.length,fragmentSamplers:occupiedSamplers+(atlas40&&['micro','contact'].includes(mode)?3:splits.length),maxTextures,maxTextureSize,shadowPixels,extraShadowPixels:shadowPixels-baselinePixels,
     // Lower bound for UInt depth alone; driver storage and render-target colour
     // attachments are additional. This is not a measured VRAM claim.
     extraDepthBytesLowerBound:(shadowPixels-baselinePixels)*4,
@@ -47,8 +58,8 @@ export function configureNearShadowDetail(csm,detail,{reversedDepth=false,receiv
   if(csm.lights.length!==detail.cascades)throw new RangeError('Create CSM with matching near-shadow configuration first');
   for(let i=0;i<csm.lights.length;i++){
     const s=csm.lights[i].shadow;s.mapSize.set(detail.mapSizes[i],detail.mapSizes[i]);
-    s.radius=(detail.mode==='close'?i<2:detail.mode!=='legacy'&&i===0)?.5:2;s.normalBias=(detail.mode==='close'?i<2:detail.mode!=='legacy'&&i===0)?.008:.04;
-    s.bias=directionalReceiverBias(.000002*((detail.mode==='close'?i<2:detail.mode!=='legacy'&&i===0)?.25:1),reversedDepth,receiverBias);
+    s.radius=(detail.mode==='micro'?i<3:['close','contact'].includes(detail.mode)?i<2:detail.mode!=='legacy'&&i===0)?.5:2;s.normalBias=(detail.mode==='micro'?i<3:['close','contact'].includes(detail.mode)?i<2:detail.mode!=='legacy'&&i===0)?.008:.04;
+    s.bias=directionalReceiverBias(.000002*((detail.mode==='micro'?i<3:['close','contact'].includes(detail.mode)?i<2:detail.mode!=='legacy'&&i===0)?.25:1),reversedDepth,receiverBias);
   }
-  return ['resolution','close'].includes(detail.mode)?installPerMapShadowSnap(csm):()=>{};
+  return ['resolution','close','contact','micro'].includes(detail.mode)?installPerMapShadowSnap(csm):()=>{};
 }

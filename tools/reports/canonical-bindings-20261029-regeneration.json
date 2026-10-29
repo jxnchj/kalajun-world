@@ -1,0 +1,260 @@
+{
+  "defaultOptions": {
+    "reachBankProfile48": "OFF",
+    "reachBankDesign50": "OFF",
+    "treeHighPhoto48": "OFF",
+    "location": "undefined in fresh generators"
+  },
+  "started": "2026-10-28T16:19:09.387Z",
+  "before": {
+    "forest": "e6ba2ee6dce1fd1b478567466450de54c5717d8139f9de7d787313be6f4f386a",
+    "meadow": "88d2fe9baca0477c2516378efafe61eb4f0ce6cb1d0d79f80df8211180783e22",
+    "reach": "1e96efd9ea6a31164cf1266b870e2a6660fec20184b8e65e554462e9c73a886d",
+    "full": "ab94600b9fa5cea51ede1858e8d147c23772ee3027c6dbd949f58ef5864c5d2b",
+    "priority": "276eefb0b1472b9c8fc52abfed547d5506d1330da0d307fcf1e146a7c64f6aef",
+    "demand": "4aabf6dc2a83dcb4e00afc746875d9c19a9260cdf054a0fd3d6a47335cac6210",
+    "recipe": "100683465e006b99940e7682723f0472b0ec4f77a2fd60ed752a14cb06bb4651"
+  },
+  "giBefore": {
+    "web/src/v2/room-exterior-terrain-data.js": "2cff7c8fb716e423ebe4374e992e9e5d733cd3d5541da23d2b9d6a2151db1793",
+    "web/src/v2/room-exterior-aperture-data.js": "ecc69ea2563ca1e65393a20d4097e6a8f589d740feeccd88eab9526c79412af8",
+    "web/src/v2/room-exterior-ground-data.js": "cdbe79ca07007e62f6d099f133d772500fb9d18c4569d80983d19a34b23cb3f1",
+    "web/src/v2/room-exterior-ground-bounce-data.js": "2ecb952d452f1e1b3edeb49cc8cc3385d344ce2bbd7c97dc88fe2da4c61be914"
+  },
+  "steps": [
+    {
+      "name": "forest",
+      "seconds": 1.2524562500000003,
+      "log": "tools/reports/canonical-bindings-20261029-forest.log",
+      "payloadSame": true,
+      "digest": "e6ba2ee6dce1fd1b478567466450de54c5717d8139f9de7d787313be6f4f386a"
+    },
+    {
+      "name": "meadow",
+      "seconds": 4.944030959,
+      "log": "tools/reports/canonical-bindings-20261029-meadow.log",
+      "payloadSame": true,
+      "digest": "88d2fe9baca0477c2516378efafe61eb4f0ce6cb1d0d79f80df8211180783e22"
+    },
+    {
+      "name": "reach",
+      "seconds": 4.50135425,
+      "log": "tools/reports/canonical-bindings-20261029-reach.log",
+      "payloadSame": true,
+      "digest": "1e96efd9ea6a31164cf1266b870e2a6660fec20184b8e65e554462e9c73a886d"
+    },
+    {
+      "name": "terrain-full",
+      "seconds": 13.355566666000001,
+      "log": "tools/reports/canonical-bindings-20261029-terrain-full.log",
+      "payloadSame": true,
+      "digest": "ab94600b9fa5cea51ede1858e8d147c23772ee3027c6dbd949f58ef5864c5d2b"
+    },
+    {
+      "name": "terrain-priority",
+      "seconds": 0.07176504099999875,
+      "log": "tools/reports/canonical-bindings-20261029-terrain-priority.log",
+      "payloadSame": true,
+      "digest": "276eefb0b1472b9c8fc52abfed547d5506d1330da0d307fcf1e146a7c64f6aef"
+    },
+    {
+      "name": "terrain-demand",
+      "seconds": 0.12809799999999813,
+      "log": "tools/reports/canonical-bindings-20261029-terrain-demand.log",
+      "payloadSame": true,
+      "digest": "4aabf6dc2a83dcb4e00afc746875d9c19a9260cdf054a0fd3d6a47335cac6210"
+    },
+    {
+      "name": "exterior-export",
+      "seconds": 0.855668916999999,
+      "log": "tools/reports/canonical-bindings-20261029-exterior-export.log",
+      "payloadSame": true,
+      "digest": "100683465e006b99940e7682723f0472b0ec4f77a2fd60ed752a14cb06bb4651"
+    },
+    {
+      "name": "gi-terrain",
+      "seconds": 48.959457584000006,
+      "log": "tools/reports/canonical-bindings-20261029-gi-terrain.log",
+      "statesSame": true,
+      "digest": "2cff7c8fb716e423ebe4374e992e9e5d733cd3d5541da23d2b9d6a2151db1793",
+      "excludedTimingOnly": [
+        "open.sky.second.seconds",
+        "open.groundSky.second.seconds",
+        "closed.sky.second.seconds",
+        "closed.groundSky.second.seconds"
+      ]
+    },
+    {
+      "name": "gi-aperture",
+      "seconds": 2.1116601669999944,
+      "log": "tools/reports/canonical-bindings-20261029-gi-aperture.log",
+      "statesSame": true,
+      "digest": "ecc69ea2563ca1e65393a20d4097e6a8f589d740feeccd88eab9526c79412af8",
+      "excludedTimingOnly": []
+    },
+    {
+      "name": "gi-ground",
+      "seconds": 3.982608957999997,
+      "log": "tools/reports/canonical-bindings-20261029-gi-ground.log",
+      "statesSame": true,
+      "digest": "cdbe79ca07007e62f6d099f133d772500fb9d18c4569d80983d19a34b23cb3f1",
+      "excludedTimingOnly": []
+    },
+    {
+      "name": "gi-ground-bounce",
+      "seconds": 77.106317833,
+      "log": "tools/reports/canonical-bindings-20261029-gi-ground-bounce.log",
+      "statesSame": true,
+      "digest": "2ecb952d452f1e1b3edeb49cc8cc3385d344ce2bbd7c97dc88fe2da4c61be914",
+      "excludedTimingOnly": []
+    }
+  ],
+  "complete": true,
+  "finished": "2026-10-28T16:21:46.660Z",
+  "currentSourceBindings": [
+    {
+      "name": "forest",
+      "manifest": "web/public/data/v2/forest-roots-38.json",
+      "previousSignature": "d0678f35cf4285f53ef514e1cbcd203ea916151795e91e1a4f61d30a971ac85b",
+      "currentSignature": "d4a841e26ad8a3bc91f734f16baa4357803466d3d10bef706453cc6f4762b1ec",
+      "sourceCount": 24,
+      "changedSources": [
+        "src/v2/world-data.js",
+        "src/v2/forest-reach39.js",
+        "src/v2/forest-reach-form41.js",
+        "src/v2/reach-bank-design50.js"
+      ],
+      "allCurrentSourcesMatch": true
+    },
+    {
+      "name": "meadow",
+      "manifest": "web/public/data/v2/meadow-roots-38.json",
+      "previousSignature": "63547726fbf6504f9abac2f8404ed13e9c98f01aeedcc514b8a5c2ca32b36a0d",
+      "currentSignature": "cccf4bcc88fdc02d0337ebad6e06f95eaca77963397241320501c45e8c9079f8",
+      "sourceCount": 65,
+      "changedSources": [
+        "src/v2/forest-reach-form41.js",
+        "src/v2/forest-reach39.js",
+        "src/v2/reach-bank-design50.js",
+        "src/v2/room-shadow.js",
+        "src/v2/shadow-program-family52.js",
+        "src/v2/world-data.js"
+      ],
+      "allCurrentSourcesMatch": true
+    },
+    {
+      "name": "reach",
+      "manifest": "web/public/data/v2/reach-cover-prepared42.json",
+      "previousSignature": "9c5dc636a947fa219813ff409c5d9597e52902d3d28befd4c976dd2f8d6a9038",
+      "currentSignature": "8d7670b32c020ec463acb1524780e1da5c03eac17d67986d5426c9180c7cc2c7",
+      "sourceCount": 80,
+      "changedSources": [
+        "src/v2/forest-reach-form41.js",
+        "src/v2/forest-reach-surface41.js",
+        "src/v2/forest-reach39.js",
+        "src/v2/reach-bank-design50.js",
+        "src/v2/reach-root-face50.js",
+        "src/v2/room-shadow.js",
+        "src/v2/shadow-program-family52.js",
+        "src/v2/world-data.js"
+      ],
+      "allCurrentSourcesMatch": true
+    },
+    {
+      "name": "terrainFull",
+      "manifest": "tools/candidates/terrain-prepared42/river-forest.json",
+      "previousSignature": "a2b4c201378040accdb19bcd624f818fa9574173b0dfac6ac114ea6b95df2934",
+      "currentSignature": "29833a2d6b88bb2d1a70d7974c0572b8bc4b5ae536f5bb6c542ea31df19bd769",
+      "sourceCount": 39,
+      "changedSources": [
+        "src/v2/forest-reach-form41.js",
+        "src/v2/forest-reach-surface41.js",
+        "src/v2/forest-reach39.js",
+        "src/v2/reach-bank-design50.js",
+        "src/v2/reach-root-face50.js",
+        "src/v2/room-shadow.js",
+        "src/v2/shadow-program-family52.js",
+        "src/v2/world-data.js"
+      ],
+      "allCurrentSourcesMatch": true
+    },
+    {
+      "name": "terrainPriority",
+      "manifest": "web/public/data/v2/terrain-prepared42/river-forest.json",
+      "previousSignature": "a2b4c201378040accdb19bcd624f818fa9574173b0dfac6ac114ea6b95df2934",
+      "currentSignature": "29833a2d6b88bb2d1a70d7974c0572b8bc4b5ae536f5bb6c542ea31df19bd769",
+      "sourceCount": 39,
+      "changedSources": [
+        "src/v2/forest-reach-form41.js",
+        "src/v2/forest-reach-surface41.js",
+        "src/v2/forest-reach39.js",
+        "src/v2/reach-bank-design50.js",
+        "src/v2/reach-root-face50.js",
+        "src/v2/room-shadow.js",
+        "src/v2/shadow-program-family52.js",
+        "src/v2/world-data.js"
+      ],
+      "allCurrentSourcesMatch": true
+    },
+    {
+      "name": "terrainDemand",
+      "manifest": "web/public/data/v2/terrain-demand42/river-forest.json",
+      "previousSignature": "a2b4c201378040accdb19bcd624f818fa9574173b0dfac6ac114ea6b95df2934",
+      "currentSignature": "29833a2d6b88bb2d1a70d7974c0572b8bc4b5ae536f5bb6c542ea31df19bd769",
+      "sourceCount": 39,
+      "changedSources": [
+        "src/v2/forest-reach-form41.js",
+        "src/v2/forest-reach-surface41.js",
+        "src/v2/forest-reach39.js",
+        "src/v2/reach-bank-design50.js",
+        "src/v2/reach-root-face50.js",
+        "src/v2/room-shadow.js",
+        "src/v2/shadow-program-family52.js",
+        "src/v2/world-data.js"
+      ],
+      "allCurrentSourcesMatch": true
+    }
+  ],
+  "structurePrepared": {
+    "unchanged": true,
+    "currentSignature": "285877c37c12c2fbca1689e12c0de46aa61d495b5eaddd65b3581cea1c55b0b8",
+    "reason": "Independent explicit source list still matches; no regeneration required."
+  },
+  "actualBinaryComparison": {
+    "files": 432,
+    "bytes": 139407492,
+    "allByteIdentical": true,
+    "sortedPayloadListSHA256": "970e091be9821d5257f2a11c195210841f2041f5946d9a751727b24d206dfe47",
+    "primaryPayloads": [
+      {
+        "path": "web/public/data/v2/forest-roots-38.bin.gz",
+        "bytes": 3101781,
+        "sha256": "0542c87d08af95038ceae2b2d85461c6253c596ca6a8a31a2c7cae35c3e1723d"
+      },
+      {
+        "path": "web/public/data/v2/meadow-roots-38.bin.gz",
+        "bytes": 4005715,
+        "sha256": "031a0d2c9e599275b27aecd059c68cf591920f4a14991a966a16cebb9195f71e"
+      },
+      {
+        "path": "web/public/data/v2/reach-cover-prepared42.json.gz",
+        "bytes": 615243,
+        "sha256": "9e62e8d16168db6be5b669e5e79d395b74eac384b76685a4d76724796916d877"
+      },
+      {
+        "path": "tools/candidates/terrain-prepared42/river-forest.pack",
+        "bytes": 65280568,
+        "sha256": "117e127173bf67155ff42cb63ebd87d4e0a3689bbe87112f3a7a03f7b4a6dae5"
+      }
+    ]
+  },
+  "backup": "backups/canonical-bindings-20261029",
+  "targetedTests": {
+    "files": 10,
+    "passed": 42,
+    "failed": 0,
+    "durationMs": 31137.910083,
+    "log": "tools/reports/canonical-bindings-20261029-targeted-tests.log"
+  },
+  "status": "Frozen canonical derived assets; browser load benefit not yet measured; no application build or default deployment by this agent."
+}

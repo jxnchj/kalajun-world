@@ -1,0 +1,38 @@
+{
+  "scope": "Isolated actual Chrome 16x16 format and 49-root single-caster-pass scene, not production acceptance",
+  "formatProbe": {
+    "maxSamples": 4,
+    "EXT_color_buffer_float": true,
+    "OES_texture_float_linear": true,
+    "EXT_texture_norm16": true,
+    "floatFormats": ["RG16F", "RGBA16F", "RGBA32F"],
+    "floatSupportedSamples": [4, 2],
+    "floatFramebufferComplete": true,
+    "floatResolveAndReadErrors": 0,
+    "unorm16FramebufferComplete": true,
+    "unorm16ResolveError": 0,
+    "unorm16InitialReadError": 1282,
+    "unorm16ReadCorrection": "probe now uses IMPLEMENTATION_COLOR_READ_TYPE/FORMAT; correction not rerun yet"
+  },
+  "firstScene": {
+    "format": "RGBA32F", "samples": 4, "size": 600,
+    "depthStoreRangeMeters": 64, "centering": "unit interval .5", "momentBias": 1e-10,
+    "windTime": 4, "shaderErrors": [],
+    "initialFailure": "Native shadow render does not automatically resolve custom MSAA targets; unresolved texture read all zeros",
+    "resolveRepair": "Zero-draw empty scene render after original caster pass resolves target; no repeated caster geometry",
+    "resolvedVisual": "Obvious ground-wide numerical stipple; rejected"
+  },
+  "centeredScene": {
+    "format": "RGBA32F", "samples": 4, "size": 600,
+    "depthStoreRangeMeters": 64, "centering": "signed around local ground", "momentBias": 1e-12,
+    "windTime": 4, "shaderErrors": [],
+    "centerPixelMoments": [0.00008567096665501595, 7.339514329629537e-9, 6.287832667734028e-13, 5.386846979640102e-17],
+    "visual": "Central grass, roof and tree shadows restored; conspicuous numerical speckle remains away from depth center; rejected",
+    "nativeDepthComparison": "Same target PCF showed terrain acne with original prototype zero normalBias; not a production baseline",
+    "subsequentUnverifiedFix": "Prototype source now sets normalBias .008 and bias -.000002, and disables nested render info reset; not rerun yet",
+    "temporalAcceptance": false,
+    "productionAdopted": false
+  },
+  "cleanup": {"closedTabs": ["1839973320", "1839973328"], "noLiveGpuTab": true},
+  "screenshots": "Inspected tool-native screenshots; no saved image file claimed"
+}

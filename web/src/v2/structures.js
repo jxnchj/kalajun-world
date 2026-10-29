@@ -1,3 +1,6 @@
+import {houseTextiles62Enabled,prepareHouseTextiles62} from './house-textiles62.js';
+import {houseFurniture58Enabled,prepareHouseFurniture58,installHouseFurniture58} from './house-furniture-timber58.js';
+import {HOUSE_TIMBER48_ENTITY,houseTimber48Enabled,prepareHouseTimber48,installHouseTimber48} from './house-timber48.js';
 import {guestLivingEnabled} from './guest-living-definition.js';
 import {guestLivingURL,loadGuestLiving} from './guest-living-loader.js';
 import {lodgeTablesEnabled,LODGE_TABLES_SOURCE} from './lodge-tables-definition.js';
@@ -205,20 +208,23 @@ function detailIsVisible(role, distance, scale, projection, wasVisible) {
 export class WorldStructures {
   constructor(world, {loadAsset=loadWorldGLB,doors=null,preparedAssets,
     lodgeInteriorStream=false,lodgeStreamKind=null,lodgeStreamOptions,
-    lodgeChairs=lodgeChairsEnabled(),lodgeChairsFetch,lodgeTables=lodgeChairs&&lodgeTablesEnabled(),lodgeTablesFetch,lodgeInteriorWood=lodgeChairs&&lodgeInteriorWoodEnabled(),lodgeInteriorWoodTextureLoader,guestVanity=guestVanityEnabled(),guestVanityFetch,guestLiving=guestVanity&&guestLivingEnabled(),guestLivingFetch,lodgeFurniture=lodgeFurnitureEnabled(),lodgeFurnitureFetch,cabinWindowGlass=cabinWindowGlassEnabled(),cabinTimber=cabinTimberEnabled(),cabinTimberTextureLoader,
+    lodgeChairs=lodgeChairsEnabled(),lodgeChairsFetch,lodgeTables=lodgeChairs&&lodgeTablesEnabled(),lodgeTablesFetch,lodgeInteriorWood=lodgeChairs&&lodgeInteriorWoodEnabled(),lodgeInteriorWoodTextureLoader,guestVanity=guestVanityEnabled(),guestVanityFetch,guestLiving=guestVanity&&guestLivingEnabled(),guestLivingFetch,lodgeFurniture=lodgeFurnitureEnabled(),lodgeFurnitureFetch,cabinWindowGlass=cabinWindowGlassEnabled(),cabinTimber=cabinTimberEnabled(),cabinTimberTextureLoader,houseTimber48=houseTimber48Enabled(),houseTimber48Options,houseFurniture58=houseFurniture58Enabled(undefined,houseTimber48),houseFurniture58Options,houseTextiles62=houseTextiles62Enabled(),houseTextiles62Options,
     selectionCache=new URLSearchParams(globalThis.location?.search || "").get("structureSelectionCache")==="1",
     textureReuse=new URLSearchParams(globalThis.location?.search || "").get("structureTextureReuse") !== "0",
     preparationReuse=new URLSearchParams(globalThis.location?.search || "").get("structurePreparationReuse") !== "0",
     cooperativePreparation=new URLSearchParams(globalThis.location?.search || "").get("structurePreparation") !== "blocking",
     selectionBuffers=new URLSearchParams(globalThis.location?.search || "").get("structureSelectionBuffers") !== "0",
     selectionReuse=new URLSearchParams(globalThis.location?.search || "").get("structureSelectionReuse") !== "0"} = {}) {
+    if(houseFurniture58&&!houseTimber48)throw Error('Furniture58 requires houseTimber48; explicit timber rollback is incompatible');
+    this.houseFurniture58=houseFurniture58;this.houseFurniture58Options=houseFurniture58Options;
+    this.houseTextiles62=houseTextiles62;this.houseTextiles62Options=houseTextiles62Options;
     this.world = world;
     this.lodgeTables=lodgeTables;this.lodgeTablesFetch=lodgeTablesFetch;
     if(lodgeTables&&!lodgeChairs)throw Error('Lodge tables requires chairs ancestry');
     this._lodgeStreamKind=lodgeStreamKind;this._lodgeStreamOptions=lodgeTables?{...lodgeStreamOptions,sourceBinding:LODGE_TABLES_SOURCE,manifestLoader:()=>import('./generated/lodge-tables-stream-38.json',{with:{type:'json'}}).then(m=>m.default)}:lodgeStreamOptions;
     if(lodgeInteriorStream&&!lodgeChairs)throw Error("Lodge streaming requires chairs source");
     this.lodgeStream=new LodgeInteriorStream(world,{enabled:lodgeInteriorStream,shadowDistance:SHADOW_DISTANCE,load:()=>this._loadLodgeInterior()});
-    this.lodgeInteriorWood=lodgeInteriorWood;this.lodgeInteriorWoodTextureLoader=lodgeInteriorWoodTextureLoader;this.lodgeChairs=lodgeChairs;this.lodgeChairsFetch=lodgeChairsFetch;this._lodgeChairsCollision=null;if(guestLiving&&!guestVanity)throw Error("Guest living requires accepted vanity source");this.guestLiving=guestLiving;this.guestLivingFetch=guestLivingFetch;this.guestVanity=guestVanity;this.guestVanityFetch=guestVanityFetch;this._guestVanityCollision=null;this.cabinTimber=cabinTimber;this.cabinTimberTextureLoader=cabinTimberTextureLoader;this._cabinTimber=null;this.cabinWindowGlass=cabinWindowGlass;this.lodgeFurniture=lodgeFurniture;this.lodgeFurnitureFetch=lodgeFurnitureFetch;
+    this.lodgeInteriorWood=lodgeInteriorWood;this.lodgeInteriorWoodTextureLoader=lodgeInteriorWoodTextureLoader;this.lodgeChairs=lodgeChairs;this.lodgeChairsFetch=lodgeChairsFetch;this._lodgeChairsCollision=null;if(guestLiving&&!guestVanity)throw Error("Guest living requires accepted vanity source");this.guestLiving=guestLiving;this.guestLivingFetch=guestLivingFetch;this.guestVanity=guestVanity;this.guestVanityFetch=guestVanityFetch;this._guestVanityCollision=null;this.houseTimber48=houseTimber48;this.houseTimber48Options=houseTimber48Options;this.cabinTimber=cabinTimber;this.cabinTimberTextureLoader=cabinTimberTextureLoader;this._cabinTimber=null;this.cabinWindowGlass=cabinWindowGlass;this.lodgeFurniture=lodgeFurniture;this.lodgeFurnitureFetch=lodgeFurnitureFetch;
     this.selectionCache=new StructureSelectionCache({enabled:selectionCache});
     this.doors = doors;
     this.preparedAssets=new StructurePreparedAssets({enabled:preparedAssets});
@@ -345,7 +351,7 @@ export class WorldStructures {
     }
     const interiorBounce = source.name.startsWith("v2_") ? .30 : .16;
     this.stats.materialKeyComputations++;
-    const key = interiorBounce + ":" + materialKey(source);
+    const key = interiorBounce + ":" + materialKey(source)+(this._houseTimber48?.materials.has(source)?":house-timber48":"")+(this._houseFurniture58?.materials.has(source)?":house-furniture58":"");
     if (this._materialCache.has(key)) {
       const shared = this._materialCache.get(key);
       if (!shared.userData.sourceMaterialNames.includes(source.name)) shared.userData.sourceMaterialNames.push(source.name);
@@ -358,6 +364,8 @@ export class WorldStructures {
     material.userData = { ...source.userData, legacyVertexAOPreserved: true, sourceMaterialNames: [source.name] };
     installLodgeThinGlass(material);
     installLodgeWood(material,source);
+    installHouseTimber48(material,source,this._houseTimber48);
+    installHouseFurniture58(material,source,this._houseFurniture58,this.houseFurniture58Options);
     // Keep all GLTFLoader PBR maps, scalar factors, alpha mode and sidedness.
     // Texture objects are shared with our private loader result, not the old scene.
     this._materialCache.set(key, material);
@@ -374,7 +382,9 @@ export class WorldStructures {
     const url = tables?lodgeTablesURL(base):chairs?lodgeChairsURL(base):living?guestLivingURL(base):vanity?guestVanityURL(base):furniture?lodgeFurnitureURL(base):base.replace(/\/?$/, "/") + (ASSET_OVERRIDES[assetId] || assetId + ".glb");
     const streamKind=chairs&&(this._lodgeStreamKind||(this.lodgeStream.enabled?"shell":null));
     const loadStarted=performance.now();
-    const prepared=(chairs||furniture||vanity)?null:await this.preparedAssets.load(assetId,parts,this,url);
+    const houseTimber48=assetId==='house_a'&&this.houseTimber48&&this.world.entities.some(e=>e.assetId==='house_a'&&e.id===HOUSE_TIMBER48_ENTITY);
+    const houseTextiles62=assetId==='house_a'&&this.houseTextiles62;
+    const prepared=(chairs||furniture||vanity||houseTimber48||houseTextiles62)?null:await this.preparedAssets.load(assetId,parts,this,url);
     const gltf = streamKind?await loadLodgeStreamPackage(streamKind,this.loader,this._lodgeStreamOptions):tables?await loadLodgeTables(url,this.loader,{fetchImpl:this.lodgeTablesFetch}):chairs?await loadLodgeChairs(url,this.loader,{fetchImpl:this.lodgeChairsFetch}):living?await loadGuestLiving(url,this.loader,{fetchImpl:this.guestLivingFetch}):vanity?await loadGuestVanity(url,this.loader,{fetchImpl:this.guestVanityFetch}):furniture?await loadLodgeFurniture(url,this.loader,{fetchImpl:this.lodgeFurnitureFetch}):prepared?.gltf??await this.loadAsset(url);
     const metrics=this.stats.assetPreparation.assets[assetId]={loadMs:performance.now()-loadStarted,prepareMs:0,yieldWaitMs:0,checkpoints:0};
     metrics.loadStartMs=loadStarted;metrics.loadEndMs=performance.now();if(gltf.userData?.assetTransport)metrics.transport=gltf.userData.assetTransport;
@@ -385,6 +395,18 @@ export class WorldStructures {
     if(chairs){metrics.lodgeChairs={...gltf.userData.lodgeChairs};this._lodgeChairsCollision=await originalLodgeChairsCollision();for(const p of this._lodgeChairsCollision)this._geometries.add(p.geometry);}
     if(furniture&&!chairs)metrics.lodgeFurniture={...gltf.userData.lodgeFurniture};
     if(streamKind){this._lodgeStreamManifest=gltf.userData.lodgeStream.manifest;if(this.lodgeStream.enabled)this.lodgeStream.setBounds(this._lodgeStreamManifest.fullBounds);metrics.lodgeStream={kind:streamKind,responseBytes:gltf.userData.lodgeStream.responseBytes};}
+    if(houseTextiles62){
+      this._houseTextiles62=await prepareHouseTextiles62(assetId,gltf.scene,{loadAsset:url=>this.loadAsset(url),...this.houseTextiles62Options,enabled:true});
+      // Retired originals and new source buffers share the existing asset owner.
+      // Track now so a later timber/preparation failure releases both sets.
+      for(const g of [...this._houseTextiles62.retiredGeometries,...this._houseTextiles62.geometries])this._sourceGeometries.add(g);
+      metrics.houseTextiles62=this._houseTextiles62.stats;this.stats.houseTextiles62=this._houseTextiles62.stats;
+    }
+    if(houseTimber48){this._houseTimber48=await prepareHouseTimber48(assetId,gltf.scene,this.world,{...this.houseTimber48Options,enabled:true});if(this._houseTimber48){metrics.houseTimber48=this._houseTimber48.stats;for(const t of Object.values(this._houseTimber48.textures))this._textures.add(t);}}
+    if(this.houseFurniture58&&houseTimber48){
+      this._houseFurniture58=await prepareHouseFurniture58(assetId,gltf.scene,this.world,{...this.houseFurniture58Options,enabled:true,timberOwner:this._houseTimber48});
+      if(this._houseFurniture58){metrics.houseFurniture58=this._houseFurniture58.stats;this.stats.houseFurniture58=this._houseFurniture58.stats;}
+    }
     const prepareStarted=performance.now();
     const checkpoint=()=>{
       const pending=this.preparationYield.checkpoint();
@@ -738,6 +760,8 @@ export class WorldStructures {
   }
 
   _release() {
+    this._houseTextiles62=null;delete this.stats.houseTextiles62;
+    this._houseFurniture58?.dispose();this._houseFurniture58=null;delete this.stats.houseFurniture58;
     this.lodgeStream.dispose();
     this.selectionCache.clear();
     this.householdLiving?.dispose();this.householdLiving=null;this.householdEntrySteps?.dispose();this.householdEntrySteps=null;

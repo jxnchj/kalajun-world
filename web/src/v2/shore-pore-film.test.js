@@ -1,3 +1,4 @@
+import {createLegacyTerrainMaterial} from './fixtures/legacy-terrain-material.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
@@ -29,7 +30,7 @@ test('actual GLSL and CPU match across waterline and pixel/LOD-independent coord
  }}
 });
 test('live v31 comparison changes soil film only, with original density, colour, roots and water unchanged',()=>{
- const r=createTerrainMaterial(),m=r.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
+ const r=createLegacyTerrainMaterial(),m=r.material,s={uniforms:{},vertexShader:THREE.ShaderLib.standard.vertexShader,fragmentShader:THREE.ShaderLib.standard.fragmentShader};
  try{m.onBeforeCompile(s);const key=m.customProgramCacheKey(),version=m.version,u=m.userData.terrainPoreFilm;
   assert.strictEqual(u,s.uniforms.terrainPoreFilm);assert.equal(u.value,1);u.value=0;assert.equal(s.uniforms.terrainPoreFilm.value,0);
   assert.equal(m.version,version);assert.equal(m.customProgramCacheKey(),key);

@@ -1,0 +1,123 @@
+{
+  "defaultOptions": {
+    "reachBankProfile48": "OFF",
+    "treeCrown": "OFF",
+    "location": "undefined in fresh generators"
+  },
+  "started": "2026-10-28T12:24:22.495Z",
+  "before": {
+    "forest": "e6ba2ee6dce1fd1b478567466450de54c5717d8139f9de7d787313be6f4f386a",
+    "meadow": "88d2fe9baca0477c2516378efafe61eb4f0ce6cb1d0d79f80df8211180783e22",
+    "reach": "1e96efd9ea6a31164cf1266b870e2a6660fec20184b8e65e554462e9c73a886d",
+    "full": "ab94600b9fa5cea51ede1858e8d147c23772ee3027c6dbd949f58ef5864c5d2b",
+    "priority": "276eefb0b1472b9c8fc52abfed547d5506d1330da0d307fcf1e146a7c64f6aef",
+    "demand": "4aabf6dc2a83dcb4e00afc746875d9c19a9260cdf054a0fd3d6a47335cac6210",
+    "recipe": "100683465e006b99940e7682723f0472b0ec4f77a2fd60ed752a14cb06bb4651"
+  },
+  "giBefore": {
+    "web/src/v2/room-exterior-terrain-data.js": "5829e1848f7a6f37fcd884ffe0513ccfeebbcfa63d25f6eda3b4fe18493cf353",
+    "web/src/v2/room-exterior-aperture-data.js": "ecc69ea2563ca1e65393a20d4097e6a8f589d740feeccd88eab9526c79412af8",
+    "web/src/v2/room-exterior-ground-data.js": "cdbe79ca07007e62f6d099f133d772500fb9d18c4569d80983d19a34b23cb3f1",
+    "web/src/v2/room-exterior-ground-bounce-data.js": "2ecb952d452f1e1b3edeb49cc8cc3385d344ce2bbd7c97dc88fe2da4c61be914"
+  },
+  "steps": [
+    {
+      "name": "forest",
+      "seconds": 1.26860325,
+      "log": "tools/reports/default-bindings48-forest.log",
+      "payloadSame": true,
+      "digest": "e6ba2ee6dce1fd1b478567466450de54c5717d8139f9de7d787313be6f4f386a"
+    },
+    {
+      "name": "meadow",
+      "seconds": 4.974431667,
+      "log": "tools/reports/default-bindings48-meadow.log",
+      "payloadSame": true,
+      "digest": "88d2fe9baca0477c2516378efafe61eb4f0ce6cb1d0d79f80df8211180783e22"
+    },
+    {
+      "name": "reach",
+      "seconds": 4.597204582999999,
+      "log": "tools/reports/default-bindings48-reach.log",
+      "payloadSame": true,
+      "digest": "1e96efd9ea6a31164cf1266b870e2a6660fec20184b8e65e554462e9c73a886d"
+    },
+    {
+      "name": "terrain-full",
+      "seconds": 14.210698124999999,
+      "log": "tools/reports/default-bindings48-terrain-full.log",
+      "payloadSame": true,
+      "digest": "ab94600b9fa5cea51ede1858e8d147c23772ee3027c6dbd949f58ef5864c5d2b"
+    },
+    {
+      "name": "terrain-priority",
+      "seconds": 0.07200695799999812,
+      "log": "tools/reports/default-bindings48-terrain-priority.log",
+      "payloadSame": true,
+      "digest": "276eefb0b1472b9c8fc52abfed547d5506d1330da0d307fcf1e146a7c64f6aef"
+    },
+    {
+      "name": "terrain-demand",
+      "seconds": 0.13594216700000106,
+      "log": "tools/reports/default-bindings48-terrain-demand.log",
+      "payloadSame": true,
+      "digest": "4aabf6dc2a83dcb4e00afc746875d9c19a9260cdf054a0fd3d6a47335cac6210"
+    },
+    {
+      "name": "exterior-export",
+      "seconds": 0.9164269160000004,
+      "log": "tools/reports/default-bindings48-exterior-export.log",
+      "payloadSame": true,
+      "digest": "100683465e006b99940e7682723f0472b0ec4f77a2fd60ed752a14cb06bb4651"
+    },
+    {
+      "name": "gi-terrain",
+      "log": "tools/reports/default-bindings48-gi-terrain.log",
+      "radiativeStatesSame": true,
+      "digest": "2cff7c8fb716e423ebe4374e992e9e5d733cd3d5541da23d2b9d6a2151db1793",
+      "excludedMetrics": [
+        "open.sky.second.seconds",
+        "open.groundSky.second.seconds",
+        "closed.sky.second.seconds",
+        "closed.groundSky.second.seconds"
+      ]
+    },
+    {
+      "name": "gi-aperture",
+      "seconds": 2.700709625,
+      "log": "tools/reports/default-bindings48-gi-aperture.log",
+      "radiativeStatesSame": true,
+      "digest": "ecc69ea2563ca1e65393a20d4097e6a8f589d740feeccd88eab9526c79412af8",
+      "excludedMetrics": []
+    },
+    {
+      "name": "gi-ground",
+      "seconds": 4.339881916,
+      "log": "tools/reports/default-bindings48-gi-ground.log",
+      "radiativeStatesSame": true,
+      "digest": "cdbe79ca07007e62f6d099f133d772500fb9d18c4569d80983d19a34b23cb3f1",
+      "excludedMetrics": []
+    },
+    {
+      "name": "gi-ground-bounce",
+      "seconds": 82.195665125,
+      "log": "tools/reports/default-bindings48-gi-ground-bounce.log",
+      "radiativeStatesSame": true,
+      "digest": "2ecb952d452f1e1b3edeb49cc8cc3385d344ce2bbd7c97dc88fe2da4c61be914",
+      "excludedMetrics": []
+    }
+  ],
+  "complete": true,
+  "resolvedInitialFailure": {
+    "reason": "Only four bake duration metadata seconds differ; recursive full-state comparison found zero other differences",
+    "original": "AssertionError [ERR_ASSERTION]: web/src/v2/room-exterior-terrain-data.js radiative payload changed\n+ actual - expected\n\n+ '47158321e7c3b3a138b357eceeaee74bea02e0f62e614a4eb0f0f2773fe2b13b'\n- '5829e1848f7a6f37fcd884ffe0513ccfeebbcfa63d25f6eda3b4fe18493cf353'\n\n    at file://./tools/rebuild-default-bindings48.mjs:21:333\n    at run (file://./tools/rebuild-default-bindings48.mjs:11:428)\n    at file://./tools/rebuild-default-bindings48.mjs:21:172\n    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)\n    at async node:internal/modules/esm/loader:639:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)"
+  },
+  "finished": "2026-10-28T12:31:43.656Z",
+  "targetedTests": {
+    "passed": 42,
+    "failed": 0,
+    "files": 10,
+    "durationMs": 33631.193833,
+    "log": "tools/reports/default-bindings48-targeted-tests.log"
+  }
+}

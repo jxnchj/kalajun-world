@@ -1,3 +1,5 @@
+import {getShoreAssetReview42,releaseShoreAssetMaterial42} from './shore-asset-review42-state.js';
+import {refineReachDepth41} from './reach-depth-refinement41.js';
 import {RIVER_BED_GLSL} from "./river-bed-profile.js";
 import {visualDelta} from './visual-time.js';
 import * as THREE from "three";
@@ -60,7 +62,7 @@ export function createWaterGeometry(segments,{detail=false,phaseData=null,reach=
   g.setAttribute("aRiverPhase",new THREE.Float32BufferAttribute(phase,3));g.setAttribute("aRiverProfile",new THREE.Float32BufferAttribute(profile,4));
   g.setAttribute("aRiverBedShape",new THREE.Float32BufferAttribute(bedShape,3));
   if(reach)g.setAttribute("aReachDepth",new THREE.Float32BufferAttribute(reachDepth,2));
-  g.setIndex(indices);g.computeVertexNormals();g.computeBoundingBox();g.computeBoundingSphere();return g;
+  g.setIndex(indices);if(reach?.stats.form41Revision==='asymmetric-root-banks-v3')refineReachDepth41(g,reach);g.computeVertexNormals();g.computeBoundingBox();g.computeBoundingSphere();return g;
 }
 export function createWaterMaterial(uniforms,{overview=false,reachEnabled=false}={}){
   // PBR reflection plus an optional opaque scene snapshot, without a second scene pass.
@@ -565,7 +567,7 @@ export class WorldWater {
     this.uniforms={...createWaterReflectionUniforms(),...createWaterRefractionUniforms(),uWaterTime:{value:0},uWaterViewer:{value:new THREE.Vector3()},uWaterNearCoverage:{value:0},uWaterSurfaceDetail:{value:1},uWaterOpticsDetail:{value:1}};
     this.nearMaterial=createWaterMaterial(this.uniforms,{reachEnabled:Boolean(this.hydrology.forestReach39)});this.overviewMaterial=createWaterMaterial(this.uniforms,{overview:true,reachEnabled:Boolean(this.hydrology.forestReach39)});this.foamMaterial=foamMaterial(this.uniforms);
     this.rockMaterial=createShoreRockMaterial({scanned:true});this.gravelMaterial=createShoreRockMaterial();this.rockTextures=[];
-    this.materials=[this.nearMaterial,this.overviewMaterial,this.foamMaterial,this.rockMaterial,this.gravelMaterial];
+    this.materials=[this.nearMaterial,this.overviewMaterial,this.foamMaterial,this.rockMaterial,this.gravelMaterial];if(getShoreAssetReview42()){const asset=getShoreAssetReview42();if(!asset.material){asset.material=createShoreRockMaterial({scanned:true});asset.material.name="shore-asset42-moss-rock05";asset.material.roughness=1;asset.material.normalScale.set(1,1);}this.materials.push(asset.material);}
     this.reflection=new LocalWaterReflection(this.hydrology,this.uniforms,{waterMaterials:[this.nearMaterial,this.overviewMaterial,this.foamMaterial]});
     this.refraction=new WaterRefractionCapture(this.uniforms);this.group.add(this.refraction.marker);
     this.rockGeometry=createShoreRockGeometry();
@@ -587,11 +589,11 @@ export class WorldWater {
   async load({textures=typeof document!=="undefined"}={}){
     if(this.loaded)return this;
     if(textures){
-      const loader=new THREE.TextureLoader(),maps=await Promise.all(["diff","nor_gl","arm"].map(n=>loader.loadAsync("./assets/v2/shore/"+n+".jpg")));
+      const loader=new THREE.TextureLoader(),asset=getShoreAssetReview42();const originalMaps=Promise.all(["diff","nor_gl","arm"].map(n=>loader.loadAsync("./assets/v2/shore/"+n+".jpg")));const adoptedMaps=asset?.adopted?Promise.all(["diff","normal","rough"].map(n=>loader.loadAsync("./assets/v2/shore-candidate42/rock05-"+n+".jpg"))):Promise.resolve(null);const [maps,extra]=await Promise.all([originalMaps,adoptedMaps]);if(extra){extra[0].colorSpace=THREE.SRGBColorSpace;for(const map of extra){map.anisotropy=4;map.flipY=false;}Object.assign(asset.material,{map:extra[0],normalMap:extra[1],roughnessMap:extra[2],needsUpdate:true});this.rockTextures.push(...extra);}
       const [color,normal,arm]=maps;color.colorSpace=THREE.SRGBColorSpace;
       for(const map of maps){map.anisotropy=4;map.flipY=false;}
       Object.assign(this.rockMaterial,{map:color,normalMap:normal,roughnessMap:arm,aoMap:arm,needsUpdate:true});
-      this.rockTextures=maps;
+      this.rockTextures.push(...maps);
     }
     const geometry=createWaterGeometry(this.hydrology.segments,{phaseData:this.phaseData,reach:this.hydrology.forestReach39}),mesh=new THREE.Mesh(geometry,this.overviewMaterial);
     mesh.name="all-rivers-overview";mesh.receiveShadow=true;mesh.renderOrder=2;this.group.add(mesh);this.overview=mesh;
@@ -604,7 +606,9 @@ export class WorldWater {
     this.group.add(group);const item={...bucket,group,mesh,rocks:null,wakes:null,stoneCount:0};this.active.set(bucket.id,item);return item;
   }
   buildStones(item){
-    const records=createShoreStones(this.world,item.segments);item.stoneCount=records.length;
+    const allRecords=createShoreStones(this.world,item.segments);item.stoneCount=allRecords.length;
+    const records=allRecords.filter(r=>!r.shoreAsset42);item.assetStones42=[];
+    for(const r of allRecords.filter(r=>r.shoreAsset42)){const geometry=r.shoreAsset42.geometry.clone();geometry.setAttribute("aShoreHydro",new THREE.InstancedBufferAttribute(new Float32Array([r.waterLevel,r.ground,r.wetness]),3));const mesh=new THREE.InstancedMesh(geometry,r.shoreAsset42.material,1);mesh.name="shore-asset42-"+r.id;mesh.setMatrixAt(0,shoreStoneMatrix(r));mesh.castShadow=mesh.receiveShadow=true;mesh.computeBoundingBox();mesh.computeBoundingSphere();item.assetStones42.push(mesh);item.group.add(mesh);if(!this.materials.includes(mesh.material))this.materials.push(mesh.material);}
     if(records.length){
       const geometry=this.rockGeometry.clone();
       geometry.setAttribute("aShoreHydro",new THREE.InstancedBufferAttribute(new Float32Array(records.flatMap(r=>[r.waterLevel,r.ground,r.wetness])),3));
@@ -612,11 +616,11 @@ export class WorldWater {
       records.forEach((r,i)=>{mesh.setMatrixAt(i,shoreStoneMatrix(r,this.transform.matrix));
         color.copy(palette[Math.floor(random(r.id,14)*palette.length)]).multiplyScalar(.90+.10*random(r.id,15));mesh.setColorAt(i,color);});
       mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingBox();mesh.computeBoundingSphere();item.rocks=mesh;item.group.add(mesh);
-      const wakeGeo=wakeGeometry(this.world,records);if(wakeGeo.index.count){const wake=new THREE.Mesh(wakeGeo,this.foamMaterial);wake.renderOrder=3;wake.receiveShadow=true;item.wakes=wake;item.group.add(wake);}else wakeGeo.dispose();
+      const wakeGeo=wakeGeometry(this.world,allRecords);if(wakeGeo.index.count){const wake=new THREE.Mesh(wakeGeo,this.foamMaterial);wake.renderOrder=3;wake.receiveShadow=true;item.wakes=wake;item.group.add(wake);}else wakeGeo.dispose();
     }
     item.stonesReady=true;
   }
-  removeBucket(item){item.mesh.geometry.dispose();if(item.rocks){item.rocks.geometry.dispose();item.rocks.dispose();}if(item.wakes)item.wakes.geometry.dispose();this.group.remove(item.group);this.active.delete(item.id);}
+  removeBucket(item){for(const mesh of item.assetStones42??[]){mesh.geometry.dispose();mesh.dispose();}item.mesh.geometry.dispose();if(item.rocks){item.rocks.geometry.dispose();item.rocks.dispose();}if(item.wakes)item.wakes.geometry.dispose();this.group.remove(item.group);this.active.delete(item.id);}
   updateGravel(p){
     const anchorX=Math.floor(p.x/8)*8+4,anchorZ=Math.floor(p.z/8)*8+4;
     const airborne=p.y-this.world.surface.heightAt(p.x,p.z)>100;
@@ -664,6 +668,7 @@ export class WorldWater {
       const distance=distanceBox(p,item.bounds),nearStones=distance<STONE_RANGE;
       if(nearStones&&!item.stonesReady&&stoneBuilt<1&&performance.now()-start<5){this.buildStones(item);stoneBuilt++;}
       if(item.rocks){item.rocks.visible=distance<STONE_RANGE+90;item.rocks.castShadow=distance<200;stones+=item.rocks.visible?item.stoneCount:0;}
+      for(const mesh of item.assetStones42??[]){mesh.visible=distance<STONE_RANGE+90;mesh.castShadow=distance<200;if(!item.rocks&&mesh.visible)stones++;}
       if(item.wakes){item.wakes.visible=distance<STONE_RANGE+90;wakes+=item.wakes.visible?item.wakes.geometry.index.count/30:0;}
       triangles+=item.mesh.geometry.index.count/3;
     }
@@ -682,6 +687,6 @@ export class WorldWater {
     this.reflection.dispose();this.refraction.dispose();
     for(const item of [...this.active.values()])this.removeBucket(item);this.overview?.geometry.dispose();
     this.gravel.mesh.geometry.dispose();this.gravel.mesh.dispose();this.gravel.records=[];this.gravel.slots.clear();
-    this.rockGeometry.dispose();this.rockTextures.forEach(t=>t.dispose());this.materials.forEach(m=>m.dispose());this.group.clear();this.queue=[];this.loaded=false;
+    this.rockGeometry.dispose();this.rockTextures.forEach(t=>t.dispose());this.materials.forEach(m=>{m.dispose();releaseShoreAssetMaterial42(m);});this.group.clear();this.queue=[];this.loaded=false;
   }
 }

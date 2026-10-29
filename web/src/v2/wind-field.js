@@ -1,3 +1,4 @@
+import {ExactWindGrid42} from "./wind-field-exact42.js";
 import * as THREE from "three";
 
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
@@ -20,9 +21,9 @@ export function windAt(x,z,time){
   return [force(x,z,time),force(x,z,time-.42),noise(x*.12-time*.11,z*.12-time*.047),noise(x*.025,z*.025)];
 }
 export class MeadowWindField {
-  constructor({resolution=128,span=512,interval=.1}={}){
+  constructor({resolution=128,span=512,interval=.1,exactGrid42=new URLSearchParams(globalThis.location?.search??"").get("windFieldExact42")!=="0"}={}){
     if(!Number.isInteger(resolution)||resolution<4||span<=0||interval<=0)throw new RangeError("Invalid wind field dimensions");
-    this.resolution=resolution;this.span=span;this.interval=interval;this.lastUpdate=-Infinity;this.sampleIndex=null;this.origin=new THREE.Vector2(Infinity,Infinity);
+    this.exactGrid42=exactGrid42?new ExactWindGrid42():null;this.resolution=resolution;this.span=span;this.interval=interval;this.lastUpdate=-Infinity;this.sampleIndex=null;this.origin=new THREE.Vector2(Infinity,Infinity);
     const make=()=>{
       const texture=new THREE.DataTexture(new Uint8Array(resolution*resolution*4),resolution,resolution,THREE.RGBAFormat,THREE.UnsignedByteType);
       texture.minFilter=texture.magFilter=THREE.LinearFilter;texture.wrapS=texture.wrapT=THREE.ClampToEdgeWrapping;texture.generateMipmaps=false;texture.flipY=false;texture.colorSpace=THREE.NoColorSpace;return texture;
@@ -34,6 +35,7 @@ export class MeadowWindField {
     };
   }
   fill(texture,time){
+    if(this.exactGrid42){this.exactGrid42.fill(this,texture.image.data,time);texture.needsUpdate=true;return;}
     const n=this.resolution,step=this.span/n,data=texture.image.data,ox=this.origin.x,oz=this.origin.y;
     for(let z=0;z<n;z++)for(let x=0;x<n;x++){
       const px=ox+(x+.5)*step,pz=oz+(z+.5)*step,i=(z*n+x)*4;
@@ -69,5 +71,5 @@ export class MeadowWindField {
     }
     this.uniforms.uWindFieldBlend.value=clamp((time-start)/this.interval);return refresh;
   }
-  dispose(){this.previous.dispose();this.current.dispose();}
+  dispose(){this.exactGrid42?.dispose();this.exactGrid42=null;this.previous.dispose();this.current.dispose();}
 }

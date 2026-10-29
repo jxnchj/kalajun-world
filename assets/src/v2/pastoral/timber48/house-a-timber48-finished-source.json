@@ -1,0 +1,1226 @@
+{
+  "output": "assets/src/v2/pastoral/timber48/house-a-group-timber48-finished.blend",
+  "sha256": "6fbb44d7bc62b0b7ea4b8dc1037dcb6b5f6e1ad2f9c56fa4cec4812b113e2a11",
+  "protected": {
+    "assets/src/v2/pastoral/timber48/house-a-group-timber48.blend": "12bb4e2d586326e5dfc32a60d675cce0756b3d80d22abfeeb5399981db5c35f9",
+    "assets/src/v2/pastoral/timber48/house-a-timber48-coordinates.json": "447787d7701d5b63edda67f735379163ba83cb35aa57168156766a4713545342",
+    "assets/src/v2/pastoral/timber48/runtime-fields48.json": "c7bad0a792c6a19709ed6bcdb6ecb508602219d1a9d9fd286d05c058bf005b08",
+    "web/public/assets/v2/house-timber48/fields.json": "c7bad0a792c6a19709ed6bcdb6ecb508602219d1a9d9fd286d05c058bf005b08",
+    "web/public/assets/v2/house_a_lived.glb": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2"
+  },
+  "geometryAllUVColorAONormalsSHA256": "9cd8eaf5804b516e731b5fdc6d4bc8707f3649df99b9c2becea866dec8ab29ea",
+  "changedSlots": [
+    {
+      "object": "pastoral_house_lining_front_board",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.002",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.002",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.003",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.003",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.004",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.004",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.005",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.005",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.006",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.006",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.007",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.007",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.008",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.008",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.009",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.009",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.010",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.010",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.011",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.011",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.012",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.012",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.013",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.013",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.014",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.014",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.015",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.015",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.016",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.016",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.017",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.017",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.018",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.018",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.019",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.019",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.020",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.020",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.021",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.021",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.022",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.022",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.023",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.023",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.024",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.024",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.025",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.025",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.026",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.026",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.027",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.027",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.028",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.028",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.029",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.029",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.030",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.030",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.031",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.031",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.032",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.032",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.033",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.033",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.034",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.034",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.035",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.035",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.036",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.036",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.037",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.037",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.038",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.038",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.039",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.039",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.040",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.040",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.041",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_board.041",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_rail",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_rail",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_rail.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_rail.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_rail.002",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_rail.002",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.002",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.002",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.003",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.003",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.004",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.004",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.005",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.005",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.006",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.006",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.007",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.007",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.008",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.008",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.009",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.009",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.010",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.010",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.011",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.011",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.012",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.012",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.013",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.013",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.014",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.014",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.015",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.015",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.016",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.016",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.017",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.017",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.018",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.018",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.019",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.019",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.020",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.020",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.021",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.021",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.022",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.022",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.023",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.023",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.024",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.024",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.025",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.025",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.026",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.026",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.027",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.027",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.028",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.028",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.029",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.029",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.030",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.030",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.031",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.031",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.032",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.032",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.033",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.033",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.034",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.034",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.035",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.035",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.036",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.036",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.037",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.037",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.038",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.038",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.039",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_board.039",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_rail",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_rail",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_rail.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_rail.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.002",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.002",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.003",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.003",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.004",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.004",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.005",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.005",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.006",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.006",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.007",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.007",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.008",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.008",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.009",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.009",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.010",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.010",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.011",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.011",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.012",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.012",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.013",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.013",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.014",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.014",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.015",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.015",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.016",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.016",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.017",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.017",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.018",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.018",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.019",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.019",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.020",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_board.020",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_rail",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_rail",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_rail.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_left_rail.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.002",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.002",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.003",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.003",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.004",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.004",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.005",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.005",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.006",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.006",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.007",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.007",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.008",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.008",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.009",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.009",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.010",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.010",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.011",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.011",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.012",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.012",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.013",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.013",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.014",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.014",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.015",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.015",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.016",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.016",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.017",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.017",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.018",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.018",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.019",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.019",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.020",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_board.020",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_rail",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_rail",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_rail.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_right_rail.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_front_left_lining",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_front_left_lining",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_front_right_lining",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_front_right_lining",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_back_lining",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_back_lining",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_left_lining",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_left_lining",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_right_lining",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_sill_right_lining",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_window_reveal",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_window_reveal",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_window_reveal.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_window_reveal.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_window_head",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_window_head",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_window_sill",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_front_window_sill",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_window_reveal",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_window_reveal",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_window_reveal.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_window_reveal.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_window_head",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_window_head",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_window_sill",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_back_window_sill",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_entry_reveal",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_entry_reveal",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_entry_reveal.001",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_entry_reveal.001",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "pastoral_house_lining_entry_head",
+      "material": "timber48/v2_pastoral_lining/long/finished"
+    },
+    {
+      "object": "pastoral_house_lining_entry_head",
+      "material": "timber48/v2_pastoral_lining/end/finished"
+    },
+    {
+      "object": "house_a_door0_plank",
+      "material": "timber48/plank/end/finished"
+    },
+    {
+      "object": "house_a_door0_plank",
+      "material": "timber48/plank/long/finished"
+    },
+    {
+      "object": "house_a_shutter",
+      "material": "timber48/shutter/long/finished"
+    },
+    {
+      "object": "house_a_shutter",
+      "material": "timber48/shutter/end/finished"
+    }
+  ],
+  "materials": 6,
+  "rendered": false,
+  "runtimeExported": false,
+  "limits": "Same documented material response; independent Blender lighting, colour management and normal evaluation are not pixel-identical to runtime GI."
+}

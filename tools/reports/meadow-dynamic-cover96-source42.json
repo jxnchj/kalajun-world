@@ -1,0 +1,213 @@
+{
+  "scope": "Offline exact canonical source 16 tiles; original full middle index; conservative uncollapsed bounds plus 2m wind margin; no GPU cost claim",
+  "rows": [
+    {
+      "x": -84,
+      "z": 140,
+      "ordinary": 611,
+      "wet": 0
+    },
+    {
+      "x": -83,
+      "z": 140,
+      "ordinary": 715,
+      "wet": 0
+    },
+    {
+      "x": -82,
+      "z": 140,
+      "ordinary": 646,
+      "wet": 0
+    },
+    {
+      "x": -81,
+      "z": 140,
+      "ordinary": 742,
+      "wet": 0
+    },
+    {
+      "x": -84,
+      "z": 141,
+      "ordinary": 664,
+      "wet": 0
+    },
+    {
+      "x": -83,
+      "z": 141,
+      "ordinary": 510,
+      "wet": 0
+    },
+    {
+      "x": -82,
+      "z": 141,
+      "ordinary": 488,
+      "wet": 0
+    },
+    {
+      "x": -81,
+      "z": 141,
+      "ordinary": 757,
+      "wet": 0
+    },
+    {
+      "x": -84,
+      "z": 142,
+      "ordinary": 527,
+      "wet": 0
+    },
+    {
+      "x": -83,
+      "z": 142,
+      "ordinary": 542,
+      "wet": 0
+    },
+    {
+      "x": -82,
+      "z": 142,
+      "ordinary": 492,
+      "wet": 0
+    },
+    {
+      "x": -81,
+      "z": 142,
+      "ordinary": 744,
+      "wet": 0
+    },
+    {
+      "x": -84,
+      "z": 143,
+      "ordinary": 427,
+      "wet": 0
+    },
+    {
+      "x": -83,
+      "z": 143,
+      "ordinary": 584,
+      "wet": 0
+    },
+    {
+      "x": -82,
+      "z": 143,
+      "ordinary": 588,
+      "wet": 0
+    },
+    {
+      "x": -81,
+      "z": 143,
+      "ordinary": 739,
+      "wet": 0
+    }
+  ],
+  "roots": 9776,
+  "wet": 0,
+  "triangles": 674544,
+  "sourceIndexCount": 207,
+  "center": [
+    -1968,
+    2120.4493209375,
+    3408
+  ],
+  "bounds": [
+    [
+      -2019.0691862851058,
+      2111.11802502261,
+      3356.895538342458
+    ],
+    [
+      -1916.885216549329,
+      2128.0833493419686,
+      3459.2351755723184
+    ]
+  ],
+  "projections": [
+    {
+      "distance": 280,
+      "elevation": 10,
+      "rect": {
+        "x": 469,
+        "y": 338,
+        "w": 342,
+        "h": 102
+      },
+      "pixels2x": 139536
+    },
+    {
+      "distance": 320,
+      "elevation": 10,
+      "rect": {
+        "x": 494,
+        "y": 347,
+        "w": 292,
+        "h": 89
+      },
+      "pixels2x": 103952
+    },
+    {
+      "distance": 400,
+      "elevation": 10,
+      "rect": {
+        "x": 527,
+        "y": 359,
+        "w": 226,
+        "h": 71
+      },
+      "pixels2x": 64184
+    },
+    {
+      "distance": 600,
+      "elevation": 10,
+      "rect": {
+        "x": 567,
+        "y": 373,
+        "w": 146,
+        "h": 49
+      },
+      "pixels2x": 28616
+    },
+    {
+      "distance": 280,
+      "elevation": 42,
+      "rect": {
+        "x": 520,
+        "y": 306,
+        "w": 240,
+        "h": 171
+      },
+      "pixels2x": 164160
+    },
+    {
+      "distance": 320,
+      "elevation": 42,
+      "rect": {
+        "x": 536,
+        "y": 318,
+        "w": 208,
+        "h": 151
+      },
+      "pixels2x": 125632
+    },
+    {
+      "distance": 400,
+      "elevation": 42,
+      "rect": {
+        "x": 558,
+        "y": 335,
+        "w": 164,
+        "h": 121
+      },
+      "pixels2x": 79376
+    },
+    {
+      "distance": 600,
+      "elevation": 42,
+      "rect": {
+        "x": 586,
+        "y": 357,
+        "w": 108,
+        "h": 82
+      },
+      "pixels2x": 35424
+    }
+  ],
+  "elapsedMs": 1975.346917
+}

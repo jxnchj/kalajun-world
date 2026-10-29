@@ -15,7 +15,7 @@ async function originalAsset(){
  loader.register(()=>({name:"node-texture-decode",loadTexture:()=>Promise.resolve(new THREE.Texture())}));
  return loader.parseAsync(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),"");
 }
-async function ready(world=fixture()){const pasture=new WorldPasture(world,{loader:{loadAsync:originalAsset}});await pasture.load();return pasture;}
+async function ready(world=fixture()){const pasture=new WorldPasture(world,{life41:false,loader:{loadAsync:originalAsset}});await pasture.load();return pasture;}
 test("pasture layout is deterministic, complete and keeps clear of the historical anchor",()=>{
  const world=fixture(),a=selectPasture(world),b=selectPasture(world);assert.deepEqual(a,b);assert.equal(a.members.length,PASTURE_SHEEP_COUNT);
  assert.ok(Math.hypot(a.x,a.z)>=65-1e-8);for(const m of a.members){assert.ok(pastureGroundAllowed(world,m.x,m.z));for(const n of a.members)if(n!==m)assert.ok(Math.hypot(m.x-n.x,m.z-n.z)>=2.35);}

@@ -4,4 +4,11 @@ useDefault = true
 [[allowlists]]
 description = "Verified deterministic spruce canopy content digest, not a credential"
 regexTarget = "secret"
-regexes = ["^9083dae07a318973011a5cd218f4daa4c54ef82ef9428dae60b7cfc087089974$", "^12c39c431de7ff7aa53e104e04bf6068703b2518164b89dfab0690f2402c2a40$"]
+regexes = ["^9083dae07a318973011a5cd218f4daa4c54ef82ef9428dae60b7cfc087089974$", "^9083dae07a318973011a5cd218f4daa4c54ef82ef9428dae60b7cfc087089974$", "^12c39c431de7ff7aa53e104e04bf6068703b2518164b89dfab0690f2402c2a40$"]
+
+[[allowlists]]
+description = "Verified shader cache-key literal, not authentication material"
+condition = "AND"
+paths = ['''web/src/v2/shadow-atlas40\.js$''']
+regexTarget = "line"
+regexes = ['''this\.shaderKey='-near-shadow-atlas40-'\+T\.MathUtils\.generateUUID\(\)''']

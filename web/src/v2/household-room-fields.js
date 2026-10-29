@@ -1,3 +1,4 @@
+import {selectTextileGI73} from './house-textiles-gi73.js';
 import {legacyRooms} from './legacy-room-loader.js';
 import manifest from '../../public/assets/v2/glb-transport-manifest.json' with {type:'json'};
 import {ROOM_BOUNCE_DATA} from './room-bounce-registry.js';
@@ -11,10 +12,10 @@ import {householdYardsEnabled} from './household-yards.js';
 export const householdRoomKey=(style,entityId)=>style===0&&entityId===HOUSEHOLD_ENTRY_ASSET.entityId&&householdYardsEnabled()&&householdEntryMode()==='editable'?HOUSEHOLD_ENTRY_ASSET.roomKey:'house_a-living-'+style;
 export const isHouseholdRoomKey=key=>/^house_a-living-[012]$/.test(key||'')||key===HOUSEHOLD_ENTRY_ASSET.roomKey;
 const loaders={
- 'house_a-entry-tea-34':()=>import('./household-room-data/house_a-entry-tea-34.js').then(m=>m.default),
- 'house_a-living-0':()=>import('./household-room-data/house_a-living-0.js').then(m=>m.default),
- 'house_a-living-1':()=>import('./household-room-data/house_a-living-1.js').then(m=>m.default),
- 'house_a-living-2':()=>import('./household-room-data/house_a-living-2.js').then(m=>m.default),
+ 'house_a-entry-tea-34':()=>selectTextileGI73('house_a-entry-tea-34',()=>import('./household-room-data/house_a-entry-tea-34.js').then(m=>m.default)),
+ 'house_a-living-0':()=>selectTextileGI73('house_a-living-0',()=>import('./household-room-data/house_a-living-0.js').then(m=>m.default)),
+ 'house_a-living-1':()=>selectTextileGI73('house_a-living-1',()=>import('./household-room-data/house_a-living-1.js').then(m=>m.default)),
+ 'house_a-living-2':()=>selectTextileGI73('house_a-living-2',()=>import('./household-room-data/house_a-living-2.js').then(m=>m.default)),
 };
 const pending=new Map();
 // Existing room maps remain authoritative. Only the occupied household variant
@@ -33,11 +34,11 @@ export function validateHouseholdRoomBundle(source,key=source?.key){
  if(external?.length!==expectedExternal.length||expectedExternal.some((url,i)=>external[i].sourceGLB!==url||external[i].sourceSHA256!==manifest.assets[url]?.sha256))throw new Error('Household room outdoor geometry source differs');
  for(const f of [bundle.sky,bundle.secondSky,bundle.solar,bundle.secondSolar,bundle.apertures,...['sky','secondSky','solar','secondSolar','apertures'].map(k=>bundle.closed?.[k])]){
   if(!f)throw new Error('Incomplete household room field');
-  for(const p of ['sourceSHA256','blendSHA256','bounds','size','openings','validProbes'])if(JSON.stringify(f[p])!==JSON.stringify(base[p]))throw new Error('Household indoor grid/source differs: '+p);
+  for(const p of ['derivedGeometry','sourceSHA256','blendSHA256','bounds','size','openings','validProbes'])if(JSON.stringify(f[p])!==JSON.stringify(base[p]))throw new Error('Household indoor grid/source differs: '+p);
   if(f.householdStyle!==bundle.householdStyle||JSON.stringify(f.externalSources)!==JSON.stringify(external))throw new Error('Household field external sources differ');
  }
  const contact=bundle.contact;
- if(!contact||contact.sourceSHA256!==base.sourceSHA256||contact.blendSHA256!==base.blendSHA256||contact.householdStyle!==bundle.householdStyle||JSON.stringify(contact.externalSources)!==JSON.stringify(external))throw new Error('Household contact source differs');
+ if(!contact||JSON.stringify(contact.derivedGeometry)!==JSON.stringify(base.derivedGeometry)||contact.sourceSHA256!==base.sourceSHA256||contact.blendSHA256!==base.blendSHA256||contact.householdStyle!==bundle.householdStyle||JSON.stringify(contact.externalSources)!==JSON.stringify(external))throw new Error('Household contact source differs');
  return bundle;
 }
 export function prepareHouseholdRoom(key){

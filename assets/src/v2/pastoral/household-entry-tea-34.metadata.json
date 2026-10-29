@@ -6,7 +6,7 @@
   "entityId": "cabins:-1972,3678:784f73bf0ba94d17",
   "householdStyle": 0,
   "sourceBlend": "assets/src/v2/pastoral/household-entry-tea-34.blend",
-  "blendSHA256": "a717f7514fd9d7f312801faf3e78884bf5387a6c64a6b642ed6a1247aa2c4836",
+  "blendSHA256": "deb923ba5567b03a12a2664d8faea922ba1d125778e9fcc37d70ce23623ca270",
   "sourceGLB": "assets/v2/household_entry_tea.glb",
   "sourceSHA256": "277e71e74629dbe081813b900900d6824e7ad769b865d13603ccae309ff1f5dd",
   "recipe": "assets/src/v2/pastoral/household-entry-tea-34.recipe.json",

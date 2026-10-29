@@ -1,0 +1,144 @@
+{
+  "method": "Same built version; Chrome 1280x800 DPR1 river-forest time870; BAAB; HTTP cache disabled; IndexedDB and driver cache retained; automatic first-debug-to-q0/m0-five-frames capture",
+  "rows": [
+    {
+      "name": "terrain42-fetch-b1",
+      "firstFrameMs": 19325,
+      "tailMs": 59865.40000000596,
+      "summary": {
+        "count": 509,
+        "mean": 80.61650294695481,
+        "p95": 108.30000000000291,
+        "max": 3125.2000000000007
+      },
+      "valid": true,
+      "hidden": false,
+      "errors": [],
+      "generatedTiles": 1628,
+      "prepared": {
+        "enabled": true,
+        "limit": 2,
+        "ready": true,
+        "requested": 1006,
+        "hits": 1006,
+        "misses": 0,
+        "discarded": 0,
+        "failed": 0,
+        "evicted": 0,
+        "downloadBytes": 42204778,
+        "decodedBytes": 163461312,
+        "cacheBytes": 324328,
+        "peakCacheBytes": 1297312,
+        "decodeMs": 0,
+        "parentHashMs": 0,
+        "prepareMs": 6015,
+        "reasons": {},
+        "error": null,
+        "codec": {
+          "tasks": 504,
+          "workerMs": 3288.0000001192093,
+          "roundtripMs": 42708.90000024438,
+          "failed": 0,
+          "downloadBytes": 42204778
+        },
+        "parentProof": {
+          "bytes": 8308000,
+          "peakBytes": 8308000,
+          "hits": 754,
+          "inflightHits": 252,
+          "misses": 252,
+          "evictions": 185,
+          "released": 0,
+          "compareCPUms": 266.8999997973442
+        },
+        "parentCompareCPUms": 331.80000004172325
+      }
+    },
+    {
+      "name": "terrain42-fetch-a1",
+      "firstFrameMs": 17369.70000001788,
+      "tailMs": 72061.59999999404,
+      "summary": {
+        "count": 508,
+        "mean": 108.51476377952754,
+        "p95": 150,
+        "max": 3341.600000000002
+      },
+      "valid": true,
+      "hidden": false,
+      "errors": [],
+      "generatedTiles": 1628,
+      "prepared": null
+    },
+    {
+      "name": "terrain42-fetch-a2",
+      "firstFrameMs": 19705.30000001192,
+      "tailMs": 74506.60000002384,
+      "summary": {
+        "count": 510,
+        "mean": 108.46509803921569,
+        "p95": 133.8000000000029,
+        "max": 2633.300000000003
+      },
+      "valid": true,
+      "hidden": false,
+      "errors": [],
+      "generatedTiles": 1628,
+      "prepared": null
+    },
+    {
+      "name": "terrain42-fetch-b2",
+      "firstFrameMs": 17571.19999998808,
+      "tailMs": 67926.59999999404,
+      "summary": {
+        "count": 517,
+        "mean": 98.26015473887816,
+        "p95": 133.3000000000029,
+        "max": 2241.600000000002
+      },
+      "valid": true,
+      "hidden": false,
+      "errors": [],
+      "generatedTiles": 1628,
+      "prepared": {
+        "enabled": true,
+        "limit": 2,
+        "ready": true,
+        "requested": 1001,
+        "hits": 1001,
+        "misses": 0,
+        "discarded": 0,
+        "failed": 0,
+        "evicted": 0,
+        "downloadBytes": 42055640,
+        "decodedBytes": 162812656,
+        "cacheBytes": 486492,
+        "peakCacheBytes": 1459476,
+        "decodeMs": 0,
+        "parentHashMs": 0,
+        "prepareMs": 6008.700000017881,
+        "reasons": {},
+        "error": null,
+        "codec": {
+          "tasks": 502,
+          "workerMs": 3645.8999998271465,
+          "roundtripMs": 50507.299999952316,
+          "failed": 0,
+          "downloadBytes": 42055640
+        },
+        "parentProof": {
+          "bytes": 8308000,
+          "peakBytes": 8308000,
+          "hits": 750,
+          "inflightHits": 248,
+          "misses": 251,
+          "evictions": 184,
+          "released": 0,
+          "compareCPUms": 288.99999994039536
+        },
+        "parentCompareCPUms": 327.7000005245209
+      }
+    }
+  ],
+  "decision": "OFF pending network-cost decision and integrated adoption; approximately42MB extra local download, not an unconditional network speedup"
+}

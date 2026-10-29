@@ -1,0 +1,138 @@
+{
+  "scope": "CPU source geometry and disk payload sizes; not a browser GPU measurement",
+  "water": {
+    "69": {
+      "sourceSegments": 10,
+      "vertices": 23091,
+      "triangles": 44238,
+      "indexType": "Uint16Array",
+      "bytes": 2574528,
+      "depthRefinement": {
+        "addedVertices": 1511,
+        "rounds": 3,
+        "maxError": 0.003491052860226773,
+        "tolerance": 0.0035,
+        "triangles": 44238
+      },
+      "waterRows": 332
+    },
+    "73": {
+      "sourceSegments": 10,
+      "vertices": 22678,
+      "triangles": 43386,
+      "indexType": "Uint16Array",
+      "bytes": 2528116,
+      "depthRefinement": {
+        "addedVertices": 253,
+        "rounds": 1,
+        "maxError": 0.0034880677843223823,
+        "tolerance": 0.0035,
+        "triangles": 43386
+      },
+      "waterRows": 345
+    },
+    "default": {
+      "sourceSegments": 10,
+      "vertices": 21737,
+      "triangles": 41530,
+      "indexType": "Uint16Array",
+      "bytes": 2422880,
+      "depthRefinement": {
+        "addedVertices": 157,
+        "rounds": 1,
+        "maxError": 0.0034575504015871665,
+        "tolerance": 0.0035,
+        "triangles": 41530
+      },
+      "waterRows": 332
+    }
+  },
+  "packages": {
+    "forest-roots-38": {
+      "rawBytes": 3903808,
+      "diskGzipBytes": 3101781,
+      "trees": 80927,
+      "tiles": 134
+    },
+    "meadow-roots-38": {
+      "rawBytes": 10364340,
+      "diskGzipBytes": 4005912,
+      "roots": 45404,
+      "procedural": 82,
+      "tiles": 111
+    },
+    "reach-cover": {
+      "rawBytes": 2838084,
+      "diskGzipBytes": 619727,
+      "roots": 521
+    }
+  },
+  "contact": {
+    "version": "reach-design73-contact-1",
+    "candidate": "rooted-low-banks73-1",
+    "scope": "actual terrain-row-kernel Float32 positions/index at .15625m; browser still required",
+    "sourcePreparedSHA256": "9e62e8d16168db6be5b669e5e79d395b74eac384b76685a4d76724796916d877",
+    "roots": 521,
+    "moved": 521,
+    "maxMove": 0.6827391659435832,
+    "maxY": 0.13801160254070055,
+    "maxAnalyticTriangleDelta": 0.0023653130074308137,
+    "maxFootGap": 0.005917409175708599,
+    "groups": 11069,
+    "triangles": 240232,
+    "actualTiles": 14,
+    "tries": {
+      "count": 585,
+      "analyticRejected": 0,
+      "renderedRejected": 0
+    },
+    "stoneTransformsExactlyEqual": 5,
+    "allOriginalIDsAndAppearance": true,
+    "failures": [],
+    "elapsedMs": 4757.477333
+  },
+  "material": {
+    "scanSource": "Poly Haven gravelly_sand already present in66",
+    "privateRGBA8ArraysBytes": 33554432,
+    "samplersAdded": 0,
+    "drawsAdded": 0,
+    "extraFilteredTextureSamples": 2,
+    "sameResourceLayoutAs69": true
+  },
+  "defaultPreparation": true,
+  "old69Payloads": [
+    {
+      "file": "forest-roots-38.json",
+      "payloadSame": true
+    },
+    {
+      "file": "forest-roots-38.bin.gz",
+      "payloadSame": true,
+      "sha256": "0542c87d08af95038ceae2b2d85461c6253c596ca6a8a31a2c7cae35c3e1723d"
+    },
+    {
+      "file": "meadow-roots-38.json",
+      "payloadSame": true
+    },
+    {
+      "file": "meadow-roots-38.bin.gz",
+      "payloadSame": true,
+      "sha256": "cf245053f521f3ae5ffd344d71176392eb239db0e5f21e0d8dc729862febd927"
+    },
+    {
+      "file": "reach-cover.json",
+      "payloadSame": true
+    },
+    {
+      "file": "reach-cover.json.gz",
+      "payloadSame": true,
+      "sha256": "9d6e2a5a2eb6bd83c78c635eb27c33adc1e226d7f0b243a1625df1c0e038efed"
+    }
+  ],
+  "tests": {
+    "passed": 126,
+    "failed": 0,
+    "log": "tools/reports/reach-design73-targeted-tests.log"
+  },
+  "visualStatus": "OFF candidate; root browser review pending"
+}

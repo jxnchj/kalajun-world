@@ -1,0 +1,51 @@
+{
+  "scope": "furniture58 Node fixture repair after adopted default",
+  "files": [
+    {
+      "path": "web/src/v2/test-support/house-timber48-node.js",
+      "sha256": "98afbb80205ef1153cd33e506287d09bf4bdfd85a3e74b85e1df52fc1c5bc1bb"
+    },
+    {
+      "path": "web/src/v2/collision.test.js",
+      "sha256": "d2a79e29b45183e11d3e36f421f3825d330111a348e46bea2b8c0f7c48c349dd"
+    },
+    {
+      "path": "web/src/v2/doors.test.js",
+      "sha256": "b55e619094c2d4f3a00bbe383765241c6ba3ff8a10526c8cbd0c558afdc1c0f6"
+    },
+    {
+      "path": "web/src/v2/household-entry-steps.test.js",
+      "sha256": "ad7ad361852a38a28c88e6807aedb719427b98c973084fd18e48dac44c5a834f"
+    },
+    {
+      "path": "web/src/v2/household-living.test.js",
+      "sha256": "892e51401f704fb9d49bccfb03ccf9a8dd9033af1da757c74f385235c12ed30a"
+    },
+    {
+      "path": "web/src/v2/house-timber48.test.js",
+      "sha256": "43646df2727693a21c34d957869e9515c3794b37c6c8de74189d9c428f3b4739"
+    }
+  ],
+  "backup": "backups/furniture58-node-fixtures63",
+  "tests": {
+    "command": "node --test web/src/v2/collision.test.js web/src/v2/doors.test.js web/src/v2/household-entry-steps.test.js web/src/v2/household-living.test.js web/src/v2/house-timber48.test.js web/src/v2/house-furniture-integration58.test.js",
+    "passed": 45,
+    "failed": 0,
+    "durationMs": 10722.377583,
+    "log": "tools/reports/furniture58-node-fixtures63-tests.log"
+  },
+  "preserved": [
+    "Production sources, prepared bindings and app builds untouched",
+    "Adopted furniture58 remains default ON in ordinary fixtures",
+    "Real exported fields load and validate against original GLB",
+    "Existing geometry, door, collision and lifetime assertions retained"
+  ],
+  "newAssertions": {
+    "nodes": 6,
+    "vertices": 10800,
+    "borrowedTimberTextures": true,
+    "sourceGeometryChanged": false
+  },
+  "historicComparison": "house-timber48.test explicitly turns furniture58 OFF only for its timber48-only original-versus-48 comparison; adopted default exercised in physics/door/household and actual furniture integration tests",
+  "limitation": "Node image decoding is still stubbed, as before. Required linear mean is derived from the same 128-grey pixel stub; no browser or physical texture appearance claim."
+}

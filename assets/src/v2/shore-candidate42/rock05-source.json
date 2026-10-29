@@ -1,0 +1,51 @@
+{
+  "source": "assets/src/polyhaven/rock_moss_set_01/rock_moss_set_01_1k.gltf",
+  "object": "rock_moss_set_01_rock05",
+  "license": "CC0",
+  "normalization": "uniform only, centered; GLTF original tangent material and UV retained",
+  "triangles": 16548,
+  "vertices": 8538,
+  "production": false,
+  "stableSupport": {
+    "hullUniformDensityCOM": [
+      0.16751118004322052,
+      -1.4566280841827393,
+      0.009212407283484936
+    ],
+    "sourceSupportNormal": [
+      -0.13923564553260803,
+      0.05834410339593887,
+      -0.9885390400886536
+    ],
+    "supportHeight": 0.5361351678147912,
+    "barycentricCOM": [
+      0.4886899531306176,
+      0.15127601490301038,
+      0.36003403196637207
+    ],
+    "rotationQuaternionWXYZ": [
+      0.9971306324005127,
+      -0.029256001114845276,
+      -0.0698181614279747,
+      -0.0
+    ],
+    "supportPoints": [
+      [
+        0.4460445046424866,
+        -1.3219175338745117,
+        -0.5644193291664124
+      ],
+      [
+        -0.058501437306404114,
+        -2.171678066253662,
+        -0.5435073971748352
+      ],
+      [
+        -0.32292935252189636,
+        -1.252151608467102,
+        -0.4519917964935303
+      ]
+    ]
+  },
+  "adoptionRequirement": "Use this same shell and placement for visible geometry, collision and full-wind grass contact; no renderer-only replacement"
+}

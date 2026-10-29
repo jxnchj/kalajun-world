@@ -1,0 +1,67 @@
+{
+  "condition": "Chrome 1280x800 DPR1 river-forest time870; HTTP cache disabled; IndexedDB unchanged; same window-wind build; no concurrent heavy jobs",
+  "rows": [
+    {
+      "name": "a1",
+      "firstMs": 20194.79999999702,
+      "coverMs": 36660.29999999702,
+      "settledMs": 82181.79999999702,
+      "frames": 492,
+      "frameMeanMs": 127.10182926829269,
+      "frameP95Ms": 168,
+      "frameP99Ms": 233.3000000000029,
+      "frameMaxMs": 3833.399999999994,
+      "source": "docs/previews/v2-route-craft-38/terrain42-cold-a1.json"
+    },
+    {
+      "name": "y1",
+      "firstMs": 25028.20000000298,
+      "coverMs": 40433.90000000596,
+      "settledMs": 90749.79999999702,
+      "frames": 520,
+      "frameMeanMs": 127.30942307692307,
+      "frameP95Ms": 166.79999999999927,
+      "frameP99Ms": 274.1000000000058,
+      "frameMaxMs": 2491.7999999999956,
+      "source": "docs/previews/v2-route-craft-38/terrain42-cold-y1.json"
+    },
+    {
+      "name": "w1",
+      "firstMs": 21788.40000000596,
+      "coverMs": 40491.90000000596,
+      "settledMs": 60781.90000000596,
+      "frames": 258,
+      "frameMeanMs": 153.23178294573646,
+      "frameP95Ms": 224.90000000000146,
+      "frameP99Ms": 566.7999999999956,
+      "frameMaxMs": 2383.4000000000015,
+      "source": "docs/previews/v2-route-craft-38/terrain42-cold-w1.json"
+    },
+    {
+      "name": "w2",
+      "firstMs": 20583,
+      "coverMs": 34496.09999999404,
+      "settledMs": 55048.69999998808,
+      "frames": 263,
+      "frameMeanMs": 132.76501901140685,
+      "frameP95Ms": 200,
+      "frameP99Ms": 300.09999999999854,
+      "frameMaxMs": 2650.7999999999993,
+      "source": "docs/previews/v2-route-craft-38/terrain42-cold-w2.json"
+    },
+    {
+      "name": "a2",
+      "firstMs": 20314.89999999106,
+      "coverMs": 36894.29999999702,
+      "settledMs": 79539.09999999404,
+      "frames": 489,
+      "frameMeanMs": 122.10470347648261,
+      "frameP95Ms": 158.40000000000873,
+      "frameP99Ms": 233.29999999999927,
+      "frameMaxMs": 2833.2999999999956,
+      "source": "docs/previews/v2-route-craft-38/terrain42-cold-a2.json"
+    }
+  ],
+  "decision": "Both initialization yield and ready window4 remain OFF. Yield improves worker initialization but worsens full load. Window4 improves tail consistently but worsens loading-frame p95. No geometry, density or LOD changes.",
+  "limitations": "Frame gaps are RAF intervals after probe installation, not GPU duration. HTTP cold is not empty IndexedDB or fresh browser process. First frame from navigationToFirstFrameSubmittedMs; cover/settled from performance.now."
+}

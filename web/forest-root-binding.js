@@ -4,7 +4,7 @@ import {fileURLToPath}from 'node:url';
 export const FOREST_ROOT_SOURCE_PATHS=[
  'src/v2/forest-root-source.js','src/v2/forest-root-layout.js','src/v2/forest-root-inputs.js','src/v2/forest-root-codec.js',
  'src/v2/plant-exclusion-index.js','src/v2/world-data.js','src/v2/terrain-height-interpolation.js',
- 'src/v2/hydrology.js','src/v2/forest-bank-shoulder.js','src/v2/forest-bank-curvature-v38.js','src/v2/meadow-surface.js','src/v2/meadow-scattered-canopy.js','src/v2/meadow-relief.js','src/v2/river-incision.js','src/v2/river-meander.js','src/v2/river-section.js','src/v2/river-bed-profile.js','src/v2/settlement-assets.js'
+ 'src/v2/hydrology.js','src/v2/forest-reach39.js','src/v2/forest-reach39-source.js','src/v2/forest-reach-form41.js','src/v2/reach-bank-profile48.js','src/v2/reach-bank-design50.js','src/v2/reach-design69.js','src/v2/reach-design73.js','src/v2/forest-reach-form41-legacy.js','src/v2/forest-bank-shoulder.js','src/v2/forest-bank-curvature-v38.js','src/v2/meadow-surface.js','src/v2/meadow-scattered-canopy.js','src/v2/meadow-relief.js','src/v2/river-incision.js','src/v2/river-meander.js','src/v2/river-section.js','src/v2/river-bed-profile.js','src/v2/settlement-assets.js'
 ];
 const root=new URL('./',import.meta.url),hash=b=>createHash('sha256').update(b).digest('hex');
 export function forestRootCodeBinding(){

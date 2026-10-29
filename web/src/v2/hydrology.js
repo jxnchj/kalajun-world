@@ -55,7 +55,7 @@ function makeProtection(entities,assets,objects){
     return null;
   };
 }
-export function createHydrology({streamData={lines:[]},heightAt,entities=[],assetMetadata={},objects={},naturalBanks=true,forestRootedShoulder38=false,forestBankCurvature38=false,forestReach39=false,landcoverAt,riverMeanders=new URLSearchParams(globalThis.location?.search??"").get("riverMeanders")!=="0",valleyLandform=naturalBanks&&new URLSearchParams(globalThis.location?.search??"").get("valleyLandform")!=="0",valleyMeanders=valleyLandform&&riverMeanders!==false&&new URLSearchParams(globalThis.location?.search??"").get("valleyMeanders")!=="0",valleySection=valleyMeanders&&new URLSearchParams(globalThis.location?.search??"").get("valleySection")!=="0"}){
+export function createHydrology({streamData={lines:[]},heightAt,entities=[],assetMetadata={},objects={},naturalBanks=true,forestRootedShoulder38=false,forestBankCurvature38=false,forestReach39=false,reachDesign69=null,reachDesign73=null,landcoverAt,riverMeanders=new URLSearchParams(globalThis.location?.search??"").get("riverMeanders")!=="0",valleyLandform=naturalBanks&&new URLSearchParams(globalThis.location?.search??"").get("valleyLandform")!=="0",valleyMeanders=valleyLandform&&riverMeanders!==false&&new URLSearchParams(globalThis.location?.search??"").get("valleyMeanders")!=="0",valleySection=valleyMeanders&&new URLSearchParams(globalThis.location?.search??"").get("valleySection")!=="0"}){
   if(typeof heightAt!=="function")throw new TypeError("Hydrology requires the uncarved physical height function");
   const valleySource=valleyMeanders?createHydrology({streamData,heightAt,entities,assetMetadata,objects,naturalBanks,riverMeanders,valleyLandform,valleyMeanders:false,valleySection:false}):null;
   const protectedAt=makeProtection(entities,assetMetadata,objects),sourceIndex=new Map(),seen=new Set();
@@ -293,7 +293,7 @@ export function createHydrology({streamData={lines:[]},heightAt,entities=[],asse
   stats.forestRootedShoulder38=Boolean(forestRootedShoulder38);
   const forestCurvatureField=forestBankCurvature38?createForestBankCurvature38(segments,forestShoulderAnchor):null;
   stats.forestBankCurvature38=Boolean(forestBankCurvature38);
-  if(forestReach39)forestReach=createForestReach39({segments,queryAt:query,rawHeight:heightAt,baseHeightAt:currentBedHeightAt,protectedAt});
+  if(forestReach39)forestReach=createForestReach39({segments,queryAt:query,rawHeight:heightAt,baseHeightAt:currentBedHeightAt,protectedAt,reachDesign69,reachDesign73,allowIncompatible:forestReach39==="auto"});
   stats.forestReach39=Boolean(forestReach);if(forestReach)stats.forestReach39Source=forestReach.stats;
   const result={lines,segments,unresolved,stats,viewpoints,valleySource,baselineBedHeightAt,bedHeightAt,sampleAt,intersectsBounds,nearSegments,refreshMeanderIndex,forestReach39:forestReach,
     bindSurface(fn){physicalHeight=fn;},isExcludedSource(x,z,padding=0){

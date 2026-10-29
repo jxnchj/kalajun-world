@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 const root=new URL('./',import.meta.url),hash=b=>createHash('sha256').update(b).digest('hex');
 // Ecology holds the source root algorithm and leaf geometry; follow only the
 // actual meadow/world dependencies, not unrelated tree GPU implementations.
-const seeds=['forest-reach-community39','boardwalk-plant-contact39','forest-root-source','world-data','meadow-surface','grass-root-field','shore-contact','threshold-plants','brook-shoulder-grass','brook-wetgrass','valley-bank-roots','habitat-data','habitat-loading','meadow-root-codec'];
+const seeds=['pasture-plant-contact41','forest-reach-community39','boardwalk-plant-contact39','forest-root-source','world-data','meadow-surface','grass-root-field','shore-contact','threshold-plants','brook-shoulder-grass','brook-wetgrass','valley-bank-roots','habitat-data','habitat-loading','meadow-root-codec'];
 export function meadowRootSourcePaths(){
  const found=new Set(['src/v2/ecology.js']);
  const visit=path=>{if(found.has(path))return;found.add(path);if(!path.endsWith('.js'))return;

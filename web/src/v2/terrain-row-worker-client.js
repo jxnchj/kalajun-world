@@ -1,3 +1,4 @@
+import {localShadowWindow72ParameterValid} from './local-shadow-policy72.js';
 import {terrainRowInput} from './terrain-row-kernel.js';
 // Worker never owns queue order, activation or GPU upload policy. Inputs are
 // structured-cloned, not transferred: the main world/parent remains live.
@@ -53,7 +54,23 @@ function validPayload(payload,job){
 // Until variant inputs are explicitly shared, never run default-source worker
 // computations for a URL that can select another authored surface.
 export function terrainRowWorkerPolicy(search='') {
- const params=new URLSearchParams(search),safe=new Set(['terrainWorker38','view','place','time','debug','profile','gpuPassProfile','boardwalkEndGrain39','boardwalkPlantContact39','route3Courtyard38','meadowSourceRange39','farRectGate39','vanityUpperContact39','shadowDepthProfile39','shadowDepthTraversal39','seating39','cloudCacheArray39','shadowStaticProfile39']);
+ const params=new URLSearchParams(search),safe=new Set(['reachEnvelopeLazy46','localShadowWindow42','treeViewCull','treeViewPassShare42','twigIndexed','shoreAsset42','loadSpikeTrace42','terrainRequestTrace42','terrainBatches','meadowAerialContinuity42','terrainRefill42','route3Entry42','windFieldExact42','guestRoomGroup42','meadowRootCache','forestRootCache','meadowClusterWind42','terrainWindow42','terrainYield42','reachCoverPrepared42','terrainPrepared42','terrainWorker38','view','place','time','debug','profile','gpuPassProfile','boardwalkEndGrain39','boardwalkPlantContact39','route3Courtyard38','meadowSourceRange39','farRectGate39','vanityUpperContact39','shadowDepthProfile39','shadowDepthTraversal39','seating39','cloudCacheArray39','shadowStaticProfile39','nearShadowDetail','closeShadowOverlap','closeShadowFootprint','closeSolarShadow','closeSolarReuse','needleShape40','nearShadowAtlas40','needleBranchDispatch40','roomPastoralDoorAngles41','guestDoors41','pastureLife41','ecologyCollision41','needlePacketWrites41','meadowExact41','meadowVisible41','meadowRootWind41','meadowCluster42','meadowClusterPool42','grassShadowCoverage41','shadowCasterPhases','structureMatrixArithmetic41']);
+ safe.add('treeWindAtlas44');
+ if(params.getAll('treeHighPhoto48').every(value=>value==='0'||value==='1'))safe.add('treeHighPhoto48');
+ if(params.getAll('houseTimber48').every(value=>value==='0'||value==='1'))safe.add('houseTimber48');
+ // Furniture58 changes only original mesh material coordinates, never the surface.
+ if(params.getAll('houseFurniture58').every(value=>value==='0'||value==='1'))safe.add('houseFurniture58');
+ // Interior cloth geometry does not alter world terrain samples.
+ if(params.getAll('houseTextiles62').every(value=>value==='0'||value==='1'))safe.add('houseTextiles62');
+ if(params.getAll('reachFacies44').every(value=>value==='0'||value==='1'))safe.add('reachFacies44');
+ if(params.getAll('legacyRoomLazy').every(value=>value==='0'||value==='1'))safe.add('legacyRoomLazy');
+ const variants69=params.getAll('reachDesign69');
+ if(variants69.every(v=>v==='0'||v==='bend')&&new Set(variants69).size<=1)safe.add('reachDesign69');
+ const variants73=params.getAll('reachDesign73');
+ if(variants73.every(v=>v==='0'||v==='bend')&&new Set(variants73).size<=1&&!(params.get('reachDesign73')==='bend'&&params.get('reachDesign69')==='bend'))safe.add('reachDesign73');
+ if(!localShadowWindow72ParameterValid(search))safe.delete('localShadowWindow42');
+ const contact74=params.getAll('boardwalkContactIndex74');
+ if(contact74.every(v=>v==='0'||v==='1')&&new Set(contact74).size<=1)safe.add('boardwalkContactIndex74');
  const requested=params.get('terrainWorker38')!=='0';
  const compatible=[...params.keys()].every(k=>safe.has(k));
  return {requested,compatible,enabled:requested&&compatible};

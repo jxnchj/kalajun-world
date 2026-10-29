@@ -118,7 +118,7 @@ test("real representative water edges reject neighbour end caps without cutting 
     }
   }
   for(const view of h.viewpoints)for(const seg of h.nearSegments(view.x,view.z,200)){
-    const g=createWaterGeometry([seg],{detail:true}),p=g.attributes.position;
+    const g=createWaterGeometry([seg],{detail:true,reach:h.forestReach39}),p=g.attributes.position;
     for(let i=0;i<p.count;i++){
       const bed=w.surface.heightAt(p.getX(i),p.getZ(i));maxOverlap=Math.max(maxOverlap,bed-p.getY(i));
       assert.ok(bed-p.getY(i)<.015,"actual end-cap/water-edge overlap");

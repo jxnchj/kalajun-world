@@ -1,0 +1,76 @@
+{
+  "status": "partial actual application verified, not adopted; visual/detail/performance acceptance incomplete",
+  "application": {
+    "ground": 1854924,
+    "applied": 800876,
+    "full": 799561,
+    "fraction": 0.43175677278422187,
+    "candidate": {
+      "enabled": true,
+      "ready": true,
+      "scope": "original nearest caster pass only; terrain receivers use measured CDF or native fallback; other receivers keep native PCF",
+      "size": 2048,
+      "samples": 4,
+      "format": "RGBA8",
+      "encoding": "cdf",
+      "range": 64,
+      "windowSize": 512,
+      "referenceScope": "local receiver window",
+      "attachmentBytes": 167772160,
+      "sourceGeometryCopies": 0,
+      "extraCasterPasses": 0,
+      "referenceCPUms": 18.900000005960464,
+      "referenceRebuilds": 1,
+      "nearCalls": 381,
+      "nearTriangles": 10816193,
+      "error": null,
+      "referenceResidual": 8.32773321235436e-06,
+      "pitchMeters": 0.05563326041794642,
+      "windowMeters": 28.484229333988566,
+      "rect": {
+        "x": 1121,
+        "y": 347,
+        "w": 512,
+        "h": 512
+      }
+    },
+    "scope": "Diagnostic only; output tone mapping temporarily disabled, original rendering restored; blue terrain, red actual CDF use"
+  },
+  "frames": 16,
+  "sourceMeshCounts": [
+    5610
+  ],
+  "geometryIdentityAndCountStable": true,
+  "renderByMode": {
+    "native": {
+      "calls": [
+        2166
+      ],
+      "triangles": [
+        54052837
+      ]
+    },
+    "cdf": {
+      "calls": [
+        2165
+      ],
+      "triangles": [
+        54050533
+      ]
+    }
+  },
+  "limitations": [
+    "43.18% of visible terrain uses CDF, remaining ground falls back; central bush shadow is chiefly fallback in diagnostic.",
+    "Native 4096 vs candidate 2048 native depth changes other receivers too; leaf self-shadow differs visibly.",
+    "One draw / 2304 triangles differs between modes despite stable source geometry; exact caster identity not measured in this batch.",
+    "No GPU timing or moving-window/indoor acceptance in this short batch."
+  ],
+  "artifacts": [
+    "cdf41-plane-filmstrip.jpg",
+    "cdf41-plane-motion.webp"
+  ],
+  "tabsClosed": [
+    "1839973481",
+    "1839973485"
+  ]
+}

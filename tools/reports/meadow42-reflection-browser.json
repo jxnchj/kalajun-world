@@ -1,0 +1,41 @@
+{
+  "scope": "Actual Chrome 1280x800 DPR1, frozen river-valley full terrain and cluster queue0; original vs pool+root-wind vs restored. Each branch forced a new real reflection capture.",
+  "reflection": {
+    "size": [
+      512,
+      320
+    ],
+    "type": "RGBA16F",
+    "optimizedDifferentPixels": 304,
+    "optimizedDifferentComponents": 910,
+    "restoredDifferentComponents": 0,
+    "nonBlack": true,
+    "valid": 1,
+    "captureIncrementPerBranch": 1,
+    "windUniformBindingsMatch": true
+  },
+  "main": {
+    "optimizedDifferentPixels": 3790,
+    "restoredDifferentPixels": 0
+  },
+  "status": "Fixed source-tile reflection submission: actual original/pool+wind/restored texture and main-frame recheck passed. Far-grass extension still not adopted pending remaining transition/performance review.",
+  "secondTerrainLow": {
+    "view": "meadow",
+    "optimizedDifferentPixels": 0,
+    "evidence": "meadow42-second-terrain-low-original/optimized.png"
+  },
+  "fixedRecheck": {
+    "reflectionDifferentComponents": {
+      "optimized": 0,
+      "restored": 0
+    },
+    "mainDifferentPixels": {
+      "optimized": 0,
+      "restored": 0
+    },
+    "captureIncrementPerBranch": 1,
+    "valid": 1,
+    "nonBlack": true,
+    "evidencePrefix": "meadow42-reflection-fixed-"
+  }
+}

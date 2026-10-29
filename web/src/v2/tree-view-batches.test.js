@@ -371,3 +371,81 @@ test('installed renderer counts render calls, and dormant shadow view survives a
   assert.equal(originalShadow.attributes.instanceMatrix.version,matrixVersion);assert.deepEqual(originalShadow.attributes.instanceMatrix.array,originalMatrices);
  }finally{f.cleanup();}
 });
+
+test('cross-pass record sharing is off by default and reuses only exact immutable data when enabled',()=>{
+ for(const sharing of [false,true]){
+  const f=fixture(sharing?{sharePassRecords:true}:{}),a=frustum(),b=frustum(.05);
+  try{
+   f.view.proxy.intersectsFrustum(a);const first=f.view.proxy.geometry;
+   f.view.proxy.intersectsFrustum(b);const second=f.view.proxy.geometry;
+   assert.deepEqual(roots(first),roots(second),'slightly different planes select the same ordered root set');
+   assert.equal(first===second,sharing);assert.equal(f.view.stats.passShareEnabled,sharing);
+   assert.equal(f.view.stats.forceCopies,sharing?1:2);assert.equal(f.view.stats.passShareHits,sharing?1:0);
+   assert.strictEqual(first.attributes.position,f.source.geometry.attributes.position);
+   assert.strictEqual(second.index,f.source.geometry.index);
+  }finally{f.cleanup();}
+ }
+});
+
+test('cross-pass sharing preserves queued main data through different sets and same-frame wind or matrix revisions',()=>{
+ let frame=10;const f=fixture({sharePassRecords:true,getFrame:()=>frame}),{source,view}=f;
+ const scene=new T.Scene(),lists=WebGLRenderLists(),list=lists.get(scene,0),uploaded=[];
+ const info={render:{frame},memory:{geometries:0}},attributes={update:a=>uploaded.push(a),remove:()=>{}};
+ const geometries=WebGLGeometries({ARRAY_BUFFER:1},attributes,info,{releaseStatesOfGeometry:()=>{}});
+ const objects=WebGLObjects({ARRAY_BUFFER:1},geometries,attributes,{releaseStatesOfObject:()=>{}},info);
+ try{
+  view.proxy.intersectsFrustum(frustum());const main=objects.update(view.proxy),matrices=main.attributes.instanceMatrix.array.slice(),forces=main.attributes.aTreeRootWind.data.array.slice();
+  list.push(view.proxy,main,view.proxy.material,0,0,null,{reversedDepth:false});
+  const uploads=uploaded.length;view.proxy.intersectsFrustum(frustum(.05));
+  assert.strictEqual(objects.update(view.proxy),main);assert.equal(uploaded.length,uploads,'Three uploads a shared geometry only once in this render frame');
+  view.proxy.intersectsFrustum(frustum(60));const shadow=objects.update(view.proxy);
+  assert.notStrictEqual(shadow,main);assert.notDeepEqual(roots(shadow),roots(main));
+  source.geometry.attributes.aTreeRootWind.data.array[12]+=.17;source.geometry.attributes.aTreeRootWind.data.needsUpdate=true;
+  view.proxy.intersectsFrustum(frustum());const newWind=objects.update(view.proxy);assert.notStrictEqual(newWind,main);
+  source.instanceMatrix.needsUpdate=true;view.proxy.intersectsFrustum(frustum());const newMatrix=objects.update(view.proxy);
+  assert.notStrictEqual(newMatrix,newWind,'even an equal-valued new matrix revision is not an immutable cache hit');
+  assert.strictEqual(list.opaque[0].geometry,main);assert.deepEqual(main.attributes.instanceMatrix.array,matrices);assert.deepEqual(main.attributes.aTreeRootWind.data.array,forces);
+  frame++;info.render.frame=frame;source.geometry.attributes.aTreeRootWind.data.needsUpdate=true;view.proxy.intersectsFrustum(frustum());
+  assert.notStrictEqual(view.proxy.geometry,main);assert.notStrictEqual(view.proxy.geometry,newWind);assert.notStrictEqual(view.proxy.geometry,newMatrix,'previous render frame remains protected');
+ }finally{f.cleanup();objects.dispose();lists.dispose();}
+});
+
+test('shared records recycle after the original guard and copy identical forces once per wind version',()=>{
+ let frame=0;const baseline=fixture({getFrame:()=>frame}),candidate=fixture({sharePassRecords:true,getFrame:()=>frame});
+ const clips=[frustum(),frustum(.05),frustum(-.05)],first=[];
+ try{
+  for(frame=0;frame<8;frame++){
+   for(const f of [baseline,candidate]){const data=f.source.geometry.attributes.aTreeRootWind.data;for(let i=0;i<data.array.length;i++)data.array[i]=Math.sin(frame*.3+i*.7);data.needsUpdate=true;}
+   const copies=candidate.view.stats.forceCopies;let selected;
+   for(const clip of clips){
+    baseline.view.proxy.intersectsFrustum(clip);candidate.view.proxy.intersectsFrustum(clip);
+    const a=baseline.view.proxy.geometry,b=candidate.view.proxy.geometry;
+    assert.equal(a.instanceCount,b.instanceCount);assert.deepEqual(a.attributes.instanceMatrix.array,b.attributes.instanceMatrix.array);assert.deepEqual(a.attributes.aTreeRootWind.data.array,b.attributes.aTreeRootWind.data.array);
+    if(selected)assert.strictEqual(b,selected);selected=b;
+   }
+   assert.equal(candidate.view.stats.forceCopies,copies+1);
+   if(frame<2)first.push(selected);else assert.strictEqual(selected,first[frame%2]);
+  }
+  assert.equal(candidate.view.stats.viewAllocations,2);assert.equal(candidate.view.stats.matrixCopies,2);
+  assert.equal(candidate.view.stats.forceCopies,8);assert.equal(baseline.view.stats.forceCopies,24);
+ }finally{baseline.cleanup();candidate.cleanup();}
+});
+
+test('record referenced by several view lists retires and disposes exactly once',()=>{
+ let frame=10;const f=fixture({sharePassRecords:true,getFrame:()=>frame}),{source,view}=f;
+ const retired=new Map();
+ try{
+  view.proxy.intersectsFrustum(frustum());const shared=view.proxy.geometry;
+  shared.addEventListener('dispose',()=>retired.set(shared,(retired.get(shared)||0)+1));
+  view.proxy.intersectsFrustum(frustum(.05));assert.strictEqual(view.proxy.geometry,shared);
+  for(let i=0;i<23;i++){
+   source.geometry.attributes.aTreeRootWind.data.needsUpdate=true;view.proxy.intersectsFrustum(frustum());
+   const g=view.proxy.geometry;g.addEventListener('dispose',()=>retired.set(g,(retired.get(g)||0)+1));
+  }
+  assert.equal(view.stats.viewAllocations,24);
+  frame=14;source.geometry.attributes.aTreeRootWind.data.needsUpdate=true;view.proxy.intersectsFrustum(frustum());
+  assert.equal(view.stats.viewRetirements,24);assert.equal(retired.size,24);assert.ok([...retired.values()].every(n=>n===1));
+  view.dispose();view.dispose();assert.ok([...retired.values()].every(n=>n===1),'shared aliases never become additional disposal owners');
+  assert.ok(source.geometry.attributes.position.array.length);assert.ok(source.geometry.attributes.aTreeRootWind.data.array.length);
+ }finally{f.cleanup();}
+});

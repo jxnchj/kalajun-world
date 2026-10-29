@@ -52,3 +52,20 @@ test('actual legacy valley never activates newly adopted default forest or meado
   forest.dispose();meadow.dispose();forestBypass.dispose();meadowBypass.dispose();
  }finally{globalThis.location=previous;eco?.dispose();}
 });
+
+test('real valley-to-forest request sequence activates only at the destination and yields byte-identical retained plants',async()=>{
+ const original=actualMeadowEcology(),cached=actualMeadowEcology(),requests=[];let pending;
+ try{
+  cached.meadowRootCache.dispose();cached.meadowRootCache=new MeadowRootCache(cached,{browser:true,search:'?view=valley',fetchImpl:async(url,init)=>{requests.push(url);return fetchImpl(url,init);},loadCode:async()=>meadowRootCodeBinding()});
+  const valleyA=camera(original,-1700,4500),valleyB=camera(cached,-1700,4500);valleyA.position.y+=128.3;valleyB.position.y+=128.3;
+  original.updateMeadow(valleyA,{deferPools:true});cached.updateMeadow(valleyB,{deferPools:true});assert.equal(requests.length,0,'valley entry requests no finite forest payload');assert.equal(cached.meadowRootCache.stats.status,'dormant');
+  const [x,z]=manifest.anchors[0],a=camera(original,x,z),b=camera(cached,x,z);
+  original.updateMeadow(a,{deferPools:true});cached.updateMeadow(b,{deferPools:true});pending=cached.meadowRootCache.pending;assert.ok(pending,'real updateMeadow starts destination preparation');assert.equal(await pending,true,cached.meadowRootCache.stats.reason);
+  prepare(original,a);prepare(cached,b);
+  assert.equal(requests.length,2);assert.match(requests[0],/meadow-roots-38\.json$/);assert.match(requests[1],/meadow-roots-38\.bin\.gz\?v=/);
+  assert.equal(cached.grassTiles.size,54);assert.equal(cached.stats.grassTufts,19403);assert.equal(cached.stats.grassPending,0);assert.ok(cached.meadowRootCache.stats.hits>=52,'at most the first two tiles use the existing generator while fetch is pending');
+  for(const [key,tile]of original.grassTiles){const t=cached.grassTiles.get(key);assert.deepEqual(t.list.map(rootData),tile.list.map(rootData),key+' every root and procedural geometry');for(let i=0;i<tile.meshes.length;i++){const ga=t.meshes[i],gb=tile.meshes[i];if(!gb){assert.equal(ga,gb);continue;}assert.deepEqual(bytes(ga.instanceMatrix.array),bytes(gb.instanceMatrix.array),key+' matrices');assert.deepEqual(rows(ga),rows(gb),key+' fields');assert.deepEqual(ga.boundingBox,gb.boundingBox);assert.deepEqual(ga.boundingSphere,gb.boundingSphere);assert.equal(ga.count,gb.count);assert.equal(ga.castShadow,gb.castShadow);}}
+  assert.deepEqual(bytes(cached.baseGrass.mesh.instanceMatrix.array),bytes(original.baseGrass.mesh.instanceMatrix.array));assert.deepEqual(rows(cached.baseGrass.mesh),rows(original.baseGrass.mesh));
+  cached.updateMeadow(camera(cached,-1700,4500),{deferPools:true});assert.equal(cached.meadowRootCache.stats.active,false);cached.updateMeadow(camera(cached,x,z),{deferPools:true});assert.equal(requests.length,2,'return uses the verified payload without refetch');
+ }finally{original.dispose();cached.dispose();}
+});
