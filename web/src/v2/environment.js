@@ -7,6 +7,7 @@ import {installShadowReceiverFootprint} from "./shadow-receiver-footprint.js";
 import {installCloseShadowOverlap,installCloseShadowOverlapShader} from "./close-shadow-overlap.js";
 import { installSharedOrmSampler, sharedOrmSamplerEligible } from './shared-orm-sampler.js';
 import {createNearShadowDetail,configureNearShadowDetail} from './near-shadow-detail.js';
+import {localShadowWindow72Enabled} from './local-shadow-policy72.js';
 import * as THREE from "three";
 import { Sky } from "three/addons/objects/Sky.js";
 import { CSM } from "three/addons/csm/CSM.js";
@@ -56,7 +57,7 @@ export class WorldEnvironment {
     this.pmrem=new THREE.PMREMGenerator(renderer);this.pmrem.compileCubemapShader();
     const requestedShadowMode=new URLSearchParams(globalThis.location?.search||"").get("nearShadowDetail")||"auto";
     const atlas40=nearShadowAtlas40Capability(renderer,{mode:requestedShadowMode,cloudArray:!!this.clouds.uCloudCacheArray});
-    this.nearShadowDetail=createNearShadowDetail({...renderer.capabilities,sharedOrmSampler:true,cloudArraySampler:!!this.clouds.uCloudCacheArray,nearShadowAtlas40:atlas40},requestedShadowMode);
+    this.nearShadowDetail=createNearShadowDetail({...renderer.capabilities,sharedOrmSampler:true,cloudArraySampler:!!this.clouds.uCloudCacheArray,nearShadowAtlas40:atlas40},requestedShadowMode,{localShadowWindow42:localShadowWindow72Enabled()});
     this.csm=new CSM({camera,parent:scene,cascades:this.nearShadowDetail.cascades,maxFar:500,mode:"custom",customSplitsCallback:this.nearShadowDetail.customSplitsCallback,shadowMapSize:this.nearShadowDetail.shadowMapSize,shadowBias:shadowDepthBias(.000002,camera.reversedDepth),lightIntensity:3,lightDirection:new THREE.Vector3(-1,-1,0).normalize(),lightNear:1,lightFar:8000,lightMargin:2000});
     this.csmBacklitSkip=new URLSearchParams(globalThis.location?.search||'').get('csmBacklitSkip')==='1'?{value:1}:null;
     this.csmZeroFadeSkip={value:new URLSearchParams(globalThis.location?.search||'').get('csmZeroFadeSkip')==='1'?1:0};

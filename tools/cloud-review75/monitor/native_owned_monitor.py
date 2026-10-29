@@ -26,6 +26,10 @@ from urllib.parse import urlsplit
 MAX_OUTER_SECONDS = 1320.0
 MAX_RSS_KIB = 2_097_152
 MIN_AVAILABLE_BYTES = 4_500_000_000
+LARGE_SCENE_MAX_RSS_KIB = 3_145_728
+LARGE_SCENE_MIN_AVAILABLE_BYTES = 7_000_000_000
+SOFTWARE_WORLD_MAX_RSS_KIB = 4_194_304
+SOFTWARE_WORLD_MIN_AVAILABLE_BYTES = 8_000_000_000
 REPO_ROOT = Path(__file__).resolve().parents[3]
 WRITABLE_ROOTS = (Path('/tmp'), REPO_ROOT)
 LIMITATIONS = [
@@ -104,6 +108,24 @@ def memory_available(raw: str | None = None) -> int:
     if value < 0:
         raise ValueError('negative MemAvailable')
     return value
+
+
+def memory_limits(tier: str, requested_cap: int | None) -> tuple[int, int, int | None]:
+    """Explicit reviewed tiers only; a CLI cap may tighten, never raise a tier."""
+    if tier == 'standard':
+        maximum, prestart, runtime_floor = MAX_RSS_KIB, MIN_AVAILABLE_BYTES, None
+    elif tier == 'large-scene':
+        maximum, prestart, runtime_floor = (LARGE_SCENE_MAX_RSS_KIB,
+                                           LARGE_SCENE_MIN_AVAILABLE_BYTES, MIN_AVAILABLE_BYTES)
+    elif tier == 'software-world':
+        maximum, prestart, runtime_floor = (SOFTWARE_WORLD_MAX_RSS_KIB,
+                                           SOFTWARE_WORLD_MIN_AVAILABLE_BYTES, MIN_AVAILABLE_BYTES)
+    else:
+        raise ValueError('unknown memory tier')
+    cap = maximum if requested_cap is None else requested_cap
+    if not 1 <= cap <= maximum:
+        raise ValueError(f'RSS cap must be within 1..{maximum} KiB for {tier}')
+    return cap, prestart, runtime_floor
 
 
 def raw_cmdline(pid: int) -> dict:
@@ -239,20 +261,22 @@ def write_json(path: Path, value):
 
 def monitor(child, root: Proc, journal, *, total_deadline: float,
             poll_seconds: float, cleanup_seconds: float, rss_cap_kib: int,
-            cancel_requested, cancel_file: Path, tracker=None) -> dict:
+            cancel_requested, cancel_file: Path, tracker=None,
+            minimum_runtime_available_bytes: int | None = None) -> dict:
     tracker = tracker or Tracker(root)
     run_deadline = total_deadline - cleanup_seconds
     cleanup_deadline = kill_at = None
     reason = None
     emitted = set()
     peak = 0
+    minimum_available = None
     current = []
     unknown = []
     failures = []
     signaled = set()
 
     def sample():
-        nonlocal current, unknown, peak
+        nonlocal current, unknown, peak, minimum_available
         table, errors = process_table()
         current = tracker.observe(table)
         unknown = [e for e in errors if any(key[0] == e['pid'] for key in tracker.owned)]
@@ -267,12 +291,14 @@ def monitor(child, root: Proc, journal, *, total_deadline: float,
             available = memory_available()
         except (OSError, ValueError):
             available = None
+        if available is not None:
+            minimum_available = available if minimum_available is None else min(minimum_available, available)
         journal.emit('sample', owned_rss_kib=rss,
                      original_group_rss_kib=sum(p.rss_kib for p in current if p.live and
                                                p.pgid == root.pgid and p.sid == root.sid),
                      mem_available_bytes=available, processes=[asdict(p) for p in current],
                      proc_scan_errors=errors, unknown_owned=unknown)
-        return rss
+        return rss, available
 
     def send(sig):
         # Younger descendants first; the root is last. Each target has a pidfd.
@@ -288,7 +314,7 @@ def monitor(child, root: Proc, journal, *, total_deadline: float,
                 failures.append({'identity': list(p.identity), 'signal': sig, 'result': result})
 
     while True:
-        rss = sample()
+        rss, available = sample()
         now = time.monotonic()
         root_code = child.poll()  # Reap only our direct child; never waits indefinitely.
         live = [p for p in current if p.live]
@@ -299,6 +325,10 @@ def monitor(child, root: Proc, journal, *, total_deadline: float,
                 reason = 'owned-identity-observation-error'
             elif rss >= rss_cap_kib:
                 reason = 'rss-cap'
+            elif minimum_runtime_available_bytes is not None and available is None:
+                reason = 'system-memory-observation-error'
+            elif minimum_runtime_available_bytes is not None and available < minimum_runtime_available_bytes:
+                reason = 'system-memory-floor'
             elif now >= run_deadline:
                 reason = 'deadline'
             elif root_code is not None and not live:
@@ -331,6 +361,8 @@ def monitor(child, root: Proc, journal, *, total_deadline: float,
     remaining = [asdict(p) for p in current if p.live]
     result = {
         'reason': reason, 'root_returncode': root_code, 'peak_sampled_owned_rss_kib': peak,
+        'minimum_sampled_mem_available_bytes': minimum_available,
+        'minimum_runtime_available_bytes': minimum_runtime_available_bytes,
         'remaining_live_observed_owned': remaining, 'unknown_owned': unknown,
         'no_live_observed_owned_at_final_snapshot': not remaining and not unknown,
         'all_browser_descendants_proven_absent': False,
@@ -421,7 +453,9 @@ def parser():
     p.add_argument('--outer-seconds', default=1320.0, type=float, help='total budget INCLUDING cleanup, at most 1320')
     p.add_argument('--cleanup-seconds', default=10.0, type=float)
     p.add_argument('--poll-seconds', default=1.0, type=float)
-    p.add_argument('--rss-cap-kib', default=MAX_RSS_KIB, type=int, help='may only tighten historic 2097152 KiB cap')
+    p.add_argument('--memory-tier', choices=('standard', 'large-scene', 'software-world'), default='standard',
+                   help='standard: 2 GiB/4.5 GB prestart; explicit large-scene: 3 GiB/7 GB prestart; explicit software-world: 4 GiB/8 GB prestart; both larger tiers retain 4.5 GB runtime floor')
+    p.add_argument('--rss-cap-kib', default=None, type=int, help='may only tighten the selected tier cap; never auto-raised')
     return p
 
 
@@ -429,13 +463,16 @@ def main(argv=None) -> int:
     started = time.monotonic()
     p = parser()
     args = p.parse_args(argv)
+    try:
+        rss_cap, prestart_minimum, runtime_floor = memory_limits(args.memory_tier, args.rss_cap_kib)
+    except ValueError as exc:
+        p.error(str(exc))
     numbers = (args.outer_seconds, args.cleanup_seconds, args.poll_seconds)
     if (not all(math.isfinite(x) for x in numbers)
             or not 0 < args.outer_seconds <= MAX_OUTER_SECONDS
             or not 0.05 <= args.poll_seconds <= 5
             or not 2 * args.poll_seconds + 1 <= args.cleanup_seconds < args.outer_seconds
-            or args.outer_seconds <= args.cleanup_seconds + args.poll_seconds
-            or not 1 <= args.rss_cap_kib <= MAX_RSS_KIB):
+            or args.outer_seconds <= args.cleanup_seconds + args.poll_seconds):
         p.error('invalid finite deadline/poll/cleanup/RSS limits')
     if sys.platform != 'linux' or not hasattr(os, 'pidfd_open') or not hasattr(signal, 'pidfd_send_signal'):
         p.error('Linux /proc plus Python pidfd_open and pidfd_send_signal are required; no unsafe fallback')
@@ -448,8 +485,8 @@ def main(argv=None) -> int:
         available = memory_available()
     except (OSError, ValueError) as exc:
         p.error(str(exc))
-    if available < MIN_AVAILABLE_BYTES:
-        p.error(f'prestart MemAvailable {available} < required {MIN_AVAILABLE_BYTES} bytes')
+    if available < prestart_minimum:
+        p.error(f'prestart MemAvailable {available} < required {prestart_minimum} bytes')
     binary = shutil.which(args.chromium)
     if binary is None:
         p.error('Chromium executable was not found')
@@ -473,8 +510,9 @@ def main(argv=None) -> int:
         'status': 'launch-intent-not-scene-evidence', 'argv': command, 'shell_display_only': shlex.join(command),
         'started_monotonic': started, 'total_deadline_monotonic': deadline,
         'outer_seconds': args.outer_seconds, 'cleanup_seconds': args.cleanup_seconds,
-        'poll_seconds': args.poll_seconds, 'rss_cap_kib': args.rss_cap_kib,
-        'prestart_mem_available_bytes': available, 'minimum_prestart_mem_available_bytes': MIN_AVAILABLE_BYTES,
+        'poll_seconds': args.poll_seconds, 'rss_cap_kib': rss_cap, 'memory_tier': args.memory_tier,
+        'prestart_mem_available_bytes': available, 'minimum_prestart_mem_available_bytes': prestart_minimum,
+        'minimum_runtime_available_bytes': runtime_floor,
         'window_size_request': args.window_size, 'viewport_must_be_visibly_verified': True,
         'full_world_cpu_compositing_requested': args.full_world_cpu_compositing,
         'fresh_environment_dirs': {name: child_env[name] for name in
@@ -492,9 +530,12 @@ def main(argv=None) -> int:
     try:
         with (run_dir / 'browser.log').open('xb') as output:
             launch_available = memory_available()
-            if launch_available < MIN_AVAILABLE_BYTES or cancelled[0]:
+            if launch_available < prestart_minimum or cancelled[0]:
+                journal.emit('launch_prevented', current_mem_available_bytes=launch_available,
+                             minimum_prelaunch_mem_available_bytes=prestart_minimum, cancelled=cancelled[0])
                 raise RuntimeError('prelaunch memory guard or cancellation prevented launch')
-            journal.emit('launching', argv=command, current_mem_available_bytes=launch_available)
+            journal.emit('launching', argv=command, current_mem_available_bytes=launch_available,
+                         minimum_prelaunch_mem_available_bytes=prestart_minimum)
             child = subprocess.Popen(command, stdin=subprocess.DEVNULL, stdout=output, stderr=subprocess.STDOUT,
                                      start_new_session=True, close_fds=True, env=child_env)
             root = read_proc(child.pid)
@@ -505,7 +546,8 @@ def main(argv=None) -> int:
             print(f'Owned launch root PID={root.pid} start_ticks={root.start_ticks}; evidence={run_dir}', flush=True)
             print(f'Cancel with Ctrl+C in this Terminal or create {run_dir / "CANCEL"}; do not kill all Chromium.', flush=True)
             result = monitor(child, root, journal, total_deadline=deadline, poll_seconds=args.poll_seconds,
-                             cleanup_seconds=args.cleanup_seconds, rss_cap_kib=args.rss_cap_kib,
+                             cleanup_seconds=args.cleanup_seconds, rss_cap_kib=rss_cap,
+                             minimum_runtime_available_bytes=runtime_floor,
                              cancel_requested=lambda: cancelled[0], cancel_file=run_dir / 'CANCEL', tracker=tracker)
             write_json(run_dir / 'summary.json', result)
             print(json.dumps(result, sort_keys=True), flush=True)

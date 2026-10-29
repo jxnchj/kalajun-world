@@ -194,6 +194,8 @@ try {
   environment.register(terrain.materials||[terrain.material]);
   const grassShadowCoverage41=new GrassShadowWorld41(renderer,scene,camera,terrain,environment,{ecology});
   const localShadowWindow42=new ShadowWindowRuntime42({world,renderer,environment,camera,terrain,ecology,renderNative:()=>renderWorld(scene,camera)},{enabled:localShadowWindow72Enabled(location.search)});
+  // Bootstrap may fail before kalajunV2 exists; retain its plain diagnostic stats.
+  loadTimings.localShadowWindow42=localShadowWindow42.stats;
   if(softwareReview75)cancelSoftwareReview75=()=>{viewGeneration++;terrain.cancelPreparation();cancelLodgeRetry?.();localShadowWindow42.dispose();};
   progress("读取选定聚落与植物资产…");
   assetsReady??=startAssets();

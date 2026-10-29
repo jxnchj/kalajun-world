@@ -1,0 +1,549 @@
+{
+  "schemaVersion": 1,
+  "updatedUTC": "2026-10-29T10:20:00Z",
+  "status": "INTERMEDIATE_CHECKPOINT_CONFIGURATION_REPAIR_FOCUSED_PASS_DEFAULT_ON_BROWSER_PENDING",
+  "baseCommit": "81995554835581a9c3edbf2a47c94c68e175db18",
+  "validation": {
+    "affectedTests": {
+      "passed": 192,
+      "failed": 0,
+      "source": "backups/cloud75-diagnostics/focused.log",
+      "appliesTo": "Pre-configuration-repair diagnostic source/build used by case05 and case06 only."
+    },
+    "build": {
+      "passed": true,
+      "seconds": 10.22,
+      "source": "backups/cloud75-diagnostics/build.log",
+      "appliesTo": "Pre-configuration-repair diagnostic build; not validation of the in-progress configuration repair."
+    },
+    "lastFullRegression": {
+      "total": 1993,
+      "passed": 1992,
+      "failed": 1,
+      "skipped": 0,
+      "unresolved": "Unchanged terrain.test.js 2500 ms preparation budget. Focused checks do not supersede this failure."
+    },
+    "currentRepairFocusedTests": {
+      "passed": 379,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 40386.638974,
+      "fullSuite": false,
+      "evidence": {
+        "path": "backups/cloud75-contract-fix/focused.log",
+        "bytes": 42891,
+        "sha256": "0e19abddaeeaa8b6f34225ad54ea2c694880260dbea060cfe0dddc766afc2ac9",
+        "delivery": "Retained locally under ignored backups; not published as a raw log/build."
+      }
+    },
+    "currentRepairBuild": {
+      "passed": true,
+      "seconds": 9.73,
+      "directory": "web/dist-cloud75-contract-fix",
+      "script": "assets/v2-0l2TWQV9.js",
+      "evidence": {
+        "path": "backups/cloud75-contract-fix/build.log",
+        "bytes": 18760,
+        "sha256": "5c89bc51a5fc8d365fc431ab160685052fa672b27c95c21f4cc5b93d213a3000",
+        "delivery": "Retained locally under ignored backups; not published as a raw log/build."
+      }
+    },
+    "fullRegressionOnConfigurationRepair": "Not rerun; latest complete result remains the earlier1992/1993 with the original terrain-budget failure."
+  },
+  "case04": {
+    "route": "Default localShadowWindow42 ON; software static QA",
+    "result": "Failed original finite 10-pass local-shadow preparation before any accepted world draw",
+    "error": "Local shadow loading preparation did not settle: captured",
+    "worldFrames": {
+      "completed": 0,
+      "submitted": 0
+    },
+    "preparationFencesCompleted": 11,
+    "actualWorldPixelsVisible": true,
+    "accepted": false,
+    "diagnosticJSONSaved": false,
+    "memory": {
+      "tier": "software-world",
+      "rssCapKiB": 4194304,
+      "peakSampledOwnedRSSKiB": 3532908,
+      "minimumSampledAvailableBytes": 5202243584,
+      "rssOrMemoryFloorTriggered": false
+    },
+    "cleanup": {
+      "finishedUTC": "2026-10-29T08:20:15.670318+00:00",
+      "rootReturnCode": 0,
+      "remainingObservedOwned": [],
+      "unknownOwned": [],
+      "signalFailures": [],
+      "allUnobservedDescendantsProvenAbsent": false
+    },
+    "build": {
+      "mainSourceSHA256": "bcd45a89603244e0d6499d22b9976656cd588acb55b8be34ba90a93d9e7cad84",
+      "script": "assets/v2-Cfexrf6_.js",
+      "scriptSHA256": "bcd3580b4bdacf90189c1e27c860f8a0783c55752f366a0ba24bdc5d73640a81"
+    },
+    "causeLimit": "Neither the cause of the finite preparation failure nor an OS OOM is established. Pixels behind an error overlay and a clean monitor exit do not establish scene acceptance.",
+    "evidence": {
+      "path": "backups/cloud75-baseline/native-world-static-04-result.json",
+      "bytes": 20336,
+      "sha256": "bf3ef5ff5c362a90e378b27e733999d68f802098dba00c01db1f594463b6dac1",
+      "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+    }
+  },
+  "case05": {
+    "route": "Explicit localShadowWindow42=0 rollback only; original native cascaded shadows retained",
+    "navigationUTC": "2026-10-29T09:30:12.213Z",
+    "query": "?view=pastoral-house_a-entry&time=870&softwareReview75=1&profile=1&houseTextiles62=0&boardwalkContactIndex74=0&localShadowWindow42=0",
+    "view": "pastoral-house_a-entry",
+    "timeMinutes": 870,
+    "generation": 1,
+    "phase": "held",
+    "worldFrames": {
+      "completed": 3,
+      "submitted": 3
+    },
+    "preparationFencesCompleted": 2,
+    "completedFrameSimulationSeconds": 0,
+    "ready": true,
+    "preparing": false,
+    "errors": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800,
+      "pixelRatio": 1
+    },
+    "frameTarget": {
+      "enabled": true,
+      "width": 1280,
+      "height": 800,
+      "samples": 4,
+      "colorFormat": "RGBA16F",
+      "depthFormat": "DEPTH_COMPONENT32F",
+      "frames": 3
+    },
+    "depthMode": "reversed-float32",
+    "localShadowWindow42": {
+      "enabled": false,
+      "ready": false,
+      "phase": "idle",
+      "preparations": 0,
+      "last": null
+    },
+    "identityChecks": {
+      "view": true,
+      "position": true,
+      "yaw": true,
+      "pitch": true,
+      "time": true,
+      "viewport": true
+    },
+    "generationMatches": true,
+    "heldSnapshotQueues": {
+      "terrainQueuedTiles": 0,
+      "terrainNearQueuedTiles": 0,
+      "terrainMorphingGroups": 0,
+      "terrainWorkerPending": 0,
+      "ecologyPending": 43,
+      "initialEcologyPending": 45,
+      "grassPending": 0,
+      "wetContactPending": 0,
+      "forestFloorPending": 0,
+      "waterPending": 0,
+      "doorsPending": 0,
+      "roomIndirectPending": {
+        "lodgeDoor": false,
+        "lodgeCross": false,
+        "lodge": false,
+        "household": false,
+        "exteriorTerrain": false,
+        "doorAngles": false,
+        "guestDoors41": false,
+        "doors": false,
+        "legacyOpeningPrefetch": 0
+      }
+    },
+    "ecologyInterpretation": {
+      "pending": 43,
+      "attribution": "Source inspection of WorldEcology.update plus zero grass/forest-floor/reach-bank pending fields identifies the remaining far-tree tile queue.",
+      "castShadow": false,
+      "sourceReferences": [
+        "web/src/v2/ecology.js:1042-1069",
+        "web/src/v2/far-tree-batches.js:43-83",
+        "web/src/v2/far-tree-batches.test.js:28-36"
+      ],
+      "limitation": "A non-casting far-tree queue is still unfinished work. All queues settled and full quality acceptance are not established."
+    },
+    "otherLimits": {
+      "reachBankCoverPrepared42": {
+        "enabled": true,
+        "status": "fallback",
+        "ready": false,
+        "reason": "signal is aborted without reason",
+        "responseBytes": 0,
+        "rawBytes": 0,
+        "elapsedMs": 10758.699999999255
+      },
+      "waterLocalReflection": {
+        "supported": true,
+        "active": false,
+        "captures": 0,
+        "skipped": 2,
+        "width": 0,
+        "height": 0,
+        "estimatedAttachmentBytes": 0,
+        "lastCalls": 0,
+        "lastTriangles": 0,
+        "lastCPUms": 0,
+        "reason": "no-visible-near-water",
+        "patch": null,
+        "preparedMatrices": true,
+        "depthOrder": {
+          "enabled": false,
+          "active": false,
+          "objects": 0,
+          "unknownGroups": 0,
+          "bucketsPerOctave": 0.5
+        }
+      }
+    },
+    "jsonExport": {
+      "method": "Visible native diagnostic text selected/copied, pasted into a native editor and saved; no hidden extraction.",
+      "validJSON": true,
+      "browserTextByteIdentityProven": false
+    },
+    "memory": {
+      "tier": "software-world",
+      "rssCapKiB": 4194304,
+      "peakSampledOwnedRSSKiB": 3522668,
+      "minimumSampledAvailableBytes": 5233356800
+    },
+    "cleanup": {
+      "finishedUTC": "2026-10-29T09:44:11.572958+00:00",
+      "rootReturnCode": 0,
+      "remainingObservedOwned": [],
+      "unknownOwned": [],
+      "signalFailures": [],
+      "ownedBrowserAndEditorAbsentFromFinalNativeInventory": true,
+      "allUnobservedDescendantsProvenAbsent": false
+    },
+    "build": {
+      "mainSourceSHA256": "c6885d9b1f079e241b301ab78d123c69324a77e40b7a1c8227ca306eedc3ebdf",
+      "shadowRuntimeSourceSHA256": "ffb595fc9d02587576a9856432232b318daf358cc8f7b1f88c2a5c3d740b5b2f",
+      "reviewUISourceSHA256": "920e7ef0243e3166d013b8c59b069dfeace33e0a725fb89077e7d6545c4d8353",
+      "monitorSHA256": "6335eec4311d9934637657246fe2e5c4f93650dd52f34f55663960175255c8b4",
+      "servedResources": [
+        {
+          "path": "v2.html",
+          "http_status": 200,
+          "local_bytes": 3283,
+          "served_bytes": 3283,
+          "local_sha256": "09f95d1e9f97780892042fac106e3a36927ec48f94e9f6d005ff66f05141efde",
+          "served_sha256": "09f95d1e9f97780892042fac106e3a36927ec48f94e9f6d005ff66f05141efde",
+          "exact_match": true
+        },
+        {
+          "path": "assets/v2-CvCtrt6M.js",
+          "http_status": 200,
+          "local_bytes": 3321829,
+          "served_bytes": 3321829,
+          "local_sha256": "2ef9bb469bc43a1980d301e9039e4aa44b4feaf6b301d7f502af4fe038ceb9e5",
+          "served_sha256": "2ef9bb469bc43a1980d301e9039e4aa44b4feaf6b301d7f502af4fe038ceb9e5",
+          "exact_match": true
+        }
+      ]
+    },
+    "evidence": [
+      {
+        "path": "backups/cloud75-baseline/native-world-static-05-result.json",
+        "bytes": 15714,
+        "sha256": "847902d2113207b82d804a78c05e4408806fe19528198d795b259a53b313d5e3",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-05-shadow0/kalajun-software-review75-case05-shadow0-held3.json",
+        "bytes": 116093,
+        "sha256": "10fa82df9b3f6f03c8c755c8d3923fb0155896795157cff4e463c930bb7d85f3",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-05-shadow0/world-final-held3-shadow0-native.jpg",
+        "bytes": 204678,
+        "sha256": "4c0cc88182d51760dce5b3484ba997dfeb401092cee5fe92b07cdfe2dad8e50e",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      }
+    ]
+  },
+  "case06": {
+    "route": "Default-equivalent explicit localShadowWindow42=1; no nearShadowDetail override",
+    "result": "Failed startup before accepted world draw; actual startup diagnostic captured",
+    "navigationUTC": "2026-10-29T09:48:09.984Z",
+    "query": "view=pastoral-house_a-entry&time=870&softwareReview75=1&profile=1&houseTextiles62=0&boardwalkContactIndex74=0&localShadowWindow42=1",
+    "sameDiagnosticBuildAsCase05": true,
+    "softwareReview75": {
+      "enabled": true,
+      "mode": "finite-software-QA-NOT-realtime-performance",
+      "backend": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "vendor": "Google Inc. (Google)",
+        "context": {
+          "screenAntialias": false,
+          "requestedScreenAntialias": false,
+          "worldTargetSamples": 4,
+          "probeEligible": true,
+          "fallback": false
+        }
+      },
+      "phase": "failed",
+      "submittedWorldFrames": 0,
+      "completedWorldFrames": 0,
+      "completedPreparationFences": 11,
+      "remaining": 0,
+      "inFlight": false,
+      "reserved": false,
+      "inputGapMs": 0,
+      "fenceTimeoutMs": 210000,
+      "completedFrameSimulationSeconds": 0,
+      "stepSeconds": 0,
+      "lastCompleted": null,
+      "error": "Local shadow loading preparation did not settle: controller=Original 4096 shadow required; native=captured; owner=no-owner; failure=Original 4096 shadow required"
+    },
+    "failure": {
+      "lastFailurePhase": "views",
+      "message": "Original 4096 shadow required",
+      "observedPassCount": 10,
+      "nativeSubmissionsReadyEveryPass": true,
+      "nativeSubmissionFailuresEveryPass": 0,
+      "nativeRevisionEveryPass": 76,
+      "ownerNullEveryPass": true,
+      "changedCountEveryPass": 0,
+      "finalSubmissionSummary": {
+        "ready": true,
+        "revision": 76,
+        "passes": 20,
+        "captures": 10,
+        "draws": 76,
+        "sources": 76,
+        "failures": 0,
+        "cameraId70": 4,
+        "reason": "captured"
+      }
+    },
+    "export": {
+      "topLevelKeys": [
+        "loadTimings",
+        "softwareReview75"
+      ],
+      "validJSON": true,
+      "bytes": 32594,
+      "readyWorldSnapshot": false,
+      "lastCompleted": null,
+      "browserTextByteIdentityProven": false
+    },
+    "memory": {
+      "peakSampledOwnedRSSKiB": 3457032,
+      "minimumSampledAvailableBytes": 5300285440,
+      "rssOrMemoryFloorTriggered": false
+    },
+    "cleanup": {
+      "finishedUTC": "2026-10-29T10:04:16.392461+00:00",
+      "rootReturnCode": 0,
+      "remainingObservedOwned": [],
+      "unknownOwned": [],
+      "signalFailures": [],
+      "ownedBrowserAndEditorAbsentFromFinalNativeInventory": true,
+      "allUnobservedDescendantsProvenAbsent": false
+    },
+    "build": {
+      "mainSourceSHA256": "c6885d9b1f079e241b301ab78d123c69324a77e40b7a1c8227ca306eedc3ebdf",
+      "shadowRuntimeSourceSHA256": "ffb595fc9d02587576a9856432232b318daf358cc8f7b1f88c2a5c3d740b5b2f",
+      "reviewUISourceSHA256": "920e7ef0243e3166d013b8c59b069dfeace33e0a725fb89077e7d6545c4d8353",
+      "monitorSHA256": "6335eec4311d9934637657246fe2e5c4f93650dd52f34f55663960175255c8b4",
+      "servedResources": [
+        {
+          "path": "v2.html",
+          "http_status": 200,
+          "local_bytes": 3283,
+          "served_bytes": 3283,
+          "local_sha256": "09f95d1e9f97780892042fac106e3a36927ec48f94e9f6d005ff66f05141efde",
+          "served_sha256": "09f95d1e9f97780892042fac106e3a36927ec48f94e9f6d005ff66f05141efde",
+          "exact_match": true
+        },
+        {
+          "path": "assets/v2-CvCtrt6M.js",
+          "http_status": 200,
+          "local_bytes": 3321829,
+          "served_bytes": 3321829,
+          "local_sha256": "2ef9bb469bc43a1980d301e9039e4aa44b4feaf6b301d7f502af4fe038ceb9e5",
+          "served_sha256": "2ef9bb469bc43a1980d301e9039e4aa44b4feaf6b301d7f502af4fe038ceb9e5",
+          "exact_match": true
+        }
+      ]
+    },
+    "evidence": [
+      {
+        "path": "backups/cloud75-baseline/native-world-static-06-result.json",
+        "bytes": 39985,
+        "sha256": "a975ba6eaed84befacb699da850dacaaca9a42e5393c3025a0b3216966f3160a",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-06-shadow1-diagnostic/kalajun-software-review75-case06-shadow1-failed.json",
+        "bytes": 32594,
+        "sha256": "06d79156dead732d52f64deb8e54a9b526ae0508eb551dbde4d175e9b15f503d",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-06-shadow1-diagnostic/world-final-failed-native.jpg",
+        "bytes": 224198,
+        "sha256": "8e6a70be7ed7ed7a7f7512aa359491a9e58465b74a8fea64454fdc1143c5c827",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      }
+    ],
+    "limits": [
+      "Startup-failure export is not a ready-world snapshot: no lastCompleted pose/generation or settled queue claim.",
+      "Pixels behind the error overlay came from preparation rendering, not accepted completed static world draws.",
+      "Do not attribute this failure to OOM, context loss, a fence timeout, native source changes or a quality pass."
+    ]
+  },
+  "limits": [
+    "Case04 predates the added source diagnostics, while case05 uses the diagnostic build; these two runs are not a same-build ON/OFF performance or causal comparison.",
+    "The three initial completed static draws comprise the original first main draw followed by the original world/reflection route; no motion or extra drain frames were requested.",
+    "Recorded queue values come from the held diagnostic snapshot, not per-fence embedded queue counters.",
+    "Case05 validates only the specified OFF rollback static path. Default ON failure remains unresolved; no default adoption, full quality acceptance, real-time FPS, ABBA loading benefit, deployment or phase completion is claimed.",
+    "RSS is sampled summed process memory; shared pages and between-poll peaks limit interpretation. The monitor is not a cgroup hard cap."
+  ],
+  "configurationDiagnosis": {
+    "classification": "Source-backed configuration incompatibility explaining the observed owner construction rejection; not a performance result",
+    "baseline": "8ea4753192ac8941954c8af3696a766da7adc72f",
+    "sourceFacts": [
+      "Without nearShadowDetail, environment selects auto.",
+      "On the observed 32-fragment-sampler capability, auto selects cascade with 2048 maps.",
+      "localShadowWindow42 defaults enabled when omitted.",
+      "The local-window owner rejects a native first shadow map other than 4096x4096."
+    ],
+    "sourceBlobs": {
+      "web/src/v2/environment.js": "9053c2f30dbade3fec7e65804b2883007632c723",
+      "web/src/v2/near-shadow-detail.js": "4f14d6fce8b1c329eafb3acbd5d603f22bf42932",
+      "web/src/v2/local-shadow-policy72.js": "2a46e4901f31c0ed6590be6969d26aac297b66c3",
+      "web/src/v2/shadow-window-coverage42.js": "c4d1ffe20129867c1f8bf1930270b62dfef55039"
+    },
+    "scope": "The incompatible defaults already coexist in 8ea4753. The documented no-nearShadowDetail route is valid default input, not an omitted required parameter.",
+    "telemetryLimit": "Case06 startup JSON directly records the 4096 requirement rejection and null owners; the auto/cascade selection explanation is a source inference, corroborated by case05 same-build capability/cascade telemetry."
+  },
+  "configurationRepair": {
+    "status": "Implemented;379 focused tests and build pass; default-ON native acceptance pending",
+    "sourceFiles": [
+      {
+        "path": "web/src/v2/environment.js",
+        "sha256": "9d6771c6a4c8ced8e8729305906a23be143ef8abc9acd86f6d25c1d371c9c8e8"
+      },
+      {
+        "path": "web/src/v2/near-shadow-detail.js",
+        "sha256": "3a5a8ba2d0b705251b35426fed87327f6d1d5f07f5f102d0d1c31caa60476e5d"
+      },
+      {
+        "path": "web/src/v2/near-shadow-local-contract75.test.js",
+        "sha256": "4c80b41c1c6ee8f8327c105bf1a0296f70038de901d7c6828674d08c652619aa"
+      }
+    ],
+    "behavior": [
+      "Environment passes the existing localShadowWindow42 policy to near-shadow configuration.",
+      "When local ON is selected, preserve the current cascade layout and existing mode choice but require the nearest original native map to be4096.",
+      "Preserve other cascade map sizes, splits, distant poses and bias; local OFF retains the prior policy.",
+      "Reject unsupported4096 map size or4xMSAA capabilities explicitly instead of silently disabling the owner or accepting clamped maps.",
+      "Per-map snapping applies only where map resolution differs from the CSM global resolution."
+    ],
+    "tests": {
+      "implementationAdjacent": "88/88 passed",
+      "independentReview": "20/20 passed, plus independent old-HEAD differential covering896 OFF combinations; not additional full-suite counts",
+      "currentBroaderFocused": "379/379 passed,0skipped; not full suite"
+    },
+    "memoryCost": {
+      "nearestMapBefore": 2048,
+      "nearestMapAfter": 4096,
+      "additionalDepthBytesLowerBound": 50331648,
+      "additionalDepthMiBLowerBound": 48,
+      "measuredVRAM": false,
+      "caveat": "Only the4-byte depth lower bound; driver storage and other attachments are additional. No measured browser-memory or fit guarantee."
+    },
+    "bindingAudit": {
+      "closures": [
+        {
+          "generator": "terrainPreparedCodeBinding42",
+          "signature": "08764a921660fc6a6a5253cf7c05ca37226979382f23a597fe6efcf721ee4b90",
+          "sourceCount": 41,
+          "changedInClosure": [],
+          "policyInClosure": []
+        },
+        {
+          "generator": "meadowRootCodeBinding",
+          "signature": "11700f7961d897c78ed4c43dc38eae52a2bf969f45f567433fc3cc6d538ee56d",
+          "sourceCount": 67,
+          "changedInClosure": [],
+          "policyInClosure": []
+        },
+        {
+          "generator": "forestRootCodeBinding",
+          "signature": "ce3a7617216ab620b3607d388e0440c17eb89ba45206bb478f15a881ed3ca97e",
+          "sourceCount": 26,
+          "changedInClosure": [],
+          "policyInClosure": []
+        },
+        {
+          "generator": "reachCoverPreparedCode42",
+          "signature": "f6bc54fc58dfe3c38f2c78640196d0ee0cb8d59fda7bc259e2d321c818086d1e",
+          "sourceCount": 83,
+          "changedInClosure": [],
+          "policyInClosure": [
+            "src/v2/local-shadow-policy72.js"
+          ]
+        },
+        {
+          "generator": "structurePreparedBinding",
+          "signature": "5e18bda9e030b3530c42f93d0bb9da0fabbd08485c492799e247571213c36943",
+          "sourceCount": 45,
+          "changedInClosure": [],
+          "policyInClosure": []
+        }
+      ],
+      "regenerationRequired": false,
+      "evidence": {
+        "path": "backups/cloud75-baseline/near-shadow-contract75/binding-check.json",
+        "bytes": 1851,
+        "sha256": "115bae37e9a7a69dd3bdbea6880a4ddf4aac3e006432ddd1c00a8cd83a65cfea",
+        "delivery": "Retained locally under ignored backups; not published as a raw log/build."
+      }
+    },
+    "browserAccepted": false,
+    "fullSuiteRerun": false
+  },
+  "case07": {
+    "status": "RUNNING_AT_CHECKPOINT_CUTOFF_NO_TERMINAL_RESULT",
+    "scope": "New configuration-repair build; localShadowWindow42 parameter omitted to exercise the default; unchanged4GiB tier and original finite time limits; initial three frames only",
+    "notClaimed": [
+      "GPU-completed frames",
+      "held state",
+      "settled queues",
+      "default-ON quality acceptance",
+      "memory success",
+      "phase completion"
+    ],
+    "checkpointCutoffUTC": "2026-10-29T10:20:00Z",
+    "navigationUTC": "2026-10-29T10:19:22Z",
+    "outerDeadlineUTC": "2026-10-29T10:40:03Z",
+    "sourceTransport": {
+      "nativeHTTPBytesMatchNewBuild": true,
+      "scope": "Static HTTP source identity only, not scene completion"
+    },
+    "preflight": {
+      "viewport": [
+        1280,
+        800
+      ],
+      "devicePixelRatio": 1,
+      "hdr4xPassed": true,
+      "scope": "Capability/preflight evidence only, not world acceptance"
+    },
+    "runtimeResult": "Pending; later observations belong to a subsequent checkpoint."
+  }
+}

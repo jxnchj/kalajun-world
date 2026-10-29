@@ -1,0 +1,649 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-29T08:01:03.904194+00:00",
+  "code_head": "81995554835581a9c3edbf2a47c94c68e175db18",
+  "scope": "Read-only startup source/asset audit, with report artifacts written separately; no application changes, browser launch, runtime experiment, heavy computation, or optimization validation.",
+  "units": {
+    "MiB": 1048576,
+    "KiB": 1024,
+    "RSS": "sampled owned-process sum, not unique physical memory"
+  },
+  "sources": [
+    {
+      "path": "web/src/v2/main.js",
+      "bytes": 52284,
+      "sha256": "bcd45a89603244e0d6499d22b9976656cd588acb55b8be34ba90a93d9e7cad84"
+    },
+    {
+      "path": "web/src/v2/world-data.js",
+      "bytes": 26473,
+      "sha256": "40da3beff7dfff4cbc7319a75d87b141034a4f7315c8d87ad1ad6e8a205d5a6c"
+    },
+    {
+      "path": "web/src/v2/hydrology.js",
+      "bytes": 24579,
+      "sha256": "e84f59e51234513125c585783cfe5ee41de0655b61765ee3505ca709aa8824c3"
+    },
+    {
+      "path": "web/src/v2/valley-bank-roots.js",
+      "bytes": 3316,
+      "sha256": "93c60e0d7a2719315f0970d7ce1e6412e602de0c95eebf4514ae2f4016d10e61"
+    },
+    {
+      "path": "web/src/v2/terrain-row-worker-client.js",
+      "bytes": 7024,
+      "sha256": "69405d11698617f39480cabf77e93f601911c1a2de79811d3dc9eefd873dab25"
+    },
+    {
+      "path": "web/src/v2/terrain-row-worker.js",
+      "bytes": 694,
+      "sha256": "c94ffe3a1aa613de19bf11a3abe04ec6475c2f2d569f9b28fe160486e3e6b6cc"
+    },
+    {
+      "path": "web/src/v2/spruce-canopy-local.js",
+      "bytes": 10658,
+      "sha256": "37a55a1100ac73f51a8547728c5945da99834186f938c2020662eae261da8acf"
+    },
+    {
+      "path": "web/src/v2/software-review75.js",
+      "bytes": 9832,
+      "sha256": "40c3f5126f72b8ea48a583c973978db7b34efa3ff362bdc2b4698fe98d5fa551"
+    },
+    {
+      "path": "web/src/v2/lodge-tables-field.js",
+      "bytes": 3914,
+      "sha256": "fcd5e537abd72df1488fb92ff35d827d4d5cfa7e2ed466cd10333697527b4be3"
+    },
+    {
+      "path": "web/src/v2/lodge-door-gi.js",
+      "bytes": 6908,
+      "sha256": "1c9fd4a2dbcac8d0d5fba208261fded44165fdfef039f211bcabef6c40eaef01"
+    },
+    {
+      "path": "web/public/data/scene.json",
+      "bytes": 543,
+      "sha256": "647fb70748db6fb905322c18f6359c8dff23a6628e8c15ddfc9277139cb74f52"
+    },
+    {
+      "path": "web/public/data/detail.json",
+      "bytes": 84,
+      "sha256": "c18833ae183f4fb5b1d633642e4c2cae6a6d4045c427f0e9e545759d6c8b754c"
+    },
+    {
+      "path": "web/public/data/streams.json",
+      "bytes": 1450588,
+      "sha256": "f4ef53aec55a24cfdc01920ec72bcc52d1e232f3419ea974652434b3284ea169"
+    },
+    {
+      "path": "web/public/data/objects.json",
+      "bytes": 51929,
+      "sha256": "976e3468bbe4986923b51f298fe029da3d6d5d49df785974f55220ccb19a0825"
+    },
+    {
+      "path": "web/public/world-v2/manifest.json",
+      "bytes": 16564,
+      "sha256": "b4bb2ecf9d28c0ab5655c54ecaeb8e289ce2cf33e0c663f14d845323b0604449"
+    }
+  ],
+  "world_data_assets": [
+    {
+      "path": "web/public/data/core_height.bin.gz",
+      "bytes": 7031514,
+      "sha256": "fdbb6b8ddb3ce142cbf5103e32dd1d8544285b2a362249e9dca2cfd960c8323d",
+      "gzip_isize_bytes": 8388608
+    },
+    {
+      "path": "web/public/data/far_height.bin.gz",
+      "bytes": 1912813,
+      "sha256": "2d8bd1b1fe6fd0bd4c99fcd674125443c59c6e401c52f4c1bdb168f7d04161dc",
+      "gzip_isize_bytes": 2097152
+    },
+    {
+      "path": "web/public/data/detail.bin.gz",
+      "bytes": 3123117,
+      "sha256": "9720d45e333f4c88a4a6dc0923ec6747c3782aa7beb4f780e1886563fe7646b2",
+      "gzip_isize_bytes": 16777216
+    },
+    {
+      "path": "web/public/data/core_landcover.png",
+      "bytes": 866760,
+      "sha256": "b15a42484fce8ff36ce04a9c62f6936e30def1c9c34e83e1717bff3c9564a3ea",
+      "png_dimensions": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "web/public/data/far_landcover.png",
+      "bytes": 558446,
+      "sha256": "1db303b69f58bc25718e607f71028a7d3547bc8e463839a4a3602ef57477b816",
+      "png_dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "raster_backing": {
+    "classification": "exact dimensions-derived unique typed-array backing; not a process-RSS measurement",
+    "retained": [
+      {
+        "name": "core heights",
+        "elements": 4194304,
+        "bytes_per_element": 4,
+        "backing_bytes": 16777216
+      },
+      {
+        "name": "far heights",
+        "elements": 1048576,
+        "bytes_per_element": 4,
+        "backing_bytes": 4194304
+      },
+      {
+        "name": "detail RGBA",
+        "elements": 16777216,
+        "bytes_per_element": 1,
+        "backing_bytes": 16777216
+      },
+      {
+        "name": "core landcover RGBA",
+        "elements": 16777216,
+        "bytes_per_element": 1,
+        "backing_bytes": 16777216
+      },
+      {
+        "name": "far landcover RGBA",
+        "elements": 4194304,
+        "bytes_per_element": 1,
+        "backing_bytes": 4194304
+      }
+    ],
+    "retained_total_bytes": 58720256,
+    "do_not_double_count": [
+      "Uint8Array/DataView wrappers over an existing ArrayBuffer",
+      "makeRaster containers",
+      "world/surface and baseline-world references sharing the same raster backing"
+    ],
+    "temporaries": [
+      {
+        "name": "decoded Uint16 core/far source bytes",
+        "bytes": 10485760,
+        "classification": "exact size; live interval overlaps Float32 conversion, GC timing unknown"
+      },
+      {
+        "name": "PNG canvases",
+        "bytes": 20971520,
+        "classification": "dimensions-derived RGBA pixel backing estimate; actual browser allocation and release unknown"
+      },
+      {
+        "name": "PNG bitmaps",
+        "bytes": 20971520,
+        "classification": "dimensions-derived RGBA pixel backing estimate; closed in finally; actual internal representation unknown"
+      },
+      {
+        "name": "gzip input buffers",
+        "bytes": 12067444,
+        "classification": "exact file lengths, fetch/GC schedule unknown"
+      },
+      {
+        "name": "Blob snapshots of gzip input",
+        "bytes": 12067444,
+        "classification": "possible additional same-sized storage; implementation may share/copy; not measured unique residency"
+      }
+    ],
+    "limitation": "Temporary categories are not summed into a claimed observed peak; overlap, GC, decompressor internals, JSON/JS objects and browser overhead are unknown."
+  },
+  "static_build_graphs": [
+    {
+      "build_path": "web/dist-cloud75",
+      "entry": "./assets/v2-DFetic-P.js",
+      "classification": "on-disk static import closure; not measured browser heap or network residency",
+      "chunk_count": 12,
+      "total_file_bytes": 3732191,
+      "chunks": [
+        {
+          "path": "web/dist-cloud75/assets/v2-DFetic-P.js",
+          "bytes": 3307800,
+          "sha256": "a231c6ecb44083355a99d33b7a82b09fe63f6a35c814b9038c6fa44dbf2141dc",
+          "static_dependencies": [
+            "web/dist-cloud75/assets/three.core-C1Ec1eIT.js",
+            "web/dist-cloud75/assets/preparation-yield-DwecNgqv.js",
+            "web/dist-cloud75/assets/reach-design69-DlmEZXyR.js",
+            "web/dist-cloud75/assets/GLTFLoader-CCedo_3W.js",
+            "web/dist-cloud75/assets/reach-design73-DlFpZQav.js",
+            "web/dist-cloud75/assets/preload-helper-uBIymjUX.js",
+            "web/dist-cloud75/assets/shader-readiness-B9Pt8t8R.js",
+            "web/dist-cloud75/assets/lodge-door-gi-BdohwzXr.js",
+            "web/dist-cloud75/assets/lodge-tables-definition-Bu54giZ_.js",
+            "web/dist-cloud75/assets/lodge-chairs-definition-DSbKeoZR.js",
+            "web/dist-cloud75/assets/lodge-furniture-definition-DG-jyjIS.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75/assets/three.core-C1Ec1eIT.js",
+          "bytes": 257493,
+          "sha256": "f11dc242e6c786df810a764b3ad512fa8eef464c8031553736a3c994501f8aaf",
+          "static_dependencies": []
+        },
+        {
+          "path": "web/dist-cloud75/assets/GLTFLoader-CCedo_3W.js",
+          "bytes": 51964,
+          "sha256": "0fcbb3d2ab1ab0f18b766ddf3a843781d037ccb5bbabb55c9c4f383d9cad4cc0",
+          "static_dependencies": [
+            "web/dist-cloud75/assets/three.core-C1Ec1eIT.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75/assets/reach-design69-DlmEZXyR.js",
+          "bytes": 36664,
+          "sha256": "20b8279a71878801ffd4147bc743dca1bd0cb0f1a833d358d4e8495bd47a02c4",
+          "static_dependencies": []
+        },
+        {
+          "path": "web/dist-cloud75/assets/lodge-door-gi-BdohwzXr.js",
+          "bytes": 32133,
+          "sha256": "c02e7e253a583d6e2cb21df4a9a09efc3f5f42ea65cadca64a01c16c984bfc75",
+          "static_dependencies": [
+            "web/dist-cloud75/assets/three.core-C1Ec1eIT.js",
+            "web/dist-cloud75/assets/preload-helper-uBIymjUX.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75/assets/lodge-tables-definition-Bu54giZ_.js",
+          "bytes": 31135,
+          "sha256": "dfce4cc3582db693c6ca8e37306ab37fbc95dc0c1e30e4c340dd089555f448c4",
+          "static_dependencies": [
+            "web/dist-cloud75/assets/lodge-door-gi-BdohwzXr.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75/assets/shader-readiness-B9Pt8t8R.js",
+          "bytes": 4691,
+          "sha256": "2e884455d2be699d92158cb189161ad9f51d8aae3124224c57f4d883aa5861b4",
+          "static_dependencies": []
+        },
+        {
+          "path": "web/dist-cloud75/assets/lodge-chairs-definition-DSbKeoZR.js",
+          "bytes": 2942,
+          "sha256": "d50b75030202f00815de65ada53525cfbdb88d3bf445a7d2eebc3e5d6915956e",
+          "static_dependencies": [
+            "web/dist-cloud75/assets/lodge-door-gi-BdohwzXr.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75/assets/reach-design73-DlFpZQav.js",
+          "bytes": 2680,
+          "sha256": "0b31580672bf52ca39dc6075e38a95f2335c052625614ef8f0aaad52901e67e9",
+          "static_dependencies": [
+            "web/dist-cloud75/assets/reach-design69-DlmEZXyR.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75/assets/lodge-furniture-definition-DG-jyjIS.js",
+          "bytes": 2658,
+          "sha256": "892b7bba08cecb6b9e798922262bf331bcd211239f83f1fd35b188a98b27f3f2",
+          "static_dependencies": [
+            "web/dist-cloud75/assets/lodge-door-gi-BdohwzXr.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75/assets/preload-helper-uBIymjUX.js",
+          "bytes": 1233,
+          "sha256": "e1a22f3f73566f21ff932e058d32243e4a118f3491b91e96893aa5ab7eb49a00",
+          "static_dependencies": []
+        },
+        {
+          "path": "web/dist-cloud75/assets/preparation-yield-DwecNgqv.js",
+          "bytes": 798,
+          "sha256": "a085d4521424cc5434d440429738f000352c8e2ec244946fe31b6712ae9160f9",
+          "static_dependencies": []
+        }
+      ]
+    },
+    {
+      "build_path": "web/dist-cloud75-review",
+      "entry": "./assets/v2-Cfexrf6_.js",
+      "classification": "on-disk static import closure; not measured browser heap or network residency",
+      "chunk_count": 12,
+      "total_file_bytes": 3743552,
+      "chunks": [
+        {
+          "path": "web/dist-cloud75-review/assets/v2-Cfexrf6_.js",
+          "bytes": 3319161,
+          "sha256": "bcd3580b4bdacf90189c1e27c860f8a0783c55752f366a0ba24bdc5d73640a81",
+          "static_dependencies": [
+            "web/dist-cloud75-review/assets/three.core-C1Ec1eIT.js",
+            "web/dist-cloud75-review/assets/preparation-yield-DwecNgqv.js",
+            "web/dist-cloud75-review/assets/reach-design69-DlmEZXyR.js",
+            "web/dist-cloud75-review/assets/GLTFLoader-CCedo_3W.js",
+            "web/dist-cloud75-review/assets/reach-design73-DlFpZQav.js",
+            "web/dist-cloud75-review/assets/preload-helper-uBIymjUX.js",
+            "web/dist-cloud75-review/assets/shader-readiness-B9Pt8t8R.js",
+            "web/dist-cloud75-review/assets/lodge-door-gi-BdohwzXr.js",
+            "web/dist-cloud75-review/assets/lodge-tables-definition-Bu54giZ_.js",
+            "web/dist-cloud75-review/assets/lodge-chairs-definition-DSbKeoZR.js",
+            "web/dist-cloud75-review/assets/lodge-furniture-definition-DG-jyjIS.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/three.core-C1Ec1eIT.js",
+          "bytes": 257493,
+          "sha256": "f11dc242e6c786df810a764b3ad512fa8eef464c8031553736a3c994501f8aaf",
+          "static_dependencies": []
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/GLTFLoader-CCedo_3W.js",
+          "bytes": 51964,
+          "sha256": "0fcbb3d2ab1ab0f18b766ddf3a843781d037ccb5bbabb55c9c4f383d9cad4cc0",
+          "static_dependencies": [
+            "web/dist-cloud75-review/assets/three.core-C1Ec1eIT.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/reach-design69-DlmEZXyR.js",
+          "bytes": 36664,
+          "sha256": "20b8279a71878801ffd4147bc743dca1bd0cb0f1a833d358d4e8495bd47a02c4",
+          "static_dependencies": []
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/lodge-door-gi-BdohwzXr.js",
+          "bytes": 32133,
+          "sha256": "c02e7e253a583d6e2cb21df4a9a09efc3f5f42ea65cadca64a01c16c984bfc75",
+          "static_dependencies": [
+            "web/dist-cloud75-review/assets/three.core-C1Ec1eIT.js",
+            "web/dist-cloud75-review/assets/preload-helper-uBIymjUX.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/lodge-tables-definition-Bu54giZ_.js",
+          "bytes": 31135,
+          "sha256": "dfce4cc3582db693c6ca8e37306ab37fbc95dc0c1e30e4c340dd089555f448c4",
+          "static_dependencies": [
+            "web/dist-cloud75-review/assets/lodge-door-gi-BdohwzXr.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/shader-readiness-B9Pt8t8R.js",
+          "bytes": 4691,
+          "sha256": "2e884455d2be699d92158cb189161ad9f51d8aae3124224c57f4d883aa5861b4",
+          "static_dependencies": []
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/lodge-chairs-definition-DSbKeoZR.js",
+          "bytes": 2942,
+          "sha256": "d50b75030202f00815de65ada53525cfbdb88d3bf445a7d2eebc3e5d6915956e",
+          "static_dependencies": [
+            "web/dist-cloud75-review/assets/lodge-door-gi-BdohwzXr.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/reach-design73-DlFpZQav.js",
+          "bytes": 2680,
+          "sha256": "0b31580672bf52ca39dc6075e38a95f2335c052625614ef8f0aaad52901e67e9",
+          "static_dependencies": [
+            "web/dist-cloud75-review/assets/reach-design69-DlmEZXyR.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/lodge-furniture-definition-DG-jyjIS.js",
+          "bytes": 2658,
+          "sha256": "892b7bba08cecb6b9e798922262bf331bcd211239f83f1fd35b188a98b27f3f2",
+          "static_dependencies": [
+            "web/dist-cloud75-review/assets/lodge-door-gi-BdohwzXr.js"
+          ]
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/preload-helper-uBIymjUX.js",
+          "bytes": 1233,
+          "sha256": "e1a22f3f73566f21ff932e058d32243e4a118f3491b91e96893aa5ab7eb49a00",
+          "static_dependencies": []
+        },
+        {
+          "path": "web/dist-cloud75-review/assets/preparation-yield-DwecNgqv.js",
+          "bytes": 798,
+          "sha256": "a085d4521424cc5434d440429738f000352c8e2ec244946fe31b6712ae9160f9",
+          "static_dependencies": []
+        }
+      ]
+    }
+  ],
+  "hydrology": {
+    "source_lines": 219,
+    "source_points": 62637,
+    "source_segments": 62418,
+    "initial_source_index_insert_references_per_hydrology": 155538,
+    "count_method": "Source file scan and hydrology insert bounds formula only; createWorldData/createHydrology was not executed.",
+    "default_graphs_per_world": 2,
+    "source": "web/src/v2/hydrology.js:58-68,298",
+    "requirement": "Preserve both current and baseline valleySource graphs: valley-bank-roots.js uses baseline geometry to retain source roots/placement.",
+    "heap_bytes": "unknown; reference/node counts are not unique heap-byte estimates",
+    "later_worker": {
+      "source": "web/src/v2/main.js:158-168; terrain-row-worker-client.js:28; terrain-row-worker.js:6",
+      "cloned_raster_bytes": 58720256,
+      "graphs_rebuilt": 2,
+      "phase": "after main worldData and terrainCoarse, not before worldData completion",
+      "warning": "Ordinary transfer would detach main-world inputs; no transfer/removal proposed."
+    }
+  },
+  "large_asset_boundary": {
+    "runtime_asset_examples": [
+      {
+        "path": "web/public/assets/v2/gh_lanchuan_lodge_tables38.glb",
+        "file_bytes": 20106596
+      },
+      {
+        "path": "web/public/assets/v2/gh_lanchuan_rooms_living39.glb",
+        "file_bytes": 17060928
+      },
+      {
+        "path": "web/public/assets/v2/lodge-tables-stream38/interior.glb",
+        "file_bytes": 14967892
+      },
+      {
+        "path": "web/public/assets/v2/gh_lanchuan_rooms_vanity38.glb",
+        "file_bytes": 14780020
+      }
+    ],
+    "large_build_chunks": "Approximately 11.8 MB 0-*.js lodge field modules are dynamic fallback GI imports, not initial static imports; lodge-tables-field.js:12,31.",
+    "asset_loading_boundary": "main.js:153,201; structures/ecology/water/pasture asset loads begin after worldData.",
+    "authoring_sources": "Large .blend files are authoring inputs; file size is not evidence that the browser fetches or retains them."
+  },
+  "native_observations": [
+    {
+      "case": "native-world-static-02-default-compositor",
+      "summary_source": {
+        "path": "backups/cloud75-baseline/native-world-static-02-default-compositor/summary.json",
+        "bytes": 1315,
+        "sha256": "1af54ec2e39855232e876a69dab0b312db405049174e886c73b854967c24b1ff"
+      },
+      "events_source": {
+        "path": "backups/cloud75-baseline/native-world-static-02-default-compositor/events.jsonl",
+        "bytes": 274180,
+        "sha256": "7a5692491c72f6a494b4a2c6318c024b15752658b7474a7ee2ebc650cc466d09"
+      },
+      "termination_reason": "rss-cap",
+      "peak_sampled_owned_rss_kib": 2162368,
+      "minimum_sampled_mem_available_bytes": null,
+      "peak_sample_utc": "2026-10-29T07:32:58.885834+00:00",
+      "mem_available_at_peak_bytes": 6690025472,
+      "peak_process_rss_kib": [
+        {
+          "pid": 1709,
+          "rss_kib": 1413496
+        },
+        {
+          "pid": 1571,
+          "rss_kib": 181536
+        },
+        {
+          "pid": 1527,
+          "rss_kib": 168804
+        },
+        {
+          "pid": 1699,
+          "rss_kib": 114092
+        },
+        {
+          "pid": 1574,
+          "rss_kib": 63828
+        },
+        {
+          "pid": 1548,
+          "rss_kib": 50816
+        },
+        {
+          "pid": 1549,
+          "rss_kib": 50816
+        },
+        {
+          "pid": 1774,
+          "rss_kib": 45972
+        },
+        {
+          "pid": 1764,
+          "rss_kib": 35488
+        },
+        {
+          "pid": 1595,
+          "rss_kib": 21888
+        },
+        {
+          "pid": 1551,
+          "rss_kib": 15632
+        }
+      ],
+      "ui_observation": {
+        "classification": "reported native screenshot observation, earlier than RSS peak",
+        "utc": "2026-10-29T07:32:37Z",
+        "caption": "准备地形与布局资料",
+        "software_review_phase": "preparing",
+        "completed_world_frames": 0,
+        "submitted_world_frames": 0,
+        "screenshot": "backups/cloud75-baseline/native-world-static-02-default-compositor/world-loading-native.jpg",
+        "limitation": "Generic caption does not establish the phase at the later guard sample."
+      },
+      "reported_process_role_rss_kib": {
+        "renderer": 1413496,
+        "gpu": 181536,
+        "browser": 168804
+      }
+    },
+    {
+      "case": "native-world-static-03-large-scene",
+      "summary_source": {
+        "path": "backups/cloud75-baseline/native-world-static-03-large-scene/summary.json",
+        "bytes": 1417,
+        "sha256": "0eb0fb866b7f2ee2e577041cacb33e7077c1d1812c9dbc8ff68d488d6a290088"
+      },
+      "events_source": {
+        "path": "backups/cloud75-baseline/native-world-static-03-large-scene/events.jsonl",
+        "bytes": 318576,
+        "sha256": "1945e7405e4369ae5e8fa15107accf4756620baabc60148918a2dbfe1c4ef8c6"
+      },
+      "termination_reason": "rss-cap",
+      "peak_sampled_owned_rss_kib": 3309492,
+      "minimum_sampled_mem_available_bytes": 5481095168,
+      "peak_sample_utc": "2026-10-29T07:49:01.026738+00:00",
+      "mem_available_at_peak_bytes": 5481095168,
+      "peak_process_rss_kib": [
+        {
+          "pid": 2043,
+          "rss_kib": 1770292
+        },
+        {
+          "pid": 1915,
+          "rss_kib": 971700
+        },
+        {
+          "pid": 1872,
+          "rss_kib": 150228
+        },
+        {
+          "pid": 2033,
+          "rss_kib": 96756
+        },
+        {
+          "pid": 1916,
+          "rss_kib": 63272
+        },
+        {
+          "pid": 1893,
+          "rss_kib": 50816
+        },
+        {
+          "pid": 1894,
+          "rss_kib": 50816
+        },
+        {
+          "pid": 2240,
+          "rss_kib": 44480
+        },
+        {
+          "pid": 2099,
+          "rss_kib": 35624
+        },
+        {
+          "pid": 2254,
+          "rss_kib": 22216
+        },
+        {
+          "pid": 1938,
+          "rss_kib": 21632
+        },
+        {
+          "pid": 2255,
+          "rss_kib": 16028
+        },
+        {
+          "pid": 1896,
+          "rss_kib": 15632
+        }
+      ],
+      "ui_observation": {
+        "classification": "reported native UI observations; no successfully saved startup diagnostic JSON",
+        "terrain_chunks": 1132,
+        "software_review_phase": "gpu-wait",
+        "completed_preparation_fences": 1,
+        "completed_world_frames": 0,
+        "submitted_world_frames": 0,
+        "evidence_paths": [
+          "backups/cloud75-baseline/native-world-static-03-large-scene/world-preparing-terrain-native.jpg",
+          "backups/cloud75-baseline/native-world-static-03-large-scene/startup-download-native.jpg"
+        ],
+        "interpretation": "Later than initial worldData loading; do not attribute the entire process peak to worldData. No completed world GPU frame established."
+      },
+      "reported_process_role_rss_kib": {
+        "renderer": 1770292,
+        "gpu": 971700,
+        "browser": 150228
+      }
+    }
+  ],
+  "proposed_not_implemented": [
+    {
+      "candidate": "Explicitly reset temporary PNG canvas after extracting pixels",
+      "source": "web/src/v2/world-data.js:282-284",
+      "potential": "Shorter lifetime of roughly 20 MiB combined pixel backing, not guaranteed peak-RSS saving",
+      "validation": "Byte-for-byte landcover data equality and existing world-data tests"
+    },
+    {
+      "candidate": "Replace gzip Blob snapshot with a byte-backed ReadableStream",
+      "source": "web/src/v2/world-data.js:49-59",
+      "potential": "Avoid possible compressed snapshot copies; three current files total 12,067,444 bytes",
+      "validation": "Exact decoded bytes, offset views, already-decoded bodies and corrupt-gzip failures"
+    },
+    {
+      "candidate": "Convert each height inside a short-lived per-source async job once metadata is available",
+      "source": "web/src/v2/world-data.js:292-298",
+      "potential": "Avoid outer cb/fb references retaining 10 MiB through synchronous createWorldData; GC benefit unmeasured",
+      "validation": "Bit-identical Float32 arrays, unchanged sampling, placement and stage semantics"
+    }
+  ],
+  "next_minimal_diagnostic": {
+    "existing_ui": "Save startup diagnostic JSON with the existing 保存诊断JSON button if responsive; main.js:92 supplies loading-only loadTimings before kalajunV2 exists; software-review75.js:106 exports it.",
+    "status": "Case03 had no successful JSON export; no missing diagnostic is treated as observed.",
+    "if_instrumentation_needed": "Add diagnostic-only worldData checkpoints before/after Promise.all, height conversion and createWorldData, with monotonic timestamps, stage counts and declared buffer byte lengths. Record terrain-worker initialization and startAssets boundaries. Export through existing UI. Do not add geometry/detail reductions or force GC.",
+    "memory_metric_limit": "Optional performance.memory is JS-heap telemetry only, not total renderer/GPU/RSS; checkpoint updates cannot sample inside a synchronous blocked task.",
+    "correlation": "Correlate successful phase records with monitor events and screenshots; do not infer worldData phase from the generic caption."
+  },
+  "conclusion": "Known source buffers identify modest exact-output opportunities but do not explain or prove a fix for the GiB-scale process peaks. Case03 advanced to terrain/GPU preparation. RSS guard termination is not an OS OOM, completed frame, quality acceptance, or real-time performance result."
+}

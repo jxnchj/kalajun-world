@@ -104,9 +104,32 @@ export function installSoftwareReviewUI75(review,{document=globalThis.document,g
  actions.push(button('静帧（0s）',()=>review.request({delta:0})),button('单步（1/60s）',()=>review.request()),button('运行60步（模拟1s）',()=>review.request({frames:60})));
  button('暂停后续帧（准备/首帧仍须完成）',()=>review.pause());
  button('保存诊断JSON',()=>{const blob=new Blob([JSON.stringify(getSnapshot(),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='kalajun-software-review75-'+Date.now()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),0);});
+ let diagnosticText=null;
+ const closeDiagnosticText=()=>{if(!diagnosticText)return;const {box,textarea,label}=diagnosticText;textarea.value='';label.textContent='';box.remove();diagnosticText=null;};
+ button('显示诊断JSON',()=>{
+  closeDiagnosticText();
+  const box=document.createElement('div'),label=document.createElement('p'),textarea=document.createElement('textarea'),close=document.createElement('button');
+  label.textContent='本次捕获，不自动刷新。文本框内用 Ctrl/Cmd+A、Ctrl/Cmd+C 手动复制；关闭会清空文本。';
+  textarea.readOnly=true;textarea.spellcheck=false;textarea.wrap='off';textarea.setAttribute('aria-label','只读诊断JSON（本次捕获）');
+  textarea.style.cssText='display:block;width:100%;box-sizing:border-box;height:180px;max-height:30vh;font:11px monospace';
+  // Keep native selection/copy defaults. Keyup must reach the original controls
+  // so a movement key held before text focus can still be released normally.
+  textarea.addEventListener('keydown',event=>event.stopPropagation());
+  close.type='button';close.textContent='关闭诊断文本（清空）';close.addEventListener('click',closeDiagnosticText);
+  box.append(label,textarea,close);panel.append(box);diagnosticText={box,textarea,label};
+  try{
+   const captured=getSnapshot(),json=JSON.stringify(captured,null,2);
+   if(typeof json!=='string')throw Error('未获得可序列化的诊断快照');
+   textarea.value=json;textarea.focus();
+  }catch(error){
+   textarea.value='';textarea.hidden=true;label.setAttribute('role','alert');
+   let message='未知诊断导出错误';try{message=String(error?.message??error).slice(0,480);}catch{/* Error objects can themselves reject property access/coercion. */}
+   label.textContent='诊断文本导出失败：'+message;
+  }
+ });
  const previous=review.onChange;
  const update=s=>{previous(s);status.textContent=`${s.phase} · 世界GPU完成 ${s.completedWorldFrames}/${s.submittedWorldFrames} · 预热fence ${s.completedPreparationFences}\n剩余 ${s.remaining} · 已完成帧模拟 ${s.completedFrameSimulationSeconds.toFixed(3)}s（不是FPS）\n原WASD/拖动/门/物理不变；暂停仅停主帧。\n原准备流程仍会settle；模拟秒不计准备/中断帧。\n显示图可能落后于输入机位；检查lastCompleted和队列。\n截图用浏览器；原照片重绘在此模式禁用。${s.error?'\n失败：'+s.error:''}`;panel.dataset.snapshot=JSON.stringify(getSnapshot());for(const b of actions)b.disabled=s.inFlight||s.reserved||s.phase==='preparing'||Boolean(s.error);};
  review.onChange=update;document.body.append(panel);update(review.snapshot());
  const photo=document.querySelector('#photo-save'),block=e=>{e.preventDefault();e.stopImmediatePropagation();};photo?.addEventListener('click',block,true);
- return()=>{photo?.removeEventListener('click',block,true);if(review.onChange===update)review.onChange=previous;panel.remove();};
+ return()=>{closeDiagnosticText();photo?.removeEventListener('click',block,true);if(review.onChange===update)review.onChange=previous;panel.remove();};
 }

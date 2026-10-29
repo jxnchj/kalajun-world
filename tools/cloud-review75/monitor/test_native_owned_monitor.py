@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Fast synthetic-only tests. This file never invokes Chromium."""
 import dataclasses
+import io
 import json
 import os
 from pathlib import Path
@@ -154,6 +155,90 @@ class MinimalLauncherTests(unittest.TestCase):
             self.assertFalse((folder / 'new').exists())
 
 
+class MemoryTierTests(unittest.TestCase):
+    def test_default_standard_limits_are_unchanged(self):
+        args = m.parser().parse_args(['--run-dir', '/tmp/new', '--url', 'http://127.0.0.1:5175/a'])
+        self.assertEqual(args.memory_tier, 'standard')
+        self.assertEqual(m.memory_limits(args.memory_tier, args.rss_cap_kib),
+                         (2_097_152, 4_500_000_000, None))
+
+    def test_large_scene_is_explicit_and_cannot_auto_raise(self):
+        self.assertEqual(m.memory_limits('large-scene', None), (3_145_728, 7_000_000_000, 4_500_000_000))
+        for tier, maximum in (('standard', 2_097_152), ('large-scene', 3_145_728)):
+            self.assertEqual(m.memory_limits(tier, maximum)[0], maximum)
+            self.assertEqual(m.memory_limits(tier, 1)[0], 1)
+            for invalid in (0, -1, maximum + 1):
+                with self.assertRaises(ValueError):
+                    m.memory_limits(tier, invalid)
+        with self.assertRaises(ValueError):
+            m.memory_limits('larger', None)
+
+    def test_software_world_is_explicit_and_four_gib_is_absolute_tier_ceiling(self):
+        self.assertEqual(m.memory_limits('software-world', None), (4_194_304, 8_000_000_000, 4_500_000_000))
+        self.assertEqual(m.memory_limits('software-world', 1)[0], 1)
+        self.assertEqual(m.memory_limits('software-world', 4_194_304)[0], 4_194_304)
+        for invalid in (0, -1, 4_194_305, 8_388_608):
+            with self.assertRaises(ValueError):
+                m.memory_limits('software-world', invalid)
+        values = ['--run-dir', '/tmp/new', '--url', 'http://127.0.0.1:5175/a']
+        self.assertEqual(m.parser().parse_args(values).memory_tier, 'standard')
+        self.assertEqual(m.parser().parse_args(values + ['--memory-tier', 'software-world']).memory_tier, 'software-world')
+        with patch.object(sys, 'stderr', new_callable=io.StringIO), self.assertRaises(SystemExit):
+            m.parser().parse_args(values + ['--memory-tier', 'unbounded'])
+
+    def test_software_world_prestart_and_immediate_prelaunch_require_eight_gb(self):
+        for available, expected_code, directory_created in (
+                ([7_999_999_999], 2, False), ([8_000_000_000, 7_999_999_999], 3, True)):
+            with self.subTest(available=available), tempfile.TemporaryDirectory(dir=HERE) as folder:
+                run, code, launch = self.guarded_main(folder, 'software-world', available)
+                self.assertEqual(code, expected_code)
+                self.assertEqual(run.exists(), directory_created)
+                launch.assert_not_called()
+
+    def guarded_main(self, folder, tier, available):
+        """Fake all launch environment gates; Popen always raises, never starts a browser."""
+        run = Path(folder) / 'new-run'
+        with patch.object(m.os, 'geteuid', return_value=1000), \
+                patch.dict(m.os.environ, {'DISPLAY': ':test'}), \
+                patch.object(m, 'memory_available', side_effect=available), \
+                patch.object(m.shutil, 'which', return_value='/fake/chromium'), \
+                patch.object(m.subprocess, 'Popen', side_effect=RuntimeError('synthetic-launch-sentinel')) as launch, \
+                patch.object(sys, 'stderr', new_callable=io.StringIO):
+            try:
+                code = m.main(['--run-dir', str(run), '--url', 'http://127.0.0.1:5175/a', '--memory-tier', tier])
+            except SystemExit as exc:
+                code = exc.code
+        return run, code, launch
+
+    def test_large_scene_prestart_rejects_below_seven_gb_before_files_or_launch(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as folder:
+            run, code, launch = self.guarded_main(folder, 'large-scene', [6_999_999_999])
+            self.assertEqual(code, 2)
+            self.assertFalse(run.exists())
+            launch.assert_not_called()
+
+    def test_large_scene_immediate_prelaunch_rechecks_seven_gb(self):
+        with tempfile.TemporaryDirectory(dir=HERE) as folder:
+            run, code, launch = self.guarded_main(folder, 'large-scene', [7_000_000_000, 6_999_999_999])
+            self.assertEqual(code, 3)
+            launch.assert_not_called()
+            events = [json.loads(line) for line in (run / 'events.jsonl').read_text().splitlines()]
+            self.assertEqual(events[-1]['event'], 'launch_prevented')
+            self.assertEqual(events[-1]['current_mem_available_bytes'], 6_999_999_999)
+
+    def test_tier_prestart_boundary_and_recorded_limits(self):
+        for tier, minimum in (('standard', 4_500_000_000), ('large-scene', 7_000_000_000),
+                              ('software-world', 8_000_000_000)):
+            with self.subTest(tier=tier), tempfile.TemporaryDirectory(dir=HERE) as folder:
+                run, code, launch = self.guarded_main(folder, tier, [minimum, minimum])
+                self.assertEqual(code, 3, 'synthetic launch sentinel, not a real launch')
+                launch.assert_called_once()
+                record = json.loads((run / 'launch.json').read_text())
+                cap, prestart, floor = m.memory_limits(tier, None)
+                self.assertEqual((record['rss_cap_kib'], record['minimum_prestart_mem_available_bytes'],
+                                  record['minimum_runtime_available_bytes']), (cap, prestart, floor))
+
+
 class OwnershipTests(unittest.TestCase):
     def setUp(self):
         self.root = proc(100)
@@ -200,7 +285,8 @@ class OwnershipTests(unittest.TestCase):
 
 
 class SyntheticProcessTests(unittest.TestCase):
-    def run_case(self, *, cap, cancelled=False, root_code=None):
+    def run_case(self, *, cap, cancelled=False, root_code=None, runtime_floor=None,
+                 available=8_000_000_000, forced_root_rss=None):
         with tempfile.TemporaryDirectory(dir=HERE) as folder:
             folder = Path(folder)
             if root_code is None:
@@ -216,10 +302,19 @@ class SyntheticProcessTests(unittest.TestCase):
                 # Let the lightweight Python child spawn, without launching any browser.
                 time.sleep(0.12)
                 began = time.monotonic()
-                result = m.monitor(child, root, journal, total_deadline=began + 1.1,
-                                   poll_seconds=0.05, cleanup_seconds=0.55, rss_cap_kib=cap,
-                                   cancel_requested=lambda: cancelled, cancel_file=folder / 'CANCEL',
-                                   tracker=tracker)
+                real_table = m.process_table
+                def sample_table():
+                    table, errors = real_table()
+                    if forced_root_rss is not None and root.pid in table:
+                        table[root.pid] = dataclasses.replace(table[root.pid], rss_kib=forced_root_rss)
+                    return table, errors
+                with patch.object(m, 'process_table', side_effect=sample_table), \
+                        patch.object(m, 'memory_available', side_effect=ValueError('synthetic missing')
+                                     if available is None else None, return_value=available):
+                    result = m.monitor(child, root, journal, total_deadline=began + 1.1,
+                                       poll_seconds=0.05, cleanup_seconds=0.55, rss_cap_kib=cap,
+                                       cancel_requested=lambda: cancelled, cancel_file=folder / 'CANCEL',
+                                       tracker=tracker, minimum_runtime_available_bytes=runtime_floor)
                 self.assertLess(time.monotonic() - began, 1.5)
                 self.assertTrue(result['no_live_observed_owned_at_final_snapshot'])
                 self.assertFalse(result['all_browser_descendants_proven_absent'])
@@ -245,6 +340,39 @@ class SyntheticProcessTests(unittest.TestCase):
     def test_deadline(self):
         result, _ = self.run_case(cap=m.MAX_RSS_KIB)
         self.assertEqual(result['reason'], 'deadline')
+
+    def test_large_scene_three_gib_sample_stops_and_cleans(self):
+        result, _ = self.run_case(cap=m.LARGE_SCENE_MAX_RSS_KIB,
+                                 forced_root_rss=m.LARGE_SCENE_MAX_RSS_KIB,
+                                 runtime_floor=m.MIN_AVAILABLE_BYTES)
+        self.assertEqual(result['reason'], 'rss-cap')
+
+    def test_software_world_four_gib_sample_stops_and_cleans(self):
+        cap, _, floor = m.memory_limits('software-world', None)
+        result, _ = self.run_case(cap=cap, forced_root_rss=cap, runtime_floor=floor)
+        self.assertEqual(result['reason'], 'rss-cap')
+
+    def test_software_world_runtime_floor_and_missing_observation_fail_closed(self):
+        cap, _, floor = m.memory_limits('software-world', None)
+        for available, reason in ((4_499_999_999, 'system-memory-floor'),
+                                  (None, 'system-memory-observation-error')):
+            with self.subTest(available=available):
+                result, _ = self.run_case(cap=cap, runtime_floor=floor, available=available)
+                self.assertEqual(result['reason'], reason)
+
+    def test_large_scene_runtime_floor_and_missing_observation_fail_closed(self):
+        for available, reason in ((4_499_999_999, 'system-memory-floor'),
+                                  (None, 'system-memory-observation-error')):
+            with self.subTest(available=available):
+                result, _ = self.run_case(cap=m.LARGE_SCENE_MAX_RSS_KIB,
+                                         runtime_floor=m.MIN_AVAILABLE_BYTES, available=available)
+                self.assertEqual(result['reason'], reason)
+
+    def test_runtime_floor_boundary_allowed_and_standard_behavior_unchanged(self):
+        for floor, available in ((m.MIN_AVAILABLE_BYTES, m.MIN_AVAILABLE_BYTES), (None, None), (None, 1)):
+            with self.subTest(floor=floor, available=available):
+                result, _ = self.run_case(cap=m.MAX_RSS_KIB, runtime_floor=floor, available=available)
+                self.assertEqual(result['reason'], 'deadline')
 
     def test_cancel_escalates_term_ignoring_child(self):
         result, records = self.run_case(cap=m.MAX_RSS_KIB, cancelled=True,
