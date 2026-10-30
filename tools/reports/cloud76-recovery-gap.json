@@ -1,6 +1,6 @@
 {
-  "updatedAtUTC": "2026-10-30T06:16:00Z",
-  "status": "RECOVERY_IN_PROGRESS_NOT_ACCEPTED",
+  "updatedAtUTC": "2026-10-30T10:29:06Z",
+  "status": "CANDIDATE_GEOMETRY_AO_ALL25_GI_CPU_PASS_NATIVE_NOT_RUN_NOT_ADOPTED",
   "gitBase": "4e1d6f251ff979760f7020c4d940489cba091c36",
   "backup": {
     "name": "kalajun-cloud75-recovery-checkpoint.zip",
@@ -745,26 +745,26 @@
     {
       "item": "window_clearance",
       "bytes": "patch and isolated original71 Blend GLB evidence restored",
-      "status": "ISOLATED_SURFACE_PASS_HISTORICAL",
-      "next": "combine with v4 and recertify full XYZ/topology/collision/contact"
+      "status": "CURRENT_V4_GEOMETRY_AO_GI_CPU_PASS_NATIVE_PENDING",
+      "next": "Actual world same-build candidate comparison and native acceptance; historical isolated results remain separate"
     },
     {
       "item": "v4_visual_and_combined",
-      "bytes": "not in backup",
-      "status": "LATEST_RECORD_ONLY_RECREATE_REQUIRED",
-      "next": "E4 bounded shared field, stop parameter scan; regenerate and compare to retained historical hashes/preview where available"
+      "bytes": "new zero Blend and3offline previews generated; not oldv4 recovery",
+      "status": "CURRENT_V4_GEOMETRY_AO_GI_CPU_PASS_NATIVE_PENDING",
+      "next": "Actual world same-build candidate comparison and native acceptance; historical isolated results remain separate"
     },
     {
       "item": "upper_envelope_helper",
-      "bytes": "old dc4314a82243e63b1a97a413e4c42eb559db9a1c65c852a0ac3baa8ff36d0199 restored",
-      "status": "FINAL_FIX_MISSING",
-      "next": "reconstruct/review later anchored sums and bounded convex-output normalization; final recordedbe3dd4b5998582339279c17e7f79c7964a1dc3f9412b53c20be37d27f066a896 not recovered; fresh baseline required"
+      "bytes": "new helper84d46a14c381fdfab656730e7d22839b7d2c51f1732577b0a431ef4d81b86a13; historicalbe3dd4 bytes still not recovered",
+      "status": "RECONSTRUCTED_SOURCE_AND_FRESH_CORRECTED_METRICS_VERIFIED",
+      "next": "Preserve reconstructed provenance; not byte recovery of lost source"
     },
     {
       "item": "AO_GI_wrapper",
-      "bytes": "prepared old wrapper restored",
-      "status": "NOT_EXECUTED_STALE_GUARDS",
-      "next": "correct269objects267meshes2empties and262frozen incl4textiles; no weakening; full AO+25states+decoder/owner tests"
+      "bytes": "fullmaterial helpere279 bound to actual runtime and zero snapshot; GI import fixes31tests",
+      "status": "ALL25_STATES20_MODULES_BAKE_STATIC_DECODER_CPU_OWNERS_PASS",
+      "next": "Native entity routing, GPU upload, pixels, performance and adoption still NOT_RUN"
     },
     {
       "item": "full_regression",
@@ -774,9 +774,9 @@
     },
     {
       "item": "new_checkpoint_restore_verification",
-      "bytes": "not yet created",
-      "status": "PENDING",
-      "next": "create independent stable checkpoint and verify restoration before claiming durable current recovery"
+      "bytes": "v16 independently restored563files and635LFS baseline bindings",
+      "status": "V16_REMOTE_INDEPENDENT_RESTORE_PASS",
+      "next": "Next independent checkpoint must include post-v16 isolated build evidence and text publication changes"
     }
   ],
   "remainingStageTasks": [
@@ -829,10 +829,10 @@
     "restoration_hashes": "PASS",
     "new_build": "PASS 10.45s; existing chunk-size warning retained",
     "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
-    "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+    "new_full_tests": "NOT_RUN_THIS_SYNC; historical1992/1993 terrain2500ms failure unresolved",
     "new_native_world": "NOT_RUN",
-    "new_geometry_AO_GI": "NOT_RUN",
-    "independent_new_checkpoint_restore": "PENDING",
+    "new_geometry_AO_GI": "ALL25_STATES20_MODULES_BAKE_STATIC_DECODER_CPU_OWNERS_PASS_NOT_NATIVE_VISUAL_ACCEPTANCE",
+    "independent_new_checkpoint_restore": "PASS v16 independently downloaded and extracted563files/635LFS bindings at10:29UTC",
     "evidence": "backups/cloud76-recovery/verification-summary.json",
     "buildFingerprints": {
       "web/dist-cloud76-recovery/v2.html": {
@@ -843,7 +843,1119 @@
         "bytes": 3322168,
         "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
       }
+    },
+    "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+    "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+    "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+    "GI_guard_tests": "31 guards and actual source smoke passed earlier; later actual all25 GI decoder and CPU owners PASS",
+    "reconstructed_field_domain_unit_tests": "Historical11 unit tests followed by actual complete exact-domain and fresh corrected9metric checks PASS; native still NOT_RUN",
+    "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
+    "zero_cover_extended_attempt": "Historical one900s domain1 operation-cap failure retained; later exact-domain corrected geometry passed",
+    "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance",
+    "GI_owner_CLI": "ACTUAL_FULL25_CANDIDATE_CPU_OFF_ON_PASS_NOT_GPU_NATIVE",
+    "solve_execution": "PASS35.80s approved offsets appliedonce after reviewed2fixes andexplicitbridge",
+    "zero_cache_reuse": "19originpayload verified REUSED_NOT_RERUN; correctedallfresh",
+    "strict3D": "PASS triangle-surface scan5targets fullmesh no decimation; no nonseam blockers or uncertainty; not generalvolume claim",
+    "savedBlend_reopen": "PASS canonical full-material readback; earlier tuple/list failure retained in history",
+    "source_replay_tests": "PASS14 isolated mini-repo tests rerun 2026-10-30 10:27UTC",
+    "source_replay_bindings": "PASS52 source byte identities and897 explicit production inputs 2026-10-30 10:27UTC",
+    "isolated_native_candidate_build": "PASS8.93s22overlay635LFS782buildfiles HTTPbytechecked; NOT GPU/native/pixel/performance acceptance; after v16"
+  },
+  "completionBoundary": "Recovering files or past logs is not task completion. Stage3 stays in progress; stage5 global light/color deferred. No production adoption/deploy/force-push.",
+  "history": [
+    {
+      "cutoffUTC": "2026-10-30T06:16:00Z",
+      "publishedCommit": "450a2c0be9d7c1731058b991933d3167befcc147",
+      "gaps": [
+        {
+          "item": "native_case07_case08",
+          "bytes": "restored",
+          "status": "historical initial3/3 ON/OFF samebuild only",
+          "next": "new environment actual review; formal entry/dynamic/general quality not implied"
+        },
+        {
+          "item": "terrain_copy_candidate",
+          "bytes": "rejected report restored",
+          "status": "NOT_ADOPTED",
+          "next": "keep original2500ms failure open; no budget/assertion changes"
+        },
+        {
+          "item": "v3_visual_candidate",
+          "bytes": "Blend GLB manifest previews restored",
+          "status": "OFF_PARTIAL_NOT_SELECTED_FINAL",
+          "next": "reconstruct later selected v4, do not downgrade choice silently"
+        },
+        {
+          "item": "window_clearance",
+          "bytes": "patch and isolated original71 Blend GLB evidence restored",
+          "status": "ISOLATED_SURFACE_PASS_HISTORICAL",
+          "next": "combine with v4 and recertify full XYZ/topology/collision/contact"
+        },
+        {
+          "item": "v4_visual_and_combined",
+          "bytes": "new reconstructed script, not recovered historical v4",
+          "status": "NEW_RECONSTRUCTION_PREPARED_UNEXECUTED",
+          "next": "Generate bounded E4 then combine window repair and validate geometry/domain/collision/readback/visual before AO/GI"
+        },
+        {
+          "item": "upper_envelope_helper",
+          "bytes": "new helper84d46a14c381fdfab656730e7d22839b7d2c51f1732577b0a431ef4d81b86a13; historicalbe3dd4 bytes still not recovered",
+          "status": "RECONSTRUCTED_REVIEWED_BASELINE_COMPLETE",
+          "next": "45 reconstruction tests +12 independent passed; complete fresh baseline9rows obtained; candidate analysis and all geometry acceptance remain"
+        },
+        {
+          "item": "AO_GI_wrapper",
+          "bytes": "new pipelinea5f556afdad0c143b2bed4649deb6d7b49e32749ef3df3ca7325aac8a73bce39; independent16 tests passed",
+          "status": "GUARDS_REPAIRED_NOT_BAKED",
+          "next": "Full material/image fingerprints pending; actual AO and25state GI not run; retain geometry then visual then baking order"
+        },
+        {
+          "item": "full_regression",
+          "bytes": "historical focused/build logs restored; full log not inZIP",
+          "status": "LAST_REPORTED1992/1993_NOT_FULL_PASS",
+          "next": "new environment build/focused/full results separately record"
+        },
+        {
+          "item": "new_checkpoint_restore_verification",
+          "bytes": "v7 remote bytes independently downloaded and138files isolated restored",
+          "status": "V7_PASSED_NEW_PHASE_V8_PENDING",
+          "next": "Save newly completed helper/fullbaseline/GIguard changes in v8 and independently verify; v7 does not contain later edits"
+        }
+      ],
+      "currentValidation": {
+        "archive_and_manifest": "PASS",
+        "git_perfile_comparison": "PASS",
+        "restoration_hashes": "PASS",
+        "new_build": "PASS 10.45s; existing chunk-size warning retained",
+        "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+        "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+        "new_native_world": "NOT_RUN",
+        "new_geometry_AO_GI": "NOT_RUN",
+        "independent_new_checkpoint_restore": "PENDING",
+        "evidence": "backups/cloud76-recovery/verification-summary.json",
+        "buildFingerprints": {
+          "web/dist-cloud76-recovery/v2.html": {
+            "bytes": 3283,
+            "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+          },
+          "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+            "bytes": 3322168,
+            "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+          }
+        }
+      }
+    },
+    {
+      "cutoffUTC": "2026-10-30T06:35:37.909174+00:00",
+      "gaps": [
+        {
+          "item": "native_case07_case08",
+          "bytes": "restored",
+          "status": "historical initial3/3 ON/OFF samebuild only",
+          "next": "new environment actual review; formal entry/dynamic/general quality not implied"
+        },
+        {
+          "item": "terrain_copy_candidate",
+          "bytes": "rejected report restored",
+          "status": "NOT_ADOPTED",
+          "next": "keep original2500ms failure open; no budget/assertion changes"
+        },
+        {
+          "item": "v3_visual_candidate",
+          "bytes": "Blend GLB manifest previews restored",
+          "status": "OFF_PARTIAL_NOT_SELECTED_FINAL",
+          "next": "reconstruct later selected v4, do not downgrade choice silently"
+        },
+        {
+          "item": "window_clearance",
+          "bytes": "patch and isolated original71 Blend GLB evidence restored",
+          "status": "ISOLATED_SURFACE_PASS_HISTORICAL",
+          "next": "combine with v4 and recertify full XYZ/topology/collision/contact"
+        },
+        {
+          "item": "v4_visual_and_combined",
+          "bytes": "new reconstructed script, not recovered historical v4",
+          "status": "NEW_RECONSTRUCTION_PREPARED_UNEXECUTED",
+          "next": "Generate bounded E4 then combine window repair and validate geometry/domain/collision/readback/visual before AO/GI"
+        },
+        {
+          "item": "upper_envelope_helper",
+          "bytes": "new helper84d46a14c381fdfab656730e7d22839b7d2c51f1732577b0a431ef4d81b86a13; historicalbe3dd4 bytes still not recovered",
+          "status": "RECONSTRUCTED_REVIEWED_BASELINE_COMPLETE",
+          "next": "45 reconstruction tests +12 independent passed; complete fresh baseline9rows obtained; candidate analysis and all geometry acceptance remain"
+        },
+        {
+          "item": "AO_GI_wrapper",
+          "bytes": "new pipelinea5f556afdad0c143b2bed4649deb6d7b49e32749ef3df3ca7325aac8a73bce39; independent16 tests passed",
+          "status": "GUARDS_REPAIRED_NOT_BAKED",
+          "next": "Full material/image fingerprints pending; actual AO and25state GI not run; retain geometry then visual then baking order"
+        },
+        {
+          "item": "full_regression",
+          "bytes": "historical focused/build logs restored; full log not inZIP",
+          "status": "LAST_REPORTED1992/1993_NOT_FULL_PASS",
+          "next": "new environment build/focused/full results separately record"
+        },
+        {
+          "item": "new_checkpoint_restore_verification",
+          "bytes": "v7 remote bytes independently downloaded and138files isolated restored",
+          "status": "V7_PASSED_NEW_PHASE_V8_PENDING",
+          "next": "Save newly completed helper/fullbaseline/GIguard changes in v8 and independently verify; v7 does not contain later edits"
+        }
+      ],
+      "currentValidation": {
+        "archive_and_manifest": "PASS",
+        "git_perfile_comparison": "PASS",
+        "restoration_hashes": "PASS",
+        "new_build": "PASS 10.45s; existing chunk-size warning retained",
+        "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+        "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+        "new_native_world": "NOT_RUN",
+        "new_geometry_AO_GI": "NOT_RUN",
+        "independent_new_checkpoint_restore": "PASS v7 138files/635LFS independent remote download and isolated extraction; v8 pending",
+        "evidence": "backups/cloud76-recovery/verification-summary.json",
+        "buildFingerprints": {
+          "web/dist-cloud76-recovery/v2.html": {
+            "bytes": 3283,
+            "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+          },
+          "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+            "bytes": 3322168,
+            "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+          }
+        },
+        "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+        "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+        "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+        "GI_guard_tests": "PASS independent16; actual AO/GI NOT_RUN; full material/image fingerprints pending",
+        "reconstructed_field_domain_unit_tests": "PASS11 per reconstruction lead; actual candidate geometry/domain checks NOT_RUN"
+      }
+    },
+    {
+      "cutoffUTC": "2026-10-30T07:02:31.331527+00:00",
+      "gaps": [
+        {
+          "item": "native_case07_case08",
+          "bytes": "restored",
+          "status": "historical initial3/3 ON/OFF samebuild only",
+          "next": "new environment actual review; formal entry/dynamic/general quality not implied"
+        },
+        {
+          "item": "terrain_copy_candidate",
+          "bytes": "rejected report restored",
+          "status": "NOT_ADOPTED",
+          "next": "keep original2500ms failure open; no budget/assertion changes"
+        },
+        {
+          "item": "v3_visual_candidate",
+          "bytes": "Blend GLB manifest previews restored",
+          "status": "OFF_PARTIAL_NOT_SELECTED_FINAL",
+          "next": "reconstruct later selected v4, do not downgrade choice silently"
+        },
+        {
+          "item": "window_clearance",
+          "bytes": "patch and isolated original71 Blend GLB evidence restored",
+          "status": "ISOLATED_SURFACE_PASS_HISTORICAL",
+          "next": "combine with v4 and recertify full XYZ/topology/collision/contact"
+        },
+        {
+          "item": "v4_visual_and_combined",
+          "bytes": "new zero Blend and3offline previews generated; not oldv4 recovery",
+          "status": "ZERO_GENERATED_COVER_TIMEOUT_NOT_ACCEPTED",
+          "next": "Preserve first job and timeout; checkpoint v9, review runner, one explicit900s zero-cover; no correction/AO/GI until complete gates"
+        },
+        {
+          "item": "upper_envelope_helper",
+          "bytes": "new helper84d46a14c381fdfab656730e7d22839b7d2c51f1732577b0a431ef4d81b86a13; historicalbe3dd4 bytes still not recovered",
+          "status": "RECONSTRUCTED_REVIEWED_BASELINE_COMPLETE",
+          "next": "45 reconstruction tests +12 independent passed; complete fresh baseline9rows obtained; candidate analysis and all geometry acceptance remain"
+        },
+        {
+          "item": "AO_GI_wrapper",
+          "bytes": "fullmaterial helpere279 bound to actual runtime and zero snapshot; GI import fixes31tests",
+          "status": "GUARDS_TESTED_MATERIAL_EQUAL_NO_BAKE",
+          "next": "Remaining candidate geometry/domain/contact/collision/readback and visual gates before actual AO25stateGI/native"
+        },
+        {
+          "item": "full_regression",
+          "bytes": "historical focused/build logs restored; full log not inZIP",
+          "status": "LAST_REPORTED1992/1993_NOT_FULL_PASS",
+          "next": "new environment build/focused/full results separately record"
+        },
+        {
+          "item": "new_checkpoint_restore_verification",
+          "bytes": "v8 independent175files download/extraction passed",
+          "status": "V8_VERIFIED_V9_PENDING",
+          "next": "Save v9 zero geometry/previews/partial results/immutable timeout before extended attempt"
+        }
+      ],
+      "currentValidation": {
+        "archive_and_manifest": "PASS",
+        "git_perfile_comparison": "PASS",
+        "restoration_hashes": "PASS",
+        "new_build": "PASS 10.45s; existing chunk-size warning retained",
+        "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+        "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+        "new_native_world": "NOT_RUN",
+        "new_geometry_AO_GI": "Zero geometry generation and3offline previews done; zerointerfaces8metrics measured; zerocover timed out; correction/fullcertification/AO/GI NOT_RUN",
+        "independent_new_checkpoint_restore": "PASS v8 175files/635LFS; v9 pending",
+        "evidence": "backups/cloud76-recovery/verification-summary.json",
+        "buildFingerprints": {
+          "web/dist-cloud76-recovery/v2.html": {
+            "bytes": 3283,
+            "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+          },
+          "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+            "bytes": 3322168,
+            "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+          }
+        },
+        "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+        "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+        "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+        "GI_guard_tests": "31tests passed after import fix; actualAO/GI NOT_RUN",
+        "reconstructed_field_domain_unit_tests": "PASS11 per reconstruction lead; actual candidate geometry/domain checks NOT_RUN",
+        "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
+        "zero_cover_extended_attempt": "One900s attempt authorized only afterv9 andrunnerreview; not run; no furtherauto retry"
+      },
+      "zeroCandidatePhase": {
+        "status": "ZERO_GENERATED_COVER_INCOMPLETE_NOT_ACCEPTED",
+        "zeroBlendSHA256": "328a38181abbea587893336ac732b9621869a3d36b4bcf1711a66803305fbb5d",
+        "materialFingerprintSHA256": "9195966b3b86fcc3459013fed5bb832d4f4705a857ba7d534b0cadf3bf3404db",
+        "materialsEqualOriginal": true,
+        "materialHelperSHA256": "e279c7942bdb9e5ec7051245e1926bb5eda2f38bea8bd2b7ba9fac6a16b82f79",
+        "runtimeBinarySHA256": "b8b07a190fb25db76aae6de08dbc6c2b3d64e22e82bed6ba90de9545859f3431",
+        "generationSeconds": 44.99,
+        "previewSeconds": 27.22,
+        "previews": 3,
+        "previewReview": "Parent viewed all3; faithful to selected E4 enough to continue checks only; not final art/native acceptance",
+        "namedWindowPatch": {
+          "vertices": 64,
+          "maxYMillimeters": 7.199767,
+          "maxXYZJumpMillimeters": 7.2534
+        },
+        "zeroInterfaces": {
+          "seconds": 155.7,
+          "metrics": 8,
+          "envelopes": 8,
+          "status": "measurement completed; min-support values not acceptance"
+        },
+        "zeroCover": {
+          "status": "INCOMPLETE_EXECUTION_TIMEOUT_NOT_GEOMETRY_REJECTION",
+          "requestedLimitSeconds": 300,
+          "wallSeconds": 306.9536917380001,
+          "peakRSSKiB": 1432440,
+          "coverageUnionLastReported": 1000,
+          "coverageUnionInputRecords": 6411,
+          "cacheFiles": 17,
+          "diagnostic": "backups/cloud75-textile-volume-staging/candidate-v4-reconstructed-20261030/zero-cover-timeout-diagnostic.json",
+          "geometryOrNumericalFailureProven": false,
+          "correctionApplied": false
+        },
+        "nextAuthorizedAttempt": {
+          "phase": "zero-cover",
+          "count": 1,
+          "limitSeconds": 900,
+          "preconditions": [
+            "v9 checkpoint saved and verified",
+            "minimal runner review"
+          ],
+          "otherPhaseLimitSeconds": 300,
+          "sameFrozenMathGeometry": true,
+          "toleranceRelaxation": false,
+          "automaticFurtherRetries": false,
+          "status": "authorized not executed"
+        }
+      }
+    },
+    {
+      "cutoffUTC": "2026-10-30T07:27:58.202729+00:00",
+      "gaps": [
+        {
+          "item": "native_case07_case08",
+          "bytes": "restored",
+          "status": "historical initial3/3 ON/OFF samebuild only",
+          "next": "new environment actual review; formal entry/dynamic/general quality not implied"
+        },
+        {
+          "item": "terrain_copy_candidate",
+          "bytes": "rejected report restored",
+          "status": "NOT_ADOPTED",
+          "next": "keep original2500ms failure open; no budget/assertion changes"
+        },
+        {
+          "item": "v3_visual_candidate",
+          "bytes": "Blend GLB manifest previews restored",
+          "status": "OFF_PARTIAL_NOT_SELECTED_FINAL",
+          "next": "reconstruct later selected v4, do not downgrade choice silently"
+        },
+        {
+          "item": "window_clearance",
+          "bytes": "patch and isolated original71 Blend GLB evidence restored",
+          "status": "ISOLATED_SURFACE_PASS_HISTORICAL",
+          "next": "combine with v4 and recertify full XYZ/topology/collision/contact"
+        },
+        {
+          "item": "v4_visual_and_combined",
+          "bytes": "new zero Blend and3offline previews generated; not oldv4 recovery",
+          "status": "DOMAIN1_OPERATION_CAP_FRESH_DOMAIN2_PENDING",
+          "next": "Savev10 exact-domain helper20tests+fixture evidence, rerun fresh domain2 metrics; no oldcache relabel or metric/collision/visual acceptance inference"
+        },
+        {
+          "item": "upper_envelope_helper",
+          "bytes": "new helper84d46a14c381fdfab656730e7d22839b7d2c51f1732577b0a431ef4d81b86a13; historicalbe3dd4 bytes still not recovered",
+          "status": "RECONSTRUCTED_REVIEWED_BASELINE_COMPLETE",
+          "next": "45 reconstruction tests +12 independent passed; complete fresh baseline9rows obtained; candidate analysis and all geometry acceptance remain"
+        },
+        {
+          "item": "AO_GI_wrapper",
+          "bytes": "fullmaterial helpere279 bound to actual runtime and zero snapshot; GI import fixes31tests",
+          "status": "GUARDS31TESTS_SOURCE_SMOKE_NO_BAKE",
+          "next": "Prepared stageddecoder syntax only; full runtime owner/native pending; geometry certification beforeAO/GI"
+        },
+        {
+          "item": "full_regression",
+          "bytes": "historical focused/build logs restored; full log not inZIP",
+          "status": "LAST_REPORTED1992/1993_NOT_FULL_PASS",
+          "next": "new environment build/focused/full results separately record"
+        },
+        {
+          "item": "new_checkpoint_restore_verification",
+          "bytes": "v9 independent231file remote restore verified",
+          "status": "V9_VERIFIED_V10_PENDING",
+          "next": "Save extended-operationcap evidence and exact-domain proof in v10"
+        }
+      ],
+      "currentValidation": {
+        "archive_and_manifest": "PASS",
+        "git_perfile_comparison": "PASS",
+        "restoration_hashes": "PASS",
+        "new_build": "PASS 10.45s; existing chunk-size warning retained",
+        "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+        "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+        "new_native_world": "NOT_RUN",
+        "new_geometry_AO_GI": "Domain1cover failed operationcap not900timeout; exact-domain20tests+fixture pass; freshdomain2 not run; metriccert/correction/AO/GI pending",
+        "independent_new_checkpoint_restore": "PASS v9 231files; v10 pending",
+        "evidence": "backups/cloud76-recovery/verification-summary.json",
+        "buildFingerprints": {
+          "web/dist-cloud76-recovery/v2.html": {
+            "bytes": 3283,
+            "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+          },
+          "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+            "bytes": 3322168,
+            "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+          }
+        },
+        "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+        "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+        "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+        "GI_guard_tests": "31tests+actualsource smoke; stageddecoderCLI syntax only; runtimeowners/native/AO/GI pending",
+        "reconstructed_field_domain_unit_tests": "PASS11 per reconstruction lead; actual candidate geometry/domain checks NOT_RUN",
+        "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
+        "zero_cover_extended_attempt": "One900s attempt authorized only afterv9 andrunnerreview; not run; no furtherauto retry",
+        "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance"
+      },
+      "domainRecoveryPhase": {
+        "extendedDomain1": {
+          "seconds": 394.61,
+          "returnCode": 17,
+          "timedOut": false,
+          "userCPUSeconds": 381.379,
+          "systemCPUSeconds": 2.704,
+          "peakRSSKiB": 1444848,
+          "memAvailableGBBefore": 8.947,
+          "memAvailableGBAfter": 9.107,
+          "failure": "old baseline-hole subtraction operation cap2000000",
+          "geometryDefectProven": false,
+          "coverEnvelopeGapPointwiseFinished": true,
+          "cacheFiles": 18,
+          "metricCertificateProduced": false,
+          "correctionApplied": false,
+          "evidence": "backups/cloud75-textile-volume-staging/candidate-v4-reconstructed-20261030/zero-cover-operation-cap-diagnostic.json"
+        },
+        "exactDomainProof": {
+          "helper": "backups/cloud75-textile-volume-staging/exact_patch_domain.py",
+          "helperSHA256": "22403f5ac6771b24f2325b66cead1f71db26c31db337ece39b2918e7a0d073df",
+          "result": "backups/cloud75-textile-volume-staging/exact-domain-fixture-result.json",
+          "resultSHA256": "650e6910b1042df7b2b0b67be7d840a607edf7eecf47dd9a0523c203e0316974",
+          "independentTests": 20,
+          "savedFixtureSeconds": 0.7859129259995825,
+          "independentFixtureSeconds": 0.638,
+          "operations": 46517,
+          "operationCap": 2000000,
+          "supportTrianglesExactXYEqual": 25972,
+          "receiverTriangles": 1200,
+          "changed": 17,
+          "unchangedExactCancelled": 1183,
+          "candidateMinusBaselineExactEmpty": true,
+          "baselineMinusCandidateArea": 0.0012442873030380497,
+          "outsideNamedSweepExactEmpty": true,
+          "newUnsupportedExactEmpty": true,
+          "unchangedTolerances": true,
+          "areaEqualityShortcut": false,
+          "sourceSHA256": "c1a1e09f4fca922a94544c10f3f48a41ceb29ca50be4bac945bfeefb72113397",
+          "zeroSHA256": "328a38181abbea587893336ac732b9621869a3d36b4bcf1711a66803305fbb5d",
+          "originalMathHelper84dUnchanged": true
+        },
+        "next": "fresh candidate-domain2 namespace and fresh metrics; never relabel old caches",
+        "freshDomain2Run": "NOT_RUN_AT_CHECKPOINT",
+        "stagedDecoder": "CLI prepared syntax only; full runtime owner and native pending",
+        "boardwalkABBA": "NOT_RUN; plan saved"
+      }
+    },
+    {
+      "cutoffUTC": "2026-10-30T07:50:00.387035+00:00",
+      "gaps": [
+        {
+          "item": "native_case07_case08",
+          "bytes": "restored",
+          "status": "historical initial3/3 ON/OFF samebuild only",
+          "next": "new environment actual review; formal entry/dynamic/general quality not implied"
+        },
+        {
+          "item": "terrain_copy_candidate",
+          "bytes": "rejected report restored",
+          "status": "NOT_ADOPTED",
+          "next": "keep original2500ms failure open; no budget/assertion changes"
+        },
+        {
+          "item": "v3_visual_candidate",
+          "bytes": "Blend GLB manifest previews restored",
+          "status": "OFF_PARTIAL_NOT_SELECTED_FINAL",
+          "next": "reconstruct later selected v4, do not downgrade choice silently"
+        },
+        {
+          "item": "window_clearance",
+          "bytes": "patch and isolated original71 Blend GLB evidence restored",
+          "status": "ISOLATED_SURFACE_PASS_HISTORICAL",
+          "next": "combine with v4 and recertify full XYZ/topology/collision/contact"
+        },
+        {
+          "item": "v4_visual_and_combined",
+          "bytes": "new zero Blend and3offline previews generated; not oldv4 recovery",
+          "status": "JOINT_PROPOSAL_APPROVED_EXECUTION_BLOCKED_SERIALIZATION",
+          "next": "Fix tuple/list JSON equality minimally with regression+review; freshnamespace; explicit reviewed zero-evidence bridge only, all correctedmetrics fresh; no solve before release"
+        },
+        {
+          "item": "upper_envelope_helper",
+          "bytes": "new helper84d46a14c381fdfab656730e7d22839b7d2c51f1732577b0a431ef4d81b86a13; historicalbe3dd4 bytes still not recovered",
+          "status": "RECONSTRUCTED_REVIEWED_BASELINE_COMPLETE",
+          "next": "45 reconstruction tests +12 independent passed; complete fresh baseline9rows obtained; candidate analysis and all geometry acceptance remain"
+        },
+        {
+          "item": "AO_GI_wrapper",
+          "bytes": "fullmaterial helpere279 bound to actual runtime and zero snapshot; GI import fixes31tests",
+          "status": "GUARDS31TESTS_SOURCE_SMOKE_NO_BAKE",
+          "next": "Prepared stageddecoder syntax only; full runtime owner/native pending; geometry certification beforeAO/GI"
+        },
+        {
+          "item": "full_regression",
+          "bytes": "historical focused/build logs restored; full log not inZIP",
+          "status": "LAST_REPORTED1992/1993_NOT_FULL_PASS",
+          "next": "new environment build/focused/full results separately record"
+        },
+        {
+          "item": "new_checkpoint_restore_verification",
+          "bytes": "v10 independent248file restore passed",
+          "status": "V10_VERIFIED_V11_PENDING",
+          "next": "Save freshdomain2 nine metric rows nineteen caches and approvedunapplied jointproposal in v11"
+        }
+      ],
+      "currentValidation": {
+        "archive_and_manifest": "PASS",
+        "git_perfile_comparison": "PASS",
+        "restoration_hashes": "PASS",
+        "new_build": "PASS 10.45s; existing chunk-size warning retained",
+        "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+        "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+        "new_native_world": "NOT_RUN",
+        "new_geometry_AO_GI": "Freshdomain2 zero generation/interfaces/cover passed default300;9 rows measured,2 support deficits; approved correction NOT_APPLIED; fullcert/export/AO/GI/native pending",
+        "independent_new_checkpoint_restore": "PASS v10 248files; v11 pending",
+        "evidence": "backups/cloud76-recovery/verification-summary.json",
+        "buildFingerprints": {
+          "web/dist-cloud76-recovery/v2.html": {
+            "bytes": 3283,
+            "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+          },
+          "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+            "bytes": 3322168,
+            "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+          }
+        },
+        "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+        "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+        "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+        "GI_guard_tests": "31tests+actualsource smoke; stageddecoderCLI syntax only; runtimeowners/native/AO/GI pending",
+        "reconstructed_field_domain_unit_tests": "PASS11 per reconstruction lead; actual candidate geometry/domain checks NOT_RUN",
+        "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
+        "zero_cover_extended_attempt": "One900s attempt authorized only afterv9 andrunnerreview; not run; no furtherauto retry",
+        "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance",
+        "GI_owner_CLI": "prepared syntax/selftest only; actualcandidate owner NOT_RUN",
+        "solve_execution": "NOT_RUN; paused due pre-solve discovered serialization equality false-failure; no geometry defect claim"
+      },
+      "currentExecutionBlocker": {
+        "status": "SOLVE_PAUSED_BEFORE_EXECUTION",
+        "issue": "Solver intervals tuple list becomes nested lists after JSON roundtrip; raw Python equality would false-fail corrected phase",
+        "geometryFailure": false,
+        "proposalApproval": "still approved; execution blocked",
+        "required": [
+          "minimal canonical-digest equality fix",
+          "focused regression",
+          "independent review",
+          "fresh namespace for new stage hash"
+        ],
+        "v11StageCode": "frozen unfixed; no code changed by documentation agent",
+        "possibleReuseBridge": "Only explicitly reviewed bridge: exact one-line source diff, fresh zero byte/identity equivalence proof, origin hashes and execution attribution retained; no general identity weakening, silent relabel or rerun claim; not yet approved/implemented",
+        "correctedMetrics": "all fresh after authorized release"
+      },
+      "domain2ZeroReview": {
+        "status": "FULL_ZERO_MEASURED_CORRECTION_PROPOSAL_NOT_APPLIED",
+        "rootJointProposalApproved": true,
+        "correctionApplied": false,
+        "generateZeroSeconds": 42.59,
+        "zeroBlendSHA256": "328a38181abbea587893336ac732b9621869a3d36b4bcf1711a66803305fbb5d",
+        "equivalence": "byteidenticalzeroBlend and full geometry/material/runtime/frozen equivalence;3 earlier previews legitimately rebound, not new rendered previews",
+        "interfacesSeconds": 169.85,
+        "coverSeconds": 231.67,
+        "coverUserCPUSeconds": 229.26,
+        "coverSystemCPUSeconds": 2.1,
+        "timeoutLimitSeconds": 300,
+        "metricRows": 9,
+        "verifiedCaches": 19,
+        "exactDomainOperations": 46517,
+        "newlyUnsupported": false,
+        "supportMinimumMillimeters": [
+          0.699997,
+          0.650164,
+          0.702114,
+          0.651413
+        ],
+        "internalMinimumMillimeters": [
+          0.939312,
+          0.923435,
+          0.909184,
+          0.891558
+        ],
+        "coverMinimumMillimeters": 0.699997,
+        "deficiencies": [
+          "support-1 below target",
+          "support-3 below target"
+        ],
+        "jointProposalMeters": [
+          0.0,
+          4.983564192856469e-05,
+          4.772136344778611e-05,
+          9.63082207966207e-05
+        ],
+        "maxShiftMillimeters": 0.0963082207966207,
+        "allowedShiftMillimeters": 0.25,
+        "evidence": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-20261030/zero-metrics-review-and-proposal.json",
+        "next": [
+          "v11 independent save",
+          "minimal canonical-digest fix and focused regression/review",
+          "fresh namespace and explicitly reviewed zero-evidence attribution",
+          "release solve then fresh correctedmetrics default300"
+        ],
+        "nextDefaultPhaseLimitSeconds": 300,
+        "extendedGrant": false,
+        "fullCollisionExportAOGINative": "NOT_RUN",
+        "GIownerCLI": "prepared syntax/selftest only; actual candidate owner NOT_RUN",
+        "executionBlocked": true
+      }
+    },
+    {
+      "recordType": "PRE_1025_SYNC_FROZEN_STATE",
+      "value": {
+        "updatedAtUTC": "2026-10-30T08:22:09.559129+00:00",
+        "currentValidation": {
+          "archive_and_manifest": "PASS",
+          "git_perfile_comparison": "PASS",
+          "restoration_hashes": "PASS",
+          "new_build": "PASS 10.45s; existing chunk-size warning retained",
+          "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+          "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+          "new_native_world": "NOT_RUN",
+          "new_geometry_AO_GI": "Freshcorrected9metrics19caches PASS default300; export62.49s GLBreadback3.11s PASS; strict3D resultreview/preservedBlend reopen/owners/finalpreview pending; AO/GI/native NOT_RUN",
+          "independent_new_checkpoint_restore": "PASS v11 287files; v12 pending",
+          "evidence": "backups/cloud76-recovery/verification-summary.json",
+          "buildFingerprints": {
+            "web/dist-cloud76-recovery/v2.html": {
+              "bytes": 3283,
+              "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+            },
+            "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+              "bytes": 3322168,
+              "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+            }
+          },
+          "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+          "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+          "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+          "GI_guard_tests": "31tests+actualsource smoke; stageddecoderCLI syntax only; runtimeowners/native/AO/GI pending",
+          "reconstructed_field_domain_unit_tests": "PASS11 per reconstruction lead; actual candidate geometry/domain checks NOT_RUN",
+          "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
+          "zero_cover_extended_attempt": "One900s attempt authorized only afterv9 andrunnerreview; not run; no furtherauto retry",
+          "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance",
+          "GI_owner_CLI": "staticapproved only; actualcandidateNOT_RUN",
+          "solve_execution": "PASS35.80s approved offsets appliedonce after reviewed2fixes andexplicitbridge",
+          "zero_cache_reuse": "19originpayload verified REUSED_NOT_RERUN; correctedallfresh",
+          "strict3D": "PASS triangle-surface scan5targets fullmesh no decimation; no nonseam blockers or uncertainty; not generalvolume claim",
+          "savedBlend_reopen": "INCOMPLETE18.67s: XYZ5targets/protected topologyattrs/262frozen/2empties passed; material rawdict equality failed, tuplelist representation risk; actualcanonical materialSHA not yet persisted, no material pass assumed"
+        },
+        "gaps": [
+          {
+            "item": "native_case07_case08",
+            "bytes": "restored",
+            "status": "historical initial3/3 ON/OFF samebuild only",
+            "next": "new environment actual review; formal entry/dynamic/general quality not implied"
+          },
+          {
+            "item": "terrain_copy_candidate",
+            "bytes": "rejected report restored",
+            "status": "NOT_ADOPTED",
+            "next": "keep original2500ms failure open; no budget/assertion changes"
+          },
+          {
+            "item": "v3_visual_candidate",
+            "bytes": "Blend GLB manifest previews restored",
+            "status": "OFF_PARTIAL_NOT_SELECTED_FINAL",
+            "next": "reconstruct later selected v4, do not downgrade choice silently"
+          },
+          {
+            "item": "window_clearance",
+            "bytes": "patch and isolated original71 Blend GLB evidence restored",
+            "status": "ISOLATED_SURFACE_PASS_HISTORICAL",
+            "next": "combine with v4 and recertify full XYZ/topology/collision/contact"
+          },
+          {
+            "item": "v4_visual_and_combined",
+            "bytes": "new zero Blend and3offline previews generated; not oldv4 recovery",
+            "status": "CORRECTED_METRICS_EXPORT_GLB_READBACK_PASS_OTHER_GATES_PENDING",
+            "next": "v12 save; strict3D root review, savedBlend independentreopen, actualowner/finalpreview; noAO/GI/native release"
+          },
+          {
+            "item": "upper_envelope_helper",
+            "bytes": "new helper84d46a14c381fdfab656730e7d22839b7d2c51f1732577b0a431ef4d81b86a13; historicalbe3dd4 bytes still not recovered",
+            "status": "RECONSTRUCTED_REVIEWED_BASELINE_COMPLETE",
+            "next": "45 reconstruction tests +12 independent passed; complete fresh baseline9rows obtained; candidate analysis and all geometry acceptance remain"
+          },
+          {
+            "item": "AO_GI_wrapper",
+            "bytes": "fullmaterial helpere279 bound to actual runtime and zero snapshot; GI import fixes31tests",
+            "status": "GUARDS31TESTS_SOURCE_SMOKE_NO_BAKE",
+            "next": "Prepared stageddecoder syntax only; full runtime owner/native pending; geometry certification beforeAO/GI"
+          },
+          {
+            "item": "full_regression",
+            "bytes": "historical focused/build logs restored; full log not inZIP",
+            "status": "LAST_REPORTED1992/1993_NOT_FULL_PASS",
+            "next": "new environment build/focused/full results separately record"
+          },
+          {
+            "item": "new_checkpoint_restore_verification",
+            "bytes": "v11 independent287files restored",
+            "status": "V11_VERIFIED_V12_PENDING",
+            "next": "Save serializationfixes explicitbridge freshcorrectedmetrics export/readback in v12"
+          }
+        ],
+        "latestIndependentBackup": {
+          "version": 11,
+          "sha256": "20e31d645fca958faf77576ef842ab54ccdd6c5c79fa293b496c1a177210b99e",
+          "bytes": 45718648,
+          "files": 287,
+          "entries": 288,
+          "baseline": "450a2c0be9d7c1731058b991933d3167befcc147",
+          "independentlyDownloadedAndExtracted": true,
+          "receipt": "recovery-v11-independent/download-verification-receipt.json",
+          "receiptSHA256": "9bb6674c34ace3388d56e2ff49a1dcb0b7ae5959a1452f1b0b00aa9ff5c70206",
+          "boundary": "v12 pending; fixes/bridge/correction/export not in v11"
+        },
+        "currentExecutionBlocker": {
+          "status": "TWO_SERIALIZATION_FIXES_REVIEWED_APPLIED",
+          "boundary": "v11 preserves unfixed source; new canonical namespace retains explicit bridge attribution; no generalidentity weakening"
+        },
+        "canonicalCorrectionPhase": {
+          "namespace": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-canonical-20261030",
+          "zeroEvidenceBridge": {
+            "planSHA256": "e2c612b641cf04b36b7caeabf4840ea2558014842e6bbff3f698bc191a0efe05",
+            "status": "REUSED_NOT_RERUN",
+            "originPayloadsVerified": 19,
+            "oldNamespaceImmutable": true
+          },
+          "newCanonicalZeroSeconds": 39.23,
+          "zeroBlendSHA256": "328a38181abbea587893336ac732b9621869a3d36b4bcf1711a66803305fbb5d",
+          "solveSeconds": 35.8,
+          "approvedOffsetsAppliedOnce": true,
+          "correctedBlendSHA256": "43de3612e3b3c77b45654ddb131fcaa35a286c142b7577d071f20395f269674e",
+          "freshCorrectedInterfacesSeconds": 172.34,
+          "freshCorrectedCoverSeconds": 260.39,
+          "phaseLimitSeconds": 300,
+          "freshMetricRows": 9,
+          "freshCaches": 19,
+          "supportMinMillimeters": [
+            0.699996948,
+            0.699993841,
+            0.700028116,
+            0.699990928
+          ],
+          "coverMinMillimeters": 0.699996948,
+          "fixedToleranceMicrometers": 2,
+          "internalMinimumMillimeters": 0.891558,
+          "maxSupportPointwiseDeltaMillimeters": 0.1117427,
+          "pointwiseBudgetMillimeters": 2,
+          "exactDomainProof": "PASS",
+          "rootReview": "backups/cloud76-recovery/root-corrected-metric-review.json",
+          "exportSeconds": 62.49,
+          "GLBreadbackSeconds": 3.11,
+          "geometryGLBSHA256": "5a8e0eb7e62d07b408128804cdc8bd8708f513bdc057b9499587fcd4055c9d6d",
+          "outputSHA256": {
+            "geometry.glb": "5a8e0eb7e62d07b408128804cdc8bd8708f513bdc057b9499587fcd4055c9d6d",
+            "manifest.json": "95fd772050dc10ca1c8cb497a099831655d47092540cd4377067896f22ac7c45",
+            "textile-volume75.blend": "9381760a3c0f26331ddb24c325f4f826db2c83574a9f57471223731c200fc1f5"
+          },
+          "strict3DCertification": {
+            "status": "PASS_TRIANGLE_SURFACE_ONLY",
+            "reportSHA256": "8330be952706acb5530107ab4411c920a8c9cf167a82b29697af47859dc8bd49",
+            "wallSeconds": 1.5515281989992218,
+            "baselineContacts": 469,
+            "baselineOwnSeamTouches": 417,
+            "baselineCrossings": 52,
+            "candidateOwnSeamTouches": 408,
+            "uncertain": 0,
+            "nonseamBlockers": 0,
+            "coverage": "All 5 target meshes self pairs, each other and every scene mesh with overlapping AABB; BVH broadphase only, triangle narrowphase on every candidate. Full tessellated source meshes, no decimation.",
+            "boundary": "Full tessellated triangle surfaces within1e-7m epsilon; not generalvolume containment or visual/GI acceptance"
+          },
+          "savedBlendIndependentReopen": "INCOMPLETE18.67s: XYZ5targets/protected topologyattrs/262frozen/2empties passed; material rawdict equality failed, tuplelist representation risk; actualcanonical materialSHA not yet persisted, no material pass assumed",
+          "actualCandidateOwner": "PASS2/2 Blender-side owner checks1.07s; not fullruntime GIdecoder/native",
+          "finalCorrectedPreview": "PENDING",
+          "AO_GI_native": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "recordType": "SUPERSEDED_PRE_1025_CURRENT_FIELDS",
+      "zeroCandidatePhaseStatus": "DOMAIN1_OPERATION_CAP_DOMAIN2_EXACT_PROOF_TESTED_FRESH_RUN_PENDING",
+      "reconstructedFieldDomainUnitTests": "PASS11 per reconstruction lead; actual candidate geometry/domain checks NOT_RUN"
+    }
+  ],
+  "latestPublishedGit": "450a2c0be9d7c1731058b991933d3167befcc147",
+  "latestIndependentBackup": {
+    "version": 16,
+    "sha256": "21d9b57d7a3496542ee47268224df806405a30806c72c1df468dd24b5f1fcab2",
+    "bytes": 86884690,
+    "files": 563,
+    "entries": 564,
+    "baseline": "450a2c0be9d7c1731058b991933d3167befcc147",
+    "independentlyDownloadedAndExtracted": true,
+    "receipt": "recovery-v16-independent/download-verification-receipt.json",
+    "receiptSHA256": "06e7618079264b00baf4f269d5d1bafc36e0499ba904356f6444642b99de5f75",
+    "boundary": "Full5families25states20modules+decoder+CPUowner+prepublication protected context; excludes later isolated native build and this sync doc updates"
+  },
+  "newBaselineAnalysis": {
+    "status": "COMPLETE_BASELINE_MEASUREMENT_NOT_CANDIDATE_ACCEPTANCE",
+    "helperSHA256": "84d46a14c381fdfab656730e7d22839b7d2c51f1732577b0a431ef4d81b86a13",
+    "baselineSHA256": "ec8684945cd35beaddf2637cc9c73ef698d9ae49cdd94d278abf94a4d6f54cd4",
+    "metricRows": 9,
+    "checkpointCount": 10,
+    "verifiedPayloadFiles": 15,
+    "interfacesSeconds": 79.69,
+    "coverSeconds": 140.08,
+    "verification": "backups/cloud75-textile-volume-staging/baseline-recovery-verification.json",
+    "boundary": "Complete original source baseline measurement only; not candidate contact/collision acceptance"
+  },
+  "closedSpecificGaps": [
+    "v7 independent backup download and restore verification",
+    "new environment baseline build and391 focused tests",
+    "checkpoint utility18tests/635LFS inventory",
+    "reconstructed numerical helper and full source baseline analysis"
+  ],
+  "zeroCandidatePhase": {
+    "status": "HISTORICAL_DOMAIN1_FAILURE_SUPERSEDED_BY_DOMAIN2_CORRECTED_GEOMETRY_AND_FULL_GI_CPU_PASS",
+    "zeroBlendSHA256": "328a38181abbea587893336ac732b9621869a3d36b4bcf1711a66803305fbb5d",
+    "materialFingerprintSHA256": "9195966b3b86fcc3459013fed5bb832d4f4705a857ba7d534b0cadf3bf3404db",
+    "materialsEqualOriginal": true,
+    "materialHelperSHA256": "e279c7942bdb9e5ec7051245e1926bb5eda2f38bea8bd2b7ba9fac6a16b82f79",
+    "runtimeBinarySHA256": "b8b07a190fb25db76aae6de08dbc6c2b3d64e22e82bed6ba90de9545859f3431",
+    "generationSeconds": 44.99,
+    "previewSeconds": 27.22,
+    "previews": 3,
+    "previewReview": "Parent viewed all3; faithful to selected E4 enough to continue checks only; not final art/native acceptance",
+    "namedWindowPatch": {
+      "vertices": 64,
+      "maxYMillimeters": 7.199767,
+      "maxXYZJumpMillimeters": 7.2534
+    },
+    "zeroInterfaces": {
+      "seconds": 155.7,
+      "metrics": 8,
+      "envelopes": 8,
+      "status": "measurement completed; min-support values not acceptance"
+    },
+    "zeroCover": {
+      "status": "INCOMPLETE_EXECUTION_TIMEOUT_NOT_GEOMETRY_REJECTION",
+      "requestedLimitSeconds": 300,
+      "wallSeconds": 306.9536917380001,
+      "peakRSSKiB": 1432440,
+      "coverageUnionLastReported": 1000,
+      "coverageUnionInputRecords": 6411,
+      "cacheFiles": 17,
+      "diagnostic": "backups/cloud75-textile-volume-staging/candidate-v4-reconstructed-20261030/zero-cover-timeout-diagnostic.json",
+      "geometryOrNumericalFailureProven": false,
+      "correctionApplied": false
+    },
+    "nextAuthorizedAttempt": {
+      "phase": "zero-cover",
+      "count": 1,
+      "limitSeconds": 900,
+      "preconditions": [
+        "v9 checkpoint saved and verified",
+        "minimal runner review"
+      ],
+      "otherPhaseLimitSeconds": 300,
+      "sameFrozenMathGeometry": true,
+      "toleranceRelaxation": false,
+      "automaticFurtherRetries": false,
+      "status": "COMPLETED394.61s_EXIT17_OPERATION_CAP_NOT_TIMEOUT"
     }
   },
-  "completionBoundary": "Recovering files or past logs is not task completion. Stage3 stays in progress; stage5 global light/color deferred. No production adoption/deploy/force-push."
+  "domainRecoveryPhase": {
+    "extendedDomain1": {
+      "seconds": 394.61,
+      "returnCode": 17,
+      "timedOut": false,
+      "userCPUSeconds": 381.379,
+      "systemCPUSeconds": 2.704,
+      "peakRSSKiB": 1444848,
+      "memAvailableGBBefore": 8.947,
+      "memAvailableGBAfter": 9.107,
+      "failure": "old baseline-hole subtraction operation cap2000000",
+      "geometryDefectProven": false,
+      "coverEnvelopeGapPointwiseFinished": true,
+      "cacheFiles": 18,
+      "metricCertificateProduced": false,
+      "correctionApplied": false,
+      "evidence": "backups/cloud75-textile-volume-staging/candidate-v4-reconstructed-20261030/zero-cover-operation-cap-diagnostic.json"
+    },
+    "exactDomainProof": {
+      "helper": "backups/cloud75-textile-volume-staging/exact_patch_domain.py",
+      "helperSHA256": "22403f5ac6771b24f2325b66cead1f71db26c31db337ece39b2918e7a0d073df",
+      "result": "backups/cloud75-textile-volume-staging/exact-domain-fixture-result.json",
+      "resultSHA256": "650e6910b1042df7b2b0b67be7d840a607edf7eecf47dd9a0523c203e0316974",
+      "independentTests": 20,
+      "savedFixtureSeconds": 0.7859129259995825,
+      "independentFixtureSeconds": 0.638,
+      "operations": 46517,
+      "operationCap": 2000000,
+      "supportTrianglesExactXYEqual": 25972,
+      "receiverTriangles": 1200,
+      "changed": 17,
+      "unchangedExactCancelled": 1183,
+      "candidateMinusBaselineExactEmpty": true,
+      "baselineMinusCandidateArea": 0.0012442873030380497,
+      "outsideNamedSweepExactEmpty": true,
+      "newUnsupportedExactEmpty": true,
+      "unchangedTolerances": true,
+      "areaEqualityShortcut": false,
+      "sourceSHA256": "c1a1e09f4fca922a94544c10f3f48a41ceb29ca50be4bac945bfeefb72113397",
+      "zeroSHA256": "328a38181abbea587893336ac732b9621869a3d36b4bcf1711a66803305fbb5d",
+      "originalMathHelper84dUnchanged": true
+    },
+    "next": "Native/world validation remains open; historical domain failure and exact proof retained",
+    "freshDomain2Run": "COMPLETE_ZERO_MEASURED_NINE_ROWS_NOT_FINAL_ACCEPTANCE",
+    "stagedDecoder": "ACTUAL25STATE20MODULE_PASS_NOT_NATIVE",
+    "boardwalkABBA": "NOT_RUN; plan saved"
+  },
+  "domain2ZeroReview": {
+    "status": "HISTORICAL_ZERO_MEASUREMENTS_WITH_LATER_CORRECTION_APPLIED",
+    "rootJointProposalApproved": true,
+    "correctionApplied": true,
+    "generateZeroSeconds": 42.59,
+    "zeroBlendSHA256": "328a38181abbea587893336ac732b9621869a3d36b4bcf1711a66803305fbb5d",
+    "equivalence": "byteidenticalzeroBlend and full geometry/material/runtime/frozen equivalence;3 earlier previews legitimately rebound, not new rendered previews",
+    "interfacesSeconds": 169.85,
+    "coverSeconds": 231.67,
+    "coverUserCPUSeconds": 229.26,
+    "coverSystemCPUSeconds": 2.1,
+    "timeoutLimitSeconds": 300,
+    "metricRows": 9,
+    "verifiedCaches": 19,
+    "exactDomainOperations": 46517,
+    "newlyUnsupported": false,
+    "supportMinimumMillimeters": [
+      0.699997,
+      0.650164,
+      0.702114,
+      0.651413
+    ],
+    "internalMinimumMillimeters": [
+      0.939312,
+      0.923435,
+      0.909184,
+      0.891558
+    ],
+    "coverMinimumMillimeters": 0.699997,
+    "deficiencies": [
+      "support-1 below target",
+      "support-3 below target"
+    ],
+    "jointProposalMeters": [
+      0.0,
+      4.983564192856469e-05,
+      4.772136344778611e-05,
+      9.63082207966207e-05
+    ],
+    "maxShiftMillimeters": 0.0963082207966207,
+    "allowedShiftMillimeters": 0.25,
+    "evidence": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-20261030/zero-metrics-review-and-proposal.json",
+    "next": [
+      "native same-build candidate OFF/ON/OFF comparison",
+      "GPU and world-routing checks",
+      "performance and art acceptance before any adoption"
+    ],
+    "nextDefaultPhaseLimitSeconds": 300,
+    "extendedGrant": false,
+    "fullCollisionExportAOGINative": "GEOMETRY_EXPORT_AO_GI_CPU_COMPLETE_NATIVE_NOT_RUN",
+    "GIownerCLI": "ACTUAL25STATE_CPU_OFF_ON_PASS_NOT_NATIVE",
+    "executionBlocked": false
+  },
+  "currentExecutionBlocker": {
+    "status": "V16_VERIFIED_TEXT_SYNC_PREPARED_REMOTE_PUBLICATION_NOT_YET_VERIFIED",
+    "boundary": "Existing AO/GI protected evidence immutable; latest native build evidence postdates v16"
+  },
+  "canonicalCorrectionPhase": {
+    "namespace": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-canonical-20261030",
+    "zeroEvidenceBridge": {
+      "planSHA256": "e2c612b641cf04b36b7caeabf4840ea2558014842e6bbff3f698bc191a0efe05",
+      "status": "REUSED_NOT_RERUN",
+      "originPayloadsVerified": 19,
+      "oldNamespaceImmutable": true
+    },
+    "newCanonicalZeroSeconds": 39.23,
+    "zeroBlendSHA256": "328a38181abbea587893336ac732b9621869a3d36b4bcf1711a66803305fbb5d",
+    "solveSeconds": 35.8,
+    "approvedOffsetsAppliedOnce": true,
+    "correctedBlendSHA256": "43de3612e3b3c77b45654ddb131fcaa35a286c142b7577d071f20395f269674e",
+    "freshCorrectedInterfacesSeconds": 172.34,
+    "freshCorrectedCoverSeconds": 260.39,
+    "phaseLimitSeconds": 300,
+    "freshMetricRows": 9,
+    "freshCaches": 19,
+    "supportMinMillimeters": [
+      0.699996948,
+      0.699993841,
+      0.700028116,
+      0.699990928
+    ],
+    "coverMinMillimeters": 0.699996948,
+    "fixedToleranceMicrometers": 2,
+    "internalMinimumMillimeters": 0.891558,
+    "maxSupportPointwiseDeltaMillimeters": 0.1117427,
+    "pointwiseBudgetMillimeters": 2,
+    "exactDomainProof": "PASS",
+    "rootReview": "backups/cloud76-recovery/root-corrected-metric-review.json",
+    "exportSeconds": 62.49,
+    "GLBreadbackSeconds": 3.11,
+    "geometryGLBSHA256": "5a8e0eb7e62d07b408128804cdc8bd8708f513bdc057b9499587fcd4055c9d6d",
+    "outputSHA256": {
+      "geometry.glb": "5a8e0eb7e62d07b408128804cdc8bd8708f513bdc057b9499587fcd4055c9d6d",
+      "manifest.json": "95fd772050dc10ca1c8cb497a099831655d47092540cd4377067896f22ac7c45",
+      "textile-volume75.blend": "9381760a3c0f26331ddb24c325f4f826db2c83574a9f57471223731c200fc1f5"
+    },
+    "strict3DCertification": {
+      "status": "PASS_TRIANGLE_SURFACE_ONLY",
+      "reportSHA256": "8330be952706acb5530107ab4411c920a8c9cf167a82b29697af47859dc8bd49",
+      "wallSeconds": 1.5515281989992218,
+      "baselineContacts": 469,
+      "baselineOwnSeamTouches": 417,
+      "baselineCrossings": 52,
+      "candidateOwnSeamTouches": 408,
+      "uncertain": 0,
+      "nonseamBlockers": 0,
+      "coverage": "All 5 target meshes self pairs, each other and every scene mesh with overlapping AABB; BVH broadphase only, triangle narrowphase on every candidate. Full tessellated source meshes, no decimation.",
+      "boundary": "Full tessellated triangle surfaces within1e-7m epsilon; not generalvolume containment or visual/GI acceptance"
+    },
+    "savedBlendIndependentReopen": "PASS saved-blend-readback SHA0965200978fcace083cbe89c36abe5c108e9b238c510341e8939d48298a514aa",
+    "actualCandidateOwner": "PASS2/2 Blender-side owner checks1.07s; not fullruntime GIdecoder/native",
+    "finalCorrectedPreview": "Reviewed diagnostic previews permitted AO/GI preparation only, not final native/art adoption",
+    "AO_GI_native": "AO_POST_READBACK_AND_ALL25_GI_CPU_PASS_NATIVE_NOT_RUN"
+  },
+  "currentCandidateCheckpoint": {
+    "summaryPath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-all-summary.json",
+    "summarySHA256": "08e018146f192cc129b5a1705e8617ab76b2dd5291906dac639d92be300cb051",
+    "states": 25,
+    "modules": 20,
+    "families": [
+      "house_a",
+      "house_a-living-0",
+      "house_a-living-1",
+      "house_a-living-2",
+      "house_a-entry-tea-34"
+    ],
+    "status": "ALL25_STATES20_MODULES_BAKE_STATIC_DECODER_CPU_OWNERS_PASS_NOT_NATIVE_VISUAL_ACCEPTANCE",
+    "derived": {
+      "kind": "house-textiles62",
+      "sourceSHA256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2",
+      "geometrySHA256": "e029ebb99b290484fdf049640aef1a41302e47f7cf281631b78376c59452ad5d",
+      "manifestSHA256": "dd87350692ec23eff7bc5e6270ce5bcc7253b2b842af6dbab6617f5efc87eecd",
+      "nodes": [
+        "pastoral_house_felt_mattress",
+        "pastoral_house_bed_quilt",
+        "pastoral_house_bed_foot",
+        "pastoral_house_chest_folded0",
+        "pastoral_house_chest_folded1",
+        "pastoral_house_chest_folded2",
+        "pastoral_house_chest_folded3",
+        "pastoral_house_chest_topcover",
+        "pastoral_house_bench_felt"
+      ]
+    },
+    "decoderReportSHA256": "283577c58bcf31fd55b75a90c00b36cf08620b2bed9b9b9b84d0a2ab2668e044",
+    "cpuOwnerExecutionSHA256": "b8c4090e10086a60183bcd9506c4e3e726169cd5070bae149588d3651960f876",
+    "notRun": [
+      "Native entity occupancy routing",
+      "Shader/GPU upload",
+      "Same-build geometry+all20GI OFF/ON/OFF pixel comparison",
+      "Native performance acceptance",
+      "Adoption/default enable/deployment"
+    ],
+    "postAOReadbackSHA256": {
+      "blend": "f8aa460fb473053eb7b53cae025bfa6c300fd90095fe0ad18fb50fcf250f7c49",
+      "glb": "1257c07935155005256a4fc6a5313c77c40f2712f6fe570fa3131503943b1679"
+    },
+    "runtimeCodeChanged": false,
+    "productionAssetsChanged": false,
+    "candidateDefaultsChanged": false,
+    "adopted": false,
+    "deployed": false
+  },
+  "sourceReplayPublication": {
+    "path": "tools/cloud75-source-replay",
+    "files": 56,
+    "payloadFiles": 52,
+    "payloadBytes": 425044,
+    "manifestSHA256": "d694e369f13d0eb5e7b49c0bce4cb5875de0a8cc6c76b08e0cb5aef4347df188",
+    "status": "INCLUDED_IN_THIS_TEXT_SYNC_CHANGESET_REMOTE_VERIFICATION_REQUIRED",
+    "testsPassed": 14,
+    "liveSourceHashesVerified": 52,
+    "productionInputHashesVerified": 897,
+    "snapshotLabelsBoundary": "GI checker NOT_RUN labels reflect original09:09 snapshot; actual latest results recorded in currentCandidateCheckpoint",
+    "assetPublication": "NOT_INCLUDED_REQUIRES_FUTURE_LFS_VERIFIED_UPLOAD"
+  },
+  "isolatedNativeCandidateBuild": {
+    "status": "ISOLATED_BUILD_AND_HTTP_BYTE_VERIFICATION_PASS_NATIVE_NOT_RUN",
+    "receipt": "backups/cloud76-recovery/native-candidate-integration-execution/build-receipt.json",
+    "receiptSHA256": "6342078e6005dffa9217790ffce0270d904c9b398ad9532f8ea2f15efa734ce6",
+    "overlayFiles": 22,
+    "lfsBeforeOverlayVerified": 635,
+    "preparedSignaturesUnchanged": 5,
+    "buildFiles": 782,
+    "seconds": 8.93,
+    "buildManifestSHA256": "ca401c4b48c2268c0b16d7f5b694764c13d19c82a347a402a49a99709a8c549d",
+    "native": "NOT_RUN_AT_THIS_CHECKPOINT",
+    "productionDefault": "OFF_UNCHANGED",
+    "includedInV16": false,
+    "httpServedFilesVerified": 3
+  }
 }

@@ -1,0 +1,3972 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "450a2c0be9d7c1731058b991933d3167befcc147",
+  "allowedPrefixes": [
+    "backups/cloud75-textile-volume-staging/",
+    "backups/cloud75-cover-window-clearance/",
+    "backups/cloud75-textile-gi-staging/"
+  ],
+  "purpose": "Source-only replay; not candidate adoption, bake authorization, cache reuse or completion evidence",
+  "snapshotUTC": "2026-10-30T09:09:00Z",
+  "priorIndependentCheckpoint": {
+    "version": 12,
+    "sha256": "e15848855f43ddfde4df4dcd20c3f7108faf9f6b63cddf68d048c43f50b43e38",
+    "scope": "Some bundled post-v12 source is newer; this is not proof all source exists in v12"
+  },
+  "boundInputs": [
+    {
+      "path": "assets/src/v2/pastoral/house_a-lived.blend",
+      "sha256": "3df95c454026b2b7047c1fcca73068fba178d6268db0f5c152f3e4c4c7204aa2"
+    },
+    {
+      "path": "assets/src/v2/pastoral/household-entry-tea-34.blend",
+      "sha256": "deb923ba5567b03a12a2664d8faea922ba1d125778e9fcc37d70ce23623ca270"
+    },
+    {
+      "path": "assets/src/v2/pastoral/household-living-32.blend",
+      "sha256": "f8698f849e6b2470b6b195237ee4ce3a7241b87abd49477f4c871811839db6a4"
+    },
+    {
+      "path": "assets/src/v2/pastoral/textiles62/house-a-textiles62.blend",
+      "sha256": "c1a1e09f4fca922a94544c10f3f48a41ceb29ca50be4bac945bfeefb72113397"
+    },
+    {
+      "path": "tools/blender/animal.py",
+      "sha256": "307d07c1dfc9bf64e0bf6555b421c661f683e2b4b7538ed8889d795f7fc9becf"
+    },
+    {
+      "path": "tools/blender/animal_clips.py",
+      "sha256": "8898bc2b85ee590b33599e696d14a397e957cf57b9c6c177d53f71d32a36d412"
+    },
+    {
+      "path": "tools/blender/animal_rig.py",
+      "sha256": "fda7fdc65e6171e4e7cf412d0f84a021800d0c4b573e5d0bd03b3644be6236e7"
+    },
+    {
+      "path": "tools/blender/cabin.py",
+      "sha256": "2401edfe5b15411beea090e10f5382441279afebb949ef3b459ad3cbb4eb3122"
+    },
+    {
+      "path": "tools/blender/character_mixamo.py",
+      "sha256": "59095792695dca011cfc32c47ee599d56d301ca5a17aec0ced24e2851b112b14"
+    },
+    {
+      "path": "tools/blender/character_schoolboy.py",
+      "sha256": "2f8411cd04fe3381e4d5bc6f5b434ead7695f77f4294c423be540a15c95d2552"
+    },
+    {
+      "path": "tools/blender/deadwood.py",
+      "sha256": "19ee4cd9b0ebc9c21fa4102246f1173f7b37e155f5873e6f06c972dca98eeb15"
+    },
+    {
+      "path": "tools/blender/eggs.py",
+      "sha256": "5ebd9a1cd89c1eb68f5e44ca1171d0fe9040fe8683f2bea02e134913e785ffca"
+    },
+    {
+      "path": "tools/blender/export_pasture_contact41.py",
+      "sha256": "81d6745f4a433e5f3b07b1c8c7186a50693057c3bd8d30ff27475a80caee4096"
+    },
+    {
+      "path": "tools/blender/export_seating39.py",
+      "sha256": "62ef40964bb92cea422c6094f21289545a9ceec64983b0881d0ee990c23f6cb2"
+    },
+    {
+      "path": "tools/blender/extract_hand_template.py",
+      "sha256": "855d8a0dab05c850818cf9da976d6c670ef4a0196f75c99df78110b25362f17c"
+    },
+    {
+      "path": "tools/blender/face_rig.py",
+      "sha256": "5f14700c8cf1150590306cd4f5b2701a77e6dd84644649bc2809e57749ec4634"
+    },
+    {
+      "path": "tools/blender/farm.py",
+      "sha256": "e6fc648087b7bf370bbefb727a80670e595eefe885e4c57d074d1200bb2787fb"
+    },
+    {
+      "path": "tools/blender/guesthouses.py",
+      "sha256": "f34fa9fc5a237419893ce63931d8c7a229a9317542eb4ce4bf4c4ddbe4b46b3e"
+    },
+    {
+      "path": "tools/blender/hands.py",
+      "sha256": "30010aeaac8f02d342edd03e2aab9a800c6e96a951baf2dea8220649bb87e9c3"
+    },
+    {
+      "path": "tools/blender/hifi_cosmos.py",
+      "sha256": "42539d1cff8a3127e0b0f1a6cf8aa24f759cda91e8a48392ddb8a54a825808ea"
+    },
+    {
+      "path": "tools/blender/hifi_grass.py",
+      "sha256": "bd94564d93da4aaf07f8208e18bc79a388c7080a90a9f69b04b11f227f1636f0"
+    },
+    {
+      "path": "tools/blender/household.py",
+      "sha256": "e4c7cc4f62bf9ff28c0c30211803e0c8e9d62e119ea13fb1d04ccbd23875f5b6"
+    },
+    {
+      "path": "tools/blender/integrate_lodge_chairs_v38.py",
+      "sha256": "1bccfd75c9817933462cef8e4f51bc335cb3f895103dacc219a591cd3d7d13bb"
+    },
+    {
+      "path": "tools/blender/integrate_lodge_furniture_v38.py",
+      "sha256": "e7aa4a29a16c10a6db490241c73301ec0aff9724ddec674c5a424540bb1a589e"
+    },
+    {
+      "path": "tools/blender/integrate_lodge_tables_v38.py",
+      "sha256": "3e18c1126bbb2cb50130f3869195b5955a3cf7b9f4a7874691b4802b19fda967"
+    },
+    {
+      "path": "tools/blender/lib.py",
+      "sha256": "80ac537f7c7f72639e662adc1cace4a95e32919cdd923ae662f80f505ee8564a"
+    },
+    {
+      "path": "tools/blender/look_model.py",
+      "sha256": "3381c68af7977f8a4e2a7d868693997e1d20303f19bf1112f119ef4c92fc770b"
+    },
+    {
+      "path": "tools/blender/meshopt_lossless.py",
+      "sha256": "cabc2af9966e092101b885182a38ca58eaaf5ad6e3a19f20259e04698ce645da"
+    },
+    {
+      "path": "tools/blender/preview_guest_living39.py",
+      "sha256": "c235e2adeda45f502917ce1e558584dc8f16c60a34c42836aef975cfbc3983ae"
+    },
+    {
+      "path": "tools/blender/preview_guest_vanity_v38.py",
+      "sha256": "06c469b9ffbc4661c7554ed137c15eb0607b30b6f6f9ae2e0151423cbc05d9cc"
+    },
+    {
+      "path": "tools/blender/preview_lodge_chairs_context_v38.py",
+      "sha256": "58699d123e8b2dc23c9659952f5d99f51b35caa2bca356dd542b3ddc1588cb62"
+    },
+    {
+      "path": "tools/blender/preview_lodge_chairs_v38.py",
+      "sha256": "8416f7dffb0d3fe71008ff46ea4f42581bff7c568a1d0ed6788a9946fc1bdaea"
+    },
+    {
+      "path": "tools/blender/preview_lodge_tables_v38.py",
+      "sha256": "2767c0a66c842e46ea72c765aea2e1928eafee665d6edc00a6a6093e260bc004"
+    },
+    {
+      "path": "tools/blender/props.py",
+      "sha256": "2b4a5e480006a50710bd2122a4c91a41b0dd14457a89b2249929e61aec663a54"
+    },
+    {
+      "path": "tools/blender/rebody.py",
+      "sha256": "51bdb28d7b4a1de3358198a1f09f53ed900e4126d99c0a9d9871cb347f717926"
+    },
+    {
+      "path": "tools/blender/rig_character.py",
+      "sha256": "69c3146b5596047f30f17d455444c084aeaa09982c2820e73a552c3626c3228e"
+    },
+    {
+      "path": "tools/blender/spruce.py",
+      "sha256": "90474f4957e52ace49fa02f2e1d2b0a5b9f1467f3aaa297805db790ef2a97a06"
+    },
+    {
+      "path": "tools/blender/spruce2.py",
+      "sha256": "7ece319c073e460cd912360afc63da3505694cfeeffc6e4e17c7dcbd4259593e"
+    },
+    {
+      "path": "tools/blender/spruce_far_capture.py",
+      "sha256": "d6166e089aed185f15d14ca53dcef1c8e362b332e70f363c41a7251498274bb7"
+    },
+    {
+      "path": "tools/blender/test_v2_household_entry.py",
+      "sha256": "a05f9a7e69999daa7d2cfcbdab3a20dafbeb9c9783b97ffc28188ded8e5925bc"
+    },
+    {
+      "path": "tools/blender/test_v2_room_aperture_visibility.py",
+      "sha256": "2e02f717a9d202dca030e14b08f02b373fe9e86839f08ebc09d5dc691f4ebad7"
+    },
+    {
+      "path": "tools/blender/test_v2_room_bounce.py",
+      "sha256": "baca8b9edcc9cd5e9d09ae0620a1768c6ceb478776ae61aae25e7dca9a94eb94"
+    },
+    {
+      "path": "tools/blender/test_v2_room_contact.py",
+      "sha256": "3737f76611a44d4c028fbb13aa647714b3648e4141eb80dc0804cc7a7940281e"
+    },
+    {
+      "path": "tools/blender/test_v2_room_fixture.py",
+      "sha256": "7b5bad682936bfdba7590e9ef20afb118dd4e1accaea731cd45e7a6c4cdb9b5f"
+    },
+    {
+      "path": "tools/blender/test_v2_room_grid.py",
+      "sha256": "c665b07c9448a699228b21836320a981e6205140652d73822a6c26623a6394f3"
+    },
+    {
+      "path": "tools/blender/test_v2_room_second_bounce.py",
+      "sha256": "38a0b2671a0ff1c8c51075fab002a195e635342021acdd90c29b7e96eaefbd2b"
+    },
+    {
+      "path": "tools/blender/test_v2_room_second_fixture.py",
+      "sha256": "aeae471cbc01d63aa2dfdbcce16cbc5d7dd505f15691db42a5f12028b457f61f"
+    },
+    {
+      "path": "tools/blender/test_v2_room_second_solar.py",
+      "sha256": "cb2875ec25b4e83b3147a7132fc00e9a1c9346e1ec39c237c5030ec37a3c48a6"
+    },
+    {
+      "path": "tools/blender/test_v2_room_transport.py",
+      "sha256": "92e7eae3630fd97f6b35bcc328983ad4f523b340774d50711830c6fe4693eb90"
+    },
+    {
+      "path": "tools/blender/v2_bedding.py",
+      "sha256": "6b6c0efa86fcc60cb959b2ddd86ac05b2ef0c3744fea826128dbdac81b976289"
+    },
+    {
+      "path": "tools/blender/v2_bedding_preview.py",
+      "sha256": "8c6ef9dbd014067567e1c1d5ed60ea17876dca1dbd7b5fd2894fca3df69a78a1"
+    },
+    {
+      "path": "tools/blender/v2_boardwalk.py",
+      "sha256": "03bc722e9fcff31d6ce3eeb40d4dd1c10ef4d19d6e9d78b08b040de2c8ae15c1"
+    },
+    {
+      "path": "tools/blender/v2_boardwalk_endgrain39.py",
+      "sha256": "e23d74b9e678adaa2c02f30b7d8190f145b3f4944b751ef9ba3d55a3ad257f08"
+    },
+    {
+      "path": "tools/blender/v2_fabrics.py",
+      "sha256": "bfcd0b95552d92167b0a6a467caaf4f78618ad74d7e89e7b4f843cbc8f4fd61a"
+    },
+    {
+      "path": "tools/blender/v2_flowers.py",
+      "sha256": "58e9dbc85c1b2e0f116f132c15ac1ac4ad651371a7dde9457286c500a0f1b0ea"
+    },
+    {
+      "path": "tools/blender/v2_guest_door_gi41.py",
+      "sha256": "880aeda7c3a699bc7ac8bafb822ce025cefe2b331553fcd696123c333d1cd4ff"
+    },
+    {
+      "path": "tools/blender/v2_guest_living39.py",
+      "sha256": "528ce3db0b17443e61a3eefe21b9a44041347c8251af34a766eb873b7fb4c913"
+    },
+    {
+      "path": "tools/blender/v2_guest_living_gi39.py",
+      "sha256": "6c00c9f7b2f6574af282077e09ae404f94e5de5c2a26e2641645691e74f77cc1"
+    },
+    {
+      "path": "tools/blender/v2_guest_living_upper39.py",
+      "sha256": "402a6319bd82b6fc44f1d979f4def6c3ca72cec5588c566c1c2692a36e8778fc"
+    },
+    {
+      "path": "tools/blender/v2_guest_vanity_gi.py",
+      "sha256": "158ccb707cc7b3fc272579ebb6a48af9a4436001992a3a3c4b45d219527a8f48"
+    },
+    {
+      "path": "tools/blender/v2_guest_vanity_v38.py",
+      "sha256": "b0e9b86a87dd59a2281229a016ddb295ceb1e84e18f3d8da5770f5f555bc6e1c"
+    },
+    {
+      "path": "tools/blender/v2_house_furniture58.py",
+      "sha256": "7280d56ced2917bc0a5ced9924dbee88388ca454d2e12ce36d7e3d6bbb6ed142"
+    },
+    {
+      "path": "tools/blender/v2_house_textiles62.py",
+      "sha256": "90779ee5e24361d300ff683836e62172480ba443efc69bbd94539a76c0fec83e"
+    },
+    {
+      "path": "tools/blender/v2_house_textiles62_audit.py",
+      "sha256": "45110dffd387bea28df79cd727c5dfa8acf8a46759dccad13940849eb2452eb9"
+    },
+    {
+      "path": "tools/blender/v2_house_textiles62_shape_audit.py",
+      "sha256": "4ac96c05bd7e47241705274a528646cfd1c709b015fd04ec9ceaafd4ecdfac1c"
+    },
+    {
+      "path": "tools/blender/v2_house_textiles62_triangle_audit.py",
+      "sha256": "acef12e61d0927bdf0d730e18a6db691cb264d139da0e94145ad4ed4103a5d3f"
+    },
+    {
+      "path": "tools/blender/v2_house_textiles_gi73.py",
+      "sha256": "e1d7906affdf1987af5889754f1b2764825736b1c594d77c0f682b317082dd18"
+    },
+    {
+      "path": "tools/blender/v2_house_timber48.py",
+      "sha256": "915a01c2ac3b7fe5cb912d6f912f94cabfba461f2f61ffe88b73a47aae7580e7"
+    },
+    {
+      "path": "tools/blender/v2_house_timber48_finished.py",
+      "sha256": "3e4c53f34a443987d05c9a8feff47ea336b17034024398785af38e52c61e2e71"
+    },
+    {
+      "path": "tools/blender/v2_household_entry.py",
+      "sha256": "59ac8d17e44040e556494de6ef71baa5720afb22d5be9420bed3f918fd8f8095"
+    },
+    {
+      "path": "tools/blender/v2_household_entry_bake.py",
+      "sha256": "8e75359fb5a915e0aaa9a64ef9b22a1d1d9c19092e884eaf2038fdfd475dadcb"
+    },
+    {
+      "path": "tools/blender/v2_household_living.py",
+      "sha256": "07c6927b46019acaa115a3b0d314e9f7424ef388a980d3dcc52786c364e6b32e"
+    },
+    {
+      "path": "tools/blender/v2_household_living_preview.py",
+      "sha256": "ad4250e50b78e4b40ed95681fce9177e3aa6f65b0b49844f90f1f3579741cd80"
+    },
+    {
+      "path": "tools/blender/v2_household_room_bake.py",
+      "sha256": "6f3f323b864e11f28e288780dbdf753c5345c5390e43964e3e222d20e584400d"
+    },
+    {
+      "path": "tools/blender/v2_household_room_reuse.py",
+      "sha256": "814381fbc4a84886c09802de4efca0eeb613c8acb2fb257cfb30858c58bbf3e3"
+    },
+    {
+      "path": "tools/blender/v2_interior_surfaces.py",
+      "sha256": "be0ec5d1d9a5a71d0c4a00c61ba8be6bb84cc941dec293fcdd50120a762368b2"
+    },
+    {
+      "path": "tools/blender/v2_joinery.py",
+      "sha256": "b784addd7e7e97d57fcdd7caa5862fc7899a0603e1b5691de0026bd10cca53a2"
+    },
+    {
+      "path": "tools/blender/v2_joinery_detail_preview.py",
+      "sha256": "8e229121855c55fd8ff5f62d7ee34b0393e088502d9fb7b72d127baa1dc45419"
+    },
+    {
+      "path": "tools/blender/v2_joinery_preview.py",
+      "sha256": "51740b9344ad06ba928c8487ca10deac8ba328e33c44be3f2f3bbab9cd0195d9"
+    },
+    {
+      "path": "tools/blender/v2_lanchuan.py",
+      "sha256": "efa40a55e1392754e5755c91bfc3d8d2ac67b46690838ff75eb3a5dfd5d6b5c6"
+    },
+    {
+      "path": "tools/blender/v2_lodge_chairs_v38.py",
+      "sha256": "93c9b011b44ef25e80c265ed8af5a0eeecb5e8baa55f5afe4d6fac9d3deb6e20"
+    },
+    {
+      "path": "tools/blender/v2_lodge_cross_bake.py",
+      "sha256": "24003455da3e81fff7a261ef7352624d7a8dbb7446daa42b2a6d75779b8bca0f"
+    },
+    {
+      "path": "tools/blender/v2_lodge_dining_bake.py",
+      "sha256": "a468fe6c3a172ace05fb7b331edc66096638337a0270c1667cd2a1eed5d81bad"
+    },
+    {
+      "path": "tools/blender/v2_lodge_door_bake.py",
+      "sha256": "bc4c907cf32f36bc72d57c468eb0e927d6ec4d3fcf54477dcca8ea43fadcb1dc"
+    },
+    {
+      "path": "tools/blender/v2_lodge_furniture.py",
+      "sha256": "c51cb8c4942e4b32099a979086d2a43766a0a4923283548db67d0b20c4cc9e1a"
+    },
+    {
+      "path": "tools/blender/v2_lodge_tables_v38.py",
+      "sha256": "f75a480dab1d0ffc4a34bf4e0d0243b98b824002c569c9d0efb5a23375ae0d1b"
+    },
+    {
+      "path": "tools/blender/v2_lodge_whole_bake.py",
+      "sha256": "086820db3c8c0410e8332295974eaae16a2400f355071fb3ac7a78212e27397a"
+    },
+    {
+      "path": "tools/blender/v2_lodge_wood.py",
+      "sha256": "4411c14fcf527cb8443cf3a019a4ceecb54c71cb22d790da7d8f7f8bfe93e7a2"
+    },
+    {
+      "path": "tools/blender/v2_pastoral.py",
+      "sha256": "74bc6616fea1a3fec1998ef5a64defe65b183928335b7d4ff87f99fbb03d95f6"
+    },
+    {
+      "path": "tools/blender/v2_pastoral_door_angles41.py",
+      "sha256": "95c2118cf6d596c90b978a12a92b727da7f6afe3facc6ab6847cb142a734e5da"
+    },
+    {
+      "path": "tools/blender/v2_pasture_life41.py",
+      "sha256": "af1859360acb39588342dc82c67e894fda2b164ef260599f61ce8bc5859fb4d1"
+    },
+    {
+      "path": "tools/blender/v2_porch.py",
+      "sha256": "00ff8268504e0b17180bf02e0d62178bd52f89c95df4b17d1e65d65f3165c7bf"
+    },
+    {
+      "path": "tools/blender/v2_porch_preview.py",
+      "sha256": "367ff2d35390a23f407a6f68d39750704929d6d4d46e7f50e8bdd403c2d219b8"
+    },
+    {
+      "path": "tools/blender/v2_room_aperture_visibility.py",
+      "sha256": "be43d59157199cf0c97506660dcd412e9b7516e18f00787f4a52765e3d5b5084"
+    },
+    {
+      "path": "tools/blender/v2_room_bounce.py",
+      "sha256": "b92dc607e4c55d587bb92068987f7d5fc25051e0ff3ebe33d67412d203b33bb1"
+    },
+    {
+      "path": "tools/blender/v2_room_closed_door.py",
+      "sha256": "d6eca5e2fc30c539da7bde2fd0df7dd27c4f13b5a19f2861a733184e7e9e6111"
+    },
+    {
+      "path": "tools/blender/v2_room_contact.py",
+      "sha256": "4ee99a43a9edbb4897e36530bca064358f6d01364d184aa3aafb3e20a80474de"
+    },
+    {
+      "path": "tools/blender/v2_room_door_angles.py",
+      "sha256": "d5136d1a9550e264e307f955e54ad60ea44be2398c32d9f6f6217f434c5c81c6"
+    },
+    {
+      "path": "tools/blender/v2_room_exterior_aperture.py",
+      "sha256": "4146f97efbd1095ed08f3b5886ae10dc39455b585fec49e29809ba39747f0d85"
+    },
+    {
+      "path": "tools/blender/v2_room_exterior_ground.py",
+      "sha256": "920d83a7a67eb85ad9581fd14562b50ec3f32e164a44088c88f670eff307853c"
+    },
+    {
+      "path": "tools/blender/v2_room_exterior_ground_bounce.py",
+      "sha256": "4f1f2fa2f4d82b09d66751b53b72e1e2d893b7c43f73d57e98596141eccafc19"
+    },
+    {
+      "path": "tools/blender/v2_room_exterior_terrain.py",
+      "sha256": "a35f79134a531b826caba11f3cf61f1c78b363f8257b8c86aca99108c2749e0a"
+    },
+    {
+      "path": "tools/blender/v2_room_fixture.py",
+      "sha256": "4a5a166a887a5dd38842533e4785035f5d57287af8c91a1ef820048b96bf41a1"
+    },
+    {
+      "path": "tools/blender/v2_room_second_bounce.py",
+      "sha256": "c6d2795f04201ef9b02cb208e6ead826f9a9a0548a3d2277845ddd4fa0a74f36"
+    },
+    {
+      "path": "tools/blender/v2_room_second_fixture.py",
+      "sha256": "1e27b83b3ae4d6d716621c724f3bf87552f3a7e565bd8a6d907317c7ce8c4d24"
+    },
+    {
+      "path": "tools/blender/v2_room_second_solar.py",
+      "sha256": "c6d32afbc428ed3e99fefd24d867d679786d1954805ef9217ecde10595188a04"
+    },
+    {
+      "path": "tools/blender/v2_room_transport.py",
+      "sha256": "6a644becd93e5c328d0576ee4ec413a5c84651e6eb4e2811844c2d14e3db0598"
+    },
+    {
+      "path": "tools/blender/v2_root_mat_section.py",
+      "sha256": "15cc71b4d68417a07c42d083fc7fdac690f1335a1e08aac798d19c92fcbe8ce9"
+    },
+    {
+      "path": "tools/blender/v2_route3_entry42.py",
+      "sha256": "e9e8470bd38e587d74640f3ce274d9df76208b726838ed74edee4434f4efd166"
+    },
+    {
+      "path": "tools/blender/v2_shore_rock.py",
+      "sha256": "f94636fc1413241f1fe5ddf0d32c31709b8b4313dbb63a224480e7f776d81851"
+    },
+    {
+      "path": "tools/blender/v2_soft_goods.py",
+      "sha256": "9cc980ed4dc9f2c3f37a3aa9c5a5a48de36b8df4063fa019b77f3ab211ea1ffd"
+    },
+    {
+      "path": "tools/blender/v2_soft_goods_preview.py",
+      "sha256": "610061fd5364e7c44c7e1bc201fdf0e4f8d81ab7ab98c79705c17bee3b1662d7"
+    },
+    {
+      "path": "tools/blender/v2_spruce.py",
+      "sha256": "e79cd3c205ad75c97f70952abdb7fcfd64afc96f5432fda2c63392d8109e47ed"
+    },
+    {
+      "path": "tools/blender/v2_stone_occlusion.py",
+      "sha256": "37fea63e58d5d411d692df114dee52496c20363de9e888b81c0337ed100f8fce"
+    },
+    {
+      "path": "tools/blender/v2_tea_service.py",
+      "sha256": "48293fde7b6b34e2e98341d1ba133d20edea45126f5c1a92e635c9801e947c92"
+    },
+    {
+      "path": "tools/blender/v2_tea_service_preview.py",
+      "sha256": "3240dcb084402464bfa4015ee7d97ea43b70368b9edefd4ca20b0e063d0c7e77"
+    },
+    {
+      "path": "tools/blender/v2_timber_continuity.py",
+      "sha256": "ba2511a82627a0c5ab740a87062970b280873f70b83a62e050cad8fd70b8acff"
+    },
+    {
+      "path": "tools/blender/v2_timber_editable_source.py",
+      "sha256": "b49e63f1786fb0fd3f0d87ad42ccf91e300da1de83e6d28cf11402cff6fb82c7"
+    },
+    {
+      "path": "tools/blender/v2_vanity_upper_contact39.py",
+      "sha256": "d3f314e6ec109ab0b4d07ddf8590054ea3cd5cf362bda523bdcfbfe5626c719b"
+    },
+    {
+      "path": "tools/blender/validate_spruce_branches.py",
+      "sha256": "578ef4b5e069087a5d77b841e7c0abeec202f85972d5f12de1e76d8b4dfdb6b5"
+    },
+    {
+      "path": "tools/blender/validate_spruce_volume.py",
+      "sha256": "a2188f3b124595731dfa909dbd57caa4de25beceeabca303df4135a8e8c0dd3a"
+    },
+    {
+      "path": "tools/blender/verify_entry_source_rebinding_v35.py",
+      "sha256": "c228bdd757698e4720815845b6709bfa8c6ff06bb97692341dc323a6a601cc14"
+    },
+    {
+      "path": "tools/blender/verify_lodge_chairs_v38.py",
+      "sha256": "c82218ded1f4275ad933ab713940b5e78e29bec015a398702fe9ab80938c9baa"
+    },
+    {
+      "path": "tools/blender/verify_lodge_complete_v38.py",
+      "sha256": "ce6c5d5946dc1e7a7f1f397d19d951500575645eefeba2613ee5cc8c23376c6b"
+    },
+    {
+      "path": "tools/blender/verify_lodge_furniture_v38.py",
+      "sha256": "9893a33914fae118a40549d4af9444a274c7b10e828dba06e275e69e586f33d7"
+    },
+    {
+      "path": "tools/blender/verify_lodge_wood_v38.py",
+      "sha256": "058c04d3bca73912ef17956d7d4eff95cbbcb6c1d6ea6fc96e50d4a3194b73d1"
+    },
+    {
+      "path": "tools/blender/yurt.py",
+      "sha256": "33de4d19b13f87d902dcc873107bffb875734bfde45b193f9051510d6ec1814c"
+    },
+    {
+      "path": "web/package-lock.json",
+      "sha256": "d3f37873a77604ea519fe65553ff4676d80fa8b02432aa7ab07bcd25214697f0"
+    },
+    {
+      "path": "web/package.json",
+      "sha256": "e582c8413bebc92b6d5775ac606cb8cc94341cf170d64e0cfa4936795e8dee68"
+    },
+    {
+      "path": "web/public/assets/v2/house-textiles62/geometry.glb",
+      "sha256": "b59195344614a6ee566c98976a7688d5ce49fa1c4b1117aa5f4c837013e1f854"
+    },
+    {
+      "path": "web/public/assets/v2/house-textiles62/manifest.json",
+      "sha256": "2c2ca6d00808b32fc28bb821a06efe1b9426dd233a34cfe2b832a4ec62ccb42a"
+    },
+    {
+      "path": "web/public/assets/v2/house_a_lived.glb",
+      "sha256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2"
+    },
+    {
+      "path": "web/src/v2/aerial-perspective.js",
+      "sha256": "77ce0f3c445aca034421ec6fc8dc7e4fa608845e539d14fa1aefde10d2175b23"
+    },
+    {
+      "path": "web/src/v2/aerial-perspective.test.js",
+      "sha256": "6a9fdf046504994cf83f0c9c269d286f28754d40df708e9bb99ab7aab088e339"
+    },
+    {
+      "path": "web/src/v2/asset-occlusion.js",
+      "sha256": "1aed86d726496675f5e18d6db989aa89988190b0add0cd8b8bf693ed98f6840e"
+    },
+    {
+      "path": "web/src/v2/boardwalk-contact-index74.test.js",
+      "sha256": "b7c53db9e53df1641ecac5e7cdb8198235454ff2ec1fbced9ecaac72d76256c0"
+    },
+    {
+      "path": "web/src/v2/boardwalk-endgrain39.js",
+      "sha256": "c745023863a566b3803c9a0816711c5a7193a243b35fc4f61c10f9a35c0291e1"
+    },
+    {
+      "path": "web/src/v2/boardwalk-endgrain39.test.js",
+      "sha256": "9780c2e87319855bdbbf402593a381b8886a0afc900f4cd8db80e3ba33911977"
+    },
+    {
+      "path": "web/src/v2/boardwalk-endpoints.js",
+      "sha256": "2ce072c08c40ada86597dc1721c9ed00963ab1be3e81ef72d7b21101985c9bc3"
+    },
+    {
+      "path": "web/src/v2/boardwalk-endpoints.test.js",
+      "sha256": "e43f6bf5134296bdb13e2dd2d157dc7c44d6409b42b3f86cae98cd08cb8672d1"
+    },
+    {
+      "path": "web/src/v2/boardwalk-material.js",
+      "sha256": "f676e6ac7b0e2108564f8e86362c2bf96d443372bba55ab833ce73ddd82db855"
+    },
+    {
+      "path": "web/src/v2/boardwalk-material.test.js",
+      "sha256": "d243bc6ddefc9cf121144e2cd97054b5668e4e3eaae6107f860b1a019f52a496"
+    },
+    {
+      "path": "web/src/v2/boardwalk-plant-contact39.js",
+      "sha256": "7e7e094e75e6b8832db5c58e9ef4d4d19dce18981acb84f3f09d0923faf8d7c3"
+    },
+    {
+      "path": "web/src/v2/boardwalk-plant-contact39.test.js",
+      "sha256": "a1e683ac86d8c022a016118c013dde2cb79f3ae9392b2be9bcd9d32ab015dba5"
+    },
+    {
+      "path": "web/src/v2/boardwalk-timber.js",
+      "sha256": "8bdf2a1d208bf2ea9f0669dabba592d8749334f95c9c5d37c24c9d1938ed2fb4"
+    },
+    {
+      "path": "web/src/v2/boardwalk-timber.test.js",
+      "sha256": "0e9d8e388cea4698b6cca2d517a5763f0b4c2422d6211e3ceaea6355f4a8614c"
+    },
+    {
+      "path": "web/src/v2/brook-shoulder-grass.js",
+      "sha256": "cbbfcf85054fb8d46100fb774723835101bd37b90c03b4b9b2a9b323855f36cc"
+    },
+    {
+      "path": "web/src/v2/brook-shoulder-grass.test.js",
+      "sha256": "5411397c852f2ffa4abe602c043d08f9b2c161fcf99a392267b1447dadeeb8d4"
+    },
+    {
+      "path": "web/src/v2/brook-wetgrass.js",
+      "sha256": "e74e4819fe54d9b1985c9d4925787437edfd5552d76b1601f8c16ca3c787ffdd"
+    },
+    {
+      "path": "web/src/v2/built-transport.test.js",
+      "sha256": "8fa223a7e95b7d80769a7a1e7c952b99f655dd38ab1d382c5ef1538fd2660bc4"
+    },
+    {
+      "path": "web/src/v2/cabin-timber.js",
+      "sha256": "e3788cc6aab4bed1132de75309f6ee85439f830d223a593481fab0496f251181"
+    },
+    {
+      "path": "web/src/v2/cabin-timber.test.js",
+      "sha256": "9e1ae0519a8f0912a3e27cc9bd7111a1e4f9075ad5428a1da1fc4ebf5a53cbb2"
+    },
+    {
+      "path": "web/src/v2/cabin-window-glass.js",
+      "sha256": "6d3e01b05e9d968d7c5f3993a224c35e582a3796f32c0f5f7b8986af24556d1f"
+    },
+    {
+      "path": "web/src/v2/cabin-window-glass.test.js",
+      "sha256": "589e71540fb6ce84d927dfc675ab858e5d6561b98ceec784fbe891d7934e76bf"
+    },
+    {
+      "path": "web/src/v2/clearcoat-occlusion.test.js",
+      "sha256": "eb657e54a9a5f6d027bb432b065fa4b3762947de8e3b32a6d620bb8efb382190"
+    },
+    {
+      "path": "web/src/v2/close-shadow-overlap.js",
+      "sha256": "d8f3afc0098ae3c30e27337bd600f430e5fdbc850d1bacb5c3be7a6b205b4a41"
+    },
+    {
+      "path": "web/src/v2/close-shadow-overlap.test.js",
+      "sha256": "8f6601088ab8c187d5d0ec597b863dcab31843a2fc019c250882b82bc97647a1"
+    },
+    {
+      "path": "web/src/v2/close-solar-reuse.test.js",
+      "sha256": "f52b4fb9cd6c0857e176a614ed41c8ce3342c5699542ec22c9cb910e46b73f89"
+    },
+    {
+      "path": "web/src/v2/close-solar-shadow.js",
+      "sha256": "05c2887a3d23d66666737a80386a31791ed82019b0115c412406d2ffeff748de"
+    },
+    {
+      "path": "web/src/v2/close-solar-shadow.test.js",
+      "sha256": "8379e9cfa280440807856e2daf372cb03dc8c719e2f1cee806747ddd7b506520"
+    },
+    {
+      "path": "web/src/v2/cloud-cache.js",
+      "sha256": "00d92219b624b55febcd7213c7300bfb39e38a261d6a863cc3b755559f6935b0"
+    },
+    {
+      "path": "web/src/v2/cloud-cache.test.js",
+      "sha256": "e960a8442c92c2a849bdfac44e0a881faa13e3b34046b6ad516baffb744956d3"
+    },
+    {
+      "path": "web/src/v2/cloud-field.js",
+      "sha256": "58a584d30f11a87c76d9a761f25e4d003e54fdebd58402b24694f84b3eb047a6"
+    },
+    {
+      "path": "web/src/v2/collision-shore.test.js",
+      "sha256": "315a1e5d110f6db65b91589cd22085e5cda91af42868f6f1931be83c1510fd0e"
+    },
+    {
+      "path": "web/src/v2/collision.js",
+      "sha256": "45bc55c599633bc8aae26a46f33b6e017be1f94f8ee7a251e64bf43a4aad01fd"
+    },
+    {
+      "path": "web/src/v2/collision.test.js",
+      "sha256": "d2a79e29b45183e11d3e36f421f3825d330111a348e46bea2b8c0f7c48c349dd"
+    },
+    {
+      "path": "web/src/v2/compile-shadow-world.js",
+      "sha256": "a056aa33b98b2b6ea1efeb17b1aaefbe0ac02b84c295eb66dc42d084d4c1d382"
+    },
+    {
+      "path": "web/src/v2/compile-shadow-world.test.js",
+      "sha256": "57d14081c4d49c98dc3561e94cb8f62f2d097f20288a814ed7b10e5f429d31d3"
+    },
+    {
+      "path": "web/src/v2/compile-textures.js",
+      "sha256": "2923aabb2fd25288f1fc19e0c99d3500fb122e3598c575ddcfe80c6a754c69d7"
+    },
+    {
+      "path": "web/src/v2/compile-textures.test.js",
+      "sha256": "624ffc9bb1cf9b8580f50cd2e623c9234e65a74fe062af3045be79663189c622"
+    },
+    {
+      "path": "web/src/v2/compile-visible-world.js",
+      "sha256": "9f9ad56944d55f4c35445e1a37c17b1a1cee4adda642f008a7a5ecfa5e786dbd"
+    },
+    {
+      "path": "web/src/v2/compile-visible-world.test.js",
+      "sha256": "ba1dd2a19d2d81b7e366fa9b0d0c026b2c72b6cfa875cbb5d86cee8e3ffae508"
+    },
+    {
+      "path": "web/src/v2/controls-fixed.test.js",
+      "sha256": "5a061da320b6014c68163fd037e8b27bbfc40b3fe0b971f54a0fb254ea472e04"
+    },
+    {
+      "path": "web/src/v2/controls.js",
+      "sha256": "efbdf98a9098e87b3e959d7908d4aa4537eb5befce84624f2dec41e48b2c0b69"
+    },
+    {
+      "path": "web/src/v2/controls.test.js",
+      "sha256": "d81ce01498412a662af6672b1ae5edae05642611edc8838b3d375855a2f1944b"
+    },
+    {
+      "path": "web/src/v2/crown-root-mask.js",
+      "sha256": "f61962b17a228a51bfb4bf32cd9eab907f92cb0b6fd32bc934d27803c0acded0"
+    },
+    {
+      "path": "web/src/v2/crown-root-mask.test.js",
+      "sha256": "79c91fe925cb4af42504eb0ef88c2b47fad9aadcfe842ba3702060812eba0f54"
+    },
+    {
+      "path": "web/src/v2/csm-backlit-skip.js",
+      "sha256": "18f3b1cba8f9321137bef38107f275ee930835daf05361e1a5f97147f8ded51c"
+    },
+    {
+      "path": "web/src/v2/csm-backlit-skip.test.js",
+      "sha256": "e8512daf13bd16a8134306973fdbc210672d140983805a4247f732c52b3048cf"
+    },
+    {
+      "path": "web/src/v2/csm-physical.js",
+      "sha256": "c688d8d9e0cb808817d8f1f91bbf03e101fa2edf5f64c8a14e8eaf4095e87582"
+    },
+    {
+      "path": "web/src/v2/csm-physical.test.js",
+      "sha256": "4a00e44f5411a558c8d76d89e66065182ed7ab62ce8887ae9f9c46d286514c80"
+    },
+    {
+      "path": "web/src/v2/csm-zero-fade.js",
+      "sha256": "abbb4afea7acc3f6883afe827ec609ce4bbf83990de24006b4d1f254888125c9"
+    },
+    {
+      "path": "web/src/v2/csm-zero-fade.test.js",
+      "sha256": "0b43f9c83ab8331cdd8f69ae098320e00c122cd2a840c6d2acb3b5a7e7d868dc"
+    },
+    {
+      "path": "web/src/v2/daylight.test.js",
+      "sha256": "f48b59628368c3eec1fd5fdcfdf39f154db920c48616c824947dde36e556d136"
+    },
+    {
+      "path": "web/src/v2/depth-mode.js",
+      "sha256": "1800180891b56c14eb9bea22c17cb9a073ad7b5a594783a91931a5cb9d9b02d3"
+    },
+    {
+      "path": "web/src/v2/depth-mode.test.js",
+      "sha256": "f513af07a87c176aa1e57c276b19030c997ef6f927298d1e1fd83461229a60bb"
+    },
+    {
+      "path": "web/src/v2/doors.js",
+      "sha256": "b86bd105a8e017bcc26d622b5bcd090fc826e7dd1ec74c892ffe676068f68df9"
+    },
+    {
+      "path": "web/src/v2/doors.test.js",
+      "sha256": "b55e619094c2d4f3a00bbe383765241c6ba3ff8a10526c8cbd0c558afdc1c0f6"
+    },
+    {
+      "path": "web/src/v2/early-tree-textures.js",
+      "sha256": "64287dee688bf67b48aef6c7ef722768ba3e54d0949f279041c52b43b0fd8fd3"
+    },
+    {
+      "path": "web/src/v2/early-tree-textures.test.js",
+      "sha256": "388302c211c25b639c51a3b65e36334dea6bec1b56531652ebc2564ec0766fad"
+    },
+    {
+      "path": "web/src/v2/ecology-deferred-upload.test.js",
+      "sha256": "772177e96c455a118056ccc85b167681964ffd21306c83c3e5adc8d9d6a2fb2f"
+    },
+    {
+      "path": "web/src/v2/ecology-loading.js",
+      "sha256": "bf53d8c88fe301f916231ef756c8fbfc4b29e9ade4f3f9d15e958126b0c418e2"
+    },
+    {
+      "path": "web/src/v2/ecology-loading.test.js",
+      "sha256": "e867f3a3ea55763899a7477163712c0ebe7b59fb8001940c23e8e9143391f76a"
+    },
+    {
+      "path": "web/src/v2/ecology-needle.test.js",
+      "sha256": "c2b3a85492e5fb1b043b1e14493eee73952700f3b0033f3f0874f97e7d6870e5"
+    },
+    {
+      "path": "web/src/v2/ecology-preparation.js",
+      "sha256": "4f6c699945acfea38756d3cfee9aec1504520bff2ebd30385a24c34a4fe8f810"
+    },
+    {
+      "path": "web/src/v2/ecology-preparation.test.js",
+      "sha256": "5948d5a9f09748dc8231a33f3b0af4b58106fc52e7db1b241679069d3073aa01"
+    },
+    {
+      "path": "web/src/v2/ecology-solids41.js",
+      "sha256": "b1d88f95451898bfc11d969ab461db93ffa220563f03eb1a2f23bdd2ec2fcb2b"
+    },
+    {
+      "path": "web/src/v2/ecology-solids41.test.js",
+      "sha256": "38de3cb5557c2f42a7ce2c04503a3f6504817559f877aaa79869ef7a7ef76621"
+    },
+    {
+      "path": "web/src/v2/ecology-tree-active.test.js",
+      "sha256": "de250b4c5a17484c1686d4c62109630713fb00a719f7dae2eb79c0b9a6cbefc5"
+    },
+    {
+      "path": "web/src/v2/ecology-tree-batching.test.js",
+      "sha256": "b8aa6611b2e900bce923e21af84a41f9d8823f59974305160aaeb971d5df7930"
+    },
+    {
+      "path": "web/src/v2/ecology.js",
+      "sha256": "01e8b12191e70376be0cf32126d23211fc13d0456b900c382ae3ad613d551a36"
+    },
+    {
+      "path": "web/src/v2/ecology.test.js",
+      "sha256": "e2c364df5c4dda66d0c5cee3f24987a9d16185b466782593216ff6993b50b84d"
+    },
+    {
+      "path": "web/src/v2/environment.js",
+      "sha256": "9d6771c6a4c8ced8e8729305906a23be143ef8abc9acd86f6d25c1d371c9c8e8"
+    },
+    {
+      "path": "web/src/v2/far-tree-batches.js",
+      "sha256": "434a36fb893f8eb657c52af8de6931592ceff04c5dbd1e6f2959dd4cbd414560"
+    },
+    {
+      "path": "web/src/v2/far-tree-batches.test.js",
+      "sha256": "35c6ab05aea5f6bf97cfba3c200139c01b69d7b772fa9e0d7c84d5aaecf9989a"
+    },
+    {
+      "path": "web/src/v2/flower-assets.js",
+      "sha256": "e7fbfeffdec9ffdd678a95c1fd12b44477f965d912fd4fd55e6fc5b90b5eedaa"
+    },
+    {
+      "path": "web/src/v2/forest-bank-curvature-v38.js",
+      "sha256": "44397864dfd606444d242dd5c0768618ccd32d211c4f4c27d824d8c2c4d8d137"
+    },
+    {
+      "path": "web/src/v2/forest-bank-curvature-v38.test.js",
+      "sha256": "5645ac295a2e6db5bfb7a0d9766ee50b9b7f591176729abe26179b288d53b254"
+    },
+    {
+      "path": "web/src/v2/forest-bank-integration.test.js",
+      "sha256": "4fb46615d4a75706733fa9e12e15463a6860cdac524fee00b2345b3bf46f9707"
+    },
+    {
+      "path": "web/src/v2/forest-bank-material.test.js",
+      "sha256": "797444958f37ed3794b11f124e74727a77cbbf171148d9fe7f520b73468757d4"
+    },
+    {
+      "path": "web/src/v2/forest-bank-shoulder.js",
+      "sha256": "ad793d73160d3dd006796436d82dcbbadd3cbc9b5346149e98c31067b6b9b61d"
+    },
+    {
+      "path": "web/src/v2/forest-bank-shoulder.test.js",
+      "sha256": "be3949d0a6727f0a67ebe80d4d68d046a3c38700d50ffe4ed6a8609dbc317ffc"
+    },
+    {
+      "path": "web/src/v2/forest-bank-subdivision.test.js",
+      "sha256": "4f992937989a1ce45b537752e0220128479c0323dcee188a9dc477888c48c0b5"
+    },
+    {
+      "path": "web/src/v2/forest-cut-horizon-v38.js",
+      "sha256": "506f2323bfe784d33c24c57f3e0f2e9bcb60c34d379e304dc636b112ae725566"
+    },
+    {
+      "path": "web/src/v2/forest-cut-horizon-v38.test.js",
+      "sha256": "3f0624af0e06b1fe6f7465c21d326e46a20a67e946f7b22375090cafd2e3e0bb"
+    },
+    {
+      "path": "web/src/v2/forest-floor-batches.js",
+      "sha256": "28b475a0983e8c3f0637271739e9996f68411dfdb576d55716b6e284148688a6"
+    },
+    {
+      "path": "web/src/v2/forest-floor-batches.test.js",
+      "sha256": "4bf798535ab2516cbdc330c5bbb021d294fb92c6c495fa843894034cc799bcd3"
+    },
+    {
+      "path": "web/src/v2/forest-floor.js",
+      "sha256": "2c67c318d1c702aff87b93faae998f907ff68c60d55dd4033a3df679543b682f"
+    },
+    {
+      "path": "web/src/v2/forest-reach-adoption42.test.js",
+      "sha256": "095c6234025cfd02aa35b1405658cd9d18a3fcc1d6455f8b7d78fa05d1bd6ed3"
+    },
+    {
+      "path": "web/src/v2/forest-reach-community39.js",
+      "sha256": "f36465af1880810cf7092ad1ffab408de9f29cbbfaf6addd07bdfda92459d267"
+    },
+    {
+      "path": "web/src/v2/forest-reach-cover39.js",
+      "sha256": "5b5a758f89061c9b044b75e43879548fc60b98717e1bf3b36e28c2664cb8dc04"
+    },
+    {
+      "path": "web/src/v2/forest-reach-cover39.test.js",
+      "sha256": "416e7f4afd4fac75487f63d54153e626ae3281a2ff43864d50f4e76b9ff0c22b"
+    },
+    {
+      "path": "web/src/v2/forest-reach-edge41.js",
+      "sha256": "03f15b9e05f34243ab12b7382b3994d43214ecba559aa623777c05fafcecf3b7"
+    },
+    {
+      "path": "web/src/v2/forest-reach-facies41.test.js",
+      "sha256": "cfe20eab66c47b5d60d22b7d498f576c05a8298cb8dbf349e07c2349f18d301c"
+    },
+    {
+      "path": "web/src/v2/forest-reach-form41-legacy.js",
+      "sha256": "e72424c3b9299aa0c4d31a26e1e8c301e3c054351a4ce0901b1d17a71901f834"
+    },
+    {
+      "path": "web/src/v2/forest-reach-form41.js",
+      "sha256": "de11940c84526eda66ca36fe747ea54169d176ff9019c31ded5fe361130a87b9"
+    },
+    {
+      "path": "web/src/v2/forest-reach-form41.test.js",
+      "sha256": "e3b510d329e19129c3b8a3ea751fc720103b4114800a9af554752b4fa2d43ff6"
+    },
+    {
+      "path": "web/src/v2/forest-reach-preserved-cover41.js",
+      "sha256": "e267b66d0907d6928a2dddef94ef89650bf97d576d58a6f6c9b7c84f91c54a0d"
+    },
+    {
+      "path": "web/src/v2/forest-reach-seating41.js",
+      "sha256": "1f5d8be10870e8a2740746040dc6be466591956a68a94d28044af1902b32eb48"
+    },
+    {
+      "path": "web/src/v2/forest-reach-startup41.test.js",
+      "sha256": "3e66d2145d4d0a35f9300e252b973c89671b8af7676184308daec47e517e787e"
+    },
+    {
+      "path": "web/src/v2/forest-reach-surface41.js",
+      "sha256": "0d8f494b972ef4399a31618b2539cc546fe5dbc31241c42ef2470a2bc8ea1e89"
+    },
+    {
+      "path": "web/src/v2/forest-reach-surface41.test.js",
+      "sha256": "18dec4ebe484d38eb03a06c317a71b09db6cc893e46e9336fd0a2efb4a56dcbf"
+    },
+    {
+      "path": "web/src/v2/forest-reach39-source.js",
+      "sha256": "816fc7a91b2023e3a0cd5086996291168f10e485d72150b5f74f6bf96c43864a"
+    },
+    {
+      "path": "web/src/v2/forest-reach39.js",
+      "sha256": "540d21d10f90241fd1c80bd01e0e14a08f849e14aa5d11d9b4c040553d446462"
+    },
+    {
+      "path": "web/src/v2/forest-reach39.test.js",
+      "sha256": "b20f3a095a29cdf9bb37ad4fc1ea629ef02704a5de1f9f0dd2a040b28bc3919d"
+    },
+    {
+      "path": "web/src/v2/forest-root-cache.js",
+      "sha256": "9b10ff250c567559219349097569281cb248aa269026f33aed8a3ff6d1fedade"
+    },
+    {
+      "path": "web/src/v2/forest-root-cache.test.js",
+      "sha256": "fbfaa280c6e7898a40bb59880f5a3aef4387f4782f9215b256d880498ddcb800"
+    },
+    {
+      "path": "web/src/v2/forest-root-codec.js",
+      "sha256": "da980705ecd330374bd51bb0a6bc1d78d2453abca43561ef5dbb89cad8da89f1"
+    },
+    {
+      "path": "web/src/v2/forest-root-inputs.js",
+      "sha256": "b8dead8a7584ef67fee7ccd19190e94ed7668374679f36b89dac07240520ebce"
+    },
+    {
+      "path": "web/src/v2/forest-root-layout.js",
+      "sha256": "ddb74f38b28f971da6803ef9ad7fe9503e4dc451f1e396b7d998f859834b779e"
+    },
+    {
+      "path": "web/src/v2/forest-root-layout.test.js",
+      "sha256": "78e2bc04d8a622ce2e65fc8763fa9402e9d8d01fc17227c8089e483dd30bb14e"
+    },
+    {
+      "path": "web/src/v2/forest-root-source.js",
+      "sha256": "ac2a7ccbe365661af682fc4f42d24007d25ad0b9dcc66c001a1b4bbea4d4ad48"
+    },
+    {
+      "path": "web/src/v2/glb-transport.js",
+      "sha256": "b873779f620544c344d7db1da638ebff518373857374b34672a9136ea51cfc34"
+    },
+    {
+      "path": "web/src/v2/glb-transport.test.js",
+      "sha256": "c0527259c76d762a15f285b806efd87724a3c844e10555b2ae0482d88e9d2bde"
+    },
+    {
+      "path": "web/src/v2/gpu-draw-runs49.js",
+      "sha256": "63875dae79a505f44d7bc6df362af5dede7bc61c621bd283e9eae120f2f19062"
+    },
+    {
+      "path": "web/src/v2/gpu-draw-runs49.test.js",
+      "sha256": "0b6570abe9e105960edfe0d63fbd245057683dc046858ca07e7f5aa58f94c899"
+    },
+    {
+      "path": "web/src/v2/gpu-pass-profile.js",
+      "sha256": "3a41dc9fadeb6d971cb4379fcb85a383a0065cac7a71ed209e3e7f61a75aa72c"
+    },
+    {
+      "path": "web/src/v2/gpu-pass-profile.test.js",
+      "sha256": "89d67f7b1acc67cf8c7280096d463e0d762e91ef2509f53dd9bbafe8d3fa6632"
+    },
+    {
+      "path": "web/src/v2/grass-bounds-publication.test.js",
+      "sha256": "6065c40767dd49c8ff5f432b93c1575574fa56a08039176892ea1cd66bf7f9ba"
+    },
+    {
+      "path": "web/src/v2/grass-root-field.js",
+      "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+    },
+    {
+      "path": "web/src/v2/grass-root-field.test.js",
+      "sha256": "b152d29d3d1867effdb1b1e62e2273a34852bb216b689f9e57895dfdee7574b5"
+    },
+    {
+      "path": "web/src/v2/grass-root-rejection.test.js",
+      "sha256": "0d773ade355f8befe42e56796bd5729389815cde07810b76424506d1ee28d919"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-coverage41-preview.js",
+      "sha256": "68b4abdba5ad0d0edb20e44a7040fc3e003ef5005dcc8e1a9504583c9901d1e1"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-coverage41.js",
+      "sha256": "8951e04d8321bcf25e7e220174627f6072b7c9633b8f0a5901f86a044dfaa91f"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-coverage41.test.js",
+      "sha256": "1a63bb23cba8d622bd34a2c6d9d148a0c8344539bc178a397a76fdb15f6a573d"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-planar-preview.js",
+      "sha256": "35e83e7c975eb1fe3d66adbe420b248d1c90b064f9beb6afb954235f4a25c64e"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-planar.js",
+      "sha256": "9833c863c2a20d1e8f1ff4feae7ffaf5236db70ced9178aba3b945ad96a05959"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-planar.test.js",
+      "sha256": "b47507e27c72009e7933098e861b64bb3e9b3beb1d92cca65423e999e4080b4c"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-roots41.js",
+      "sha256": "b6f0779283289d6ad34e8969c407066d193feca97deac40fddb5a5f6bd58a015"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-roots41.test.js",
+      "sha256": "bc03015dae02638cb6f1e12fc4270137ddf21865df43dc3b39c49b94c37b0b21"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-volume-preview.js",
+      "sha256": "af6b31439429216734c1fa6545f00d305834f8c9c32383eda1036a3694614d6d"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-volume.js",
+      "sha256": "4d81b1f3d932a2371c2177c0c95514d073ccadf577cc976eeb46972c7bd9cdf5"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-volume.test.js",
+      "sha256": "0e78473b0e523737daf5327bb4bc11afcfa20372147aa5d92f5b0d43cfa54bef"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-world41.js",
+      "sha256": "868594487b4a49d0f2a29d6d9f2632e1eccf0cdb3f4eb4f5efc401fd12466800"
+    },
+    {
+      "path": "web/src/v2/grass-shadow-world41.test.js",
+      "sha256": "c0be3909e9a83ccf706696543eccd4ed77eee1924749268d88e163d3cc8a2196"
+    },
+    {
+      "path": "web/src/v2/guest-door-gi41.js",
+      "sha256": "3f03aab64b171612f046976bbd3d8978489cb90e682541fa506dfcba3ed713c4"
+    },
+    {
+      "path": "web/src/v2/guest-door-gi41.test.js",
+      "sha256": "f62810de69f94814c1cce802a9277780813b9e42ef57cfd89cf8baea4f4354e9"
+    },
+    {
+      "path": "web/src/v2/guest-doors41.js",
+      "sha256": "f56285a24f7e519f2de742f5608ef5cc36e4b955ecacccdeeb302e6f86374f07"
+    },
+    {
+      "path": "web/src/v2/guest-doors41.test.js",
+      "sha256": "7014e65ade65668da60a692a9d5bc9ec39ca8da6979c75d3f1108ddea94d646a"
+    },
+    {
+      "path": "web/src/v2/guest-living-definition.js",
+      "sha256": "7a314514c9939601cdd081f3ab44cf1d811f580a6400398d45777e41b4bffc15"
+    },
+    {
+      "path": "web/src/v2/guest-living-gi.js",
+      "sha256": "a9dc5814eda5e979b547a9cb778fb7e315613f4d0ef3ded2a65ecf82f2947ee6"
+    },
+    {
+      "path": "web/src/v2/guest-living-gi39.test.js",
+      "sha256": "f60bddab8a9ba0225c2b3cae3464cdfb95afa24974705b52a9e008b3845b06f9"
+    },
+    {
+      "path": "web/src/v2/guest-living-loader.js",
+      "sha256": "b8e2ff5b4e5cc327b945ba833d48ebe494cf87572322423d10aa1ed092ea51ba"
+    },
+    {
+      "path": "web/src/v2/guest-living39.test.js",
+      "sha256": "a910c8e52292505210c5ed278d0655d2c1619b8f24b54b104573e1240ab929ed"
+    },
+    {
+      "path": "web/src/v2/guest-room-group42.js",
+      "sha256": "5094d82e67df51534ff64f3a872dc713ac4dae58d8014ad56c55a918014ce9e5"
+    },
+    {
+      "path": "web/src/v2/guest-room-group42.test.js",
+      "sha256": "40819e299d6d743dc8c9ed59163c3c6d808e98c2a8b5cd79640808cf1978c480"
+    },
+    {
+      "path": "web/src/v2/guest-stair-obstacle-data.js",
+      "sha256": "cc7abc5cd656e6e7622304fcc55cd96785ef9b7e07f7d2479ae9c42967f38f86"
+    },
+    {
+      "path": "web/src/v2/guest-stair-plants.js",
+      "sha256": "08757c779c646890030dc69ffc6b8199b12c516e672caa054c4d9c059d81f8ad"
+    },
+    {
+      "path": "web/src/v2/guest-stair-plants.test.js",
+      "sha256": "08c50abe2b938bcd7204b8ad488a375624b1865bbb187a594a492cdf6312fccd"
+    },
+    {
+      "path": "web/src/v2/guest-vanity-definition.js",
+      "sha256": "6ae154af7f632eb6af1a27205d9ef15a913f366dcced4ccffcc8c1814f46e964"
+    },
+    {
+      "path": "web/src/v2/guest-vanity-gi.js",
+      "sha256": "b3aa4782c85498294a4eb1d94c8887bb3f11ab347d649894c19cfb5cc496b6bf"
+    },
+    {
+      "path": "web/src/v2/guest-vanity-gi.test.js",
+      "sha256": "64b4a7d72519d1916736e3f1b913c969079ec5d900fa78fa06c222ffd5dd9ef6"
+    },
+    {
+      "path": "web/src/v2/guest-vanity-loader.js",
+      "sha256": "0c126710b59c510722ee9b896ac54c084fc9b236c530351149baaa3fdfa6ac1b"
+    },
+    {
+      "path": "web/src/v2/guest-vanity.test.js",
+      "sha256": "b94c92d2bf1b7ff88fdd2623d77b888793160f89a6f4b7266d2a63915974ef37"
+    },
+    {
+      "path": "web/src/v2/habitat-data.js",
+      "sha256": "cd42a7c4f2b43425853a007bdb7bfa692973d68e4f4ce7d7160460012075213e"
+    },
+    {
+      "path": "web/src/v2/habitat-loading.js",
+      "sha256": "6d338262058aaa6b033701ead3b466a9cfe939a032e16fdfd4f7f6cf75795d65"
+    },
+    {
+      "path": "web/src/v2/habitat-loading.test.js",
+      "sha256": "c0aff3e2685b6a5ee4b2f39bdfafa653cc8a7ae3732fb12dad7ff06850055d92"
+    },
+    {
+      "path": "web/src/v2/house-furniture-integration58.test.js",
+      "sha256": "8da7c6ae16be808e7938f384b5c4ce45f942798bf8b96b8792efd73c1c8b1d11"
+    },
+    {
+      "path": "web/src/v2/house-furniture-timber58.js",
+      "sha256": "80b323a2f8c4b83264e57d612762bf77f816656a6d5aee88d26018c7423059bc"
+    },
+    {
+      "path": "web/src/v2/house-furniture-timber58.test.js",
+      "sha256": "8a36f48e1cece1cc4c3dc4333123c89327a1fb7f7d908ac6865833f92b4f8358"
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73.js",
+      "sha256": "5b0fc38d374de6a5554ff5485737a9d776fbbf4280b4348c535e4f00e7291e90"
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73.test.js",
+      "sha256": "67f81a5de2b232d03d68c0aab73e76ae09b34352619de93dab78f206581269d5"
+    },
+    {
+      "path": "web/src/v2/house-textiles-integration62.test.js",
+      "sha256": "851c2ba5629f7a1560fcc0fb158f05bf9dc393907f451ff674fb383bf1944328"
+    },
+    {
+      "path": "web/src/v2/house-textiles62.js",
+      "sha256": "3b6a45c7ca6f3b401847ad2884f20238fccc48319e57ab8a102e21d31a761fe3"
+    },
+    {
+      "path": "web/src/v2/house-textiles62.test.js",
+      "sha256": "9277c3527812cdfc26b07ac3520897f7448f9c557186a6dba574510509ef2ba9"
+    },
+    {
+      "path": "web/src/v2/house-timber-textures48.js",
+      "sha256": "406acd16ffc9b2878bc7aa7b226e95f3ea109452f4a31250914ee69da76ebf06"
+    },
+    {
+      "path": "web/src/v2/house-timber-textures48.test.js",
+      "sha256": "28aca5b9033d79628ce0058a0f2474878e88539d5148b81b143480532dd17054"
+    },
+    {
+      "path": "web/src/v2/house-timber48.js",
+      "sha256": "fec5028e60071a77dd75e9954f7df468b39e55e62f9b6a21ce81b76bf7f8163c"
+    },
+    {
+      "path": "web/src/v2/house-timber48.test.js",
+      "sha256": "43646df2727693a21c34d957869e9515c3794b37c6c8de74189d9c428f3b4739"
+    },
+    {
+      "path": "web/src/v2/household-entry-legacy.js",
+      "sha256": "d85c6ac6c2f8371010ad0d0e245b6fc12a0682e471bffc6afe2dcaea6c761236"
+    },
+    {
+      "path": "web/src/v2/household-entry-selection.test.js",
+      "sha256": "0edc3247b798c1b67dbcaae70967bbab1dccb94bb24747aca40caca72cf79c0c"
+    },
+    {
+      "path": "web/src/v2/household-entry-shadow.js",
+      "sha256": "e67b71f1e62fd255301329bb4508d7b75ccfd5d2c7646eab7e10b6438d58df08"
+    },
+    {
+      "path": "web/src/v2/household-entry-shadow.test.js",
+      "sha256": "4e885f3bc7ae2cfd7f153a7d8db73f40ea55228fc717d5a6f5a9aad7e93237ce"
+    },
+    {
+      "path": "web/src/v2/household-entry-steps.js",
+      "sha256": "cf69f4c21a0410c77c6e57fc96fd831fdd330affb4751f6a66cd695feb22641f"
+    },
+    {
+      "path": "web/src/v2/household-entry-steps.test.js",
+      "sha256": "ad7ad361852a38a28c88e6807aedb719427b98c973084fd18e48dac44c5a834f"
+    },
+    {
+      "path": "web/src/v2/household-living.js",
+      "sha256": "6ecf3474fd0ba2f8a6183653b248f4fac4ac7d1e7e426d8338da97764000244c"
+    },
+    {
+      "path": "web/src/v2/household-living.test.js",
+      "sha256": "892e51401f704fb9d49bccfb03ccf9a8dd9033af1da757c74f385235c12ed30a"
+    },
+    {
+      "path": "web/src/v2/household-room-data/house_a-entry-tea-34.js",
+      "sha256": "30b03f1bee16ee9f034fc84ccc47049cde0340d1aedc1082c4edc3944e592908"
+    },
+    {
+      "path": "web/src/v2/household-room-data/house_a-living-0.js",
+      "sha256": "004c3a4115e287e7c143141367c37cda9b2ecad19a60267360e2280ebf66162f"
+    },
+    {
+      "path": "web/src/v2/household-room-data/house_a-living-1.js",
+      "sha256": "9dbfe2ac629654053e279937e9408cb88654d0c9fb29c5fb1d62b739691f622c"
+    },
+    {
+      "path": "web/src/v2/household-room-data/house_a-living-2.js",
+      "sha256": "6ba64309a52132716206cefd5c266da2931f1984a25ff1db9997a835952dc630"
+    },
+    {
+      "path": "web/src/v2/household-room-fields.js",
+      "sha256": "8a02efacd43ed4bb55cd9e8c276727d4a9c9c582a6f908c53d2030ad57381fb0"
+    },
+    {
+      "path": "web/src/v2/household-room-fields.test.js",
+      "sha256": "45e793044d686ddf39c6a1e69c99da10da39cf79c52a77f429943e703d042b01"
+    },
+    {
+      "path": "web/src/v2/household-yards.js",
+      "sha256": "1260dddea1f60490a98ea5064a00cfd52fa1b43964d99f068cf52d11262694af"
+    },
+    {
+      "path": "web/src/v2/household-yards.test.js",
+      "sha256": "ada44f4a30a3d2d0c31595b230acee74df167afa2d109f7fec559e9dfafdc3f2"
+    },
+    {
+      "path": "web/src/v2/hydrology.js",
+      "sha256": "e84f59e51234513125c585783cfe5ee41de0655b61765ee3505ca709aa8824c3"
+    },
+    {
+      "path": "web/src/v2/landcover-sampling.test.js",
+      "sha256": "e397569f2333c2bd6e9e08be4f9c6cbc65053704f4be6a1ebe5a4c68f713b57f"
+    },
+    {
+      "path": "web/src/v2/legacy-household-startup.test.js",
+      "sha256": "a56e992be3fd51c79d3334215ad855070f9579bc6f6f71047c494c0385bcf98c"
+    },
+    {
+      "path": "web/src/v2/legacy-room-loader.js",
+      "sha256": "4bb4f6598ffbe35b65ce7b1d2adecc1f3a1c595e4860de84957e7c50cad4425c"
+    },
+    {
+      "path": "web/src/v2/legacy-room-loader.test.js",
+      "sha256": "82072f741ccfad1f7aebfadb38edb7a78108bfb256bdf1837f4f83e34f93252d"
+    },
+    {
+      "path": "web/src/v2/legacy-room-night-contact.test.js",
+      "sha256": "acfac3599ae9366ac12c735f0bf03bc3e084fa6df1976c08c3e16c29bb16e54f"
+    },
+    {
+      "path": "web/src/v2/legacy-room-opening-prefetch48.test.js",
+      "sha256": "e0ab40fe4f932b203337a138c31c1d52285165c9b3e36e47ec0ceb71fc327216"
+    },
+    {
+      "path": "web/src/v2/load-phase-timing49.test.js",
+      "sha256": "349288412453909f15bafba5b175b7ebf7ec634adc290429d2383fe86577f28d"
+    },
+    {
+      "path": "web/src/v2/load-spike-trace42.js",
+      "sha256": "10e473ee1bdb722228cdef355ded828e308b655023f517e13aec63f2c0dc9d7f"
+    },
+    {
+      "path": "web/src/v2/load-spike-trace42.test.js",
+      "sha256": "76a017deb88f0bfd48dbe165bc445e81bd64fd6bcea0554cc1a5eb7a46424d84"
+    },
+    {
+      "path": "web/src/v2/local-shadow-policy72.js",
+      "sha256": "393f46c1822c1e0afbca3bab671374da54ec3fea56cacdb1f16f053c6245d8ec"
+    },
+    {
+      "path": "web/src/v2/local-shadow-policy72.test.js",
+      "sha256": "9b16b366c003cb4a016161f5f7ba84949e04f1656a1a58d600401e6fe730c1dc"
+    },
+    {
+      "path": "web/src/v2/lodge-chairs-definition.js",
+      "sha256": "f802f2f2fe66d0bb25dadf83ccf43da6b8aa137190eb6d36c3c06cd69922107d"
+    },
+    {
+      "path": "web/src/v2/lodge-chairs-field.js",
+      "sha256": "72f645365cb78628430b101ffb4c83da88ba234f300fe91ef381a51aa648f939"
+    },
+    {
+      "path": "web/src/v2/lodge-chairs-gi.test.js",
+      "sha256": "2a7c1edce7d5fc52001f9c5738a3b524ae8d98f3b43823fa532707c145896c2f"
+    },
+    {
+      "path": "web/src/v2/lodge-chairs-loader.js",
+      "sha256": "3286bfa92f124858445511c1e6a73e282e5870951542a444edd90fe17b58232d"
+    },
+    {
+      "path": "web/src/v2/lodge-chairs-loader.test.js",
+      "sha256": "bf4e47c5b2a0a10dfe07eed8a6b521c01f2e9761bd284f9f8f721f989529e9fe"
+    },
+    {
+      "path": "web/src/v2/lodge-cross-data.js",
+      "sha256": "f00467397d2324d376432edbcf96f20471464348aac649805684ecb5709b510f"
+    },
+    {
+      "path": "web/src/v2/lodge-cross-openings.js",
+      "sha256": "9ba97aa8851cb6829b2c2cc52014e51a233235098b44e49f8342822430941ffd"
+    },
+    {
+      "path": "web/src/v2/lodge-cross-room.js",
+      "sha256": "4c8828604df005b940dad7798b2974ad86f73573d3645a9cffdfef78cce79a7d"
+    },
+    {
+      "path": "web/src/v2/lodge-cross-room.test.js",
+      "sha256": "63b43d3080d6ab192523e36461c64d04739b7d423e4554424f9e66a74aa1966c"
+    },
+    {
+      "path": "web/src/v2/lodge-door-codec.js",
+      "sha256": "37183f30d702932663d502159e1e55241a8f91b6e5ebf64b71cc4c4ace18c568"
+    },
+    {
+      "path": "web/src/v2/lodge-door-gi.js",
+      "sha256": "1c9fd4a2dbcac8d0d5fba208261fded44165fdfef039f211bcabef6c40eaef01"
+    },
+    {
+      "path": "web/src/v2/lodge-door-gi.test.js",
+      "sha256": "6a5d2f235ac12d951af41ea93e70e47f68864b62e905e962c8894f517039f0fb"
+    },
+    {
+      "path": "web/src/v2/lodge-door-package.js",
+      "sha256": "358b0171a62711b4530b92f8e7a2ccf26f1be5947b98a5a1aafe5f2380d021fc"
+    },
+    {
+      "path": "web/src/v2/lodge-door-package.test.js",
+      "sha256": "70de178a82e6a5bd63667a17993d1022b2b670f370a581fc8cd622cb82068e49"
+    },
+    {
+      "path": "web/src/v2/lodge-door.js",
+      "sha256": "e97ef4d765fa6685e1a269c4422925e38bd2bee3bca55e696e73d291f236cb39"
+    },
+    {
+      "path": "web/src/v2/lodge-door.test.js",
+      "sha256": "3f7652b188ab32f4cb5516c4e295993e1e90c9a9e20a91e1443e330a2fa755f0"
+    },
+    {
+      "path": "web/src/v2/lodge-furniture-definition.js",
+      "sha256": "5d213497f13771c71cbaa65f71a6175858c9b70b6f18a54a08e09d2d21c7d44e"
+    },
+    {
+      "path": "web/src/v2/lodge-furniture-field.js",
+      "sha256": "aee2a9fb4a18217c890741fb4d0ad9b9c96fe0e69454982223634f599a004aa0"
+    },
+    {
+      "path": "web/src/v2/lodge-furniture-gi.test.js",
+      "sha256": "298b9881390c68bf749912a2ef626ad961dbf01ea691e291aefff312bff50961"
+    },
+    {
+      "path": "web/src/v2/lodge-furniture-loader.js",
+      "sha256": "163f02a32cd980518deae8d5a57b1065b7e8a6e2037d63a0d2467358db03103d"
+    },
+    {
+      "path": "web/src/v2/lodge-furniture-loader.test.js",
+      "sha256": "e6ae759d273871cf6b9ed9426fb3f91d7f015596bae10b7f2578ff9971c309b0"
+    },
+    {
+      "path": "web/src/v2/lodge-interior-stream-partition.test.js",
+      "sha256": "e47daaa1db426b49a6f7c23252ac0df5e3a52f40308b24faf0d3e123143fc59d"
+    },
+    {
+      "path": "web/src/v2/lodge-interior-stream-review.js",
+      "sha256": "c6756af73e4e7b16975bfa985369241e95d149499abe253dba8f9e61758c3913"
+    },
+    {
+      "path": "web/src/v2/lodge-interior-stream.js",
+      "sha256": "cf1bffafc222ff18674e24fdf984c94fba79fd70b3da813eb9e5f01169e0e56e"
+    },
+    {
+      "path": "web/src/v2/lodge-interior-stream.test.js",
+      "sha256": "2707b5d09ce49886e0ecc1be2232bc3f620602d2a77c91f0290a3801ceb3f477"
+    },
+    {
+      "path": "web/src/v2/lodge-interior-wood.js",
+      "sha256": "6fb14dd189bf326f4cca7b4d7bdadb62dd004b3744f12ced54d3925b8489a18f"
+    },
+    {
+      "path": "web/src/v2/lodge-interior-wood.test.js",
+      "sha256": "d59cd1ea43c2fcd1ca861154878344877f8ddeea2aa2958f8f275d546db17b96"
+    },
+    {
+      "path": "web/src/v2/lodge-opening.js",
+      "sha256": "c5ce2a80add6495c9015b3f0bfdb19c8f3db93dfe7dd0e9a79b1e4d1053e4750"
+    },
+    {
+      "path": "web/src/v2/lodge-opening.test.js",
+      "sha256": "dc52bf9d9ae368e86e9b7b4a54bc25010e847d988b25c42e486308a8a9730f77"
+    },
+    {
+      "path": "web/src/v2/lodge-room-data.js",
+      "sha256": "96f6b60ec1ae88737360425562c1a74b829cfb075a75b67403ac1ed0a7c6c603"
+    },
+    {
+      "path": "web/src/v2/lodge-room-field.js",
+      "sha256": "2b3720a14413ccf883f26b6fd36a6e7c3143184255f0a2cb4d86e7be7d3e82ef"
+    },
+    {
+      "path": "web/src/v2/lodge-room-field.test.js",
+      "sha256": "29b0e7f076fdb056f17efcc9916df037846102bfc32a5b3a73bed06d11ce2fba"
+    },
+    {
+      "path": "web/src/v2/lodge-stair-obstacle-data.js",
+      "sha256": "4532ee59a325d9a67c85b7c19b69677c38e8dd8c62bb15f848a32eb2097da5eb"
+    },
+    {
+      "path": "web/src/v2/lodge-stair-plants.js",
+      "sha256": "fb60c6b42a20e9283851198349ec702f81cc656cfa508ab989a8b8f1e9f6b4bd"
+    },
+    {
+      "path": "web/src/v2/lodge-stair-plants.test.js",
+      "sha256": "098c4163de448690c68cc15ec60b1148c2b5935c4ae0119a5fe5cef41c26de96"
+    },
+    {
+      "path": "web/src/v2/lodge-tables-definition.js",
+      "sha256": "ec6170284959354b61527f1f78ed7f335f6ac3369536211b437a702c6b10bc34"
+    },
+    {
+      "path": "web/src/v2/lodge-tables-field.js",
+      "sha256": "fcd5e537abd72df1488fb92ff35d827d4d5cfa7e2ed466cd10333697527b4be3"
+    },
+    {
+      "path": "web/src/v2/lodge-tables-gi.test.js",
+      "sha256": "ba017c0597a4aeeb36d9fb17b5a214a9c498b984d412fea0bea4abefb3a074dc"
+    },
+    {
+      "path": "web/src/v2/lodge-tables-loader.js",
+      "sha256": "361c48c4636861c0c2779baf392bd6ac633beb103d3736648d3b23109394cdd6"
+    },
+    {
+      "path": "web/src/v2/lodge-tables-loader.test.js",
+      "sha256": "48bbf03080bb34af3245f10a67c565f044f3e31d608457e6cb8181158d602f93"
+    },
+    {
+      "path": "web/src/v2/lodge-tables-route.test.js",
+      "sha256": "489c43c54f5de689a9acfb15b9d8b20deb4e0385386753f02ed5c6f6ed8ed915"
+    },
+    {
+      "path": "web/src/v2/lodge-tables-stream.test.js",
+      "sha256": "a7aa8e41c908ebbaafa281e9beb009ac2b16cd3439357a5bef191e68a35a9ad8"
+    },
+    {
+      "path": "web/src/v2/lodge-transport-ownership.test.js",
+      "sha256": "9aa52ae7ce324118f0f0413ddb7a2b462af7da2eb4cdf5115d14140d2ef451e2"
+    },
+    {
+      "path": "web/src/v2/lodge-whole-definition.js",
+      "sha256": "79b3db21b8ad417496069bc1c1c7838811b1506f8afa732b637912812404e61c"
+    },
+    {
+      "path": "web/src/v2/lodge-whole-field.js",
+      "sha256": "3017c6fb02c7857d20990f34318ec38258bf0c77a7ce8f3e970990de10c1a0bb"
+    },
+    {
+      "path": "web/src/v2/lodge-whole-gi.test.js",
+      "sha256": "aee2b22e8578d1d0a36e3374d34178afc4e141af19eb1d7b96763f5eefd3579a"
+    },
+    {
+      "path": "web/src/v2/lodge-wood.js",
+      "sha256": "9fa26893345ebf2864a905f9dab7ef4bfd1bcaff7df8e354f3ecfb964f13d3c2"
+    },
+    {
+      "path": "web/src/v2/lodge-wood.test.js",
+      "sha256": "c6ca90f8ddff6ac823a1f20dfea8810adf8d07712b59f801a463ce22b4ba2bc0"
+    },
+    {
+      "path": "web/src/v2/main.js",
+      "sha256": "c6885d9b1f079e241b301ab78d123c69324a77e40b7a1c8227ca306eedc3ebdf"
+    },
+    {
+      "path": "web/src/v2/meadow-aerial-continuity42.test.js",
+      "sha256": "eea51974248097fdf3e218daf5be891b9d6d2d09161c1ac9f71fc86c409142f5"
+    },
+    {
+      "path": "web/src/v2/meadow-canopy-reference.js",
+      "sha256": "48af93c153e665f593ea179435cacf54e830206a155c3682fec96d6715e09c29"
+    },
+    {
+      "path": "web/src/v2/meadow-canopy-reference.test.js",
+      "sha256": "7a985fabfeb5989aa421b30371dfb8caae386f4ce4ec850d29f3b11b3099264f"
+    },
+    {
+      "path": "web/src/v2/meadow-cluster-delta42.js",
+      "sha256": "c0b0a9bb6240150f52366e93d642362bf69cb4775fed500c6814138e286e1698"
+    },
+    {
+      "path": "web/src/v2/meadow-cluster-lod42.js",
+      "sha256": "03b750b3d9ec7fe7c5d16050fa6ade0dd02d7db356191dc3c2f72db3692667df"
+    },
+    {
+      "path": "web/src/v2/meadow-cluster-lod42.test.js",
+      "sha256": "4caa51a5b47c6716dc9c3b1a4730c634ae108abefe62ce43f79fec043639454e"
+    },
+    {
+      "path": "web/src/v2/meadow-cluster-runtime42.js",
+      "sha256": "0b845ca361dc06783cf5bad6af3616bf486e3b236fac3c7187fa3f7ed02b9669"
+    },
+    {
+      "path": "web/src/v2/meadow-cluster-runtime42.test.js",
+      "sha256": "c0ebbae61a4a4cafba6f8dd84f3cbac706e4f219f1431188bb42d83952db519e"
+    },
+    {
+      "path": "web/src/v2/meadow-cluster-submission42.js",
+      "sha256": "f15a2ef1c1f1043f28826b3b42f5af969f9030b393fe5e7a2cc9f77f9104a393"
+    },
+    {
+      "path": "web/src/v2/meadow-cluster-submission42.test.js",
+      "sha256": "232b50ca880004e0da21543cf85d47b83c5599f7c8fb5c41a4e5e9779e6b0884"
+    },
+    {
+      "path": "web/src/v2/meadow-cluster-wind42.js",
+      "sha256": "64262b2ec7c265e7d20cc64b4a37f658568ed828c9c99456b8018ea71a84178c"
+    },
+    {
+      "path": "web/src/v2/meadow-cluster-wind42.test.js",
+      "sha256": "282d554108342e186408955ffdfd0c70d42993f59df29e54f273f8db7e3f0f5a"
+    },
+    {
+      "path": "web/src/v2/meadow-community.test.js",
+      "sha256": "5c08ce08afb1db2633961fd8eec51dc3b724c9fb69a9886976d09923d2c843fe"
+    },
+    {
+      "path": "web/src/v2/meadow-connected-field41.js",
+      "sha256": "ea7bed81345a1bebfee91c04bcb4156afa31b89b9fe824086c4e0d3439765733"
+    },
+    {
+      "path": "web/src/v2/meadow-connected-field41.test.js",
+      "sha256": "beb1bc360d2e6949ff0826e20c04972f431726974c0b99e91e42ba5941ae111e"
+    },
+    {
+      "path": "web/src/v2/meadow-continuity-audit42.js",
+      "sha256": "f4a764c68217743dccaa5bc8cba994ce9ce62a88b4f2b76daa2e445e38483330"
+    },
+    {
+      "path": "web/src/v2/meadow-continuity-audit42.test.js",
+      "sha256": "9fd72ac587aa064754187166d53544c30f35151b2d3b76ded3aa78d306c93327"
+    },
+    {
+      "path": "web/src/v2/meadow-cover-visibility42.js",
+      "sha256": "891b58e199cdeae00e386539be53ac437c5a48efc2fcc50230a676b9cb179188"
+    },
+    {
+      "path": "web/src/v2/meadow-cover-visibility42.test.js",
+      "sha256": "58f1019c024203adc4d4779474cdbbc639799906f39330da2e369a0bf59c9955"
+    },
+    {
+      "path": "web/src/v2/meadow-distance-canopy.js",
+      "sha256": "8c52586abab4297f551fafe191d74e678ab235850a7bfa6716f3ad9a4f791681"
+    },
+    {
+      "path": "web/src/v2/meadow-distance-canopy.test.js",
+      "sha256": "a7d7f21d68faf928f70d9d219281d1d3f853380cdc56ebe663456a3542744e8b"
+    },
+    {
+      "path": "web/src/v2/meadow-dynamic-cover42.js",
+      "sha256": "8a94aa78c7f0e0c3384a8196b5a665a028012bfbf51f901ede172c323c32d37a"
+    },
+    {
+      "path": "web/src/v2/meadow-dynamic-cover42.test.js",
+      "sha256": "b61a02e8bc8a4317233f02a9dbf6142b6371aa8e23ea3597d4694c781a0552de"
+    },
+    {
+      "path": "web/src/v2/meadow-exact-index41.js",
+      "sha256": "7d868f83ff4b372c4a7a5bfc8cb18deec548677886d5a18719a2e42ea32143a0"
+    },
+    {
+      "path": "web/src/v2/meadow-exact-index41.test.js",
+      "sha256": "dc0cac2f41e1df036dc4a74e283fe4ba9d33396f3ca89c2703809377dde63d62"
+    },
+    {
+      "path": "web/src/v2/meadow-ground-structure42.js",
+      "sha256": "b33c4cb7f1df562740a31b63e45d75f3c9680efa2c11d228ebb6764a54c08f00"
+    },
+    {
+      "path": "web/src/v2/meadow-ground-structure42.test.js",
+      "sha256": "933faa9fa7080e43ca32442b4d7dd8ebbbeb25de655f0f7fe66df9e861203472"
+    },
+    {
+      "path": "web/src/v2/meadow-impostor-hit42.js",
+      "sha256": "c7291b2ff317de83f1418aa92a1f9dd2e10a0771272131a9793c1c87dea545c3"
+    },
+    {
+      "path": "web/src/v2/meadow-impostor-hit42.test.js",
+      "sha256": "49f70e9e764cedca46025119d686133db21ef8c32d202d9ea6035304d7fbe48f"
+    },
+    {
+      "path": "web/src/v2/meadow-landform.test.js",
+      "sha256": "ad2d1a0f25f9d685e51cedb497a95bc81cb55859bcb35ac564504c46dfa46f2a"
+    },
+    {
+      "path": "web/src/v2/meadow-layered-far-v38.js",
+      "sha256": "0b66020a29e68eda6ceb2666f0f4265eb1e60ac80e02f3037679a562c37064f6"
+    },
+    {
+      "path": "web/src/v2/meadow-layered-far-v38.test.js",
+      "sha256": "adf93b8be4300da319c7cf28e5d3c1b66cc459cd0e1ea1ad6c0abe52da434351"
+    },
+    {
+      "path": "web/src/v2/meadow-layout-patch42.js",
+      "sha256": "dc9e039f5b95fbae8a012ae7e9d4b67cd9b0d2edf431282691b16c2542bc2e6b"
+    },
+    {
+      "path": "web/src/v2/meadow-layout-patch42.test.js",
+      "sha256": "5c65a85427bb5d06644e9c7a49a464a6d8c179a1235907cfe6d40f0ee9161d50"
+    },
+    {
+      "path": "web/src/v2/meadow-middle-visibility41.js",
+      "sha256": "95ea05be27c415b349a8398aef8c73513ce008018180ab1a9ff4f982499e0f5b"
+    },
+    {
+      "path": "web/src/v2/meadow-middle-visibility41.test.js",
+      "sha256": "240c84a1ef6c3a2866b72c2d7688c8770d3ea42b3d15261da38394334b6786d1"
+    },
+    {
+      "path": "web/src/v2/meadow-patch-reference-v38.js",
+      "sha256": "c0e01903ad4a677c0e6daaa2558441c5b35fc0db5f275252ca12f71055e53eab"
+    },
+    {
+      "path": "web/src/v2/meadow-patch-reference-v38.test.js",
+      "sha256": "bf91f3f137135e340d2857c67f9f4f22804480bf40c217c4ff760836f2b6eb56"
+    },
+    {
+      "path": "web/src/v2/meadow-pattern.test.js",
+      "sha256": "98cd603c3341b38325e27bf36da7ee1e0514af68cfc80fee809dc724dbd53d94"
+    },
+    {
+      "path": "web/src/v2/meadow-perspective-capture42.js",
+      "sha256": "3e28c011e73b82cc66ce1f1fec8488a3edbc8371158bc881307487e2c1557ad0"
+    },
+    {
+      "path": "web/src/v2/meadow-perspective-capture42.test.js",
+      "sha256": "a5bebff6f322f6e7dd5744759cc346a8856275ec850e152ffc3fab96a3239d65"
+    },
+    {
+      "path": "web/src/v2/meadow-relief.js",
+      "sha256": "9ab2904c09029765251b54355654e7bfbda813e91c60010ca7a830d6925dde01"
+    },
+    {
+      "path": "web/src/v2/meadow-relief.test.js",
+      "sha256": "1c841d296dd375f51dc43834f3224daf46611c7347da0d7e665d1ed022255a56"
+    },
+    {
+      "path": "web/src/v2/meadow-root-cache-actual.test.js",
+      "sha256": "2ea900255c009e32ff57305daa8851eb881ccc616d40f07974f48aed39c610fb"
+    },
+    {
+      "path": "web/src/v2/meadow-root-cache.js",
+      "sha256": "20f041272ba891cde2eedb62ecb5a01a8eee352167813b1b1ddf114af5f5d613"
+    },
+    {
+      "path": "web/src/v2/meadow-root-cache.test.js",
+      "sha256": "5f2cbde8ec60b11badce5e6efd0852d9ab43203795325ba5e05aef2a82c8719b"
+    },
+    {
+      "path": "web/src/v2/meadow-root-codec.js",
+      "sha256": "a2545446e94627585fcef161f16fa27ca7cdf8cf8d214a57f33340b6f0a04d19"
+    },
+    {
+      "path": "web/src/v2/meadow-root-impostor41.js",
+      "sha256": "98ebaa2cd7fc6bf48892decfb207b3f32bfafa1811bc2ebed5ab88413d5bd721"
+    },
+    {
+      "path": "web/src/v2/meadow-root-visibility41.js",
+      "sha256": "08b57f972dd678a80caf06ced186aa77ca28b1155e18f0791a4a32ffe9530ca0"
+    },
+    {
+      "path": "web/src/v2/meadow-root-visibility41.test.js",
+      "sha256": "3fdf8f7174350b745e404a797e706eb70a657ec23e10306ba187310e00afaee5"
+    },
+    {
+      "path": "web/src/v2/meadow-root-wind-runtime41.js",
+      "sha256": "562d452fbdccf249e6add66a51db57dd12e89db6cf769f9af3e855f14f91c922"
+    },
+    {
+      "path": "web/src/v2/meadow-root-wind-runtime41.test.js",
+      "sha256": "5c492d22f30d11d69c1d2ed5e4e53c4bf84571c6bcfd50cc11153728b57043d1"
+    },
+    {
+      "path": "web/src/v2/meadow-root-wind41.js",
+      "sha256": "a1fd9d6ba8b10b9ccf4435b17896c97c6d4a15f9ba502c9ef7b5490f8b3a620a"
+    },
+    {
+      "path": "web/src/v2/meadow-root-wind41.test.js",
+      "sha256": "8d1a686a066696f4a8e39f38d80e38f216f9073bc6e07d21b83c624d64025e7f"
+    },
+    {
+      "path": "web/src/v2/meadow-scattered-canopy.js",
+      "sha256": "5bc8e85e48000a4c71dd51dd92b79382e017f505df0067ef5197e27e78144598"
+    },
+    {
+      "path": "web/src/v2/meadow-scattered-canopy.test.js",
+      "sha256": "019ffdd1811ca6a58763b83c8a9a83f0ab4b93547fa1d2615d1ef4fdb766a98d"
+    },
+    {
+      "path": "web/src/v2/meadow-source-range39.test.js",
+      "sha256": "57ff0a24346ccef24204fb17845bbe67ad8b620e071680a839383339067255f2"
+    },
+    {
+      "path": "web/src/v2/meadow-surface-bake42.js",
+      "sha256": "8228468e2b14228c1558702936e1edff98b19185d08a2e02c16487f88defedbe"
+    },
+    {
+      "path": "web/src/v2/meadow-surface-bake42.test.js",
+      "sha256": "0871b0bc66d497b53425cfc6676668e13d47d9246e4364b3a2ed9aa32bf555d5"
+    },
+    {
+      "path": "web/src/v2/meadow-surface-review42.js",
+      "sha256": "9afc59932a433d6b165e449ae62c637f219a8dfbdd02d698504cee3eb4be0f73"
+    },
+    {
+      "path": "web/src/v2/meadow-surface.js",
+      "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+    },
+    {
+      "path": "web/src/v2/meadow-surface.test.js",
+      "sha256": "ef687cfa8d57a3db2f05110f977440871cef81d935ba45ea90116985a9038baf"
+    },
+    {
+      "path": "web/src/v2/meadow-volume-review42.js",
+      "sha256": "b744bf358d1f7ceda48283a93e58183875a205b0abbbd0a60f4c991628b1b660"
+    },
+    {
+      "path": "web/src/v2/meadow-volume-world42.js",
+      "sha256": "21f0a050699e7852dbf341b49da55efda0059ba925fba36706c325d461028758"
+    },
+    {
+      "path": "web/src/v2/meadow-volume-world42.test.js",
+      "sha256": "e65888946a96b0e03076ca5d7c17e6391a732eae5988206df5cbbbd74f5236c1"
+    },
+    {
+      "path": "web/src/v2/meadow-volume42.js",
+      "sha256": "9351d60b051d9d87e124a3d0f164c2d4bd0ce04d099f4955ac3d486fefb574fc"
+    },
+    {
+      "path": "web/src/v2/meadow-volume42.test.js",
+      "sha256": "b5c898d76e351d776972f66e770f041d1381cd426dfa189468384c6a25e1c9a8"
+    },
+    {
+      "path": "web/src/v2/meadow-world.test.js",
+      "sha256": "abecc7811a774f7af9554e5598521e9d6aa2e93d413e7a7b44b20153c99b6eba"
+    },
+    {
+      "path": "web/src/v2/middle-batched-review42.js",
+      "sha256": "dbfdb79e29d89d605530110bd4cc696e257e14d026d35cdea60743ec0fd645aa"
+    },
+    {
+      "path": "web/src/v2/middle-batched-review42.test.js",
+      "sha256": "2db6d30d86a30fb674e1e66c03cd899c332bfab277f94905fedd20f1e08cf878"
+    },
+    {
+      "path": "web/src/v2/near-shadow-detail.js",
+      "sha256": "3a5a8ba2d0b705251b35426fed87327f6d1d5f07f5f102d0d1c31caa60476e5d"
+    },
+    {
+      "path": "web/src/v2/near-shadow-detail.test.js",
+      "sha256": "4be2649e3d3248aa0a344790ab3972263d6f3142cf0d26c1626bc59ff8325013"
+    },
+    {
+      "path": "web/src/v2/near-shadow-local-contract75.test.js",
+      "sha256": "4c80b41c1c6ee8f8327c105bf1a0296f70038de901d7c6828674d08c652619aa"
+    },
+    {
+      "path": "web/src/v2/needle-shape-precompute39.js",
+      "sha256": "b7c64eb7cd59e5c35993e29803183a397a8db4cf9a2f2ccc8a3d898495dbcf7a"
+    },
+    {
+      "path": "web/src/v2/needle-shape-precompute39.test.js",
+      "sha256": "390160b5d7ad74d94321ad375f4c634f02bf90aee3079b91016ed1bcebf33534"
+    },
+    {
+      "path": "web/src/v2/needle-shape40.js",
+      "sha256": "08762181c0e07c01f69134cf24a33339b5ac9ee672ce079ba1218954a0557255"
+    },
+    {
+      "path": "web/src/v2/needle-shape40.test.js",
+      "sha256": "4354c3230d0385cf20a38904dbbbbf755cff698e0926c0c826e2fc75306c971d"
+    },
+    {
+      "path": "web/src/v2/needle-station-wind-cache62.js",
+      "sha256": "d3fc0282089098ac85bec48197b5b43d5c7121edc012ab93260211b93d5ed7e3"
+    },
+    {
+      "path": "web/src/v2/needle-station-wind-cache62.test.js",
+      "sha256": "5c5d3ff15b2c221acfd7a7ab7792b959df1afbcf47936e483f9b12653ada6145"
+    },
+    {
+      "path": "web/src/v2/opaque-depth-order.js",
+      "sha256": "b29f2be1bc03746ea204ca72c6b19eaaa50dc844cea12e56663bd00bfb0e3cfe"
+    },
+    {
+      "path": "web/src/v2/opaque-depth-order.test.js",
+      "sha256": "af35f1e637476b9882ec851ce5fbcb2b1a8b8660b977ff6148a7544a21479acf"
+    },
+    {
+      "path": "web/src/v2/owned-matrix-abba42.test.js",
+      "sha256": "3c1e9b5ea687a8bb81a8427c46c998e6a63f74be77c91cbfb5bc9ecc30ed6dd2"
+    },
+    {
+      "path": "web/src/v2/owned-matrix-arithmetic42.test.js",
+      "sha256": "d3fae802d3ba07927a021ffa062d57342835dffa455359ad2a238e47f1b2832c"
+    },
+    {
+      "path": "web/src/v2/owned-shadow-policy.js",
+      "sha256": "13ae67e98de3647d0ad0fb488599290fb9f5dd608f2c2f5dc3a8a7b5b339acd9"
+    },
+    {
+      "path": "web/src/v2/owned-shadow-policy.test.js",
+      "sha256": "509280abc6e8e72eaa7ff16068fb0e824a83cd42677d957a30ab9709b7a0df11"
+    },
+    {
+      "path": "web/src/v2/packed-hdr-review.js",
+      "sha256": "36921f886bd21d3888154c010fbb63ef904651b8ff44597b412979741e9f8f57"
+    },
+    {
+      "path": "web/src/v2/packed-hdr.js",
+      "sha256": "e25f3f423675f14572415269e4e99758d37434658120308f4d9f621ac61a83dc"
+    },
+    {
+      "path": "web/src/v2/packed-hdr.test.js",
+      "sha256": "8528c404d1fd98d8f20c7db3ffd16029314403341550ed35ffd623b825383d77"
+    },
+    {
+      "path": "web/src/v2/pasture-life41-collision.test.js",
+      "sha256": "fbcb984a72a425c7d2f79c1b0d047e0e7d617f97fbe70dbb68502a15e06aec42"
+    },
+    {
+      "path": "web/src/v2/pasture-life41.js",
+      "sha256": "f156c89dbbb07d6d78a18dd1de78e933f1408d358efa04fa4bf5a491afe44814"
+    },
+    {
+      "path": "web/src/v2/pasture-life41.test.js",
+      "sha256": "9589a37633db9ccd7f5b9bd49d134171714a577cf313b21ab3782e862a3516f2"
+    },
+    {
+      "path": "web/src/v2/pasture-plant-contact41.js",
+      "sha256": "b7bc7ddde9fc6928dfad157606768c5a549f3049f9ddf1abead5b9b4a5601d7f"
+    },
+    {
+      "path": "web/src/v2/pasture-plant-contact41.test.js",
+      "sha256": "3ae75c50088abc39b1ddbf16d6a6c788f1f829d321204654cfaaf4a7850af6f7"
+    },
+    {
+      "path": "web/src/v2/pasture.js",
+      "sha256": "aee5096a5eac6a4e85d26c1d848ca4bc9a9b07e91c0e04e397f43e46b88fc239"
+    },
+    {
+      "path": "web/src/v2/pasture.test.js",
+      "sha256": "808fa37e10e1ff68115a7afce79ab7174876053842f2adf227792cb18b0ead5e"
+    },
+    {
+      "path": "web/src/v2/path-materials.js",
+      "sha256": "d2fce24dd1901662088719e3965d7ac0bc713f613cb20f5805363a24393055c3"
+    },
+    {
+      "path": "web/src/v2/paths.js",
+      "sha256": "9aac97d444b4b8d3a4925486cb10a9b9b2f53abd83ffa48ad3e81ddc361b27d3"
+    },
+    {
+      "path": "web/src/v2/paths.test.js",
+      "sha256": "651910c109b0b8ddbdfee7fb851f0afca92b6cfee882b3ad7a471cf294ea55b6"
+    },
+    {
+      "path": "web/src/v2/photo-cluster-audit42.js",
+      "sha256": "90e1ec954e15fe9c3bd4e835fce253232e61b7a651b384d50af5eac1d49dc822"
+    },
+    {
+      "path": "web/src/v2/photo-cluster-audit42.test.js",
+      "sha256": "78be9b2136216740a0717d8ff3ac187bb8b75a0b664ce54c1f8a34e0ae1b5abf"
+    },
+    {
+      "path": "web/src/v2/photo-cluster-entry42.js",
+      "sha256": "bb466474983cb3aa483229cdd8a59a775a52ef05e376ddd2210d323141aeb6cb"
+    },
+    {
+      "path": "web/src/v2/photo-middle-normal63.js",
+      "sha256": "86c287a8b77bd7a50c9254cf417a5cba9956a307cfff88605d49fcca03567957"
+    },
+    {
+      "path": "web/src/v2/photo-middle-normal63.test.js",
+      "sha256": "9450c97cccc1caf99051931b2ad42829e6b7ddd2b9179b5093faa9174afdec8e"
+    },
+    {
+      "path": "web/src/v2/plant-exclusion-index.js",
+      "sha256": "6a93516049cb43c6ad9f0c964652973ef8d4d3228a53197a90f1aee53fa9006a"
+    },
+    {
+      "path": "web/src/v2/plant-exclusion-index.test.js",
+      "sha256": "34fb300a26b2ef5ea56350b210e3a23474bcd23d6b7aeed14e8448551cc0ea6a"
+    },
+    {
+      "path": "web/src/v2/preparation-yield.js",
+      "sha256": "f3cd677431abff6c54e73b7477e0d83738fc000ef09391e0a5341ac638c48a07"
+    },
+    {
+      "path": "web/src/v2/preparation-yield.test.js",
+      "sha256": "5ae39678560d232e18ec713d29fe52f6ec1bf2e596b376adc5e21ccaf60978ca"
+    },
+    {
+      "path": "web/src/v2/prepared-world-matrices.js",
+      "sha256": "712b7c53596b92c4cf59dc93c19e6c00a9239ce6c6a5f9768b971bd3e77a9cff"
+    },
+    {
+      "path": "web/src/v2/prepared-world-matrices.test.js",
+      "sha256": "6394c1f534cced7093050763aec623d75e4186fc98f7a25bf9853238a7675700"
+    },
+    {
+      "path": "web/src/v2/python-random.js",
+      "sha256": "0e71e95f8d7251b6dcb32592426e10b6fe239da30ad0b280f9ecdee46ab497e7"
+    },
+    {
+      "path": "web/src/v2/python-random.test.js",
+      "sha256": "0d7e6a8481f0010c0eab4205682834f439b1d931a323296c77fa8bb9033cdfab"
+    },
+    {
+      "path": "web/src/v2/raf-cpu-profile42.js",
+      "sha256": "2ba41fdc550bc3c29c759955a1c9b3d6d2904e7effe4f9818350a41ec43357c3"
+    },
+    {
+      "path": "web/src/v2/raf-cpu-profile42.test.js",
+      "sha256": "06bbde0c6ff9ec7afa5fb163dd0188cb2d0c997279af835db90a94debe20b245"
+    },
+    {
+      "path": "web/src/v2/reach-bank-binding48.test.js",
+      "sha256": "8246262cfcf05c0fa9926804651b8459a6d19c708e6bd5a2e03c6bf462e1bc0b"
+    },
+    {
+      "path": "web/src/v2/reach-bank-composition42.js",
+      "sha256": "dc1c13f54622822571b7f80a5f8cd2d0b035697ba4add7f53f949509bd0b53f0"
+    },
+    {
+      "path": "web/src/v2/reach-bank-composition42.test.js",
+      "sha256": "62937912dfc19993468244ae2bcb44dfd83550d72b14be5bb36b0843a558b984"
+    },
+    {
+      "path": "web/src/v2/reach-bank-design50.js",
+      "sha256": "b602eb4941ae88cc021cebd774e83170d7136edcdab2654b632bd70c8b6c8620"
+    },
+    {
+      "path": "web/src/v2/reach-bank-design50.test.js",
+      "sha256": "da0d4ae333291d2b4f689e8fddca11a06d9af8ea9a510a17c7934adea6a1a8cc"
+    },
+    {
+      "path": "web/src/v2/reach-bank-profile48.js",
+      "sha256": "5de2e69765273f1371911421a5c14d35ea548d32e2e1e79a2ec3642f4ba8c082"
+    },
+    {
+      "path": "web/src/v2/reach-bank-profile48.test.js",
+      "sha256": "81e4d9efff41588518adb1902cc1a685a68d0d45cc8d3a1b931c4f32f4ebcd61"
+    },
+    {
+      "path": "web/src/v2/reach-bed-facies64.js",
+      "sha256": "25bfe0c54e565ed59bc9882d73ba408157fdd2b36dc80b43c427063d08aa71b2"
+    },
+    {
+      "path": "web/src/v2/reach-bed-facies64.test.js",
+      "sha256": "4cce408d8d2ba1b07f86f1aa81284f167dc80c1d10542e50f40923c524f6aaea"
+    },
+    {
+      "path": "web/src/v2/reach-bed-facies66.js",
+      "sha256": "94bf8fbc9cf513892579afd77ecd427c52ad49774e0ad7040a411567ccb5ba26"
+    },
+    {
+      "path": "web/src/v2/reach-bed-facies66.test.js",
+      "sha256": "75d7bca2e69e9597613d71a5a29ba8c0e3af05797fe73849a42dd77b1899b2ff"
+    },
+    {
+      "path": "web/src/v2/reach-contact-budget42.test.js",
+      "sha256": "8b37dd41fa24a20afdfc13397b7fefadaa25e78fd5b1f9f42215abf5014c7444"
+    },
+    {
+      "path": "web/src/v2/reach-contact-capture42.js",
+      "sha256": "061ee10253f5e201e39fba2c27f039ef8f8e093853fa0e39c4cf2c2f81502098"
+    },
+    {
+      "path": "web/src/v2/reach-contact-prepared42.js",
+      "sha256": "2e62a05bd6203385b89006f4eb32866f15ff2b6091adde36f18ba1acd221175c"
+    },
+    {
+      "path": "web/src/v2/reach-contact-prepared42.test.js",
+      "sha256": "4db950b482544724378705fc0c30fcf0f31a7ada3ebf7b9a37ecddf29c83cd78"
+    },
+    {
+      "path": "web/src/v2/reach-cover-prepared42.js",
+      "sha256": "5b02296bb640af5f80c2f27a5386a8ce9e9257bb9dbf9bbf9bbb0930e05238b0"
+    },
+    {
+      "path": "web/src/v2/reach-cover-prepared42.test.js",
+      "sha256": "0435316eb0a521a76ca4fb97c3d624d51855e08814be6f53798108cf5a0083fc"
+    },
+    {
+      "path": "web/src/v2/reach-depth-refinement41.js",
+      "sha256": "0a5cac52c3ba1b8a5e2535dd0db17b7284d7a27952b7d00b758cfaecefa8710d"
+    },
+    {
+      "path": "web/src/v2/reach-design69-material.js",
+      "sha256": "77e4eb90d6b5ad96f169287eafa02f3bf083bf282cda1f3d4742b39aba871700"
+    },
+    {
+      "path": "web/src/v2/reach-design69-material.test.js",
+      "sha256": "d0a8aa4674426726fc1bb7b2fb8e798c069f6fc08056fabdfb4f654c1da4da66"
+    },
+    {
+      "path": "web/src/v2/reach-design69.js",
+      "sha256": "6689914038161b5918d8ea28f807f555b1a7f4516e1c3758170c266a152719bf"
+    },
+    {
+      "path": "web/src/v2/reach-design69.test.js",
+      "sha256": "c28ff052b5416620aad7538ab7e4f932a52b6e80da4281ce8e714d3c3233677e"
+    },
+    {
+      "path": "web/src/v2/reach-design73-material.js",
+      "sha256": "663b7389e05e63a761c3593b7dd2c1a9dbaef7ecf5c5d1a34d05e9f5d7668929"
+    },
+    {
+      "path": "web/src/v2/reach-design73-material.test.js",
+      "sha256": "bf6dad6e5234059cd84e0d5b47b366e13c81976fbc584c461040957402918ba0"
+    },
+    {
+      "path": "web/src/v2/reach-design73.js",
+      "sha256": "c17c23e17bcf8fb78861a044d48fb39ff6223c95e453a29341d313420271489a"
+    },
+    {
+      "path": "web/src/v2/reach-design73.test.js",
+      "sha256": "4daf4477ae18a57b18c11ce7300d88c16cd6213f85c9b37d1f95fda54a11b78b"
+    },
+    {
+      "path": "web/src/v2/reach-envelope-lazy46.test.js",
+      "sha256": "04d49d7eb2bc2ae8f8df7c5f918bd398d43699c8be88c2e814e97058920d6065"
+    },
+    {
+      "path": "web/src/v2/reach-facies44.js",
+      "sha256": "c445c8fed9f82ce0b695b74559b75bf00c8e72b756e891b21ad4ae8faed96c97"
+    },
+    {
+      "path": "web/src/v2/reach-facies44.test.js",
+      "sha256": "816cb5155b5d59e3a65a7ff6810cf0ca780078cbaf89927d62ef01f817a43db7"
+    },
+    {
+      "path": "web/src/v2/reach-rendered-seat41.js",
+      "sha256": "45fb684a60b5bcc8927139b2d55ffa29015bde637e75a0432b4b03dded664360"
+    },
+    {
+      "path": "web/src/v2/reach-rendered-seat41.test.js",
+      "sha256": "08404130a8cb28e9d1b106ae6bc78755cfc1cd2253dce7aed3a4fae1e51bc732"
+    },
+    {
+      "path": "web/src/v2/reach-root-face50.js",
+      "sha256": "37d2103104fcd9c3334273d543dbb438851207c976365062ee98da340ec03ba6"
+    },
+    {
+      "path": "web/src/v2/reach-root-face50.test.js",
+      "sha256": "0fbecd4cd573993d1d21515f82f83e32186abd9485b1d189ecab6413c6ecc701"
+    },
+    {
+      "path": "web/src/v2/reach-root-mat-trial.js",
+      "sha256": "47450ce73d9063e0e669410065efadf3a1bdc0fb77a16548436da218081ad876"
+    },
+    {
+      "path": "web/src/v2/reach-root-mat-trial.test.js",
+      "sha256": "2f2b93351f393bc27ff737efdf7aca084156c83e33af487d678fa8dba43a5800"
+    },
+    {
+      "path": "web/src/v2/reach-scan-loading41.test.js",
+      "sha256": "d14da63a5d2764514358e64fb0faf70dd7702c825cba695c2f5db384af0f597b"
+    },
+    {
+      "path": "web/src/v2/reach-water-acceleration42.test.js",
+      "sha256": "4c1d9630d9b1a0895eaa26aee8e6a649decab46d0267f394017860b8afe92a94"
+    },
+    {
+      "path": "web/src/v2/reach-water-contact40.js",
+      "sha256": "8764973fd02f20843edc1ef075ea2a5f6451bd7e8a107933a955158e5d6e581e"
+    },
+    {
+      "path": "web/src/v2/reflection-depth-order.js",
+      "sha256": "2b623eea7a8faaff8938a6b592cdcd96e935ae97c7c50af4843bd6822ab0e71c"
+    },
+    {
+      "path": "web/src/v2/reflection-depth-order.test.js",
+      "sha256": "17d9f82d5d22fbab8b73248cb85c6d534c2a35db58b10d023ffd63a721b6b099"
+    },
+    {
+      "path": "web/src/v2/river-bed-profile.js",
+      "sha256": "7db60050d25cbd4f8976fe89aad81735bf896eabc2e1d3bdba3d092ef1b58b3a"
+    },
+    {
+      "path": "web/src/v2/river-bed-profile.test.js",
+      "sha256": "b36e3543c609a306bcea0f4d2c58d07547e8710089cd3e7fd190010a7681f0c3"
+    },
+    {
+      "path": "web/src/v2/river-incision.js",
+      "sha256": "75f7f80e8767d97188be13ae08b1f0f609b9469232a7b27e4a288e89cf73031d"
+    },
+    {
+      "path": "web/src/v2/river-incision.test.js",
+      "sha256": "9af1b3a1a09071dc40befe0f56feb9ac838779f06e31a373a9b3a5e175b6800e"
+    },
+    {
+      "path": "web/src/v2/river-meander.js",
+      "sha256": "4bbf339795e39020e0fc622fd4246fb250109216e7ffe918076c95da4457f533"
+    },
+    {
+      "path": "web/src/v2/river-meander.test.js",
+      "sha256": "b8fedd8ea6cfc157b1a4fb6e46fb556ccd27f10f925911546cda5a8a7e01b537"
+    },
+    {
+      "path": "web/src/v2/river-section.js",
+      "sha256": "81ecf1e1428da3bceaa69b81fe3fd4a325f0ea716c302c659c769b5b61409616"
+    },
+    {
+      "path": "web/src/v2/river-section.test.js",
+      "sha256": "3fc7601f43f1cb757b0c12b36ff37daba3d74eefbfdc789a3ac2732d4021513f"
+    },
+    {
+      "path": "web/src/v2/room-aperture-data.js",
+      "sha256": "59020cb44a3a7023607ba3a199587e0b058f9100d325efd4b45b365cbc01e20b"
+    },
+    {
+      "path": "web/src/v2/room-aperture-registry.js",
+      "sha256": "f34f990bfd9ea774dcce4de3b727d88a11dde39d45cfddb31311b4f8206711b1"
+    },
+    {
+      "path": "web/src/v2/room-aperture.test.js",
+      "sha256": "9d791925a8122465d81cf1f517b0b381edd5e5d1ff036da0b99fc4307f7166c5"
+    },
+    {
+      "path": "web/src/v2/room-bounce-data.js",
+      "sha256": "042aaadec204b6189772c718c2d1fd27ec0cabfad286537c9213702c331fcdce"
+    },
+    {
+      "path": "web/src/v2/room-bounce-field.js",
+      "sha256": "f27db66dbedf64d7655b61547d97607b15727a064cc11968240c693d2280125b"
+    },
+    {
+      "path": "web/src/v2/room-bounce-field.test.js",
+      "sha256": "c8eddd2b809ab7f0f7b52ac8b65f0fd40488ce62a8dfaf7bb58f7e87a772a5e6"
+    },
+    {
+      "path": "web/src/v2/room-bounce-registry.js",
+      "sha256": "1306a02af7d74d575ff5da34c6e95b31a6fae93b444b1581a56a77e36ed27d70"
+    },
+    {
+      "path": "web/src/v2/room-contact-data.js",
+      "sha256": "2513ab52bfb7e27fec69cec2d0d4e030df835cb46933d64c71d3e4d4991717b0"
+    },
+    {
+      "path": "web/src/v2/room-contact-registry.js",
+      "sha256": "9216cc7a2ca36265eb5a0b4a866ebca3f0259e1d3d3154f151eeaf2991aa1914"
+    },
+    {
+      "path": "web/src/v2/room-contact.js",
+      "sha256": "4916478e30ad1358f30958178ad9d9a3890497e71fa563e5f74b8ad3200ab4b1"
+    },
+    {
+      "path": "web/src/v2/room-contact.test.js",
+      "sha256": "7bf58d73fbd1d509ac1b84eb516468b48aa03d178fa07415aa123b2e632faf83"
+    },
+    {
+      "path": "web/src/v2/room-door-angles.js",
+      "sha256": "8b7c00dcdf3c5556e86065252ac6e7481bfcc593af308656cc36de0ffe3f41cc"
+    },
+    {
+      "path": "web/src/v2/room-door-angles.test.js",
+      "sha256": "b95655dd71acee41a619efa9d70c07a83ece612d184bb832e139312c3813a32b"
+    },
+    {
+      "path": "web/src/v2/room-door-transport.js",
+      "sha256": "e30a3be6aabb5c8a1b775665558ae33474f0eb03fed5f60044335821373d38d5"
+    },
+    {
+      "path": "web/src/v2/room-door-transport.test.js",
+      "sha256": "4e3c6179368f77d4ffb6d01d59a4904eccc0bd1bc1b202774be01fb5b6d17858"
+    },
+    {
+      "path": "web/src/v2/room-exterior-aperture-data.js",
+      "sha256": "4d04811080c8540ede5622795068ddbddd70aa613d332135ee77d4ac9490ee5c"
+    },
+    {
+      "path": "web/src/v2/room-exterior-aperture.test.js",
+      "sha256": "bcb5ecbdd09014aa4e291006dacb59d9e2ce5476564fa61aefce1e956e3ca01d"
+    },
+    {
+      "path": "web/src/v2/room-exterior-ground-bounce-data.js",
+      "sha256": "234a0a229454297ee2cc97037804cda7f5f11c927da0119a930310f457a06d48"
+    },
+    {
+      "path": "web/src/v2/room-exterior-ground-bounce.js",
+      "sha256": "02722628d4a79069852cdf528a95c4e7672742883a8c2ec139dba91f36734b78"
+    },
+    {
+      "path": "web/src/v2/room-exterior-ground-bounce.test.js",
+      "sha256": "7ded73b0a34ba8ebbd55f1bd37127716fda7d3a6609126f8b36bb03b82dc3207"
+    },
+    {
+      "path": "web/src/v2/room-exterior-ground-data.js",
+      "sha256": "0435bdb2eca738ccd8ea5f1c11395e4080d7a55c2146d2d6d3b343e2da2ad755"
+    },
+    {
+      "path": "web/src/v2/room-exterior-ground.js",
+      "sha256": "cb261876f3edf814c3d21d19158a2730fef96c84686056f67db988dea224ea13"
+    },
+    {
+      "path": "web/src/v2/room-exterior-ground.test.js",
+      "sha256": "21060e4e98ed58e774ba9f1d8e635927cc3a7a7e29ac952958a5298f62e661ea"
+    },
+    {
+      "path": "web/src/v2/room-exterior-terrain-data.js",
+      "sha256": "eea07e1624bf7c721dee7f1d93b5cade63607a83f75de1244ef31abfdfe37e55"
+    },
+    {
+      "path": "web/src/v2/room-exterior-terrain.js",
+      "sha256": "2704936d10d130da7673a7ad2722df0ca113337d3fcd28749ff4fc0ee63c68bd"
+    },
+    {
+      "path": "web/src/v2/room-exterior-terrain.test.js",
+      "sha256": "5a02fa397d7d73999066bcc5d1012277c5f0956777e26626b4f1c7a6a3db149b"
+    },
+    {
+      "path": "web/src/v2/room-field-contract.assert.js",
+      "sha256": "2b77446146f0ae728eaab8225b85248d25e599dc014eeeb0daff5108f53d1acf"
+    },
+    {
+      "path": "web/src/v2/room-field-contract.test.js",
+      "sha256": "f1250407a459920453ae8c75e75b5742e7901c3896741b17d90e168f1e0c9127"
+    },
+    {
+      "path": "web/src/v2/room-finite-aperture.js",
+      "sha256": "09c9213ec95ea45d6d42bf6dd01ff812d3654ecd155b4112f837f5db6f7114c6"
+    },
+    {
+      "path": "web/src/v2/room-finite-aperture.test.js",
+      "sha256": "31c7f0e55adbf619f861cd307a8f06184b17435ab955e01d5a33c2d3ec19f071"
+    },
+    {
+      "path": "web/src/v2/room-fixture-controls.js",
+      "sha256": "3e354f0c76cfc57391fab2461cd45ed95423d1787d51c63da215887e2dcb1669"
+    },
+    {
+      "path": "web/src/v2/room-fixture-controls.test.js",
+      "sha256": "0a96e9ca37b1bb09d0b59d24a28c2136402d77b62339a2418d6312e378a17ec1"
+    },
+    {
+      "path": "web/src/v2/room-fixture-data.js",
+      "sha256": "8cc6f219a2e32b9788a365d58d44b6102ef97113ef7dc6f9388303d274aa6304"
+    },
+    {
+      "path": "web/src/v2/room-fixture-transport.js",
+      "sha256": "864b96258684c176a16ccbbca353ddbb490a4ec56bf6e9919552e0be7929bee9"
+    },
+    {
+      "path": "web/src/v2/room-fixture-transport.test.js",
+      "sha256": "a9c6f6cebfbf6c46580ce89af9b22c1a00f7ffc66b357b27f4abf8ba624e700f"
+    },
+    {
+      "path": "web/src/v2/room-lighting.js",
+      "sha256": "e77c4e3b875f214b9ccf9ea2b75b4aa3c669713d7003bf72928c94d3131973f9"
+    },
+    {
+      "path": "web/src/v2/room-lighting.test.js",
+      "sha256": "c557dd1afd3a831df47fc2289ca7bcc6b0c5e6ffb3595fb594039cf32fbf6d78"
+    },
+    {
+      "path": "web/src/v2/room-pastoral-door-angles41.js",
+      "sha256": "9c36afd44a764756b891e9114faf80500008d9c1a347cd1f2a11d7bf6b7300ff"
+    },
+    {
+      "path": "web/src/v2/room-pastoral-door-angles41.test.js",
+      "sha256": "2c3783772f59c177c70f08f3ba4c66e5ecab1ecc31b653521396702ca2c0ac41"
+    },
+    {
+      "path": "web/src/v2/room-second-bounce-data.js",
+      "sha256": "9c3862d058f26b000da0d687e6d8e04cf3b54821538888a030842c74dbee390e"
+    },
+    {
+      "path": "web/src/v2/room-second-bounce-registry.js",
+      "sha256": "a9edf105db1f20b0084653ef92ece8b936fc4da84f6f97fe7a0ed91b2488f0b6"
+    },
+    {
+      "path": "web/src/v2/room-second-bounce.test.js",
+      "sha256": "6a64388164263a7e3a14284e3aad999db4df7214a1b807b939541b510cc57eff"
+    },
+    {
+      "path": "web/src/v2/room-second-fixture-data.js",
+      "sha256": "542ae1d0958d51ddaf1b114199a4adf442e5b5165c26cb561e730170cc375180"
+    },
+    {
+      "path": "web/src/v2/room-second-fixture.test.js",
+      "sha256": "b71428aa811715b5086b2547b7c513857eb2442bff1eec1b381259656e4cec0a"
+    },
+    {
+      "path": "web/src/v2/room-second-solar-data.js",
+      "sha256": "c026c451cd5ac96a1c2d71205f94c4cfbfb17e72743f9161ac3a5cc2d6abd3bd"
+    },
+    {
+      "path": "web/src/v2/room-second-solar.test.js",
+      "sha256": "55fe3a0ebc2d9f17a5df05e1aa5e33142d57ea438b059e9586510798a78706a8"
+    },
+    {
+      "path": "web/src/v2/room-shadow-atlas42.js",
+      "sha256": "8598847016dce817cf1530063b6ff098b96e3b04ff13d2df8ee9d17983861002"
+    },
+    {
+      "path": "web/src/v2/room-shadow-atlas42.test.js",
+      "sha256": "51438130e5011d532d9a2f2662d470c8ec3a6fc2ca40f55a4c5d3ed258ea5c38"
+    },
+    {
+      "path": "web/src/v2/room-shadow.js",
+      "sha256": "63fd065cf63c1bbd0b5a5376a0e10564b3b08d337945bc8cca07ce8015f2e97c"
+    },
+    {
+      "path": "web/src/v2/room-shadow.test.js",
+      "sha256": "1fb155827e5de7f62a9da6a3f86453763e7c426b8bec16027887ff1f13ad96ac"
+    },
+    {
+      "path": "web/src/v2/room-solar-transport.js",
+      "sha256": "46276e1492616c1d82ea26cfc910fb7571d4f696e607642a68bb4a0170c4e28e"
+    },
+    {
+      "path": "web/src/v2/room-solar-transport.test.js",
+      "sha256": "f24a9445269e2044a1ef4cfbdb48a28008d0e24dd184253c2b490c30e79bec04"
+    },
+    {
+      "path": "web/src/v2/room-terrain-sun.js",
+      "sha256": "eff15a036cdac4c74ae739e0986837832b7291d6593a3ae810b3a859f72a2c4c"
+    },
+    {
+      "path": "web/src/v2/room-terrain-sun.test.js",
+      "sha256": "a80fc29b69abdf0bf1402a81e1e9228dee745a71c552b99e6e5d84e9b6ddfdbd"
+    },
+    {
+      "path": "web/src/v2/room-transport-data.js",
+      "sha256": "5129979a15d9429a2c3d8880ff788777e2c6657c8a127ffae59c9f41a13dfc9a"
+    },
+    {
+      "path": "web/src/v2/room-transport-registry.js",
+      "sha256": "86dbf10a34a65d0a6bef8eb430c2d6c571943628393710d9cf33df3748b0906d"
+    },
+    {
+      "path": "web/src/v2/room-view-selection.js",
+      "sha256": "9f5efb5a4cd02087b1f304f98e5c63f8da4ce6958f87bb10fc45f43b28df0669"
+    },
+    {
+      "path": "web/src/v2/room-view-selection.test.js",
+      "sha256": "2ad82559595b883eb5022c7770cf0a33fd9b74c85d936ae6c89d6cfa6afbc86d"
+    },
+    {
+      "path": "web/src/v2/route3-courtyard38.js",
+      "sha256": "ac6ebf802f2b16d5b26b517e83c401ccff8a778de636ae9f8dc7a52c6844e361"
+    },
+    {
+      "path": "web/src/v2/route3-courtyard38.test.js",
+      "sha256": "1cc8b1d0e7319610f5206af1f8ec716becbc162ae82fd66f5d0d192f28ed60b5"
+    },
+    {
+      "path": "web/src/v2/route3-entry42.js",
+      "sha256": "6a59ec27efb5d54b70995aaa5f60c0b9acc9fe7b044c8efd17d157c02569b4bc"
+    },
+    {
+      "path": "web/src/v2/route3-entry42.test.js",
+      "sha256": "9a644ef0a8f65cfde440d1e570d9ae5b81c3f22b810a17b65f783dbb75ea81bd"
+    },
+    {
+      "path": "web/src/v2/scene-matrix-cache.js",
+      "sha256": "9dda99f9cebdb7f347432646631a66eff9363304fe95ccba1c3b55fe82668b91"
+    },
+    {
+      "path": "web/src/v2/scene-matrix-cache.test.js",
+      "sha256": "6443c0510b2c82476a9dc292a89ae31a67b6ce01c8735e8375b106a85f5641c9"
+    },
+    {
+      "path": "web/src/v2/scene-parent-matrix-cache.js",
+      "sha256": "40c158fdbc122f3ee6033f500ade2d6a21f19a6de80a1675e1dc3c407eb63b37"
+    },
+    {
+      "path": "web/src/v2/scene-parent-matrix-cache.test.js",
+      "sha256": "0198c693399d8bb047970c01ed4b8219fd8dcd5841343d3e081001e3182f1068"
+    },
+    {
+      "path": "web/src/v2/seating-collision39.js",
+      "sha256": "210654968db997098d897806c3e5d572ffc7f530375ad75f111141d4041fd601"
+    },
+    {
+      "path": "web/src/v2/seating-ui39.js",
+      "sha256": "ae8270026d56dbf1bade313e60fbc271728eb275005fb7539370dacf152b3924"
+    },
+    {
+      "path": "web/src/v2/seating39.js",
+      "sha256": "2ffcbca3e9128507a48e90efe30c7a3f9e39fa7d3e5b99780bc9f783514f6607"
+    },
+    {
+      "path": "web/src/v2/seating39.test.js",
+      "sha256": "115096617ee8fb7235d0104535e0ba481d90ffcdc9a27190e7690e210bdc444b"
+    },
+    {
+      "path": "web/src/v2/settlement-assets.js",
+      "sha256": "51e2e6f7cf3a9d4d82f28f5b122de776c1db4c249b29939b2f4376b17c922b00"
+    },
+    {
+      "path": "web/src/v2/settlement-assets.test.js",
+      "sha256": "4b70e9c85f48f76948a5c407da2d9ed5d24ea6291b4321d918c7dbe95a7b33ce"
+    },
+    {
+      "path": "web/src/v2/settlements.js",
+      "sha256": "d6b52849c6c225540d8dfb6ea7e72e8ed7cdf2b331361e675d38a067ab6c604e"
+    },
+    {
+      "path": "web/src/v2/settlements.test.js",
+      "sha256": "78dfca5d981d2f67d684bf7b5d0fe5f995c57a80abe4e0533049359e93dd296d"
+    },
+    {
+      "path": "web/src/v2/shader-readiness.js",
+      "sha256": "8c651b75f9a9f05c5be5704f0a670d618386e0ee0bc4ef06feacfa5dab050e5c"
+    },
+    {
+      "path": "web/src/v2/shader-readiness.test.js",
+      "sha256": "9cbfd5b0c05d17664afef215aba3c8a8e25dba18b757cde04c3d4d175e8d518e"
+    },
+    {
+      "path": "web/src/v2/shadow-atlas40.js",
+      "sha256": "6f89e265ce42d46fbfbcea416c750b3022112cf1b991dfb639a5269d81b4213d"
+    },
+    {
+      "path": "web/src/v2/shadow-atlas40.test.js",
+      "sha256": "42c34f0673bb00e9fff3cf67998a29fa4e568fe048b7be3d789411e568b0354b"
+    },
+    {
+      "path": "web/src/v2/shadow-bank-bounds43.test.js",
+      "sha256": "e17a455806662719cf6c172fc1c137d80bab4765beb38f21ff49308fc295692a"
+    },
+    {
+      "path": "web/src/v2/shadow-bank-producer45.test.js",
+      "sha256": "ba1bc40fdbaa876135cf29d25ef0b7b5a6795f93e083f5bc81550a92390aec01"
+    },
+    {
+      "path": "web/src/v2/shadow-column-audit42.js",
+      "sha256": "9e8a14e1ee7335113a833e8dfb7c0add78e420312a1597c9c6585585774121b6"
+    },
+    {
+      "path": "web/src/v2/shadow-column-audit42.test.js",
+      "sha256": "931864f0ec04523c2ac2987f71192c7236e7738e6572cf2289eb3eca0544ffb3"
+    },
+    {
+      "path": "web/src/v2/shadow-depth-blit42.test.js",
+      "sha256": "383bc715ebdf4ad9bf00d7bef7064a97745baf637a65ce0877dc96d128c1123e"
+    },
+    {
+      "path": "web/src/v2/shadow-depth-diagnostic.js",
+      "sha256": "19844ca47b8402b117821c475fa64e558810c47fe467eeadb3750231ac288ebc"
+    },
+    {
+      "path": "web/src/v2/shadow-depth-diagnostic.test.js",
+      "sha256": "9addfc3a7e77ef016b90885bb5fbdb1135abaa12a3a76a06c42be87c1153c4a1"
+    },
+    {
+      "path": "web/src/v2/shadow-ground-cdf41.js",
+      "sha256": "9732e5f30e38f7278c5220323f9843fa44d4a63e853a5336dacac0d8d786f445"
+    },
+    {
+      "path": "web/src/v2/shadow-ground-cdf41.test.js",
+      "sha256": "dba05fac592385d6c101b6d551b64a8ea642dfd04b76aafad05991086c41830b"
+    },
+    {
+      "path": "web/src/v2/shadow-moments-format41.js",
+      "sha256": "d5618389e6c7109a10e213c690fd59b2c4705c36434a0512fc1ad57b38294f13"
+    },
+    {
+      "path": "web/src/v2/shadow-moments-kernel41.js",
+      "sha256": "d3ab9ca1af5566f058bf4e10a2f0cecce22530acfe5d75cbdf063e012d77b2a2"
+    },
+    {
+      "path": "web/src/v2/shadow-moments-native41.js",
+      "sha256": "74eb5b07fb481da88fc4096170234f2e3a4fba16ebdadaca22e8c4fbe4223b53"
+    },
+    {
+      "path": "web/src/v2/shadow-moments-reference41.js",
+      "sha256": "476c148d5e3c1ef7a9b2ee82db465dac7734d4de4d7b0026649a4400b5dcd319"
+    },
+    {
+      "path": "web/src/v2/shadow-moments-reference41.test.js",
+      "sha256": "904ea84563196fabbed25e4a55bc0df395bb8db6defeb24fd92cb16bde25f19f"
+    },
+    {
+      "path": "web/src/v2/shadow-moments-world41-entry.js",
+      "sha256": "20c6d2cd0169842f5007c024b4b454ae697f9d2b0d8648ae140d47d29a832eb9"
+    },
+    {
+      "path": "web/src/v2/shadow-moments-world41.js",
+      "sha256": "b482274b348554c5caba3e09fcfd13a5ae2a0fc43143f36071edca5dbd16c0aa"
+    },
+    {
+      "path": "web/src/v2/shadow-moments-world41.test.js",
+      "sha256": "55931a1c19ab7e3bcdde83553da819f39fe6ef881af52184e882389fca037d94"
+    },
+    {
+      "path": "web/src/v2/shadow-pcf-rotation.js",
+      "sha256": "559a881203fa47e26f83106674e61128320cb9d862738fb588e2bc3d15f817e0"
+    },
+    {
+      "path": "web/src/v2/shadow-pcf-rotation.test.js",
+      "sha256": "1842be0f2240d54894db732de02b2273c590aab1c8c20d7870c4dc097118f3ac"
+    },
+    {
+      "path": "web/src/v2/shadow-program-family52.js",
+      "sha256": "0b95585e52603e97f0b85042b03e10db8089259ceaf24b4754334292d7406e2f"
+    },
+    {
+      "path": "web/src/v2/shadow-receiver-bias.js",
+      "sha256": "90b96857a93cf2b08d9b0a53f09ce4a3f5300949cda06be4d5d5b525d7e27f60"
+    },
+    {
+      "path": "web/src/v2/shadow-receiver-bias.test.js",
+      "sha256": "02c3914047ec372088df4ad6ecaa6245304336c0676e5d8d9d657bf9a113cd80"
+    },
+    {
+      "path": "web/src/v2/shadow-receiver-footprint.js",
+      "sha256": "52e64d42869d6ab838918454b015131da6b0a69e8c534e5f65e92a851a8b3925"
+    },
+    {
+      "path": "web/src/v2/shadow-receiver-footprint.test.js",
+      "sha256": "148f525e87f8c9ad70171de64f1742e85141a74fc5b64fbcbb9153e06c03b993"
+    },
+    {
+      "path": "web/src/v2/shadow-static-cache-abba42.test.js",
+      "sha256": "ae4e2c22c07033bf03975a7394836369ae39504338d16963a59a0bcdf4296d84"
+    },
+    {
+      "path": "web/src/v2/shadow-static-cache42.test.js",
+      "sha256": "870308021d056f172672b111fc61770f61119f90a31dc322c4015fee5e88e0b1"
+    },
+    {
+      "path": "web/src/v2/shadow-static-cpu42.test.js",
+      "sha256": "b31d69e4580f45c1b07e3122eb14ca2864845ecf5f407ecc5be380093276ba24"
+    },
+    {
+      "path": "web/src/v2/shadow-static-profile39.js",
+      "sha256": "d3a879176831389cb36856c2c3dc96f6b819d45e983d75922931ff707e338ebb"
+    },
+    {
+      "path": "web/src/v2/shadow-static-profile39.test.js",
+      "sha256": "a7ea9e488b7c66c1ce50e3c10f16b6caa0143b3c3c9216f39521533051166c73"
+    },
+    {
+      "path": "web/src/v2/shadow-static-stability42.test.js",
+      "sha256": "5458cc4630e398813bd9774ec52b94d729e666892379766dd17a44237bbd606d"
+    },
+    {
+      "path": "web/src/v2/shadow-whole-source-budget42.js",
+      "sha256": "9d0a09a12c95569be3bcabdaa1e9ed45aa863307f5ce8f3dd3f8e9bbbcad2ac1"
+    },
+    {
+      "path": "web/src/v2/shadow-whole-source-budget42.test.js",
+      "sha256": "342fbc2ade9397e32ba316f009fead9e220ae385e4430e5d4a31403a03de7bf7"
+    },
+    {
+      "path": "web/src/v2/shadow-whole-static42.test.js",
+      "sha256": "cb9aa0dc4bcf3b8c854062510b54118127bfbec0e7a6b4e049accb76bf9236af"
+    },
+    {
+      "path": "web/src/v2/shadow-window-anchor42.js",
+      "sha256": "b766d2cf32145886ece0c4d54a75d2d19d9e996200a2c3a17a1c1ae2aa5cef92"
+    },
+    {
+      "path": "web/src/v2/shadow-window-anchor42.test.js",
+      "sha256": "9360b6fc8ec3f137f38ebc9017f76eb19594be3627ab2055df690bbb43020996"
+    },
+    {
+      "path": "web/src/v2/shadow-window-budget42.js",
+      "sha256": "e85f3cddd891698d38f0b8716416b0360457c4435245610b0b9d9da3b40edd7d"
+    },
+    {
+      "path": "web/src/v2/shadow-window-budget42.test.js",
+      "sha256": "d453f7ffa9b5dc433ad89f41b8c93f28afd312e538435374944a87d50f9a42e1"
+    },
+    {
+      "path": "web/src/v2/shadow-window-controller42.js",
+      "sha256": "2abfb9b39ea5e53319f9fd474a3f48501dad5814990a0b54b879550ddb506c10"
+    },
+    {
+      "path": "web/src/v2/shadow-window-controller42.test.js",
+      "sha256": "3816aa895a7b3f5e544315308cc0c281e5b3b98dae9d836eda2971838fd8d1ef"
+    },
+    {
+      "path": "web/src/v2/shadow-window-coverage42.js",
+      "sha256": "5e69e1d0643a607fb90238a1d646c259b7c915d05693c8c10ab4b9d57326d558"
+    },
+    {
+      "path": "web/src/v2/shadow-window-coverage42.test.js",
+      "sha256": "595adba63d40d276c9121d1fc25b4f8a61f7da08b43cf494fdca7cba9f5b9ca2"
+    },
+    {
+      "path": "web/src/v2/shadow-window-delta64.test.js",
+      "sha256": "e93a24e9b51d0628231e27376f2b295210fa4f4fbf28f48706fdd272e698825c"
+    },
+    {
+      "path": "web/src/v2/shadow-window-depth-order58.test.js",
+      "sha256": "46140ed0d28be5bacec208350e5b0925ab8defe5954333689b838d1f95e79ee1"
+    },
+    {
+      "path": "web/src/v2/shadow-window-diagnostics75.test.js",
+      "sha256": "c8c17911958046538013dcd1590a4a08fe351918edbfec804bd50602d7c27773"
+    },
+    {
+      "path": "web/src/v2/shadow-window-entry42.js",
+      "sha256": "5713a72800c9ce24e31296707a181e9314d536ddd19cd9a26b9aeadab3e3d821"
+    },
+    {
+      "path": "web/src/v2/shadow-window-geometry42.js",
+      "sha256": "151ddc335b9f272251d0da3c477d4c56ea4ffef47e976f033a404afd0fd8783d"
+    },
+    {
+      "path": "web/src/v2/shadow-window-geometry42.test.js",
+      "sha256": "069dd8291bb579068ad77f620e6a7959cb98f71c84d79b8e2310da32962bf36c"
+    },
+    {
+      "path": "web/src/v2/shadow-window-index42.js",
+      "sha256": "6d2104949fb6b0be5a4417c46239ad49fa455ddc7942660aca87780404da0ca0"
+    },
+    {
+      "path": "web/src/v2/shadow-window-index42.test.js",
+      "sha256": "a18133963c66597f1524b3c02918fb777326ebb0ec2c9017059fda4b655e8b5e"
+    },
+    {
+      "path": "web/src/v2/shadow-window-prefetch61.test.js",
+      "sha256": "51b0259ea1137e6c95147b5351c9f8df00025da227f94c6136aeafc45e2b04ee"
+    },
+    {
+      "path": "web/src/v2/shadow-window-programs42.js",
+      "sha256": "ffb580daec037f03962abcfcb68a75b9171c901e87da1b0491046dcb021ccd82"
+    },
+    {
+      "path": "web/src/v2/shadow-window-programs42.test.js",
+      "sha256": "b1cc94383d1e07564cbcecd7a33766af6931488f7454ce7376d8c2805b51b6dc"
+    },
+    {
+      "path": "web/src/v2/shadow-window-provisional57.test.js",
+      "sha256": "5f24afcb8b4cc64cdb0cb9df92d7688f40fe30e7737491d25aa1d0cbc3ca1ac8"
+    },
+    {
+      "path": "web/src/v2/shadow-window-reference42.js",
+      "sha256": "222fbff98677a7ebeddb5897c5c6c190d7200769071b4a64e3b723594b0f993b"
+    },
+    {
+      "path": "web/src/v2/shadow-window-retirement42.js",
+      "sha256": "15f6eed291eaf47585c7329860838f4a504442be57ec041c361b92e5291f1f1d"
+    },
+    {
+      "path": "web/src/v2/shadow-window-retirement42.test.js",
+      "sha256": "268ea0ead8e1562cd89b5bf238fe0a3c4478b2fe586d81e719a632e6407f581b"
+    },
+    {
+      "path": "web/src/v2/shadow-window-runtime42.js",
+      "sha256": "ffb595fc9d02587576a9856432232b318daf358cc8f7b1f88c2a5c3d740b5b2f"
+    },
+    {
+      "path": "web/src/v2/shadow-window-runtime42.test.js",
+      "sha256": "dd4178b610a9f2a930c1082904ad2a90c282d6be65d7336dfab123fb5aef80d0"
+    },
+    {
+      "path": "web/src/v2/shadow-window-scheduler42.js",
+      "sha256": "bf79f14a49db2af0b73a9f9b510d46ae5b1daebcaebaf8429fb33a507a90db56"
+    },
+    {
+      "path": "web/src/v2/shadow-window-scheduler42.test.js",
+      "sha256": "5a873b7950430f7a7c7713373c1d5791ec5065039774efc3a80c2d62585195d2"
+    },
+    {
+      "path": "web/src/v2/shadow-window-submissions42.js",
+      "sha256": "a1564b0f583ff51355ec23b5d4ff7b9d3fdfa0b84c65561c08afa3fe06b6cc2a"
+    },
+    {
+      "path": "web/src/v2/shadow-window-submissions42.test.js",
+      "sha256": "5bd8789c7889ebe2f94bedec9586fec3637a99311b145b762720c8123d92da39"
+    },
+    {
+      "path": "web/src/v2/shadow-window-target42.js",
+      "sha256": "61bc700a58cc5a977771a34a2e17df1b8d6075e89165efcebead83ef9160a0cd"
+    },
+    {
+      "path": "web/src/v2/shadow-window-template63.test.js",
+      "sha256": "53a812e4f37f5e8ecd5743224fcc9e822aaf1a88e8bfc584b95ec8d9ff6e8c32"
+    },
+    {
+      "path": "web/src/v2/shared-orm-sampler.js",
+      "sha256": "7e3f0a8ce5daa0aea9b27c30b3dac06b67200ca9aee0a5a6ec45a5d1cb734fe8"
+    },
+    {
+      "path": "web/src/v2/shared-orm-sampler.test.js",
+      "sha256": "47586b30421e6bbf093f66190dc151be8aaf6fa88a794d1204817ed5b55c23e2"
+    },
+    {
+      "path": "web/src/v2/shore-asset-review42-entry.js",
+      "sha256": "4c2258ba6ca30cc3cce2316c6ef0c526629d07a6df0ba3cdde59461605a023e0"
+    },
+    {
+      "path": "web/src/v2/shore-asset-review42-state.js",
+      "sha256": "8b315419568e1af68e7502c4d55c813bf2e4ad7b08b7faef4c84f341b3fc52f6"
+    },
+    {
+      "path": "web/src/v2/shore-asset-review42.test.js",
+      "sha256": "3acea35eec6e2b767eb03d301e62665a28d9cea75296ef7318101ea9eaef4090"
+    },
+    {
+      "path": "web/src/v2/shore-contact.js",
+      "sha256": "0b67c7e9b85cd5c4e7953917bdf6e7cd77965c73c51e756874708c6b5ea3f6f1"
+    },
+    {
+      "path": "web/src/v2/shore-contact.test.js",
+      "sha256": "4b05bbe047c85413672edb4daf384ef8ea3bd9540d16433d4ab78399b6e0d42e"
+    },
+    {
+      "path": "web/src/v2/shore-continuity.test.js",
+      "sha256": "cbded740715aaabccc3a6f6e8eb317474369a264ed98ea89c9f4052dcf07b3e2"
+    },
+    {
+      "path": "web/src/v2/shore-ecotone.test.js",
+      "sha256": "b35e0956cca60ce99411a24c9347f596493104e6af566439f7597fc82f286549"
+    },
+    {
+      "path": "web/src/v2/shore-elevation.test.js",
+      "sha256": "71a21efa1752bf638d2571494a626425d9e361d38572e02123e9a3381136552b"
+    },
+    {
+      "path": "web/src/v2/shore-footprint.test.js",
+      "sha256": "64050d789d32a3fe2f18743516fe9f7b75d97416e7401fea51f2b0ba3edd0f12"
+    },
+    {
+      "path": "web/src/v2/shore-lobes.test.js",
+      "sha256": "9e958c79ce612fce54edd1b56c5f1a0189d2a37bff113d79a4e8b7a4a10f57e3"
+    },
+    {
+      "path": "web/src/v2/shore-material.js",
+      "sha256": "8b9cd3fa80774c497395840f74e57d19dd7ab2d63cd80562ed7580c6dbef5887"
+    },
+    {
+      "path": "web/src/v2/shore-material.test.js",
+      "sha256": "7cd9f0aa4fbb0db6f4540b41089b720c15d879e7ba06e3a9eaa4b8a4926f6ad2"
+    },
+    {
+      "path": "web/src/v2/shore-noise.test.js",
+      "sha256": "18ca7717a8dabbc0f5ca8dafb22f13afc2f8619318c2b949871b31fd4975a89d"
+    },
+    {
+      "path": "web/src/v2/shore-organic.test.js",
+      "sha256": "8f4acf6db3e6eb62380cce82a0a83a147b9a724438c44d2c2d61af9459297838"
+    },
+    {
+      "path": "web/src/v2/shore-pore-film.test.js",
+      "sha256": "876b8778511a54248248316c4ca1215e9a933cf92d327152ff09e9ea4c25f4b6"
+    },
+    {
+      "path": "web/src/v2/shore-rock-data.js",
+      "sha256": "f0ac3ecb88f0d00b5189275e9450bede87e9705383fd0f88fc3dea44631b73e1"
+    },
+    {
+      "path": "web/src/v2/shore-root-horizon.test.js",
+      "sha256": "01e99acc3d9bbac47150b5f5dc87a6d60f04146998047ada4f1ed900373b4311"
+    },
+    {
+      "path": "web/src/v2/shore-scan-review42.js",
+      "sha256": "59a60a8506fc0eddc9376a2c802f2f57098841833de4a882e4abea465abcb5ab"
+    },
+    {
+      "path": "web/src/v2/shore-scan-review42.test.js",
+      "sha256": "80f1b45b7cb83d6370bd353376dabf9ee8b7ca30775c5b17d7f43b69c3438ba2"
+    },
+    {
+      "path": "web/src/v2/shore-stones.js",
+      "sha256": "b2956edf9a8013907f85631c4d5dc7ec80c301f44734ecfb269933068fc1654c"
+    },
+    {
+      "path": "web/src/v2/shore-surface-continuity.test.js",
+      "sha256": "e80ce8b70fe11e9d909fbf6749f0dee5209bede8000c41bed688df3b13e5322f"
+    },
+    {
+      "path": "web/src/v2/software-review-integration75.test.js",
+      "sha256": "5fcfff88367d4029e92c7617888afa8fa4206f34b83fce82dda350fbb7a697ac"
+    },
+    {
+      "path": "web/src/v2/software-review-policy75.js",
+      "sha256": "d82556d6bc3a3fe0611a2c02a30ce8ab2668ca52111cd7107da0c43279ccc065"
+    },
+    {
+      "path": "web/src/v2/software-review-ui75.test.js",
+      "sha256": "67f66a430b3bce7e42f45285938bd7f22aae4814b5209b2b2cf8ebe3e4280b9d"
+    },
+    {
+      "path": "web/src/v2/software-review75.js",
+      "sha256": "920e7ef0243e3166d013b8c59b069dfeace33e0a725fb89077e7d6545c4d8353"
+    },
+    {
+      "path": "web/src/v2/software-review75.test.js",
+      "sha256": "e3abb8d701cabd3c2f63522a99aa6f8ddc0c58b7728017f6583c3b3239d79d47"
+    },
+    {
+      "path": "web/src/v2/spruce-alpha.test.js",
+      "sha256": "0bd015cbaa27abd6744946be6c586d1bbbe06bb38d1307e072ce92ab8a789b20"
+    },
+    {
+      "path": "web/src/v2/spruce-branch-cache.js",
+      "sha256": "db75e07281ed17806cb1437e7e2bcd2348158f00c016c6ac50fbbbdc30545338"
+    },
+    {
+      "path": "web/src/v2/spruce-branch-cache.test.js",
+      "sha256": "65dd42703b2f38cbe7f34dce404ac5c407ef2dfb027ac2ff7df4eab549676afc"
+    },
+    {
+      "path": "web/src/v2/spruce-branch-detail.js",
+      "sha256": "084f5c9865ce5872311e25253fcbeee5fbe72219d8000097da256afb75e73072"
+    },
+    {
+      "path": "web/src/v2/spruce-branch-detail.test.js",
+      "sha256": "98cc484f3f60099bf69471e40ff35f9f1e8b838956491b19815bdd16e49d99e1"
+    },
+    {
+      "path": "web/src/v2/spruce-brush-exact.test.js",
+      "sha256": "6b1a970be6ca8fce693e5ffb215b7e567df1d867bcf06872e4f6587f954eec9c"
+    },
+    {
+      "path": "web/src/v2/spruce-brush-packet.js",
+      "sha256": "4bfdbe085964101eded0f3d5b551a93a506752491e6178264278303801162038"
+    },
+    {
+      "path": "web/src/v2/spruce-brush-worker.js",
+      "sha256": "4f2ede882468a95af95ca33404980ed7ea6ca7a0e40c3ae14418b524a0b8e5f1"
+    },
+    {
+      "path": "web/src/v2/spruce-brush.js",
+      "sha256": "e49a996c6a33ee369d28aadc36e1fd87e4a3af23fb84f2ba9238fb0a894335d0"
+    },
+    {
+      "path": "web/src/v2/spruce-canopy-build.js",
+      "sha256": "830a1331ccde80c9aa30f861806edd40a8293dc2046e9dc55096eb178c5e61ef"
+    },
+    {
+      "path": "web/src/v2/spruce-canopy-cache.js",
+      "sha256": "c4082003cfdf4ddd7b983fabc1c881767ece51f4db3afc94a545dda44a0f37ff"
+    },
+    {
+      "path": "web/src/v2/spruce-canopy-cache.test.js",
+      "sha256": "6c6d56e6229d06fa9b7fc3b1b26ad1c48e9fb20d0b96afd9c35e2472ac62ddc7"
+    },
+    {
+      "path": "web/src/v2/spruce-canopy-local.js",
+      "sha256": "37a55a1100ac73f51a8547728c5945da99834186f938c2020662eae261da8acf"
+    },
+    {
+      "path": "web/src/v2/spruce-canopy-local.test.js",
+      "sha256": "4887d7584da77288fbf396dc46826e9c096a7f4f02228f286c6c0faa722ab0f4"
+    },
+    {
+      "path": "web/src/v2/spruce-far-albedo-v38.test.js",
+      "sha256": "749cb975a44c4e6b6a53ed2790835a43105c57d756ce480efbae1f729882332f"
+    },
+    {
+      "path": "web/src/v2/spruce-far-deferred-normal.test.js",
+      "sha256": "81bcc69efbea53d8f4f7da86befd68f0c81a429243518b77882170d7355265ed"
+    },
+    {
+      "path": "web/src/v2/spruce-far-impostor.js",
+      "sha256": "5746c71544058535a45f8260b7292c8659e2a29f0de6a7fbf5032f2caaa30225"
+    },
+    {
+      "path": "web/src/v2/spruce-far-impostor.test.js",
+      "sha256": "d12f0b6c2f7dabf5bc6a31ad13dc53e16010ba6b2ddf737eff4d66d42a7dc1e0"
+    },
+    {
+      "path": "web/src/v2/spruce-far-manifest.test.js",
+      "sha256": "9a7932c754bc848525f61faebe3a40b1e3d6851c46cbc212c22914ae727aa9ff"
+    },
+    {
+      "path": "web/src/v2/spruce-far-rect-gate39.js",
+      "sha256": "08f2349a9d9dbc3410e75ff3cb2a651c0bce88673a28786ec7db0af412d9f438"
+    },
+    {
+      "path": "web/src/v2/spruce-far-rect-gate39.test.js",
+      "sha256": "8014d3ef45406ebcde2d014dcf4878580a150a36a0fb90b655dde0de44281613"
+    },
+    {
+      "path": "web/src/v2/spruce-far-transport.js",
+      "sha256": "8d843d2b1ef6ff1c1f855232b1b6c3e14a9f9e868d9a93a3624c96e5dca21f32"
+    },
+    {
+      "path": "web/src/v2/spruce-far-transport.test.js",
+      "sha256": "8ecb2fe5221adb6c78db97e7f3340440bf4bbd0d3f79cc2ec85ca9d42adfce67"
+    },
+    {
+      "path": "web/src/v2/spruce-far-zero-weight.test.js",
+      "sha256": "115c1a84ffad44942407550047c36e43d4e745db658514470dd13018968d6bd2"
+    },
+    {
+      "path": "web/src/v2/spruce-geometry.js",
+      "sha256": "9468de0f4460bd1fb02eb0b48218a4f6140a732eed23a5b260a7faa37791bbfa"
+    },
+    {
+      "path": "web/src/v2/spruce-geometry.test.js",
+      "sha256": "ddfd54ec43e98b41e3d4473af1460888b9c3e1c016aede0bb8cfaa0d5a2e6a64"
+    },
+    {
+      "path": "web/src/v2/spruce-gpu-brush.js",
+      "sha256": "78b25af48a359c1a1eda4ce5bbd25ab7bf627e5d417ddd800e310efea5096a81"
+    },
+    {
+      "path": "web/src/v2/spruce-gpu-brush.test.js",
+      "sha256": "d1868a85323e4eea532b7773a462611fe64f733f9877f673935fb6f55dc690cc"
+    },
+    {
+      "path": "web/src/v2/spruce-gpu-loading.js",
+      "sha256": "aa39057da1d5d40a17867ae7b640384dc36dc7ce184066c2cbf4e32031be52b0"
+    },
+    {
+      "path": "web/src/v2/spruce-gpu-loading.test.js",
+      "sha256": "fdaebb0d34e354cf6d26486ee97a6280a4da2eb591cc694d4778e0a6e8797ba7"
+    },
+    {
+      "path": "web/src/v2/spruce-gpu-stations.js",
+      "sha256": "e3c609e41c794ef57c8e1999f06df5c5d69c6f7e1e7ae9afb64ad9eaf5da9b45"
+    },
+    {
+      "path": "web/src/v2/spruce-gpu-stations.test.js",
+      "sha256": "597ba8924e2a2aca021808a73143683ad1d1700ab9bd99ef9469ad4d5a15a8c8"
+    },
+    {
+      "path": "web/src/v2/spruce-gpu-worker.js",
+      "sha256": "1efdc3df6617aa3d4c5a9db134844f7023b9600149c46c6093e947036bce08ec"
+    },
+    {
+      "path": "web/src/v2/spruce-gpu-worker.test.js",
+      "sha256": "1ea27d840da1bbe0d772c411703dd5fc0171b1c0df57ea5dc7a5ad7f8301b774"
+    },
+    {
+      "path": "web/src/v2/spruce-loading.js",
+      "sha256": "28ec66ca948d03db50657014571fb329c3e90051db8158e9c25aa3067733cf2d"
+    },
+    {
+      "path": "web/src/v2/spruce-loading.test.js",
+      "sha256": "b610206a1b4d313d643c779e04983a977e4f69f5d1f15dd18cf634717b306abc"
+    },
+    {
+      "path": "web/src/v2/spruce-material.js",
+      "sha256": "20d551e3cbc4d7c3ea06a64942e06e0d3dba6506e3c6861519a5dd420826090d"
+    },
+    {
+      "path": "web/src/v2/spruce-material.test.js",
+      "sha256": "9f678572a312d14dedc12af6001c78bc36b285bc7cb915d0cca1670146465b17"
+    },
+    {
+      "path": "web/src/v2/spruce-middle-batched.js",
+      "sha256": "ce9c6369c5802e307ab6d75e69e0d824d0613c787eef73521f0d044ea03e8fba"
+    },
+    {
+      "path": "web/src/v2/spruce-middle-batched.test.js",
+      "sha256": "2b62f31b3d80018c417e5d9f4c40f68dbf0c1f1b2c593ac9fc2e6c92344710c7"
+    },
+    {
+      "path": "web/src/v2/spruce-near-shell.js",
+      "sha256": "6288eb6ade8ced73414cfc0f4d45171d0d653701e4d41b6d7ee51fb04b6974a8"
+    },
+    {
+      "path": "web/src/v2/spruce-needle-asset.test.js",
+      "sha256": "1fdde48b77999f5e89b84902b9cec61820ab5f3572045959a72c0b76e5cf94d0"
+    },
+    {
+      "path": "web/src/v2/spruce-packet-writes41.test.js",
+      "sha256": "f791b4ffdd2bd3936d1c286b12b706374347e57db1099a7fae11f8582cca92bb"
+    },
+    {
+      "path": "web/src/v2/spruce-recipe.js",
+      "sha256": "694fde8f824c0ca3630e6a8e16caf8c7d9c905d54d7ee6a0ba864d043ddb0af3"
+    },
+    {
+      "path": "web/src/v2/spruce-recipe.test.js",
+      "sha256": "e1d97b6a2d1b53c8f0d2ebb9d41fba920f06acad85d335e2ec7881c957bd84b5"
+    },
+    {
+      "path": "web/src/v2/spruce-shared-images.js",
+      "sha256": "384c96b04d51bfd4d886278169c9341007d01babe9b6cb397e57f058e1c7ed88"
+    },
+    {
+      "path": "web/src/v2/spruce-shared-images.test.js",
+      "sha256": "203648273419e69508031c5c66738e458cb4d3a6087040aebe89cce28b659251"
+    },
+    {
+      "path": "web/src/v2/spruce-startup.test.js",
+      "sha256": "f557f136ae8f693404c1687160629b4069368cd8234fb7fd75a0bd38cac77e6c"
+    },
+    {
+      "path": "web/src/v2/spruce-surface.test.js",
+      "sha256": "596f2fd6f60247cc2939ebcf0e0bc31bf371f84a0ec3e9d523092f0d8e738a99"
+    },
+    {
+      "path": "web/src/v2/spruce-textures.js",
+      "sha256": "ae45b2e529b31b5d6a5ad39ef2ee71556f852081b0a2f4eae5bbe50085332e28"
+    },
+    {
+      "path": "web/src/v2/spruce-textures.test.js",
+      "sha256": "67cea036055fb9728299df6e6909f85cfc90e3deb8dfd1c31898eb271b295f93"
+    },
+    {
+      "path": "web/src/v2/spruce-twig-indexed.js",
+      "sha256": "a613c7e5ad0bfeed49c22dc2dba367a910db0b05ed8755d00c90ad5b3f66c248"
+    },
+    {
+      "path": "web/src/v2/spruce-twig-indexed.test.js",
+      "sha256": "dd15c3384bf42b4d73c8352c2390196bde6efc48f3dffb5ea1e7b373a63de307"
+    },
+    {
+      "path": "web/src/v2/spruce-volume.js",
+      "sha256": "47144ffd4751d8c315cb41e9602fcaf96968024e69f3c23cab18c31b483a779e"
+    },
+    {
+      "path": "web/src/v2/spruce-volume.test.js",
+      "sha256": "50580448223aa01602dc1a1564baee6b3a2ab41d89447c0e213108b95302843f"
+    },
+    {
+      "path": "web/src/v2/spruce-wind-exact42.test.js",
+      "sha256": "b35572337b2b668dfd4c5246e0ac5389d0f98d027242e9827336af8c6fce26c5"
+    },
+    {
+      "path": "web/src/v2/spruce-wind.js",
+      "sha256": "f8623bced6679bc914c3249ad9bf5b48757ea28ef0d29396fba30bc0de59e199"
+    },
+    {
+      "path": "web/src/v2/spruce-wind.test.js",
+      "sha256": "53bc3cc4a26ca5a459d481428694474e9a5e32661195a1a777e92fda0c02473c"
+    },
+    {
+      "path": "web/src/v2/stone-occlusion-data.js",
+      "sha256": "e2cad983f084decd51ec642ae4d594bcb13bf2a14e9a61e0d9b58d311bb4e2e2"
+    },
+    {
+      "path": "web/src/v2/stone-occlusion.js",
+      "sha256": "24ebc658909596c77fdb6c98cc4f61396785b27f391d9c86f1bcb2c1b053d75d"
+    },
+    {
+      "path": "web/src/v2/stone-occlusion.test.js",
+      "sha256": "5a41142c5348b86ee49cbf652b21ba5a99fdf03381fcb1d18ba2164e37f51eb4"
+    },
+    {
+      "path": "web/src/v2/structure-matrix-arithmetic41-world.test.js",
+      "sha256": "b798b05e24366cbc24f78ece2004995f9ebd8325bf8ca4e685750ef15fdf9f75"
+    },
+    {
+      "path": "web/src/v2/structure-matrix-arithmetic41.js",
+      "sha256": "ebc0326473e23f076419fa626d94259e9d5507b487fac81807858be55cff6df5"
+    },
+    {
+      "path": "web/src/v2/structure-matrix-arithmetic41.test.js",
+      "sha256": "8104158d918d5cd4d8ca6168ae52aa3bbeb05f338f307a77f3ebcef7250b4192"
+    },
+    {
+      "path": "web/src/v2/structure-prepared.js",
+      "sha256": "c797e1941393fc78084c2eb41467e1c7b6f991e6c19d7496cc8490ba711761a0"
+    },
+    {
+      "path": "web/src/v2/structure-prepared.test.js",
+      "sha256": "c0931cc649d0558c3f9b1719f1f838041a53068ce86bc65411d563a0ac4ece74"
+    },
+    {
+      "path": "web/src/v2/structure-reuse.test.js",
+      "sha256": "6f976a31a09fc955220c9ee5f7920d6c78108db7271086fe5c852c23484f2189"
+    },
+    {
+      "path": "web/src/v2/structure-selection-cache.js",
+      "sha256": "1dc81be19b8ed58ecd155bad54d307d896ec503f96a9bac5e349b71f3e0a086d"
+    },
+    {
+      "path": "web/src/v2/structure-selection-cache.test.js",
+      "sha256": "6639ab0d0269360b35303a91bee54d66938f14d4d97fbf73c526252ce4712ff8"
+    },
+    {
+      "path": "web/src/v2/structure-selection.js",
+      "sha256": "960d1dd02cbb7ce2836af09d5c06931422b5edd5912a860915169fa1df769486"
+    },
+    {
+      "path": "web/src/v2/structure-selection.test.js",
+      "sha256": "4d59f028e82aaa241eb6475c61dda3e5621313608cd4753924ebe49db28245f5"
+    },
+    {
+      "path": "web/src/v2/structure-texture-reuse.js",
+      "sha256": "094459390c5f78fed587c2be3345f9b224924777acdfae129d17f8e967cbc612"
+    },
+    {
+      "path": "web/src/v2/structure-texture-reuse.test.js",
+      "sha256": "ff37e72435eec85454d092edcbee3a4d71dc2a1a97c7aa9664423046573f190a"
+    },
+    {
+      "path": "web/src/v2/structure-update-profile41.js",
+      "sha256": "8a282374c6f3726bccb2873ef48c43c3f621e9a24727b622f5017917185a659d"
+    },
+    {
+      "path": "web/src/v2/structures.js",
+      "sha256": "726827f95126082510c08b033fe6c9eec733dbf449bfab49ec24088305ce5292"
+    },
+    {
+      "path": "web/src/v2/structures.test.js",
+      "sha256": "550805c24ec72e53cf8c8438890b989c5c5224fd60513c447bb8c851f7f003a5"
+    },
+    {
+      "path": "web/src/v2/sun-shadow-casters.js",
+      "sha256": "6031005d65a93d89ca5dd798842975295de90373a7d3c9f1f70b11b7e341efa8"
+    },
+    {
+      "path": "web/src/v2/sun-shadow-casters.test.js",
+      "sha256": "97b5dc4c73fd16a14048fe6afee1c824615396df7e5bdb415d232966c846e4eb"
+    },
+    {
+      "path": "web/src/v2/sun-shadow-receivers.js",
+      "sha256": "0a7e039a39a76cc2973407067181cb80fe855583b74117278556db0df99d891b"
+    },
+    {
+      "path": "web/src/v2/sun-shadow-receivers.test.js",
+      "sha256": "d90363c301f06f24fd4231f6adf27a6c8ef79f874c525010e29ba38360546d0a"
+    },
+    {
+      "path": "web/src/v2/sun-shadow-scheduler.js",
+      "sha256": "289baa1c7808a352b073473947d8618595b6fb24a1669df2a096d33ba8d3f711"
+    },
+    {
+      "path": "web/src/v2/sun-shadow-scheduler.test.js",
+      "sha256": "127b864b61e5161c5a9b0fae9f8faa277d6324ff11c3e687c345c95029eb7419"
+    },
+    {
+      "path": "web/src/v2/surface-transition.js",
+      "sha256": "f64646063dd3defd54acb882b5fea4e022bc7247be8d8d62a62b620bfa547aa3"
+    },
+    {
+      "path": "web/src/v2/surface-transition.test.js",
+      "sha256": "67e5a5ab8e81f16e7f4702ab7214b1c4e280c0f0809f32f6cfc8b4397dfe5eca"
+    },
+    {
+      "path": "web/src/v2/terrain-batch-abba42.test.js",
+      "sha256": "f3f9424fa5ad042be56f35d5aaa372930d099eca2605868724e5981143ed3665"
+    },
+    {
+      "path": "web/src/v2/terrain-batch-diagnostic42.test.js",
+      "sha256": "5c7b9b43281f80483ed253103afbfc82d2c7a279bffd5a799dbca74ddaea5082"
+    },
+    {
+      "path": "web/src/v2/terrain-canopy-albedo.test.js",
+      "sha256": "ad46e748e235309722d6d7ec722d1dfa6f34948241623bc580b04a3b96ab3031"
+    },
+    {
+      "path": "web/src/v2/terrain-forest-scan.js",
+      "sha256": "a1ecff7c636664ff117fb7003f15d2383d1d11ed5ce8ee55bb58952c1371f706"
+    },
+    {
+      "path": "web/src/v2/terrain-forest-scan.test.js",
+      "sha256": "fca00e23d3eb3ebc801258e5f98d68a7a41c9fbd402ad8a6c0a4cd423df71f62"
+    },
+    {
+      "path": "web/src/v2/terrain-grass-projection.js",
+      "sha256": "8042730c3979a4d9694ef72c357544aa1d651c5e893558516acb13358338a04d"
+    },
+    {
+      "path": "web/src/v2/terrain-grass-projection.test.js",
+      "sha256": "c354bc1aa694dc4298ed9d9009c4f41237f1e8cca6df48129b01fd7c6dce3fe8"
+    },
+    {
+      "path": "web/src/v2/terrain-height-interpolation.js",
+      "sha256": "bf2c3e28d2a1dc19ee9538643fcee73bca0cc0b3e247c65952f22f44b9b6c0cd"
+    },
+    {
+      "path": "web/src/v2/terrain-height-interpolation.test.js",
+      "sha256": "7080a861d48c4313d3c8bf9792aaf5e64b626c878f58d250853b740763187ccb"
+    },
+    {
+      "path": "web/src/v2/terrain-idle-prefetch.js",
+      "sha256": "97fb96219897ac2438155546dc6b1879150b830e52f1bdcdb45bd5fafff60bf3"
+    },
+    {
+      "path": "web/src/v2/terrain-idle-prefetch.test.js",
+      "sha256": "9fb41354f0755888eed79a51e0299a49e90b3c0820f4821a41d3a12e97f5021b"
+    },
+    {
+      "path": "web/src/v2/terrain-initialization-yield42.test.js",
+      "sha256": "dbbbea161055aacf7c64590202019b9ecd9d8c94a76cab3350d4646668314aab"
+    },
+    {
+      "path": "web/src/v2/terrain-material-diagnostic.js",
+      "sha256": "b1ff69b723ffc05b6fdf1e881c8cedbe67cd13dc35b4ff0499888e0f83138f04"
+    },
+    {
+      "path": "web/src/v2/terrain-material.js",
+      "sha256": "e35e750b01ffc86c868568be629d03f1b8cca6b722e94fc554a1565594b21e49"
+    },
+    {
+      "path": "web/src/v2/terrain-material.test.js",
+      "sha256": "0d79d925a2013f5be629b13565361e3bae4fc62447ad0432922f804315e3de7e"
+    },
+    {
+      "path": "web/src/v2/terrain-parent-proof42.js",
+      "sha256": "715d134d77ae438b42b374045a1806330e15de57a8290a48a0bab3d7199c18ab"
+    },
+    {
+      "path": "web/src/v2/terrain-parent-proof42.test.js",
+      "sha256": "db6f7e0089d0f2c2d5f2e08450cc9e78d18731840a75b64d7f43cce11a503a61"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared-adaptive42.js",
+      "sha256": "1fccbc29fd8eb6bbbac4e76d792cd078e9ccbb2fe229248ca7d0ffb9a25c31cc"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared-adaptive42.test.js",
+      "sha256": "649fc5154441234feef132b463f602d5f67b71a11722427a0242b85a4da054e8"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared-codec-client42.js",
+      "sha256": "7734eaecfe65417065ddc3852becf9d11e6235ef5ff70d87d852c0585d0b7287"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared-codec-worker42.js",
+      "sha256": "6732d01a06c8a40debc8bc2f5d8f46e10966286d8599bf8022b3f9a8506d2705"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared-codec42.js",
+      "sha256": "a7bbb58c2abe3d99b297524c74ea56edb9c90309dba35702f2c3dfb0c577b4bf"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared-codec42.test.js",
+      "sha256": "c6f2f8c55b95ec81c233748562a90bb1d298a9daff0c835dd5692b9c3107284e"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared42-actual.test.js",
+      "sha256": "368de4ed42570cd8710543156c59d47f14a07c10feb81bdf7e5bd13f10654007"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared42.js",
+      "sha256": "99e29f46183f7d7b9162fb8b8518101952d373a0b24b4972e4f905591cab675e"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared42.test.js",
+      "sha256": "2b568c1b3e272b4304922525e45e6c6430b7bd61186be90b7148582548c89210"
+    },
+    {
+      "path": "web/src/v2/terrain-request-trace42.js",
+      "sha256": "b27d46345ae938263f940accd9cd7174910695314e44d02af1cc91335ba80270"
+    },
+    {
+      "path": "web/src/v2/terrain-request-trace42.test.js",
+      "sha256": "376dca224e26264acfb5e6145f37ff8e504958f3205e3f918b562491afc2c6cb"
+    },
+    {
+      "path": "web/src/v2/terrain-rock-sampling.test.js",
+      "sha256": "da294a50207944a837cf1342206b69d6cccfa2bf8eeb54b71f4503a311921bdd"
+    },
+    {
+      "path": "web/src/v2/terrain-row-kernel.js",
+      "sha256": "531d6792a6fa2b8e11055f5c071653286a183e3f72fea9fb67d8f9fb313cc580"
+    },
+    {
+      "path": "web/src/v2/terrain-row-worker-client.js",
+      "sha256": "69405d11698617f39480cabf77e93f601911c1a2de79811d3dc9eefd873dab25"
+    },
+    {
+      "path": "web/src/v2/terrain-row-worker-client.test.js",
+      "sha256": "8d1a53f962a797b54a9ff4aea31f988bfd6f1dc3dbfb4fbd575ddfcb2a2f6788"
+    },
+    {
+      "path": "web/src/v2/terrain-row-worker.js",
+      "sha256": "c94ffe3a1aa613de19bf11a3abe04ec6475c2f2d569f9b28fe160486e3e6b6cc"
+    },
+    {
+      "path": "web/src/v2/terrain-sample-cache.js",
+      "sha256": "2ea393a330313405f73277fa29bf2bc95ae00082790b55ad7939e694a4c91e6e"
+    },
+    {
+      "path": "web/src/v2/terrain-shadow-domain.js",
+      "sha256": "da6931c1655649a054726880844e4b485f1eef19df3417007bc58f1f816eaacc"
+    },
+    {
+      "path": "web/src/v2/terrain-shadow-domain.test.js",
+      "sha256": "bbec1dce8b80cf1019f43608f8f0924a8c7e11211c56425d636f9a72a64cec28"
+    },
+    {
+      "path": "web/src/v2/terrain-sibling-batches.js",
+      "sha256": "1ac3df824623fb6bdfce093e85dc2aeb9b51141be7bc04aa7867e27ac3abb67d"
+    },
+    {
+      "path": "web/src/v2/terrain-sibling-batches.test.js",
+      "sha256": "642d52c74636c7568c6c6838ddcd924f24b6358844dbe3418a180d609bc87694"
+    },
+    {
+      "path": "web/src/v2/terrain-surface-contact.js",
+      "sha256": "7e5e652adb5f2b95c8d95c0277196b6df727b12f65e0199b8ba3eca138d0dac5"
+    },
+    {
+      "path": "web/src/v2/terrain-surface-contact.test.js",
+      "sha256": "5acfd3c60596fafe3d13514e42accfb710ea54a7183e276eb6df89c90a372085"
+    },
+    {
+      "path": "web/src/v2/terrain-tile-cache.js",
+      "sha256": "65693db05845d5415e34c6291613a555760fe3076005940d0deec6d43a76b894"
+    },
+    {
+      "path": "web/src/v2/terrain-worker-refill42.js",
+      "sha256": "a6bbf1daa22bb4219fce4d35b1b383a700cd8a1a655e378125501078f3aa8013"
+    },
+    {
+      "path": "web/src/v2/terrain-worker-refill42.test.js",
+      "sha256": "e707872913e4b51120e3cc0af4f5f8e186d83da1dd04a8bcad1e11cec1730c69"
+    },
+    {
+      "path": "web/src/v2/terrain.js",
+      "sha256": "0508088493b8c51739a8c0b978cf655e4e75b6a4f28c083e4c16f9163924ad3e"
+    },
+    {
+      "path": "web/src/v2/terrain.test.js",
+      "sha256": "47e8cea82f048206c451568f596c9052666fb45177eb0c899e4dfea8fa3ac8e2"
+    },
+    {
+      "path": "web/src/v2/threshold-plants.js",
+      "sha256": "1c3e424370d66a379098305c0b208e155408b50530672a105722795b30615386"
+    },
+    {
+      "path": "web/src/v2/threshold-plants.test.js",
+      "sha256": "6d89c291b2f047aaeb2561c574d04808e232faef752ce067ef01638747702f51"
+    },
+    {
+      "path": "web/src/v2/threshold-stones.js",
+      "sha256": "2f9e66919d206329b8a27634889765666451be4f88c81493625d04c446b8b48b"
+    },
+    {
+      "path": "web/src/v2/threshold-stones.test.js",
+      "sha256": "0b4ef78f210b40270cd081db9fbfa26cd1ea55934c7610962d7d4cdf3951f5bb"
+    },
+    {
+      "path": "web/src/v2/timber-continuity-data.js",
+      "sha256": "b61ca5dea1ca95715734ca861fab5a57c2b3be778bf5969cd7a10bc8d76f58a4"
+    },
+    {
+      "path": "web/src/v2/timber-continuity.js",
+      "sha256": "9aa92081499c45b591e84aa6fa79bb7978cee52f58bc132ffcdd1a111ca7f5c3"
+    },
+    {
+      "path": "web/src/v2/timber-continuity.test.js",
+      "sha256": "9b3534b9826d50511125763f6ea82e8f44c19f8d608cbf2660f9d0ef232c7122"
+    },
+    {
+      "path": "web/src/v2/tree-frustum-cull.js",
+      "sha256": "e1994b383bfcfb40856e10223506b05ce1b0ad350e967c4f4efeadeb76518d8f"
+    },
+    {
+      "path": "web/src/v2/tree-frustum-cull.test.js",
+      "sha256": "f39fd28eb40ee88ecea726fab9e482d54b1a5313d17ebc042868af31828091a2"
+    },
+    {
+      "path": "web/src/v2/tree-photo-prepass.js",
+      "sha256": "e1cc36f4f1237bcbb3341ee3f12fc04a9c5ad245749b2d42b96659379eea36ec"
+    },
+    {
+      "path": "web/src/v2/tree-photo-prepass.test.js",
+      "sha256": "0443d37502bdb3183ea4fde2ae4e6f9e5e2f03ba947dd89b507bc9dd27e09273"
+    },
+    {
+      "path": "web/src/v2/tree-prepared-frustum.js",
+      "sha256": "5808310564e42023d8479fe9a62bd6279135dcee07ab2299b2dc10d0532cb335"
+    },
+    {
+      "path": "web/src/v2/tree-prepared-frustum.test.js",
+      "sha256": "3cee2aec1a7d2983695aa35daaa90c02a9aa3c426c5439cc44a729ce31ed342c"
+    },
+    {
+      "path": "web/src/v2/tree-root-order.js",
+      "sha256": "5f06b2b7d1538c71926e74b6a6450f57c57c2a128c946ad2fffd7a488eb32c67"
+    },
+    {
+      "path": "web/src/v2/tree-root-order.test.js",
+      "sha256": "df9d5d18b9473e3125d71ec6ee299ded3e3b834515fe2637e64098d3c67ee303"
+    },
+    {
+      "path": "web/src/v2/tree-shadow-index.js",
+      "sha256": "ae9802b95a0c5c4637eebafe2aa78b520838f3065d919dd8269edb6dabbebc24"
+    },
+    {
+      "path": "web/src/v2/tree-shadow-index.test.js",
+      "sha256": "2cec44117ef3d0f689cc205705acc11155f415ea24c6541e27e8f0512193e78f"
+    },
+    {
+      "path": "web/src/v2/tree-vertex-layout.js",
+      "sha256": "98f446f05314227c424fd3625a902afdf01b55a78eccd6c27ca44f20164460ba"
+    },
+    {
+      "path": "web/src/v2/tree-vertex-layout.test.js",
+      "sha256": "a04726dd0618c6360e200db29a181f62b62ac3631e85e0daeb3f2d5e2b9970b6"
+    },
+    {
+      "path": "web/src/v2/tree-view-batches.js",
+      "sha256": "8b1cfcb0328195004ece069996b8d2ddfc9f968b956fb0852fa46e9f3589b32c"
+    },
+    {
+      "path": "web/src/v2/tree-view-batches.test.js",
+      "sha256": "731c6356d2708f26b92a5ab493bd3b06be2b19102f6963c85c3658e74b257d1f"
+    },
+    {
+      "path": "web/src/v2/tree-wind-atlas44.js",
+      "sha256": "71cd3e8f1374726ca7db061adc90e20fdae4c8167ffcbf98a2cda4ec89c37cb6"
+    },
+    {
+      "path": "web/src/v2/tree-wind-atlas44.test.js",
+      "sha256": "3c76466911ee9973e5276e72fb448ab2de836c1a553233fd5992b52483ad9d75"
+    },
+    {
+      "path": "web/src/v2/tree-wind-coefficients.js",
+      "sha256": "00ad37823444b5bdef7053abe0cba3de36367eaf5c2cdc23a0aaf69505490a7b"
+    },
+    {
+      "path": "web/src/v2/tree-wind-coefficients.test.js",
+      "sha256": "f851a123cb3c4e3eba25c443bc2158aba87bfa282a3c752476b78e6eba4d3e0e"
+    },
+    {
+      "path": "web/src/v2/tree-world-frustum.js",
+      "sha256": "fd1f481f341aa36688b3cf2de951ce25043080c05a3dfaafcdaa8f6621627952"
+    },
+    {
+      "path": "web/src/v2/tree-world-frustum.test.js",
+      "sha256": "4d5bee9ef74619b5401d636aeaaeedd390156618a485d63856bfa738642519e9"
+    },
+    {
+      "path": "web/src/v2/valley-bank-roots.js",
+      "sha256": "93c60e0d7a2719315f0970d7ce1e6412e602de0c95eebf4514ae2f4016d10e61"
+    },
+    {
+      "path": "web/src/v2/valley-meander.test.js",
+      "sha256": "f0740335e390c2f262c6b9f7ae5e61341737050f6864764d2353dcd8a572cf75"
+    },
+    {
+      "path": "web/src/v2/vanity-upper-contact39.js",
+      "sha256": "c5b30b526d773855eadbab2628fbac6dff1120aeb8a59a400a9a5eb0376375f9"
+    },
+    {
+      "path": "web/src/v2/vanity-upper-contact39.test.js",
+      "sha256": "9be9673c198ae16946baca7ba549fbe3f855e3cbf0eb2f2d4f0f48cfa02c6f2d"
+    },
+    {
+      "path": "web/src/v2/viewpoints.js",
+      "sha256": "05c8070337f9a46e554b0883dde7f5a4e2c63ef37bd5b3d148a4126b7fcea412"
+    },
+    {
+      "path": "web/src/v2/viewpoints.test.js",
+      "sha256": "c11b212c0e09ae774cee7cd864fe9d99525542fff442499156e68215f1d37883"
+    },
+    {
+      "path": "web/src/v2/visual-time.js",
+      "sha256": "5c9c16b756b695c80283ad47941b415d309cc4e5c185fb3546772221e9728419"
+    },
+    {
+      "path": "web/src/v2/visual-time.test.js",
+      "sha256": "ba3be0927c1f6d64c6b349b5046213c35f5a727619bcb7cf88b62930d711a1d2"
+    },
+    {
+      "path": "web/src/v2/water-empty-backpass-proof.js",
+      "sha256": "bfd1b904d0238b570b8669f3547c874ccbad9703520c4c7aac658eecb8e1f11e"
+    },
+    {
+      "path": "web/src/v2/water-empty-backpass-proof.test.js",
+      "sha256": "dc01023a9f730eeab2d0e10befbed43a45ce4bfa993b368aaf315d70cd7fb8c7"
+    },
+    {
+      "path": "web/src/v2/water-reflection.js",
+      "sha256": "dbf2311274e7c1199d4b5fceb6abcda0acd9cc81ee28bf8859025cd0fd5aa015"
+    },
+    {
+      "path": "web/src/v2/water-reflection.test.js",
+      "sha256": "5628c5667bb5ce2726d4a9cf4da304a72cbd1cac1ebd8cb34fb3640f4f8b8eb7"
+    },
+    {
+      "path": "web/src/v2/water-refraction.js",
+      "sha256": "a36804c9523c38a297479e77099809c2ca18bf86ab058ed7d9f41bc2ca2437bc"
+    },
+    {
+      "path": "web/src/v2/water-refraction.test.js",
+      "sha256": "9d992255b33fcebfada38025f0db3f162e0c0afb08f793df8b9a96368d3c7f35"
+    },
+    {
+      "path": "web/src/v2/water-surface.js",
+      "sha256": "d050433a3ba266a253c907d83e6d7b36def2c0f657e4224768d090adb7227a00"
+    },
+    {
+      "path": "web/src/v2/water-surface.test.js",
+      "sha256": "554135bffd34af95a1e2128188e3ab654bb1fc80f2778bfc4b603fe00e8f7d37"
+    },
+    {
+      "path": "web/src/v2/water.js",
+      "sha256": "0555cde8b7c3c822e835328c26285e48b11e9f4ee3adf0504d23c53ce6f3b0c8"
+    },
+    {
+      "path": "web/src/v2/water.test.js",
+      "sha256": "846a226271745b753949b7ef4a09835f7bc16e70a1042cd000cb74b0e00793a3"
+    },
+    {
+      "path": "web/src/v2/wind-field-exact42.js",
+      "sha256": "507f7c86817f82fc0c189660766b7a9278ebdb92cac43e440b95dfcc605a0f36"
+    },
+    {
+      "path": "web/src/v2/wind-field-exact42.test.js",
+      "sha256": "904f0f7b07fa52dd768fa712c3796db21df10f1f128b06c426d158fa4c9dd711"
+    },
+    {
+      "path": "web/src/v2/wind-field.js",
+      "sha256": "171d635fc2d46229e2c94e43e4198d97b919876950f8b00f34c5a782b8b02354"
+    },
+    {
+      "path": "web/src/v2/wind-field.test.js",
+      "sha256": "f3d080d586524e526317bc959fe7e41057e043bd8ee6bceb244a18a4fd4417c3"
+    },
+    {
+      "path": "web/src/v2/world-bounds-cache.js",
+      "sha256": "3eeca6db6ca3adc7fcb0ee26c76ac2dff45d4d37840b9c96d211969cc4c7a86e"
+    },
+    {
+      "path": "web/src/v2/world-bounds-cache.test.js",
+      "sha256": "52096cfa585c084d1ee820fc6db6b1a509da601cbf2dfbbdc8b1da5ce780c6b0"
+    },
+    {
+      "path": "web/src/v2/world-box-transform.js",
+      "sha256": "b7a9bccbeaa2fe9c6e3bc5bcc5902bc78086623f5b6b6089b1604c94b7be8a9a"
+    },
+    {
+      "path": "web/src/v2/world-box-transform.test.js",
+      "sha256": "d010913cc6a88521afa58b62161c8d78ea09c9c968d4c2479b7715f3fa5788ea"
+    },
+    {
+      "path": "web/src/v2/world-context.js",
+      "sha256": "f2c23823ff8f29ea2ba830805586f7c86b9793ec3d5ceaeb53530d8e4dea267f"
+    },
+    {
+      "path": "web/src/v2/world-context.test.js",
+      "sha256": "2141e570b10aa2688355bc778ab214d06e157902457c8938a1da73ca9e303808"
+    },
+    {
+      "path": "web/src/v2/world-data.js",
+      "sha256": "40da3beff7dfff4cbc7319a75d87b141034a4f7315c8d87ad1ad6e8a205d5a6c"
+    },
+    {
+      "path": "web/src/v2/world-data.test.js",
+      "sha256": "c417572066a014a3d48b620a2e8f744d588ae95fd8afde9a2e1262213a09e5b4"
+    },
+    {
+      "path": "web/src/v2/world-frame.js",
+      "sha256": "631078d868291f568707ab2311d2a374b965bf2561b02cdb175f2a75b255191d"
+    },
+    {
+      "path": "web/src/v2/world-frame.test.js",
+      "sha256": "324c2c3f876b69d9cded902f3cf7add35d565ae9b2f5b5777bc6e85187faf1cb"
+    },
+    {
+      "path": "web/src/v2/world-msaa-discard.js",
+      "sha256": "c5dec4b65980cad72e0021dd2daf5f6562c346e90df6853802aed126ff1666f5"
+    },
+    {
+      "path": "web/src/v2/world-msaa-discard.test.js",
+      "sha256": "c9ac3157287210e2300f9bbe8991b97368d4df45bbba1162a5cb97b536b1ab96"
+    }
+  ],
+  "entries": [
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/stage_volume75_v4.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/stage_volume75_v4.py",
+      "size": 31087,
+      "sha256": "ea15cf87fa9a425565945bbb7b1e837461d03ea3eea62045dbb39ad81cabb632",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/run_v4_job.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/run_v4_job.py",
+      "size": 5319,
+      "sha256": "575e6a14bbb3606a6b6a9bc667fb837abacbc0369b2afd2d15db6fafea18996b",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/execution_budget.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/execution_budget.py",
+      "size": 907,
+      "sha256": "650dc9fd413cf4f9fb24dfbce6dae3055e3274bb3e8de8d917ea11f8cb10e9e4",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/phase_checkpoint.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/phase_checkpoint.py",
+      "size": 1118,
+      "sha256": "75b6c6848a14bd38529440d74fd654313f4f3603e6398a7cd1bc6ca08c7e8da5",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/volume_math.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/volume_math.py",
+      "size": 4865,
+      "sha256": "4864544e50ec1f453bfe99812498921519cc94809055966e08a8c60c480f41b0",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/volume_v4_contract.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/volume_v4_contract.py",
+      "size": 398,
+      "sha256": "bbe1ea427f989ece141a8a8ad8535fd844d2c85f56b9057d7d4ea8d7375536c9",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/cover_domain_contract.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/cover_domain_contract.py",
+      "size": 2179,
+      "sha256": "f15b195b40c3a70f02863c63f6501857129cef8a90e04f7b6bf9c8eb691b4a54",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/exact_patch_domain.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/exact_patch_domain.py",
+      "size": 5964,
+      "sha256": "22403f5ac6771b24f2325b66cead1f71db26c31db337ece39b2918e7a0d073df",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/readback75_v4.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/readback75_v4.py",
+      "size": 6700,
+      "sha256": "99040496f7099557c785f3568e9022712b77c3d88b58075b6e16eb896e9abd7b",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/readback_saved_blend75_v4.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/readback_saved_blend75_v4.py",
+      "size": 4891,
+      "sha256": "e180e20de906103354cea05b078ac71868ed10ead28c4b56668dd818df1b4417",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/owner75_v4.test.mjs",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/owner75_v4.test.mjs",
+      "size": 3277,
+      "sha256": "7bb5c3166d492ad881bee04d9a5f1b99a95c053172afda968e55d7ab4e2f8420",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/preview75_v4.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/preview75_v4.py",
+      "size": 4132,
+      "sha256": "3152466d3aa4217c519fbb7f66d4b5f40184194c5b47915fcebb4c9949530eae",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/preview75_corrected_v4.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/preview75_corrected_v4.py",
+      "size": 4554,
+      "sha256": "3fe939531a4d007005306f7c42f8d7221d6e1ece0a1c3ecd8e38253cb595723a",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/export_numeric_fixture.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/export_numeric_fixture.py",
+      "size": 1930,
+      "sha256": "63ed30a9e8a00dc28d0d84a2d6575acfdfee1bcde27d6c4ec54e2ab503a349e1",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/ao_readback_contract.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/ao_readback_contract.py",
+      "size": 977,
+      "sha256": "35a369acd4ce108782dff613a0ba5e4bf4f312e0e5c302ec8b8717cd9ed75242",
+      "status": "POST_AO_CHECK_SOURCE_SEE_SEPARATE_RUN_EVIDENCE_NOT_WHOLE_ACCEPTANCE"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/post_ao_inputs.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/post_ao_inputs.py",
+      "size": 2914,
+      "sha256": "e6ea987cd827c120b65625aba4de02a209b0adcf374b18236e45810f9956111d",
+      "status": "POST_AO_CHECK_SOURCE_SEE_SEPARATE_RUN_EVIDENCE_NOT_WHOLE_ACCEPTANCE"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/post_ao_blend_readback.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/post_ao_blend_readback.py",
+      "size": 5807,
+      "sha256": "fac840010f9222a8d098af17fc9275e13ecb66cac5e8f482813d8824dbac188c",
+      "status": "POST_AO_CHECK_SOURCE_SEE_SEPARATE_RUN_EVIDENCE_NOT_WHOLE_ACCEPTANCE"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/post_ao_glb_readback.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/post_ao_glb_readback.py",
+      "size": 3758,
+      "sha256": "a558d18239e50a959ecedc6f8ceaf3add8715ed826a22ecb5a748577e96c90a6",
+      "status": "POST_AO_CHECK_SOURCE_SEE_SEPARATE_RUN_EVIDENCE_NOT_WHOLE_ACCEPTANCE"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/bridge_zero_serialization.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/bridge_zero_serialization.py",
+      "size": 10162,
+      "sha256": "c4d4ec86f4a926b6451e8b34192e7a85d0940c8173ea7a4bb8f50c631ae132cc",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/test_ao_readback_contract.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/test_ao_readback_contract.py",
+      "size": 1017,
+      "sha256": "1048b065b046087620dc2ea2f853aff66ec7c16a57818dd4f3e8eb9a36e83520",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/test_canonical_checkpoint_guard.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/test_canonical_checkpoint_guard.py",
+      "size": 2133,
+      "sha256": "199abf03ef70c8d158704b35b4fb0b6d5f5971b91b7d48852be30015533a53f1",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/test_cover_domain_contract.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/test_cover_domain_contract.py",
+      "size": 2535,
+      "sha256": "ce29b49ceb7f22c57cdc2d330072987815bee154df245d9770cfcd2ea73d9efd",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/test_execution_budget.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/test_execution_budget.py",
+      "size": 1564,
+      "sha256": "7b48f95c3469ed1f7022a3834ca28e4350dedaaf1554c35544f02c036e2743d1",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/test_material_readback_roundtrip.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/test_material_readback_roundtrip.py",
+      "size": 1503,
+      "sha256": "76fa178c357868ae7caaca40a3477836cda6536b3c25946e6606c940ce2cca49",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/test_phase_checkpoint.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/test_phase_checkpoint.py",
+      "size": 1682,
+      "sha256": "ac480a584e79a48edd3d3270591166baccd4d8e861f2b47495540463d87662e0",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/test_volume_math.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/test_volume_math.py",
+      "size": 1185,
+      "sha256": "4f3c1e21f3cbd862ac2fefea913ec05b2a4d2ad72c3a7438c73a1838885013ef",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/test_volume_v4_contract.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/test_volume_v4_contract.py",
+      "size": 965,
+      "sha256": "343ef5997ed83b323656465ef61a323dec0904359442a748ccefc5f40217ff76",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/test_zero_serialization_bridge.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/test_zero_serialization_bridge.py",
+      "size": 2644,
+      "sha256": "3fc52027974db2317f4b39631c7c7c06e952001431f2d58445057f3d2abcc669",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/v3_metrics/baseline_blender.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/v3_metrics/baseline_blender.py",
+      "size": 8738,
+      "sha256": "7c3c9baa708a130c002196284d4c2f87e7d155d187c5f2ad759a9c5ee09077d1",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/v3_metrics/joint_settlement.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/v3_metrics/joint_settlement.py",
+      "size": 1566,
+      "sha256": "eba3a43c9d7aa93d65c00489b9586f8f4859d2dfeedf693ecaa28e8d236c7c3b",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/v3_metrics/upper_envelope.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/v3_metrics/upper_envelope.py",
+      "size": 34548,
+      "sha256": "84d46a14c381fdfab656730e7d22839b7d2c51f1732577b0a431ef4d81b86a13",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/v3_metrics/test_joint_settlement.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/v3_metrics/test_joint_settlement.py",
+      "size": 901,
+      "sha256": "84e76442e1c856230beb5e83bf8f0523c6096818357983d989ff0bfe1a3d8da8",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/v3_metrics/test_upper_envelope.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/v3_metrics/test_upper_envelope.py",
+      "size": 18840,
+      "sha256": "6d7c27753faf12a0eb0d520f4bbe3be2e4918c48d72afddf224ae9a95d8df18d",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/v3_metrics/test_numeric_fixture.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/v3_metrics/test_numeric_fixture.py",
+      "size": 2216,
+      "sha256": "6a2a22dd9d53c5e3765af1b248bef7ecf897946cade4513b96a12d2efc6a20b3",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/v3_metrics/fixture_source2262_raw.json",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/v3_metrics/fixture_source2262_raw.json",
+      "size": 128251,
+      "sha256": "bc8850ee3a1c0412e514e1b848897669a4ec61d16a522899b4e2de73daf9b888",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/certification3d/certify_v4.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/certification3d/certify_v4.py",
+      "size": 7599,
+      "sha256": "0ae0225f277587cc462d6597387191e02c1063e232e495adb632e018b2897068",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/certification3d/triangle_intersection.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/certification3d/triangle_intersection.py",
+      "size": 5451,
+      "sha256": "fd240953cf9de46bc631100a31cb80d83a67ae84832e4dc57c061d1d267d36af",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/certification3d/test_triangle_intersection.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/certification3d/test_triangle_intersection.py",
+      "size": 1783,
+      "sha256": "d4218324befbc3950df269440665065a5753047dedd2aa38973562d832564a32",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/serialization-before-v11/stage_volume75_v4.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/serialization-before-v11/stage_volume75_v4.py",
+      "size": 31061,
+      "sha256": "f75feb6ab4233cf0d6cd9d0dadacf9904bc9a30ace10988a45240c7b2d4a4e6e",
+      "status": "HISTORICAL_COMPARISON_FIXTURE_NOT_EXECUTABLE_ENTRYPOINT"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-volume-staging/serialization-before-v11/phase_checkpoint.py",
+      "payloadPath": "payload/backups/cloud75-textile-volume-staging/serialization-before-v11/phase_checkpoint.py",
+      "size": 1102,
+      "sha256": "269056ca14617ce18e83aa846da01cee881b659e1aa9fe8e70e799128393560f",
+      "status": "HISTORICAL_COMPARISON_FIXTURE_NOT_EXECUTABLE_ENTRYPOINT"
+    },
+    {
+      "originalPath": "backups/cloud75-cover-window-clearance/clearance_patch.py",
+      "payloadPath": "payload/backups/cloud75-cover-window-clearance/clearance_patch.py",
+      "size": 2547,
+      "sha256": "5776af8b8e3c8203169831716ffceb5e0422228a2dae32ca34ef811aac6ebfd5",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-cover-window-clearance/test_patch.py",
+      "payloadPath": "payload/backups/cloud75-cover-window-clearance/test_patch.py",
+      "size": 1218,
+      "sha256": "35216984d434b5485591736493bb0e330a5d9438eeef3f842bf0eea957c18055",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/pipeline.py",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/pipeline.py",
+      "size": 11199,
+      "sha256": "18a6b09f3bfb375a7a822dea59d0c61ff90f3f2d5b9f94690e03140f2c21d19c",
+      "status": "AO_EXECUTED_GI_NOT_ESTABLISHED_BY_THIS_BUNDLE"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/verify.py",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/verify.py",
+      "size": 3720,
+      "sha256": "780e2166d1760fb60ac408fd97b9a9ca35b08ffbe8c0efa0406a1bd39e13751d",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/material_fingerprint.py",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/material_fingerprint.py",
+      "size": 7774,
+      "sha256": "e279c7942bdb9e5ec7051245e1926bb5eda2f38bea8bd2b7ba9fac6a16b82f79",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/test_guards.py",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/test_guards.py",
+      "size": 5957,
+      "sha256": "6fed5699e776467ea5856b159d664d2a9901c0d60ce4ad854522154fa8e647d3",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/test_material_fingerprint.py",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/test_material_fingerprint.py",
+      "size": 3450,
+      "sha256": "308c724d91092f7659119401f5d7c3c1cf32dfff8dd01a3f2cbf09a7d5846d77",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/bound_bytes.mjs",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/bound_bytes.mjs",
+      "size": 1046,
+      "sha256": "f4e231e200a0b83a51c39a456a0106551a04b2b2358debe4f000558d4f0dc9f1",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/test_bound_bytes.mjs",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/test_bound_bytes.mjs",
+      "size": 1685,
+      "sha256": "86b85c6ea46d8e95bc4c4c58fe4d0961b3a0cd6cf11a8d4304d4a3924719237e",
+      "status": "SOURCE_SNAPSHOT_PRIOR_CHECKS_REPORTED_NOT_RERUN_DURING_PACKAGING"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/verify_staged_runtime.mjs",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/verify_staged_runtime.mjs",
+      "size": 10512,
+      "sha256": "5ed8969f93345d174d017d63f3f2ce8d2e09112f1579b59866d377e6845a4699",
+      "status": "PREPARED_LIGHT_CHECKS_ONLY_ACTUAL_GI_CANDIDATE_NOT_RUN"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/verify_room_owner76.mjs",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/verify_room_owner76.mjs",
+      "size": 12088,
+      "sha256": "2198f0b847f2007f8a3987136b487262f57b3eaac926692dd60d3bfa9f29d75c",
+      "status": "PREPARED_LIGHT_CHECKS_ONLY_ACTUAL_GI_CANDIDATE_NOT_RUN"
+    },
+    {
+      "originalPath": "backups/cloud75-textile-gi-staging/room_owner76_extra_checks.mjs",
+      "payloadPath": "payload/backups/cloud75-textile-gi-staging/room_owner76_extra_checks.mjs",
+      "size": 5625,
+      "sha256": "56c4ab12d5b7226861df3eeda41f4586a7e854d3088a672142b5f2901e630545",
+      "status": "PREPARED_LIGHT_CHECKS_ONLY_ACTUAL_GI_CANDIDATE_NOT_RUN"
+    }
+  ]
+}
