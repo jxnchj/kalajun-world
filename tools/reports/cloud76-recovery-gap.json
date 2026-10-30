@@ -1,0 +1,849 @@
+{
+  "updatedAtUTC": "2026-10-30T06:16:00Z",
+  "status": "RECOVERY_IN_PROGRESS_NOT_ACCEPTED",
+  "gitBase": "4e1d6f251ff979760f7020c4d940489cba091c36",
+  "backup": {
+    "name": "kalajun-cloud75-recovery-checkpoint.zip",
+    "version": 6,
+    "savedAtUTC": "2026-10-29T12:23:44Z",
+    "bytes": 20282271,
+    "sha256": "d16200fb0d712b32673b5f39bbc4ce5ed03fe4c485c1ec9448dcea3bd2a6093b",
+    "entries": 114,
+    "manifestFilesVerified": 113,
+    "jsonParsePassed": 33,
+    "glbStructurePassed": 2
+  },
+  "restored": {
+    "repositoryDocsChanged": 5,
+    "repositoryReportsNew": 2,
+    "ignoredHistoricalArtifacts": 93,
+    "runtimeSourceChanged": false,
+    "productionAssetChanged": false,
+    "defaultsChanged": false,
+    "files": [
+      {
+        "path": "docs/行动计划与进度看板.md",
+        "beforeSHA256": "1bc2f06182e7a776ca7e8dd6018a49f88f487f2bad01cf517ced88e56b6b82b2",
+        "restoredSHA256": "8bd2be83ee892b0ac8f79ee40c1dc383f1570f7cd607decd81b8d2210a1c4b67",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": false
+      },
+      {
+        "path": "tools/cloud-review75/monitor/README.md",
+        "beforeSHA256": "e0f9c2a165b3e204bf2cd911736d986ee7744d6c37f11e24010e053a2120b3fd",
+        "restoredSHA256": "f6f5d4bca4aebb762238e01847bc611d591a19536af62217bf9e3ce5a08bcecb",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": false
+      },
+      {
+        "path": "tools/cloud-review75/scheduler.md",
+        "beforeSHA256": "2d1e8d95eb9bac08cc2c3fe4823899a335988ce6e4c603f1abcd0733884ff7a8",
+        "restoredSHA256": "b50a6286e7d640e5bb8fdf504930184fb7903c72550d28257fb34eadac1deb30",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": false
+      },
+      {
+        "path": "tools/reports/cloud75-native-review-checkpoint.json",
+        "beforeSHA256": "ba8330d1606e29f149fd1e97518e7045b35b14374ef4a60f0142a3c09280609c",
+        "restoredSHA256": "77659867aed73226bfea908b297eebaebbfc29138b37bf2fb532ebc1da160eae",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": false
+      },
+      {
+        "path": "tools/reports/cloud75-native-review-checkpoint.md",
+        "beforeSHA256": "1ecd247f2480053d827da09f950309fa4d70e23557c8122b5f6615eca4e01dc7",
+        "restoredSHA256": "c9cc2bf4fe51b471b0638a4c3903b42a0cc5dfdb3c8d5faa7abc613f4c1d177c",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": false
+      },
+      {
+        "path": "tools/reports/terrain75-copy-candidate-evaluation.md",
+        "beforeSHA256": null,
+        "restoredSHA256": "12720db7396a3b37ed296e9b3c26f10d60139af25253924c3d344444d4a9e4a7",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": false
+      },
+      {
+        "path": "tools/reports/terrain75-copy-candidate-evaluation.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "0aac2d273f91a1389e20cf7c557eaf75c4e3e57d809ed14808eb56ec43c945de",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": false
+      },
+      {
+        "path": "backups/cloud75-contract-fix/focused.log",
+        "beforeSHA256": null,
+        "restoredSHA256": "0e19abddaeeaa8b6f34225ad54ea2c694880260dbea060cfe0dddc766afc2ac9",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-contract-fix/build.log",
+        "beforeSHA256": null,
+        "restoredSHA256": "5c89bc51a5fc8d365fc431ab160685052fa672b27c95c21f4cc5b93d213a3000",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-05-result.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "847902d2113207b82d804a78c05e4408806fe19528198d795b259a53b313d5e3",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-05-shadow0/world-final-held3-shadow0-native.jpg",
+        "beforeSHA256": null,
+        "restoredSHA256": "4c0cc88182d51760dce5b3484ba997dfeb401092cee5fe92b07cdfe2dad8e50e",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-05-shadow0/kalajun-software-review75-case05-shadow0-held3.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "10fa82df9b3f6f03c8c755c8d3923fb0155896795157cff4e463c930bb7d85f3",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-06-result.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "a975ba6eaed84befacb699da850dacaaca9a42e5393c3025a0b3216966f3160a",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-06-shadow1-diagnostic/world-final-failed-native.jpg",
+        "beforeSHA256": null,
+        "restoredSHA256": "8e6a70be7ed7ed7a7f7512aa359491a9e58465b74a8fea64454fdc1143c5c827",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-06-shadow1-diagnostic/kalajun-software-review75-case06-shadow1-failed.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "06d79156dead732d52f64deb8e54a9b526ae0508eb551dbde4d175e9b15f503d",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-07-result.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "30c5a48d61705edcc8c01567890592c9aff33cdc29366d7014575cc60f28878a",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-07-default-contract-fix/world-final-held3-default-contract-fix-native.jpg",
+        "beforeSHA256": null,
+        "restoredSHA256": "60d66d4c1d8cd6052d9a214348d5bd236a5e7e8153d8660f2ad924e1999e1c01",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-07-default-contract-fix/kalajun-software-review75-case07-default-held3.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "abbeb2f4b228664b7fc8c82fbc9a69d4e5df7003c1b3a392e74451ad8dc72302",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-08-result.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "1955f20f2ed8bbacea04affbf4701c9d38367d7e7adaaa5fb04ed432c29e00c3",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-08-shadow0-contract-fix/kalajun-software-review75-case08-shadow0-held3.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "c5e4dc2f2886d694e2ba51e1bb75e48383d0d329a8f3911f0edf5024e16ae4ff",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-08-shadow0-contract-fix/world-final-held3-shadow0-contract-fix-native.jpg",
+        "beforeSHA256": null,
+        "restoredSHA256": "c7114139b94ee6a88b8d92f51b723caa9ed64303707a0060daf7cc20bef8fb5d",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/stage_volume75.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "7b19b367d4b52507edf43946f91a6dbdc0b013609ca1df09235d9f8f83f8829c",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/volume_math.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "4864544e50ec1f453bfe99812498921519cc94809055966e08a8c60c480f41b0",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/readback75.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "a9d275a8ddcded137f6527d5df0f18532a1c1d79b3b273e9cf26a3a37551ff57",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/owner75.test.mjs",
+        "beforeSHA256": null,
+        "restoredSHA256": "647c895c4e1bbc9d8b087c7f25e153c827412aab6d5d91c1fa32d02306daee91",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/owner-v2-test.log",
+        "beforeSHA256": null,
+        "restoredSHA256": "15cd802d4f6cf796831b4b7c8ab35d36e9377709932142f006c2c982b77f89a9",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/candidate-v2/readback.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "52b13f51466c5372299f2d092afa578bdd868ab6165e07c8fe870c353a6c73ec",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/candidate-v2/audit.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "424309042a61f3846467fe3dbb40866cbeb39e91513a131723bc2f08c0d611ae",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/candidate-v2/manifest.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "34c1fc926e49d840c75bb76ea9131286089c3f042bf00f053b24a3a731f4fdcd",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/stage_volume75_v3.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "152855b696ab5074c4ebcbe0ee85257e7eea4d179afde1465f5e6270b1693d16",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/stage_volume75_v3_visual.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "864f273872948f0d46039645e515058e5b3435df49fcc20113cb60fbaecd7720",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/readback75_v3.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "d4526586e1b91566a260e8bac65e80dd0004766b9c665d6cb03d8c8111c50de0",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/readback75_v3_visual.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "bd85c2c7370d8e526a387ae500ee62f0cbe6f9cc5ebd3563519943515439a8b0",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/run_v3_job.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "71ae2d9aef6b3d42128f95bb05863732ff38b2929d3745b47b4be45c2ead36ec",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/run_stage_job.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "b0c7be724e1dfaf1dc3a8c7e9c300ca9baccb2a14dd725411d4a37c091298444",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/test_volume_math.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "4f3c1e21f3cbd862ac2fefea913ec05b2a4d2ad72c3a7438c73a1838885013ef",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3-visual-execution.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "b170f5dfe79be0746e6f1a0a0825d5defb60a4a53acc2d143468cee26e53176b",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/V3-PLAN.md",
+        "beforeSHA256": null,
+        "restoredSHA256": "0529b3678d62504e2b2eebbc6cc8de4c1bab5c1701dee755ffe891f6449570ee",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/candidate-v3-visual-only/geometry.glb",
+        "beforeSHA256": null,
+        "restoredSHA256": "f520f19f9768b294cbae43e748de6db963555e9759868e325a6fe4d0e9f87d80",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/candidate-v3-visual-only/readback.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "7a7974474dcf7015374750bf7bb8aec460e89e81a712333aaf57c656611df5a2",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/candidate-v3-visual-only/textile-volume75.blend",
+        "beforeSHA256": null,
+        "restoredSHA256": "41511994ee48c07f7765f7fce9911bf142215660d3ea03ad8ff883685d197652",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/candidate-v3-visual-only/audit.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "213c5063f5b6dc1e6c5907e4e7c1bd6ee44bf51cd2dcab271230748bbe9b152f",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/candidate-v3-visual-only/manifest.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "bd916d064c97ead389df7e51c80bc98e679899751e4896d67fc8609323893170",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/candidateV2-side-low.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "81480f7316956cc94a778aefe928b5895f838d9c8709709744e08d255133e90d",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/candidateV2-whole-stack.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "e66da71be920b10327134df5baad19bd5cdabdba525072b3b50efe1564c45579",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/REVIEW.md",
+        "beforeSHA256": null,
+        "restoredSHA256": "048f763e14e24d85a52cb50ecbef879d5256338608586e03d6da68e71313497e",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/original71-side-low.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "577464e8885e025a53af7dfdff7593b576e04ce5ba9b7c6d9ba2cccf3a97d925",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/execution.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "d77c8f68263899ab93e25befbdc666c7bc81f9b77f0ee931e40647b0727579b1",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/metadata.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "498bda898d24526465c7b08e71dd87e8c4ad8f8985d6c5ba8a2fb883abd42569",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/original71-front.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "2f769536244b9430cbe4a3feab594079ab339fed80a80420e4f7ccc013bc5da5",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/intersection-location.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "68ae14138e69a4ca0377f8e4482b7fe33f1c232b402480827f8fda92077a70a1",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/render_previews.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "dd1ccda46cc9f55dedbb738b4bcf00d2661cf7ad842dab1baab5d36473ebb7a4",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/original71-whole-stack.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "5b7580fa355a47b66f06ff1a7ce8a50408530605b05ea36273552ebca8b1ab6b",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews/candidateV2-front.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "cc8ce6748f747982dbb11cef66d402be0f1b7f7d1fe0ba7d4ea3e81d881eaffe",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/candidateV3Visual-side-low.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "4912ae7ccf393dbd3abaf302aa5e33a36b875e1b0b14ccb14fcf4b4e58fbec66",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/REVIEW.md",
+        "beforeSHA256": null,
+        "restoredSHA256": "6269512c9b1b498499fcfec89d00916d65702970727643dabe2101cd1c5c3403",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/original71-side-low.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "49de75ffc9c6dd286266ec3bc04d40b20cc8c027248642422993c86ff4a7d75d",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/candidateV3Visual-front.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "51a0d1bbf0de9acfc5ab113ca4da4ac563e7e38718a4f48bc7036ee7e4444b54",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/execution.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "5c1fea1fa8ae23bceb16e881780a3f81143602c3375f551076b720dc0d91d98f",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/metadata.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "bf5940629a736383fe7d0ecd0c33a060a8046046b57f55f03fdf8ec1f383332f",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/candidateV3Visual-whole-stack.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "12de8783ccba55f803f7ea375ed2354256ae48e3be9347b7b52bc2df2f1a2482",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/original71-front.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "4cafd71c4017eb2a6418993ebdd09b16763fc654cfbbf08de8b89f6bb860a479",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/render_previews.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "a899a3cc20a234d477c24aef075c420cad5d38aa977cbfdf24e8f17bf4027dc4",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/previews-v3-visual/original71-whole-stack.png",
+        "beforeSHA256": null,
+        "restoredSHA256": "71ba7614f807deb17ef7d48ec5ed18be56d779030b1d40f8fd5878558396483a",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/certification3d/triangle_intersection.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "fd240953cf9de46bc631100a31cb80d83a67ae84832e4dc57c061d1d267d36af",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/certification3d/execution.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "aae5ce01f00b5dff4725a12618585b6a83c5f61dca52e0b4e46ee0cdb09747d5",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/certification3d/audit.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "412748933299fe81a65ed63dcd4b585093e94b9c3f9684fdc7a4c6e7fefd9b5a",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/certification3d/test_triangle_intersection.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "d4218324befbc3950df269440665065a5753047dedd2aa38973562d832564a32",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/certification3d/certify_blender.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "3643eb133e79f1c72603ca7272dd957ebd3d6f28ac5ca2ea92e6cf0cda405a2b",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/baseline.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "ac81a3fb14765f3ebedfebb6689d936f1fcf8e81ec36560d7b278b9be571f224",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/test_upper_envelope.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "5c536e079307b38f9f191a8954c0e98a09b6b95b1411059f089cc9e60d26b925",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/test_actual_region.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "a7ee0f33cfbaf635d557dd9ee77fc4364a40098d6f6fa21a9130138f85c6ac02",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/upper_envelope.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "dc4314a82243e63b1a97a413e4c42eb559db9a1c65c852a0ac3baa8ff36d0199",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/joint_settlement.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "eba3a43c9d7aa93d65c00489b9586f8f4859d2dfeedf693ecaa28e8d236c7c3b",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/test_joint_settlement.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "84e76442e1c856230beb5e83bf8f0523c6096818357983d989ff0bfe1a3d8da8",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/upper_envelope.premerge.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "88b9c42e3e91cc477791043ee554b5015be68e6df60020a60e7ed5b359dc5434",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/baseline_blender.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "7c3c9baa708a130c002196284d4c2f87e7d155d187c5f2ad759a9c5ee09077d1",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/upper_envelope.v1.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "8625e66637482db027d94df3cdfcc832fdc9f578a2258dee22310adecb3ef2e0",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-volume-staging/v3_metrics/actual-region-equivalence.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "096e35885ce7dbd305d62b3d3399131426ff8adbc3a792889438d5549ba7f270",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/modifier_metadata.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "2fbbf84eff45a8442b61b5f49248a867fe2ae70cebb89240a7bec316fce16a64",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/certification_helpers.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "0d0825b2e9277cce110921a32d93922feecc7be1bd7bfddfe86923aff369137b",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/modifier-execution.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "892f91e7a3e301da26e17b43c0e48bb80cc24a4acc27efc43138e833956f4fe8",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/geometry.glb",
+        "beforeSHA256": null,
+        "restoredSHA256": "e4a56e4e4e617baa3ab5fce09122c664951cbf08313f4eceb74b4356c22584af",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/triangle_intersection.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "fd240953cf9de46bc631100a31cb80d83a67ae84832e4dc57c061d1d267d36af",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/readback.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "f966f45924a6caf97e012cb8f87c12a1887fac9967a109cc7c120359165b7adb",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/cover-clearance-original71.blend",
+        "beforeSHA256": null,
+        "restoredSHA256": "6c93b0150d6a6f247d33488466e4e060882d11d4b6b3c8aa86e96fb3c8682fac",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/execution.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "13c458d1c9a33b617d9e85e6894c4b1ffc3b7c20cb0aabc5ace3a54639b4fa09",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/glb_helpers.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "3b72ee293884891023eec381157ad13ee854a749b14956932599d8fc953dc8e9",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/audit.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "e0d575d036352027d3c9175d47259662b0e7c0caabce48557b7b48e1e388efe7",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/modifier-metadata.json",
+        "beforeSHA256": null,
+        "restoredSHA256": "c1caabd62405da61fddaba60ffef811a3f13f5807507e778e862082fa2e71c7e",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/run_bounded.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "88c03095f9bfa6bba081cbbc2d2e4ab275b85a1516fea3f0a16f7c48b537a64d",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/snapshot_helpers.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "472bd6a31e138f11958e80c55221288fe82a077fce90c2bdebf2dada14bca8f8",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/clearance_patch.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "5776af8b8e3c8203169831716ffceb5e0422228a2dae32ca34ef811aac6ebfd5",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/test_patch.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "35216984d434b5485591736493bb0e330a5d9438eeef3f842bf0eea957c18055",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/run_patch.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "02306de42e5ef2d5075415e4b59a8fd4478e9bd06fdb55b21eb4afed9230dbd1",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/readback.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "84ffe122b8c0a6cb57b1bc6c1f117b51c11adae34637b5f7e0da94ac71d653a3",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-cover-window-clearance/RESULT.md",
+        "beforeSHA256": null,
+        "restoredSHA256": "67b7d588318a4720e9ad55fa3a213f2dc4cedeccdf3f419b2bb475e571bfcf5b",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-gi-staging/README.md",
+        "beforeSHA256": null,
+        "restoredSHA256": "a3a15ea4a849702930b6090297af1fefcd18212814bde9481327bde36c0abb33",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-gi-staging/verify.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "9ece825a7d7b1f97352b640db5207e692626a54a1a1e94fccadcd41cc50dcea1",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      },
+      {
+        "path": "backups/cloud75-textile-gi-staging/pipeline.py",
+        "beforeSHA256": null,
+        "restoredSHA256": "a030f8b119ea451cc17842911882167458c37a8b2d3f3de6df6c94e07dee5fb6",
+        "action": "copy_verified_backup",
+        "historicalEvidenceOnly": true
+      }
+    ]
+  },
+  "gaps": [
+    {
+      "item": "native_case07_case08",
+      "bytes": "restored",
+      "status": "historical initial3/3 ON/OFF samebuild only",
+      "next": "new environment actual review; formal entry/dynamic/general quality not implied"
+    },
+    {
+      "item": "terrain_copy_candidate",
+      "bytes": "rejected report restored",
+      "status": "NOT_ADOPTED",
+      "next": "keep original2500ms failure open; no budget/assertion changes"
+    },
+    {
+      "item": "v3_visual_candidate",
+      "bytes": "Blend GLB manifest previews restored",
+      "status": "OFF_PARTIAL_NOT_SELECTED_FINAL",
+      "next": "reconstruct later selected v4, do not downgrade choice silently"
+    },
+    {
+      "item": "window_clearance",
+      "bytes": "patch and isolated original71 Blend GLB evidence restored",
+      "status": "ISOLATED_SURFACE_PASS_HISTORICAL",
+      "next": "combine with v4 and recertify full XYZ/topology/collision/contact"
+    },
+    {
+      "item": "v4_visual_and_combined",
+      "bytes": "not in backup",
+      "status": "LATEST_RECORD_ONLY_RECREATE_REQUIRED",
+      "next": "E4 bounded shared field, stop parameter scan; regenerate and compare to retained historical hashes/preview where available"
+    },
+    {
+      "item": "upper_envelope_helper",
+      "bytes": "old dc4314a82243e63b1a97a413e4c42eb559db9a1c65c852a0ac3baa8ff36d0199 restored",
+      "status": "FINAL_FIX_MISSING",
+      "next": "reconstruct/review later anchored sums and bounded convex-output normalization; final recordedbe3dd4b5998582339279c17e7f79c7964a1dc3f9412b53c20be37d27f066a896 not recovered; fresh baseline required"
+    },
+    {
+      "item": "AO_GI_wrapper",
+      "bytes": "prepared old wrapper restored",
+      "status": "NOT_EXECUTED_STALE_GUARDS",
+      "next": "correct269objects267meshes2empties and262frozen incl4textiles; no weakening; full AO+25states+decoder/owner tests"
+    },
+    {
+      "item": "full_regression",
+      "bytes": "historical focused/build logs restored; full log not inZIP",
+      "status": "LAST_REPORTED1992/1993_NOT_FULL_PASS",
+      "next": "new environment build/focused/full results separately record"
+    },
+    {
+      "item": "new_checkpoint_restore_verification",
+      "bytes": "not yet created",
+      "status": "PENDING",
+      "next": "create independent stable checkpoint and verify restoration before claiming durable current recovery"
+    }
+  ],
+  "remainingStageTasks": [
+    {
+      "task": "wood_boardwalk_contact_index_same_build_loading_ABBA",
+      "status": "OPEN",
+      "evidence": "board current next-step section; index candidate OFF and browser loading ABBA not done",
+      "mustNotSkip": "Do not equate offline CPU21–23% with page loading/FPS improvement"
+    },
+    {
+      "task": "textiles_explicit_zero_same_build_fallback_and_adoption",
+      "status": "OPEN",
+      "evidence": "board current next-step section; textile candidate remains OFF",
+      "mustNotSkip": "Old limited GI previews are not final new-geometry adoption"
+    },
+    {
+      "task": "shadow_default_zero_formal_entry_regression",
+      "status": "PARTIAL_OPEN",
+      "evidence": "case07/08 initial3frames complete; formal entry and full route adoption gates still distinct",
+      "mustNotSkip": "Do not claim initial cloud frame acceptance completes formal delivery"
+    },
+    {
+      "task": "forest_creek_overall_performance_and_loading",
+      "status": "OPEN",
+      "evidence": "board stage3 and continuing-work lists",
+      "mustNotSkip": "No lower density/detail or software-render timings claimed target GPU performance"
+    },
+    {
+      "task": "bank_shape_material_and_community_quality",
+      "status": "OPEN",
+      "evidence": "board retains73bank candidate unadopted and no unsupported damp-base darkening",
+      "mustNotSkip": "Whole banks/community integration, not repeated unsupported tiny parameter tweaks"
+    },
+    {
+      "task": "second_terrain_group_reuse",
+      "status": "OPEN",
+      "evidence": "board representative-route common-quality requirement",
+      "mustNotSkip": "Verify another different terrain group before claiming shared route quality complete"
+    },
+    {
+      "task": "global_lighting_and_color_stage5",
+      "status": "DEFERRED_NOT_DONE",
+      "evidence": "board explicit stage5 order",
+      "mustNotSkip": "Do not mark done or advance prematurely during stage3"
+    }
+  ],
+  "currentValidation": {
+    "archive_and_manifest": "PASS",
+    "git_perfile_comparison": "PASS",
+    "restoration_hashes": "PASS",
+    "new_build": "PASS 10.45s; existing chunk-size warning retained",
+    "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+    "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+    "new_native_world": "NOT_RUN",
+    "new_geometry_AO_GI": "NOT_RUN",
+    "independent_new_checkpoint_restore": "PENDING",
+    "evidence": "backups/cloud76-recovery/verification-summary.json",
+    "buildFingerprints": {
+      "web/dist-cloud76-recovery/v2.html": {
+        "bytes": 3283,
+        "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+      },
+      "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+        "bytes": 3322168,
+        "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+      }
+    }
+  },
+  "completionBoundary": "Recovering files or past logs is not task completion. Stage3 stays in progress; stage5 global light/color deferred. No production adoption/deploy/force-push."
+}

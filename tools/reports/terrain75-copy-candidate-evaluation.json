@@ -1,0 +1,609 @@
+{
+  "status": "rejected-no-consistent-speed-benefit-budget-failure-unresolved",
+  "source": {
+    "head": "4e1d6f251ff979760f7020c4d940489cba091c36",
+    "productionSourceSHA256": "0508088493b8c51739a8c0b978cf655e4e75b6a4f28c083e4c16f9163924ad3e",
+    "candidateSourceSHA256": "c67799aa19b3708314d158d0217edf539d9852e4ca4dba24c75276e3466fc771",
+    "scope": "isolated only; production terrain/tests/prepared/GI files unchanged"
+  },
+  "environment": {
+    "node": "v24.22.1",
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "logicalCPUs": 9,
+    "started": "2026-10-29T10:41:49.405Z",
+    "finished": "2026-10-29T10:42:04.398Z"
+  },
+  "productionRuntimeChanged": false,
+  "originalTestsChanged": false,
+  "preparedOrGIBindingsChanged": false,
+  "candidatePatch": "backups/terrain75-copy-candidate/candidate.patch",
+  "equivalenceEvidence": {
+    "status": "passed-within-stated-synthetic-scope",
+    "cases": [
+      {
+        "mode": "dry",
+        "hash": "603f3dd26530523e000cdba146a2c14e491d8454bdb8c057d3f6bff76b1d8fdb",
+        "nodes": 9,
+        "rowCalls": 297,
+        "morphTiles": 8,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        }
+      },
+      {
+        "mode": "wet",
+        "hash": "f4d37c41038e1ada7edf5469cf0d38aba867db9e2e072d402007da683185360f",
+        "nodes": 9,
+        "rowCalls": 297,
+        "morphTiles": 8,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        }
+      },
+      {
+        "mode": "protected",
+        "hash": "470514db2939758a91b11d607b540109c752eb11394343fcb381958eab7b7c7c",
+        "nodes": 9,
+        "rowCalls": 297,
+        "morphTiles": 0,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        }
+      },
+      {
+        "mode": "small",
+        "hash": "6e56600ac8b509f5c414641ee62b1bf7c71205b02e71d88e9bf22d4f31c1d49b",
+        "nodes": 9,
+        "rowCalls": 297,
+        "morphTiles": 4,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        }
+      },
+      {
+        "mode": "warm",
+        "hash": "1d0183f855f47bffb8e65345a84e2e584c1817434212a540f431988145dfc828",
+        "nodes": 10,
+        "rowCalls": 330,
+        "morphTiles": 8,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 1961,
+          "heightMisses": 14809,
+          "vertexHits": 1001,
+          "vertexMisses": 7577,
+          "parentVertexHits": 2312
+        }
+      }
+    ],
+    "sameBufferRawBits": true,
+    "diagonalBranches": {
+      "alternate": 1884,
+      "standard": 2212,
+      "unchanged": 4096
+    },
+    "scope": "5 synthetic 9/10-tile cases; row states 1,2,17,18,33, all final geometry/morph/index bytes and bounds, sampling/cache counters, cached-row/cached-finish ownership; not full-world/prepared payload validation"
+  },
+  "originalBudgetFailureEvidence": {
+    "status": "all-four-failed-unchanged-first-ready-assertion",
+    "maxMs": 2500,
+    "order": [
+      "A",
+      "B",
+      "B",
+      "A"
+    ],
+    "cases": [
+      {
+        "label": "A",
+        "initialResult": {
+          "ready": false,
+          "nearReady": true,
+          "reason": "budget",
+          "elapsedMs": 2509.146558,
+          "iterations": 549,
+          "queuedTiles": 61,
+          "nearQueuedTiles": 0,
+          "visibleTiles": 397,
+          "minSpacing": 0.3125,
+          "morphs": 4
+        },
+        "passed": false,
+        "failure": {
+          "name": "AssertionError",
+          "message": "Expected values to be strictly equal:\n\nfalse !== true\n",
+          "actual": false,
+          "expected": true
+        },
+        "testElapsedMs": 4801.649009
+      },
+      {
+        "label": "B",
+        "initialResult": {
+          "ready": false,
+          "nearReady": true,
+          "reason": "budget",
+          "elapsedMs": 2504.8091970000005,
+          "iterations": 617,
+          "queuedTiles": 0,
+          "nearQueuedTiles": 0,
+          "visibleTiles": 466,
+          "minSpacing": 0.3125,
+          "morphs": 2
+        },
+        "passed": false,
+        "failure": {
+          "name": "AssertionError",
+          "message": "Expected values to be strictly equal:\n\nfalse !== true\n",
+          "actual": false,
+          "expected": true
+        },
+        "testElapsedMs": 2870.2940360000002
+      },
+      {
+        "label": "B",
+        "initialResult": {
+          "ready": false,
+          "nearReady": true,
+          "reason": "budget",
+          "elapsedMs": 2504.653365,
+          "iterations": 592,
+          "queuedTiles": 8,
+          "nearQueuedTiles": 0,
+          "visibleTiles": 460,
+          "minSpacing": 0.3125,
+          "morphs": 5
+        },
+        "passed": false,
+        "failure": {
+          "name": "AssertionError",
+          "message": "Expected values to be strictly equal:\n\nfalse !== true\n",
+          "actual": false,
+          "expected": true
+        },
+        "testElapsedMs": 2836.9957460000005
+      },
+      {
+        "label": "A",
+        "initialResult": {
+          "ready": false,
+          "nearReady": true,
+          "reason": "budget",
+          "elapsedMs": 2502.5697500000006,
+          "iterations": 606,
+          "queuedTiles": 16,
+          "nearQueuedTiles": 0,
+          "visibleTiles": 454,
+          "minSpacing": 0.3125,
+          "morphs": 6
+        },
+        "passed": false,
+        "failure": {
+          "name": "AssertionError",
+          "message": "Expected values to be strictly equal:\n\nfalse !== true\n",
+          "actual": false,
+          "expected": true
+        },
+        "testElapsedMs": 2984.0858910000006
+      }
+    ],
+    "scope": "Copied original terrain.test.js test body with all assertions/budgets unchanged; capture after initial prepareView returns and finally cleanup only. First assertion failed, so relocation/disposal assertions were not reached."
+  },
+  "fixedWork": {
+    "schedule": "4 equal warmups A B B A; 4 measured ABBA blocks; fresh world/cache each sample; 9 tiles/297 rows per sample; output hashing outside timing",
+    "samples": [
+      {
+        "block": 0,
+        "label": "A",
+        "elapsedMs": 26.520610999999917,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 0,
+        "label": "B",
+        "elapsedMs": 30.54596300000003,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 0,
+        "label": "B",
+        "elapsedMs": 26.9787859999999,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 0,
+        "label": "A",
+        "elapsedMs": 27.35649699999999,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 1,
+        "label": "A",
+        "elapsedMs": 29.770260000000007,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 1,
+        "label": "B",
+        "elapsedMs": 27.21688999999992,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 1,
+        "label": "B",
+        "elapsedMs": 26.919648999999936,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 1,
+        "label": "A",
+        "elapsedMs": 21.038197999999966,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 2,
+        "label": "A",
+        "elapsedMs": 33.27084599999989,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 2,
+        "label": "B",
+        "elapsedMs": 29.15300900000011,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 2,
+        "label": "B",
+        "elapsedMs": 25.789800000000014,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 2,
+        "label": "A",
+        "elapsedMs": 27.87997100000007,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 3,
+        "label": "A",
+        "elapsedMs": 36.066460000000006,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 3,
+        "label": "B",
+        "elapsedMs": 32.98353399999996,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 3,
+        "label": "B",
+        "elapsedMs": 29.871224999999868,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      },
+      {
+        "block": 3,
+        "label": "A",
+        "elapsedMs": 26.433297999999922,
+        "hash": "07e4945a68939f26f20c474f68911efdb51ab17ad1061d51e3eed9ab665e1f59",
+        "nodes": 9,
+        "rowCalls": 297,
+        "cache": {
+          "entries": 65536,
+          "bytes": 7405568,
+          "heightHits": 122,
+          "heightMisses": 14535,
+          "vertexHits": 122,
+          "vertexMisses": 7367,
+          "parentVertexHits": 2312
+        },
+        "morphTiles": 8
+      }
+    ],
+    "analysis": {
+      "summary": {
+        "A": {
+          "n": 8,
+          "minMs": 21.038197999999966,
+          "medianMs": 27.61823400000003,
+          "meanMs": 28.54201762499997,
+          "maxMs": 36.066460000000006,
+          "sampleStddevMs": 4.585247886080036
+        },
+        "B": {
+          "n": 8,
+          "minMs": 25.789800000000014,
+          "medianMs": 28.184949500000016,
+          "meanMs": 28.682356999999968,
+          "maxMs": 32.98353399999996,
+          "sampleStddevMs": 2.3943935858207337
+        }
+      },
+      "blocks": [
+        {
+          "block": 0,
+          "baselineMeanMs": 26.938553999999954,
+          "candidateMeanMs": 28.762374499999964,
+          "candidateSpeedupPercent": -6.770298435469156
+        },
+        {
+          "block": 1,
+          "baselineMeanMs": 25.404228999999987,
+          "candidateMeanMs": 27.06826949999993,
+          "candidateSpeedupPercent": -6.550249960350864
+        },
+        {
+          "block": 2,
+          "baselineMeanMs": 30.57540849999998,
+          "candidateMeanMs": 27.471404500000062,
+          "candidateSpeedupPercent": 10.151962483182915
+        },
+        {
+          "block": 3,
+          "baselineMeanMs": 31.249878999999964,
+          "candidateMeanMs": 31.427379499999915,
+          "candidateSpeedupPercent": -0.5680037993105547
+        }
+      ],
+      "candidateFasterBlocks": 1,
+      "productionSourceUnchanged": true,
+      "currentHead": "4e1d6f251ff979760f7020c4d940489cba091c36",
+      "limitations": [
+        "Per-sample fixed work is only 21-36 ms; variation is too large for a stable speed conclusion.",
+        "No explicit GC or wall-clock mock; OS scheduling/GC could contribute; these causes were not instrumented.",
+        "A and B share a process but have separate fresh world/cache instances and equal explicit warmup. The first original-case constructor also initializes shared material texture caches, outside prepareView maxMs.",
+        "Snapshot and full hash validation are outside the measured fixed-work region; row snapshots are used only in equivalence cases."
+      ]
+    }
+  },
+  "bindingImpact": {
+    "forest": {
+      "sourceCount": 26,
+      "terrain": false,
+      "meadowSurface": true
+    },
+    "meadow": {
+      "sourceCount": 67,
+      "terrain": false,
+      "meadowSurface": true
+    },
+    "reachCover": {
+      "sourceCount": 83,
+      "terrain": false,
+      "meadowSurface": true
+    },
+    "structure": {
+      "sourceCount": 45,
+      "terrain": false,
+      "meadowSurface": false
+    },
+    "terrain": {
+      "sourceCount": 41,
+      "terrain": true,
+      "meadowSurface": true,
+      "route": "terrain-row-kernel.js -> terrain.js"
+    },
+    "outsideFive": "tools/export-room-exterior-terrain-v38.mjs explicitly binds terrain.js for the room exterior GI source recipe"
+  },
+  "decision": "Do not apply candidate or regenerate bindings: no consistent fixed-work gain and all original budget cases fail. This does not show that allocation optimization can never help; it rejects this measured isolated candidate.",
+  "setupNote": "One initial staging harness run failed before timing evidence because its test-double stats omitted restoredTiles=0. The harness was corrected to match constructor initialization, then the recorded run completed. Production code was never changed.",
+  "evidenceSeparation": {
+    "equivalence": "backups/terrain75-copy-candidate/equivalence.json",
+    "budgetFailures": "backups/terrain75-copy-candidate/original-budget-failures.json",
+    "fixedWork": "backups/terrain75-copy-candidate/fixed-work-abba.json"
+  },
+  "limits": [
+    "Fixed-work samples last 21\u201336 ms and show substantial variance; no statistical speed claim is justified.",
+    "Byte equivalence covers the enumerated fixed synthetic input, not every possible geographic source or prepared dataset.",
+    "The copied original cases preserve real 2500 ms and all original assertions, but run in one warmed process rather than the original full-suite process history.",
+    "No further CPU/performance run, browser, GPU, production adoption, or signature-only update is included."
+  ]
+}

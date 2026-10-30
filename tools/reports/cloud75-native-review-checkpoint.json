@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "updatedUTC": "2026-10-29T10:20:00Z",
-  "status": "INTERMEDIATE_CHECKPOINT_CONFIGURATION_REPAIR_FOCUSED_PASS_DEFAULT_ON_BROWSER_PENDING",
-  "baseCommit": "81995554835581a9c3edbf2a47c94c68e175db18",
+  "updatedUTC": "2026-10-29T10:57:42.955969Z",
+  "status": "LIMITED_DEFAULT_ON_AND_EXPLICIT_OFF_CABIN_STARTUP_VALIDATED_THREE_STATIC_FRAMES_FULL_REGRESSION_UNRESOLVED",
+  "baseCommit": "4e1d6f251ff979760f7020c4d940489cba091c36",
   "validation": {
     "affectedTests": {
       "passed": 192,
@@ -14,7 +14,7 @@
       "passed": true,
       "seconds": 10.22,
       "source": "backups/cloud75-diagnostics/build.log",
-      "appliesTo": "Pre-configuration-repair diagnostic build; not validation of the in-progress configuration repair."
+      "appliesTo": "Pre-configuration-repair diagnostic build; not validation of the later configuration repair."
     },
     "lastFullRegression": {
       "total": 1993,
@@ -409,7 +409,7 @@
     "Case04 predates the added source diagnostics, while case05 uses the diagnostic build; these two runs are not a same-build ON/OFF performance or causal comparison.",
     "The three initial completed static draws comprise the original first main draw followed by the original world/reflection route; no motion or extra drain frames were requested.",
     "Recorded queue values come from the held diagnostic snapshot, not per-fence embedded queue counters.",
-    "Case05 validates only the specified OFF rollback static path. Default ON failure remains unresolved; no default adoption, full quality acceptance, real-time FPS, ABBA loading benefit, deployment or phase completion is claimed.",
+    "Case05 validates the pre-repair diagnostic-build OFF rollback static path. Cases07/08 validate the repaired same-build default-ON and explicit-OFF startup at the specified cabin for three static world frames each. Neither establishes full queue settlement, pixel equivalence, outdoor/dynamic shadow quality, real-time FPS, ABBA loading benefit, deployment or phase completion.",
     "RSS is sampled summed process memory; shared pages and between-poll peaks limit interpretation. The monitor is not a cgroup hard cap."
   ],
   "configurationDiagnosis": {
@@ -431,7 +431,7 @@
     "telemetryLimit": "Case06 startup JSON directly records the 4096 requirement rejection and null owners; the auto/cascade selection explanation is a source inference, corroborated by case05 same-build capability/cascade telemetry."
   },
   "configurationRepair": {
-    "status": "Implemented;379 focused tests and build pass; default-ON native acceptance pending",
+    "status": "Implemented; 379 focused tests and build pass; cases07/08 validate repaired same-build default-ON and explicit-OFF cabin startup with three completed static world frames each only",
     "sourceFiles": [
       {
         "path": "web/src/v2/environment.js",
@@ -514,36 +514,628 @@
         "delivery": "Retained locally under ignored backups; not published as a raw log/build."
       }
     },
-    "browserAccepted": false,
-    "fullSuiteRerun": false
+    "fullSuiteRerun": false,
+    "browserValidation": {
+      "limitedDefaultOnCabinStartup": true,
+      "wholeSceneOrQualityAccepted": false,
+      "dynamicOrOutdoorShadowAccepted": false,
+      "scope": "Case07 omits localShadowWindow42 and nearShadowDetail; case08 only appends localShadowWindow42=0. Same build/pose/time/viewport/backend, initial three static world frames at pastoral-house_a-entry each.",
+      "limitedExplicitOffCabinStartup": true,
+      "cases": [
+        "07",
+        "08"
+      ],
+      "sameBuildAndPose": true,
+      "pixelEquivalenceProven": false
+    }
   },
   "case07": {
-    "status": "RUNNING_AT_CHECKPOINT_CUTOFF_NO_TERMINAL_RESULT",
-    "scope": "New configuration-repair build; localShadowWindow42 parameter omitted to exercise the default; unchanged4GiB tier and original finite time limits; initial three frames only",
-    "notClaimed": [
-      "GPU-completed frames",
-      "held state",
-      "settled queues",
-      "default-ON quality acceptance",
-      "memory success",
-      "phase completion"
-    ],
-    "checkpointCutoffUTC": "2026-10-29T10:20:00Z",
+    "status": "TERMINAL_DEFAULT_ON_CABIN_STARTUP_REPAIR_VALIDATED_LIMITED_THREE_STATIC_FRAMES",
+    "scope": "New configuration-repair build, default localShadowWindow42 and nearShadowDetail parameters omitted; unchanged 4 GiB tier and original finite time limits; initial three static frames only.",
     "navigationUTC": "2026-10-29T10:19:22Z",
-    "outerDeadlineUTC": "2026-10-29T10:40:03Z",
-    "sourceTransport": {
-      "nativeHTTPBytesMatchNewBuild": true,
-      "scope": "Static HTTP source identity only, not scene completion"
+    "finishedUTC": "2026-10-29T10:36:23.415157+00:00",
+    "reportSealedUTC": "2026-10-29T10:38:04.351326+00:00",
+    "query": "view=pastoral-house_a-entry&time=870&softwareReview75=1&profile=1&houseTextiles62=0&boardwalkContactIndex74=0",
+    "explicitLocalShadowWindow42Override": false,
+    "explicitNearShadowDetailOverride": false,
+    "softwareReview75": {
+      "enabled": true,
+      "mode": "finite-software-QA-NOT-realtime-performance",
+      "backend": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "vendor": "Google Inc. (Google)",
+        "context": {
+          "screenAntialias": false,
+          "requestedScreenAntialias": false,
+          "worldTargetSamples": 4,
+          "probeEligible": true,
+          "fallback": false
+        }
+      },
+      "phase": "held",
+      "submittedWorldFrames": 3,
+      "completedWorldFrames": 3,
+      "completedPreparationFences": 5,
+      "remaining": 0,
+      "inFlight": false,
+      "reserved": false,
+      "inputGapMs": 0,
+      "fenceTimeoutMs": 210000,
+      "completedFrameSimulationSeconds": 0,
+      "stepSeconds": 0,
+      "lastCompleted": {
+        "generation": 1,
+        "view": "pastoral-house_a-entry",
+        "position": [
+          -1741.3161458968743,
+          2117.468597447125,
+          3610.814826865227
+        ],
+        "yaw": -128.8693031093039,
+        "pitch": -11.281928628668062,
+        "time": 870,
+        "search": "?view=pastoral-house_a-entry&time=870&softwareReview75=1&profile=1&houseTextiles62=0&boardwalkContactIndex74=0",
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1
+        },
+        "scope": "world-and-reflection",
+        "draw": 3,
+        "delta": 0,
+        "fenceWallMs": 67279.30000000075,
+        "completedAtMs": 561027
+      },
+      "error": null
     },
-    "preflight": {
-      "viewport": [
-        1280,
-        800
+    "ready": true,
+    "preparing": false,
+    "errors": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800,
+      "pixelRatio": 1
+    },
+    "depthMode": "reversed-float32",
+    "frameTarget": {
+      "enabled": true,
+      "width": 1280,
+      "height": 800,
+      "samples": 4,
+      "colorFormat": "RGBA16F",
+      "depthFormat": "DEPTH_COMPONENT32F"
+    },
+    "identityChecks": {
+      "view": true,
+      "position": true,
+      "yaw": true,
+      "pitch": true,
+      "time": true,
+      "viewport": true,
+      "generation": true,
+      "exact_search": true,
+      "only_three_static_world_draws": true,
+      "held_no_inflight_no_error": true
+    },
+    "nearShadowDetail": {
+      "mode": "cascade",
+      "requested": "auto",
+      "mapSizes": [
+        4096,
+        2048,
+        2048,
+        2048
       ],
-      "devicePixelRatio": 1,
-      "hdr4xPassed": true,
-      "scope": "Capability/preflight evidence only, not world acceptance"
+      "cascades": 4,
+      "splits": [
+        20,
+        60,
+        180,
+        500
+      ],
+      "shadowMapSize": 2048,
+      "localShadowNativeSize": 4096,
+      "maxTextures": 32,
+      "maxTextureSize": 8192
     },
-    "runtimeResult": "Pending; later observations belong to a subsequent checkpoint."
+    "localShadowWindow42": {
+      "enabled": true,
+      "ready": true,
+      "phase": "ready",
+      "nativePreparationPassCount": 3,
+      "finalPreparationPass": {
+        "controller": {
+          "phase": "idle",
+          "reason": "isolated-actual-snapshot",
+          "pending": false,
+          "preparations": 2,
+          "failures": 0,
+          "lastFailure": null,
+          "viewReconciliations": 0,
+          "lastViewReconciliation": {
+            "atMs": 217865.80000000075,
+            "from": 79,
+            "to": 79
+          }
+        },
+        "submissions": {
+          "ready": true,
+          "revision": 94,
+          "passes": 6,
+          "captures": 3,
+          "draws": 79,
+          "sources": 79,
+          "failures": 0,
+          "cameraId70": 4,
+          "reason": "captured"
+        },
+        "beforeColor": {
+          "atMs": 285829.5,
+          "frame": 41,
+          "pass": 5,
+          "cameraId": 11,
+          "maskAtMs": 284030.80000000075,
+          "revision": 94,
+          "ownerRevision": 94,
+          "ready": true,
+          "valid": null,
+          "uniform": 1,
+          "parameters": [
+            1,
+            1,
+            7999,
+            0.12
+          ],
+          "anchor": [
+            -1743.9976007880603,
+            2115.668597590748,
+            3612.976117245115
+          ],
+          "calls": 23,
+          "triangles": 148674,
+          "reason": "isolated-actual-snapshot"
+        },
+        "owner": {
+          "ready": true,
+          "reason": "isolated-actual-snapshot",
+          "viewsReady": true,
+          "programsRequired": false,
+          "programPreparationPending": false,
+          "sourceRevision": 94,
+          "commitGeneration": 1,
+          "lastPlanReconciliation": {
+            "sourceId": 8168,
+            "name": "Settled terrain sibling group",
+            "reason": "source-mutated-before-native-capture",
+            "plannedRevision": 79,
+            "nativeRevision": 79,
+            "count": 1,
+            "selectedRoots": null
+          },
+          "programMiss": null
+        }
+      },
+      "beforeColorValidSemantics": "null means no invalidation reason in ShadowWindowCoverage42.valid(); it is not boolean true. captureDrawState70 records that exact API value.",
+      "semanticsSources": [
+        "web/src/v2/shadow-window-controller42.js:32",
+        "web/src/v2/shadow-window-coverage42.js:90"
+      ],
+      "samplingLimit": "Owner/controller/submission/beforeColor values are from the retained final preparation pass, not a new per-lastCompleted telemetry sample. Earlier preparation passes had an unready owner. Three local native preparation passes, five preparation fences and three completed world draws are distinct counts."
+    },
+    "heldSnapshotQueues": {
+      "terrainQueuedTiles": 0,
+      "terrainNearQueuedTiles": 0,
+      "terrainMorphingGroups": 0,
+      "terrainWorkerPending": 0,
+      "terrainWorkerReady": true,
+      "ecologyPending": 43,
+      "initialEcologyPending": 45,
+      "grassPending": 0,
+      "wetContactPending": 0,
+      "forestFloorPending": 0,
+      "reachBankCoverPending": 0
+    },
+    "ecologyInterpretation": {
+      "pending": 43,
+      "attribution": "Source inspection of WorldEcology.update plus zero grass/forest-floor/reach-bank pending fields identifies the remaining far-tree tile queue.",
+      "castShadow": false,
+      "sourceReferences": [
+        "web/src/v2/ecology.js:1042-1069",
+        "web/src/v2/far-tree-batches.js:43-83",
+        "web/src/v2/far-tree-batches.test.js:28-36"
+      ],
+      "limitation": "A non-casting far-tree queue is still unfinished work. All queues settled and full quality acceptance are not established."
+    },
+    "otherLimits": {
+      "reachBankCoverPrepared42": {
+        "enabled": true,
+        "status": "fallback",
+        "ready": false,
+        "reason": "signal is aborted without reason",
+        "responseBytes": 0,
+        "rawBytes": 0,
+        "elapsedMs": 16471.800000000745
+      },
+      "waterLocalReflection": {
+        "supported": true,
+        "active": false,
+        "captures": 0,
+        "skipped": 2,
+        "width": 0,
+        "height": 0,
+        "estimatedAttachmentBytes": 0,
+        "lastCalls": 0,
+        "lastTriangles": 0,
+        "lastCPUms": 0,
+        "reason": "no-visible-near-water",
+        "patch": null,
+        "preparedMatrices": true,
+        "depthOrder": {
+          "enabled": false,
+          "active": false,
+          "objects": 0,
+          "unknownGroups": 0,
+          "bucketsPerOctave": 0.5
+        }
+      }
+    },
+    "jsonExport": {
+      "method": "Visible native diagnostic text selected/copied, pasted into a native editor and saved; no hidden extraction.",
+      "validJSON": true,
+      "browserTextByteIdentityProven": false
+    },
+    "memory": {
+      "tier": "software-world",
+      "rssCapKiB": 4194304,
+      "minimumRuntimeAvailableBytes": 4500000000,
+      "peakSampledOwnedRSSKiB": 3606688,
+      "minimumSampledAvailableBytes": 5078380544,
+      "rssOrMemoryFloorTriggered": false,
+      "scope": "This run stayed within sampled guards; this is not measured VRAM, a hard cgroup cap, an ON/OFF memory delta or a general fit guarantee."
+    },
+    "cleanup": {
+      "finishedUTC": "2026-10-29T10:36:23.415157+00:00",
+      "rootReturnCode": 0,
+      "remainingObservedOwned": [],
+      "unknownOwned": [],
+      "signalFailures": [],
+      "ownedBrowserAndEditorAbsentFromFinalNativeInventory": true,
+      "allUnobservedDescendantsProvenAbsent": false
+    },
+    "build": {
+      "sourceCommit": "4e1d6f251ff979760f7020c4d940489cba091c36",
+      "mainSourceSHA256": "c6885d9b1f079e241b301ab78d123c69324a77e40b7a1c8227ca306eedc3ebdf",
+      "environmentSourceSHA256": "9d6771c6a4c8ced8e8729305906a23be143ef8abc9acd86f6d25c1d371c9c8e8",
+      "nearShadowDetailSourceSHA256": "3a5a8ba2d0b705251b35426fed87327f6d1d5f07f5f102d0d1c31caa60476e5d",
+      "shadowRuntimeSourceSHA256": "ffb595fc9d02587576a9856432232b318daf358cc8f7b1f88c2a5c3d740b5b2f",
+      "reviewUISourceSHA256": "920e7ef0243e3166d013b8c59b069dfeace33e0a725fb89077e7d6545c4d8353",
+      "monitorSHA256": "6335eec4311d9934637657246fe2e5c4f93650dd52f34f55663960175255c8b4",
+      "servedResources": [
+        {
+          "path": "v2.html",
+          "http_status": 200,
+          "local_bytes": 3283,
+          "served_bytes": 3283,
+          "local_sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f",
+          "served_sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f",
+          "exact_match": true
+        },
+        {
+          "path": "assets/v2-0l2TWQV9.js",
+          "http_status": 200,
+          "local_bytes": 3322168,
+          "served_bytes": 3322168,
+          "local_sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1",
+          "served_sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1",
+          "exact_match": true
+        }
+      ]
+    },
+    "evidence": [
+      {
+        "path": "backups/cloud75-baseline/native-world-static-07-result.json",
+        "bytes": 26571,
+        "sha256": "30c5a48d61705edcc8c01567890592c9aff33cdc29366d7014575cc60f28878a",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-07-default-contract-fix/kalajun-software-review75-case07-default-held3.json",
+        "bytes": 136661,
+        "sha256": "abbeb2f4b228664b7fc8c82fbc9a69d4e5df7003c1b3a392e74451ad8dc72302",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-07-default-contract-fix/world-final-held3-default-contract-fix-native.jpg",
+        "bytes": 209569,
+        "sha256": "60d66d4c1d8cd6052d9a214348d5bd236a5e7e8153d8660f2ad924e1999e1c01",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      }
+    ],
+    "notClaimed": [
+      "All queues settled",
+      "Outdoor or dynamic local-shadow acceptance",
+      "Whole-scene or final visual-quality acceptance",
+      "Framebuffer pixel equivalence",
+      "Real-time performance or loading benefit",
+      "Full regression pass",
+      "Deployment or phase completion"
+    ]
+  },
+  "previousCheckpoint": {
+    "commit": "4e1d6f251ff979760f7020c4d940489cba091c36",
+    "parent": "81995554835581a9c3edbf2a47c94c68e175db18",
+    "cutoffUTC": "2026-10-29T10:20:00Z",
+    "case07StatusAtPublication": "Pending; subsequent terminal evidence is recorded here without rewriting the prior publication state."
+  },
+  "nextReviewAtThisUpdate": {
+    "scope": "One bounded textile geometry-feasibility round in ignored staging only. No production adoption, AO or GI regeneration, or acceptance outcome is recorded here."
+  },
+  "case08": {
+    "status": "TERMINAL_SAME_BUILD_EXPLICIT_OFF_CABIN_ROLLBACK_VALIDATED_LIMITED_THREE_STATIC_FRAMES",
+    "scope": "Same configuration-repair build as case07; only append localShadowWindow42=0; unchanged resource limits; initial three static frames only.",
+    "finishedUTC": "2026-10-29T10:56:25.932899+00:00",
+    "reportSealedUTC": "2026-10-29T10:57:42.955969+00:00",
+    "query": "view=pastoral-house_a-entry&time=870&softwareReview75=1&profile=1&houseTextiles62=0&boardwalkContactIndex74=0&localShadowWindow42=0",
+    "softwareReview75": {
+      "enabled": true,
+      "mode": "finite-software-QA-NOT-realtime-performance",
+      "backend": {
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "vendor": "Google Inc. (Google)",
+        "context": {
+          "screenAntialias": false,
+          "requestedScreenAntialias": false,
+          "worldTargetSamples": 4,
+          "probeEligible": true,
+          "fallback": false
+        }
+      },
+      "phase": "held",
+      "submittedWorldFrames": 3,
+      "completedWorldFrames": 3,
+      "completedPreparationFences": 2,
+      "remaining": 0,
+      "inFlight": false,
+      "reserved": false,
+      "inputGapMs": 0,
+      "fenceTimeoutMs": 210000,
+      "completedFrameSimulationSeconds": 0,
+      "stepSeconds": 0,
+      "lastCompleted": {
+        "generation": 1,
+        "view": "pastoral-house_a-entry",
+        "position": [
+          -1741.3161458968743,
+          2117.468597447125,
+          3610.814826865227
+        ],
+        "yaw": -128.8693031093039,
+        "pitch": -11.281928628668062,
+        "time": 870,
+        "search": "?view=pastoral-house_a-entry&time=870&softwareReview75=1&profile=1&houseTextiles62=0&boardwalkContactIndex74=0&localShadowWindow42=0",
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1
+        },
+        "scope": "world-and-reflection",
+        "draw": 3,
+        "delta": 0,
+        "fenceWallMs": 69347.39999999851,
+        "completedAtMs": 326298.59999999776
+      },
+      "error": null
+    },
+    "ready": true,
+    "preparing": false,
+    "errors": [],
+    "viewport": {
+      "width": 1280,
+      "height": 800,
+      "pixelRatio": 1
+    },
+    "depthMode": "reversed-float32",
+    "frameTarget": {
+      "enabled": true,
+      "width": 1280,
+      "height": 800,
+      "samples": 4,
+      "colorFormat": "RGBA16F",
+      "depthFormat": "DEPTH_COMPONENT32F"
+    },
+    "identityChecks": {
+      "view": true,
+      "position": true,
+      "yaw": true,
+      "pitch": true,
+      "time": true,
+      "viewport": true,
+      "generation": true,
+      "exact_search": true,
+      "three_static_draws": true,
+      "held": true
+    },
+    "nearShadowDetail": {
+      "mode": "cascade",
+      "requested": "auto",
+      "mapSizes": [
+        2048,
+        2048,
+        2048,
+        2048
+      ],
+      "cascades": 4,
+      "splits": [
+        20,
+        60,
+        180,
+        500
+      ],
+      "shadowMapSize": 2048,
+      "maxTextures": 32,
+      "maxTextureSize": 8192
+    },
+    "localShadowWindow42": {
+      "enabled": false,
+      "ready": false,
+      "phase": "idle",
+      "preparations": 0,
+      "last": null
+    },
+    "heldSnapshotQueues": {
+      "terrainQueuedTiles": 0,
+      "terrainNearQueuedTiles": 0,
+      "terrainMorphingGroups": 0,
+      "terrainWorkerPending": 0,
+      "terrainWorkerReady": true,
+      "ecologyPending": 43,
+      "initialEcologyPending": 45,
+      "grassPending": 0,
+      "wetContactPending": 0,
+      "forestFloorPending": 0,
+      "reachBankCoverPending": 0
+    },
+    "ecologyInterpretation": {
+      "pending": 43,
+      "attribution": "Source inspection of WorldEcology.update plus zero grass/forest-floor/reach-bank pending fields identifies the remaining far-tree tile queue.",
+      "castShadow": false,
+      "sourceReferences": [
+        "web/src/v2/ecology.js:1042-1069",
+        "web/src/v2/far-tree-batches.js:43-83",
+        "web/src/v2/far-tree-batches.test.js:28-36"
+      ],
+      "limitation": "A non-casting far-tree queue is still unfinished work. All queues settled and full quality acceptance are not established."
+    },
+    "otherLimits": {
+      "reachBankCoverPrepared42": {
+        "enabled": true,
+        "status": "fallback",
+        "ready": false,
+        "reason": "signal is aborted without reason",
+        "responseBytes": 0,
+        "rawBytes": 0,
+        "elapsedMs": 14958.699999999255
+      }
+    },
+    "jsonExport": {
+      "method": "Visible native diagnostic text selected/copied, pasted into a native editor and saved; no hidden extraction.",
+      "validJSON": true,
+      "browserTextByteIdentityProven": false
+    },
+    "memory": {
+      "tier": "software-world",
+      "rssCapKiB": 4194304,
+      "minimumRuntimeAvailableBytes": 4500000000,
+      "peakSampledOwnedRSSKiB": 3529996,
+      "minimumSampledAvailableBytes": 5196709888,
+      "rssOrMemoryFloorTriggered": false,
+      "scope": "This run stayed within sampled guards; this is not measured VRAM, a hard cgroup cap, an ON/OFF memory delta or a general fit guarantee."
+    },
+    "cleanup": {
+      "finishedUTC": "2026-10-29T10:56:25.932899+00:00",
+      "rootReturnCode": 0,
+      "remainingObservedOwned": [],
+      "unknownOwned": [],
+      "signalFailures": [],
+      "ownedBrowserAndEditorAbsentFromFinalNativeInventory": true,
+      "allUnobservedDescendantsProvenAbsent": false
+    },
+    "build": {
+      "sourceCommit": "4e1d6f251ff979760f7020c4d940489cba091c36",
+      "mainSourceSHA256": "c6885d9b1f079e241b301ab78d123c69324a77e40b7a1c8227ca306eedc3ebdf",
+      "environmentSourceSHA256": "9d6771c6a4c8ced8e8729305906a23be143ef8abc9acd86f6d25c1d371c9c8e8",
+      "nearShadowDetailSourceSHA256": "3a5a8ba2d0b705251b35426fed87327f6d1d5f07f5f102d0d1c31caa60476e5d",
+      "shadowRuntimeSourceSHA256": "ffb595fc9d02587576a9856432232b318daf358cc8f7b1f88c2a5c3d740b5b2f",
+      "reviewUISourceSHA256": "920e7ef0243e3166d013b8c59b069dfeace33e0a725fb89077e7d6545c4d8353",
+      "monitorSHA256": "6335eec4311d9934637657246fe2e5c4f93650dd52f34f55663960175255c8b4",
+      "servedResources": [
+        {
+          "path": "v2.html",
+          "http_status": 200,
+          "local_bytes": 3283,
+          "served_bytes": 3283,
+          "local_sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f",
+          "served_sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f",
+          "exact_match": true
+        },
+        {
+          "path": "assets/v2-0l2TWQV9.js",
+          "http_status": 200,
+          "local_bytes": 3322168,
+          "served_bytes": 3322168,
+          "local_sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1",
+          "served_sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1",
+          "exact_match": true
+        }
+      ]
+    },
+    "pairedCase07Comparison": {
+      "checks": {
+        "view": true,
+        "position": true,
+        "yaw": true,
+        "pitch": true,
+        "time": true,
+        "viewport": true,
+        "same_generation": true,
+        "query_only_append_shadow0": true,
+        "served_bytes_hashes_same": true,
+        "frame_target_format_samples_size_same": true,
+        "same_backend": true
+      },
+      "scope": "Same-build default-ON / explicit-OFF cabin initial startup configuration and rollback evidence; not a performance or pixel-identity comparison.",
+      "limits": [
+        "No pixel-identity assertion; two native screenshots include different window positions, same viewport and camera.",
+        "No performance conclusion from elapsed time, frameTarget.frames or draw counts; ON has additional local preparation work.",
+        "OFF disabled/idle/preparations0/lastnull establishes absence of recorded local preparation/owner; no hidden-state access used.",
+        "Both retain ecology.pending43; this pair does not establish fully settled-scene quality."
+      ]
+    },
+    "evidence": [
+      {
+        "path": "backups/cloud75-baseline/native-world-static-08-result.json",
+        "bytes": 27579,
+        "sha256": "1955f20f2ed8bbacea04affbf4701c9d38367d7e7adaaa5fb04ed432c29e00c3",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-08-shadow0-contract-fix/kalajun-software-review75-case08-shadow0-held3.json",
+        "bytes": 116620,
+        "sha256": "c5e4dc2f2886d694e2ba51e1bb75e48383d0d329a8f3911f0edf5024e16ae4ff",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      },
+      {
+        "path": "backups/cloud75-baseline/native-world-static-08-shadow0-contract-fix/world-final-held3-shadow0-contract-fix-native.jpg",
+        "bytes": 205565,
+        "sha256": "c7114139b94ee6a88b8d92f51b723caa9ed64303707a0060daf7cc20bef8fb5d",
+        "delivery": "Retained locally under ignored backups; raw profiles/logs/downloads/screenshots are not published."
+      }
+    ],
+    "notClaimed": [
+      "All queues settled",
+      "Outdoor or dynamic local-shadow acceptance",
+      "Whole-scene or final visual-quality acceptance",
+      "Framebuffer pixel equivalence",
+      "Real-time performance or loading benefit",
+      "Full regression pass",
+      "Deployment or phase completion"
+    ]
+  },
+  "terrainCopyCandidateEvaluation": {
+    "status": "REJECTED_NOT_ADOPTED",
+    "reports": [
+      "tools/reports/terrain75-copy-candidate-evaluation.md",
+      "tools/reports/terrain75-copy-candidate-evaluation.json"
+    ],
+    "syntheticEquivalenceCases": 5,
+    "fixedWorkABBASamples": 16,
+    "candidateFasterBlocks": 1,
+    "measuredBlocks": 4,
+    "originalBudgetMs": 2500,
+    "originalBudgetCases": 4,
+    "originalBudgetReadyPasses": 0,
+    "productionTerrainTestsPreparedAndGIBindingsUnchanged": true,
+    "regenerationPerformed": false,
+    "scope": "Bounded isolated CPU experiment, not a full regression or browser performance benchmark. No stable benefit justifies adoption; original readiness failure remains unresolved."
   }
 }
