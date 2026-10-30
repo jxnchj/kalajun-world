@@ -1,6 +1,6 @@
 {
-  "updatedAtUTC": "2026-10-30T10:29:06Z",
-  "status": "CANDIDATE_GEOMETRY_AO_ALL25_GI_CPU_PASS_NATIVE_NOT_RUN_NOT_ADOPTED",
+  "updatedAtUTC": "2026-10-30T14:36:00Z",
+  "status": "V24_REMOTE_VERIFIED_LIMITED_NATIVE_CHECKPOINT_TEXT_CHANGESET_NOT_ADOPTED",
   "gitBase": "4e1d6f251ff979760f7020c4d940489cba091c36",
   "backup": {
     "name": "kalajun-cloud75-recovery-checkpoint.zip",
@@ -774,9 +774,9 @@
     },
     {
       "item": "new_checkpoint_restore_verification",
-      "bytes": "v16 independently restored563files and635LFS baseline bindings",
-      "status": "V16_REMOTE_INDEPENDENT_RESTORE_PASS",
-      "next": "Next independent checkpoint must include post-v16 isolated build evidence and text publication changes"
+      "bytes": "v24 independently restored779files with635baselineLFS entries",
+      "status": "V24_REMOTE_INDEPENDENT_RESTORE_PASS",
+      "next": "Next backup must include postverification14:36metadata and eventual publicationreceipt; v24 contains frozen14:26prepublicationdraft"
     }
   ],
   "remainingStageTasks": [
@@ -829,10 +829,10 @@
     "restoration_hashes": "PASS",
     "new_build": "PASS 10.45s; existing chunk-size warning retained",
     "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
-    "new_full_tests": "NOT_RUN_THIS_SYNC; historical1992/1993 terrain2500ms failure unresolved",
-    "new_native_world": "NOT_RUN",
+    "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+    "new_native_world": "Limited living1/time870 paired+return and time600/1260SIDE held3pairs+limited major artifact screen PASS; no morning/duskOFFreturn, fine darkcontacts/fullart/otherfamilies/performance unresolved",
     "new_geometry_AO_GI": "ALL25_STATES20_MODULES_BAKE_STATIC_DECODER_CPU_OWNERS_PASS_NOT_NATIVE_VISUAL_ACCEPTANCE",
-    "independent_new_checkpoint_restore": "PASS v16 independently downloaded and extracted563files/635LFS bindings at10:29UTC",
+    "independent_new_checkpoint_restore": "PASS v24 independently downloaded/extracted779files with635mainLFSbaseline entries; postverification14:36metadata not inside archive",
     "evidence": "backups/cloud76-recovery/verification-summary.json",
     "buildFingerprints": {
       "web/dist-cloud76-recovery/v2.html": {
@@ -848,7 +848,7 @@
     "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
     "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
     "GI_guard_tests": "31 guards and actual source smoke passed earlier; later actual all25 GI decoder and CPU owners PASS",
-    "reconstructed_field_domain_unit_tests": "Historical11 unit tests followed by actual complete exact-domain and fresh corrected9metric checks PASS; native still NOT_RUN",
+    "reconstructed_field_domain_unit_tests": "Historical11 unit tests followed by actual complete exact-domain and fresh corrected9metric checks PASS; later limited living1 native scopes recorded in currentNativeCheckpoint, full-family/nativeart coverage remains open",
     "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
     "zero_cover_extended_attempt": "Historical one900s domain1 operation-cap failure retained; later exact-domain corrected geometry passed",
     "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance",
@@ -859,7 +859,10 @@
     "savedBlend_reopen": "PASS canonical full-material readback; earlier tuple/list failure retained in history",
     "source_replay_tests": "PASS14 isolated mini-repo tests rerun 2026-10-30 10:27UTC",
     "source_replay_bindings": "PASS52 source byte identities and897 explicit production inputs 2026-10-30 10:27UTC",
-    "isolated_native_candidate_build": "PASS8.93s22overlay635LFS782buildfiles HTTPbytechecked; NOT GPU/native/pixel/performance acceptance; after v16"
+    "isolated_native_candidate_build": "PASS8.93s22overlay635LFS782buildfiles HTTPbytechecked; NOT GPU/native/pixel/performance acceptance; after v16",
+    "native_qa_source_package": "PASS isolated standardgitapply,3exactsourceSHA,11helper tests; author38 and independent11 are separately attributed",
+    "nonuniform_transform_audit": "Prior actual5focused tests+class algebra experiment PASS; physical scaling approximation unresolved;7.046degree contract difference is NOT measured render error; not rerun by packaging",
+    "family_qa_source": "SOURCE_ONLY author44+independent17 tests PASS; no build/native; not part of frozen5fileSIDE package"
   },
   "completionBoundary": "Recovering files or past logs is not task completion. Stage3 stays in progress; stage5 global light/color deferred. No production adoption/deploy/force-push.",
   "history": [
@@ -1638,20 +1641,206 @@
       "recordType": "SUPERSEDED_PRE_1025_CURRENT_FIELDS",
       "zeroCandidatePhaseStatus": "DOMAIN1_OPERATION_CAP_DOMAIN2_EXACT_PROOF_TESTED_FRESH_RUN_PENDING",
       "reconstructedFieldDomainUnitTests": "PASS11 per reconstruction lead; actual candidate geometry/domain checks NOT_RUN"
+    },
+    {
+      "recordType": "PRIOR_1025_SYNC_CURRENT_VALIDATION",
+      "updatedAtUTC": "2026-10-30T10:29:06Z",
+      "currentValidation": {
+        "archive_and_manifest": "PASS",
+        "git_perfile_comparison": "PASS",
+        "restoration_hashes": "PASS",
+        "new_build": "PASS 10.45s; existing chunk-size warning retained",
+        "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+        "new_full_tests": "NOT_RUN_THIS_SYNC; historical1992/1993 terrain2500ms failure unresolved",
+        "new_native_world": "NOT_RUN",
+        "new_geometry_AO_GI": "ALL25_STATES20_MODULES_BAKE_STATIC_DECODER_CPU_OWNERS_PASS_NOT_NATIVE_VISUAL_ACCEPTANCE",
+        "independent_new_checkpoint_restore": "PASS v16 independently downloaded and extracted563files/635LFS bindings at10:29UTC",
+        "evidence": "backups/cloud76-recovery/verification-summary.json",
+        "buildFingerprints": {
+          "web/dist-cloud76-recovery/v2.html": {
+            "bytes": 3283,
+            "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+          },
+          "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+            "bytes": 3322168,
+            "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+          }
+        },
+        "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+        "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+        "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+        "GI_guard_tests": "31 guards and actual source smoke passed earlier; later actual all25 GI decoder and CPU owners PASS",
+        "reconstructed_field_domain_unit_tests": "Historical11 unit tests followed by actual complete exact-domain and fresh corrected9metric checks PASS; native still NOT_RUN",
+        "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
+        "zero_cover_extended_attempt": "Historical one900s domain1 operation-cap failure retained; later exact-domain corrected geometry passed",
+        "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance",
+        "GI_owner_CLI": "ACTUAL_FULL25_CANDIDATE_CPU_OFF_ON_PASS_NOT_GPU_NATIVE",
+        "solve_execution": "PASS35.80s approved offsets appliedonce after reviewed2fixes andexplicitbridge",
+        "zero_cache_reuse": "19originpayload verified REUSED_NOT_RERUN; correctedallfresh",
+        "strict3D": "PASS triangle-surface scan5targets fullmesh no decimation; no nonseam blockers or uncertainty; not generalvolume claim",
+        "savedBlend_reopen": "PASS canonical full-material readback; earlier tuple/list failure retained in history",
+        "source_replay_tests": "PASS14 isolated mini-repo tests rerun 2026-10-30 10:27UTC",
+        "source_replay_bindings": "PASS52 source byte identities and897 explicit production inputs 2026-10-30 10:27UTC",
+        "isolated_native_candidate_build": "PASS8.93s22overlay635LFS782buildfiles HTTPbytechecked; NOT GPU/native/pixel/performance acceptance; after v16"
+      },
+      "currentExecutionBlocker": {
+        "status": "V16_VERIFIED_TEXT_SYNC_PREPARED_REMOTE_PUBLICATION_NOT_YET_VERIFIED",
+        "boundary": "Existing AO/GI protected evidence immutable; latest native build evidence postdates v16"
+      }
+    },
+    {
+      "recordType": "PREVIOUS_1317_UNPUBLISHED_DRAFT",
+      "updatedAtUTC": "2026-10-30T13:17:00Z",
+      "currentValidation": {
+        "archive_and_manifest": "PASS",
+        "git_perfile_comparison": "PASS",
+        "restoration_hashes": "PASS",
+        "new_build": "PASS 10.45s; existing chunk-size warning retained",
+        "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+        "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+        "new_native_world": "Limited actual living1/time870 entry/chest and near paired/return evidence; SIDE pairedheld3, return active at13:17. Not fullworld/matrix/art/performance acceptance",
+        "new_geometry_AO_GI": "ALL25_STATES20_MODULES_BAKE_STATIC_DECODER_CPU_OWNERS_PASS_NOT_NATIVE_VISUAL_ACCEPTANCE",
+        "independent_new_checkpoint_restore": "PASS v16 independently downloaded and extracted563files/635LFS bindings at10:29UTC",
+        "evidence": "backups/cloud76-recovery/verification-summary.json",
+        "buildFingerprints": {
+          "web/dist-cloud76-recovery/v2.html": {
+            "bytes": 3283,
+            "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+          },
+          "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+            "bytes": 3322168,
+            "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+          }
+        },
+        "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+        "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+        "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+        "GI_guard_tests": "31 guards and actual source smoke passed earlier; later actual all25 GI decoder and CPU owners PASS",
+        "reconstructed_field_domain_unit_tests": "Historical11 unit tests followed by actual complete exact-domain and fresh corrected9metric checks PASS; native still NOT_RUN",
+        "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
+        "zero_cover_extended_attempt": "Historical one900s domain1 operation-cap failure retained; later exact-domain corrected geometry passed",
+        "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance",
+        "GI_owner_CLI": "ACTUAL_FULL25_CANDIDATE_CPU_OFF_ON_PASS_NOT_GPU_NATIVE",
+        "solve_execution": "PASS35.80s approved offsets appliedonce after reviewed2fixes andexplicitbridge",
+        "zero_cache_reuse": "19originpayload verified REUSED_NOT_RERUN; correctedallfresh",
+        "strict3D": "PASS triangle-surface scan5targets fullmesh no decimation; no nonseam blockers or uncertainty; not generalvolume claim",
+        "savedBlend_reopen": "PASS canonical full-material readback; earlier tuple/list failure retained in history",
+        "source_replay_tests": "PASS14 isolated mini-repo tests rerun 2026-10-30 10:27UTC",
+        "source_replay_bindings": "PASS52 source byte identities and897 explicit production inputs 2026-10-30 10:27UTC",
+        "isolated_native_candidate_build": "PASS8.93s22overlay635LFS782buildfiles HTTPbytechecked; NOT GPU/native/pixel/performance acceptance; after v16",
+        "native_qa_source_package": "PASS isolated standardgitapply,3exactsourceSHA,11helper tests; author38 and independent11 are separately attributed"
+      },
+      "currentExecutionBlocker": {
+        "status": "SIDE_RETURN_ACTIVE_AT_CUTOFF_MORNING600_NOT_PASSED_NEXT_TEXT_SYNC_NOT_RELEASED",
+        "boundary": "This is staged draft outside tracked worktree. No native task completion is inferred from authorization."
+      },
+      "nativeQASourcePackageDraft": {
+        "path": "tools/textile76-native-qa",
+        "status": "PREPARED_OUTSIDE_TRACKED_NOT_PUBLISHED",
+        "files": 5,
+        "patchSHA256": "598690de47d801739495760a9d63a4d9e1824237866749b959717226d5a5d5f1",
+        "sourceBaseline": "27596dfb56f48326971c46c69a376a4213a3073d",
+        "inputsExternal": 22,
+        "assetsIncluded": false,
+        "productionMainChanged": false,
+        "nativeStatus": {
+          "entryAndChest": "Own original native build OFF/ON entry/return and chest-facing paired static scope recorded; chest distance about3.8m, not closeup",
+          "near": "Own near instrument build OFF/ON and OFF-return held3; receipt verified; not SIDE proof",
+          "side": "Frozen SIDE build case01OFF/case02ON paired held3 recorded; case03OFF return active at cutoff, no terminal receipt yet",
+          "actualOwner": "house_a-living-1",
+          "time": 870,
+          "doorDegreesApprox": 102,
+          "viewport": "1280x800/DPR1/RGBA16F/Float32depth4xMSAA",
+          "ecologyPendingNonzero": true,
+          "images": "native JPEG screenshots, not rawframebuffer",
+          "backend": "cloud ANGLE SwiftShader finite QA, not targetGPU realtime performance"
+        },
+        "notEstablished": [
+          "SIDE case03OFF return terminal acceptance at this cutoff",
+          "Morning time600 currently conditional next step, not passed",
+          "Other4 GI families native coverage",
+          "Full door/time matrix",
+          "Walking/collision reachability",
+          "Fully settled scene",
+          "Final art/contact quality and realGPU performance",
+          "Default adoption or deployment"
+        ],
+        "frozenSideManifestSHA256": "c7f6cf3653c6209893dae9cbae1bf30d24cd4b22a04b4506ab93b3af7ed63a26",
+        "frozenSideInventorySHA256": "06688869181aa4c5f9a68bfc283f7ef9e029c5765e34acc42e9ce2990a439682"
+      }
+    },
+    {
+      "recordType": "GI_CPU_CHECKPOINT_PRE_NATIVE_SCOPE_LABELS",
+      "reconstructed_field_domain_unit_tests": "Historical11 unit tests followed by actual complete exact-domain and fresh corrected9metric checks PASS; native still NOT_RUN",
+      "notRun": [
+        "Native entity occupancy routing",
+        "Shader/GPU upload",
+        "Same-build geometry+all20GI OFF/ON/OFF pixel comparison",
+        "Native performance acceptance",
+        "Adoption/default enable/deployment"
+      ]
+    },
+    {
+      "recordType": "PREVIOUS_1405_UNPUBLISHED_DRAFT",
+      "currentNativeCheckpoint": {
+        "cutoffUTC": "2026-10-30T14:05:00Z",
+        "status": "LIMITED_VISIBLE_STATIC_SCREEN_NOT_FULL_ART_CONTACT_PERFORMANCE",
+        "owner": "house_a-living-1",
+        "timesCompleted": [
+          870,
+          600
+        ],
+        "doorDegreesApprox": 102,
+        "ecologyPending": 43,
+        "sideOFFReturn": "PASS exact first/return nativeJPEGbytes at870; not morningreturn",
+        "morningPair": "PASS actualheld3each+limited major visible artifact screen; fine darkcontacts unresolved; no separatemorningreturn",
+        "dusk1260": "RUNNING_NOT_COUNTED",
+        "nonuniform": "5focused tests+classalgebra PASS physicalscaleapproximation open;7.046deg not rendererror",
+        "evidence": {
+          "sideReturn": {
+            "path": "backups/cloud-review76-side/native-side-return-receipt.json",
+            "sha256": "715ab7803d06ec4ae9a7332c3b393b9652d32489bd8743ae76894d4a5454be98"
+          },
+          "morningPair": {
+            "path": "backups/cloud-review76-side-morning/native-morning-pair-receipt.json",
+            "sha256": "fc4355af19dbdd48238ca9eb8567924cf4a7660b9543e8c1d44b072c886ca830"
+          },
+          "morningReview": {
+            "path": "backups/cloud-review76-side-morning/independent-morning-static-review.json",
+            "sha256": "e22a5f081d2e5deb494eed7e26cae4e71186b3346353191794fbc788a20fed11"
+          },
+          "nonuniformReview": {
+            "path": "backups/cloud76-recovery/nonuniform76-audit/review.json",
+            "sha256": "273607aa319a8fc3d73cb50816f00a0a2bdfcfaced4081a8856e95666a61e1a6"
+          }
+        },
+        "notEstablished": [
+          "Hidden contacts/windowrear clearance/fine darkgaps",
+          "Other4 nativefamilies and full door/time matrix",
+          "Walking/motion/collision",
+          "Final art and targetGPU performance",
+          "Default adoption/deployment"
+        ],
+        "cleanup": "No deletion; pending user permission not inferred"
+      },
+      "currentExecutionBlocker": {
+        "status": "DUSK1260_RUNNING_EXCLUDED_FROM_PASS_CLAIMS_NEXT_TEXT_SYNC_WAIT_ROOT_RELEASE",
+        "boundary": "No tracked changes/push/cleanup; live dusk excluded from v23 and this stable cutoff"
+      }
     }
   ],
-  "latestPublishedGit": "450a2c0be9d7c1731058b991933d3167befcc147",
+  "latestPublishedGit": "27596dfb56f48326971c46c69a376a4213a3073d",
   "latestIndependentBackup": {
-    "version": 16,
-    "sha256": "21d9b57d7a3496542ee47268224df806405a30806c72c1df468dd24b5f1fcab2",
-    "bytes": 86884690,
-    "files": 563,
-    "entries": 564,
-    "baseline": "450a2c0be9d7c1731058b991933d3167befcc147",
+    "version": 24,
+    "sha256": "aff30afb354d7270debdf7bfe5a4351888066e2dc26a9eb26a9cd44fd431229f",
+    "bytes": 91449823,
+    "files": 779,
+    "entries": 780,
+    "baseline": "27596dfb56f48326971c46c69a376a4213a3073d",
     "independentlyDownloadedAndExtracted": true,
-    "receipt": "recovery-v16-independent/download-verification-receipt.json",
-    "receiptSHA256": "06e7618079264b00baf4f269d5d1bafc36e0499ba904356f6444642b99de5f75",
-    "boundary": "Full5families25states20modules+decoder+CPUowner+prepublication protected context; excludes later isolated native build and this sync doc updates"
+    "receipt": "recovery-v24-independent/download-verification-receipt.json",
+    "receiptSHA256": "8e6bd2c2a11ec77ff51151016410a6bb00b9da0f8b99f5fccda83bbd727fff05",
+    "boundary": "Contains14:26prepublication9file snapshot+dusk terminalproof+familySOURCEonly; excludes this postverification14:36metadata and future commit receipt"
   },
   "newBaselineAnalysis": {
     "status": "COMPLETE_BASELINE_MEASUREMENT_NOT_CANDIDATE_ACCEPTANCE",
@@ -1821,8 +2010,8 @@
     "executionBlocked": false
   },
   "currentExecutionBlocker": {
-    "status": "V16_VERIFIED_TEXT_SYNC_PREPARED_REMOTE_PUBLICATION_NOT_YET_VERIFIED",
-    "boundary": "Existing AO/GI protected evidence immutable; latest native build evidence postdates v16"
+    "status": "V24_REMOTE_VERIFIED_EXACT_TEXT_CHANGESET_AWAIT_FINAL_REVIEW_AND_ROOT_CAS_RELEASE",
+    "boundary": "No production changes/deletion; fullart/contact/family/performance remain open"
   },
   "canonicalCorrectionPhase": {
     "namespace": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-canonical-20261030",
@@ -1914,10 +2103,10 @@
     "decoderReportSHA256": "283577c58bcf31fd55b75a90c00b36cf08620b2bed9b9b9b84d0a2ab2668e044",
     "cpuOwnerExecutionSHA256": "b8c4090e10086a60183bcd9506c4e3e726169cd5070bae149588d3651960f876",
     "notRun": [
-      "Native entity occupancy routing",
-      "Shader/GPU upload",
-      "Same-build geometry+all20GI OFF/ON/OFF pixel comparison",
-      "Native performance acceptance",
+      "Remaining other4families native entity occupancy routing coverage",
+      "Full five-family shader/GPU and all door/time matrix validation beyond limited living1 static frames",
+      "Full five-family same-build geometry+all20GI module native pixel comparisons; limited living1 paired scopes recorded separately",
+      "Target-hardware native real-time performance acceptance",
       "Adoption/default enable/deployment"
     ],
     "postAOReadbackSHA256": {
@@ -1928,7 +2117,9 @@
     "productionAssetsChanged": false,
     "candidateDefaultsChanged": false,
     "adopted": false,
-    "deployed": false
+    "deployed": false,
+    "scopeTimestampUTC": "2026-10-30T10:25:00Z",
+    "historicalBoundary": "This preserves GI CPU checkpoint evidence before native runs; later limited living1/time870+600 scope is recorded in currentNativeCheckpoint. Remaining list below means full coverage, not absence of all native runs."
   },
   "sourceReplayPublication": {
     "path": "tools/cloud75-source-replay",
@@ -1957,5 +2148,118 @@
     "productionDefault": "OFF_UNCHANGED",
     "includedInV16": false,
     "httpServedFilesVerified": 3
+  },
+  "nativeQASourcePackageDraft": {
+    "path": "tools/textile76-native-qa",
+    "status": "INCLUDED_IN_THIS_TEXT_CHANGESET_SOURCE_SNAPSHOT_HISTORICAL_1317_REMOTE_PUBLICATION_VERIFICATION_REQUIRED",
+    "files": 5,
+    "patchSHA256": "598690de47d801739495760a9d63a4d9e1824237866749b959717226d5a5d5f1",
+    "sourceBaseline": "27596dfb56f48326971c46c69a376a4213a3073d",
+    "inputsExternal": 22,
+    "assetsIncluded": false,
+    "productionMainChanged": false,
+    "nativeStatus": {
+      "entryAndChest": "Own original native build OFF/ON entry/return and chest-facing paired static scope recorded; chest distance about3.8m, not closeup",
+      "near": "Own near instrument build OFF/ON and OFF-return held3; receipt verified; not SIDE proof",
+      "side": "Frozen SIDE build case01OFF/case02ON paired held3 recorded; case03OFF return active at cutoff, no terminal receipt yet",
+      "actualOwner": "house_a-living-1",
+      "time": 870,
+      "doorDegreesApprox": 102,
+      "viewport": "1280x800/DPR1/RGBA16F/Float32depth4xMSAA",
+      "ecologyPendingNonzero": true,
+      "images": "native JPEG screenshots, not rawframebuffer",
+      "backend": "cloud ANGLE SwiftShader finite QA, not targetGPU realtime performance"
+    },
+    "notEstablished": [
+      "SIDE case03OFF return terminal acceptance at this cutoff",
+      "Morning time600 currently conditional next step, not passed",
+      "Other4 GI families native coverage",
+      "Full door/time matrix",
+      "Walking/collision reachability",
+      "Fully settled scene",
+      "Final art/contact quality and realGPU performance",
+      "Default adoption or deployment"
+    ],
+    "frozenSideManifestSHA256": "c7f6cf3653c6209893dae9cbae1bf30d24cd4b22a04b4506ab93b3af7ed63a26",
+    "frozenSideInventorySHA256": "06688869181aa4c5f9a68bfc283f7ef9e029c5765e34acc42e9ce2990a439682",
+    "snapshotLabelsBoundary": "Frozen5file source package remains13:17 historical snapshot. Current14:05 results are recorded separately below; patch and source identity unchanged."
+  },
+  "currentNativeCheckpoint": {
+    "cutoffUTC": "2026-10-30T14:26:00Z",
+    "status": "LIMITED_VISIBLE_STATIC_SCREEN_NOT_FULL_ART_CONTACT_PERFORMANCE",
+    "owner": "house_a-living-1",
+    "timesCompleted": [
+      870,
+      600,
+      1260
+    ],
+    "doorDegreesApprox": 102,
+    "ecologyPending": 43,
+    "sideOFFReturn": "PASS exact first/return nativeJPEGbytes at870; not morningreturn",
+    "morningPair": "PASS actualheld3each+limited major visible artifact screen; fine darkcontacts unresolved; no separatemorningreturn",
+    "dusk1260": "PASS_TERMINAL_HELD3_OFF_ON_AND_LIMITED_VISIBLE_MAJOR_ARTIFACT_SCREEN_NOT_FINE_CONTACT_ART_PERFORMANCE",
+    "nonuniform": "5focused tests+classalgebra PASS physicalscaleapproximation open;7.046deg not rendererror",
+    "evidence": {
+      "sideReturn": {
+        "path": "backups/cloud-review76-side/native-side-return-receipt.json",
+        "sha256": "715ab7803d06ec4ae9a7332c3b393b9652d32489bd8743ae76894d4a5454be98"
+      },
+      "morningPair": {
+        "path": "backups/cloud-review76-side-morning/native-morning-pair-receipt.json",
+        "sha256": "fc4355af19dbdd48238ca9eb8567924cf4a7660b9543e8c1d44b072c886ca830"
+      },
+      "morningReview": {
+        "path": "backups/cloud-review76-side-morning/independent-morning-static-review.json",
+        "sha256": "e22a5f081d2e5deb494eed7e26cae4e71186b3346353191794fbc788a20fed11"
+      },
+      "nonuniformReview": {
+        "path": "backups/cloud76-recovery/nonuniform76-audit/review.json",
+        "sha256": "273607aa319a8fc3d73cb50816f00a0a2bdfcfaced4081a8856e95666a61e1a6"
+      },
+      "duskPair": {
+        "path": "backups/cloud-review76-side-dusk/native-dusk-pair-receipt.json",
+        "sha256": "adf316be39937ef15cb3ea44cc93e875a52a490a8cc80a64e089e3b8c65bb74e"
+      },
+      "duskReview": {
+        "path": "backups/cloud-review76-side-dusk/independent-dusk-static-review.json",
+        "sha256": "596b49f6abb82ed891f79991f54e85fa9046b12ee4cba793a6ed3aa20583e8b4"
+      }
+    },
+    "notEstablished": [
+      "Hidden contacts/windowrear clearance/fine darkgaps",
+      "Other4 nativefamilies and full door/time matrix",
+      "Walking/motion/collision",
+      "Final art and targetGPU performance",
+      "Default adoption/deployment",
+      "Separate morning and dusk OFF-return comparisons"
+    ],
+    "cleanup": "No deletion; pending user permission not inferred"
+  },
+  "familyQAPreparation": {
+    "status": "SOURCE_ONLY_NOT_BUILT_NOT_NATIVE",
+    "authorTests": 44,
+    "independentTests": 17,
+    "reviewPath": "backups/cloud76-recovery/familyqa76-independent-source-review.json",
+    "reviewSHA256": "a7acace43c3cb989c38bb0f862160ee7bc460bc61eafde83ee80f5236f29a559",
+    "includedInFiveFileSidePackage": false,
+    "originalSideFrozenSourcesChanged": false
+  },
+  "nextIndependentBackup": {
+    "version": 24,
+    "status": "COMPLETE_REMOTE_INDEPENDENT_RESTORE",
+    "preservedPrepublicationManifestSHA256": "7c2367c503288c45bcdca04aca0f25b652152e41875712fccc3abfec1f4b1f7f",
+    "selfReferenceBoundary": "Later14:36publicationmetadata is outside v24; preserve frozen14:26snapshot unchanged"
+  },
+  "publicationBoundary": {
+    "textFiles": 9,
+    "sourcePackageFiles": 5,
+    "progressDocuments": 4,
+    "runtimeMainOrAssetsChanged": false,
+    "defaultChanged": false,
+    "deployed": false,
+    "candidateInputsExternal": 22,
+    "oldSnapshotsUnchanged": true,
+    "currentFactsCutoffUTC": "2026-10-30T14:26:00Z",
+    "postBackupMetadataUTC": "2026-10-30T14:36:00Z"
   }
 }

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "baseline": "27596dfb56f48326971c46c69a376a4213a3073d",
+  "patchSHA256": "598690de47d801739495760a9d63a4d9e1824237866749b959717226d5a5d5f1",
+  "patchBytes": 11350,
+  "applyOnly": "clean isolated QA checkout; never live production or an active frozen case directory",
+  "exactPatchPaths": [
+    {
+      "path": "web/src/v2/main.js",
+      "baselineSHA256": "c6885d9b1f079e241b301ab78d123c69324a77e40b7a1c8227ca306eedc3ebdf",
+      "patchedSHA256": "e29d68ee4c5c1b098644d10022d14a4006fabc4ec4ca59138779671f5742df9c",
+      "patchedBytes": 52664
+    },
+    {
+      "path": "web/src/v2/textile-near-review76.js",
+      "baselineSHA256": null,
+      "patchedSHA256": "8bd67fa1bd146e15706d22bd75185f2343e7e9a6900365cdd19673321a335df4",
+      "patchedBytes": 2558
+    },
+    {
+      "path": "web/src/v2/textile-near-review76.test.js",
+      "baselineSHA256": null,
+      "patchedSHA256": "b82dac02151f7b55e5101e8c7b076e6ee338a58ee12968b9611c6604022b877b",
+      "patchedBytes": 6131
+    }
+  ],
+  "boundAuxiliaryInputs": {
+    "web/package.json": "e582c8413bebc92b6d5775ac606cb8cc94341cf170d64e0cfa4936795e8dee68",
+    "web/package-lock.json": "d3f37873a77604ea519fe65553ff4676d80fa8b02432aa7ab07bcd25214697f0",
+    "web/src/v2/viewpoints.js": "05c8070337f9a46e554b0883dde7f5a4e2c63ef37bd5b3d148a4126b7fcea412",
+    "web/src/v2/software-review75.js": "920e7ef0243e3166d013b8c59b069dfeace33e0a725fb89077e7d6545c4d8353"
+  },
+  "externalCandidatesSHA256": "0ced05758495cc8cea0716dc3bdbb59d8e5a25dd16b6f8151d12967532d6c5aa",
+  "frozenSourceManifestSHA256": "c7f6cf3653c6209893dae9cbae1bf30d24cd4b22a04b4506ab93b3af7ed63a26",
+  "frozenInventorySHA256": "06688869181aa4c5f9a68bfc283f7ef9e029c5765e34acc42e9ce2990a439682",
+  "nearSideEvidenceSeparation": "SIDE adds one low-eye preset while preserving original near; near and side use different build bytes and each requires its own paired evidence",
+  "sourcePackageChangesProduction": false,
+  "assetPublication": false
+}

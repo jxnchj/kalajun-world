@@ -1,0 +1,87 @@
+diff --git a/web/src/v2/main.js b/web/src/v2/main.js
+index edb47c3..803509a 100644
+--- a/web/src/v2/main.js
++++ b/web/src/v2/main.js
+@@ -1,3 +1,4 @@
++import {textileNearReviewPlaces76,textileNearNavigationAllowed76} from './textile-near-review76.js';
+ import {createSoftwareReview75,installSoftwareReviewUI75} from "./software-review75.js";
+ import {ShadowWindowRuntime42} from './shadow-window-runtime42.js';
+ import { RafCPUProfile42 } from "./raf-cpu-profile42.js";
+@@ -126,7 +127,7 @@ try {
+   const controls=new WorldControls(camera,canvas,world);
+   controls.floorAt=(x,z)=>settlements.floorHeightAt(x,z);
+   let prepareDestination,cancelEarlyPreparation,cancelLodgeRetry,selectedView="valley",viewGeneration=0;
+-  const places=worldViewpoints({water:world.hydrology?.viewpoints||[],rooms:settlements.viewpoints,life:[...walkingViewpoints(world),...householdYardViewpoints(world),pasture.viewpoint]});
++  const places=worldViewpoints({water:world.hydrology?.viewpoints||[],rooms:[...settlements.viewpoints,...textileNearReviewPlaces76(world,{enabled:Boolean(softwareReview75)})],life:[...walkingViewpoints(world),...householdYardViewpoints(world),pasture.viewpoint]});
+   function go(place,index=-1){
+     viewGeneration++;cancelLodgeRetry?.();
+     cancelEarlyPreparation?.();
+@@ -139,7 +140,7 @@ try {
+   let category="";
+   places.forEach((p,i)=>{
+     if(p.category!==category){category=p.category;const label=document.createElement("span");label.className="place-group";label.textContent=category;$("#places").appendChild(label);}
+-    const b=document.createElement("button");b.textContent=p.name;b.addEventListener("click",()=>go(p,i));$("#places").appendChild(b);
++    const b=document.createElement("button");b.textContent=p.name;b.addEventListener("click",()=>{if(textileNearNavigationAllowed76(p,softwareReview75))go(p,i);});$("#places").appendChild(b);
+   });
+   const params=new URLSearchParams(location.search),preparedMatrices=params.get("preparedMatrices")!=="0",initialPlace=initialViewpoint(params,places);go(places[initialPlace],initialPlace);
+   const structures=new WorldStructures(world,{doors,lodgeInteriorStream:lodgeInteriorStreamEnabled()}),ecology=new WorldEcology(world),water=new WorldWater(world);
+diff --git a/web/src/v2/textile-near-review76.js b/web/src/v2/textile-near-review76.js
+new file mode 100644
+--- /dev/null
++++ b/web/src/v2/textile-near-review76.js
+@@ -0,0 +1,29 @@
++// Isolated software-QA navigation only; never evidence of walking reachability.
++export const TEXTILE_NEAR_ENTITY76='cabins:-1743,3612:30f9adc9fb584805';
++export const TEXTILE_NEAR_ID76='software-qa-textile-near76';
++export const TEXTILE_NEAR_LABEL76='软件QA · 箱上织物近景（仅静态观察，不证明步行可达）';
++export const TEXTILE_SIDE_ID76='software-qa-textile-side76';
++export const TEXTILE_SIDE_LABEL76='软件QA · 箱上织物左斜侧（低机位静态观察，不证明步行可达）';
++export function textileNearReviewPlaces76(world,{enabled=false}={}){
++ if(enabled!==true)return [];
++ const matches=world?.entities?.filter(e=>e.id===TEXTILE_NEAR_ENTITY76);
++ if(matches?.length!==1||matches[0].assetId!=='house_a'||matches[0].part)throw Error('Textile near QA requires one complete representative house_a');
++ const pose=world.surface?.buildingPose?.(matches[0]);
++ if(!pose||![pose.x,pose.y,pose.z,pose.rot,pose.scale?.x,pose.scale?.y,pose.scale?.z].every(Number.isFinite)||[pose.scale.x,pose.scale.y,pose.scale.z].some(v=>v<=0))throw Error('Textile near QA invalid building pose');
++ const transform=([x,y,z])=>{const c=Math.cos(pose.rot),s=Math.sin(pose.rot);x*=pose.scale.x;z*=pose.scale.z;return [pose.x+c*x+s*z,pose.y+y*pose.scale.y,pose.z-s*x+c*z];};
++ const presets=[
++  {id:TEXTILE_NEAR_ID76,name:TEXTILE_NEAR_LABEL76,localPosition:[.95,1.60,-.90],localTarget:[.95,.88,-1.98]},
++  {id:TEXTILE_SIDE_ID76,name:TEXTILE_SIDE_LABEL76,localPosition:[-.45,1.18,-1.70],localTarget:[.85,.82,-1.98]},
++ ];
++ return presets.map(({id,name,localPosition,localTarget})=>{
++ const position=transform(localPosition),target=transform(localTarget);
++ if(![...position,...target].every(Number.isFinite))throw Error('Textile near QA nonfinite transformed pose');
++ const [dx,dy,dz]=target.map((v,i)=>v-position[i]),horizontal=Math.hypot(dx,dz);
++ if(!(horizontal>0))throw Error('Textile near QA degenerate look direction');
++ const yaw=Math.atan2(dx,-dz)*180/Math.PI,pitch=Math.atan2(dy,horizontal)*180/Math.PI;
++ return {id,name,category:'软件QA · 静态观察',entityId:TEXTILE_NEAR_ENTITY76,assetId:'house_a',x:position[0],y:position[1],z:position[2],yaw,pitch,softwareQAOnly:true,qaNavigation:{version:76,scope:'static-camera-teleport-not-walking-or-physics-acceptance',localPosition,localTarget,worldTarget:target,targetDistance:Math.hypot(dx,dy,dz)}};
++ });
++}
++export function textileNearNavigationAllowed76(place,review){
++ return !place?.softwareQAOnly||Boolean(review&&!review.closed&&review.phase==='held'&&!review.pending&&!review.reservation);
++}
+diff --git a/web/src/v2/textile-near-review76.test.js b/web/src/v2/textile-near-review76.test.js
+new file mode 100644
+--- /dev/null
++++ b/web/src/v2/textile-near-review76.test.js
+@@ -0,0 +1,21 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {readFileSync} from 'node:fs';
++import {Matrix4,Vector3,Quaternion} from 'three';
++import {textileNearReviewPlaces76 as places,textileNearNavigationAllowed76 as allowed,TEXTILE_NEAR_ENTITY76 as id,TEXTILE_NEAR_LABEL76 as label} from './textile-near-review76.js';
++import {worldViewpoints,initialViewpoint} from './viewpoints.js';
++const pose={x:10,y:20,z:30,rot:1.2,scale:{x:2,y:3,z:.5}};
++const fixture=(p=pose)=>({entities:[{id,assetId:'house_a'}],surface:{buildingPose:()=>p}});
++const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-10,`${a} != ${b}`);
++test('disabled is inert; only exact boolean true enables',()=>{const world=new Proxy({},{get(){throw Error('must not read');}});for(const enabled of [undefined,false,0,1,'1',null])assert.deepEqual(places(world,{enabled}),[]);assert.deepEqual(places(world),[]);});
++test('exact complete entity identity rejects missing duplicate wrong asset and part',()=>{for(const entities of [[],[{id,assetId:'yurt'}],[{id,assetId:'house_a',part:'roof'}],[{id,assetId:'house_a'},{id,assetId:'house_a'}]])assert.throws(()=>places({...fixture(),entities},{enabled:true}),/representative/);});
++test('invalid and degenerate pose fail closed',()=>{for(const p of [null,{...pose,x:NaN},{...pose,rot:Infinity},{...pose,scale:{x:0,y:1,z:1}},{...pose,scale:{x:1,y:-1,z:1}},{...pose,scale:null},{...pose,scale:{x:1e308,y:1e308,z:1e308}}])assert.throws(()=>places(fixture(p),{enabled:true}),/pose|direction/);});
++test('actual affine/nonuniform transformation matches independent Three matrix',()=>{const [p]=places(fixture(),{enabled:true}),matrix=new Matrix4().compose(new Vector3(pose.x,pose.y,pose.z),new Quaternion().setFromAxisAngle(new Vector3(0,1,0),pose.rot),new Vector3(pose.scale.x,pose.scale.y,pose.scale.z));const eye=new Vector3(.95,1.6,-.9).applyMatrix4(matrix),target=new Vector3(.95,.88,-1.98).applyMatrix4(matrix),d=target.clone().sub(eye);[p.x,p.y,p.z].forEach((v,i)=>near(v,eye.toArray()[i]));p.qaNavigation.worldTarget.forEach((v,i)=>near(v,target.toArray()[i]));near(p.yaw,Math.atan2(d.x,-d.z)*180/Math.PI);near(p.pitch,Math.atan2(d.y,Math.hypot(d.x,d.z))*180/Math.PI);near(p.qaNavigation.targetDistance,d.length());assert.equal(p.name,label);assert.equal(p.entityId,id);});
++test('unit-scale near distance and source immutability; each call independent',()=>{const world=fixture({...pose,rot:0,scale:{x:1,y:1,z:1}}),before=JSON.stringify(world),a=places(world,{enabled:true})[0],b=places(world,{enabled:true})[0];near(a.qaNavigation.targetDistance,Math.hypot(.72,1.08));assert.equal(JSON.stringify(world),before);a.qaNavigation.localPosition[0]=999;assert.equal(b.qaNavigation.localPosition[0],.95);assert.match(b.qaNavigation.scope,/not-walking/);});
++test('existing navigation registry and initial URL selection accept only actual generated preset',()=>{const original=[{id:'original',x:0,z:0,y:1,yaw:0,pitch:0}],before=JSON.stringify(original),rooms=[...original,...places(fixture(),{enabled:true})],all=worldViewpoints({rooms}),idNear=rooms[1].id;assert.equal(all[initialViewpoint(new URLSearchParams({view:idNear}),all)].id,idNear);assert.equal(JSON.stringify(original),before);assert.throws(()=>worldViewpoints({rooms:[...rooms,rooms[1]]}),/duplicate/);});
++test('new visible navigation rejects pending/inflight/preparing/closed; original views unchanged',()=>{const p={softwareQAOnly:true};for(const review of [null,{phase:'preparing'},{phase:'ready'},{phase:'held',pending:{}},{phase:'held',reservation:{}},{phase:'held',closed:true}])assert.equal(allowed(p,review),false);assert.equal(allowed(p,{phase:'held'}),true);assert.equal(allowed({},null),true);});
++test('minimal main wiring uses actual software review gate and existing go; no new rendering path',()=>{const s=readFileSync(new URL('./main.js',import.meta.url),'utf8');assert.match(s,/textileNearReviewPlaces76\(world,\{enabled:Boolean\(softwareReview75\)\}\)/);assert.match(s,/if\(textileNearNavigationAllowed76\(p,softwareReview75\)\)go\(p,i\)/);const helper=readFileSync(new URL('./textile-near-review76.js',import.meta.url),'utf8');assert.doesNotMatch(helper,/requestAnimationFrame|render\(|setPose\(|\.angle\s*=|\.speed\s*=|\.geometry\s*=|eval\(/);});
++
++test('side is the only added preset; front recipe preserved byte-for-value',()=>{const [front,side,...extra]=places(fixture(),{enabled:true});assert.deepEqual(extra,[]);assert.equal(front.id,'software-qa-textile-near76');assert.deepEqual(front.qaNavigation.localPosition,[.95,1.60,-.90]);assert.deepEqual(front.qaNavigation.localTarget,[.95,.88,-1.98]);assert.equal(side.id,'software-qa-textile-side76');assert.notEqual(front.id,side.id);assert.deepEqual(side.qaNavigation.localPosition,[-.45,1.18,-1.70]);assert.deepEqual(side.qaNavigation.localTarget,[.85,.82,-1.98]);assert.match(side.name,/低机位静态观察，不证明步行可达/);assert.equal(side.softwareQAOnly,true);});
++test('side affine transform and low-eye height match independent actual matrix',()=>{const side=places(fixture(),{enabled:true})[1],m=new Matrix4().compose(new Vector3(pose.x,pose.y,pose.z),new Quaternion().setFromAxisAngle(new Vector3(0,1,0),pose.rot),new Vector3(pose.scale.x,pose.scale.y,pose.scale.z));const eye=new Vector3(-.45,1.18,-1.70).applyMatrix4(m),target=new Vector3(.85,.82,-1.98).applyMatrix4(m),v=target.clone().sub(eye);[side.x,side.y,side.z].forEach((x,i)=>near(x,eye.toArray()[i]));near(side.y,pose.y+1.18*pose.scale.y);near(side.yaw,Math.atan2(v.x,-v.z)*180/Math.PI);near(side.pitch,Math.atan2(v.y,Math.hypot(v.x,v.z))*180/Math.PI);near(side.qaNavigation.targetDistance,v.length());side.qaNavigation.worldTarget.forEach((x,i)=>near(x,target.toArray()[i]));});
++test('both actual IDs resolve through unchanged existing initial view routing',()=>{const room=places(fixture(),{enabled:true}),all=worldViewpoints({rooms:room});for(const p of room){assert.equal(all[initialViewpoint(new URLSearchParams({view:p.id}),all)].id,p.id);assert.equal(allowed(p,{phase:'held'}),true);assert.equal(allowed(p,{phase:'held',pending:{}}),false);}assert.equal(places(fixture(),{enabled:false}).length,0);});

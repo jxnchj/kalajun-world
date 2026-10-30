@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "cutoffUTC": "2026-10-30T13:17:00Z",
+  "publicationState": "DRAFT_NOT_APPLIED_NOT_PUSHED",
+  "frozenSideSourceBuild": {
+    "authorFocusedTests": 38,
+    "independentHelperTests": 11,
+    "packagingReplayHelperTests": 11,
+    "buildSeconds": 5.86,
+    "buildFiles": 782,
+    "authorHTTPFiles": 4,
+    "independentRebuildInPackaging": false,
+    "publicLFS": 546,
+    "candidateGI": 20,
+    "totalMaterializedLFSPaths": 566,
+    "nonWebLFSPointersIntentionallyUnmaterialized": 69,
+    "full635Materialization": false
+  },
+  "nativeScopes": {
+    "entryAndChest": "Own original native build OFF/ON entry/return and chest-facing paired static scope recorded; chest distance about3.8m, not closeup",
+    "near": "Own near instrument build OFF/ON and OFF-return held3; receipt verified; not SIDE proof",
+    "side": "Frozen SIDE build case01OFF/case02ON paired held3 recorded; case03OFF return active at cutoff, no terminal receipt yet",
+    "actualOwner": "house_a-living-1",
+    "time": 870,
+    "doorDegreesApprox": 102,
+    "viewport": "1280x800/DPR1/RGBA16F/Float32depth4xMSAA",
+    "ecologyPendingNonzero": true,
+    "images": "native JPEG screenshots, not rawframebuffer",
+    "backend": "cloud ANGLE SwiftShader finite QA, not targetGPU realtime performance"
+  },
+  "notEstablished": [
+    "SIDE case03OFF return terminal acceptance at this cutoff",
+    "Morning time600 currently conditional next step, not passed",
+    "Other4 GI families native coverage",
+    "Full door/time matrix",
+    "Walking/collision reachability",
+    "Fully settled scene",
+    "Final art/contact quality and realGPU performance",
+    "Default adoption or deployment"
+  ],
+  "evidence": [
+    {
+      "path": "backups/cloud76-recovery/sideqa76-independent-review.json",
+      "sha256": "055e800ee0a0c06b6fe6a394920cec50a3ee1aa00893bddb11792faed6165431"
+    },
+    {
+      "path": "backups/cloud-review76/native-chest-pair-receipt.json",
+      "sha256": "a6c310b97f941a8c6385904d1f3cc97b557649ce2215c2d5952a82543f23449c"
+    },
+    {
+      "path": "backups/cloud-review76/root-off-return-image-comparison.json",
+      "sha256": "64e66edfce13a94461abc6d724ed5b9efe6534973c54faed70070ba6a157737b"
+    },
+    {
+      "path": "backups/cloud-review76-near/native-near-pair-receipt.json",
+      "sha256": "77284d10cef9b819f62608151fadfc36aa7e7197493a893ff811d724a501963a"
+    },
+    {
+      "path": "backups/cloud-review76-near/native-near-return-receipt.json",
+      "sha256": "8b01c437ccc8398a9dab673463ca20cb08805878a98bb353b5b4723c42d26405"
+    },
+    {
+      "path": "backups/cloud-review76-side/native-side-pair-receipt.json",
+      "sha256": "2148cc587927ae00f84e6c648bda6968d2cea017bb9593beb873bfac5d53ccea"
+    }
+  ],
+  "sourceReplayReceipt": {
+    "status": "PASS_ISOLATED_GIT_APPLY_CHECK_APPLY_3_SOURCE_SHA_AND_11_TESTS",
+    "baseline": "27596dfb56f48326971c46c69a376a4213a3073d",
+    "patchSHA256": "598690de47d801739495760a9d63a4d9e1824237866749b959717226d5a5d5f1",
+    "actualTests": 11,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "Minimal source fixture extracted from bound Git baseline with read-only dependency symlink; no runtime/assets/build/browser execution",
+    "logSHA256": "126ebf7a299feb0d3b3e6531daac9f7f35f101de3428df1ab5563df119f1c0e8",
+    "harnessNote": "Initial test run itself passed11; harness expected TAP while default reporter used spec. Explicit --test-reporter=tap rerun passed11. No source/test change."
+  },
+  "externalAssetBoundary": "22 candidate bytes remain only in independently verified private checkpoint recovery, absent from this Git source package; LFS upload capability not verified; no bypass",
+  "historicalFailure": "Full suite last1992/1993 with terrain2500ms failure; not rerun by this package"
+}

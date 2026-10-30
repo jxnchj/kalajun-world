@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "status": "REQUIRED_EXTERNAL_INPUTS_NOT_INCLUDED_IN_GIT_PACKAGE",
+  "gitBaseline": "27596dfb56f48326971c46c69a376a4213a3073d",
+  "source": "Verified independent checkpoint; obtain exact bytes through authorized private recovery access, not public download links",
+  "allowSubstitution": false,
+  "files": [
+    {
+      "path": "web/public/assets/v2/house-textiles62/geometry.glb",
+      "sha256": "e029ebb99b290484fdf049640aef1a41302e47f7cf281631b78376c59452ad5d",
+      "bytes": 1565840
+    },
+    {
+      "path": "web/public/assets/v2/house-textiles62/manifest.json",
+      "sha256": "dd87350692ec23eff7bc5e6270ce5bcc7253b2b842af6dbab6617f5efc87eecd",
+      "bytes": 4152
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a.js",
+      "sha256": "ced3ad0fd6488ab6ac08fdb7fb1983945817c9abdf12db79a8fa3c8f9e5ea432",
+      "bytes": 859101
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-30.js",
+      "sha256": "ef8d539dd88c5f01c153778d726da95fec7bb09526cb9aa414dc3d6b714c52b1",
+      "bytes": 361634
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-60.js",
+      "sha256": "1605f00fe4fe5b67f1b27efa06ed376fad5825a7ba82cd543ac13306a090c472",
+      "bytes": 381574
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-90.js",
+      "sha256": "aa2132ef2a5fb79f851437d4a8e01af8c515aac4851742ff93578c3f38684eb3",
+      "bytes": 389529
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-0.js",
+      "sha256": "9485d85e70cf1b68e0dec0c3a37af1f3a9fe35fc60b8c1a7360ef7053f01f4dd",
+      "bytes": 863200
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-0-30.js",
+      "sha256": "ce0c257d0862585b176b8ed4d80bf03b13e3cea7275b500c61f8014d21e0d98c",
+      "bytes": 363530
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-0-60.js",
+      "sha256": "1620d0cc90605466889fc70b2557f85c67a549973b91f96a364de830dd5f20e2",
+      "bytes": 383466
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-0-90.js",
+      "sha256": "45248a4c240f4c639dd8873f1175d39ae6f0fc9257064c51d2a7db0839efdce6",
+      "bytes": 391421
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-1.js",
+      "sha256": "0aabfdd6cb48797864996212d337b6ede8a22c3bd81a7785ebb7031ab0806d2e",
+      "bytes": 863204
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-1-30.js",
+      "sha256": "7333b3d246a5b8b7b46dbcd5a9229d1c1bc7566ad764557dd98b7e4763401e43",
+      "bytes": 363528
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-1-60.js",
+      "sha256": "5957a6aa912feb7dd8824c5f48443adf4dec99fca8f00917f33b8d4f9c690324",
+      "bytes": 383466
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-1-90.js",
+      "sha256": "fe2b67724d6881bfb831359f5e14731527bd92d71d9ecab7f2256f2130bbafeb",
+      "bytes": 391420
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-2.js",
+      "sha256": "9d19e0073a93e7b4c5ddc35ce53e4d459e45bfd1e5e698a78d16d6d6c6194898",
+      "bytes": 863201
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-2-30.js",
+      "sha256": "163cff290f2a6f0bf107e05495832ff7f043110a7dc4d2c399441c5f9d96c9b8",
+      "bytes": 363527
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-2-60.js",
+      "sha256": "bd710f20c6f30164c7e9ee43221657bc8156f9fb381f8109a47e37b0ce38c032",
+      "bytes": 383465
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-living-2-90.js",
+      "sha256": "2465d013ed2a4f6cf361cf29c92a5004bb6ae68e57a65fcccbff800b83210fdc",
+      "bytes": 391421
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-entry-tea-34.js",
+      "sha256": "d0a319ed800421a58baa160a27d3cf981ede501e802f43eaa2e0d0c281d49d80",
+      "bytes": 867046
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-entry-tea-34-30.js",
+      "sha256": "86f1c290a641ec368a91c52b8e0066b3abaf2addce11e8a280e932827408ec15",
+      "bytes": 365308
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-entry-tea-34-60.js",
+      "sha256": "9f66f3ef92dc6e792af5f974ec103b0ded7e1788102aa9df219cb0388fa404e6",
+      "bytes": 385243
+    },
+    {
+      "path": "web/src/v2/house-textiles-gi73-data/house_a-entry-tea-34-90.js",
+      "sha256": "5f9fdf28c817df5f1044350b1b5102ebd49fddb3a361dae73fc6d8495ed87089",
+      "bytes": 393199
+    }
+  ],
+  "boundary": "These candidate bytes are not published by this source package. Git alone cannot reproduce new candidate pixels. LFS upload and independent remote object verification remain required before asset publication."
+}
