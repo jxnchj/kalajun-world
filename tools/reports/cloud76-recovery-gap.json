@@ -1,7 +1,7 @@
 {
-  "updatedAtUTC": "2026-10-31T02:09:00Z",
-  "status": "RESTORED_GIT_LFS_STAGE_FAMILY_CURRENT_BUILD_PASS_NATIVE_PENDING",
-  "gitBase": "dbf707479a3bfae6aaffec957de7c7447b596c72",
+  "updatedAtUTC": "2026-10-31T03:13:05Z",
+  "status": "THREE_STATIC_FAMILY_PAIRS_PLUS_ACTUAL_SEVEN_STEP_PARTIAL_DOOR_NOT_FULL_ACCEPTANCE_LOCAL_DOCS_UNPUBLISHED",
+  "gitBase": "53b3606f1c0959a8ae129045d48f3ce0c657a83a",
   "backup": {
     "scope": "HISTORICAL_INITIAL_OCT30_V6_NOT_LATEST_BACKUP",
     "name": "kalajun-cloud75-recovery-checkpoint.zip",
@@ -831,9 +831,10 @@
     "current_environment_restore": "PASS Gitdbf+635actualLFS+811dispositions/729ignored+latest9Gittext+22candidate inputs",
     "current_family_tests": "Fresh author44/44 PASS zero skips; independent17/17 PASS; not reused historicalruns",
     "current_family_build": "Author2.99s782files+638public+HTTP4 PASS; independent source/asset/HTTP verification, not independent rebuild",
-    "current_family_native": "NOT_COMPLETE_AT_2026-10-31T02:09Z; Oct30native living1 evidence remains historical",
+    "current_family_native": "Three actual OFF/ON static pairs sealed; all three independently reviewed+remote backup verified; no full acceptance",
     "terrain_file_regression": "Historical directedcomplete terrain.test.js11/13:2failed, not currentfullproject rerun",
-    "terrain_profile_candidate": "REJECTED_AT_INTERFACE_REVIEW_BEFORE_IMPLEMENTATION; differentialNOTRUN,ABBA0/8NOTRUN; no fix/speedclaim"
+    "terrain_profile_candidate": "REJECTED_AT_INTERFACE_REVIEW_BEFORE_IMPLEMENTATION; differentialNOTRUN,ABBA0/8NOTRUN; no fix/speedclaim",
+    "partial_door_motion": "Actual native F+7steps PASS limited transition102to89.299deg,11frames,ready/errors[]; independent review/backup see partialDoorMotion20261031"
   },
   "completionBoundary": "File/dependency recovery, source tests and build do not establish currentfamily native or finalart/performance. Keep oldprotected context, rejected terrain candidates and all open stage3 tasks; no productionadoption/deploy/forcepush.",
   "history": [
@@ -1899,9 +1900,19 @@
         "nonuniform_transform_audit": "Prior actual5focused tests+class algebra experiment PASS; physical scaling approximation unresolved;7.046degree contract difference is NOT measured render error; not rerun by packaging",
         "family_qa_source": "SOURCE_ONLY author44+independent17 tests PASS; no build/native; not part of frozen5fileSIDE package"
       }
+    },
+    {
+      "recordType": "HISTORICAL_20261031_0209_NATIVE_PENDING_SNAPSHOT",
+      "currentFamilyNative": "NOT_COMPLETE_AT_2026-10-31T02:09Z; Oct30native living1 evidence remains historical",
+      "familyNativeAcceptance": "PENDING actualoccupiedowner/pixels required"
     }
   ],
-  "latestPublishedGit": "dbf707479a3bfae6aaffec957de7c7447b596c72",
+  "latestPublishedGit": {
+    "sha": "53b3606f1c0959a8ae129045d48f3ce0c657a83a",
+    "status": "REMOTE_REF_COMMIT_TREE_AND_4_ACTUAL_BLOBS_INDEPENDENTLY_VERIFIED",
+    "ci": "NO_STATUSES_OR_WORKFLOWS_NOT_A_PASS",
+    "newDraftPublished": false
+  },
   "latestIndependentBackup": {
     "version": 24,
     "sha256": "aff30afb354d7270debdf7bfe5a4351888066e2dc26a9eb26a9cd44fd431229f",
@@ -2084,8 +2095,8 @@
   "currentExecutionBlocker": {
     "status": "NO_RESTORATION_BLOCKER_FOR_FAMILY_NATIVE_QUEUE",
     "optionalBlender": "5.2.3 archive verified runtime installation deferred; system4.3.2 ineligible",
-    "native": "Currentfamily actual native owner/pixels not yet accepted",
-    "publication": "Four documentation edits prepared; no external push authorization yet"
+    "native": "Three-family static screen and actual seven-step partial door transition done; full closure, cloth contacts, full art/motion/performance remain pending",
+    "publication": "Updated four-doc meaningful checkpoint awaiting sealed independent receipts/review and root release; no external push yet"
   },
   "canonicalCorrectionPhase": {
     "namespace": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-canonical-20261030",
@@ -2311,7 +2322,7 @@
     "historicalBoundary": "Oct30 previouslyverified living1 finite static scope only; not currentOct31family native acceptance"
   },
   "familyQAPreparation": {
-    "status": "CURRENT_ENV_SOURCE_TEST_BUILD_HTTP_PASS_NATIVE_PENDING",
+    "status": "SOURCE_TEST_BUILD_PASS_THREE_NATIVE_STATIC_PAIRS_LIMITED_SCOPE",
     "baseline": "dbf707479a3bfae6aaffec957de7c7447b596c72",
     "authorTestsFresh": 44,
     "independentTestsFresh": 17,
@@ -2330,7 +2341,7 @@
     "manifestPath": "backups/cloud77-recovery/familyqa-build-20261031/manifest.json",
     "manifestSHA256": "6f96f619d7f8bdda2aa17a03b00427d5d906cdc4a90c68af33fa436048e43281",
     "independentReviewSHA256": "2498260f735002f162df67c2a1516601f0170599ae17958f7f104e2a160814be",
-    "nativeAcceptance": "PENDING actualoccupiedowner/pixels required"
+    "nativeAcceptance": "See familyStaticMatrix20261031; limited pair screen only, full acceptance remains pending"
   },
   "nextIndependentBackup": {
     "version": 24,
@@ -2415,5 +2426,227 @@
     "initialGitBase": "4e1d6f251ff979760f7020c4d940489cba091c36",
     "currentRestoration": "restoration20261031",
     "currentDurableChain": "durableRecoveryChain"
+  },
+  "familyStaticMatrix20261031": {
+    "cutoffUTC": "2026-10-31T02:55:00Z",
+    "buildBaseline": "dbf707479a3bfae6aaffec957de7c7447b596c72",
+    "textBaseline": "53b3606f1c0959a8ae129045d48f3ce0c657a83a",
+    "cases": [
+      {
+        "case": "living2",
+        "pairSHA256": "e3cef7d6140f3cdd7b45b0845163a711e0fd39db3c22a1a95cf49bd5159ee146",
+        "actualOccupiedRoom": "cabins:-1683,3643:fb877ed9142d2f85",
+        "actualFamily": "house_a-living-2",
+        "pending": 41,
+        "time": 870,
+        "doorDegrees": [
+          102.00002236585782
+        ],
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1
+        },
+        "heldFrames": 3,
+        "simulationDelta": 0,
+        "errors": [],
+        "ONNodes": 9,
+        "ONTriangles": 61560,
+        "independentReview": {
+          "sha256": "fbbdb2a6b89cc6d9ee0218c0a8d73cf7097ab4fb6e6e26b5103cfb4b5b2ea1db",
+          "status": "PASS_LIMITED_STATIC_PAIR_IDENTITY_AND_VISIBLE_MAJOR_ARTIFACT_SCREEN_NOT_FINAL_ACCEPTANCE"
+        },
+        "remoteBackup": {
+          "verifiedUTC": "2026-10-31T02:30:43.745361+00:00",
+          "status": "SPACE_REMOTE_BYTES_VERIFIED_LIVING2_LIMITED_STATIC_PASS",
+          "version": 0,
+          "bytes": 651988,
+          "sha256": "f87294055c7c0a8cce0018e71748ee67077adf149170fbf0c0ea8b9738cc45d6",
+          "files": 30,
+          "entries": 31,
+          "receiptSHA256": "52be672928e57917906fea659e67821226d4f2d0dcdeff6c9e8e905b3ea58692"
+        },
+        "OFFDoorInteractionDiagnostic": {
+          "path": "backups/cloud-review76-family-20261031/living2-off/held3-diagnostic.json",
+          "sha256": "efba1419d50c0c5ba57968ac93d895e48e433773924cfae7a3a510a1289d70ae",
+          "view": "software-qa-textile-living2-76",
+          "active": null,
+          "moving": 0,
+          "revision": 0,
+          "scope": "Only sealed OFF held3, not ON or next proposal execution"
+        }
+      },
+      {
+        "case": "living0",
+        "pairSHA256": "3975cca9360aaa16338bf07272e58702f5914eb4d35cf6a77537d8f763b7517d",
+        "actualOccupiedRoom": "cabins:-1612,3310:91ef73e0e6f0bbda",
+        "actualFamily": "house_a-living-0",
+        "pending": 36,
+        "time": 870,
+        "doorDegrees": [
+          102.00002236585782
+        ],
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1
+        },
+        "heldFrames": 3,
+        "simulationDelta": 0,
+        "errors": [],
+        "ONNodes": 9,
+        "ONTriangles": 61560,
+        "independentReview": {
+          "sha256": "ee76ad5dc1a55bc72606b41cc7bb8406c017202e880e5cab1ca972be637f4db1",
+          "status": "PASS_LIMITED_STATIC_PAIR_IDENTITY_AND_VISIBLE_MAJOR_ARTIFACT_SCREEN_NOT_FINAL_ACCEPTANCE"
+        },
+        "remoteBackup": {
+          "verifiedUTC": "2026-10-31T02:38:55.635179+00:00",
+          "status": "SPACE_REMOTE_BYTES_VERIFIED_LIVING0_LIMITED_STATIC_PASS",
+          "version": 0,
+          "bytes": 402668,
+          "sha256": "f024034d48a72a1403be41cd6834acecf82b5fd25338bd9d505cc56b2fbfb99e",
+          "files": 16,
+          "entries": 17,
+          "receiptSHA256": "5a4eb5c581d810657a914099e49395e6e91b7cb68022332709fe6147c6c3fd67"
+        },
+        "OFFDoorInteractionDiagnostic": {
+          "path": "backups/cloud-review76-family-20261031/living0-off/held3-diagnostic.json",
+          "sha256": "88e9c3ea8b356eea3a7b82bbe92321bbd3ea598051a015ab519be40dea717fa9",
+          "view": "software-qa-textile-living0-76",
+          "active": null,
+          "moving": 0,
+          "revision": 0,
+          "scope": "Only sealed OFF held3, not ON or next proposal execution"
+        }
+      },
+      {
+        "case": "entrytea",
+        "pairSHA256": "e8c7de975653544b112c07107a1e5ea8c9d48574b8929e7b8fc463ca0ba65e7c",
+        "actualOccupiedRoom": "cabins:-1972,3678:784f73bf0ba94d17",
+        "actualFamily": "house_a-entry-tea-34",
+        "pending": 37,
+        "time": 870,
+        "doorDegrees": 102.00002236585782,
+        "viewport": {
+          "width": 1280,
+          "height": 800,
+          "pixelRatio": 1
+        },
+        "heldFrames": 3,
+        "simulationDelta": 0,
+        "errors": [],
+        "ONNodes": 9,
+        "ONTriangles": 61560,
+        "independentReview": {
+          "sha256": "9604b8bdc8d4b5ef3117b4a3af60ac41c79bd76a02246c635f566c867c4ec8f0",
+          "status": "PASS_LIMITED_STATIC_PAIR_IDENTITY_AND_VISIBLE_MAJOR_ARTIFACT_SCREEN_NOT_FINAL_ACCEPTANCE"
+        },
+        "remoteBackup": {
+          "verifiedUTC": "2026-10-31T02:54:11.828188+00:00",
+          "status": "SPACE_REMOTE_BYTES_VERIFIED_ENTRYTEA_LIMITED_STATIC_PASS",
+          "version": 0,
+          "bytes": 400300,
+          "sha256": "d7754091aea53ec93f603764ea23bd628f43c761f6a9d43fe095196a5a40a0da",
+          "files": 16,
+          "entries": 17,
+          "receiptSHA256": "3d931c7f936c1c66c82e016c2bb48efe699caed7881e19eae00a35b3b83a4919"
+        },
+        "OFFDoorInteractionDiagnostic": {
+          "path": "backups/cloud-review76-family-20261031/entrytea-off/held3-diagnostic.json",
+          "sha256": "0dfd7050ed58c9c11aede0b809247ca1a8d9b04a0a3b6009cd049b7e794bf452",
+          "view": "software-qa-textile-entrytea-76",
+          "active": null,
+          "moving": 0,
+          "revision": 0,
+          "scope": "Only sealed OFF held3, not ON or next proposal execution"
+        }
+      }
+    ],
+    "notAccepted": [
+      "fine/hidden/rear contact",
+      "full art/softness",
+      "full time/door matrix",
+      "walking/collision/movement",
+      "independent OFF return for these three pairs",
+      "target GPU FPS/performance",
+      "default adoption"
+    ],
+    "sharedBaselineIssue": "living0 and entrytea green thin lines visible in OFF and ON, unresolved; not candidate attribution",
+    "doorRouteInvestigation": "ACTIVE investigation separate from static matrix; no accepted real F-key door interaction evidence in these pairs",
+    "runtimeDefaultAssetsChanged": false
+  },
+  "partialDoorMotion20261031": {
+    "cutoffUTC": "2026-10-31T03:13:05Z",
+    "status": "ACTUAL_NATIVE_PARTIAL_DOOR_GATE_SEALED_NOT_FULL_CLOSURE",
+    "receiptPath": "backups/cloud-review76-family-20261031/partialdoor-motion-receipt.json",
+    "receiptSHA256": "872a991cc95b09ac85cb1a951b28fa967bb88d42a667c1e50719170330782860",
+    "actualOwner": "cabins:-1743,3612:30f9adc9fb584805",
+    "family": "house_a-living-1",
+    "view": "pastoral-house_a-entry",
+    "time": 870,
+    "candidate": "ON_ONLY",
+    "degreesBefore": [
+      102.00002236585782
+    ],
+    "degreesAfter": [
+      89.29945790712453
+    ],
+    "controlSteps": 7,
+    "completedWorldFrames": 11,
+    "cumulativeSimulationSeconds": 0.11666666666666665,
+    "perStepSeconds": 0.016666666666666666,
+    "doorActive": {
+      "id": "cabins:-1743,3612:30f9adc9fb584805",
+      "target": "closed",
+      "openness": 0.9922161989680504,
+      "position": "partial",
+      "pending": true,
+      "blocked": false
+    },
+    "doorRevision": 7,
+    "GIWeights": [
+      {
+        "degrees": [
+          60
+        ],
+        "weight": 0.02335140309584882
+      },
+      {
+        "degrees": [
+          90
+        ],
+        "weight": 0.9766485969041512
+      }
+    ],
+    "householdReady": true,
+    "errors": [],
+    "ecologyPendingBefore": 42,
+    "ecologyPendingAfter": 35,
+    "independentReview": {
+      "path": "backups/cloud-review76-family-20261031/independent-partialdoor-motion-review.json",
+      "sha256": "58a6ef44ed887d0dc78e1b03947a53048f67dda1ff16f11b76ae95af13d48fb1",
+      "status": "PASS_LIMITED_SEVEN_STEP_NATIVE_DOOR_TRANSITION_AND_GI_OWNER_NOT_FULL_CLOSURE_OR_ART"
+    },
+    "remoteBackup": {
+      "verifiedUTC": "2026-10-31T03:12:37.730380+00:00",
+      "status": "SPACE_REMOTE_BYTES_VERIFIED_PARTIAL_DOOR_ONLY",
+      "version": 0,
+      "bytes": 679689,
+      "sha256": "442b65a116f9c65ad6744b9a667aea7f9f1b062a06f51ea8b2d0500b096188fe",
+      "files": 13,
+      "entries": 14,
+      "receiptSHA256": "37b2cf77fe2ac745c98aee92a57be0fba4921c18a179d0d8659c1744ed3bb0db"
+    },
+    "notAccepted": [
+      "full closed door",
+      "door OFF/ON/return comparison",
+      "cloth contact (cloth not visible)",
+      "walking/collision (flight, fixed position)",
+      "full GI/art",
+      "world settling",
+      "target GPU FPS"
+    ],
+    "nextFullClosed": "BUDGET_ASSESSMENT_ONLY_NOT_RUN"
   }
 }
