@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "status": "QA_SOURCE_REVIEW_ONLY_NOT_RUNTIME_ADOPTION",
+  "gitBase": "1d9ff5d3fb233e17ebbe8c67cbf28fbd3a73426c",
+  "sources": [
+    {
+      "path": "web/evidence-latch-smoke77.html",
+      "beforeSHA256": null,
+      "afterSHA256": "f350a076f1ad37e8a1a9b101a2ea18db62655638c8bb8ad311a6f6456749c538",
+      "bytes": 549
+    },
+    {
+      "path": "web/evidence-latch-smoke77.js",
+      "beforeSHA256": null,
+      "afterSHA256": "b9cc43dc57ab7cae5ebacd6b9bc8a35c00c0fd08f8be4e77c64ea0f73f20de7e",
+      "bytes": 2098
+    },
+    {
+      "path": "web/src/v2/evidence-latch-source77.json",
+      "beforeSHA256": null,
+      "afterSHA256": "251ef3640be1af616ddd8a73c071a51f84dffeea34dd43d4cf261bc6a1ff063f",
+      "bytes": 793
+    },
+    {
+      "path": "web/src/v2/evidence-latch77.js",
+      "beforeSHA256": null,
+      "afterSHA256": "e0631d1bf0032a4eb605f6c5970af1a3572efcb5ba14dfb7edcc76bfc9b91560",
+      "bytes": 13189
+    },
+    {
+      "path": "web/src/v2/evidence-latch77.test.js",
+      "beforeSHA256": null,
+      "afterSHA256": "2edaadb593ef16cb62878db12687eb279c8301e7a1dc3fabff3698233a78ba06",
+      "bytes": 12570
+    },
+    {
+      "path": "web/src/v2/software-review75.js",
+      "beforeSHA256": "920e7ef0243e3166d013b8c59b069dfeace33e0a725fb89077e7d6545c4d8353",
+      "afterSHA256": "cc6e615f33ee415de6e06d133aa8f8393d013709cf039e4b9040f5709c138766",
+      "bytes": 11841
+    },
+    {
+      "path": "web/vite.latch77.config.js",
+      "beforeSHA256": null,
+      "afterSHA256": "065b92f732b57d7b64e840468550ef2dd0c67396ac66338b716eff468ff8b491",
+      "bytes": 1134
+    }
+  ],
+  "patchSHA256": "4e863f02a1d0f98c523d6c1476d19fe22e63f94de07647ecf70d58b02fc5f922",
+  "externalInputsSHA256": "46515d3bade2ce063748095fa0b4ead4c03afbedd602d4010904e07010af1755",
+  "bindingSourcePaths": [
+    "src/v2/evidence-latch77.js",
+    "src/v2/software-review75.js",
+    "src/v2/software-review-policy75.js",
+    "evidence-latch-smoke77.js"
+  ],
+  "stageInventorySHA256": "addde7bc82cbb155c5bd2c92eb68e99ab07b53af9be817beffe341601acf8fdb",
+  "mainRuntimeAssetsDefaultsUnchanged": true
+}

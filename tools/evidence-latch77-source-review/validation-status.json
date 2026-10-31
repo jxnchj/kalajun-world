@@ -1,0 +1,293 @@
+{
+  "cutoffUTC": "2026-10-31T14:26:00Z",
+  "status": "QA_SOURCE_REPLAY_AND_BOUNDED_NATIVE4_64_65_COMPLETE_UI_FULLHASH_COMPARISON_INCOMPLETE",
+  "sourceAuthorTests": 52,
+  "freshIndependentSourceSubset": 36,
+  "newQAFullSuite": "NOT_RUN_PRIOR_WORKERFIX2068_NOT_TRANSFERABLE",
+  "sourceBuildReviewSHA256": "c8f459459b238785ca5551e86f98e72d9cae57d8f036500ad90e84a3de008e18",
+  "buildDistFiles": 785,
+  "publicFilesUnchanged": 638,
+  "sourceRowsUnchanged": 267,
+  "HTTPAuthor": 454,
+  "HTTPIndependentLocalBytes": 5,
+  "lightFixture": "Actualnative sharedcompiled fixture roundtrip separate fromWORLD",
+  "world": {
+    "status": "BOUNDED_EXACT64_AND_STATIC65_STATE_EVIDENCE_PASS_WITH_UI_FULL_HASH_COMPARISON_INCOMPLETE",
+    "receiptSHA256": "8fc5d747442bd46bb408fd4f4b51b0c4fff71e68e90111944b14651e82eb61c6",
+    "reviewSHA256": "2219dad68939500590118b8e7bebea69f65b29b3972197b5060c8e0bc5fb1628",
+    "wordingCorrectionSHA256": "013569929657f6695721eb1a86caf052a553564c41f33aa6e88da1c971b3fbbd",
+    "exportProof": {
+      "pairBytes": 219335,
+      "pairSHA256": "4e2fae97ad8b1c70b25f714c6f9e22cd67e69dc4d9fe24ecf1e8c620c364694c",
+      "slotBytes": {
+        "PRE_F": 88789,
+        "CLOSED64": 109248
+      },
+      "after65Bytes": 182538,
+      "after65SHA256": "14a2173adee22c3c50b861fff70960bdd5aaee3a8fe4fb4ad299ee6564b7bbf2",
+      "sameCapturedSessionSourceSignature": true,
+      "actualSourceFourHashesVerified": true,
+      "visibleUIHashPrefixHexDigits": 60,
+      "visibleUIBytesMatch": true,
+      "whole64HexUIComparison": "INCOMPLETE: final694c clipped; no independent or operator evidence of suffix. Original receipt/notes claim superseded by correction.",
+      "scope": "Full actual copied files parse and exact file hashes known. Not a browser Blob download proof."
+    },
+    "states": [
+      {
+        "name": "PRE_F",
+        "frames": 4,
+        "steps": 0,
+        "simulationSeconds": 0,
+        "delta": 0,
+        "selectedDoor": {
+          "id": "cabins:-1743,3612:30f9adc9fb584805",
+          "name": "木屋门",
+          "target": "open",
+          "openness": 1,
+          "position": "open",
+          "pending": false,
+          "blocked": false
+        },
+        "worker": {
+          "ready": true,
+          "pending": 0,
+          "completed": 971,
+          "discarded": 0,
+          "computeMs": 11570.099999926984,
+          "error": null,
+          "initMs": 7116.5
+        },
+        "terrain": {
+          "visibleTiles": 1132,
+          "residentTiles": 1488,
+          "queuedTiles": 0,
+          "morphingGroups": 0,
+          "triangles": 2608128,
+          "shadowDomain": null
+        },
+        "budget": {
+          "enabled": true,
+          "budgetBytes": 33554432,
+          "eligibleGroups": 218,
+          "selectedGroups": 57,
+          "builtGroups": 13,
+          "fallbackGroups": 297,
+          "duplicateKeyGroups": 0,
+          "admittedBytes": 33119280,
+          "liveBytes": 7553520,
+          "reservedBytes": 0,
+          "peakLiveReservedBytes": 33119280,
+          "buildFailures": 0,
+          "accounting": "merged numeric output only; not heap/GPU/driver retired buffers"
+        },
+        "ecology": {
+          "trees": 26718,
+          "grassTufts": 40043,
+          "flowerPlants": 1050,
+          "basalGrassTufts": 3774,
+          "pending": 42
+        },
+        "render": {
+          "frame": 52,
+          "calls": 1885,
+          "triangles": 15395779,
+          "points": 0,
+          "lines": 0
+        },
+        "textiles": {
+          "enabled": true,
+          "scope": "house_a asset family",
+          "nodes": 9,
+          "triangles": 61560,
+          "texturesAdded": 0,
+          "materialsBorrowed": true,
+          "originalGLBChanged": false
+        }
+      },
+      {
+        "name": "CLOSED64",
+        "frames": 64,
+        "steps": 60,
+        "simulationSeconds": 1.0000000000000013,
+        "delta": 0.016666666666666666,
+        "selectedDoor": {
+          "id": "cabins:-1743,3612:30f9adc9fb584805",
+          "name": "木屋门",
+          "target": "closed",
+          "openness": 0,
+          "position": "closed",
+          "pending": false,
+          "blocked": false
+        },
+        "worker": {
+          "ready": true,
+          "pending": 0,
+          "completed": 999,
+          "discarded": 0,
+          "computeMs": 11928.399999909103,
+          "error": null,
+          "initMs": 7116.5
+        },
+        "terrain": {
+          "visibleTiles": 1132,
+          "residentTiles": 1488,
+          "queuedTiles": 0,
+          "morphingGroups": 0,
+          "triangles": 2608128,
+          "shadowDomain": null
+        },
+        "budget": {
+          "enabled": true,
+          "budgetBytes": 33554432,
+          "eligibleGroups": 218,
+          "selectedGroups": 57,
+          "builtGroups": 57,
+          "fallbackGroups": 254,
+          "duplicateKeyGroups": 0,
+          "admittedBytes": 33119280,
+          "liveBytes": 33119280,
+          "reservedBytes": 0,
+          "peakLiveReservedBytes": 33119280,
+          "buildFailures": 0,
+          "accounting": "merged numeric output only; not heap/GPU/driver retired buffers"
+        },
+        "ecology": {
+          "trees": 43462,
+          "grassTufts": 40043,
+          "flowerPlants": 1050,
+          "basalGrassTufts": 3774,
+          "pending": 0
+        },
+        "render": {
+          "frame": 294,
+          "calls": 1917,
+          "triangles": 15636222,
+          "points": 0,
+          "lines": 0
+        },
+        "textiles": {
+          "enabled": true,
+          "scope": "house_a asset family",
+          "nodes": 9,
+          "triangles": 61560,
+          "texturesAdded": 0,
+          "materialsBorrowed": true,
+          "originalGLBChanged": false
+        }
+      },
+      {
+        "name": "AFTER65",
+        "frames": 65,
+        "steps": 60,
+        "simulationSeconds": 1.0000000000000013,
+        "delta": 0,
+        "selectedDoor": null,
+        "worker": {
+          "ready": true,
+          "pending": 0,
+          "completed": 999,
+          "discarded": 0,
+          "computeMs": 11928.399999909103,
+          "error": null,
+          "initMs": 7116.5
+        },
+        "terrain": {
+          "visibleTiles": 1132,
+          "residentTiles": 1488,
+          "queuedTiles": 0,
+          "morphingGroups": 0,
+          "triangles": 2608128,
+          "shadowDomain": null
+        },
+        "budget": {
+          "enabled": true,
+          "budgetBytes": 33554432,
+          "eligibleGroups": 218,
+          "selectedGroups": 57,
+          "builtGroups": 57,
+          "fallbackGroups": 254,
+          "duplicateKeyGroups": 0,
+          "admittedBytes": 33119280,
+          "liveBytes": 33119280,
+          "reservedBytes": 0,
+          "peakLiveReservedBytes": 33119280,
+          "buildFailures": 0,
+          "accounting": "merged numeric output only; not heap/GPU/driver retired buffers"
+        },
+        "ecology": {
+          "trees": 43462,
+          "grassTufts": 40043,
+          "flowerPlants": 1050,
+          "basalGrassTufts": 3774,
+          "pending": 0
+        },
+        "render": {
+          "frame": 298,
+          "calls": 2313,
+          "triangles": 17878732,
+          "points": 0,
+          "lines": 0
+        },
+        "textiles": {
+          "enabled": true,
+          "scope": "house_a asset family",
+          "nodes": 9,
+          "triangles": 61560,
+          "texturesAdded": 0,
+          "materialsBorrowed": true,
+          "originalGLBChanged": false
+        }
+      }
+    ],
+    "resource": {
+      "peakOwnedRSSKiB": 4111528,
+      "capKiB": 4194304,
+      "marginMiB": 80.8359375,
+      "minimumAvailableBytes": 4870811648,
+      "cleanupUTC": "2026-10-31T14:19:47.379158+00:00",
+      "allUnobservedDescendantsProvenAbsent": false
+    },
+    "backup": {
+      "receiptSHA256": "8d5ab6512e772bd18e1b56182779746ddbe6e7efda4718d544bc4aa6024d3f65",
+      "sha256": "e7cd6dff1a8366ca7af00d0de8c0a28a00ef3673dedd484de20dd3d80c7f8034",
+      "bytes": 2331608,
+      "files": 31,
+      "entries": 32,
+      "future10TextsIncluded": false
+    },
+    "fineContactFullArtFPSAdoption": false
+  },
+  "hashVisibility": "Actualexport fullfile SHA independentlycomputed; screenshot UI only first60hexvisible, notfull64visualmatch",
+  "sourcePackageGuardTests": "14tiny guards PASS; exact7source mini gitapply before/afterSHA/size/repeatrefusal PASS; no heavyproducer/native rerun",
+  "backups": {
+    "latch": {
+      "receiptSHA256": "c6caaf48b60a69b5a1a75c4333b2f34f6d5b61bef5bccbc2fe19a93380a71b71",
+      "sha256": "49f71819f8c92daabae37215716572b0818f2c7b6874cf81d4a9dba45214906e",
+      "bytes": 335027,
+      "files": 41,
+      "entries": 42
+    },
+    "latch-light": {
+      "receiptSHA256": "3706a51da111c6562a9f06245287e290e8b931a225525f54ba93c637945de304",
+      "sha256": "59bad5d3418af1821e65a7670c1f2a5c26030cee95db0ffe88e3f9cedd37c130",
+      "bytes": 865671,
+      "files": 23,
+      "entries": 24
+    },
+    "latch-world": {
+      "receiptSHA256": "8d5ab6512e772bd18e1b56182779746ddbe6e7efda4718d544bc4aa6024d3f65",
+      "sha256": "e7cd6dff1a8366ca7af00d0de8c0a28a00ef3673dedd484de20dd3d80c7f8034",
+      "bytes": 2331608,
+      "files": 31,
+      "entries": 32,
+      "future10TextsIncluded": false
+    }
+  },
+  "notAccepted": [
+    "finehiddencontact",
+    "fullart",
+    "realGPUFPS",
+    "globalmemoryfix",
+    "defaultproductionadoption"
+  ]
+}
