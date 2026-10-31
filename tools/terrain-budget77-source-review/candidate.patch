@@ -1,0 +1,173 @@
+--- /dev/null
++++ b/web/src/v2/terrain-batch-budget77.js
+@@ -0,0 +1,38 @@
++// Candidate-only numeric merged-buffer accounting. NOT JS heap or GPU memory.
++export const TERRAIN_BATCH_BUDGET77=32*1024*1024;
++export function terrainBatchBudgetPolicy77(search=''){
++ const p=new URLSearchParams(search),values=p.getAll('terrainBatchBudget77');
++ if(!values.length)return null;
++ if(values.length!==1||!['0','1'].includes(values[0]))throw new RangeError('terrainBatchBudget77 requires exactly one explicit 0 or 1');
++ if(values[0]==='0')return null;
++ if(p.getAll('softwareReview75').length!==1||p.get('softwareReview75')!=='1')throw new Error('terrainBatchBudget77=1 requires softwareReview75=1');
++ return TERRAIN_BATCH_BUDGET77;
++}
++const safe=n=>Number.isSafeInteger(n)&&n>=0;
++const checkedIndices=new WeakMap();
++const exactArrayConstructors=new Set([Float32Array,Float64Array,Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array]);
++export function estimateTerrainBatchBytes77(parent){
++ const children=parent?.children;if(!children||children.length!==4)throw new Error('Expected four children');
++ let vertices=0,indexCount=0,attributeBytes=0;let layout=null;
++ for(const n of children){const g=n?.mesh?.geometry,a=g?.attributes?.position,ix=g?.index;
++  if(!a||!safe(a.count)||a.count===0||!ix||!(ix.array instanceof Uint16Array||ix.array instanceof Uint32Array)||ix.itemSize!==1||ix.normalized||!safe(ix.count)||ix.count!==ix.array.length||ix.count%3)throw new RangeError('Invalid terrain index dimensions');
++  const keys=Object.keys(g.attributes);if(layout===null)layout=keys.map(k=>[k,g.attributes[k]]);else if(keys.length!==layout.length||keys.some((k,i)=>k!==layout[i][0]))throw new Error('Mismatched attributes');
++  for(let i=0;i<keys.length;i++){const b=g.attributes[keys[i]],ref=layout[i][1];if(!exactArrayConstructors.has(b.array.constructor)||Object.getPrototypeOf(b.array)!==b.array.constructor.prototype||!b.isBufferAttribute||b.isInterleavedBufferAttribute||!safe(b.itemSize)||!b.itemSize||b.count!==a.count||!safe(b.array.length)||b.array.length!==a.count*b.itemSize||b.array.constructor!==ref.array.constructor||b.itemSize!==ref.itemSize||b.normalized!==ref.normalized||b.gpuType!==ref.gpuType)throw new Error('Invalid attribute layout');attributeBytes+=b.array.byteLength;if(!safe(attributeBytes))throw new RangeError('Unsafe attribute bytes');}
++  const old=checkedIndices.get(ix);if(!old||old.array!==ix.array||old.version!==ix.version||old.count!==a.count){for(const v of ix.array)if(v>=a.count)throw new RangeError('Index outside child vertices');checkedIndices.set(ix,{array:ix.array,version:ix.version,count:a.count});}
++  vertices+=a.count;indexCount+=ix.count;if(!safe(vertices)||vertices>0x100000000||!safe(indexCount))throw new RangeError('Unsafe merged index range');
++ }
++ const indexElementBytes=vertices>65535?4:2,indexBytes=indexCount*indexElementBytes,bytes=attributeBytes+indexBytes;
++ if(!safe(indexBytes)||!safe(bytes))throw new RangeError('Unsafe merged bytes');
++ return {bytes,attributeBytes,indexBytes,indexElementBytes,vertices,indexCount};
++}
++export function terrainBatchStableKey77(p){
++ const values=[p.children?.[0]?.depth,p.x,p.z,p.size];if(!values.every(Number.isFinite)||!Number.isInteger(values[0])||!(p.size>0))throw new Error('Invalid stable terrain group key');return values;
++}
++export function selectTerrainBatchGroups77(candidates,budget){
++ if(!safe(budget))throw new RangeError('Invalid numeric copy budget');
++ const keys=new Map();for(const c of candidates){if(!safe(c.bytes)||!c.bytes)throw new RangeError('Invalid candidate cost');c.key??=terrainBatchStableKey77(c.parent);const key=JSON.stringify(c.key);keys.set(key,(keys.get(key)||0)+1);}
++ // Same nominal 3-draw saving for all groups; cost first. This is NOT an FPS estimate.
++ const eligible=candidates.filter(c=>keys.get(JSON.stringify(c.key))===1).slice().sort((a,b)=>a.bytes-b.bytes||a.key[0]-b.key[0]||a.key[1]-b.key[1]||a.key[2]-b.key[2]||a.key[3]-b.key[3]);
++ const selected=[];let bytes=0;for(const c of eligible)if(bytes+c.bytes<=budget){selected.push(c);bytes+=c.bytes;}
++ return {selected,bytes,duplicateKeys:candidates.length-eligible.length};
++}
+--- /dev/null
++++ b/web/src/v2/terrain-batch-budget77.test.js
+@@ -0,0 +1,25 @@
++import test from 'node:test';import assert from 'node:assert/strict';import * as T from 'three';
++import {TERRAIN_BATCH_BUDGET77,terrainBatchBudgetPolicy77,estimateTerrainBatchBytes77,selectTerrainBatchGroups77} from './terrain-batch-budget77.js';
++import {TerrainSiblingBatches,terrainSiblingBatchPolicy42,mergeTerrainSiblings} from './terrain-sibling-batches.js';
++function fixture(count=3){const group=new T.Group(),material=new T.MeshStandardMaterial(),parents=[],nodes=new Set();for(let j=0;j<count;j++){const p={x:j*100,z:0,size:20,children:[]};for(let i=0;i<4;i++){const geometry=new T.PlaneGeometry(10,10,2,2);geometry.rotateX(-Math.PI/2);geometry.setAttribute('terrainCover',geometry.attributes.normal.clone());const mesh=new T.Mesh(geometry,material);mesh.position.set(p.x+(i%2)*10,0,Math.floor(i/2)*10);group.add(mesh);const n={parent:p,mesh,size:10,depth:2};p.children.push(n);nodes.add(n);}parents.push(p);}return{group,material,parents,nodes};}
++const create=(f,budget)=>new TerrainSiblingBatches(f.group,{enabled:true,boundedBuild42:true,maxBuildMs:1e9,budgetBytes77:budget});
++const source=(f)=>f.parents.flatMap(p=>p.children.map(n=>n.mesh));
++function exact(f,b){for(const r of b.records.values()){let vo=0,io=0;for(const m of r.sources){for(const[name,a]of Object.entries(m.geometry.attributes)){const out=r.mesh.geometry.attributes[name];for(let i=0;i<a.count;i++)for(let k=0;k<a.itemSize;k++){const axis=['x','y','z'][k];assert.equal(a.array[i*a.itemSize+k]+(name==='position'?m.position[axis]:0),out.array[(vo+i)*a.itemSize+k]+(name==='position'?r.mesh.position[axis]:0));}}for(const ix of m.geometry.index.array)assert.equal(r.mesh.geometry.index.array[io++],ix+vo);vo+=m.geometry.attributes.position.count;}}
++ for(const p of f.parents)assert.ok(p.children.every(n=>n.mesh.visible===!b.records.has(p)));}
++test('fixed32 explicit new QA policy and original absent/0/direct-tile policy',()=>{assert.equal(TERRAIN_BATCH_BUDGET77,33554432);for(const s of ['', '?terrainBatchBudget77=0']){assert.equal(terrainBatchBudgetPolicy77(s),null);assert.deepEqual(terrainSiblingBatchPolicy42(s),{enabled:true,boundedBuild42:true});}assert.deepEqual(terrainSiblingBatchPolicy42('?softwareReview75=1&terrainBatchBudget77=1'),{enabled:true,boundedBuild42:true,budgetBytes77:33554432});assert.deepEqual(terrainSiblingBatchPolicy42('?softwareReview75=1&terrainBatchBudget77=1&terrainBatches=0'),{enabled:false,boundedBuild42:false});});
++test('duplicate empty NaN Infinity negative fractional and non-QA opt-ins fail closed',()=>{for(const value of ['', 'NaN','Infinity','-1','32','1.0','01','1&terrainBatchBudget77=1'])assert.throws(()=>terrainBatchBudgetPolicy77('?softwareReview75=1&terrainBatchBudget77='+value));assert.throws(()=>terrainBatchBudgetPolicy77('?terrainBatchBudget77=1'));assert.throws(()=>terrainBatchBudgetPolicy77('?terrainBatchBudget77=1&softwareReview75=1&softwareReview75=0'));assert.throws(()=>terrainSiblingBatchPolicy42('?terrainBatches=0&terrainBatchBudget77=NaN'));});
++test('exact estimator matches production merged attribute/index allocations',()=>{const f=fixture();for(const p of f.parents){const r=mergeTerrainSiblings(p);assert.equal(estimateTerrainBatchBytes77(p).bytes,r.bytes);r.mesh.geometry.dispose();}});
++function largeParent(counts){const material=new T.MeshStandardMaterial();return {x:0,z:0,size:20,children:counts.map(count=>{const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(new Float32Array(count*3),3));g.setIndex(new T.BufferAttribute(new Uint16Array([0,1,2]),1));const mesh=new T.Mesh(g,material);return{mesh,size:10,depth:2};})};}
++test('65535/65536 vertex boundary uses exact original index constructor width',()=>{for(const counts of [[16383,16384,16384,16384],[16384,16384,16384,16384]]){const p=largeParent(counts),e=estimateTerrainBatchBytes77(p);assert.equal(e.indexElementBytes,counts.reduce((a,b)=>a+b)>65535?4:2);const r=mergeTerrainSiblings(p);assert.equal(r.mesh.geometry.index.array.BYTES_PER_ELEMENT,e.indexElementBytes);assert.equal(r.bytes,e.bytes);r.mesh.geometry.dispose();}});
++test('invalid index range/layout and invalid numeric budget rejected',()=>{const f=fixture(1),p=f.parents[0];p.children[0].mesh.geometry.index.array[0]=65000;assert.throws(()=>estimateTerrainBatchBytes77(p));for(const budget of [-1,NaN,Infinity,.5,Number.MAX_SAFE_INTEGER+1])assert.throws(()=>create(f,budget));});
++test('zero/one-byte-short/exact-one-group budget direct fallback preserves all geometry',()=>{for(const offset of [-1,0]){const f=fixture(),cost=estimateTerrainBatchBytes77(f.parents[0]).bytes,b=create(f,cost+offset);b.update(f.nodes);assert.equal(b.records.size,offset<0?0:1);assert.ok(b.stats.budget77.peakLiveReservedBytes<=cost+offset);exact(f,b);b.dispose();assert.ok(source(f).every(m=>m.visible));}const f=fixture(),b=create(f,0);b.update(f.nodes);assert.equal(b.records.size,0);exact(f,b);});
++test('deterministic cost/key selection independent of traversal order and duplicates fail fallback',()=>{const f=fixture(),cost=estimateTerrainBatchBytes77(f.parents[0]).bytes,rows=f.parents.map(parent=>({parent,bytes:cost}));assert.deepEqual(selectTerrainBatchGroups77(rows,cost*2).selected.map(c=>c.parent.x),[0,100]);assert.deepEqual(selectTerrainBatchGroups77(rows.slice().reverse(),cost*2).selected.map(c=>c.parent.x),[0,100]);assert.equal(selectTerrainBatchGroups77([rows[0],{...rows[0]}],cost*2).selected.length,0);});
++test('release before allocate and A/B/A lifecycle returns exact numeric bytes and sources',()=>{const f=fixture(),cost=estimateTerrainBatchBytes77(f.parents[0]).bytes,b=create(f,cost);let made=0,freed=0;const seen=new Set();for(let i=0;i<12;i++){const selected=new Set(f.parents[i%3].children);b.update(selected);assert.equal(b.records.size,1);const r=[...b.records.values()][0];if(!seen.has(r.mesh)){seen.add(r.mesh);made++;r.mesh.geometry.addEventListener('dispose',()=>freed++);}assert.equal(b.bytes,cost);assert.ok(b.stats.budget77.peakLiveReservedBytes<=cost);exact(f,b);}b.dispose();assert.equal(made,freed);assert.equal(b.bytes,0);assert.equal(b.records.size,0);assert.ok(source(f).every(m=>m.visible));});
++test('build failure after merge and add releases result and never hides source/material',()=>{const f=fixture(),cost=estimateTerrainBatchBytes77(f.parents[0]).bytes,b=create(f,cost);let disposed=0,materialDisposed=0;f.material.addEventListener('dispose',()=>materialDisposed++);const add=f.group.add;f.group.add=function(mesh){mesh.geometry.addEventListener('dispose',()=>disposed++);add.call(this,mesh);throw new RangeError('simulated allocation/attach failure');};b.update(f.nodes);assert.equal(disposed,1);assert.equal(materialDisposed,0);assert.equal(b.records.size,0);assert.equal(b.bytes,0);assert.equal(b.stats.budget77.reservedBytes,0);assert.equal(b.stats.budget77.buildFailures,1);assert.ok(source(f).every(m=>m.visible));});
++test('stale signature releases prior copy and rebuilds without source modification',()=>{const f=fixture(1),cost=estimateTerrainBatchBytes77(f.parents[0]).bytes,b=create(f,cost);b.update(f.nodes);const old=[...b.records.values()][0];let freed=0;old.mesh.geometry.addEventListener('dispose',()=>freed++);f.parents[0].children[0].mesh.geometry.attributes.position.needsUpdate=true;b.update(f.nodes);assert.equal(freed,1);assert.notEqual([...b.records.values()][0],old);exact(f,b);});
++test('reflection returns to original source tiles and restores after throwing consumer',()=>{const f=fixture(),cost=estimateTerrainBatchBytes77(f.parents[0]).bytes,b=create(f,cost);b.update(f.nodes);const restore=b.prepareWaterReflection42();try{assert.ok(source(f).every(m=>m.visible));assert.ok([...b.records.values()].every(r=>!r.mesh.visible));throw Error('reflection consumer');}catch(e){assert.equal(e.message,'reflection consumer');}finally{restore();}exact(f,b);b.dispose();assert.equal(f.group.userData.prepareWaterReflection42,undefined);});
++test('construction time budget leaves unbuilt groups on all original tiles',()=>{const f=fixture(),b=create(f,1e8);b.maxBuildMs=-1;b.update(f.nodes);assert.equal(b.records.size,0);assert.equal(b.stats.budgetDeferred,3);assert.ok(source(f).every(m=>m.visible));});
++test('unsupported transform/active morph state remain direct source fallback',()=>{const f=fixture(),b=create(f,1e8);f.parents[0].children[0].mesh.scale.x=2;f.parents[1].children[0].mesh.morphTargetInfluences=[.5];b.update(f.nodes);assert.equal(b.records.size,1);exact(f,b);});
++test('unknown typed-array constructor rejects before allocation; full source fallback',()=>{const f=fixture(1),cost=estimateTerrainBatchBytes77(f.parents[0]).bytes;function Oversized(n){return new Float32Array(n+3);}for(const m of source(f))Object.defineProperty(m.geometry.attributes.position.array,'constructor',{value:Oversized});assert.throws(()=>estimateTerrainBatchBytes77(f.parents[0]));const b=create(f,cost);b.update(f.nodes);assert.equal(b.records.size,0);assert.equal(b.bytes,0);assert.equal(b.stats.deepRejected,1);assert.equal(b.stats.budget77.reservedBytes,0);assert.equal(b.stats.budget77.peakLiveReservedBytes,0);assert.ok(source(f).every(m=>m.visible));});
++test('budget contraction releases old live copies before any new attach',()=>{const f=fixture(),cost=estimateTerrainBatchBytes77(f.parents[0]).bytes,b=create(f,cost*3);b.update(f.nodes);let frees=0;for(const r of b.records.values())r.mesh.geometry.addEventListener('dispose',()=>frees++);b.budgetBytes77=cost;b.update(f.nodes);assert.equal(frees,2);assert.equal(b.records.size,1);assert.equal(b.bytes,cost);exact(f,b);b.budgetBytes77=0;b.update(f.nodes);assert.equal(frees,3);assert.equal(b.records.size,0);assert.ok(source(f).every(m=>m.visible));});
++test('malformed selection keys cause intact direct fallback, not missing geometry',()=>{const f=fixture(1),b=create(f,1e8);f.parents[0].size=NaN;assert.doesNotThrow(()=>b.update(f.nodes));assert.equal(b.records.size,0);assert.ok(source(f).every(m=>m.visible));});
+--- a/web/src/v2/terrain-sibling-batches.js
++++ b/web/src/v2/terrain-sibling-batches.js
+@@ -1,4 +1,5 @@
+-export function terrainSiblingBatchPolicy42(search=''){const enabled=new URLSearchParams(search).get('terrainBatches')!=='0';return {enabled,boundedBuild42:enabled};}
++import {terrainBatchBudgetPolicy77,estimateTerrainBatchBytes77,selectTerrainBatchGroups77,terrainBatchStableKey77} from './terrain-batch-budget77.js';
++export function terrainSiblingBatchPolicy42(search=''){const budgetBytes77=terrainBatchBudgetPolicy77(search),enabled=new URLSearchParams(search).get('terrainBatches')!=='0';return enabled&&budgetBytes77!==null?{enabled,boundedBuild42:enabled,budgetBytes77}:{enabled,boundedBuild42:enabled};}
+ import {isStandardProjectedDepth} from './room-shadow.js';
+ import {BufferGeometry,BufferAttribute,Mesh,Object3D,Box3,Sphere,Vector3} from 'three';
+ // Submission-only grouping. Authoritative tiles, LOD selection, morphs and physics
+@@ -117,7 +118,7 @@
+  return {mesh,sources,bytes:index.byteLength+Object.values(geometry.attributes).reduce((n,a)=>n+a.array.byteLength,0)};
+ }
+ export class TerrainSiblingBatches{
+- constructor(group,{enabled=false,maxBuildMs=2,boundedBuild42=false}={}){this.boundedBuild42=boundedBuild42;this.group=group;this.reflectionHook=()=>this.prepareWaterReflection42();this.enabled=enabled;this.maxBuildMs=maxBuildMs;this.records=new Map();this.hidden=[];this.parents=new Set();this.scratch=[];this.epoch=0;this.bytes=0;this.stats={enabled,groups:0,sourceTiles:0,savedDraws:0,bytes:0,buildMs:0};}
++ constructor(group,{enabled=false,maxBuildMs=2,boundedBuild42=false,budgetBytes77=null}={}){if(budgetBytes77!==null&&(!Number.isSafeInteger(budgetBytes77)||budgetBytes77<0))throw new RangeError("Invalid numeric copy budget");this.budgetBytes77=budgetBytes77;this.budgetPeak77=0;this.boundedBuild42=boundedBuild42;this.group=group;this.reflectionHook=()=>this.prepareWaterReflection42();this.enabled=enabled;this.maxBuildMs=maxBuildMs;this.records=new Map();this.hidden=[];this.parents=new Set();this.scratch=[];this.epoch=0;this.bytes=0;this.stats={enabled,groups:0,sourceTiles:0,savedDraws:0,bytes:0,buildMs:0};}
+  prepareWaterReflection42(){
+   if(!this.enabled||!this.boundedBuild42)return null;
+   const saved=[];const restore=()=>{for(let i=saved.length-1;i>=0;i--){const [m,v]=saved[i];m.visible=v;}};
+@@ -125,6 +126,7 @@
+  }
+  restore(){for(const m of this.hidden)m.visible=true;this.hidden.length=0;for(const r of this.records.values())r.mesh.visible=false;}
+  update(nodes){
++  if(this.budgetBytes77!==null)return this.updateBudget77(nodes);
+   const start=performance.now();this.stats.enabled=this.enabled;
+   if(this.enabled&&this.boundedBuild42&&!this.group.userData.prepareWaterReflection42)this.group.userData.prepareWaterReflection42=this.reflectionHook;
+   if(!this.enabled){if(this.boundedBuild42)this.dispose();else this.restore();this.stats.groups=this.stats.sourceTiles=this.stats.savedDraws=0;this.stats.buildMs=performance.now()-start;return;}
+@@ -144,6 +146,34 @@
+   Object.assign(this.stats,{fastGroups,fullChecks,rebuilds,retired,parents:parents.size,boundedBuild42:this.boundedBuild42,constructionMs,budgetDeferred,deepRejected,cheapReasons});
+   this.stats.groups=groups;this.stats.sourceTiles=groups*4;this.stats.savedDraws=groups*3;this.stats.bytes=this.bytes;this.stats.buildMs=performance.now()-start;
+  }
++ updateBudget77(nodes){
++  const start=performance.now();this.restore();
++  if(!this.enabled){this.dispose();Object.assign(this.stats,{enabled:false,groups:0,sourceTiles:0,savedDraws:0,bytes:0,budget77:{enabled:false,budgetBytes:this.budgetBytes77,liveBytes:0,reservedBytes:0,peakLiveReservedBytes:this.budgetPeak77}});return;}
++  if(this.boundedBuild42&&!this.group.userData.prepareWaterReflection42)this.group.userData.prepareWaterReflection42=this.reflectionHook;
++  const parents=this.parents;parents.clear();for(const n of nodes)if(n.parent&&n.mesh?.visible)parents.add(n.parent);
++  const candidates=[];let rejected=0,fastGroups=0,fullChecks=0;
++  for(const parent of parents){try{const old=this.records.get(parent);let signature;
++    if(old&&old.mesh.parent===this.group&&fastMatches(parent,old.fast)){signature=old.signature;fastGroups++;}
++    else{fullChecks++;signature=terrainSiblingSignature(parent,[]);if(!signature||parent.children[0].mesh.parent!==this.group){rejected++;continue;}}
++    const estimate=estimateTerrainBatchBytes77(parent);candidates.push({parent,signature,bytes:estimate.bytes,key:terrainBatchStableKey77(parent)});
++   }catch(error){rejected++;}}
++  const selection=selectTerrainBatchGroups77(candidates,this.budgetBytes77),chosen=new Map(selection.selected.map(c=>[c.parent,c]));let released=0;
++  for(const [p,r]of this.records){const c=chosen.get(p);if(!c||r.mesh.parent!==this.group||!equal(r.signature,c.signature)||r.bytes!==c.bytes){this.release(p);released++;}}
++  let reserved=0,constructionMs=0,budgetDeferred=0,built=0,failures=0,groups=0;const epoch=++this.epoch;
++  for(const c of selection.selected){const p=c.parent;let r=this.records.get(p);
++   if(!r){if(constructionMs>this.maxBuildMs){budgetDeferred++;continue;}
++    const buildStart=performance.now();let result=null;
++    try{const signature=terrainSiblingSignature(p,[]);if(!signature||p.children[0].mesh.parent!==this.group||!equal(signature,c.signature)||estimateTerrainBatchBytes77(p).bytes!==c.bytes)throw new Error('Changed terrain input before reserved build');
++     reserved=c.bytes;if(this.bytes+reserved>this.budgetBytes77)throw new RangeError('Merged reservation exceeds budget');this.budgetPeak77=Math.max(this.budgetPeak77,this.bytes+reserved);
++     result=mergeTerrainSiblings(p);if(result.bytes!==reserved)throw new Error('Merged output differs from exact reservation');
++     r={...result,signature:signature.slice(),fast:captureFast(p),epoch};this.group.add(r.mesh);this.records.set(p,r);this.bytes+=r.bytes;reserved=0;built++;
++    }catch(error){if(result){result.mesh.removeFromParent();result.mesh.geometry.dispose();}reserved=0;r=null;failures++;}
++    constructionMs+=performance.now()-buildStart;
++   }
++   if(!r)continue;r.epoch=epoch;r.mesh.visible=true;groups++;for(const m of r.sources){m.visible=false;this.hidden.push(m);}
++  }
++  Object.assign(this.stats,{enabled:true,groups,sourceTiles:groups*4,savedDraws:groups*3,bytes:this.bytes,buildMs:performance.now()-start,fastGroups,fullChecks,rebuilds:built,retired:released,parents:parents.size,boundedBuild42:this.boundedBuild42,constructionMs,budgetDeferred,deepRejected:rejected,cheapReasons:{},budget77:{enabled:true,budgetBytes:this.budgetBytes77,eligibleGroups:candidates.length,selectedGroups:selection.selected.length,builtGroups:groups,fallbackGroups:parents.size-groups,duplicateKeyGroups:selection.duplicateKeys,admittedBytes:selection.bytes,liveBytes:this.bytes,reservedBytes:reserved,peakLiveReservedBytes:this.budgetPeak77,buildFailures:failures,accounting:'merged numeric output only; not heap/GPU/driver retired buffers'}});
++ }
+  release(p){const r=this.records.get(p);if(!r)return;r.mesh.removeFromParent();r.mesh.geometry.dispose();this.bytes-=r.bytes;this.records.delete(p);}
+  dispose(){if(this.group.userData.prepareWaterReflection42===this.reflectionHook)delete this.group.userData.prepareWaterReflection42;this.restore();for(const p of this.records.keys())this.release(p);this.parents.clear();this.scratch.length=0;}
+ }
+--- a/web/src/v2/terrain-prepared42.test.js
++++ b/web/src/v2/terrain-prepared42.test.js
+@@ -20,3 +20,10 @@
+ });
+ test('native all-mode owner sends validated sibling URL to codec, main fetches manifest only, explicit fetch injection stays local',async()=>{const f=await fixture(),oldFetch=globalThis.fetch,oldLocation=globalThis.location,requests=[],codec={stats:{downloadBytes:0},async run(task){assert.equal(task.type,'fetchShard');assert.equal(task.manifestURL,'http://localhost/pack/manifest.json');assert.equal(task.shard.url,'one.pack');this.stats.downloadBytes+=f.block.length;const{preparedCodecTask42}=await import('./terrain-prepared-codec42.js');return{rows:await preparedCodecTask42({...task,type:'shard',bytes:f.block}),downloadedBytes:f.block.length};},dispose(){}};let c;try{globalThis.location={href:'http://localhost/v2.html'};globalThis.fetch=async url=>{requests.push(url);assert.equal(url,'/pack/manifest.json');return Response.json(f.manifest);};c=new TerrainPreparedRows42({getForestRootInputHashes:async()=>inputs},{codec,fallback:fallback(),enabled:true,codeBinding:code,manifestURL:'/pack/manifest.json'});await c.preparation;const j=job();c.enqueue(j);await settle(c);assert.deepEqual(j.workerPayload.positions,f.values.positions);assert.equal(requests.length,1);assert.equal(c.stats.downloadBytes,f.block.length);assert.equal(c.stats.failed,0);}finally{c?.dispose();globalThis.fetch=oldFetch;globalThis.location=oldLocation;}});
+ test('adaptive failed request safely resumes original worker with no stuck pending or permanent geometry omission',async()=>{const f=await fixture(),oldFetch=globalThis.fetch,oldLocation=globalThis.location,back=fallback(),codec={stats:{downloadBytes:7},async run(){const e=Error('network timeout');e.downloadedBytes=7;throw e;},dispose(){}};let c;try{globalThis.location={href:'http://localhost/v2.html'};globalThis.fetch=async()=>Response.json(f.manifest);c=new TerrainPreparedRows42({getForestRootInputHashes:async()=>inputs},{codec,adaptive:true,fallback:back,enabled:true,codeBinding:code,manifestURL:'/pack/manifest.json'});await c.preparation;for(let i=0;i<8;i++)c.adaptive.record(1,20);const j=job();assert.equal(c.enqueue(j),true);await settle(c);assert.equal(c.stats.adaptive.state,'worker');assert.equal(c.stats.adaptive.probeBytes,7);assert.equal(j.workerPending,false);assert.equal(j.row,0);assert.equal(j.workerPayload,undefined);assert.equal(c.enqueue(j),false);assert.equal(back.calls,1);assert.equal(c.pending.size,0);assert.equal(c.limit,2);}finally{c?.dispose();globalThis.fetch=oldFetch;globalThis.location=oldLocation;}});
++
++test('fixed32 QA query keeps prepared validation while malformed or unknown variants never fetch',async()=>{
++ const native='?view=pastoral-house_a-entry&time=870&softwareReview75=1&profile=1&houseTextiles62=1&boardwalkContactIndex74=0&terrainBatchBudget77=1';
++ for(const suffix of ['1','all','adaptive']){const {c,calls}=make(await fixture(),{search:native+'&terrainPrepared42='+suffix});try{assert.equal(await c.preparation,true);assert.equal(calls.length,1);assert.equal(c.stats.ready,true);}finally{c.dispose();}}
++ for(const search of [native+'&unknownSurface77=1',native+'&terrainBatchBudget77=1','?terrainBatchBudget77=1','?terrainBatchBudget77=bad&softwareReview75=1']){const{c,calls}=make(await fixture(),{search});try{assert.equal(await c.preparation,false);assert.equal(calls.length,0);assert.match(c.stats.error,/Incompatible terrain URL/);}finally{c.dispose();}}
++ const invalid=await fixture();invalid.manifest.code={...code,signature:'f'.repeat(64)};const{c}=make(invalid,{search:native});try{assert.equal(await c.preparation,false);assert.match(c.stats.error,/source binding mismatch/);}finally{c.dispose();}
++});
+--- a/web/src/v2/terrain-row-worker-client.js
++++ b/web/src/v2/terrain-row-worker-client.js
+@@ -1,3 +1,4 @@
++import {terrainBatchBudgetPolicy77} from './terrain-batch-budget77.js';
+ import {softwareReviewPolicy75} from "./software-review-policy75.js";
+ import {localShadowWindow72ParameterValid} from './local-shadow-policy72.js';
+ import {terrainRowInput} from './terrain-row-kernel.js';
+@@ -74,6 +75,9 @@
+  if(contact74.every(v=>v==='0'||v==='1')&&new Set(contact74).size<=1)safe.add('boardwalkContactIndex74');
+  const review75=softwareReviewPolicy75(search);
+  if(review75.valid){safe.add('softwareReview75');safe.add('softwareReviewInputGap75');}
++ // Render-only copy budgeting is worker-safe only under its exact QA policy.
++ // Invalid explicit parameters remain incompatible; never allow unknown variants.
++ try{terrainBatchBudgetPolicy77(search);safe.add('terrainBatchBudget77');}catch{}
+  const requested=params.get('terrainWorker38')!=='0';
+  const compatible=[...params.keys()].every(k=>safe.has(k));
+  return {requested,compatible,enabled:requested&&compatible};
+--- a/web/src/v2/terrain-row-worker-client.test.js
++++ b/web/src/v2/terrain-row-worker-client.test.js
+@@ -135,3 +135,10 @@
+  }
+  for(const value of ['bad','','true','2'])assert.equal(terrainRowWorkerPolicy('?houseTextiles62='+value).compatible,false);
+ });
++
++const budgetNativeQuery77='?view=pastoral-house_a-entry&time=870&softwareReview75=1&profile=1&houseTextiles62=1&boardwalkContactIndex74=0&terrainBatchBudget77=1';
++test('fixed32 render-only QA budget retains original worker for the actual native URL',()=>{
++ for(const q of ['', '?terrainBatchBudget77=0', budgetNativeQuery77,budgetNativeQuery77+'&terrainBatches=0'])assert.deepEqual(terrainRowWorkerPolicy(q),{requested:true,compatible:true,enabled:true});
++ assert.deepEqual(terrainRowWorkerPolicy(budgetNativeQuery77+'&terrainWorker38=0'),{requested:false,compatible:true,enabled:false});
++ for(const q of ['?terrainBatchBudget77=1','?terrainBatchBudget77=1&softwareReview75=0','?terrainBatchBudget77=1&softwareReview75=1&softwareReview75=1',budgetNativeQuery77+'&terrainBatchBudget77=1',budgetNativeQuery77+'&terrainBatchBudget77=0',budgetNativeQuery77+'&unknownSurface77=1',...['','true','2','01','-1','NaN'].map(v=>'?softwareReview75=1&terrainBatchBudget77='+v)])assert.equal(terrainRowWorkerPolicy(q).compatible,false,q);
++});

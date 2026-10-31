@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_REVIEW_ONLY_NOT_RUNTIME_ADOPTION",
+  "gitBase": "917618d6125e9766e0722b321943f56d5a3b3e54",
+  "sources": [
+    {
+      "path": "web/src/v2/terrain-batch-budget77.js",
+      "beforeSHA256": null,
+      "afterSHA256": "00ff0e6f686ccd3aa58312f3fe4d2cd95f992dedfcfd55e556d4e0ebe3e39c76",
+      "bytes": 4101,
+      "phase": "original-budget"
+    },
+    {
+      "path": "web/src/v2/terrain-batch-budget77.test.js",
+      "beforeSHA256": null,
+      "afterSHA256": "36fb6bf43bfbca1fb62e7f84d60d7ae111b89096921037c9fa489737b5133c08",
+      "bytes": 9928,
+      "phase": "original-budget"
+    },
+    {
+      "path": "web/src/v2/terrain-sibling-batches.js",
+      "beforeSHA256": "1ac3df824623fb6bdfce093e85dc2aeb9b51141be7bc04aa7867e27ac3abb67d",
+      "afterSHA256": "b04b10b11d19607700142bb19f393a1d4ebbb6c0291a346c4c4283a05fff0c3e",
+      "bytes": 21049,
+      "phase": "original-budget"
+    },
+    {
+      "path": "web/src/v2/terrain-prepared42.test.js",
+      "beforeSHA256": "2b568c1b3e272b4304922525e45e6c6430b7bd61186be90b7148582548c89210",
+      "afterSHA256": "64c0eeb3d837424e90f54d6871b725077e6ca7ef195354374e96d2207e6f46a5",
+      "bytes": 10195,
+      "phase": "worker-policy-fix"
+    },
+    {
+      "path": "web/src/v2/terrain-row-worker-client.js",
+      "beforeSHA256": "69405d11698617f39480cabf77e93f601911c1a2de79811d3dc9eefd873dab25",
+      "afterSHA256": "de219024de7535f5703ddf15b20b8d030150a60811e2c36d257e1f2659cdef1a",
+      "bytes": 7339,
+      "phase": "worker-policy-fix"
+    },
+    {
+      "path": "web/src/v2/terrain-row-worker-client.test.js",
+      "beforeSHA256": "8d1a53f962a797b54a9ff4aea31f988bfd6f1dc3dbfb4fbd575ddfcb2a2f6788",
+      "afterSHA256": "7631db27a4c810e70af8edff9778c1a4dec5949c3af53f1c862062398a885680",
+      "bytes": 19665,
+      "phase": "worker-policy-fix"
+    }
+  ],
+  "patchSHA256": "eab94ac61785544e1465e5149de27195ffb78d6ca326c49c56c50c141efc4de1",
+  "externalInputsSHA256": "f6d63442bf35adc6254a33b5de16f922770b3b11c927003f2096a0d00d3f2314",
+  "originalProducer": {
+    "path": "tools/build-terrain-prepared42.mjs",
+    "sha256": "27ff9a92ff7a4af5475e1ee71812c3e990819bbdcfec483bc9488870ee039129",
+    "bytes": 6183
+  },
+  "versionedProducer": {
+    "packagePath": "repro/build-terrain-prepared42-12000.mjs",
+    "isolatedDestination": "tools/build-terrain-prepared42-12000.mjs",
+    "bytes": 6184,
+    "sha256": "a1128002beee535e89e7325f61a3c401e001a85bb81ec8a9330dadd5a29149a1",
+    "soleReplacement": [
+      "iterations<6000",
+      "iterations<12000"
+    ]
+  },
+  "unchangedPriorityProducer": {
+    "path": "tools/build-terrain-priority42.mjs",
+    "sha256": "3272e4c9ffdf68170b678cd11e710b9b4e5425d90b518123bf160386ad3b30f8",
+    "bytes": 3050
+  },
+  "tools": {
+    "verify-packaging-v2b.py": "70334f6bbc71cadad273975089f148262f2b92d37026b82e030c1f7bd0fb05ec",
+    "actual-fixed32-audit.mjs": "0c2141b0426d6a9fb873d24173e3ab85e4698fbe299ed02a43d0983308b58e69"
+  },
+  "runtimeDefaultChanged": false,
+  "fixedNumericBytes": 33554432,
+  "flags": "terrainBatchBudget77=1 AND softwareReview75=1; terrainBatches=0 still disables; absent/0 defaults unchanged",
+  "version": "workerfix-v2",
+  "workerFix": {
+    "frozenInventorySHA256": "3499458acf3cfb0eff4868f4e09ab5c35063292b8ce8bb26742d33ea154979aa",
+    "originalWorkerPolicyPatchSHA256": "9710f6c817f380e096ad91d97a1ebf4b73473d71926d904fb86097179ec64a6d",
+    "sourceFiles": 3,
+    "preparedBindingsUnchanged": true,
+    "combinedPatch": "Exact original3budget plus new3worker/clienttests against plain baseline. Never apply on already-patched v1; use fresh isolated baseline."
+  }
+}
