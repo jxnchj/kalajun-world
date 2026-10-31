@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_ONLY_REVIEW_CANDIDATE_NOT_ADOPTED",
+  "baseline": "dbf707479a3bfae6aaffec957de7c7447b596c72",
+  "compatibleDocumentationDescendants": [
+    "53b3606f1c0959a8ae129045d48f3ce0c657a83a",
+    "147cabbc6ef2d6460e20d46bc881ff9ea853209a"
+  ],
+  "compatibilityRule": "baseline ancestor AND exact baseline bytes/absence for every patch path and bound auxiliary input; no HEAD equality shortcut after pure docs commits",
+  "patchSHA256": "d30a3b6fd9dfc09ab5e298b1729fbbaf8743ad54265d2525708887d9db395b76",
+  "patchBytes": 44818,
+  "exactPatchPaths": [
+    {
+      "path": "tools/build-house-wall-obstacles77.mjs",
+      "baselineSHA256": null,
+      "patchedSHA256": "af6c9406a4ef2a99aab3c346c1d7c58315cbabfc95f67aa29d2d7aa382fdbe2e",
+      "patchedBytes": 3209
+    },
+    {
+      "path": "web/src/v2/ecology.js",
+      "baselineSHA256": "01e8b12191e70376be0cf32126d23211fc13d0456b900c382ae3ad613d551a36",
+      "patchedSHA256": "7bd2f85837f74b581eeb4d3f5c879e4dc5f505b2585fd0fe51bb731a78ef716e",
+      "patchedBytes": 90482
+    },
+    {
+      "path": "web/src/v2/house-wall-plants77.js",
+      "baselineSHA256": null,
+      "patchedSHA256": "4c904f8da47ecde83a19718d879097a8c3f0e665ef245906a68e459a0559c064",
+      "patchedBytes": 7171
+    },
+    {
+      "path": "web/src/v2/house-wall-plants77.test.js",
+      "baselineSHA256": null,
+      "patchedSHA256": "79752a91330b3b1f24acafc8799ca3eb95a3c0d2787838302dc61de848ae5c05",
+      "patchedBytes": 6220
+    },
+    {
+      "path": "web/src/v2/main.js",
+      "baselineSHA256": "c6885d9b1f079e241b301ab78d123c69324a77e40b7a1c8227ca306eedc3ebdf",
+      "patchedSHA256": "e29d68ee4c5c1b098644d10022d14a4006fabc4ec4ca59138779671f5742df9c",
+      "patchedBytes": 52664
+    },
+    {
+      "path": "web/src/v2/textile-near-review76.js",
+      "baselineSHA256": null,
+      "patchedSHA256": "8c443631b7f438e0fc645d807f9bf9c20db1a58eddb41cf7d498dea088b1b07e",
+      "patchedBytes": 5314
+    },
+    {
+      "path": "web/src/v2/textile-near-review76.test.js",
+      "baselineSHA256": null,
+      "patchedSHA256": "67251dce28501a64d4bc454d033eb0e27257beb1093ea0c2d48f9fe63d1160d5",
+      "patchedBytes": 9376
+    },
+    {
+      "path": "web/src/v2/threshold-plants.js",
+      "baselineSHA256": "1c3e424370d66a379098305c0b208e155408b50530672a105722795b30615386",
+      "patchedSHA256": "7ea822608554c3897cec1d564f7158877a2620a862c30acb59796a4d0db55980",
+      "patchedBytes": 6230
+    },
+    {
+      "path": "web/src/v2/threshold-plants.test.js",
+      "baselineSHA256": "6d89c291b2f047aaeb2561c574d04808e232faef752ce067ef01638747702f51",
+      "patchedSHA256": "b04ce2f035d9869b250ca45b9a0cf4fa9b7ebc6be8c56fca65129ab0a748e89f",
+      "patchedBytes": 8824
+    },
+    {
+      "path": "web/src/v2/threshold-wall-fallback77.test.js",
+      "baselineSHA256": null,
+      "patchedSHA256": "c8e49d980d6aea09093b2f24088c8d32f7ebcd578b25c043981a5e75a25705ba",
+      "patchedBytes": 3042
+    }
+  ],
+  "boundAuxiliaryInputs": [
+    {
+      "path": "web/package.json",
+      "sha256": "e582c8413bebc92b6d5775ac606cb8cc94341cf170d64e0cfa4936795e8dee68"
+    },
+    {
+      "path": "web/package-lock.json",
+      "sha256": "d3f37873a77604ea519fe65553ff4676d80fa8b02432aa7ab07bcd25214697f0"
+    },
+    {
+      "path": "web/src/v2/viewpoints.js",
+      "sha256": "05c8070337f9a46e554b0883dde7f5a4e2c63ef37bd5b3d148a4126b7fcea412"
+    },
+    {
+      "path": "web/src/v2/software-review75.js",
+      "sha256": "920e7ef0243e3166d013b8c59b069dfeace33e0a725fb89077e7d6545c4d8353"
+    }
+  ],
+  "externalInputsSHA256": "53c45e4c960261ea372971d88d68b341001ac9a21a0505c162a4776a818143f1",
+  "frozenInventorySHA256": "b61369c325e10a031725f69fa3d2e57be0fe9ab56dd41148bf3521d0922bb4b5",
+  "runtimeSourceAdoption": false,
+  "assetPublication": false
+}

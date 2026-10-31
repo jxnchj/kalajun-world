@@ -1,0 +1,1380 @@
+{
+  "schemaVersion": 1,
+  "allPayloadsExternal": true,
+  "baseLFSInput": {
+    "path": "web/public/assets/v2/house_a_lived.glb",
+    "sha256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2"
+  },
+  "derivedGeometry": {
+    "path": "web/src/v2/house-wall-obstacle-data77.js",
+    "bytes": 893322,
+    "sha256": "b82c3c04bfd7afd25e48d57af833f03e5a3e72091b4bc887d2dfd1e14466e8ee",
+    "delivery": "NOT INCLUDED; generate from exact original LFS asset using included source-bound extractor, never treat JS geometry as ordinary source"
+  },
+  "textileCandidateInputs": [
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/ao-v4-domain2-01/geometry.glb",
+      "isolatedCandidateDestination": "web/public/assets/v2/house-textiles62/geometry.glb",
+      "bytes": 1565840,
+      "sha256": "e029ebb99b290484fdf049640aef1a41302e47f7cf281631b78376c59452ad5d",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/ao-v4-domain2-01/manifest.json",
+      "isolatedCandidateDestination": "web/public/assets/v2/house-textiles62/manifest.json",
+      "bytes": 4152,
+      "sha256": "dd87350692ec23eff7bc5e6270ce5bcc7253b2b842af6dbab6617f5efc87eecd",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-house-a-01/house_a.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a.js",
+      "bytes": 859101,
+      "sha256": "ced3ad0fd6488ab6ac08fdb7fb1983945817c9abdf12db79a8fa3c8f9e5ea432",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-house-a-01/house_a-30.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-30.js",
+      "bytes": 361634,
+      "sha256": "ef8d539dd88c5f01c153778d726da95fec7bb09526cb9aa414dc3d6b714c52b1",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-house-a-01/house_a-60.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-60.js",
+      "bytes": 381574,
+      "sha256": "1605f00fe4fe5b67f1b27efa06ed376fad5825a7ba82cd543ac13306a090c472",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-house-a-01/house_a-90.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-90.js",
+      "bytes": 389529,
+      "sha256": "aa2132ef2a5fb79f851437d4a8e01af8c515aac4851742ff93578c3f38684eb3",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living0-01/house_a-living-0.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-0.js",
+      "bytes": 863200,
+      "sha256": "9485d85e70cf1b68e0dec0c3a37af1f3a9fe35fc60b8c1a7360ef7053f01f4dd",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living0-01/house_a-living-0-30.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-0-30.js",
+      "bytes": 363530,
+      "sha256": "ce0c257d0862585b176b8ed4d80bf03b13e3cea7275b500c61f8014d21e0d98c",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living0-01/house_a-living-0-60.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-0-60.js",
+      "bytes": 383466,
+      "sha256": "1620d0cc90605466889fc70b2557f85c67a549973b91f96a364de830dd5f20e2",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living0-01/house_a-living-0-90.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-0-90.js",
+      "bytes": 391421,
+      "sha256": "45248a4c240f4c639dd8873f1175d39ae6f0fc9257064c51d2a7db0839efdce6",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living1-01/house_a-living-1.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-1.js",
+      "bytes": 863204,
+      "sha256": "0aabfdd6cb48797864996212d337b6ede8a22c3bd81a7785ebb7031ab0806d2e",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living1-01/house_a-living-1-30.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-1-30.js",
+      "bytes": 363528,
+      "sha256": "7333b3d246a5b8b7b46dbcd5a9229d1c1bc7566ad764557dd98b7e4763401e43",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living1-01/house_a-living-1-60.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-1-60.js",
+      "bytes": 383466,
+      "sha256": "5957a6aa912feb7dd8824c5f48443adf4dec99fca8f00917f33b8d4f9c690324",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living1-01/house_a-living-1-90.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-1-90.js",
+      "bytes": 391420,
+      "sha256": "fe2b67724d6881bfb831359f5e14731527bd92d71d9ecab7f2256f2130bbafeb",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living2-01/house_a-living-2.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-2.js",
+      "bytes": 863201,
+      "sha256": "9d19e0073a93e7b4c5ddc35ce53e4d459e45bfd1e5e698a78d16d6d6c6194898",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living2-01/house_a-living-2-30.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-2-30.js",
+      "bytes": 363527,
+      "sha256": "163cff290f2a6f0bf107e05495832ff7f043110a7dc4d2c399441c5f9d96c9b8",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living2-01/house_a-living-2-60.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-2-60.js",
+      "bytes": 383465,
+      "sha256": "bd710f20c6f30164c7e9ee43221657bc8156f9fb381f8109a47e37b0ce38c032",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-living2-01/house_a-living-2-90.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-living-2-90.js",
+      "bytes": 391421,
+      "sha256": "2465d013ed2a4f6cf361cf29c92a5004bb6ae68e57a65fcccbff800b83210fdc",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-entry-01/house_a-entry-tea-34.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-entry-tea-34.js",
+      "bytes": 867046,
+      "sha256": "d0a319ed800421a58baa160a27d3cf981ede501e802f43eaa2e0d0c281d49d80",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-entry-01/house_a-entry-tea-34-30.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-entry-tea-34-30.js",
+      "bytes": 365308,
+      "sha256": "86f1c290a641ec368a91c52b8e0066b3abaf2addce11e8a280e932827408ec15",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-entry-01/house_a-entry-tea-34-60.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-entry-tea-34-60.js",
+      "bytes": 385243,
+      "sha256": "9f66f3ef92dc6e792af5f974ec103b0ded7e1788102aa9df219cb0388fa404e6",
+      "applyToProduction": false
+    },
+    {
+      "archivePath": "backups/cloud75-textile-gi-staging/gi-v4-domain2-entry-01/house_a-entry-tea-34-90.js",
+      "isolatedCandidateDestination": "web/src/v2/house-textiles-gi73-data/house_a-entry-tea-34-90.js",
+      "bytes": 393199,
+      "sha256": "5f9fdf28c817df5f1044350b1b5102ebd49fddb3a361dae73fc6d8495ed87089",
+      "applyToProduction": false
+    }
+  ],
+  "prepared12": [
+    {
+      "path": "web/public/data/v2/meadow-roots-38.bin.gz",
+      "sha256": "a3de49e01379d1f8cf0c313eed356995fbdbe094f32de5e4c283c6d9cf7b864e",
+      "bytes": 4005715
+    },
+    {
+      "path": "web/public/data/v2/meadow-roots-38.json",
+      "sha256": "1cefc1bce80fbf94b3dd9d208c88b45e6466ecbd4fe979f2f3f09764d26b799e",
+      "bytes": 9990
+    },
+    {
+      "path": "web/public/data/v2/reach-cover-prepared42.json",
+      "sha256": "422170f8abc2affa645cb24e19502203e663f969964e8a027c479168f644d43b",
+      "bytes": 11339
+    },
+    {
+      "path": "web/public/data/v2/reach-cover-prepared42.json.gz",
+      "sha256": "b2b85e7bb5b692365553d664a94fe7cab5e62f60e04d6b59aa3a17fdba24e39f",
+      "bytes": 615244
+    },
+    {
+      "path": "web/public/data/v2/reach-design69/meadow-roots-38.bin.gz",
+      "sha256": "6eca94a740f488b56a79068771ef139fb2dbb0f705802566e4a1ef3e07bc46df",
+      "bytes": 4005607
+    },
+    {
+      "path": "web/public/data/v2/reach-design69/meadow-roots-38.json",
+      "sha256": "c03ddedbc26e66c39b5e77ec90e5724b61435c2d4b526ab27df37bdc0847c5b9",
+      "bytes": 10005
+    },
+    {
+      "path": "web/public/data/v2/reach-design69/reach-cover.json",
+      "sha256": "a0e2cac6a689856c0756a5ba188709d095d69d0c129015fabf5ffaeb01e2762d",
+      "bytes": 11383
+    },
+    {
+      "path": "web/public/data/v2/reach-design69/reach-cover.json.gz",
+      "sha256": "cf8b412196cb2d35766a6bfdb88499134662212e6c955a042ca411795ac2f149",
+      "bytes": 615806
+    },
+    {
+      "path": "web/public/data/v2/reach-design73/meadow-roots-38.bin.gz",
+      "sha256": "78d355f96602b630a9ed651f4b06dfe8cfa04a841d85913a0877f30346b37e4e",
+      "bytes": 4005912
+    },
+    {
+      "path": "web/public/data/v2/reach-design73/meadow-roots-38.json",
+      "sha256": "b64932e8aa3b1733a6157d4fcb0be0e36b74cd3109270cafda21ede7a0348547",
+      "bytes": 10005
+    },
+    {
+      "path": "web/public/data/v2/reach-design73/reach-cover.json",
+      "sha256": "a570933ebea606b90c0733027c048ae6fceeb5eb6bde19312d78d7ffc25ddddf",
+      "bytes": 11398
+    },
+    {
+      "path": "web/public/data/v2/reach-design73/reach-cover.json.gz",
+      "sha256": "9d3eb21cdd1c5881f002112ca299973cf5299bd4e8ceb9df107bf4b61ec406fb",
+      "bytes": 619727
+    }
+  ],
+  "preparedRegeneration": [
+    {
+      "manifest": "web/public/data/v2/meadow-roots-38.json",
+      "payload": "web/public/data/v2/meadow-roots-38.bin.gz",
+      "codeSignature": "5257b43705d53dc04fc33656f44c05016a4e12d696389403004b7478506b4ea2",
+      "payloadSHA256": "a3de49e01379d1f8cf0c313eed356995fbdbe094f32de5e4c283c6d9cf7b864e",
+      "rawSHA256": "a477ffe266dc6961a9bcfc8884c60f2f6bf04a63d6719a982d88c5e61b2c9b9f",
+      "freshGeneratorLog": "meadow-default-regen.log"
+    },
+    {
+      "manifest": "web/public/data/v2/reach-design69/meadow-roots-38.json",
+      "payload": "web/public/data/v2/reach-design69/meadow-roots-38.bin.gz",
+      "codeSignature": "5257b43705d53dc04fc33656f44c05016a4e12d696389403004b7478506b4ea2",
+      "payloadSHA256": "6eca94a740f488b56a79068771ef139fb2dbb0f705802566e4a1ef3e07bc46df",
+      "rawSHA256": "7cc9f756f3b63cd6d1e73d5c7ee01e3ad49f3a1881b47727eb05c22480bd8874",
+      "freshGeneratorLog": "meadow-reachDesign69-regen.log"
+    },
+    {
+      "manifest": "web/public/data/v2/reach-design73/meadow-roots-38.json",
+      "payload": "web/public/data/v2/reach-design73/meadow-roots-38.bin.gz",
+      "codeSignature": "5257b43705d53dc04fc33656f44c05016a4e12d696389403004b7478506b4ea2",
+      "payloadSHA256": "78d355f96602b630a9ed651f4b06dfe8cfa04a841d85913a0877f30346b37e4e",
+      "rawSHA256": "c3a5ae10b1bb7a73d5655d132e5315fd9bd25958369595e4dec4397c60147e37",
+      "freshGeneratorLog": "meadow-reachDesign73-regen.log"
+    },
+    {
+      "manifest": "web/public/data/v2/reach-cover-prepared42.json",
+      "payload": "web/public/data/v2/reach-cover-prepared42.json.gz",
+      "codeSignature": "3e86a8046b3db971187597621e976fa55b53ad9818a30370179184db27c13ab3",
+      "payloadSHA256": "b2b85e7bb5b692365553d664a94fe7cab5e62f60e04d6b59aa3a17fdba24e39f",
+      "rawSHA256": "70deaa5c21d416924568e9d386a2452ef70312cad25577500a45f7bc521246a3",
+      "freshGeneratorLog": "cover-regen.log"
+    },
+    {
+      "manifest": "web/public/data/v2/reach-design69/reach-cover.json",
+      "payload": "web/public/data/v2/reach-design69/reach-cover.json.gz",
+      "codeSignature": "3e86a8046b3db971187597621e976fa55b53ad9818a30370179184db27c13ab3",
+      "payloadSHA256": "cf8b412196cb2d35766a6bfdb88499134662212e6c955a042ca411795ac2f149",
+      "rawSHA256": "20fe86ab13a11be5e57453b3f75f29ef2cd1b6f216ae32ed50377471aaca709c",
+      "freshGeneratorLog": "cover-reachDesign69-regen.log"
+    },
+    {
+      "manifest": "web/public/data/v2/reach-design73/reach-cover.json",
+      "payload": "web/public/data/v2/reach-design73/reach-cover.json.gz",
+      "codeSignature": "3e86a8046b3db971187597621e976fa55b53ad9818a30370179184db27c13ab3",
+      "payloadSHA256": "9d3eb21cdd1c5881f002112ca299973cf5299bd4e8ceb9df107bf4b61ec406fb",
+      "rawSHA256": "4f069316a70d0fd980064805219e9e17ee2a50bd0aabbf915ca2544791c41cc1",
+      "freshGeneratorLog": "cover-reachDesign73-regen.log"
+    }
+  ],
+  "preparedCodeBindings": {
+    "structure": {
+      "signature": "5e18bda9e030b3530c42f93d0bb9da0fabbd08485c492799e247571213c36943",
+      "sources": [
+        {
+          "path": "src/v2/guest-living-definition.js",
+          "sha256": "7a314514c9939601cdd081f3ab44cf1d811f580a6400398d45777e41b4bffc15"
+        },
+        {
+          "path": "src/v2/guest-living-loader.js",
+          "sha256": "b8e2ff5b4e5cc327b945ba833d48ebe494cf87572322423d10aa1ed092ea51ba"
+        },
+        {
+          "path": "src/v2/generated/guest-living-source-39.json",
+          "sha256": "00d37da71a08cdb8ea1abc3bce23044e96d58ee8e878add525e30ec9cd722b26"
+        },
+        {
+          "path": "src/v2/lodge-tables-definition.js",
+          "sha256": "ec6170284959354b61527f1f78ed7f335f6ac3369536211b437a702c6b10bc34"
+        },
+        {
+          "path": "src/v2/lodge-tables-loader.js",
+          "sha256": "361c48c4636861c0c2779baf392bd6ac633beb103d3736648d3b23109394cdd6"
+        },
+        {
+          "path": "src/v2/generated/lodge-tables-source-38.json",
+          "sha256": "c3a5c03e83ce498b4264ca54dba6129fd853c278917ecbe212ef5144419c257c"
+        },
+        {
+          "path": "src/v2/generated/lodge-tables-wood-38.json",
+          "sha256": "7e8bc371e7547ac77fc757ba93b281548a2467bb4d7f9c80139004928784dfa2"
+        },
+        {
+          "path": "src/v2/generated/lodge-tables-stream-38.json",
+          "sha256": "374be7c147d21d0c8ed976d5a60bde4135ad1bf78849cbc77d0656d920c89d8f"
+        },
+        {
+          "path": "src/v2/lodge-interior-stream.js",
+          "sha256": "cf1bffafc222ff18674e24fdf984c94fba79fd70b3da813eb9e5f01169e0e56e"
+        },
+        {
+          "path": "src/v2/generated/lodge-interior-stream-38.json",
+          "sha256": "d1b0844a8d792abf3fb31eb029a8a5e2ab968deea9f7173ce4f308d865cd5a5f"
+        },
+        {
+          "path": "src/v2/structures.js",
+          "sha256": "726827f95126082510c08b033fe6c9eec733dbf449bfab49ec24088305ce5292"
+        },
+        {
+          "path": "src/v2/house-timber48.js",
+          "sha256": "fec5028e60071a77dd75e9954f7df468b39e55e62f9b6a21ce81b76bf7f8163c"
+        },
+        {
+          "path": "src/v2/house-furniture-timber58.js",
+          "sha256": "80b323a2f8c4b83264e57d612762bf77f816656a6d5aee88d26018c7423059bc"
+        },
+        {
+          "path": "src/v2/house-textiles62.js",
+          "sha256": "3b6a45c7ca6f3b401847ad2884f20238fccc48319e57ab8a102e21d31a761fe3"
+        },
+        {
+          "path": "src/v2/house-timber-textures48.js",
+          "sha256": "406acd16ffc9b2878bc7aa7b226e95f3ea109452f4a31250914ee69da76ebf06"
+        },
+        {
+          "path": "src/v2/lodge-interior-wood.js",
+          "sha256": "6fb14dd189bf326f4cca7b4d7bdadb62dd004b3744f12ced54d3925b8489a18f"
+        },
+        {
+          "path": "src/v2/generated/lodge-interior-wood-38.json",
+          "sha256": "ba35555af6c7dc999ae99b5acf240bfc0388e7fad92c0ba6742cf8a15995fefb"
+        },
+        {
+          "path": "src/v2/lodge-chairs-definition.js",
+          "sha256": "f802f2f2fe66d0bb25dadf83ccf43da6b8aa137190eb6d36c3c06cd69922107d"
+        },
+        {
+          "path": "src/v2/lodge-chairs-loader.js",
+          "sha256": "3286bfa92f124858445511c1e6a73e282e5870951542a444edd90fe17b58232d"
+        },
+        {
+          "path": "src/v2/generated/lodge-chairs-source-38.json",
+          "sha256": "da76ab772f270797415d88c84552046f1260ed3cb63715aae99f287cf806aed2"
+        },
+        {
+          "path": "src/v2/generated/lodge-chairs-collision-38.json",
+          "sha256": "367c239640643388154e9d3a70f02bd54f8262b80d869c20d6dca572104826b2"
+        },
+        {
+          "path": "src/v2/guest-vanity-definition.js",
+          "sha256": "6ae154af7f632eb6af1a27205d9ef15a913f366dcced4ccffcc8c1814f46e964"
+        },
+        {
+          "path": "src/v2/guest-vanity-loader.js",
+          "sha256": "0c126710b59c510722ee9b896ac54c084fc9b236c530351149baaa3fdfa6ac1b"
+        },
+        {
+          "path": "src/v2/generated/guest-vanity-source-38.json",
+          "sha256": "8369fd0fb1eb5d898fed4ce4f95efe5af31cd4f4442346174fa12f8b1f7babbe"
+        },
+        {
+          "path": "src/v2/generated/guest-vanity-collision-38.json",
+          "sha256": "83c1167087f76b322a21df54fdf90d0547ccf3f1eed67ea299c6f20617023de2"
+        },
+        {
+          "path": "src/v2/cabin-window-glass.js",
+          "sha256": "6d3e01b05e9d968d7c5f3993a224c35e582a3796f32c0f5f7b8986af24556d1f"
+        },
+        {
+          "path": "src/v2/cabin-timber.js",
+          "sha256": "e3788cc6aab4bed1132de75309f6ee85439f830d223a593481fab0496f251181"
+        },
+        {
+          "path": "src/v2/lodge-wood.js",
+          "sha256": "9fa26893345ebf2864a905f9dab7ef4bfd1bcaff7df8e354f3ecfb964f13d3c2"
+        },
+        {
+          "path": "src/v2/lodge-furniture-definition.js",
+          "sha256": "5d213497f13771c71cbaa65f71a6175858c9b70b6f18a54a08e09d2d21c7d44e"
+        },
+        {
+          "path": "src/v2/lodge-furniture-loader.js",
+          "sha256": "163f02a32cd980518deae8d5a57b1065b7e8a6e2037d63a0d2467358db03103d"
+        },
+        {
+          "path": "src/v2/stone-occlusion.js",
+          "sha256": "24ebc658909596c77fdb6c98cc4f61396785b27f391d9c86f1bcb2c1b053d75d"
+        },
+        {
+          "path": "src/v2/stone-occlusion-data.js",
+          "sha256": "e2cad983f084decd51ec642ae4d594bcb13bf2a14e9a61e0d9b58d311bb4e2e2"
+        },
+        {
+          "path": "src/v2/lodge-door.js",
+          "sha256": "e97ef4d765fa6685e1a269c4422925e38bd2bee3bca55e696e73d291f236cb39"
+        },
+        {
+          "path": "src/v2/lodge-opening.js",
+          "sha256": "c5ce2a80add6495c9015b3f0bfdb19c8f3db93dfe7dd0e9a79b1e4d1053e4750"
+        },
+        {
+          "path": "src/v2/doors.js",
+          "sha256": "b86bd105a8e017bcc26d622b5bcd090fc826e7dd1ec74c892ffe676068f68df9"
+        },
+        {
+          "path": "src/v2/boardwalk-endpoints.js",
+          "sha256": "2ce072c08c40ada86597dc1721c9ed00963ab1be3e81ef72d7b21101985c9bc3"
+        },
+        {
+          "path": "src/v2/boardwalk-timber.js",
+          "sha256": "8bdf2a1d208bf2ea9f0669dabba592d8749334f95c9c5d37c24c9d1938ed2fb4"
+        },
+        {
+          "path": "src/v2/threshold-stones.js",
+          "sha256": "2f9e66919d206329b8a27634889765666451be4f88c81493625d04c446b8b48b"
+        },
+        {
+          "path": "src/v2/settlement-assets.js",
+          "sha256": "51e2e6f7cf3a9d4d82f28f5b122de776c1db4c249b29939b2f4376b17c922b00"
+        },
+        {
+          "path": "src/v2/asset-occlusion.js",
+          "sha256": "1aed86d726496675f5e18d6db989aa89988190b0add0cd8b8bf693ed98f6840e"
+        },
+        {
+          "path": "src/v2/timber-continuity.js",
+          "sha256": "9aa92081499c45b591e84aa6fa79bb7978cee52f58bc132ffcdd1a111ca7f5c3"
+        },
+        {
+          "path": "src/v2/timber-continuity-data.js",
+          "sha256": "b61ca5dea1ca95715734ca861fab5a57c2b3be778bf5969cd7a10bc8d76f58a4"
+        },
+        {
+          "path": "node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+          "sha256": "131c0f78c01d19368ae495caa65b3adaa10487810a36a05bb5901b769a35ac16"
+        },
+        {
+          "path": "node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+          "sha256": "9fb63427ce6641fa14fd0baff9cc4d1b5f9c3d85fd084bf2e90e803c44ec1797"
+        },
+        {
+          "path": "node_modules/three/examples/jsm/libs/meshopt_simplifier.module.js",
+          "sha256": "614402ffac05c8a40711f0d9a5d9a904dadc3ee2e7ed56d4568751dbd7fc8c35"
+        }
+      ],
+      "assets": {
+        "house_a": {
+          "path": "assets/v2/house_a_lived.glb",
+          "sha256": "9601b06e6717a2de3778d71c7983291555000b62786dfd62ec6e559a3cb0c6a2"
+        }
+      }
+    },
+    "forest": {
+      "signature": "ce3a7617216ab620b3607d388e0440c17eb89ba45206bb478f15a881ed3ca97e",
+      "sources": [
+        {
+          "path": "src/v2/forest-root-source.js",
+          "sha256": "ac2a7ccbe365661af682fc4f42d24007d25ad0b9dcc66c001a1b4bbea4d4ad48"
+        },
+        {
+          "path": "src/v2/forest-root-layout.js",
+          "sha256": "ddb74f38b28f971da6803ef9ad7fe9503e4dc451f1e396b7d998f859834b779e"
+        },
+        {
+          "path": "src/v2/forest-root-inputs.js",
+          "sha256": "b8dead8a7584ef67fee7ccd19190e94ed7668374679f36b89dac07240520ebce"
+        },
+        {
+          "path": "src/v2/forest-root-codec.js",
+          "sha256": "da980705ecd330374bd51bb0a6bc1d78d2453abca43561ef5dbb89cad8da89f1"
+        },
+        {
+          "path": "src/v2/plant-exclusion-index.js",
+          "sha256": "6a93516049cb43c6ad9f0c964652973ef8d4d3228a53197a90f1aee53fa9006a"
+        },
+        {
+          "path": "src/v2/world-data.js",
+          "sha256": "40da3beff7dfff4cbc7319a75d87b141034a4f7315c8d87ad1ad6e8a205d5a6c"
+        },
+        {
+          "path": "src/v2/terrain-height-interpolation.js",
+          "sha256": "bf2c3e28d2a1dc19ee9538643fcee73bca0cc0b3e247c65952f22f44b9b6c0cd"
+        },
+        {
+          "path": "src/v2/hydrology.js",
+          "sha256": "e84f59e51234513125c585783cfe5ee41de0655b61765ee3505ca709aa8824c3"
+        },
+        {
+          "path": "src/v2/forest-reach39.js",
+          "sha256": "540d21d10f90241fd1c80bd01e0e14a08f849e14aa5d11d9b4c040553d446462"
+        },
+        {
+          "path": "src/v2/forest-reach39-source.js",
+          "sha256": "816fc7a91b2023e3a0cd5086996291168f10e485d72150b5f74f6bf96c43864a"
+        },
+        {
+          "path": "src/v2/forest-reach-form41.js",
+          "sha256": "de11940c84526eda66ca36fe747ea54169d176ff9019c31ded5fe361130a87b9"
+        },
+        {
+          "path": "src/v2/reach-bank-profile48.js",
+          "sha256": "5de2e69765273f1371911421a5c14d35ea548d32e2e1e79a2ec3642f4ba8c082"
+        },
+        {
+          "path": "src/v2/reach-bank-design50.js",
+          "sha256": "b602eb4941ae88cc021cebd774e83170d7136edcdab2654b632bd70c8b6c8620"
+        },
+        {
+          "path": "src/v2/reach-design69.js",
+          "sha256": "6689914038161b5918d8ea28f807f555b1a7f4516e1c3758170c266a152719bf"
+        },
+        {
+          "path": "src/v2/reach-design73.js",
+          "sha256": "c17c23e17bcf8fb78861a044d48fb39ff6223c95e453a29341d313420271489a"
+        },
+        {
+          "path": "src/v2/forest-reach-form41-legacy.js",
+          "sha256": "e72424c3b9299aa0c4d31a26e1e8c301e3c054351a4ce0901b1d17a71901f834"
+        },
+        {
+          "path": "src/v2/forest-bank-shoulder.js",
+          "sha256": "ad793d73160d3dd006796436d82dcbbadd3cbc9b5346149e98c31067b6b9b61d"
+        },
+        {
+          "path": "src/v2/forest-bank-curvature-v38.js",
+          "sha256": "44397864dfd606444d242dd5c0768618ccd32d211c4f4c27d824d8c2c4d8d137"
+        },
+        {
+          "path": "src/v2/meadow-surface.js",
+          "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+        },
+        {
+          "path": "src/v2/meadow-scattered-canopy.js",
+          "sha256": "5bc8e85e48000a4c71dd51dd92b79382e017f505df0067ef5197e27e78144598"
+        },
+        {
+          "path": "src/v2/meadow-relief.js",
+          "sha256": "9ab2904c09029765251b54355654e7bfbda813e91c60010ca7a830d6925dde01"
+        },
+        {
+          "path": "src/v2/river-incision.js",
+          "sha256": "75f7f80e8767d97188be13ae08b1f0f609b9469232a7b27e4a288e89cf73031d"
+        },
+        {
+          "path": "src/v2/river-meander.js",
+          "sha256": "4bbf339795e39020e0fc622fd4246fb250109216e7ffe918076c95da4457f533"
+        },
+        {
+          "path": "src/v2/river-section.js",
+          "sha256": "81ecf1e1428da3bceaa69b81fe3fd4a325f0ea716c302c659c769b5b61409616"
+        },
+        {
+          "path": "src/v2/river-bed-profile.js",
+          "sha256": "7db60050d25cbd4f8976fe89aad81735bf896eabc2e1d3bdba3d092ef1b58b3a"
+        },
+        {
+          "path": "src/v2/settlement-assets.js",
+          "sha256": "51e2e6f7cf3a9d4d82f28f5b122de776c1db4c249b29939b2f4376b17c922b00"
+        }
+      ]
+    },
+    "meadow": {
+      "signature": "5257b43705d53dc04fc33656f44c05016a4e12d696389403004b7478506b4ea2",
+      "sources": [
+        {
+          "path": "public/assets/v2/glb-transport-manifest.json",
+          "sha256": "80f063e5f41e0b9a33f0d8a4601bb5d74091666bca3998659a95117f5295b743"
+        },
+        {
+          "path": "public/data/v2/habitat-transport-manifest.json",
+          "sha256": "b011310819edaf3561b3d9eb0c43123596beef217357dc4e578f6646ffbf2b01"
+        },
+        {
+          "path": "src/v2/asset-occlusion.js",
+          "sha256": "1aed86d726496675f5e18d6db989aa89988190b0add0cd8b8bf693ed98f6840e"
+        },
+        {
+          "path": "src/v2/boardwalk-endpoints.js",
+          "sha256": "2ce072c08c40ada86597dc1721c9ed00963ab1be3e81ef72d7b21101985c9bc3"
+        },
+        {
+          "path": "src/v2/boardwalk-plant-contact39.js",
+          "sha256": "7e7e094e75e6b8832db5c58e9ef4d4d19dce18981acb84f3f09d0923faf8d7c3"
+        },
+        {
+          "path": "src/v2/boardwalk-timber.js",
+          "sha256": "8bdf2a1d208bf2ea9f0669dabba592d8749334f95c9c5d37c24c9d1938ed2fb4"
+        },
+        {
+          "path": "src/v2/brook-shoulder-grass.js",
+          "sha256": "cbbfcf85054fb8d46100fb774723835101bd37b90c03b4b9b2a9b323855f36cc"
+        },
+        {
+          "path": "src/v2/brook-wetgrass.js",
+          "sha256": "e74e4819fe54d9b1985c9d4925787437edfd5552d76b1601f8c16ca3c787ffdd"
+        },
+        {
+          "path": "src/v2/ecology.js",
+          "sha256": "7bd2f85837f74b581eeb4d3f5c879e4dc5f505b2585fd0fe51bb731a78ef716e"
+        },
+        {
+          "path": "src/v2/forest-bank-curvature-v38.js",
+          "sha256": "44397864dfd606444d242dd5c0768618ccd32d211c4f4c27d824d8c2c4d8d137"
+        },
+        {
+          "path": "src/v2/forest-bank-shoulder.js",
+          "sha256": "ad793d73160d3dd006796436d82dcbbadd3cbc9b5346149e98c31067b6b9b61d"
+        },
+        {
+          "path": "src/v2/forest-reach-community39.js",
+          "sha256": "f36465af1880810cf7092ad1ffab408de9f29cbbfaf6addd07bdfda92459d267"
+        },
+        {
+          "path": "src/v2/forest-reach-form41-legacy.js",
+          "sha256": "e72424c3b9299aa0c4d31a26e1e8c301e3c054351a4ce0901b1d17a71901f834"
+        },
+        {
+          "path": "src/v2/forest-reach-form41.js",
+          "sha256": "de11940c84526eda66ca36fe747ea54169d176ff9019c31ded5fe361130a87b9"
+        },
+        {
+          "path": "src/v2/forest-reach39-source.js",
+          "sha256": "816fc7a91b2023e3a0cd5086996291168f10e485d72150b5f74f6bf96c43864a"
+        },
+        {
+          "path": "src/v2/forest-reach39.js",
+          "sha256": "540d21d10f90241fd1c80bd01e0e14a08f849e14aa5d11d9b4c040553d446462"
+        },
+        {
+          "path": "src/v2/forest-root-codec.js",
+          "sha256": "da980705ecd330374bd51bb0a6bc1d78d2453abca43561ef5dbb89cad8da89f1"
+        },
+        {
+          "path": "src/v2/forest-root-inputs.js",
+          "sha256": "b8dead8a7584ef67fee7ccd19190e94ed7668374679f36b89dac07240520ebce"
+        },
+        {
+          "path": "src/v2/forest-root-source.js",
+          "sha256": "ac2a7ccbe365661af682fc4f42d24007d25ad0b9dcc66c001a1b4bbea4d4ad48"
+        },
+        {
+          "path": "src/v2/generated/boardwalk-timber-38.json",
+          "sha256": "48d1726b4466f768c9b843e5240a0172bc9ad139a595688f1f0f3273e20dda96"
+        },
+        {
+          "path": "src/v2/generated/pasture-life-contact41.json",
+          "sha256": "e440e42f2d369213b91c0a6c9558217f6438ed37ab148236a7730bcae6942407"
+        },
+        {
+          "path": "src/v2/generated/route3-entry42.json",
+          "sha256": "77a66377b40a2f65df86e3f68ed919f7c8c706c3acfea9ff9a5ffc5b8c1f4fb4"
+        },
+        {
+          "path": "src/v2/generated/shore-rock05-bytes42.json",
+          "sha256": "c40843b305f92d3623b15a01a289dea192fd9c5e13a92867789d37161654ca31"
+        },
+        {
+          "path": "src/v2/glb-transport.js",
+          "sha256": "b873779f620544c344d7db1da638ebff518373857374b34672a9136ea51cfc34"
+        },
+        {
+          "path": "src/v2/grass-root-field.js",
+          "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+        },
+        {
+          "path": "src/v2/guest-stair-obstacle-data.js",
+          "sha256": "cc7abc5cd656e6e7622304fcc55cd96785ef9b7e07f7d2479ae9c42967f38f86"
+        },
+        {
+          "path": "src/v2/guest-stair-plants.js",
+          "sha256": "08757c779c646890030dc69ffc6b8199b12c516e672caa054c4d9c059d81f8ad"
+        },
+        {
+          "path": "src/v2/habitat-data.js",
+          "sha256": "cd42a7c4f2b43425853a007bdb7bfa692973d68e4f4ce7d7160460012075213e"
+        },
+        {
+          "path": "src/v2/habitat-loading.js",
+          "sha256": "6d338262058aaa6b033701ead3b466a9cfe939a032e16fdfd4f7f6cf75795d65"
+        },
+        {
+          "path": "src/v2/house-wall-obstacle-data77.js",
+          "sha256": "b82c3c04bfd7afd25e48d57af833f03e5a3e72091b4bc887d2dfd1e14466e8ee"
+        },
+        {
+          "path": "src/v2/house-wall-plants77.js",
+          "sha256": "4c904f8da47ecde83a19718d879097a8c3f0e665ef245906a68e459a0559c064"
+        },
+        {
+          "path": "src/v2/household-entry-legacy.js",
+          "sha256": "d85c6ac6c2f8371010ad0d0e245b6fc12a0682e471bffc6afe2dcaea6c761236"
+        },
+        {
+          "path": "src/v2/household-entry-shadow.js",
+          "sha256": "e67b71f1e62fd255301329bb4508d7b75ccfd5d2c7646eab7e10b6438d58df08"
+        },
+        {
+          "path": "src/v2/household-entry-steps.js",
+          "sha256": "cf69f4c21a0410c77c6e57fc96fd831fdd330affb4751f6a66cd695feb22641f"
+        },
+        {
+          "path": "src/v2/household-yards.js",
+          "sha256": "1260dddea1f60490a98ea5064a00cfd52fa1b43964d99f068cf52d11262694af"
+        },
+        {
+          "path": "src/v2/hydrology.js",
+          "sha256": "e84f59e51234513125c585783cfe5ee41de0655b61765ee3505ca709aa8824c3"
+        },
+        {
+          "path": "src/v2/lodge-stair-obstacle-data.js",
+          "sha256": "4532ee59a325d9a67c85b7c19b69677c38e8dd8c62bb15f848a32eb2097da5eb"
+        },
+        {
+          "path": "src/v2/lodge-stair-plants.js",
+          "sha256": "fb60c6b42a20e9283851198349ec702f81cc656cfa508ab989a8b8f1e9f6b4bd"
+        },
+        {
+          "path": "src/v2/meadow-connected-field41.js",
+          "sha256": "ea7bed81345a1bebfee91c04bcb4156afa31b89b9fe824086c4e0d3439765733"
+        },
+        {
+          "path": "src/v2/meadow-relief.js",
+          "sha256": "9ab2904c09029765251b54355654e7bfbda813e91c60010ca7a830d6925dde01"
+        },
+        {
+          "path": "src/v2/meadow-root-codec.js",
+          "sha256": "a2545446e94627585fcef161f16fa27ca7cdf8cf8d214a57f33340b6f0a04d19"
+        },
+        {
+          "path": "src/v2/meadow-scattered-canopy.js",
+          "sha256": "5bc8e85e48000a4c71dd51dd92b79382e017f505df0067ef5197e27e78144598"
+        },
+        {
+          "path": "src/v2/meadow-surface.js",
+          "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+        },
+        {
+          "path": "src/v2/owned-shadow-policy.js",
+          "sha256": "13ae67e98de3647d0ad0fb488599290fb9f5dd608f2c2f5dc3a8a7b5b339acd9"
+        },
+        {
+          "path": "src/v2/pasture-life41.js",
+          "sha256": "f156c89dbbb07d6d78a18dd1de78e933f1408d358efa04fa4bf5a491afe44814"
+        },
+        {
+          "path": "src/v2/pasture-plant-contact41.js",
+          "sha256": "b7bc7ddde9fc6928dfad157606768c5a549f3049f9ddf1abead5b9b4a5601d7f"
+        },
+        {
+          "path": "src/v2/pasture.js",
+          "sha256": "aee5096a5eac6a4e85d26c1d848ca4bc9a9b07e91c0e04e397f43e46b88fc239"
+        },
+        {
+          "path": "src/v2/plant-exclusion-index.js",
+          "sha256": "6a93516049cb43c6ad9f0c964652973ef8d4d3228a53197a90f1aee53fa9006a"
+        },
+        {
+          "path": "src/v2/reach-bank-design50.js",
+          "sha256": "b602eb4941ae88cc021cebd774e83170d7136edcdab2654b632bd70c8b6c8620"
+        },
+        {
+          "path": "src/v2/reach-bank-profile48.js",
+          "sha256": "5de2e69765273f1371911421a5c14d35ea548d32e2e1e79a2ec3642f4ba8c082"
+        },
+        {
+          "path": "src/v2/reach-design69.js",
+          "sha256": "6689914038161b5918d8ea28f807f555b1a7f4516e1c3758170c266a152719bf"
+        },
+        {
+          "path": "src/v2/reach-design73.js",
+          "sha256": "c17c23e17bcf8fb78861a044d48fb39ff6223c95e453a29341d313420271489a"
+        },
+        {
+          "path": "src/v2/river-bed-profile.js",
+          "sha256": "7db60050d25cbd4f8976fe89aad81735bf896eabc2e1d3bdba3d092ef1b58b3a"
+        },
+        {
+          "path": "src/v2/river-incision.js",
+          "sha256": "75f7f80e8767d97188be13ae08b1f0f609b9469232a7b27e4a288e89cf73031d"
+        },
+        {
+          "path": "src/v2/river-meander.js",
+          "sha256": "4bbf339795e39020e0fc622fd4246fb250109216e7ffe918076c95da4457f533"
+        },
+        {
+          "path": "src/v2/river-section.js",
+          "sha256": "81ecf1e1428da3bceaa69b81fe3fd4a325f0ea716c302c659c769b5b61409616"
+        },
+        {
+          "path": "src/v2/room-shadow.js",
+          "sha256": "63fd065cf63c1bbd0b5a5376a0e10564b3b08d337945bc8cca07ce8015f2e97c"
+        },
+        {
+          "path": "src/v2/route3-entry42.js",
+          "sha256": "6a59ec27efb5d54b70995aaa5f60c0b9acc9fe7b044c8efd17d157c02569b4bc"
+        },
+        {
+          "path": "src/v2/settlement-assets.js",
+          "sha256": "51e2e6f7cf3a9d4d82f28f5b122de776c1db4c249b29939b2f4376b17c922b00"
+        },
+        {
+          "path": "src/v2/shadow-program-family52.js",
+          "sha256": "0b95585e52603e97f0b85042b03e10db8089259ceaf24b4754334292d7406e2f"
+        },
+        {
+          "path": "src/v2/shore-asset-review42-state.js",
+          "sha256": "8b315419568e1af68e7502c4d55c813bf2e4ad7b08b7faef4c84f341b3fc52f6"
+        },
+        {
+          "path": "src/v2/shore-contact.js",
+          "sha256": "0b67c7e9b85cd5c4e7953917bdf6e7cd77965c73c51e756874708c6b5ea3f6f1"
+        },
+        {
+          "path": "src/v2/shore-rock-data.js",
+          "sha256": "f0ac3ecb88f0d00b5189275e9450bede87e9705383fd0f88fc3dea44631b73e1"
+        },
+        {
+          "path": "src/v2/shore-stones.js",
+          "sha256": "b2956edf9a8013907f85631c4d5dc7ec80c301f44734ecfb269933068fc1654c"
+        },
+        {
+          "path": "src/v2/terrain-height-interpolation.js",
+          "sha256": "bf2c3e28d2a1dc19ee9538643fcee73bca0cc0b3e247c65952f22f44b9b6c0cd"
+        },
+        {
+          "path": "src/v2/terrain-shadow-domain.js",
+          "sha256": "da6931c1655649a054726880844e4b485f1eef19df3417007bc58f1f816eaacc"
+        },
+        {
+          "path": "src/v2/threshold-plants.js",
+          "sha256": "7ea822608554c3897cec1d564f7158877a2620a862c30acb59796a4d0db55980"
+        },
+        {
+          "path": "src/v2/valley-bank-roots.js",
+          "sha256": "93c60e0d7a2719315f0970d7ce1e6412e602de0c95eebf4514ae2f4016d10e61"
+        },
+        {
+          "path": "src/v2/world-data.js",
+          "sha256": "40da3beff7dfff4cbc7319a75d87b141034a4f7315c8d87ad1ad6e8a205d5a6c"
+        }
+      ]
+    },
+    "cover": {
+      "signature": "3e86a8046b3db971187597621e976fa55b53ad9818a30370179184db27c13ab3",
+      "sources": [
+        {
+          "path": "public/assets/v2/glb-transport-manifest.json",
+          "sha256": "80f063e5f41e0b9a33f0d8a4601bb5d74091666bca3998659a95117f5295b743"
+        },
+        {
+          "path": "public/data/v2/habitat-transport-manifest.json",
+          "sha256": "b011310819edaf3561b3d9eb0c43123596beef217357dc4e578f6646ffbf2b01"
+        },
+        {
+          "path": "src/v2/asset-occlusion.js",
+          "sha256": "1aed86d726496675f5e18d6db989aa89988190b0add0cd8b8bf693ed98f6840e"
+        },
+        {
+          "path": "src/v2/boardwalk-endpoints.js",
+          "sha256": "2ce072c08c40ada86597dc1721c9ed00963ab1be3e81ef72d7b21101985c9bc3"
+        },
+        {
+          "path": "src/v2/boardwalk-plant-contact39.js",
+          "sha256": "7e7e094e75e6b8832db5c58e9ef4d4d19dce18981acb84f3f09d0923faf8d7c3"
+        },
+        {
+          "path": "src/v2/boardwalk-timber.js",
+          "sha256": "8bdf2a1d208bf2ea9f0669dabba592d8749334f95c9c5d37c24c9d1938ed2fb4"
+        },
+        {
+          "path": "src/v2/brook-shoulder-grass.js",
+          "sha256": "cbbfcf85054fb8d46100fb774723835101bd37b90c03b4b9b2a9b323855f36cc"
+        },
+        {
+          "path": "src/v2/brook-wetgrass.js",
+          "sha256": "e74e4819fe54d9b1985c9d4925787437edfd5552d76b1601f8c16ca3c787ffdd"
+        },
+        {
+          "path": "src/v2/ecology.js",
+          "sha256": "7bd2f85837f74b581eeb4d3f5c879e4dc5f505b2585fd0fe51bb731a78ef716e"
+        },
+        {
+          "path": "src/v2/forest-bank-curvature-v38.js",
+          "sha256": "44397864dfd606444d242dd5c0768618ccd32d211c4f4c27d824d8c2c4d8d137"
+        },
+        {
+          "path": "src/v2/forest-bank-shoulder.js",
+          "sha256": "ad793d73160d3dd006796436d82dcbbadd3cbc9b5346149e98c31067b6b9b61d"
+        },
+        {
+          "path": "src/v2/forest-floor-batches.js",
+          "sha256": "28b475a0983e8c3f0637271739e9996f68411dfdb576d55716b6e284148688a6"
+        },
+        {
+          "path": "src/v2/forest-floor.js",
+          "sha256": "2c67c318d1c702aff87b93faae998f907ff68c60d55dd4033a3df679543b682f"
+        },
+        {
+          "path": "src/v2/forest-reach-community39.js",
+          "sha256": "f36465af1880810cf7092ad1ffab408de9f29cbbfaf6addd07bdfda92459d267"
+        },
+        {
+          "path": "src/v2/forest-reach-cover39.js",
+          "sha256": "5b5a758f89061c9b044b75e43879548fc60b98717e1bf3b36e28c2664cb8dc04"
+        },
+        {
+          "path": "src/v2/forest-reach-edge41.js",
+          "sha256": "03f15b9e05f34243ab12b7382b3994d43214ecba559aa623777c05fafcecf3b7"
+        },
+        {
+          "path": "src/v2/forest-reach-form41-legacy.js",
+          "sha256": "e72424c3b9299aa0c4d31a26e1e8c301e3c054351a4ce0901b1d17a71901f834"
+        },
+        {
+          "path": "src/v2/forest-reach-form41.js",
+          "sha256": "de11940c84526eda66ca36fe747ea54169d176ff9019c31ded5fe361130a87b9"
+        },
+        {
+          "path": "src/v2/forest-reach-preserved-cover41.js",
+          "sha256": "e267b66d0907d6928a2dddef94ef89650bf97d576d58a6f6c9b7c84f91c54a0d"
+        },
+        {
+          "path": "src/v2/forest-reach-seating41.js",
+          "sha256": "1f5d8be10870e8a2740746040dc6be466591956a68a94d28044af1902b32eb48"
+        },
+        {
+          "path": "src/v2/forest-reach-surface41.js",
+          "sha256": "0d8f494b972ef4399a31618b2539cc546fe5dbc31241c42ef2470a2bc8ea1e89"
+        },
+        {
+          "path": "src/v2/forest-reach39-source.js",
+          "sha256": "816fc7a91b2023e3a0cd5086996291168f10e485d72150b5f74f6bf96c43864a"
+        },
+        {
+          "path": "src/v2/forest-reach39.js",
+          "sha256": "540d21d10f90241fd1c80bd01e0e14a08f849e14aa5d11d9b4c040553d446462"
+        },
+        {
+          "path": "src/v2/forest-root-codec.js",
+          "sha256": "da980705ecd330374bd51bb0a6bc1d78d2453abca43561ef5dbb89cad8da89f1"
+        },
+        {
+          "path": "src/v2/forest-root-inputs.js",
+          "sha256": "b8dead8a7584ef67fee7ccd19190e94ed7668374679f36b89dac07240520ebce"
+        },
+        {
+          "path": "src/v2/forest-root-source.js",
+          "sha256": "ac2a7ccbe365661af682fc4f42d24007d25ad0b9dcc66c001a1b4bbea4d4ad48"
+        },
+        {
+          "path": "src/v2/generated/boardwalk-timber-38.json",
+          "sha256": "48d1726b4466f768c9b843e5240a0172bc9ad139a595688f1f0f3273e20dda96"
+        },
+        {
+          "path": "src/v2/generated/forest-reach-cover41-source.json",
+          "sha256": "4fa8f6446c0b681723f89ae9037d1959106abbbcbbdb63d57d183ffe3d4ae3d0"
+        },
+        {
+          "path": "src/v2/generated/forest-reach-surface41.json",
+          "sha256": "0cc610c054bcb114874140dcd58af9178c21386ea97569a68e6cb4db0b798510"
+        },
+        {
+          "path": "src/v2/generated/pasture-life-contact41.json",
+          "sha256": "e440e42f2d369213b91c0a6c9558217f6438ed37ab148236a7730bcae6942407"
+        },
+        {
+          "path": "src/v2/generated/route3-entry42.json",
+          "sha256": "77a66377b40a2f65df86e3f68ed919f7c8c706c3acfea9ff9a5ffc5b8c1f4fb4"
+        },
+        {
+          "path": "src/v2/generated/shore-rock05-bytes42.json",
+          "sha256": "c40843b305f92d3623b15a01a289dea192fd9c5e13a92867789d37161654ca31"
+        },
+        {
+          "path": "src/v2/glb-transport.js",
+          "sha256": "b873779f620544c344d7db1da638ebff518373857374b34672a9136ea51cfc34"
+        },
+        {
+          "path": "src/v2/grass-root-field.js",
+          "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+        },
+        {
+          "path": "src/v2/guest-stair-obstacle-data.js",
+          "sha256": "cc7abc5cd656e6e7622304fcc55cd96785ef9b7e07f7d2479ae9c42967f38f86"
+        },
+        {
+          "path": "src/v2/guest-stair-plants.js",
+          "sha256": "08757c779c646890030dc69ffc6b8199b12c516e672caa054c4d9c059d81f8ad"
+        },
+        {
+          "path": "src/v2/habitat-data.js",
+          "sha256": "cd42a7c4f2b43425853a007bdb7bfa692973d68e4f4ce7d7160460012075213e"
+        },
+        {
+          "path": "src/v2/habitat-loading.js",
+          "sha256": "6d338262058aaa6b033701ead3b466a9cfe939a032e16fdfd4f7f6cf75795d65"
+        },
+        {
+          "path": "src/v2/house-wall-obstacle-data77.js",
+          "sha256": "b82c3c04bfd7afd25e48d57af833f03e5a3e72091b4bc887d2dfd1e14466e8ee"
+        },
+        {
+          "path": "src/v2/house-wall-plants77.js",
+          "sha256": "4c904f8da47ecde83a19718d879097a8c3f0e665ef245906a68e459a0559c064"
+        },
+        {
+          "path": "src/v2/household-entry-legacy.js",
+          "sha256": "d85c6ac6c2f8371010ad0d0e245b6fc12a0682e471bffc6afe2dcaea6c761236"
+        },
+        {
+          "path": "src/v2/household-entry-shadow.js",
+          "sha256": "e67b71f1e62fd255301329bb4508d7b75ccfd5d2c7646eab7e10b6438d58df08"
+        },
+        {
+          "path": "src/v2/household-entry-steps.js",
+          "sha256": "cf69f4c21a0410c77c6e57fc96fd831fdd330affb4751f6a66cd695feb22641f"
+        },
+        {
+          "path": "src/v2/household-yards.js",
+          "sha256": "1260dddea1f60490a98ea5064a00cfd52fa1b43964d99f068cf52d11262694af"
+        },
+        {
+          "path": "src/v2/hydrology.js",
+          "sha256": "e84f59e51234513125c585783cfe5ee41de0655b61765ee3505ca709aa8824c3"
+        },
+        {
+          "path": "src/v2/local-shadow-policy72.js",
+          "sha256": "393f46c1822c1e0afbca3bab671374da54ec3fea56cacdb1f16f053c6245d8ec"
+        },
+        {
+          "path": "src/v2/lodge-stair-obstacle-data.js",
+          "sha256": "4532ee59a325d9a67c85b7c19b69677c38e8dd8c62bb15f848a32eb2097da5eb"
+        },
+        {
+          "path": "src/v2/lodge-stair-plants.js",
+          "sha256": "fb60c6b42a20e9283851198349ec702f81cc656cfa508ab989a8b8f1e9f6b4bd"
+        },
+        {
+          "path": "src/v2/meadow-connected-field41.js",
+          "sha256": "ea7bed81345a1bebfee91c04bcb4156afa31b89b9fe824086c4e0d3439765733"
+        },
+        {
+          "path": "src/v2/meadow-relief.js",
+          "sha256": "9ab2904c09029765251b54355654e7bfbda813e91c60010ca7a830d6925dde01"
+        },
+        {
+          "path": "src/v2/meadow-root-codec.js",
+          "sha256": "a2545446e94627585fcef161f16fa27ca7cdf8cf8d214a57f33340b6f0a04d19"
+        },
+        {
+          "path": "src/v2/meadow-scattered-canopy.js",
+          "sha256": "5bc8e85e48000a4c71dd51dd92b79382e017f505df0067ef5197e27e78144598"
+        },
+        {
+          "path": "src/v2/meadow-surface.js",
+          "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+        },
+        {
+          "path": "src/v2/owned-shadow-policy.js",
+          "sha256": "13ae67e98de3647d0ad0fb488599290fb9f5dd608f2c2f5dc3a8a7b5b339acd9"
+        },
+        {
+          "path": "src/v2/pasture-life41.js",
+          "sha256": "f156c89dbbb07d6d78a18dd1de78e933f1408d358efa04fa4bf5a491afe44814"
+        },
+        {
+          "path": "src/v2/pasture-plant-contact41.js",
+          "sha256": "b7bc7ddde9fc6928dfad157606768c5a549f3049f9ddf1abead5b9b4a5601d7f"
+        },
+        {
+          "path": "src/v2/pasture.js",
+          "sha256": "aee5096a5eac6a4e85d26c1d848ca4bc9a9b07e91c0e04e397f43e46b88fc239"
+        },
+        {
+          "path": "src/v2/plant-exclusion-index.js",
+          "sha256": "6a93516049cb43c6ad9f0c964652973ef8d4d3228a53197a90f1aee53fa9006a"
+        },
+        {
+          "path": "src/v2/reach-bank-design50.js",
+          "sha256": "b602eb4941ae88cc021cebd774e83170d7136edcdab2654b632bd70c8b6c8620"
+        },
+        {
+          "path": "src/v2/reach-bank-profile48.js",
+          "sha256": "5de2e69765273f1371911421a5c14d35ea548d32e2e1e79a2ec3642f4ba8c082"
+        },
+        {
+          "path": "src/v2/reach-contact-prepared42.js",
+          "sha256": "2e62a05bd6203385b89006f4eb32866f15ff2b6091adde36f18ba1acd221175c"
+        },
+        {
+          "path": "src/v2/reach-cover-prepared42.js",
+          "sha256": "5b02296bb640af5f80c2f27a5386a8ce9e9257bb9dbf9bbf9bbb0930e05238b0"
+        },
+        {
+          "path": "src/v2/reach-design69.js",
+          "sha256": "6689914038161b5918d8ea28f807f555b1a7f4516e1c3758170c266a152719bf"
+        },
+        {
+          "path": "src/v2/reach-design73.js",
+          "sha256": "c17c23e17bcf8fb78861a044d48fb39ff6223c95e453a29341d313420271489a"
+        },
+        {
+          "path": "src/v2/reach-rendered-seat41.js",
+          "sha256": "45fb684a60b5bcc8927139b2d55ffa29015bde637e75a0432b4b03dded664360"
+        },
+        {
+          "path": "src/v2/reach-root-face50.js",
+          "sha256": "37d2103104fcd9c3334273d543dbb438851207c976365062ee98da340ec03ba6"
+        },
+        {
+          "path": "src/v2/reach-water-contact40.js",
+          "sha256": "8764973fd02f20843edc1ef075ea2a5f6451bd7e8a107933a955158e5d6e581e"
+        },
+        {
+          "path": "src/v2/river-bed-profile.js",
+          "sha256": "7db60050d25cbd4f8976fe89aad81735bf896eabc2e1d3bdba3d092ef1b58b3a"
+        },
+        {
+          "path": "src/v2/river-incision.js",
+          "sha256": "75f7f80e8767d97188be13ae08b1f0f609b9469232a7b27e4a288e89cf73031d"
+        },
+        {
+          "path": "src/v2/river-meander.js",
+          "sha256": "4bbf339795e39020e0fc622fd4246fb250109216e7ffe918076c95da4457f533"
+        },
+        {
+          "path": "src/v2/river-section.js",
+          "sha256": "81ecf1e1428da3bceaa69b81fe3fd4a325f0ea716c302c659c769b5b61409616"
+        },
+        {
+          "path": "src/v2/room-shadow.js",
+          "sha256": "63fd065cf63c1bbd0b5a5376a0e10564b3b08d337945bc8cca07ce8015f2e97c"
+        },
+        {
+          "path": "src/v2/route3-entry42.js",
+          "sha256": "6a59ec27efb5d54b70995aaa5f60c0b9acc9fe7b044c8efd17d157c02569b4bc"
+        },
+        {
+          "path": "src/v2/settlement-assets.js",
+          "sha256": "51e2e6f7cf3a9d4d82f28f5b122de776c1db4c249b29939b2f4376b17c922b00"
+        },
+        {
+          "path": "src/v2/shadow-column-audit42.js",
+          "sha256": "9e8a14e1ee7335113a833e8dfb7c0add78e420312a1597c9c6585585774121b6"
+        },
+        {
+          "path": "src/v2/shadow-program-family52.js",
+          "sha256": "0b95585e52603e97f0b85042b03e10db8089259ceaf24b4754334292d7406e2f"
+        },
+        {
+          "path": "src/v2/shore-asset-review42-state.js",
+          "sha256": "8b315419568e1af68e7502c4d55c813bf2e4ad7b08b7faef4c84f341b3fc52f6"
+        },
+        {
+          "path": "src/v2/shore-contact.js",
+          "sha256": "0b67c7e9b85cd5c4e7953917bdf6e7cd77965c73c51e756874708c6b5ea3f6f1"
+        },
+        {
+          "path": "src/v2/shore-rock-data.js",
+          "sha256": "f0ac3ecb88f0d00b5189275e9450bede87e9705383fd0f88fc3dea44631b73e1"
+        },
+        {
+          "path": "src/v2/shore-stones.js",
+          "sha256": "b2956edf9a8013907f85631c4d5dc7ec80c301f44734ecfb269933068fc1654c"
+        },
+        {
+          "path": "src/v2/terrain-height-interpolation.js",
+          "sha256": "bf2c3e28d2a1dc19ee9538643fcee73bca0cc0b3e247c65952f22f44b9b6c0cd"
+        },
+        {
+          "path": "src/v2/terrain-shadow-domain.js",
+          "sha256": "da6931c1655649a054726880844e4b485f1eef19df3417007bc58f1f816eaacc"
+        },
+        {
+          "path": "src/v2/threshold-plants.js",
+          "sha256": "7ea822608554c3897cec1d564f7158877a2620a862c30acb59796a4d0db55980"
+        },
+        {
+          "path": "src/v2/valley-bank-roots.js",
+          "sha256": "93c60e0d7a2719315f0970d7ce1e6412e602de0c95eebf4514ae2f4016d10e61"
+        },
+        {
+          "path": "src/v2/world-data.js",
+          "sha256": "40da3beff7dfff4cbc7319a75d87b141034a4f7315c8d87ad1ad6e8a205d5a6c"
+        }
+      ]
+    },
+    "terrain": {
+      "signature": "08764a921660fc6a6a5253cf7c05ca37226979382f23a597fe6efcf721ee4b90",
+      "sources": [
+        {
+          "path": "src/v2/forest-bank-curvature-v38.js",
+          "sha256": "44397864dfd606444d242dd5c0768618ccd32d211c4f4c27d824d8c2c4d8d137"
+        },
+        {
+          "path": "src/v2/forest-bank-shoulder.js",
+          "sha256": "ad793d73160d3dd006796436d82dcbbadd3cbc9b5346149e98c31067b6b9b61d"
+        },
+        {
+          "path": "src/v2/forest-reach-form41-legacy.js",
+          "sha256": "e72424c3b9299aa0c4d31a26e1e8c301e3c054351a4ce0901b1d17a71901f834"
+        },
+        {
+          "path": "src/v2/forest-reach-form41.js",
+          "sha256": "de11940c84526eda66ca36fe747ea54169d176ff9019c31ded5fe361130a87b9"
+        },
+        {
+          "path": "src/v2/forest-reach-surface41.js",
+          "sha256": "0d8f494b972ef4399a31618b2539cc546fe5dbc31241c42ef2470a2bc8ea1e89"
+        },
+        {
+          "path": "src/v2/forest-reach39-source.js",
+          "sha256": "816fc7a91b2023e3a0cd5086996291168f10e485d72150b5f74f6bf96c43864a"
+        },
+        {
+          "path": "src/v2/forest-reach39.js",
+          "sha256": "540d21d10f90241fd1c80bd01e0e14a08f849e14aa5d11d9b4c040553d446462"
+        },
+        {
+          "path": "src/v2/forest-root-inputs.js",
+          "sha256": "b8dead8a7584ef67fee7ccd19190e94ed7668374679f36b89dac07240520ebce"
+        },
+        {
+          "path": "src/v2/generated/forest-reach-surface41.json",
+          "sha256": "0cc610c054bcb114874140dcd58af9178c21386ea97569a68e6cb4db0b798510"
+        },
+        {
+          "path": "src/v2/hydrology.js",
+          "sha256": "e84f59e51234513125c585783cfe5ee41de0655b61765ee3505ca709aa8824c3"
+        },
+        {
+          "path": "src/v2/meadow-connected-field41.js",
+          "sha256": "ea7bed81345a1bebfee91c04bcb4156afa31b89b9fe824086c4e0d3439765733"
+        },
+        {
+          "path": "src/v2/meadow-relief.js",
+          "sha256": "9ab2904c09029765251b54355654e7bfbda813e91c60010ca7a830d6925dde01"
+        },
+        {
+          "path": "src/v2/meadow-scattered-canopy.js",
+          "sha256": "5bc8e85e48000a4c71dd51dd92b79382e017f505df0067ef5197e27e78144598"
+        },
+        {
+          "path": "src/v2/meadow-surface.js",
+          "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+        },
+        {
+          "path": "src/v2/preparation-yield.js",
+          "sha256": "f3cd677431abff6c54e73b7477e0d83738fc000ef09391e0a5341ac638c48a07"
+        },
+        {
+          "path": "src/v2/reach-bank-design50.js",
+          "sha256": "b602eb4941ae88cc021cebd774e83170d7136edcdab2654b632bd70c8b6c8620"
+        },
+        {
+          "path": "src/v2/reach-bank-profile48.js",
+          "sha256": "5de2e69765273f1371911421a5c14d35ea548d32e2e1e79a2ec3642f4ba8c082"
+        },
+        {
+          "path": "src/v2/reach-design69.js",
+          "sha256": "6689914038161b5918d8ea28f807f555b1a7f4516e1c3758170c266a152719bf"
+        },
+        {
+          "path": "src/v2/reach-design73.js",
+          "sha256": "c17c23e17bcf8fb78861a044d48fb39ff6223c95e453a29341d313420271489a"
+        },
+        {
+          "path": "src/v2/reach-facies44.js",
+          "sha256": "c445c8fed9f82ce0b695b74559b75bf00c8e72b756e891b21ad4ae8faed96c97"
+        },
+        {
+          "path": "src/v2/reach-root-face50.js",
+          "sha256": "37d2103104fcd9c3334273d543dbb438851207c976365062ee98da340ec03ba6"
+        },
+        {
+          "path": "src/v2/river-bed-profile.js",
+          "sha256": "7db60050d25cbd4f8976fe89aad81735bf896eabc2e1d3bdba3d092ef1b58b3a"
+        },
+        {
+          "path": "src/v2/river-incision.js",
+          "sha256": "75f7f80e8767d97188be13ae08b1f0f609b9469232a7b27e4a288e89cf73031d"
+        },
+        {
+          "path": "src/v2/river-meander.js",
+          "sha256": "4bbf339795e39020e0fc622fd4246fb250109216e7ffe918076c95da4457f533"
+        },
+        {
+          "path": "src/v2/river-section.js",
+          "sha256": "81ecf1e1428da3bceaa69b81fe3fd4a325f0ea716c302c659c769b5b61409616"
+        },
+        {
+          "path": "src/v2/room-shadow.js",
+          "sha256": "63fd065cf63c1bbd0b5a5376a0e10564b3b08d337945bc8cca07ce8015f2e97c"
+        },
+        {
+          "path": "src/v2/settlement-assets.js",
+          "sha256": "51e2e6f7cf3a9d4d82f28f5b122de776c1db4c249b29939b2f4376b17c922b00"
+        },
+        {
+          "path": "src/v2/shadow-program-family52.js",
+          "sha256": "0b95585e52603e97f0b85042b03e10db8089259ceaf24b4754334292d7406e2f"
+        },
+        {
+          "path": "src/v2/shore-material.js",
+          "sha256": "8b9cd3fa80774c497395840f74e57d19dd7ab2d63cd80562ed7580c6dbef5887"
+        },
+        {
+          "path": "src/v2/surface-transition.js",
+          "sha256": "f64646063dd3defd54acb882b5fea4e022bc7247be8d8d62a62b620bfa547aa3"
+        },
+        {
+          "path": "src/v2/terrain-forest-scan.js",
+          "sha256": "a1ecff7c636664ff117fb7003f15d2383d1d11ed5ce8ee55bb58952c1371f706"
+        },
+        {
+          "path": "src/v2/terrain-grass-projection.js",
+          "sha256": "8042730c3979a4d9694ef72c357544aa1d651c5e893558516acb13358338a04d"
+        },
+        {
+          "path": "src/v2/terrain-height-interpolation.js",
+          "sha256": "bf2c3e28d2a1dc19ee9538643fcee73bca0cc0b3e247c65952f22f44b9b6c0cd"
+        },
+        {
+          "path": "src/v2/terrain-material.js",
+          "sha256": "e35e750b01ffc86c868568be629d03f1b8cca6b722e94fc554a1565594b21e49"
+        },
+        {
+          "path": "src/v2/terrain-row-kernel.js",
+          "sha256": "531d6792a6fa2b8e11055f5c071653286a183e3f72fea9fb67d8f9fb313cc580"
+        },
+        {
+          "path": "src/v2/terrain-sample-cache.js",
+          "sha256": "2ea393a330313405f73277fa29bf2bc95ae00082790b55ad7939e694a4c91e6e"
+        },
+        {
+          "path": "src/v2/terrain-shadow-domain.js",
+          "sha256": "da6931c1655649a054726880844e4b485f1eef19df3417007bc58f1f816eaacc"
+        },
+        {
+          "path": "src/v2/terrain-sibling-batches.js",
+          "sha256": "1ac3df824623fb6bdfce093e85dc2aeb9b51141be7bc04aa7867e27ac3abb67d"
+        },
+        {
+          "path": "src/v2/terrain-tile-cache.js",
+          "sha256": "65693db05845d5415e34c6291613a555760fe3076005940d0deec6d43a76b894"
+        },
+        {
+          "path": "src/v2/terrain.js",
+          "sha256": "0508088493b8c51739a8c0b978cf655e4e75b6a4f28c083e4c16f9163924ad3e"
+        },
+        {
+          "path": "src/v2/world-data.js",
+          "sha256": "40da3beff7dfff4cbc7319a75d87b141034a4f7315c8d87ad1ad6e8a205d5a6c"
+        }
+      ]
+    }
+  },
+  "restoreOnlyInto": "clean isolated candidate workspace; not production or frozen evidence workspace"
+}

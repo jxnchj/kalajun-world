@@ -1,0 +1,55 @@
+{
+  "status": "SOURCE_ONLY_PACKAGE_REPLAY_PASS_NOT_PRODUCTION_ADOPTED",
+  "historicalAuthorValidation": "Final72 focused/cache/family PASS on exact frozen v2; previous stale prepared failures preserved",
+  "historicalIndependentValidation": "53 current tests,447parts/19248collider comparisons and HTTP17; see immutable backup reviews",
+  "historicalExpandedAudit": "95362sourcecells/113houses;69016grass1changed unresolved1to0;403flower tiles/16185roots zero changes within finite domain; not whole world",
+  "historicalMemoryValidation": "Cache-only probe separate from actual defaultheap fullroot traversal17.13s peakRSS1101088KiB; numeric cache budget not hard V8/RSS cap",
+  "currentPackageReplay": {
+    "baselineBeforeHashes": 10,
+    "patchedHashes": 10,
+    "repeatApplyRefused": true,
+    "extractorGeneratedGeometryHash": "b82c3c04bfd7afd25e48d57af833f03e5a3e72091b4bc887d2dfd1e14466e8ee",
+    "external22Prepared12HashChecks": "PASS",
+    "sourceBindingRows": 266,
+    "freshFocusedTests": 33,
+    "failures": 0,
+    "skipped": 0,
+    "receiptSHA256": "1795566e2bce39249f575def76f91c1adc59d7031c1c2c7d896a90a0c050694e",
+    "notRun": [
+      "full build/native",
+      "new expanded95362cell audit",
+      "full suite",
+      "prepared regeneration (verified archived12 reused)"
+    ]
+  },
+  "nativeV2": {
+    "cutoffUTC": "2026-10-31T05:45:00Z",
+    "status": "BOUNDED_ENTRYTEA_CLOTH_OFF_STATIC_PASS_NOT_GLOBAL_ACCEPTANCE",
+    "independentReviewSHA256": "9a2e65177fda4685e9d585fbd46cca82a28b4f976936b6adde62acab20aea94d",
+    "caseReceiptSHA256": "d2dc340f096ffea56d7941f100c1700d03b15158044727bb6c2bd77068b71346",
+    "remoteVerificationReceiptSHA256": "40a6e2ba67a185b988dc22af628a98bdba8e5243a8aac8601e47f14a4a5e303f",
+    "archiveSHA256": "f7b82b5707162747ef41828e7ec9a24de332812ccc472763a60a463027b13a56",
+    "archiveBytes": 418045,
+    "archiveFiles": 14,
+    "scope": "One tea static3frame870/door102; sampledRSSguard PASS, not universalmemory/FPS/fullart/adoption; independentreview original exact frozen build, not package rebuilt native"
+  },
+  "notAccepted": [
+    "production adoption",
+    "full closed door/return",
+    "fine cloth contacts/full art",
+    "target GPU FPS",
+    "whole-world coverage"
+  ],
+  "sourceGeometryScope": "0.12m worldheight slabs of original separate lining primitives, conservative not exact aperture-edge or closed solid containment",
+  "failedHistoricalEvidence": "Initial defaultheap~2GiB OOM retained; cachegrowth does not prove soleOOMcause; no resource cap raised",
+  "independentPackageReview": {
+    "status": "PASS",
+    "checks": [
+      "fresh isolated10path before/after hashes and repeatapply refusal",
+      "34 external payload hashes plus originalGLB andderived output identities",
+      "266source closure rows",
+      "privacy/LFS/source-only boundaries"
+    ],
+    "notRerun": "Reviewer did not rerun author33tests/build/native or heavy audit"
+  }
+}

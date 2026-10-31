@@ -1,7 +1,7 @@
 {
-  "updatedAtUTC": "2026-10-31T03:13:05Z",
-  "status": "THREE_STATIC_FAMILY_PAIRS_PLUS_ACTUAL_SEVEN_STEP_PARTIAL_DOOR_NOT_FULL_ACCEPTANCE_LOCAL_DOCS_UNPUBLISHED",
-  "gitBase": "53b3606f1c0959a8ae129045d48f3ce0c657a83a",
+  "updatedAtUTC": "2026-10-31T05:47:11Z",
+  "status": "WALLPLANTS_V2_FINITE_CPU_AND_TEA_NATIVE_PASS_SOURCE_REPLAY_PREPARED_NO_PRODUCTION_ADOPTION",
+  "gitBase": "147cabbc6ef2d6460e20d46bc881ff9ea853209a",
   "backup": {
     "scope": "HISTORICAL_INITIAL_OCT30_V6_NOT_LATEST_BACKUP",
     "name": "kalajun-cloud75-recovery-checkpoint.zip",
@@ -834,7 +834,12 @@
     "current_family_native": "Three actual OFF/ON static pairs sealed; all three independently reviewed+remote backup verified; no full acceptance",
     "terrain_file_regression": "Historical directedcomplete terrain.test.js11/13:2failed, not currentfullproject rerun",
     "terrain_profile_candidate": "REJECTED_AT_INTERFACE_REVIEW_BEFORE_IMPLEMENTATION; differentialNOTRUN,ABBA0/8NOTRUN; no fix/speedclaim",
-    "partial_door_motion": "Actual native F+7steps PASS limited transition102to89.299deg,11frames,ready/errors[]; independent review/backup see partialDoorMotion20261031"
+    "partial_door_motion": "Actual native F+7steps PASS limited transition102to89.299deg,11frames,ready/errors[]; independent review/backup see partialDoorMotion20261031",
+    "full_close": "NOT_RUN: conservative900s plan,remaining840.27s stop; noF/no60steps",
+    "pixel_capture": "v2 inconclusive;v3 RSSfailure;v4 onevalid export not GPUownership/universal fix",
+    "root_contact": "Independent restsurface proof PASS; candidate not production adopted; bounded v2 CPU/native validation recorded in wallplantsV2Checkpoint",
+    "wallplants_v2": "Finite72author/53independent CPU tests; bounded tea native PASS; notglobal adoption/FPS",
+    "source_replay_package": "Fresh33tests andexactsource/input replay PASS; independent10path fixture/closure/privacy review PASS"
   },
   "completionBoundary": "File/dependency recovery, source tests and build do not establish currentfamily native or finalart/performance. Keep oldprotected context, rejected terrain candidates and all open stage3 tasks; no productionadoption/deploy/forcepush.",
   "history": [
@@ -1908,8 +1913,8 @@
     }
   ],
   "latestPublishedGit": {
-    "sha": "53b3606f1c0959a8ae129045d48f3ce0c657a83a",
-    "status": "REMOTE_REF_COMMIT_TREE_AND_4_ACTUAL_BLOBS_INDEPENDENTLY_VERIFIED",
+    "sha": "147cabbc6ef2d6460e20d46bc881ff9ea853209a",
+    "status": "INDEPENDENT_REF_COMMIT_TREE_4BLOB_VERIFIED",
     "ci": "NO_STATUSES_OR_WORKFLOWS_NOT_A_PASS",
     "newDraftPublished": false
   },
@@ -2095,8 +2100,8 @@
   "currentExecutionBlocker": {
     "status": "NO_RESTORATION_BLOCKER_FOR_FAMILY_NATIVE_QUEUE",
     "optionalBlender": "5.2.3 archive verified runtime installation deferred; system4.3.2 ineligible",
-    "native": "Three-family static screen and actual seven-step partial door transition done; full closure, cloth contacts, full art/motion/performance remain pending",
-    "publication": "Updated four-doc meaningful checkpoint awaiting sealed independent receipts/review and root release; no external push yet"
+    "native": "Bounded v2tea verified; wholeworld/closeddoor/clothcontact/fullart/FPS pending",
+    "publication": "Source-only5text +4docs independently reviewed PASS; awaiting root publication release"
   },
   "canonicalCorrectionPhase": {
     "namespace": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-canonical-20261030",
@@ -2648,5 +2653,270 @@
       "target GPU FPS"
     ],
     "nextFullClosed": "BUDGET_ASSESSMENT_ONLY_NOT_RUN"
+  },
+  "diagnosticAndRootContact20261031": {
+    "cutoffUTC": "2026-10-31T04:46:00Z",
+    "proofs": [
+      {
+        "path": "backups/cloud-review76-family-20261031/independent-fullclose-attempt-review.json",
+        "sha256": "0da7e523dae9f892145a0fc4bbf5552729217b3fce51ba6cc84737273d5ee77d",
+        "status": "PASS_NOT_RUN_BUDGET_GATE_RECORD_ONLY_NO_FULL_CLOSURE_RESULT"
+      },
+      {
+        "path": "backups/cloud-review77-pixel-20261031/independent-living0-pixel-capture-review.json",
+        "sha256": "0d49be891bb9a4028b465f8e6a0efca95c4b98fa38a42d230f5230e5694132a1",
+        "status": "PASS_NATIVE_CAPTURE_INTEGRITY_LIMITED_NO_ATTRIBUTION_PROVEN"
+      },
+      {
+        "path": "backups/cloud-review77-pixel-v3-20261031/independent-living0-pixel-v3-failure-review.json",
+        "sha256": "a119b7b1a8ad4b3d52b92a5ab9d255c232f0a4847f80910c21c1388f5389171f",
+        "status": "VERIFIED_FAILED_NATIVE_CAPTURE_RSS_GUARD_NO_OUTPUT_OR_AFTER_STATE"
+      },
+      {
+        "path": "backups/cloud-review77-pixel-v4-20261031/independent-living0-pixel-v4-capture-review.json",
+        "sha256": "0922e655805448ec7d96884bdd38b5c835dff09004ad8bd0f4f31365b765d90e",
+        "status": "PASS_SINGLE_NATIVE_CAPTURE_INTEGRITY_AND_SAMPLED_RESOURCE_GATE_ATTRIBUTION_INCONCLUSIVE"
+      },
+      {
+        "path": "backups/cloud77-recovery/independent-pixel-offline-v4-review.json",
+        "sha256": "6e4137fdac3259390675cf3a143c88af010ee7c5ec6e8aeee5fa33abacd3d2e6",
+        "status": "PASS_REPRODUCED_OFFLINE_STRONG_CANDIDATE_NOT_GPU_ATTRIBUTION"
+      },
+      {
+        "path": "backups/cloud77-recovery/independent-root-contact-v1-review.json",
+        "sha256": "7b7f574bbec0db2869d5be0e3cfc1ff8d72cb8433481416b6a62f471ecb3cca8",
+        "status": "PASS_INDEPENDENT_REST_SURFACE_INTERSECTION_AND_PLACEMENT_GAP_NOT_GPU_OWNERSHIP"
+      }
+    ],
+    "durableIncrements": [
+      {
+        "label": "全关尝试预算停止",
+        "receiptSHA256": "4caa2d8ffe7cb62ee44d1645c32364e5e98d43a857fb8ae27b6b686128b0887a",
+        "verifiedUTC": "2026-10-31T03:24:34.487260+00:00",
+        "version": 0,
+        "bytes": 255408,
+        "sha256": "78dfd7d305499d6fee3b412798b6fff791627905c88628a4623dab42e285bbf3",
+        "files": 12,
+        "entries": 13
+      },
+      {
+        "label": "像素工具v2源码构建",
+        "receiptSHA256": "48d92b32a994855442243c0588e74730999b240ec79acda9dd0e772a7a5d11a3",
+        "verifiedUTC": "2026-10-31T03:36:35.838654+00:00",
+        "version": 0,
+        "bytes": 162655,
+        "sha256": "5737ec29c248deb4cb54a09dad026ec4757b5d83daba19a8aec0e5541733c20c",
+        "files": 26,
+        "entries": 27
+      },
+      {
+        "label": "v2实际捕获",
+        "receiptSHA256": "a1c2090568e84d2d3d167c46ec37fd07dd1569bebe631a33ca9c410e25a46f6e",
+        "verifiedUTC": "2026-10-31T03:48:23.344759+00:00",
+        "version": 0,
+        "bytes": 1822200,
+        "sha256": "d7271bec435c2957c0bcd8ffa2b5adcdc7eee89fd9f973e1f8d16c67d723707d",
+        "files": 16,
+        "entries": 17
+      },
+      {
+        "label": "像素工具v3源码构建",
+        "receiptSHA256": "6c54db3805a5aefc03ea3ae94bcb48390b6052cf1e66a06f33fc9a11de947eb3",
+        "verifiedUTC": "2026-10-31T03:56:15.400678+00:00",
+        "version": 0,
+        "bytes": 167264,
+        "sha256": "3aeb232dd5f39b9601b074ac769ddec91559dd6430018622dfef5b1170aa8882",
+        "files": 27,
+        "entries": 28
+      },
+      {
+        "label": "v3 RSS失败记录",
+        "receiptSHA256": "fa1ac42c233793611ad5b6c2be01f1a69d3f6f5fb125c978cd7124747807c5cb",
+        "verifiedUTC": "2026-10-31T04:06:02.676844+00:00",
+        "version": 0,
+        "bytes": 402851,
+        "sha256": "4fe1d627b25357f2fca0882675f3cefb75521aa2fdcdc08256c1b4a5f8b255c4",
+        "files": 13,
+        "entries": 14
+      },
+      {
+        "label": "像素工具v4源码构建",
+        "receiptSHA256": "b954e359cd0c476797e6a14e13eda96bd91fd92858eb2058f86548b872f9d6b1",
+        "verifiedUTC": "2026-10-31T04:21:40.555849+00:00",
+        "version": 0,
+        "bytes": 214571,
+        "sha256": "6d8576fb545df67b69a9381eb7a2af7990b0d4db4b8205b4b82ed5cc8b8a82a3",
+        "files": 30,
+        "entries": 31
+      },
+      {
+        "label": "v4单次实际捕获",
+        "receiptSHA256": "65bd5f25ebf6215d58a734e29a09ba68c8ff7d105ff938fbc50f57f22300fdfb",
+        "verifiedUTC": "2026-10-31T04:35:12.939364+00:00",
+        "version": 0,
+        "bytes": 1581481,
+        "sha256": "67754a71c86b8e0b5e483b2acdbc3ccd8751e817c9212829052fe0b3d73b7828",
+        "files": 18,
+        "entries": 19
+      },
+      {
+        "label": "v4离线f32敏感性",
+        "receiptSHA256": "f76468552ad4ef92bac323ccabd92b036cf004c0bb411386da619f034d5e4085",
+        "verifiedUTC": "2026-10-31T04:41:10.206753+00:00",
+        "version": 0,
+        "bytes": 22970,
+        "sha256": "826b5de5559efe8c93cfed9cc876888f74a77f8b12f3816517dce4d551b8f36d",
+        "files": 8,
+        "entries": 9
+      },
+      {
+        "label": "原位叶片与内衬接触",
+        "receiptSHA256": "f0584da8a22ab70eecf73a99e85ac33170a2b3f29a08ef68573de882b569e2dd",
+        "verifiedUTC": "2026-10-31T04:44:55.503261+00:00",
+        "version": 0,
+        "bytes": 15575,
+        "sha256": "f74b12c05d4159f357ee4e98f5a3428cdc8ebfeb02af12c53cf05336be1cc83d",
+        "files": 8,
+        "entries": 9
+      }
+    ],
+    "fullClose": "NOT_RUN_BUDGET_STOP_NO_F_NO60STEPS_ZERO_SIMULATION",
+    "pixelV2": "ACTUAL_CAPTURE_ATTRIBUTION_INCONCLUSIVE_22_CANDIDATES_3197_ISSUES",
+    "pixelV3": "FAILED_SAMPLED_RSS_GUARD_4309760_OVER4194304_KiB_NO_OUTPUT_OR_AFTER",
+    "pixelV4": "ONE_CAPTURE_VALID_7948102_BYTES_RSS3667456KiB_NOT_UNIVERSAL_FIX_34_CANDIDATES_3194_ISSUES",
+    "offlineF32": "STRONG_MODEL_CANDIDATE_NOT_GPU_ATTRIBUTION",
+    "rootContact": "INDEPENDENT_FOUR_REST_TRIANGLE_SURFACE_INTERSECTIONS_AND_EXISTING_PLACEMENT_COVERAGE_GAP_NOT_GPU_OWNERSHIP",
+    "relocationCandidate": "ISOLATED_IN_PROGRESS_NO_COMPLETED_VALIDATION_OR_PRODUCTION_ADOPTION",
+    "sourceToolsAdoptedInMain": false,
+    "runtimeAssetsDefaultChanged": false,
+    "notAccepted": [
+      "closed door/return",
+      "cloth fine contact",
+      "full art",
+      "walking/collision/motion matrix",
+      "target GPU FPS",
+      "new relocation candidate production safety"
+    ]
+  },
+  "wallplantsV2Checkpoint": {
+    "cutoffUTC": "2026-10-31T05:47:11Z",
+    "reviewBindings": [
+      {
+        "path": "backups/cloud77-recovery/independent-wallplants-v1-review.json",
+        "sha256": "9cb675d9890ccc7781d7474d1dc1399fccd408eacbf5657c9e37b1147e859a09",
+        "status": "PASS_ISOLATED_SOURCE_CPU_BUILD_HTTP_ONLY_NATIVE_NOT_RUN_NO_ADOPTION"
+      },
+      {
+        "path": "backups/cloud-review77-wallplants-v1-20261031/independent-living0-wallplants-native-review.json",
+        "sha256": "53d1d83099b66e555a24b621229d75a7ec42ceab75e8c0c8e3e8b004424ad721",
+        "status": "PASS_BOUNDED_LIVING0_OFF_NATIVE_STATIC_COMPARISON_NOT_GLOBAL_ACCEPTANCE"
+      },
+      {
+        "path": "backups/cloud-review77-wallplants-v1-20261031/independent-entrytea-wallplants-native-review.json",
+        "sha256": "53c649ba49a173d38d73da6263b60a1af34d6220b70d1e11127f73d652ed328d",
+        "status": "PASS_BOUNDED_ENTRYTEA_OFF_STATIC_VISUAL_IMPROVEMENT_WITH_UNEXPLAINED_DRAW_CALL_DELTA"
+      },
+      {
+        "path": "backups/cloud77-recovery/independent-wallplants-v2-review.json",
+        "sha256": "42dab3a981b6d3ceaf30060e3d743f48e5f152ab8c9aeee946ab8ed6bb304a97",
+        "status": "PASS_ISOLATED_V2_SOURCE_CPU_BUILD_HTTP_GATE_NATIVE_NOT_RUN_NO_PRODUCTION_ADOPTION"
+      },
+      {
+        "path": "backups/cloud-review77-wallplants-v2-20261031/independent-entrytea-wallplants-v2-native-review.json",
+        "sha256": "9a2e65177fda4685e9d585fbd46cca82a28b4f976936b6adde62acab20aea94d",
+        "status": "PASS_BOUNDED_V2_ENTRYTEA_OFF_STATIC_COMPARISON_NOT_GLOBAL_ACCEPTANCE"
+      }
+    ],
+    "backupIncrements": [
+      {
+        "name": "rootcontact-docs",
+        "receiptSHA256": "dc8eea40ecf6bbc138877da6f7d5f721b685aa2c5a6d134b9e9eea84638339c0",
+        "version": 0,
+        "verifiedUTC": "2026-10-31T04:48:20.241583+00:00",
+        "bytes": 157128,
+        "sha256": "b63cddace8d6c23eceb804adac3ac727f8eb3b916768634e27281d51db09b424",
+        "files": 5,
+        "entries": 6
+      },
+      {
+        "name": "wallplants",
+        "receiptSHA256": "996ac0824f7f01e38d192adad92442c40776bad905fb8076f88da9cbfb767588",
+        "version": 0,
+        "verifiedUTC": "2026-10-31T04:59:39.122956+00:00",
+        "bytes": 14138695,
+        "sha256": "0a7ec7a124c6ba519b9a16391339450b6cea70c100da9fa75f2ff0d555307e5f",
+        "files": 51,
+        "entries": 52
+      },
+      {
+        "name": "wallnative",
+        "receiptSHA256": "74b0761070a468b0d0a18b47b9b6d51bc92ef8b213efce425758a59880065e96",
+        "version": 0,
+        "verifiedUTC": "2026-10-31T05:08:35.234763+00:00",
+        "bytes": 419168,
+        "sha256": "03d81e04cc9c7ab44ad48300098b866fad162bb89d87cd9689e0d2c21e3f36a1",
+        "files": 14,
+        "entries": 15
+      },
+      {
+        "name": "walltea",
+        "receiptSHA256": "8a01008125da263602416270fd2c233a49186309107a6a51aa6d2f94c95d1a92",
+        "version": 0,
+        "verifiedUTC": "2026-10-31T05:14:35.940336+00:00",
+        "bytes": 415810,
+        "sha256": "eb3731bd52ede43d88828eed8162a5a3530e36d5d468b4506aaee5da931b0bc6",
+        "files": 14,
+        "entries": 15
+      },
+      {
+        "name": "wallplantsv2",
+        "receiptSHA256": "068837a9fbd83d2cf910999a435e122f34dcc16a2f05764f18c24f101edc5466",
+        "version": 0,
+        "verifiedUTC": "2026-10-31T05:36:13.574934+00:00",
+        "bytes": 15200854,
+        "sha256": "990da79d04847df3ce9f37665b19e8f20fe1374ab2848da3a4b44153a2960923",
+        "files": 336,
+        "entries": 337
+      },
+      {
+        "name": "wallteav2",
+        "receiptSHA256": "40a6e2ba67a185b988dc22af628a98bdba8e5243a8aac8601e47f14a4a5e303f",
+        "version": 0,
+        "verifiedUTC": "2026-10-31T05:44:08.120745+00:00",
+        "bytes": 418045,
+        "sha256": "f7b82b5707162747ef41828e7ec9a24de332812ccc472763a60a463027b13a56",
+        "files": 14,
+        "entries": 15
+      }
+    ],
+    "authorTests": 72,
+    "independentTests": 53,
+    "sourceReplayFreshTests": 33,
+    "sourceReplay": "10patched hashes/repeat rejection/generated geometry/22+12 external and266source rows PASS",
+    "native": "BOUNDED_ENTRYTEA_OFF_STATIC_ONLY_NOT_GLOBAL_ACCEPTANCE",
+    "nativePeakSampledRSSKiB": 3636556,
+    "decodedScenePixelsCompared": 1035552,
+    "decodedSceneChangedPixels": 0,
+    "nativeSceneUnresolvedBeforeAfter": [
+      1,
+      0
+    ],
+    "fullSourceAudit": {
+      "cells": 95362,
+      "houses": 113,
+      "grassRoots": 69016,
+      "changedVsV1": 1,
+      "unresolved": 0,
+      "flowerTiles": 403,
+      "flowerRoots": 16185,
+      "flowerChanges": 0,
+      "notWholeWorld": true
+    },
+    "runtimeSourceAdopted": false,
+    "defaultChanged": false,
+    "assetsPublished": false,
+    "package": "tools/wallplants77-source-review/",
+    "packageReview": "INDEPENDENT_SOURCE_CLOSURE_GUARD_REPLAY_AND_PRIVACY_PASS",
+    "publication": "NOT_PUSHED"
   }
 }
