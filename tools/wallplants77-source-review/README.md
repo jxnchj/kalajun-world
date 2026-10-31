@@ -15,8 +15,10 @@ The existing LFS source GLB must be materialized and verified, not an LFS pointe
 Place this package outside the target checkout. Set `PKG` to its absolute directory and enter the isolated checkout root. Confirm this is your newly allocated exclusive workspace; never use the production or native browser workspace. The following guard deliberately performs no writes:
 
 ```sh
+set -eu
 export PKG=/path/to/wallplants77-source-review
 python - <<'PY'
+if not __debug__: raise RuntimeError('Optimized Python is forbidden for replay guards')
 import pathlib,json,hashlib,subprocess,os
 p=pathlib.Path(os.environ['PKG']).resolve();m=json.loads((p/'manifest.json').read_text());root=pathlib.Path.cwd().resolve()
 assert root != p and root not in p.parents, 'Keep package outside target checkout'
@@ -38,6 +40,7 @@ git apply "$PKG/candidate.patch"
 Install locked Node dependencies in the isolated checkout (Node 24.22.1/npm 11.9.0 were used). Materialize the original LFS input without changing its bytes. From checkout root:
 
 ```sh
+set -eu
 node tools/build-house-wall-obstacles77.mjs
 ```
 
@@ -46,7 +49,9 @@ Restore the **22 + 12 exact external inputs**, mapped by `external-inputs.json`,
 ## Verify reconstructed closure
 
 ```sh
+set -eu
 python - <<'PY'
+if not __debug__: raise RuntimeError('Optimized Python is forbidden for replay guards')
 import pathlib,json,hashlib,os
 p=pathlib.Path(os.environ['PKG']);m=json.loads((p/'manifest.json').read_text());e=json.loads((p/'external-inputs.json').read_text());h=lambda b:hashlib.sha256(b).hexdigest()
 for row in m['exactPatchPaths']:
@@ -64,6 +69,40 @@ node --test web/src/v2/threshold-plants.test.js web/src/v2/meadow-root-cache.tes
 ```
 
 The existing prepared tests independently recompute and reject stale signatures; do not skip failures. Baseline asset/dependency restoration is also required for those tests. A repeat `git apply --check` must fail after application. Do not build/start a native browser until the complete source/input gate passes and the current resource and evidence plan permits it. A rebuilt bundle has its own identity; old screenshots do not validate a new build.
+
+## Required meadow reference re-export (plain candidate, no source patch change)
+
+The old v2 complete fully materialized regression genuinely ended2049/2050: its reference artifact still named pre-disposal ecology source provenance. Do **not** waive that assertion, change expected hashes or insert a fingerprint into the old artifact. The updated plain recipe retains the exact ten-source patch and generated wall geometry; after verified22 textile/12prepared inputs, materialize all635 baseline LFS inputs (with explicit candidate overlays), then run the **unchanged actual existing producer** below. It writes only the reference gzip and report. This is not an inputQA companion replay; do not stack its extra instrumentation sources. The independently rebuilt plain bundle remains the original v2 bundle; its new full regression is a separate outcome, not the companion98 focused tests.
+
+Run this only in the already validated isolated checkout. It preserves the entire old parsed reference in memory, invokes the real producer and requires full parsed-object equality excluding **only** the top-level `sources`. It verifies all54 roots implicitly through full-object equality, the exact three fresh source hashes, report semantics and both output byte hashes. Existing original world/contact inputs must be actual bytes; stop if anything is missing. This is a bounded but nontrivial generator operation—do not run alongside an active resource-gated browser/test job without the current plan's permission.
+
+```sh
+set -eu
+python - <<'PYCODE'
+if not __debug__: raise RuntimeError('Optimized Python is forbidden for replay guards')
+import pathlib,json,gzip,hashlib,subprocess,os
+p=pathlib.Path(os.environ['PKG']);e=json.loads((p/'external-inputs.json').read_text());g=e['meadowReferenceRegeneration'];h=lambda b:hashlib.sha256(b).hexdigest()
+producer=pathlib.Path(g['producer']['path']);assert h(producer.read_bytes())==g['producer']['sha256']
+for row in g['outputs']:
+ b=pathlib.Path(row['path']).read_bytes();assert len(b)==row['before']['bytes'] and h(b)==row['before']['sha256'],row['path']
+asset=pathlib.Path('web/public/assets/v2/meadow-reference-v38/source.json.gz')
+before=json.loads(gzip.decompress(asset.read_bytes()))
+subprocess.run(['node',str(producer)],check=True)
+raw=gzip.decompress(asset.read_bytes());after=json.loads(raw)
+without=lambda v:{k:x for k,x in v.items() if k!='sources'}
+assert without(before)==without(after), 'Entire non-sources object must remain equal'
+assert len(after['roots'])==54 and after['sources']==g['semanticGate']['freshSources']
+for row in after['sources']:assert h(pathlib.Path(row['path']).read_bytes())==row['sha256']
+report=json.loads(pathlib.Path('tools/reports/meadow-reference-source-v38.json').read_text())
+assert report['sources']==after['sources'] and report['roots']==54
+assert report['sourceBytes']==len(raw) and report['sourceSHA256']==h(raw)==g['semanticGate']['rawSHA256']
+assert report['gzipBytes']==asset.stat().st_size
+for row in g['outputs']:
+ b=pathlib.Path(row['path']).read_bytes();assert len(b)==row['after']['bytes'] and h(b)==row['after']['sha256'],row['path']
+PYCODE
+```
+
+A failed check is not permission to edit the anchor or adopt intermediate outputs. Preserve failure evidence and recreate a fresh isolated input. Historical independent actual producer replay proves these two bytes and semantics, while this package revision only repeats cheap byte/semantic checks; it does not claim another generator or complete suite run. The new gzip is external/generated under existing LFS rules, never smuggled in this text package.
 
 ## Interpretation
 

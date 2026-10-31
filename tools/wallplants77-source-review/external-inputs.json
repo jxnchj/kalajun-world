@@ -1376,5 +1376,88 @@
       ]
     }
   },
-  "restoreOnlyInto": "clean isolated candidate workspace; not production or frozen evidence workspace"
+  "restoreOnlyInto": "clean isolated candidate workspace; not production or frozen evidence workspace",
+  "meadowReferenceRegeneration": {
+    "status": "REQUIRED_ACTUAL_EXPORT_AFTER_V2_SOURCE_PATCH_NO_SOURCE_CODE_CHANGE",
+    "producer": {
+      "path": "tools/export-meadow-patch-v38.mjs",
+      "sha256": "ff420afbf135899ea4a69815092a6f1d83fd1d721573ae6898d928a278c89641",
+      "command": "node tools/export-meadow-patch-v38.mjs",
+      "cwd": "isolated checkout root"
+    },
+    "inputRequirement": "Fully materialize and verify baseline635LFS identities, then preserve exact22textile/12prepared overlays before producer; not just source GLB",
+    "outputs": [
+      {
+        "path": "tools/reports/meadow-reference-source-v38.json",
+        "before": {
+          "bytes": 590,
+          "sha256": "5f1ea013d180839fb46c444ed179da9dad89f4f2cf75528559a5621ed1f709b2"
+        },
+        "after": {
+          "bytes": 590,
+          "sha256": "c7975d98ab7bc753e2b1ed60922c9d29c553766287e1c1ec30b3e0775d2aeab9"
+        }
+      },
+      {
+        "path": "web/public/assets/v2/meadow-reference-v38/source.json.gz",
+        "before": {
+          "bytes": 79727,
+          "sha256": "e05415f3673e4f6290dd779c98a0d4872fdf5626fc22f7fd48fb6ebdb1a991b6"
+        },
+        "after": {
+          "bytes": 79729,
+          "sha256": "2943f4b4271c4b9b146a0a748d262e32087e7e36d4904904488892650e7fbbf0"
+        }
+      }
+    ],
+    "semanticGate": {
+      "excludeOnlyTopLevel": [
+        "sources"
+      ],
+      "allOtherParsedValuesDeepEqual": true,
+      "roots": 54,
+      "freshSources": [
+        {
+          "path": "web/src/v2/ecology.js",
+          "sha256": "7bd2f85837f74b581eeb4d3f5c879e4dc5f505b2585fd0fe51bb731a78ef716e"
+        },
+        {
+          "path": "web/src/v2/meadow-surface.js",
+          "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+        },
+        {
+          "path": "web/src/v2/grass-root-field.js",
+          "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+        }
+      ],
+      "rawSHA256": "2213e0fb2cc780a847552fbe8cc1587ffec6f84f58f47354ade3e8b943fd0b28",
+      "semanticSHA256": "104c5feec76285d924a2955b450fe772c6a31b9b8f1d6ce4ae8454b08d075530"
+    },
+    "independentActualProducerReviewSHA256": "1250454decdd08326e3a15c352e626b0ebce23f720df286730b9fe1a23036aa0",
+    "oldV2Regression": "2049/2050 FAIL genuine reference source binding",
+    "newPlainFullRegression": "PASS_386_FILES_2050_OF_2050_COMPLETE_SERIAL_EXACT2904_CONTRACT_NOT_COMPANION_OR_ADOPTION",
+    "subject": "PLAIN wallplants-v2 source11 +22cloth +12prepared +only2actualgeneratedreferenceartifacts; excludes inputQA companion source20",
+    "delivery": "Prefer actual regeneration; two reference outputs remain external, no gzip asset published in tool namespace",
+    "finalFullRegressionReviewSHA256": "6b5b37b61be5482962163f222fcb30aa9a881274c2d45f941700f0c5f283601c",
+    "durablePostV25Dependencies": [
+      {
+        "name": "regen-final",
+        "receiptSHA256": "5a4971d2a55e9191a4a2928c3d4cc936c28cf1ebab764057f5cf2e37df9c949f",
+        "verifiedUTC": "2026-10-31T08:48:02.961944+00:00",
+        "bytes": 1028525,
+        "sha256": "6cb439785f27024505d7c62ef2ec12903d6d2c92120fb24349d4fc501f2c6496",
+        "files": 75,
+        "entries": 76
+      },
+      {
+        "name": "plain-full-pass",
+        "receiptSHA256": "d8c4aa7afc953ac920fd81fa2a717f5e8f59bd87264f43a83c7463ef386ce43f",
+        "verifiedUTC": "2026-10-31T09:08:11.928942+00:00",
+        "bytes": 1288068,
+        "sha256": "57b3a629e0ffc5c53fd40b767322531ecb6354b02494efa05dc5987b0960c489",
+        "files": 22,
+        "entries": 23
+      }
+    ]
+  }
 }

@@ -51,5 +51,16 @@
       "privacy/LFS/source-only boundaries"
     ],
     "notRerun": "Reviewer did not rerun author33tests/build/native or heavy audit"
+  },
+  "referenceArtifactUpdate": {
+    "status": "ACTUAL_EXISTING_PRODUCER_REPLAY_AND_ALL_NON_SOURCES_SEMANTIC_GATE_PASS_INDEPENDENT_PROOF",
+    "codePatchUnchanged": true,
+    "independentProofSHA256": "1250454decdd08326e3a15c352e626b0ebce23f720df286730b9fe1a23036aa0",
+    "artifactChanges": 2,
+    "authorCurrentFullRegression": "PASS_PLAIN386FILES2050_OF_2050_COMPLETE_SERIAL_NODE_ONLY",
+    "companion98FocusedTests": "SEPARATE_INSTRUMENTED_SUBJECT_NOT_PLAIN_FULLSUITE",
+    "packageFreshCheck": "PASS_FULL_PARSED_NON_SOURCES_EQUAL_54ROOTS_3SOURCEHASH_2ARTIFACTHASH_PATCH_UNCHANGED_NO_HEAVY_PRODUCER_RERUN",
+    "finalFullRegressionReviewSHA256": "6b5b37b61be5482962163f222fcb30aa9a881274c2d45f941700f0c5f283601c",
+    "finalFullRegressionScope": "Exact2904plaincontract,no source/test assertion/heap changes;2known reportoutputs not unconditionalclean; no default-concurrent/GPU/art/adoption"
   }
 }

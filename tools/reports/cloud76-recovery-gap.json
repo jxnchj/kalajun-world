@@ -1,7 +1,7 @@
 {
-  "updatedAtUTC": "2026-10-31T05:47:11Z",
-  "status": "WALLPLANTS_V2_FINITE_CPU_AND_TEA_NATIVE_PASS_SOURCE_REPLAY_PREPARED_NO_PRODUCTION_ADOPTION",
-  "gitBase": "147cabbc6ef2d6460e20d46bc881ff9ea853209a",
+  "updatedAtUTC": "2026-10-31T09:09:13Z",
+  "status": "PLAIN_V3_COMPLETE_SERIAL2050OF2050_PASS_REPLAY_UPDATED_NO_PRODUCTION_ADOPTION",
+  "gitBase": "21cbada91685a42dd8c63b7c5d7c50782c010e58",
   "backup": {
     "scope": "HISTORICAL_INITIAL_OCT30_V6_NOT_LATEST_BACKUP",
     "name": "kalajun-cloud75-recovery-checkpoint.zip",
@@ -826,20 +826,22 @@
     }
   ],
   "currentValidation": {
-    "new_full_tests": "NOT_RUN_CURRENT_RESTORE; historicalfullproject1992/1993 remains separate",
-    "independent_new_checkpoint_restore": "Current wholebyteverificationv24+terrainv2; recoveryrecords16files andfamilyrecords15files independentlysaved/downloaded/extracted; notfullproject archives",
+    "new_full_tests": "PASS exact plain2904contract386files2050/2050 complete serial Node; companion98 separate; historical failures retained",
+    "independent_new_checkpoint_restore": "V25 pinned wholeZIP1945payloads37sources14Gittext PASS;635baselineLFS external;recipes/runtime NOT_RUN",
     "current_environment_restore": "PASS Gitdbf+635actualLFS+811dispositions/729ignored+latest9Gittext+22candidate inputs",
     "current_family_tests": "Fresh author44/44 PASS zero skips; independent17/17 PASS; not reused historicalruns",
     "current_family_build": "Author2.99s782files+638public+HTTP4 PASS; independent source/asset/HTTP verification, not independent rebuild",
     "current_family_native": "Three actual OFF/ON static pairs sealed; all three independently reviewed+remote backup verified; no full acceptance",
-    "terrain_file_regression": "Historical directedcomplete terrain.test.js11/13:2failed, not currentfullproject rerun",
+    "terrain_file_regression": "Current firstcomplete serial terrain13/13 original2500ms PASS; historical11/13 retained, not permanenttimingfix",
     "terrain_profile_candidate": "REJECTED_AT_INTERFACE_REVIEW_BEFORE_IMPLEMENTATION; differentialNOTRUN,ABBA0/8NOTRUN; no fix/speedclaim",
     "partial_door_motion": "Actual native F+7steps PASS limited transition102to89.299deg,11frames,ready/errors[]; independent review/backup see partialDoorMotion20261031",
     "full_close": "NOT_RUN: conservative900s plan,remaining840.27s stop; noF/no60steps",
     "pixel_capture": "v2 inconclusive;v3 RSSfailure;v4 onevalid export not GPUownership/universal fix",
     "root_contact": "Independent restsurface proof PASS; candidate not production adopted; bounded v2 CPU/native validation recorded in wallplantsV2Checkpoint",
     "wallplants_v2": "Finite72author/53independent CPU tests; bounded tea native PASS; notglobal adoption/FPS",
-    "source_replay_package": "Fresh33tests andexactsource/input replay PASS; independent10path fixture/closure/privacy review PASS"
+    "source_replay_package": "Fresh33tests andexactsource/input replay PASS; independent10path fixture/closure/privacy review PASS",
+    "native_w_one_step": "PASS bounded one originalcontrol step physicsXZ4.6667cm; no route/collision/longwalk/FPS acceptance",
+    "meadow_reference_regeneration": "Actualunchangedproducer+independent replay2outputs/fullnon-sources54root equality PASS; finalplain2050/2050 PASS, no runtimeadoption"
   },
   "completionBoundary": "File/dependency recovery, source tests and build do not establish currentfamily native or finalart/performance. Keep oldprotected context, rejected terrain candidates and all open stage3 tasks; no productionadoption/deploy/forcepush.",
   "history": [
@@ -1913,22 +1915,35 @@
     }
   ],
   "latestPublishedGit": {
-    "sha": "147cabbc6ef2d6460e20d46bc881ff9ea853209a",
-    "status": "INDEPENDENT_REF_COMMIT_TREE_4BLOB_VERIFIED",
+    "sha": "21cbada91685a42dd8c63b7c5d7c50782c010e58",
+    "status": "INDEPENDENT_EXACT9TEXT_REF_PARENT_TREE_BLOB_VERIFIED",
     "ci": "NO_STATUSES_OR_WORKFLOWS_NOT_A_PASS",
     "newDraftPublished": false
   },
   "latestIndependentBackup": {
-    "version": 24,
-    "sha256": "aff30afb354d7270debdf7bfe5a4351888066e2dc26a9eb26a9cd44fd431229f",
-    "bytes": 91449823,
-    "files": 779,
-    "entries": 780,
-    "baseline": "27596dfb56f48326971c46c69a376a4213a3073d",
-    "independentlyDownloadedAndExtracted": true,
-    "receipt": "recovery-v24-independent/download-verification-receipt.json",
-    "receiptSHA256": "8e6bd2c2a11ec77ff51151016410a6bb00b9da0f8b99f5fccda83bbd727fff05",
-    "boundary": "Contains14:26prepublication9file snapshot+dusk terminalproof+familySOURCEonly; excludes this postverification14:36metadata and future commit receipt"
+    "status": "REMOTE_PINNED_ALL_PAYLOAD_ISOLATED_RESTORE_PASS_NOT_RUNTIME_REBUILD",
+    "verifiedUTC": "2026-10-31T08:09:06.044460+00:00",
+    "version": 25,
+    "bytes": 141148219,
+    "sha256": "0ec83e266953f2d084b9d4e7a73c01e41c5cf1831afab177c4e86741ea3180d5",
+    "payloads": 1945,
+    "entries": 1946,
+    "variants": 1852,
+    "sourceArchives": 37,
+    "baseline": "21cbada91685a42dd8c63b7c5d7c50782c010e58",
+    "externalAnchorSHA256": "91f83ffdca6ced728ba2d795414bc92af6f469758062add2bd23008741ddd58f",
+    "baselineLFSIdentityCount": 635,
+    "baselineLFSObjectsIncluded": false,
+    "candidateInputs": 22,
+    "currentGitTextCount": 14,
+    "newRuntimeBuild": "NOT_RUN",
+    "fullRegression": "INVALID_INPUT_PARTIAL_RESOURCE_GUARD_STOP_NOT_PASS",
+    "cleanupQualification": "Prior regression all-child cleanup not retrospectively proven; no unknown kills",
+    "receiptSHA256": "4dda65b22f1888377ef8b4811fd8c007da1eab226cae86d8494f99710cb8845e",
+    "latestMappingSHA256": "99a7041740818fd9b888a4986c0676239f1723f510baa94258fa45093134b489",
+    "mappingGeneratedAfterArchive": true,
+    "automaticOverlay": false,
+    "oldCanonicalCopiesDeleted": false
   },
   "newBaselineAnalysis": {
     "status": "COMPLETE_BASELINE_MEASUREMENT_NOT_CANDIDATE_ACCEPTANCE",
@@ -2100,8 +2115,8 @@
   "currentExecutionBlocker": {
     "status": "NO_RESTORATION_BLOCKER_FOR_FAMILY_NATIVE_QUEUE",
     "optionalBlender": "5.2.3 archive verified runtime installation deferred; system4.3.2 ineligible",
-    "native": "Bounded v2tea verified; wholeworld/closeddoor/clothcontact/fullart/FPS pending",
-    "publication": "Source-only5text +4docs independently reviewed PASS; awaiting root publication release"
+    "native": "One W physics step verified; longwalk/closeddoor/cloth/fullart/FPS pending",
+    "publication": "11text currentcheckpoint staged awaiting final independent review androot release"
   },
   "canonicalCorrectionPhase": {
     "namespace": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-canonical-20261030",
@@ -2222,7 +2237,8 @@
     "liveSourceHashesVerified": 52,
     "productionInputHashesVerified": 897,
     "snapshotLabelsBoundary": "GI checker NOT_RUN labels reflect original09:09 snapshot; actual latest results recorded in currentCandidateCheckpoint",
-    "assetPublication": "NOT_INCLUDED_REQUIRES_FUTURE_LFS_VERIFIED_UPLOAD"
+    "assetPublication": "NOT_INCLUDED_REQUIRES_FUTURE_LFS_VERIFIED_UPLOAD",
+    "scope": "HISTORICAL_OCT30_SOURCE_REPLAY_PUBLICATION_RECORD_NOT_CURRENT_GATE"
   },
   "isolatedNativeCandidateBuild": {
     "status": "ISOLATED_BUILD_AND_HTTP_BYTE_VERIFICATION_PASS_NATIVE_NOT_RUN",
@@ -2917,6 +2933,233 @@
     "assetsPublished": false,
     "package": "tools/wallplants77-source-review/",
     "packageReview": "INDEPENDENT_SOURCE_CLOSURE_GUARD_REPLAY_AND_PRIVACY_PASS",
-    "publication": "NOT_PUSHED"
+    "scope": "HISTORICAL_0547_SNAPSHOT",
+    "historicalPublication": "NOT_PUSHED",
+    "currentPublication": "PUBLISHED_AND_INDEPENDENTLY_VERIFIED_IN_21cbada91685a42dd8c63b7c5d7c50782c010e58"
+  },
+  "consolidatedRecoveryV25": {
+    "status": "REMOTE_PINNED_ALL_PAYLOAD_ISOLATED_RESTORE_PASS_NOT_RUNTIME_REBUILD",
+    "verifiedUTC": "2026-10-31T08:09:06.044460+00:00",
+    "version": 25,
+    "bytes": 141148219,
+    "sha256": "0ec83e266953f2d084b9d4e7a73c01e41c5cf1831afab177c4e86741ea3180d5",
+    "payloads": 1945,
+    "entries": 1946,
+    "variants": 1852,
+    "sourceArchives": 37,
+    "baseline": "21cbada91685a42dd8c63b7c5d7c50782c010e58",
+    "externalAnchorSHA256": "91f83ffdca6ced728ba2d795414bc92af6f469758062add2bd23008741ddd58f",
+    "baselineLFSIdentityCount": 635,
+    "baselineLFSObjectsIncluded": false,
+    "candidateInputs": 22,
+    "currentGitTextCount": 14,
+    "newRuntimeBuild": "NOT_RUN",
+    "fullRegression": "INVALID_INPUT_PARTIAL_RESOURCE_GUARD_STOP_NOT_PASS",
+    "cleanupQualification": "Prior regression all-child cleanup not retrospectively proven; no unknown kills",
+    "receiptSHA256": "4dda65b22f1888377ef8b4811fd8c007da1eab226cae86d8494f99710cb8845e",
+    "latestMappingSHA256": "99a7041740818fd9b888a4986c0676239f1723f510baa94258fa45093134b489",
+    "mappingGeneratedAfterArchive": true,
+    "automaticOverlay": false,
+    "oldCanonicalCopiesDeleted": false
+  },
+  "newValidation20261031": {
+    "proofBindings": [
+      {
+        "path": "backups/cloud-review77-inputqa-v3-20261031/independent-armed-v3-world-native-review.json",
+        "sha256": "1e7c02a025de7c03e13df40e1841a599571da8ebf695002f04483d3903c97f87",
+        "status": "PASS_ONE_BOUNDED_NATIVE_ACCEPTED_KEY_CONTROL_STEP_AND_HORIZONTAL_PHYSICS_MOVEMENT"
+      },
+      {
+        "path": "backups/cloud77-recovery/independent-full-regression-20261031-review.json",
+        "sha256": "20c9ce1b0cc3def8dc96700e903e7d6adf598e6736085c8338a8204a6435170e",
+        "status": "VERIFIED_INVALID_INPUT_PARTIAL_RESOURCE_GUARD_STOP_NOT_FULL_SUITE_PASS"
+      }
+    ],
+    "nativeWStep": "PASS_EXACTLY_ONE_ORIGINAL_CONTROL_STEP_1OVER60_PHYSICS_XZ_0.04666666785M_NOT_LONGWALK",
+    "fullRegression": "INVALID_INPUT_PARTIAL_RESOURCE_GUARD_STOP",
+    "emitted": 872,
+    "passed": 855,
+    "failed": 17,
+    "skipped": 0,
+    "completeTAP": false,
+    "laterFilesNotReached": 191,
+    "terrain": "NOT_REACHED",
+    "unmaterializedLFSCount": 68,
+    "allChildCleanupProven": false,
+    "nextMaterializedRun": "SEPARATE_ACTIVE_NOT_CLAIMED_COMPLETE"
+  },
+  "materializedFullAndReferenceRepair": {
+    "cutoffUTC": "2026-10-31T08:51:16Z",
+    "firstCompleteRun": {
+      "files": 386,
+      "tests": 2050,
+      "pass": 2049,
+      "fail": 1,
+      "skipped": 0,
+      "exit": 1,
+      "terrainCurrentSerial": "13/13 original2500ms",
+      "observedBirthIdentitiesAbsent": 391,
+      "runtimeInputContract": 2904,
+      "knownTestReportChanges": 2
+    },
+    "semanticGate": {
+      "status": "ACTUAL_EXPORT_SEMANTICS_PASS",
+      "nonSourcesFullDeepEqual": true,
+      "excludedOnly": [
+        "sources"
+      ],
+      "comparedTopLevelKeys": [
+        "version",
+        "center",
+        "size",
+        "roots",
+        "geometry",
+        "ground",
+        "scope"
+      ],
+      "roots": 54,
+      "allRootFieldsChecked": [
+        "id",
+        "x",
+        "y",
+        "z",
+        "s",
+        "sy",
+        "rot",
+        "thresholdMove",
+        "field",
+        "landform",
+        "community"
+      ],
+      "freshSources": [
+        {
+          "path": "web/src/v2/ecology.js",
+          "sha256": "7bd2f85837f74b581eeb4d3f5c879e4dc5f505b2585fd0fe51bb731a78ef716e"
+        },
+        {
+          "path": "web/src/v2/meadow-surface.js",
+          "sha256": "8b9d62de4a3ad7b7b4bf26778ea5f38f2b913e381130146096428a6944d102bb"
+        },
+        {
+          "path": "web/src/v2/grass-root-field.js",
+          "sha256": "03e4fa357a197694c2ce049214163664c35443297a1c71cbc4cadb269d3bbb01"
+        }
+      ],
+      "compressedSHA256": "2943f4b4271c4b9b146a0a748d262e32087e7e36d4904904488892650e7fbbf0",
+      "rawSHA256": "2213e0fb2cc780a847552fbe8cc1587ffec6f84f58f47354ade3e8b943fd0b28",
+      "reportSHA256": "c7975d98ab7bc753e2b1ed60922c9d29c553766287e1c1ec30b3e0775d2aeab9",
+      "compressedBytes": 79729,
+      "rawBytes": 254554,
+      "semanticSHA256": "104c5feec76285d924a2955b450fe772c6a31b9b8f1d6ce4ae8454b08d075530",
+      "scope": "Actual existing exporter rerun; entire roots/field/landform/community/near-middle attributes/index/ground/center/size/scope deepEqual excluding ONLY top-level sources. No expectedhash/test edits."
+    },
+    "plainBuildManifestSHA256": "4f68401ebdb5b34cbfdbfacc55cddb65b5a3a15f36fa50432b4ebe5a9c89cd6f",
+    "independentProducerReviewSHA256": "bfb1dd6d370220365bea8208fae45cf86b74117a0aad1dda9f7cc8641d8bb225",
+    "patchBytesChanged": false,
+    "newPlainFullRun": "COMPLETE2050OF2050_PASS_EXACT_PLAIN_CONTRACT_ONLY",
+    "companion98": "SEPARATE_INSTRUMENTED_SUBJECT",
+    "postV25Backups": [
+      {
+        "name": "postv25-phase",
+        "receiptSHA256": "bd343829f72c2a5d167550d62c49c96bc4d68546ff6bcc07b5636b1d75a8c495",
+        "verifiedUTC": "2026-10-31T08:20:59.095797+00:00",
+        "bytes": 1002075,
+        "sha256": "0e962e3ad65587fadbfa9bc3c846abe9d06b73597a25abde5d9d31bd5c882e04",
+        "files": 58,
+        "entries": 59
+      },
+      {
+        "name": "materialized-full",
+        "receiptSHA256": "53e2bb9c7888d603c75da78fafb09f612b531c39e70105309a73f0b3380a0887",
+        "verifiedUTC": "2026-10-31T08:37:38.715062+00:00",
+        "bytes": 1141172,
+        "sha256": "fb6e030696de0ebfce12b36165f5908c9a2e62670732fc1054472638d60bc23e",
+        "files": 20,
+        "entries": 21
+      }
+    ],
+    "productionAdoption": false
+  },
+  "postV25FinalIncrements": [
+    {
+      "name": "regen-final",
+      "receiptSHA256": "5a4971d2a55e9191a4a2928c3d4cc936c28cf1ebab764057f5cf2e37df9c949f",
+      "verifiedUTC": "2026-10-31T08:48:02.961944+00:00",
+      "bytes": 1028525,
+      "sha256": "6cb439785f27024505d7c62ef2ec12903d6d2c92120fb24349d4fc501f2c6496",
+      "files": 75,
+      "entries": 76
+    },
+    {
+      "name": "plain-full-pass",
+      "receiptSHA256": "d8c4aa7afc953ac920fd81fa2a717f5e8f59bd87264f43a83c7463ef386ce43f",
+      "verifiedUTC": "2026-10-31T09:08:11.928942+00:00",
+      "bytes": 1288068,
+      "sha256": "57b3a629e0ffc5c53fd40b767322531ecb6354b02494efa05dc5987b0960c489",
+      "files": 22,
+      "entries": 23
+    }
+  ],
+  "finalPlainFullRegression": {
+    "cutoffUTC": "2026-10-31T09:09:13Z",
+    "endedUTC": "2026-10-31T09:05:28Z",
+    "status": "INDEPENDENT_PASS_PLAIN_V3_COMPLETE_SERIAL_NODE_REGRESSION",
+    "reviewPath": "backups/cloud77-recovery/independent-full-regression-v3-full-review.json",
+    "reviewSHA256": "6b5b37b61be5482962163f222fcb30aa9a881274c2d45f941700f0c5f283601c",
+    "allowlistSHA256": "44c76a35ff2443b87ecb24ac0f40eb9c40c9c057bb645f325886ba07584e15fe",
+    "subject": {
+      "plainContractFiles": 2904,
+      "exactChangesFromOldContract": [
+        "tools/reports/meadow-reference-source-v38.json",
+        "web/public/assets/v2/meadow-reference-v38/source.json.gz"
+      ],
+      "sourceTestsUnchangedByContract": true,
+      "inputQACompanionCovered": false
+    },
+    "result": {
+      "files": 386,
+      "topLevelPlan": "1..2048",
+      "nestedTests": 2,
+      "tests": 2050,
+      "passed": 2050,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "exitCode": 0,
+      "formerlyFailingMeadow627": "PASS unchanged assertion after actual two-artifact regeneration",
+      "terrainRawCasesVerified": 13,
+      "terrainPassed": 13
+    },
+    "resources": {
+      "rawDecodedBytes": 142566243,
+      "rawDecodedSHA256": "850f360a537a7179286c189be472c87ebd8d555e42298056b3f9c059efc1e58c",
+      "rawSamples": 9355,
+      "peakAggregateRssBytes": 2666975232,
+      "minimumAvailableBytes": 5849329664,
+      "wallSeconds": 1020.5137511639987,
+      "crossedGuards": [],
+      "observedBirthIdentities": 398,
+      "allFinalStatuses": "absent",
+      "signals": [],
+      "cleanupScope": "Observed birth-identified processes in original runner namespace, not exhaustive between-sample kernel tracing."
+    },
+    "postflight": {
+      "unconditionalCleanPass": false,
+      "exactKnownGeneratedOutputChanges": [
+        "tools/candidates/forest-reach41-v2/surface-report.json",
+        "tools/reports/boardwalk-contact-index74-source.json"
+      ],
+      "allOtherRecordedInputHashesUnchanged": true,
+      "originalCandidate2904RecordedUnchanged": true,
+      "mainBaselineListedChanges": "Exactly four authorized progress docs plus four source-review metadata files; not runtime/source/assets/tests. Newly added main paths outside baseline map not covered."
+    },
+    "limits": [
+      "PASS only exact plain candidate complete serial Node suite; not instrumented companion98 full validation.",
+      "Not default-concurrent performance, native-world/GPU/FPS/art/cloth acceptance, production adoption or deployment.",
+      "Historical invalidSLIM/77of78/2049of2050 failures preserved; old cleanup uncertainty not retroactively cleared.",
+      "No assertion/time/heap/resource threshold relaxation; same reviewed guard v4."
+    ],
+    "productionAdoption": false
   }
 }

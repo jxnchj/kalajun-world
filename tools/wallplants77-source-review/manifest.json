@@ -89,8 +89,9 @@
       "sha256": "920e7ef0243e3166d013b8c59b069dfeace33e0a725fb89077e7d6545c4d8353"
     }
   ],
-  "externalInputsSHA256": "53c45e4c960261ea372971d88d68b341001ac9a21a0505c162a4776a818143f1",
+  "externalInputsSHA256": "588bb451f9c30503657e281032ca1931602cfca76f85f24a30c550163eaffc34",
   "frozenInventorySHA256": "b61369c325e10a031725f69fa3d2e57be0fe9ab56dd41148bf3521d0922bb4b5",
   "runtimeSourceAdoption": false,
-  "assetPublication": false
+  "assetPublication": false,
+  "additionalRequiredProducer": "external-inputs.json meadowReferenceRegeneration; actual existing exporter, not fingerprint substitution"
 }
