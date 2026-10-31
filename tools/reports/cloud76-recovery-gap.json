@@ -1,7 +1,7 @@
 {
-  "updatedAtUTC": "2026-10-31T09:09:13Z",
-  "status": "PLAIN_V3_COMPLETE_SERIAL2050OF2050_PASS_REPLAY_UPDATED_NO_PRODUCTION_ADOPTION",
-  "gitBase": "21cbada91685a42dd8c63b7c5d7c50782c010e58",
+  "updatedAtUTC": "2026-10-31T10:27:00Z",
+  "status": "TERRAIN_BATCHES_ZERO_SINGLE_NATIVE_CONTROL_COMPLETED_ORIGINAL_GUARDS_NO_CAUSAL_FIX",
+  "gitBase": "4c028600d93c40bf34116d2a089adba1642d0c1f",
   "backup": {
     "scope": "HISTORICAL_INITIAL_OCT30_V6_NOT_LATEST_BACKUP",
     "name": "kalajun-cloud75-recovery-checkpoint.zip",
@@ -835,13 +835,14 @@
     "terrain_file_regression": "Current firstcomplete serial terrain13/13 original2500ms PASS; historical11/13 retained, not permanenttimingfix",
     "terrain_profile_candidate": "REJECTED_AT_INTERFACE_REVIEW_BEFORE_IMPLEMENTATION; differentialNOTRUN,ABBA0/8NOTRUN; no fix/speedclaim",
     "partial_door_motion": "Actual native F+7steps PASS limited transition102to89.299deg,11frames,ready/errors[]; independent review/backup see partialDoorMotion20261031",
-    "full_close": "NOT_RUN: conservative900s plan,remaining840.27s stop; noF/no60steps",
+    "full_close": "BaselineON closed60 GI proofPASS thenoptionalRSSFAIL preserved; separateterrainBatches0control closed64+clothstatic65completed originalguards; finecontact/fullart pending",
     "pixel_capture": "v2 inconclusive;v3 RSSfailure;v4 onevalid export not GPUownership/universal fix",
     "root_contact": "Independent restsurface proof PASS; candidate not production adopted; bounded v2 CPU/native validation recorded in wallplantsV2Checkpoint",
     "wallplants_v2": "Finite72author/53independent CPU tests; bounded tea native PASS; notglobal adoption/FPS",
     "source_replay_package": "Fresh33tests andexactsource/input replay PASS; independent10path fixture/closure/privacy review PASS",
     "native_w_one_step": "PASS bounded one originalcontrol step physicsXZ4.6667cm; no route/collision/longwalk/FPS acceptance",
-    "meadow_reference_regeneration": "Actualunchangedproducer+independent replay2outputs/fullnon-sources54root equality PASS; finalplain2050/2050 PASS, no runtimeadoption"
+    "meadow_reference_regeneration": "Actualunchangedproducer+independent replay2outputs/fullnon-sources54root equality PASS; finalplain2050/2050 PASS, no runtimeadoption",
+    "terrain_batch_control": "Original17source testsPASS andindependent native singlecasePASS; submittedtriangles/calls/jobs differ; notcauseproof/defaultadoption"
   },
   "completionBoundary": "File/dependency recovery, source tests and build do not establish currentfamily native or finalart/performance. Keep oldprotected context, rejected terrain candidates and all open stage3 tasks; no productionadoption/deploy/forcepush.",
   "history": [
@@ -1915,8 +1916,8 @@
     }
   ],
   "latestPublishedGit": {
-    "sha": "21cbada91685a42dd8c63b7c5d7c50782c010e58",
-    "status": "INDEPENDENT_EXACT9TEXT_REF_PARENT_TREE_BLOB_VERIFIED",
+    "sha": "4c028600d93c40bf34116d2a089adba1642d0c1f",
+    "status": "INDEPENDENT_EXACT11TEXT_REF_PARENT_TREE_BLOB_VERIFIED",
     "ci": "NO_STATUSES_OR_WORKFLOWS_NOT_A_PASS",
     "newDraftPublished": false
   },
@@ -2115,8 +2116,8 @@
   "currentExecutionBlocker": {
     "status": "NO_RESTORATION_BLOCKER_FOR_FAMILY_NATIVE_QUEUE",
     "optionalBlender": "5.2.3 archive verified runtime installation deferred; system4.3.2 ineligible",
-    "native": "One W physics step verified; longwalk/closeddoor/cloth/fullart/FPS pending",
-    "publication": "11text currentcheckpoint staged awaiting final independent review androot release"
+    "native": "Separate terrainBatches0 control completed clothstatic65 belowcap only88.14MiBmargin; baselineON optionalreturnRSSfail remains; exactallocation/submissionattribution unresolved",
+    "publication": "4docs updated after sealed nativecontrol/remotebackup; NOT_PUSHED awaiting independentreview/rootrelease"
   },
   "canonicalCorrectionPhase": {
     "namespace": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-canonical-20261030",
@@ -3161,5 +3162,183 @@
       "No assertion/time/heap/resource threshold relaxation; same reviewed guard v4."
     ],
     "productionAdoption": false
+  },
+  "fullClosedNative20261031": {
+    "cutoffUTC": "2026-10-31T09:53:00Z",
+    "scope": "plain-v3 entry870 living1 clothON SwiftShader1280x800DPR1HDR4x; not inputQA companion",
+    "phase1": {
+      "status": "BOUNDED_CLOSED_DOOR_GI_PASS",
+      "nativeControlSteps": [
+        0,
+        60
+      ],
+      "completedWorldFrames": [
+        4,
+        64
+      ],
+      "simulationSeconds": 1,
+      "doorDegrees": [
+        102,
+        0
+      ],
+      "doorPending": false,
+      "doorBlocked": false,
+      "GIReady": true,
+      "GIDegrees": 0,
+      "GIWeight": 1,
+      "errors": [],
+      "savedBeforeOptionalReturn": true,
+      "clothFineContactAccepted": false
+    },
+    "phase2": {
+      "status": "OPTIONAL_RETURN_RSS_ABORT_NO_COMPLETE_AFTER_IMAGE_OR_JSON",
+      "stopUTC": "2026-10-31T09:41:30.399976Z",
+      "peakSampledOwnedRssKiB": 4265748,
+      "originalCapKiB": 4194304,
+      "originalOuterDeadlineSeconds": 1320,
+      "minimumSampledAvailableBytes": 4752646144,
+      "wholeCaseResourcePass": false,
+      "allocationCause": "NOT_IDENTIFIED_READONLY_INVESTIGATION_ACTIVE"
+    },
+    "cleanup": {
+      "observedOwnedClear": true,
+      "allUnobservedDescendantsProvenAbsent": false
+    },
+    "localEcologyEndpoints": {
+      "trees": [
+        26718,
+        43462
+      ],
+      "pending": [
+        42,
+        0
+      ],
+      "globalCompletionClaim": false
+    },
+    "evidence": [
+      {
+        "role": "native",
+        "path": "backups/cloud-review77-fullclosed-plain-v3-20261031/fullclosed-native-receipt.json",
+        "sha256": "ffbcf11aba3ff89b4e32c69b73242e0a681d5c3aff23006c16acd53abdd8a81f"
+      },
+      {
+        "role": "review",
+        "path": "backups/cloud-review77-fullclosed-plain-v3-20261031/independent-fullclosed-native-review.json",
+        "sha256": "27ca48d2df7c090a09e0c26bffb29734e402e9f6b2a0a23b3c84f40edc67a247"
+      },
+      {
+        "role": "backup",
+        "path": "recovery-check-20261031/fullclosed-independent/verification-receipt.json",
+        "sha256": "ed3b8c7a028dece2b866691b5ce4c62692de2c30f3f65a6449cfa38633494832"
+      }
+    ],
+    "remoteBackup": {
+      "files": 21,
+      "entries": 22,
+      "bytes": 1354278,
+      "sha256": "e5149910e280d274787478f067993fd9fa115427fb6ea8cf8bd0edcdc384aee5",
+      "status": "INDEPENDENT_REMOTE_READBACK_PASS",
+      "postV25": true,
+      "currentDocsIncluded": false
+    },
+    "open": [
+      "closed cloth return pixels",
+      "fine/hiddencontacts",
+      "OFFcontrol",
+      "longwalk/collision",
+      "fullart",
+      "targetGPU/FPS",
+      "productionadoption"
+    ],
+    "productionRuntimeAssetsDefaultsUnchanged": true,
+    "plain2050CPUResultUnchanged": true
+  },
+  "terrainBatchControl20261031": {
+    "cutoffUTC": "2026-10-31T10:27:00Z",
+    "status": "TERRAIN_BATCHES_ZERO_SINGLE_NATIVE_CONTROL_COMPLETED_ORIGINAL_GUARDS_NO_CAUSAL_FIX",
+    "baselineFailurePreserved": true,
+    "onlyURLDifference": "terrainBatches=0",
+    "terrainShadowDomain38": null,
+    "buildBundleSHA256": "b5737b47dd8d233befcf338ea9f204a757c770bd5f682a98ebccb5bd382911bc",
+    "controlSteps": [
+      0,
+      60,
+      60
+    ],
+    "completedFrames": [
+      4,
+      64,
+      65
+    ],
+    "simulationSeconds": 1,
+    "static65Delta": 0,
+    "closed64DoorDegrees": 0,
+    "static65DoorActive": null,
+    "static65OccupiedGIReady": true,
+    "static65GIDegrees": 0,
+    "clothFineContactsAccepted": false,
+    "peakRSSKiB": 4104044,
+    "baselinePeakRSSKiB": 4265748,
+    "originalCapKiB": 4194304,
+    "marginKiB": 90260,
+    "minimumAvailableBytes": 4924772352,
+    "originalDeadlineSeconds": 1320,
+    "closed64Comparison": {
+      "logicalTerrainTriangles": [
+        2608128,
+        2608128
+      ],
+      "renderTriangles": [
+        16050942,
+        15550974
+      ],
+      "renderCalls": [
+        1320,
+        1922
+      ],
+      "workerCompleted": [
+        1002,
+        998
+      ],
+      "allSubmittedWorkEqual": false,
+      "baselineReturn65Unavailable": true
+    },
+    "sourceTestsPassed": 17,
+    "sourceReview": {
+      "path": "backups/cloud77-recovery/independent-fullclosed-memory-control-review.json",
+      "sha256": "8e8818f041a2d10029ada746ea48f71b10bb42366a8eb3b0baf869e6be4c65fc"
+    },
+    "evidence": [
+      {
+        "role": "native",
+        "path": "backups/cloud-review77-terrain-control-20261031/terrain-control-native-receipt.json",
+        "sha256": "cabcf01b35f1466ccd32e87380c1284be714872fdfeb55f5df7a8769a841091e"
+      },
+      {
+        "role": "review",
+        "path": "backups/cloud-review77-terrain-control-20261031/independent-terrain-control-native-review.json",
+        "sha256": "5e60fc953c02cab202ec0799ed805e264a483e429377fe722d21b7e5c3955f1c"
+      }
+    ],
+    "remoteBackup": {
+      "receiptPath": "recovery-check-20261031/terrain-control-independent/verification-receipt.json",
+      "receiptSHA256": "9d9cdbdf4bfec5ffce83bdb7e6531ced30dec68327524a98bf3899c411c10ca2",
+      "files": 22,
+      "entries": 23,
+      "bytes": 1171124,
+      "sha256": "54e01ab4c1e958c4c24a1fc4e17a5bb2a0adf500081fcbcdec74da707067caec",
+      "currentDocsIncluded": false,
+      "postV25": true
+    },
+    "historical0953DocsBackup": {
+      "receiptSHA256": "61bf1e44e8ace3558cc3e092aab4c7d5b681a86c65f4156018de682383322b28",
+      "files": 15,
+      "bytes": 211648,
+      "sha256": "af1af46f1eb9d34b3dce18cf5318468188412ef33c1eb9d9094d6aae34600630",
+      "nativeControlIncluded": false
+    },
+    "causalLeakFixProven": false,
+    "defaultAdoption": false,
+    "sourceAssetsQualityDefaultsUnchanged": true
   }
 }
