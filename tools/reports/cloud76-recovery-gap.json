@@ -1,8 +1,9 @@
 {
-  "updatedAtUTC": "2026-10-30T14:36:00Z",
-  "status": "V24_REMOTE_VERIFIED_LIMITED_NATIVE_CHECKPOINT_TEXT_CHANGESET_NOT_ADOPTED",
-  "gitBase": "4e1d6f251ff979760f7020c4d940489cba091c36",
+  "updatedAtUTC": "2026-10-31T02:09:00Z",
+  "status": "RESTORED_GIT_LFS_STAGE_FAMILY_CURRENT_BUILD_PASS_NATIVE_PENDING",
+  "gitBase": "dbf707479a3bfae6aaffec957de7c7447b596c72",
   "backup": {
+    "scope": "HISTORICAL_INITIAL_OCT30_V6_NOT_LATEST_BACKUP",
     "name": "kalajun-cloud75-recovery-checkpoint.zip",
     "version": 6,
     "savedAtUTC": "2026-10-29T12:23:44Z",
@@ -14,6 +15,7 @@
     "glbStructurePassed": 2
   },
   "restored": {
+    "scope": "HISTORICAL_INITIAL_OCT30_RESTORE_NOT_CURRENT_OCT31_DISPOSITIONS",
     "repositoryDocsChanged": 5,
     "repositoryReportsNew": 2,
     "ignoredHistoricalArtifacts": 93,
@@ -769,14 +771,14 @@
     {
       "item": "full_regression",
       "bytes": "historical focused/build logs restored; full log not inZIP",
-      "status": "LAST_REPORTED1992/1993_NOT_FULL_PASS",
-      "next": "new environment build/focused/full results separately record"
+      "status": "HISTORICAL_FULL1992/1993_AND_DIRECTED_TERRAIN11/13_DISTINCT_FAILURES",
+      "next": "No currentfullsuite pass claimed; profile-guided four-zero candidate rejected before implementation"
     },
     {
       "item": "new_checkpoint_restore_verification",
       "bytes": "v24 independently restored779files with635baselineLFS entries",
-      "status": "V24_REMOTE_INDEPENDENT_RESTORE_PASS",
-      "next": "Next backup must include postverification14:36metadata and eventual publicationreceipt; v24 contains frozen14:26prepublicationdraft"
+      "status": "CURRENT_RESTORE_AND_TWO_INCREMENTAL_RECORD_ARCHIVES_VERIFIED",
+      "next": "Save next stable doc/publication receipt independently; do not confuse smallrecordarchives with completebackup"
     }
   ],
   "remainingStageTasks": [
@@ -824,47 +826,16 @@
     }
   ],
   "currentValidation": {
-    "archive_and_manifest": "PASS",
-    "git_perfile_comparison": "PASS",
-    "restoration_hashes": "PASS",
-    "new_build": "PASS 10.45s; existing chunk-size warning retained",
-    "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
-    "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
-    "new_native_world": "Limited living1/time870 paired+return and time600/1260SIDE held3pairs+limited major artifact screen PASS; no morning/duskOFFreturn, fine darkcontacts/fullart/otherfamilies/performance unresolved",
-    "new_geometry_AO_GI": "ALL25_STATES20_MODULES_BAKE_STATIC_DECODER_CPU_OWNERS_PASS_NOT_NATIVE_VISUAL_ACCEPTANCE",
-    "independent_new_checkpoint_restore": "PASS v24 independently downloaded/extracted779files with635mainLFSbaseline entries; postverification14:36metadata not inside archive",
-    "evidence": "backups/cloud76-recovery/verification-summary.json",
-    "buildFingerprints": {
-      "web/dist-cloud76-recovery/v2.html": {
-        "bytes": 3283,
-        "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
-      },
-      "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
-        "bytes": 3322168,
-        "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
-      }
-    },
-    "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
-    "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
-    "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
-    "GI_guard_tests": "31 guards and actual source smoke passed earlier; later actual all25 GI decoder and CPU owners PASS",
-    "reconstructed_field_domain_unit_tests": "Historical11 unit tests followed by actual complete exact-domain and fresh corrected9metric checks PASS; later limited living1 native scopes recorded in currentNativeCheckpoint, full-family/nativeart coverage remains open",
-    "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
-    "zero_cover_extended_attempt": "Historical one900s domain1 operation-cap failure retained; later exact-domain corrected geometry passed",
-    "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance",
-    "GI_owner_CLI": "ACTUAL_FULL25_CANDIDATE_CPU_OFF_ON_PASS_NOT_GPU_NATIVE",
-    "solve_execution": "PASS35.80s approved offsets appliedonce after reviewed2fixes andexplicitbridge",
-    "zero_cache_reuse": "19originpayload verified REUSED_NOT_RERUN; correctedallfresh",
-    "strict3D": "PASS triangle-surface scan5targets fullmesh no decimation; no nonseam blockers or uncertainty; not generalvolume claim",
-    "savedBlend_reopen": "PASS canonical full-material readback; earlier tuple/list failure retained in history",
-    "source_replay_tests": "PASS14 isolated mini-repo tests rerun 2026-10-30 10:27UTC",
-    "source_replay_bindings": "PASS52 source byte identities and897 explicit production inputs 2026-10-30 10:27UTC",
-    "isolated_native_candidate_build": "PASS8.93s22overlay635LFS782buildfiles HTTPbytechecked; NOT GPU/native/pixel/performance acceptance; after v16",
-    "native_qa_source_package": "PASS isolated standardgitapply,3exactsourceSHA,11helper tests; author38 and independent11 are separately attributed",
-    "nonuniform_transform_audit": "Prior actual5focused tests+class algebra experiment PASS; physical scaling approximation unresolved;7.046degree contract difference is NOT measured render error; not rerun by packaging",
-    "family_qa_source": "SOURCE_ONLY author44+independent17 tests PASS; no build/native; not part of frozen5fileSIDE package"
+    "new_full_tests": "NOT_RUN_CURRENT_RESTORE; historicalfullproject1992/1993 remains separate",
+    "independent_new_checkpoint_restore": "Current wholebyteverificationv24+terrainv2; recoveryrecords16files andfamilyrecords15files independentlysaved/downloaded/extracted; notfullproject archives",
+    "current_environment_restore": "PASS Gitdbf+635actualLFS+811dispositions/729ignored+latest9Gittext+22candidate inputs",
+    "current_family_tests": "Fresh author44/44 PASS zero skips; independent17/17 PASS; not reused historicalruns",
+    "current_family_build": "Author2.99s782files+638public+HTTP4 PASS; independent source/asset/HTTP verification, not independent rebuild",
+    "current_family_native": "NOT_COMPLETE_AT_2026-10-31T02:09Z; Oct30native living1 evidence remains historical",
+    "terrain_file_regression": "Historical directedcomplete terrain.test.js11/13:2failed, not currentfullproject rerun",
+    "terrain_profile_candidate": "REJECTED_AT_INTERFACE_REVIEW_BEFORE_IMPLEMENTATION; differentialNOTRUN,ABBA0/8NOTRUN; no fix/speedclaim"
   },
-  "completionBoundary": "Recovering files or past logs is not task completion. Stage3 stays in progress; stage5 global light/color deferred. No production adoption/deploy/force-push.",
+  "completionBoundary": "File/dependency recovery, source tests and build do not establish currentfamily native or finalart/performance. Keep oldprotected context, rejected terrain candidates and all open stage3 tasks; no productionadoption/deploy/forcepush.",
   "history": [
     {
       "cutoffUTC": "2026-10-30T06:16:00Z",
@@ -1827,9 +1798,110 @@
         "status": "DUSK1260_RUNNING_EXCLUDED_FROM_PASS_CLAIMS_NEXT_TEXT_SYNC_WAIT_ROOT_RELEASE",
         "boundary": "No tracked changes/push/cleanup; live dusk excluded from v23 and this stable cutoff"
       }
+    },
+    {
+      "recordType": "PRIOR_OCT30_PUBLISHED_CHECKPOINT",
+      "updatedAtUTC": "2026-10-30T14:36:00Z",
+      "status": "V24_REMOTE_VERIFIED_LIMITED_NATIVE_CHECKPOINT_TEXT_CHANGESET_NOT_ADOPTED",
+      "currentValidation": {
+        "archive_and_manifest": "PASS",
+        "git_perfile_comparison": "PASS",
+        "restoration_hashes": "PASS",
+        "new_build": "PASS 10.45s; existing chunk-size warning retained",
+        "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+        "new_full_tests": "NOT_RUN; historical1992/1993 terrain2500ms failure unresolved",
+        "new_native_world": "Limited living1/time870 paired+return and time600/1260SIDE held3pairs+limited major artifact screen PASS; no morning/duskOFFreturn, fine darkcontacts/fullart/otherfamilies/performance unresolved",
+        "new_geometry_AO_GI": "ALL25_STATES20_MODULES_BAKE_STATIC_DECODER_CPU_OWNERS_PASS_NOT_NATIVE_VISUAL_ACCEPTANCE",
+        "independent_new_checkpoint_restore": "PASS v24 independently downloaded/extracted779files with635mainLFSbaseline entries; postverification14:36metadata not inside archive",
+        "evidence": "backups/cloud76-recovery/verification-summary.json",
+        "buildFingerprints": {
+          "web/dist-cloud76-recovery/v2.html": {
+            "bytes": 3283,
+            "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+          },
+          "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+            "bytes": 3322168,
+            "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+          }
+        },
+        "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+        "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+        "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+        "GI_guard_tests": "31 guards and actual source smoke passed earlier; later actual all25 GI decoder and CPU owners PASS",
+        "reconstructed_field_domain_unit_tests": "Historical11 unit tests followed by actual complete exact-domain and fresh corrected9metric checks PASS; later limited living1 native scopes recorded in currentNativeCheckpoint, full-family/nativeart coverage remains open",
+        "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
+        "zero_cover_extended_attempt": "Historical one900s domain1 operation-cap failure retained; later exact-domain corrected geometry passed",
+        "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance",
+        "GI_owner_CLI": "ACTUAL_FULL25_CANDIDATE_CPU_OFF_ON_PASS_NOT_GPU_NATIVE",
+        "solve_execution": "PASS35.80s approved offsets appliedonce after reviewed2fixes andexplicitbridge",
+        "zero_cache_reuse": "19originpayload verified REUSED_NOT_RERUN; correctedallfresh",
+        "strict3D": "PASS triangle-surface scan5targets fullmesh no decimation; no nonseam blockers or uncertainty; not generalvolume claim",
+        "savedBlend_reopen": "PASS canonical full-material readback; earlier tuple/list failure retained in history",
+        "source_replay_tests": "PASS14 isolated mini-repo tests rerun 2026-10-30 10:27UTC",
+        "source_replay_bindings": "PASS52 source byte identities and897 explicit production inputs 2026-10-30 10:27UTC",
+        "isolated_native_candidate_build": "PASS8.93s22overlay635LFS782buildfiles HTTPbytechecked; NOT GPU/native/pixel/performance acceptance; after v16",
+        "native_qa_source_package": "PASS isolated standardgitapply,3exactsourceSHA,11helper tests; author38 and independent11 are separately attributed",
+        "nonuniform_transform_audit": "Prior actual5focused tests+class algebra experiment PASS; physical scaling approximation unresolved;7.046degree contract difference is NOT measured render error; not rerun by packaging",
+        "family_qa_source": "SOURCE_ONLY author44+independent17 tests PASS; no build/native; not part of frozen5fileSIDE package"
+      },
+      "currentExecutionBlocker": {
+        "status": "V24_REMOTE_VERIFIED_EXACT_TEXT_CHANGESET_AWAIT_FINAL_REVIEW_AND_ROOT_CAS_RELEASE",
+        "boundary": "No production changes/deletion; fullart/contact/family/performance remain open"
+      },
+      "familyQAPreparation": {
+        "status": "SOURCE_ONLY_NOT_BUILT_NOT_NATIVE",
+        "authorTests": 44,
+        "independentTests": 17,
+        "reviewPath": "backups/cloud76-recovery/familyqa76-independent-source-review.json",
+        "reviewSHA256": "a7acace43c3cb989c38bb0f862160ee7bc460bc61eafde83ee80f5236f29a559",
+        "includedInFiveFileSidePackage": false,
+        "originalSideFrozenSourcesChanged": false
+      }
+    },
+    {
+      "recordType": "HISTORICAL_OCT30_VALIDATION_NOT_RERUN_CURRENT_RESTORE",
+      "values": {
+        "archive_and_manifest": "PASS",
+        "git_perfile_comparison": "PASS",
+        "restoration_hashes": "PASS",
+        "new_build": "PASS 10.45s; existing chunk-size warning retained",
+        "new_focused_tests": "PASS 391/391 across63 explicit files, zero skips, source unchanged",
+        "new_native_world": "Limited living1/time870 paired+return and time600/1260SIDE held3pairs+limited major artifact screen PASS; no morning/duskOFFreturn, fine darkcontacts/fullart/otherfamilies/performance unresolved",
+        "new_geometry_AO_GI": "ALL25_STATES20_MODULES_BAKE_STATIC_DECODER_CPU_OWNERS_PASS_NOT_NATIVE_VISUAL_ACCEPTANCE",
+        "evidence": "backups/cloud76-recovery/verification-summary.json",
+        "buildFingerprints": {
+          "web/dist-cloud76-recovery/v2.html": {
+            "bytes": 3283,
+            "sha256": "42b9359dcdfa469a6bd3414f781a6f2659efb99eb17d3581bd09e6e95166db1f"
+          },
+          "web/dist-cloud76-recovery/assets/v2-0l2TWQV9.js": {
+            "bytes": 3322168,
+            "sha256": "ea4a32d3ef2201dd493cedf56a707a4b3edd6dff05538863a08267214f36fac1"
+          }
+        },
+        "checkpoint_utility": "PASS independent18/18 tests and635LFS inventory",
+        "numerical_helper": "PASS reconstructed45 tests + independent12; not historical byte recovery",
+        "full_baseline_analysis": "PASS interfaces79.69s + cover140.08s;9metric rows;15payload SHA verified",
+        "GI_guard_tests": "31 guards and actual source smoke passed earlier; later actual all25 GI decoder and CPU owners PASS",
+        "reconstructed_field_domain_unit_tests": "Historical11 unit tests followed by actual complete exact-domain and fresh corrected9metric checks PASS; later limited living1 native scopes recorded in currentNativeCheckpoint, full-family/nativeart coverage remains open",
+        "material_fingerprints": "Original andzero full fingerprint equal9195966b; helpere279 and actualbinaryb8b bound",
+        "zero_cover_extended_attempt": "Historical one900s domain1 operation-cap failure retained; later exact-domain corrected geometry passed",
+        "domain_proof": "Exact rational patch subtraction20 independent tests; fullfixture46517/2Mops passed; no newunsupported; not wholecandidate acceptance",
+        "GI_owner_CLI": "ACTUAL_FULL25_CANDIDATE_CPU_OFF_ON_PASS_NOT_GPU_NATIVE",
+        "solve_execution": "PASS35.80s approved offsets appliedonce after reviewed2fixes andexplicitbridge",
+        "zero_cache_reuse": "19originpayload verified REUSED_NOT_RERUN; correctedallfresh",
+        "strict3D": "PASS triangle-surface scan5targets fullmesh no decimation; no nonseam blockers or uncertainty; not generalvolume claim",
+        "savedBlend_reopen": "PASS canonical full-material readback; earlier tuple/list failure retained in history",
+        "source_replay_tests": "PASS14 isolated mini-repo tests rerun 2026-10-30 10:27UTC",
+        "source_replay_bindings": "PASS52 source byte identities and897 explicit production inputs 2026-10-30 10:27UTC",
+        "isolated_native_candidate_build": "PASS8.93s22overlay635LFS782buildfiles HTTPbytechecked; NOT GPU/native/pixel/performance acceptance; after v16",
+        "native_qa_source_package": "PASS isolated standardgitapply,3exactsourceSHA,11helper tests; author38 and independent11 are separately attributed",
+        "nonuniform_transform_audit": "Prior actual5focused tests+class algebra experiment PASS; physical scaling approximation unresolved;7.046degree contract difference is NOT measured render error; not rerun by packaging",
+        "family_qa_source": "SOURCE_ONLY author44+independent17 tests PASS; no build/native; not part of frozen5fileSIDE package"
+      }
     }
   ],
-  "latestPublishedGit": "27596dfb56f48326971c46c69a376a4213a3073d",
+  "latestPublishedGit": "dbf707479a3bfae6aaffec957de7c7447b596c72",
   "latestIndependentBackup": {
     "version": 24,
     "sha256": "aff30afb354d7270debdf7bfe5a4351888066e2dc26a9eb26a9cd44fd431229f",
@@ -2010,8 +2082,10 @@
     "executionBlocked": false
   },
   "currentExecutionBlocker": {
-    "status": "V24_REMOTE_VERIFIED_EXACT_TEXT_CHANGESET_AWAIT_FINAL_REVIEW_AND_ROOT_CAS_RELEASE",
-    "boundary": "No production changes/deletion; fullart/contact/family/performance remain open"
+    "status": "NO_RESTORATION_BLOCKER_FOR_FAMILY_NATIVE_QUEUE",
+    "optionalBlender": "5.2.3 archive verified runtime installation deferred; system4.3.2 ineligible",
+    "native": "Currentfamily actual native owner/pixels not yet accepted",
+    "publication": "Four documentation edits prepared; no external push authorization yet"
   },
   "canonicalCorrectionPhase": {
     "namespace": "backups/cloud75-textile-volume-staging/candidate-v4-domain2-canonical-20261030",
@@ -2233,16 +2307,30 @@
       "Default adoption/deployment",
       "Separate morning and dusk OFF-return comparisons"
     ],
-    "cleanup": "No deletion; pending user permission not inferred"
+    "cleanup": "No deletion; pending user permission not inferred",
+    "historicalBoundary": "Oct30 previouslyverified living1 finite static scope only; not currentOct31family native acceptance"
   },
   "familyQAPreparation": {
-    "status": "SOURCE_ONLY_NOT_BUILT_NOT_NATIVE",
-    "authorTests": 44,
-    "independentTests": 17,
-    "reviewPath": "backups/cloud76-recovery/familyqa76-independent-source-review.json",
-    "reviewSHA256": "a7acace43c3cb989c38bb0f862160ee7bc460bc61eafde83ee80f5236f29a559",
-    "includedInFiveFileSidePackage": false,
-    "originalSideFrozenSourcesChanged": false
+    "status": "CURRENT_ENV_SOURCE_TEST_BUILD_HTTP_PASS_NATIVE_PENDING",
+    "baseline": "dbf707479a3bfae6aaffec957de7c7447b596c72",
+    "authorTestsFresh": 44,
+    "independentTestsFresh": 17,
+    "buildSeconds": 2.99,
+    "buildFiles": 782,
+    "HTTPFiles": 4,
+    "publicLFS": 546,
+    "candidateGI": 20,
+    "nonwebPointers": 69,
+    "full635MaterializedInFamily": false,
+    "exactChangedPaths": 25,
+    "sourceFiles": 3,
+    "assetInputs": 22,
+    "productionMainChanged": false,
+    "defaultChanged": false,
+    "manifestPath": "backups/cloud77-recovery/familyqa-build-20261031/manifest.json",
+    "manifestSHA256": "6f96f619d7f8bdda2aa17a03b00427d5d906cdc4a90c68af33fa436048e43281",
+    "independentReviewSHA256": "2498260f735002f162df67c2a1516601f0170599ae17958f7f104e2a160814be",
+    "nativeAcceptance": "PENDING actualoccupiedowner/pixels required"
   },
   "nextIndependentBackup": {
     "version": 24,
@@ -2261,5 +2349,71 @@
     "oldSnapshotsUnchanged": true,
     "currentFactsCutoffUTC": "2026-10-30T14:26:00Z",
     "postBackupMetadataUTC": "2026-10-30T14:36:00Z"
+  },
+  "restoration20261031": {
+    "authorization": "User explicitly permits automatic new-directory restoration on missing cloud workspace; no Mac/delete/deploy/forcepush/defaultadoption authority implied",
+    "baseline": "dbf707479a3bfae6aaffec957de7c7447b596c72",
+    "workingDirectoryName": "kalajun-world-recovered-20261031",
+    "archiveInventory": 811,
+    "existingIdentical": 638,
+    "restoredIgnored": 91,
+    "preservedGitNoOverwrite": 82,
+    "ignoredActualPayloads": 729,
+    "mainActualLFS": 635,
+    "mainActualLFSBytes": 2394053236,
+    "sourceReplay": "52 identical 0new noapply nobake",
+    "handoffReceiptSHA256": "7d37668b6306dd7661e414db2ffdd6b80dcd89f3d92bf1312427ac3c2b7da592",
+    "runtime": "node24.22.1 npm11.9.0 Python3.12.14 Git2.52.0 GitLFS3.6.1 Chromium155.0.8059.79",
+    "blender": "Official5.2.3archive verified runtimeNOTINSTALLED; system4.3.2NOTELIGIBLE; nativequeue independent",
+    "historicalProtectedContextUnchanged": true
+  },
+  "durableRecoveryChain": [
+    {
+      "role": "full_stage_increment",
+      "name": "kalajun-cloud75-recovery-checkpoint.zip",
+      "version": 24,
+      "files": 779,
+      "bytes": 91449823,
+      "sha256": "aff30afb354d7270debdf7bfe5a4351888066e2dc26a9eb26a9cd44fd431229f",
+      "baseline": "27596dfb56f48326971c46c69a376a4213a3073d"
+    },
+    {
+      "role": "terrain_diagnostics_not_fix",
+      "version": 2,
+      "files": 32,
+      "bytes": 243123,
+      "sha256": "699b5db953041305adf31838c65e7cd7f1daec3774faf82ad88f413724ef5374",
+      "sourceGit": "dbf707479a3bfae6aaffec957de7c7447b596c72"
+    },
+    {
+      "role": "restore_records_only",
+      "version": 0,
+      "bytes": 207147,
+      "sha256": "85b659dfa453a1db433d40171d11ad7d9688d61f84e5ea6821e5bce8aadf9fd0",
+      "files": 16,
+      "entries": 17,
+      "sourceGit": "dbf707479a3bfae6aaffec957de7c7447b596c72",
+      "independentReceiptSHA256": "15c03697c66a7f5feb0dd88381aaaa6c9658085d16ce7c9c07edeb0f3082de61",
+      "independentlyDownloadedExtracted": true,
+      "fullProjectBackup": false
+    },
+    {
+      "role": "family_build_records_external22assets_required",
+      "version": 0,
+      "bytes": 168480,
+      "sha256": "0e02a9c509d34f6029516db69efca05279f2a504380088b201a81ea538ae3588",
+      "files": 15,
+      "entries": 16,
+      "sourceGit": "dbf707479a3bfae6aaffec957de7c7447b596c72",
+      "independentReceiptSHA256": "62b9e068ed2cd0705d48ec71d3eb1ca20bdb129b3508babfe97ce3c5924580b9",
+      "independentlyDownloadedExtracted": true,
+      "fullProjectBackup": false
+    }
+  ],
+  "initialRestorationHistoryScope": {
+    "backupAndRestoredFields": "INITIAL_OCT30_V6_RECOVERY_ONLY_NOT_CURRENT_OCT31_STATE",
+    "initialGitBase": "4e1d6f251ff979760f7020c4d940489cba091c36",
+    "currentRestoration": "restoration20261031",
+    "currentDurableChain": "durableRecoveryChain"
   }
 }
